@@ -1,0 +1,12 @@
+source_id,organization,dataset_family,temporal_scope,geography,access_mode,quality_grade,priority,status,notes
+bps_webapi,BPS,National and regional statistical API,varies,Indonesia province regency city,JSON API,A,P0,discovered,Primary programmatic statistical source
+bps_sumbar,BPS Provinsi Sumatera Barat,West Sumatra statistical tables and publications,varies,West Sumatra and regency city,web tables publications,A,P0,discovered,Primary regional statistical source
+data_go_id_sumbar,Satu Data Indonesia,West Sumatra open datasets,varies,West Sumatra and subregions,CSV XLSX WMS WFS and other resources,A-B,P0,discovered,Dataset-level quality requires validation
+bmkg_dataonline,BMKG,Station climate and earthquake data,varies,station and location,digital download,A,P0,discovered,Registration and download constraints must be documented
+bmkg_climate,BMKG,Climate analysis and projections,varies,Indonesia and regional,web products,A,P1,discovered,Use official release products and retain product metadata
+bnpb_inarisk_sumbar,BNPB,West Sumatra flood landslide hazard exposure risk and response,current and historical layers where available,West Sumatra spatial,WebGIS and downloads,A-B,P0,discovered,Separate hazard exposure vulnerability and observed impact
+big_inageoportal,Badan Informasi Geospasial,RBI administrative boundaries DEMNAS and reference geospatial data,varies,Indonesia spatial,download and geospatial services,A,P0,discovered,Canonical spatial reference candidate
+bi_regional,Bank Indonesia,Regional economic reports and financial context,varies,province,publications and statistics,A-B,P1,planned,Use for economic context and cross-checking
+ministries,Indonesian ministries and agencies,Sector-specific primary datasets,varies,varies,API downloads publications,A-B,P1,planned,Add individual catalog records rather than treating this row as one dataset
+remote_sensing,Official satellite archives,Land cover night lights and other spatial evidence,varies,raster grid,bulk download,B,P1,planned,Each product requires sensor methodology and comparability metadata
+archives,Government and research archives,Historical publications and records,1945 onward,historical regions and administrative units,PDF scans catalog records,B-C,P1,planned,Preserve original geography terminology and confidence
