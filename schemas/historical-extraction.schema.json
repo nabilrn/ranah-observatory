@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nabilrn/ranah-observatory/schemas/historical-extraction.schema.json",
+  "title": "Ranah Observatory Historical Extraction Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "extraction_id",
+    "source_record_id",
+    "artifact_sha256",
+    "page",
+    "table_title",
+    "source_geography_label",
+    "reference_period",
+    "unit",
+    "raw_value",
+    "extraction_method",
+    "reconstruction_state",
+    "mapping_status",
+    "confidence"
+  ],
+  "properties": {
+    "extraction_id": {"type": "string", "minLength": 1},
+    "source_record_id": {"type": "string", "minLength": 1},
+    "artifact_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "page": {"type": "integer", "minimum": 1},
+    "table_number": {"type": ["string", "null"]},
+    "table_title": {"type": "string", "minLength": 1},
+    "row_label": {"type": ["string", "null"]},
+    "column_label": {"type": ["string", "null"]},
+    "source_geography_label": {"type": "string", "minLength": 1},
+    "source_geography_id": {"type": ["string", "null"]},
+    "reference_period": {"type": "string", "minLength": 1},
+    "unit": {"type": "string", "minLength": 1},
+    "raw_value": {"type": ["number", "string"]},
+    "canonical_indicator_id": {"type": ["string", "null"]},
+    "extraction_method": {
+      "enum": ["digital_text", "table_parser", "manual_transcription", "ocr_assisted"]
+    },
+    "reconstruction_state": {
+      "enum": [
+        "observed_source_era",
+        "derived_source_era",
+        "reconstructed_geography",
+        "reconstructed_definition",
+        "not_comparable"
+      ]
+    },
+    "mapping_status": {
+      "enum": ["unmapped", "candidate", "qualified", "rejected"]
+    },
+    "confidence": {
+      "enum": ["high", "medium", "low"]
+    },
+    "boundary_note": {"type": ["string", "null"]},
+    "definition_note": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  }
+}
