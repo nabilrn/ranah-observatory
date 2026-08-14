@@ -3,11 +3,13 @@ from __future__ import annotations
 import csv
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 INDICATORS = ROOT / "data" / "registries" / "indicators.csv"
 COVERAGE = ROOT / "data" / "registries" / "bps_indicator_coverage.csv"
 PUBLICATIONS = ROOT / "data" / "registries" / "bps_publications_seed.csv"
+HISTORICAL_ANCHORS = ROOT / "data" / "registries" / "bps_historical_anchors.csv"
 CATALOG = ROOT / "catalog" / "data-catalog.csv"
 
 ALLOWED_BPS_ROLES = {"primary", "crosscheck", "derived_input", "not_primary", "archive"}
@@ -25,11 +27,18 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def _is_official_bps_url(url: str) -> bool:
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    return parsed.scheme == "https" and host.endswith(".bps.go.id")
+
+
 def validate() -> tuple[list[str], dict[str, int]]:
     errors: list[str] = []
     indicators = read_csv(INDICATORS)
     coverage = read_csv(COVERAGE)
     publications = read_csv(PUBLICATIONS)
+    historical_anchors = read_csv(HISTORICAL_ANCHORS)
     catalog = read_csv(CATALOG)
 
     indicator_ids = {row["indicator_id"].strip() for row in indicators}
@@ -73,8 +82,42 @@ def validate() -> tuple[list[str], dict[str, int]]:
             )
         if row["status"].strip() != "qualified":
             errors.append(f"publication row {row_number}: seed publication must be qualified")
-        if not row["official_url"].strip().startswith("https://"):
-            errors.append(f"publication row {row_number}: official_url must be HTTPS")
+        if not _is_official_bps_url(row["official_url"].strip()):
+            errors.append(f"publication row {row_number}: official_url must be an HTTPS BPS URL")
+
+    anchor_ids = [row["source_id"].strip() for row in historical_anchors]
+    anchor_urls = [row["official_url"].strip() for row in historical_anchors]
+    if len(anchor_ids) != len(set(anchor_ids)):
+        errors.append("bps_historical_anchors.csv contains duplicate source_id values")
+    if len(anchor_urls) != len(set(anchor_urls)):
+        errors.append("bps_historical_anchors.csv contains duplicate official_url values")
+
+    anchor_years: list[int] = []
+    for row_number, row in enumerate(historical_anchors, start=2):
+        try:
+            year = int(row["reference_year"].strip())
+        except ValueError:
+            errors.append(f"historical anchor row {row_number}: reference_year must be numeric")
+            continue
+        anchor_years.append(year)
+        if row["status"].strip() != "qualified":
+            errors.append(f"historical anchor row {row_number}: anchor must be qualified")
+        if not _is_official_bps_url(row["official_url"].strip()):
+            errors.append(
+                f"historical anchor row {row_number}: official_url must be an HTTPS BPS URL"
+            )
+        if not row["anchor_role"].strip():
+            errors.append(f"historical anchor row {row_number}: anchor_role is required")
+        if not row["catalog_no"].strip() or not row["publication_no"].strip():
+            errors.append(
+                f"historical anchor row {row_number}: catalog_no and publication_no are required"
+            )
+
+    if anchor_years:
+        if min(anchor_years) != 1970:
+            errors.append("historical BPS anchor registry must retain the verified 1970 series anchor")
+        if max(anchor_years) < 2026:
+            errors.append("historical BPS anchor registry must include a current-series anchor")
 
     if "bps_webapi" not in catalog_ids:
         errors.append("data catalog must contain bps_webapi")
@@ -83,6 +126,7 @@ def validate() -> tuple[list[str], dict[str, int]]:
         "canonical_indicators": len(indicator_ids),
         "coverage_rows": len(coverage_ids),
         "seed_publications": len(publications),
+        "historical_anchors": len(historical_anchors),
     }
     return errors, counts
 
@@ -97,7 +141,8 @@ def main() -> int:
     print(
         "BPS ingestion foundation valid: "
         f"{counts['coverage_rows']}/{counts['canonical_indicators']} indicators covered; "
-        f"{counts['seed_publications']} qualified seed publications"
+        f"{counts['seed_publications']} qualified seed publications; "
+        f"{counts['historical_anchors']} historical publication anchors"
     )
     return 0
 
