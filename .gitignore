@@ -1,0 +1,14 @@
+# Source snapshots are immutable research inputs but should not be committed blindly.
+data/raw/
+data/interim/
+
+# Python local artifacts.
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Editor and OS noise.
+.DS_Store
+.vscode/
+.idea/

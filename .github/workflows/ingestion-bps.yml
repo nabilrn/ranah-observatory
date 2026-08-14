@@ -1,0 +1,63 @@
+name: BPS Ingestion
+
+on:
+  push:
+    paths:
+      - "catalog/**"
+      - "data/registries/bps_*.csv"
+      - "scripts/bps_client.py"
+      - "scripts/bps_publication.py"
+      - "scripts/harvest_bps.py"
+      - "scripts/harvest_bps_publication.py"
+      - "scripts/validate_bps_foundation.py"
+      - "tests/test_bps_client.py"
+      - "tests/test_bps_publication.py"
+      - "docs/INGESTION_BPS.md"
+      - ".github/workflows/ingestion-bps.yml"
+  pull_request:
+    paths:
+      - "catalog/**"
+      - "data/registries/bps_*.csv"
+      - "scripts/bps_client.py"
+      - "scripts/bps_publication.py"
+      - "scripts/harvest_bps.py"
+      - "scripts/harvest_bps_publication.py"
+      - "scripts/validate_bps_foundation.py"
+      - "tests/test_bps_client.py"
+      - "tests/test_bps_publication.py"
+      - "docs/INGESTION_BPS.md"
+      - ".github/workflows/ingestion-bps.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Validate BPS registries
+        run: python scripts/validate_bps_foundation.py
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Optional live BPS WebAPI smoke test
+        if: ${{ env.BPS_API_KEY != '' }}
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-publications-2026.json
+          publications --year 2026 --max-pages 1

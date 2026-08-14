@@ -1,0 +1,51 @@
+indicator_id,bps_role,acquisition_lane,query_terms,qualification_status,notes
+population_total,primary,dynamic_or_publication,population penduduk jumlah penduduk,candidate,Preserve census projection and reference-date distinctions
+population_growth,derived_input,derived_from_population,population penduduk pertumbuhan penduduk,derived_candidate,Derive only from compatible population series
+urban_population_share,primary,dynamic_or_publication,urban perkotaan perdesaan penduduk,candidate,Urban rural classification must be retained
+net_migration_rate,primary,census_or_publication,migrasi netto migrasi risen migrasi seumur hidup,candidate,Migration interval and residence definition are material
+life_expectancy,primary,dynamic_or_strategic,umur harapan hidup UHH,candidate,Inspect methodology version and geography coverage
+infant_mortality_rate,primary,publication_or_dynamic,angka kematian bayi AKB infant mortality,candidate,Direct survey and modeled estimates must remain distinct
+stunting_prevalence,crosscheck,publication_or_static,stunting balita pendek,candidate_secondary,BPS may cross-check but health-sector source may remain primary
+health_facility_access,crosscheck,static_or_publication,fasilitas kesehatan akses puskesmas rumah sakit,candidate_secondary,Operational access definition must be qualified
+mean_years_schooling,primary,dynamic_or_strategic,rata-rata lama sekolah RLS,candidate,Inspect age universe and methodology
+expected_years_schooling,primary,dynamic_or_strategic,harapan lama sekolah HLS,candidate,Inspect official methodology metadata
+secondary_completion,primary,dynamic_or_publication,pendidikan tamat SMA sekolah menengah,candidate,Education-level classification and age universe required
+tertiary_attainment,primary,dynamic_or_publication,pendidikan tinggi diploma universitas tamat,candidate,Credential classification and age universe required
+labor_force_participation,primary,dynamic_or_publication,tingkat partisipasi angkatan kerja TPAK,candidate,Sakernas period and redesigns must be retained
+unemployment_rate,primary,dynamic_or_publication,tingkat pengangguran terbuka TPT,candidate,Sakernas period and definition required
+underemployment_rate,primary,dynamic_or_publication,setengah pengangguran underemployment,candidate,Hours threshold and willingness for more work required
+formal_employment_share,primary,dynamic_or_publication,formal informal pekerja formal,candidate,Classification rule must be retained
+real_grdp_per_capita,derived_input,dynamic_or_publication,PDRB per kapita harga konstan ADHK,derived_candidate,Base year and population denominator required
+real_grdp_growth,primary,dynamic_or_publication,laju pertumbuhan PDRB harga konstan ADHK,candidate,Rebasing and chain decisions required
+poverty_rate,primary,dynamic_or_strategic,persentase penduduk miskin kemiskinan,candidate,Poverty line methodology and survey period required
+gini_ratio,primary,dynamic_or_strategic,gini rasio ketimpangan,candidate,Underlying expenditure welfare aggregate required
+labor_productivity,derived_input,derived_multi_source,PDRB tenaga kerja produktivitas tenaga kerja,derived_candidate,Requires compatible real output and employment denominator
+manufacturing_share_grdp,derived_input,dynamic_or_publication,PDRB industri pengolahan distribusi persen,derived_candidate,Industry classification and base year matter
+agriculture_share_grdp,derived_input,dynamic_or_publication,PDRB pertanian kehutanan perikanan distribusi,derived_candidate,Sector classification and base year matter
+rice_yield,primary,dynamic_or_static,produktivitas padi hasil per hektar,candidate,Harvested-area methodology revisions must be checked
+fisheries_output,primary,static_or_publication,produksi perikanan tangkap budidaya,candidate,Capture and aquaculture should remain separable
+export_value,primary,dynamic_or_publication,ekspor nilai ekspor asal barang pelabuhan muat,candidate,Origin and port-of-loading concepts must not be conflated
+road_density,derived_input,static_or_publication,panjang jalan luas wilayah,candidate_secondary,May require public-works source for network definition
+road_condition_good,crosscheck,static_or_publication,kondisi jalan baik panjang jalan,candidate_secondary,Road responsibility and condition categories required
+household_electricity_access,primary,dynamic_or_publication,listrik rumah tangga sumber penerangan PLN,candidate,Grid and non-grid distinctions should be preserved
+internet_access,primary,dynamic_or_publication,internet akses internet rumah tangga telepon seluler,candidate,Household versus person universe and device definition required
+travel_time_major_market,not_primary,defer,travel time market akses pasar,defer_non_bps,Requires geospatial or network source
+own_source_revenue,crosscheck,static_or_publication,pendapatan asli daerah PAD realisasi,candidate_secondary,Finance ministry or regional finance data may remain primary
+regional_expenditure_per_capita,derived_input,static_or_publication,realisasi belanja daerah pengeluaran pemerintah,candidate_secondary,Requires compatible expenditure and population denominator
+capital_expenditure_share,not_primary,defer,belanja modal realisasi APBD,defer_non_bps,Ministry of Finance is preferred primary source
+fiscal_independence_ratio,not_primary,defer,kemandirian fiskal PAD pendapatan daerah,defer_non_bps,Derived from fiscal source outside BPS when possible
+annual_rainfall,crosscheck,publication_or_static,curah hujan tahunan,candidate_secondary,BMKG is primary and station completeness must be retained
+extreme_rainfall_days,not_primary,defer,hari hujan ekstrem curah hujan,defer_non_bps,BMKG daily data is required for threshold derivation
+mean_temperature,crosscheck,publication_or_static,suhu rata-rata temperatur,candidate_secondary,BMKG remains preferred primary source
+forest_cover_share,not_primary,defer,tutupan hutan luas hutan,defer_non_bps,KLHK or BIG is preferred primary source
+flood_events,not_primary,defer,banjir kejadian bencana,defer_non_bps,BNPB is primary disaster-event source
+landslide_events,not_primary,defer,longsor tanah longsor kejadian bencana,defer_non_bps,BNPB is primary disaster-event source
+disaster_affected_population,not_primary,defer,penduduk terdampak bencana,defer_non_bps,BNPB is primary disaster-impact source
+disaster_direct_loss,not_primary,defer,kerugian bencana nilai kerusakan,defer_non_bps,BNPB or regional government is preferred primary source
+elevation_mean,not_primary,defer,ketinggian elevasi,defer_non_bps,BIG DEM is required for area-weighted derivation
+steep_slope_share,not_primary,defer,kemiringan lereng,defer_non_bps,BIG DEM is required for slope derivation
+distance_to_padang,not_primary,defer,jarak ke Padang jaringan jalan,defer_non_bps,Requires network/geospatial source
+historical_population,archive,historical_publication,populasi penduduk sensus Sumatera Barat lama,historical_inventory,Attach observations to source-era geography
+historical_literacy,archive,historical_publication,melek huruf buta huruf literacy Sumatera Barat,historical_inventory,Definition and age universe must be extracted from source
+historical_school_enrollment,archive,historical_publication,murid sekolah enrollment pendidikan Sumatera Barat,historical_inventory,Education-system mapping required
+historical_transport_access,archive,historical_publication,jalan kereta pelabuhan transportasi Sumatera Barat,historical_inventory,Mixed quantitative and qualitative evidence likely
