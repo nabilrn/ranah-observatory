@@ -1,0 +1,48 @@
+name: Historical Reconstruction
+
+on:
+  push:
+    paths:
+      - "catalog/**"
+      - "data/registries/historical_*.csv"
+      - "schemas/historical-extraction.schema.json"
+      - "scripts/validate_historical_reconstruction.py"
+      - "tests/test_historical_reconstruction.py"
+      - "docs/HISTORICAL_RECONSTRUCTION.md"
+      - ".github/workflows/historical-reconstruction.yml"
+  pull_request:
+    paths:
+      - "catalog/**"
+      - "data/registries/historical_*.csv"
+      - "schemas/historical-extraction.schema.json"
+      - "scripts/validate_historical_reconstruction.py"
+      - "tests/test_historical_reconstruction.py"
+      - "docs/HISTORICAL_RECONSTRUCTION.md"
+      - ".github/workflows/historical-reconstruction.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Validate BPS ingestion foundation
+        run: python scripts/validate_bps_foundation.py
+
+      - name: Validate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
