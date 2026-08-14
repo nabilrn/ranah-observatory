@@ -119,8 +119,13 @@ def validate() -> tuple[list[str], dict[str, int]]:
         if max(anchor_years) < 2026:
             errors.append("historical BPS anchor registry must include a current-series anchor")
 
-    if "bps_webapi" not in catalog_ids:
-        errors.append("data catalog must contain bps_webapi")
+    required_source_families = {"bps_webapi", "bps_publication_web"}
+    missing_source_families = sorted(required_source_families - catalog_ids)
+    if missing_source_families:
+        errors.append(
+            "data catalog is missing required BPS source families: "
+            + ", ".join(missing_source_families)
+        )
 
     counts = {
         "canonical_indicators": len(indicator_ids),
