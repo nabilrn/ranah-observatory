@@ -1,0 +1,40 @@
+name: Data Foundation
+
+on:
+  push:
+    paths:
+      - "catalog/**"
+      - "data/registries/**"
+      - "schemas/**"
+      - "scripts/validate_data_foundation.py"
+      - "tests/test_data_foundation.py"
+      - ".github/workflows/data-foundation.yml"
+  pull_request:
+    paths:
+      - "catalog/**"
+      - "data/registries/**"
+      - "schemas/**"
+      - "scripts/validate_data_foundation.py"
+      - "tests/test_data_foundation.py"
+      - ".github/workflows/data-foundation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate registries and schema
+        run: python scripts/validate_data_foundation.py
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
