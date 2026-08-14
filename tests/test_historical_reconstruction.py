@@ -19,6 +19,8 @@ class HistoricalReconstructionTests(unittest.TestCase):
         self.assertEqual(6, counts["events"])
         self.assertGreaterEqual(counts["qualified_sources"], 10)
         self.assertEqual(2, counts["gaps"])
+        self.assertEqual(1, counts["anomalies"])
+        self.assertEqual(1, counts["blocked_candidates"])
 
     def test_1945_1946_is_not_silently_filled(self) -> None:
         path = ROOT / "data" / "registries" / "historical_source_inventory.csv"
@@ -54,6 +56,25 @@ class HistoricalReconstructionTests(unittest.TestCase):
         self.assertIn("reconstructed_geography", states)
         self.assertIn("reconstructed_definition", states)
         self.assertIn("not_comparable", states)
+
+    def test_retrospective_population_candidate_cannot_be_promoted_yet(self) -> None:
+        path = ROOT / "data" / "registries" / "historical_extraction_candidates.csv"
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        candidate = next(row for row in rows if row["candidate_id"] == "bukittinggi_population_1971")
+        self.assertEqual("63132", candidate["raw_value"])
+        self.assertEqual("pending_artifact_verification", candidate["evidence_status"])
+        self.assertEqual("missing_artifact_sha256", candidate["promotion_blocker"])
+        self.assertEqual("observed_retrospective_official", candidate["reconstruction_state"])
+
+    def test_series_start_metadata_conflict_remains_visible(self) -> None:
+        path = ROOT / "data" / "registries" / "historical_source_anomalies.csv"
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        anomaly = next(row for row in rows if row["anomaly_id"] == "sumbar_dalam_angka_series_start")
+        self.assertEqual("unresolved", anomaly["status"])
+        self.assertIn("1970", anomaly["claim_a"])
+        self.assertIn("1980", anomaly["claim_b"])
 
 
 if __name__ == "__main__":
