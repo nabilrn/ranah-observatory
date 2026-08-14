@@ -1,78 +1,173 @@
 # Historical Artifact Acquisition
 
-## Why this exists
+## Goal
 
-Historical source discovery and historical artifact acquisition are separate steps. Search engines, BPS publication pages, and BPS OPAC can establish that a source exists and can expose indexed table text, while canonical numeric extraction requires a stable artifact whenever practical so the exact bytes, page, table, and transcription can be reproduced.
+Historical source discovery and historical artifact acquisition are separate steps. Search engines, official BPS publication pages, and BPS OPAC can establish that a source exists, but canonical numeric extraction should use an exact artifact whenever practical so the bytes, page, table, and transcription can be reproduced.
 
-## BPS access behaviour observed on 2026-08-14
+The acquisition workflow is therefore designed around **batch human-browser collection + automated local verification**, not one-document-at-a-time handoff.
 
-Two acquisition attempts were run from GitHub-hosted Actions runners against the public BPS publication page for *Kota Bukittinggi Dalam Angka 2009*.
+## Why browser collection is a separate lane
 
-1. The first request used the repository's identifiable `ranah-observatory` User-Agent.
-2. A second diagnostic request used ordinary browser-compatible headers and a browser User-Agent.
+On 2026-08-14, two diagnostic requests from GitHub-hosted Actions runners attempted to fetch a public BPS publication page. Both received HTTP `403 Forbidden`, including a diagnostic request with ordinary browser-compatible headers. This is treated as an external access constraint rather than a research-validation failure.
 
-Both requests received HTTP `403 Forbidden` while fetching the public publication page. The second experiment therefore ruled out the custom User-Agent as the sole cause.
+Normal CI never attempts to bypass the restriction. The repository does not store BPS cookies, browser sessions, CAPTCHA material, or private account data.
 
-The normal research validation workflow remains green. Network acquisition is not a merge gate because an external site's anti-bot policy is not evidence that the data contract or extraction code is incorrect.
+## Anchor-year strategy
 
-The manual workflow `.github/workflows/acquire-bps-artifacts.yml` is retained as a diagnostic for future network environments but is not run automatically.
+The first acquisition batch intentionally prioritizes longitudinal anchors instead of downloading every annual publication.
 
-## Current evidence levels
+### P0 — first batch
 
-### Discovery-qualified
+1. `sp1961_indonesia` — *Sensus Penduduk 1961 Republik Indonesia*.
+2. `sp1971_sumbar_e3` — *Penduduk Sumatera Barat Sensus Penduduk 1971 Seri E No.3*.
+3. `sumbar_1970` — *Sumatera Barat Dalam Angka Tahun 1970*.
+4. `sumbar_1980` — *Sumatera Barat Dalam Angka Tahun 1980*.
+5. `sumbar_1990` — *Sumatera Barat Dalam Angka Tahun 1990*.
+6. `sumbar_2000` — *Sumatera Barat Dalam Angka Tahun 2000*.
+7. `sumbar_2010` — *Sumatera Barat Dalam Angka 2010*.
+8. `sumbar_2020` — *Provinsi Sumatera Barat Dalam Angka 2020*.
 
-The repository can qualify source existence/metadata using official BPS publication pages, BPS OPAC, BPK legal metadata, and BPS AllStats/Deep Search.
+The two census publications are marked `exit_gate_candidate=yes`. At least one artifact-backed historical population family can satisfy the extraction exit gate; both are preferred because they bracket an important early period.
 
-### Candidate extraction
+### P1 — cross-check and densification
 
-A value exposed in indexed official publication text may be entered in `historical_extraction_candidates.csv` with a promotion blocker. It is not a canonical observation.
+The queue also contains 1971, 1975, 2015, 2026 annual volumes and *Kota Bukittinggi Dalam Angka 2009*. These are useful for methodology checks, retrospective-table verification, and later densification but should not delay the first longitudinal panel.
 
-Current example:
+The authoritative queue is:
 
-- *Kota Bukittinggi Dalam Angka 2009*, table 3.1.6, page 42;
-- reference year 1971;
-- Bukittinggi population printed as `63,132` persons;
-- the table cites BPS Kota Bukittinggi;
-- status: `pending_artifact_verification`;
-- reconstruction state: `observed_retrospective_official`;
-- blocker: missing artifact SHA-256.
+`data/acquisition_requests/bps_publications.csv`
 
-This value is useful as a search/cross-check target but must not enter the analytical panel yet.
+## Local workflow
 
-### Canonical extraction
+Raw PDFs stay under `data/raw/` and are ignored by Git.
 
-Promotion requires, at minimum:
+### 1. Inspect the P0 queue
 
-- the source artifact itself or another reproducibly captured official artifact;
-- SHA-256 of the exact artifact bytes;
-- page and table verification;
-- source-geography and reference-period verification;
-- classification under the historical extraction schema.
+Windows:
+
+```powershell
+py -3 scripts/historical_batch_collect.py
+```
+
+Linux/macOS:
+
+```bash
+python3 scripts/historical_batch_collect.py
+```
+
+This prints the eight P0 anchors without opening a browser.
+
+### 2. Collect the batch interactively
+
+Windows:
+
+```powershell
+py -3 scripts/historical_batch_collect.py --open
+```
+
+Linux/macOS:
+
+```bash
+python3 scripts/historical_batch_collect.py --open
+```
+
+For each queue item the script:
+
+1. opens the official BPS page in the default browser;
+2. asks the contributor to click the official **Unduh/Download** control;
+3. waits for Enter;
+4. detects the newest changed PDF in the local `Downloads` directory;
+5. validates the `%PDF` signature and end marker;
+6. copies the bytes into `data/raw/inbox/` using the canonical queue filename;
+7. prints the SHA-256 immediately;
+8. skips already-valid inbox artifacts, so interrupted batches can be resumed safely.
+
+If the browser downloads somewhere else:
+
+```powershell
+py -3 scripts/historical_batch_collect.py --open --downloads-dir "D:\Downloads"
+```
+
+If automatic detection fails, the script accepts a pasted PDF path for that one item.
+
+To collect P1 later:
+
+```powershell
+py -3 scripts/historical_batch_collect.py --priority P1 --open
+```
+
+To collect P0 and P1 in one session:
+
+```powershell
+py -3 scripts/historical_batch_collect.py --priority P0 --priority P1 --open
+```
+
+## Manifest generation
+
+After browser collection:
+
+```powershell
+py -3 scripts/historical_batch_ingest.py
+```
+
+The ingester validates each expected artifact again, hashes the exact bytes, and writes only reproducible metadata to:
+
+`data/manifests/historical_artifacts.csv`
+
+Manifest fields include:
+
+- request/source reference;
+- canonical artifact filename;
+- SHA-256;
+- byte count;
+- official source page;
+- anchor year and priority;
+- exit-gate status;
+- `artifact_verified` state;
+- acquisition timestamp.
+
+Existing acquisition timestamps are preserved when the file hash has not changed, so rerunning the command does not create meaningless manifest churn.
+
+To test whether the historical extraction exit gate has at least one real artifact:
+
+```powershell
+py -3 scripts/historical_batch_ingest.py --require-exit-gate
+```
+
+Exit code `3` means the workflow itself is valid but neither census exit-gate artifact is present yet.
+
+## Promotion boundary
+
+A manifest row proves that a specific official artifact has been acquired and hashed. It does **not** prove that every value inside the PDF is canonical.
+
+Numeric promotion still requires:
+
+- page/table verification;
+- source-era geography verification;
+- reference-period and unit verification;
+- extraction method;
+- comparability/reconstruction state;
+- mapping to a canonical indicator.
+
+A later official publication that reproduces an older number remains distinguishable from a contemporaneous source-era observation.
+
+## Candidate quarantine
+
+`historical_extraction_candidates.csv` may contain official indexed values that are useful for discovery before the PDF is available. Those rows must remain quarantined while `artifact_sha256` is blank or while the promotion blocker is unresolved.
+
+Current example: *Kota Bukittinggi Dalam Angka 2009* reproduces a 1971 population value for Bukittinggi. The candidate is useful as a cross-check target but cannot enter the analytical panel until the artifact and table are verified.
 
 ## Publication chronology anomaly
 
-Current BPS web metadata exposes publication pages labelled *Sumatera Barat Dalam Angka Tahun 1970* and *Tahun 1971*. Separately, a later official BPS publication catalogue describes the `Sumatera Barat Dalam Angka` series as having a first edition in 1980.
+Current BPS web metadata exposes publication pages labelled *Sumatera Barat Dalam Angka Tahun 1970* and *Tahun 1971*. Separately, another official BPS catalogue describes the series chronology differently. The repository records this as an unresolved bibliographic anomaly rather than forcing one interpretation.
 
-The repository records this as an unresolved bibliographic anomaly rather than selecting whichever statement best fits the desired timeline. Possible explanations include title/series normalization, retrospective digitization, or metadata migration, but none is asserted without further evidence.
+Artifact validity and series-history interpretation are therefore separate questions.
 
-Each acquired artifact remains independently valid evidence even while the series-start chronology is unresolved.
+## Security and provenance rules
 
-## Human-browser acquisition queue
-
-When automated hosted acquisition is blocked, the preferred fallback is a one-time human-browser download from the official source. Do not copy values manually from screenshots when the PDF can be supplied.
-
-Priority queue:
-
-1. **Penduduk Sumatera Barat Sensus Penduduk 1971 Seri E No.3** — official BPS OPAC records a 1973 softcopy dedicated to Sumatera Barat. This is the highest-value artifact for establishing the first province/regency/city historical population family.
-2. **Sensus Penduduk 1961 Republik Indonesia** — official BPS publication, catalog 2102002, publication 03220.0001. This is the preferred 1961 Tingkat I population anchor and boundary-warning source.
-3. **Kota Bukittinggi Dalam Angka 2009** — useful to verify the currently quarantined retrospective 1971 city candidate and later census checkpoints.
-
-Once supplied, the artifact is hashed and inspected locally. Only the small checksum/provenance/extraction records need to enter Git; the raw PDF can remain outside normal Git history.
-
-## Security and provenance
-
-- No BPS developer credential is required for this queue.
-- Do not upload private account/session exports or cookies.
-- Prefer the PDF downloaded through the official BPS publication/OPAC interface.
-- Preserve the original filename if practical.
-- Do not edit, print-to-PDF, compress, or re-save the file before hashing; those operations change the artifact bytes.
+- Never commit `data/raw/` PDFs merely for convenience.
+- Never commit BPS credentials, cookies, or session exports.
+- Download from the official source page in the queue whenever possible.
+- Do not edit, print-to-PDF, compress, optimize, or re-save a source before hashing.
+- If an official artifact is revised, preserve the new hash as a new provenance event rather than silently replacing the old evidence.
+- Unknown PDFs in the inbox are rejected by the batch ingester instead of being guessed into a request.
