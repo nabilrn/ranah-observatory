@@ -17,7 +17,7 @@ class DataFoundationTests(unittest.TestCase):
         errors, counts = validate()
         self.assertEqual([], errors, "\n".join(errors))
         self.assertEqual(21, counts["geographies"])
-        self.assertEqual(48, counts["indicators"])
+        self.assertEqual(50, counts["indicators"])
         self.assertEqual(12, counts["domains"])
 
     def test_current_sumbar_bps_codes_are_seeded(self) -> None:
