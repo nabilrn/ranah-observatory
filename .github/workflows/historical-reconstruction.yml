@@ -4,24 +4,34 @@ on:
   push:
     paths:
       - "catalog/**"
+      - "data/acquisition_requests/**"
+      - "data/manifests/**"
       - "data/registries/historical_*.csv"
-      - "data/acquisition_requests/bps_publications.csv"
       - "schemas/historical-extraction.schema.json"
+      - "scripts/historical_batch_collect.py"
+      - "scripts/historical_batch_ingest.py"
+      - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
-      - "scripts/acquire_bps_requests.py"
+      - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
-      - "docs/HISTORICAL_*.md"
+      - "docs/HISTORICAL_ACQUISITION.md"
+      - "docs/HISTORICAL_RECONSTRUCTION.md"
       - ".github/workflows/historical-reconstruction.yml"
   pull_request:
     paths:
       - "catalog/**"
+      - "data/acquisition_requests/**"
+      - "data/manifests/**"
       - "data/registries/historical_*.csv"
-      - "data/acquisition_requests/bps_publications.csv"
       - "schemas/historical-extraction.schema.json"
+      - "scripts/historical_batch_collect.py"
+      - "scripts/historical_batch_ingest.py"
+      - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
-      - "scripts/acquire_bps_requests.py"
+      - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
-      - "docs/HISTORICAL_*.md"
+      - "docs/HISTORICAL_ACQUISITION.md"
+      - "docs/HISTORICAL_RECONSTRUCTION.md"
       - ".github/workflows/historical-reconstruction.yml"
 
 permissions:
@@ -47,6 +57,9 @@ jobs:
 
       - name: Validate historical reconstruction foundation
         run: python scripts/validate_historical_reconstruction.py
+
+      - name: Validate historical acquisition batch
+        run: python scripts/validate_historical_batch.py
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
