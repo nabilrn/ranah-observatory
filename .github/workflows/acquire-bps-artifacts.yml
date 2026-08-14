@@ -1,12 +1,7 @@
 name: Acquire BPS Artifacts
 
 on:
-  push:
-    paths:
-      - "data/acquisition_requests/bps_publications.csv"
-      - "scripts/acquire_bps_requests.py"
-      - "scripts/bps_publication.py"
-      - ".github/workflows/acquire-bps-artifacts.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -37,3 +32,8 @@ jobs:
           path: /tmp/ranah-bps-artifacts/
           if-no-files-found: error
           retention-days: 7
+
+# BPS publication hosts returned HTTP 403 to GitHub-hosted runners during
+# validated experiments on 2026-08-14, including requests with ordinary
+# browser-compatible headers. This workflow is kept as a manual diagnostic
+# and for future environments; it is intentionally not a merge-blocking gate.
