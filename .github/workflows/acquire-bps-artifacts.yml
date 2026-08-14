@@ -1,0 +1,39 @@
+name: Acquire BPS Artifacts
+
+on:
+  push:
+    paths:
+      - "data/acquisition_requests/bps_publications.csv"
+      - "scripts/acquire_bps_requests.py"
+      - "scripts/bps_publication.py"
+      - ".github/workflows/acquire-bps-artifacts.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Acquire approved public BPS artifacts
+        run: >-
+          python scripts/acquire_bps_requests.py
+          --requests data/acquisition_requests/bps_publications.csv
+          --output-dir /tmp/ranah-bps-artifacts
+
+      - name: Upload acquired artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-historical-publications
+          path: /tmp/ranah-bps-artifacts/
+          if-no-files-found: error
+          retention-days: 7
