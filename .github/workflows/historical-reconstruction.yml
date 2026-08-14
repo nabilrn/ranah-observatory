@@ -5,19 +5,23 @@ on:
     paths:
       - "catalog/**"
       - "data/registries/historical_*.csv"
+      - "data/acquisition_requests/bps_publications.csv"
       - "schemas/historical-extraction.schema.json"
       - "scripts/validate_historical_reconstruction.py"
+      - "scripts/acquire_bps_requests.py"
       - "tests/test_historical_reconstruction.py"
-      - "docs/HISTORICAL_RECONSTRUCTION.md"
+      - "docs/HISTORICAL_*.md"
       - ".github/workflows/historical-reconstruction.yml"
   pull_request:
     paths:
       - "catalog/**"
       - "data/registries/historical_*.csv"
+      - "data/acquisition_requests/bps_publications.csv"
       - "schemas/historical-extraction.schema.json"
       - "scripts/validate_historical_reconstruction.py"
+      - "scripts/acquire_bps_requests.py"
       - "tests/test_historical_reconstruction.py"
-      - "docs/HISTORICAL_RECONSTRUCTION.md"
+      - "docs/HISTORICAL_*.md"
       - ".github/workflows/historical-reconstruction.yml"
 
 permissions:
