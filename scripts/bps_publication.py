@@ -12,9 +12,14 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Callable
 
-USER_AGENT = "ranah-observatory/0.1 (+https://github.com/nabilrn/ranah-observatory)"
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0"
 ALLOWED_PAGE_SUFFIX = ".bps.go.id"
 ALLOWED_DOWNLOAD_HOSTS = {"web-api.bps.go.id", "cdn.bps.go.id"}
+BROWSER_HEADERS = {
+    "User-Agent": USER_AGENT,
+    "Accept-Language": "id,en-US;q=0.7,en;q=0.3",
+    "Cache-Control": "no-cache",
+}
 
 
 class PublicationAcquisitionError(RuntimeError):
@@ -105,10 +110,9 @@ def fetch_publication_page(
     opener: Callable = _default_open,
 ) -> PublicationPage:
     _validate_publication_page_url(page_url)
-    request = urllib.request.Request(
-        page_url,
-        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
-    )
+    headers = dict(BROWSER_HEADERS)
+    headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    request = urllib.request.Request(page_url, headers=headers)
     try:
         with opener(request, timeout) as response:
             charset = response.headers.get_content_charset() or "utf-8"
@@ -143,10 +147,14 @@ def download_publication(
     opener: Callable = _default_open,
 ) -> dict[str, object]:
     page = fetch_publication_page(page_url, timeout=timeout, opener=opener)
-    request = urllib.request.Request(
-        page.download_url,
-        headers={"User-Agent": USER_AGENT, "Accept": "application/pdf,*/*;q=0.8"},
+    headers = dict(BROWSER_HEADERS)
+    headers.update(
+        {
+            "Accept": "application/pdf,application/octet-stream;q=0.9,*/*;q=0.8",
+            "Referer": page.page_url,
+        }
     )
+    request = urllib.request.Request(page.download_url, headers=headers)
     try:
         with opener(request, timeout) as response:
             payload = response.read()
