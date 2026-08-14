@@ -63,7 +63,7 @@ Minimum metadata:
 - allowed claim types;
 - status and comparability notes.
 
-The seed backlog targets 48 indicators across the twelve research domains. `backlog` means conceptually approved for source qualification, not that comparable data already exists.
+The seed backlog targets 50 indicators across the twelve research domains. `backlog` means conceptually approved for source qualification, not that comparable data already exists.
 
 ### Source
 
