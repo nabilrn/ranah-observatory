@@ -1,5 +1,5 @@
 geography_id,geography_level,canonical_name,bps_code,parent_geography_id,valid_from,valid_to,status,source_id,notes
-idn,country,Indonesia,,, , ,current,bps_master_wilayah_sumbar_2025,Parent country record for seeded hierarchy
+idn,country,Indonesia,,,,,current,bps_webapi,Parent country record for seeded hierarchy
 idn.13,province,Sumatera Barat,13,idn,,,current,bps_master_wilayah_sumbar_2025,Current BPS statistical work-area code; historical boundary validity not yet asserted
 idn.13.1301,regency,Kepulauan Mentawai,1301,idn.13,,,current,bps_master_wilayah_sumbar_2025,Current BPS code; historical formation date deferred
 idn.13.1302,regency,Pesisir Selatan,1302,idn.13,,,current,bps_master_wilayah_sumbar_2025,Current BPS code; historical formation date deferred
