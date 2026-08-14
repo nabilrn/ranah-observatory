@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ranah-observatory.local/schemas/data-foundation.schema.json",
+  "title": "Ranah Observatory Data Foundation",
+  "type": "object",
+  "$defs": {
+    "claimType": {
+      "type": "string",
+      "enum": [
+        "observed",
+        "derived",
+        "reconstructed",
+        "model_estimate",
+        "causal_estimate",
+        "qualitative",
+        "scenario"
+      ]
+    },
+    "geographyLevel": {
+      "type": "string",
+      "enum": [
+        "country",
+        "province",
+        "regency",
+        "city",
+        "district",
+        "village",
+        "historical_region",
+        "watershed",
+        "station",
+        "grid",
+        "other"
+      ]
+    },
+    "geography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geography_id",
+        "geography_level",
+        "canonical_name",
+        "status",
+        "source_id"
+      ],
+      "properties": {
+        "geography_id": {"type": "string", "minLength": 1},
+        "geography_level": {"$ref": "#/$defs/geographyLevel"},
+        "canonical_name": {"type": "string", "minLength": 1},
+        "bps_code": {"type": ["string", "null"]},
+        "parent_geography_id": {"type": ["string", "null"]},
+        "valid_from": {"type": ["string", "null"], "format": "date"},
+        "valid_to": {"type": ["string", "null"], "format": "date"},
+        "status": {
+          "type": "string",
+          "enum": ["current", "historical", "provisional", "retired"]
+        },
+        "source_id": {"type": "string", "minLength": 1},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "geographyCrosswalk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "crosswalk_id",
+        "from_geography_id",
+        "to_geography_id",
+        "relationship_type",
+        "evidence_source_id",
+        "confidence"
+      ],
+      "properties": {
+        "crosswalk_id": {"type": "string", "minLength": 1},
+        "from_geography_id": {"type": "string", "minLength": 1},
+        "to_geography_id": {"type": "string", "minLength": 1},
+        "relationship_type": {
+          "type": "string",
+          "enum": [
+            "rename",
+            "code_change",
+            "split",
+            "merge",
+            "boundary_adjustment",
+            "containment",
+            "equivalent"
+          ]
+        },
+        "effective_date": {"type": ["string", "null"], "format": "date"},
+        "weight": {"type": ["number", "null"], "minimum": 0},
+        "weight_basis": {
+          "type": ["string", "null"],
+          "enum": ["area", "population", "households", "other", null]
+        },
+        "evidence_source_id": {"type": "string", "minLength": 1},
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "indicator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "indicator_id",
+        "name",
+        "domain",
+        "definition",
+        "unit",
+        "frequency",
+        "preferred_geography",
+        "source_priority",
+        "allowed_claim_types",
+        "status"
+      ],
+      "properties": {
+        "indicator_id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+        "name": {"type": "string", "minLength": 1},
+        "domain": {"type": "string", "minLength": 1},
+        "definition": {"type": "string", "minLength": 1},
+        "unit": {"type": "string", "minLength": 1},
+        "frequency": {"type": "string", "minLength": 1},
+        "preferred_geography": {"type": "string", "minLength": 1},
+        "source_priority": {"type": "string", "minLength": 1},
+        "allowed_claim_types": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/claimType"}
+        },
+        "status": {
+          "type": "string",
+          "enum": ["backlog", "qualified", "ingested", "deprecated"]
+        },
+        "comparability_notes": {"type": ["string", "null"]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provenance_id",
+        "source_id",
+        "artifact_locator",
+        "retrieved_at",
+        "extraction_method"
+      ],
+      "properties": {
+        "provenance_id": {"type": "string", "minLength": 1},
+        "source_id": {"type": "string", "minLength": 1},
+        "artifact_locator": {"type": "string", "minLength": 1},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "source_release": {"type": ["string", "null"]},
+        "checksum_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "parser_revision": {"type": ["string", "null"]},
+        "transform_revision": {"type": ["string", "null"]},
+        "extraction_method": {
+          "type": "string",
+          "enum": [
+            "api",
+            "download",
+            "html_table",
+            "pdf_text",
+            "ocr",
+            "manual_transcription",
+            "geospatial_service",
+            "derived"
+          ]
+        },
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observation_id",
+        "indicator_id",
+        "geography_id",
+        "time_start",
+        "frequency",
+        "unit",
+        "claim_type",
+        "provenance_id"
+      ],
+      "properties": {
+        "observation_id": {"type": "string", "minLength": 1},
+        "indicator_id": {"type": "string", "minLength": 1},
+        "geography_id": {"type": "string", "minLength": 1},
+        "time_start": {"type": "string", "format": "date"},
+        "time_end": {"type": ["string", "null"], "format": "date"},
+        "frequency": {"type": "string", "minLength": 1},
+        "value_numeric": {"type": ["number", "null"]},
+        "value_text": {"type": ["string", "null"]},
+        "unit": {"type": "string", "minLength": 1},
+        "claim_type": {"$ref": "#/$defs/claimType"},
+        "provenance_id": {"type": "string", "minLength": 1},
+        "missing_reason": {"type": ["string", "null"]},
+        "suppressed": {"type": "boolean", "default": false},
+        "comparable": {"type": ["boolean", "null"]},
+        "uncertainty_lower": {"type": ["number", "null"]},
+        "uncertainty_upper": {"type": ["number", "null"]},
+        "methodology_version": {"type": ["string", "null"]},
+        "price_basis": {"type": ["string", "null"]},
+        "notes": {"type": ["string", "null"]}
+      },
+      "anyOf": [
+        {"required": ["value_numeric"]},
+        {"required": ["value_text"]},
+        {"required": ["missing_reason"]}
+      ]
+    }
+  },
+  "properties": {
+    "geographies": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/geography"}
+    },
+    "geography_crosswalks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/geographyCrosswalk"}
+    },
+    "indicators": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/indicator"}
+    },
+    "provenance": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/provenance"}
+    },
+    "observations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/observation"}
+    }
+  }
+}
