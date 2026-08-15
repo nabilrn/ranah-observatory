@@ -30,6 +30,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
+    subjects = subparsers.add_parser("subjects", help="List BPS dynamic-table subjects.")
+    subjects.add_argument("--subcat", type=int)
+    subjects.add_argument("--max-pages", type=int)
+
     publications = subparsers.add_parser("publications", help="List BPS publications.")
     publications.add_argument("--year", type=int)
     publications.add_argument("--month", type=int)
@@ -48,6 +52,25 @@ def build_parser() -> argparse.ArgumentParser:
     variables.add_argument("--area", type=int, choices=(0, 1))
     variables.add_argument("--vervar", type=int)
     variables.add_argument("--max-pages", type=int)
+
+    periods = subparsers.add_parser(
+        "periods", help="List source-native period IDs for dynamic-table variables."
+    )
+    periods.add_argument("--var", type=int)
+    periods.add_argument("--max-pages", type=int)
+
+    derived_variables = subparsers.add_parser(
+        "derived-variables", help="List derived-variable selections for dynamic tables."
+    )
+    derived_variables.add_argument("--var", type=int)
+    derived_variables.add_argument("--group", type=int)
+    derived_variables.add_argument("--max-pages", type=int)
+
+    derived_periods = subparsers.add_parser(
+        "derived-periods", help="List derived-period selections for dynamic tables."
+    )
+    derived_periods.add_argument("--var", type=int)
+    derived_periods.add_argument("--max-pages", type=int)
 
     dynamic = subparsers.add_parser("dynamic", help="Fetch one dynamic-table selection.")
     dynamic.add_argument("--var", required=True, type=int)
@@ -87,6 +110,8 @@ def write_snapshot(path: Path, envelope: Mapping[str, Any]) -> tuple[Path, Path]
 
 
 def _filters_from_args(args: argparse.Namespace) -> dict[str, Any]:
+    if args.command == "subjects":
+        return {"subcat": args.subcat, "max_pages": args.max_pages}
     if args.command in {"publications", "static-tables"}:
         return {
             "year": args.year,
@@ -102,6 +127,12 @@ def _filters_from_args(args: argparse.Namespace) -> dict[str, Any]:
             "vervar": args.vervar,
             "max_pages": args.max_pages,
         }
+    if args.command == "periods":
+        return {"var": args.var, "max_pages": args.max_pages}
+    if args.command == "derived-variables":
+        return {"var": args.var, "group": args.group, "max_pages": args.max_pages}
+    if args.command == "derived-periods":
+        return {"var": args.var, "max_pages": args.max_pages}
     if args.command == "dynamic":
         return {
             "var": args.var,
@@ -124,16 +155,20 @@ def harvest(args: argparse.Namespace) -> Mapping[str, Any]:
     client = BPSClient(args.api_key)
     filters = _filters_from_args(args)
 
-    if args.command == "publications":
-        result: Any = client.list_publications(
-            domain=args.domain,
-            lang=args.lang,
-            **filters,
-        )
+    if args.command == "subjects":
+        result: Any = client.list_subjects(domain=args.domain, lang=args.lang, **filters)
+    elif args.command == "publications":
+        result = client.list_publications(domain=args.domain, lang=args.lang, **filters)
     elif args.command == "static-tables":
         result = client.list_static_tables(domain=args.domain, lang=args.lang, **filters)
     elif args.command == "variables":
         result = client.list_variables(domain=args.domain, lang=args.lang, **filters)
+    elif args.command == "periods":
+        result = client.list_periods(domain=args.domain, lang=args.lang, **filters)
+    elif args.command == "derived-variables":
+        result = client.list_derived_variables(domain=args.domain, lang=args.lang, **filters)
+    elif args.command == "derived-periods":
+        result = client.list_derived_periods(domain=args.domain, lang=args.lang, **filters)
     elif args.command == "dynamic":
         result = client.get_dynamic_data(domain=args.domain, lang=args.lang, **filters)
     elif args.command == "publication":
