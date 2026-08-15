@@ -11,6 +11,7 @@ from typing import Any, Iterable, Mapping
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_GEOGRAPHIES = ROOT / "data" / "registries" / "geographies.csv"
+DEFAULT_BNPB_GEOGRAPHY_MAP = ROOT / "data" / "registries" / "bnpb_geography_map.csv"
 
 DISASTER_COLUMNS = (
     "BANJIR",
@@ -147,50 +148,91 @@ def _canonical_geographies(path: Path) -> list[dict[str, str]]:
     return rows
 
 
-def _map_record(record: Mapping[str, Any], canonical: list[dict[str, str]]) -> tuple[dict[str, str], str, str]:
+def _explicit_geography_crosswalk(
+    path: Path,
+    canonical: list[dict[str, str]],
+) -> dict[str, tuple[dict[str, str], str]]:
+    canonical_by_id = {row["geography_id"]: row for row in canonical}
+    rows = _read_csv(path)
+    mapping: dict[str, tuple[dict[str, str], str]] = {}
+    for row in rows:
+        code = row["source_code_normalized"]
+        geography_id = row["canonical_geography_id"]
+        admin_type = row["source_admin_type"]
+        if row["source_system"] != "Permendagri":
+            raise ValueError(f"{path}: unsupported source_system {row['source_system']!r}")
+        if row["mapping_status"] != "qualified_current_crosswalk":
+            raise ValueError(f"{path}: unqualified mapping for source code {code!r}")
+        if admin_type not in {"regency", "city"}:
+            raise ValueError(f"{path}: invalid source_admin_type {admin_type!r}")
+        if code in mapping:
+            raise ValueError(f"{path}: duplicate source code {code!r}")
+        canonical_row = canonical_by_id.get(geography_id)
+        if canonical_row is None:
+            raise ValueError(f"{path}: unknown canonical geography {geography_id!r}")
+        if canonical_row["geography_level"] != admin_type:
+            raise ValueError(
+                f"{path}: admin type mismatch for {code}: "
+                f"crosswalk={admin_type} canonical={canonical_row['geography_level']}"
+            )
+        mapping[code] = (canonical_row, admin_type)
+    if len(mapping) != 19:
+        raise ValueError(f"{path}: expected 19 explicit BNPB geography mappings, found {len(mapping)}")
+    if {row[0]["geography_id"] for row in mapping.values()} != set(canonical_by_id):
+        raise ValueError(f"{path}: crosswalk does not cover each current Sumatera Barat geography exactly once")
+    return mapping
+
+
+def _map_record(
+    record: Mapping[str, Any],
+    crosswalk: Mapping[str, tuple[dict[str, str], str]],
+) -> tuple[dict[str, str], str, str]:
     source_name = str(_source_value(record, GEO_NAME_FIELDS) or "").strip()
     source_code = str(_source_value(record, GEO_CODE_FIELDS) or "").strip()
-    source_level, source_base = _split_admin_name(source_name)
-
-    candidates: list[dict[str, str]] = []
-    for row in canonical:
-        _, canonical_base = _split_admin_name(row["canonical_name"])
-        if canonical_base != source_base:
-            continue
-        if source_level is not None and row["geography_level"] != source_level:
-            continue
-        candidates.append(row)
-
-    if len(candidates) > 1:
-        source_digits = _source_code_digits(source_code)
-        code_matches = [row for row in candidates if row["bps_code"] == source_digits]
-        if len(code_matches) == 1:
-            candidates = code_matches
-    if len(candidates) != 1:
+    source_digits = _source_code_digits(source_code)
+    qualified = crosswalk.get(source_digits)
+    if qualified is None:
+        raise KeyError(source_digits)
+    canonical_row, expected_admin_type = qualified
+    source_admin_type, _ = _split_admin_name(source_name)
+    if source_admin_type is not None and source_admin_type != expected_admin_type:
         raise ValueError(
-            f"cannot map BNPB geography name={source_name!r} code={source_code!r}; "
-            f"candidate_count={len(candidates)}"
+            f"BNPB source admin type conflicts with explicit Permendagri crosswalk: "
+            f"code={source_code!r} name={source_name!r} source_type={source_admin_type!r} "
+            f"expected_type={expected_admin_type!r} canonical={canonical_row['geography_id']}"
         )
-    return candidates[0], source_code, source_name
+    return canonical_row, source_code, source_name
 
 
-def _sumbar_records(payload: Mapping[str, Any], canonical: list[dict[str, str]]) -> list[tuple[Mapping[str, Any], dict[str, str], str, str]]:
+def _sumbar_records(
+    payload: Mapping[str, Any],
+    crosswalk: Mapping[str, tuple[dict[str, str], str]],
+) -> list[tuple[Mapping[str, Any], dict[str, str], str, str]]:
     result: list[tuple[Mapping[str, Any], dict[str, str], str, str]] = []
     seen: set[str] = set()
+    observed_sumbar_codes: set[str] = set()
     for record in payload["result"]["records"]:
         if not isinstance(record, Mapping):
             raise ValueError("BNPB DataStore record must be an object")
-        try:
-            mapped, source_code, source_name = _map_record(record, canonical)
-        except ValueError:
+        source_code = str(_source_value(record, GEO_CODE_FIELDS) or "").strip()
+        source_digits = _source_code_digits(source_code)
+        if source_digits not in crosswalk:
             continue
+        observed_sumbar_codes.add(source_digits)
+        mapped, source_code, source_name = _map_record(record, crosswalk)
         geography_id = mapped["geography_id"]
         if geography_id in seen:
             raise ValueError(f"duplicate BNPB row for canonical geography {geography_id}")
         seen.add(geography_id)
         result.append((record, mapped, source_code, source_name))
     if len(result) != 19:
-        raise ValueError(f"expected 19 mapped Sumatera Barat rows, found {len(result)}")
+        expected_ids = {item[0]["geography_id"] for item in crosswalk.values()}
+        missing_ids = sorted(expected_ids - seen)
+        missing_codes = sorted(set(crosswalk) - observed_sumbar_codes)
+        raise ValueError(
+            f"expected 19 mapped Sumatera Barat rows, found {len(result)}; "
+            f"missing_canonical={missing_ids}; missing_source_codes={missing_codes}"
+        )
     return sorted(result, key=lambda item: item[1]["geography_id"])
 
 
@@ -239,17 +281,19 @@ def build(
     affected_snapshot: Path,
     *,
     geographies_path: Path = DEFAULT_GEOGRAPHIES,
+    geography_map_path: Path = DEFAULT_BNPB_GEOGRAPHY_MAP,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     canonical_geos = _canonical_geographies(geographies_path)
+    crosswalk = _explicit_geography_crosswalk(geography_map_path, canonical_geos)
     total_payload, total_sha = _read_snapshot(total_snapshot)
     detailed_payload, detailed_sha = _read_snapshot(detailed_snapshot)
     cross_payload, cross_sha = _read_snapshot(crosscheck_snapshot)
     affected_payload, affected_sha = _read_snapshot(affected_snapshot)
 
-    total_rows = _sumbar_records(total_payload, canonical_geos)
-    detailed_rows = _sumbar_records(detailed_payload, canonical_geos)
-    cross_rows = _sumbar_records(cross_payload, canonical_geos)
-    affected_rows = _sumbar_records(affected_payload, canonical_geos)
+    total_rows = _sumbar_records(total_payload, crosswalk)
+    detailed_rows = _sumbar_records(detailed_payload, crosswalk)
+    cross_rows = _sumbar_records(cross_payload, crosswalk)
+    affected_rows = _sumbar_records(affected_payload, crosswalk)
     _crosscheck_detailed(detailed_rows, cross_rows)
 
     source_native: list[dict[str, Any]] = []
@@ -275,7 +319,7 @@ def build(
                     "unit": "count",
                     "promotion_status": "source_native_context",
                     "source_snapshot_sha256": total_sha,
-                    "notes": "Total all-disaster event count; not disaster-type specific.",
+                    "notes": "Total all-disaster event count; not disaster-type specific; geography uses explicit Permendagri crosswalk.",
                 }
             )
 
@@ -290,11 +334,12 @@ def build(
             "source_release": "2025-03-20",
             "checksum_sha256": detailed_sha,
             "parser_revision": "bnpb_client:v1",
-            "transform_revision": "build_bnpb_disaster_panel:v1",
+            "transform_revision": "build_bnpb_disaster_panel:v2",
             "extraction_method": "ckan_api",
             "notes": (
                 "Primary 2024 event-by-type resource; independently cross-checked against official resource "
-                f"5ff9f41f-8312-4b7c-aa18-fdbedac6ee7e snapshot_sha256={cross_sha}."
+                f"5ff9f41f-8312-4b7c-aa18-fdbedac6ee7e snapshot_sha256={cross_sha}; "
+                "geography mapped through explicit current Permendagri-to-canonical crosswalk."
             ),
         }
     ]
@@ -318,7 +363,7 @@ def build(
                         "canonical_ready" if disaster_type in CANONICAL_EVENT_COLUMNS else "source_native_context"
                     ),
                     "source_snapshot_sha256": detailed_sha,
-                    "notes": "2024 BNPB event-by-type resource; blanks remain missing rather than zero.",
+                    "notes": "2024 BNPB event-by-type resource; blanks remain missing rather than zero; geography uses explicit Permendagri crosswalk.",
                 }
             )
             indicator_id = CANONICAL_EVENT_COLUMNS.get(disaster_type)
@@ -343,7 +388,7 @@ def build(
                     "methodology_version": "BNPB/DIBI 2024 event classification",
                     "price_basis": "",
                     "notes": (
-                        f"source_geography={source_code}:{source_name}; mapping=current_name_and_admin_type_match; "
+                        f"source_geography={source_code}:{source_name}; mapping=explicit_permendagri_current_crosswalk; "
                         f"source_column={disaster_type}; independent_official_crosscheck=passed; "
                         "recorded-event series may be affected by reporting intensity and classification practice."
                     ),
@@ -367,7 +412,7 @@ def build(
                     "unit": "persons",
                     "promotion_status": "held_source_native",
                     "source_snapshot_sha256": affected_sha,
-                    "notes": "Held: annual cross-event aggregation is not assumed to represent unique affected persons.",
+                    "notes": "Held: annual cross-event aggregation is not assumed to represent unique affected persons; geography uses explicit Permendagri crosswalk.",
                 }
             )
 
@@ -380,6 +425,7 @@ def build(
         "canonical_provenance_count": len(provenance),
         "source_native_count": len(source_native),
         "mapped_geography_count": len(canonical_geos),
+        "geography_mapping": "explicit_permendagri_current_crosswalk",
         "canonical_indicators": sorted({row["indicator_id"] for row in canonical_observations}),
         "source_snapshots": {
             "total_events_2010_2024": total_sha,
@@ -429,6 +475,7 @@ def main() -> int:
     parser.add_argument("--crosscheck-snapshot", required=True, type=Path)
     parser.add_argument("--affected-snapshot", required=True, type=Path)
     parser.add_argument("--geographies", type=Path, default=DEFAULT_GEOGRAPHIES)
+    parser.add_argument("--geography-map", type=Path, default=DEFAULT_BNPB_GEOGRAPHY_MAP)
     parser.add_argument("--output-dir", required=True, type=Path)
     args = parser.parse_args()
     try:
@@ -438,9 +485,10 @@ def main() -> int:
             args.crosscheck_snapshot,
             args.affected_snapshot,
             geographies_path=args.geographies,
+            geography_map_path=args.geography_map,
         )
         write_outputs(args.output_dir, source_native, canonical, provenance, manifest)
-    except (OSError, ValueError, json.JSONDecodeError) as exc:
+    except (OSError, ValueError, KeyError, json.JSONDecodeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
