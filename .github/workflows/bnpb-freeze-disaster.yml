@@ -1,4 +1,5 @@
 name: Freeze Reviewed BNPB Disaster Panel
+# Semantic baseline uses canonical content-sorted rows; retrieval-only identifiers are excluded.
 
 on:
   workflow_dispatch:
