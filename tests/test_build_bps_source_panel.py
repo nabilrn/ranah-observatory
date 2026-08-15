@@ -15,7 +15,7 @@ from build_bps_source_panel import build_panel  # noqa: E402
 
 
 class BPSPanelBuilderTests(unittest.TestCase):
-    def _fixture(self, root: Path, *, selected_turvar: str = "0") -> Path:
+    def _fixture(self, root: Path, *, selected_turvar: str = "0", geography_id: str = "1301") -> Path:
         registry = root / "registry.csv"
         registry.write_text(
             "panel_series_id,indicator_id,bps_var_id,subject_id,source_title,target_start_year,target_end_year,selected_turvar_id,selected_turvar_label,subperiod_policy,qualification_status,canonical_promotion_status,comparability_notes\n"
@@ -30,6 +30,7 @@ class BPSPanelBuilderTests(unittest.TestCase):
             "bps_vervar_id", "bps_vervar_label", "bps_turvar_id", "bps_turvar_label", "bps_th_id",
             "bps_th_label", "bps_turth_id", "bps_turth_label", "value", "source_key",
         ]
+        label = "Kab. Kepulauan Mentawai" if geography_id == "1301" else "Provinsi Sumatera Barat"
         with (directory / "var-139-long.csv").open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(handle, fieldnames=fields)
             writer.writeheader()
@@ -39,9 +40,9 @@ class BPSPanelBuilderTests(unittest.TestCase):
                         "source_id": "bps_webapi", "domain": "1300", "retrieved_at_utc": "2026-01-01T00:00:00+00:00",
                         "bps_var_id": "139", "bps_var_label": "Source title", "bps_var_unit": "Persen",
                         "bps_var_decimal": "2", "bps_var_definition": "", "bps_var_note": "note", "bps_subject": "Tenaga Kerja",
-                        "bps_vertical_dimension": "Kabupaten/Kota", "bps_vervar_id": "1301", "bps_vervar_label": "Kab. Kepulauan Mentawai",
+                        "bps_vertical_dimension": "Kabupaten/Kota", "bps_vervar_id": geography_id, "bps_vervar_label": label,
                         "bps_turvar_id": "0", "bps_turvar_label": "Tidak ada", "bps_th_id": th, "bps_th_label": year,
-                        "bps_turth_id": "0", "bps_turth_label": "Tahun", "value": "4.5", "source_key": f"130113901{th}0",
+                        "bps_turth_id": "0", "bps_turth_label": "Tahun", "value": "4.5", "source_key": f"{geography_id}13901{th}0",
                     }
                 )
         snapshots = []
@@ -66,7 +67,7 @@ class BPSPanelBuilderTests(unittest.TestCase):
         )
         return registry
 
-    def test_builder_links_each_row_to_snapshot_checksum(self) -> None:
+    def test_builder_links_each_row_to_snapshot_checksum_and_current_geography(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             registry = self._fixture(root)
@@ -74,7 +75,18 @@ class BPSPanelBuilderTests(unittest.TestCase):
             self.assertEqual(2, len(rows))
             self.assertEqual(2, manifest["row_count"])
             self.assertTrue(all(len(row["source_snapshot_sha256"]) == 64 for row in rows))
-            self.assertTrue(all(row["geography_mapping_status"] == "source_native_unmapped" for row in rows))
+            self.assertTrue(all(row["canonical_geography_id"] == "idn.13.1301" for row in rows))
+            self.assertTrue(all(row["geography_mapping_status"] == "qualified_current_code" for row in rows))
+
+    def test_builder_maps_1378_only_as_explicit_province_alias(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            registry = self._fixture(root, geography_id="1378")
+            rows, _ = build_panel(root, registry)
+            self.assertTrue(all(row["canonical_geography_id"] == "idn.13" for row in rows))
+            self.assertTrue(
+                all(row["geography_mapping_status"] == "qualified_source_aggregate_alias" for row in rows)
+            )
 
     def test_builder_rejects_selector_that_produces_no_rows(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
