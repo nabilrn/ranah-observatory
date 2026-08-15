@@ -1,0 +1,52 @@
+name: BPS Normalized Panel
+
+on:
+  push:
+    paths:
+      - "data/registries/bps_panel_*.csv"
+      - "data/processed/bps/panel/**"
+      - "scripts/build_bps_source_panel.py"
+      - "scripts/validate_bps_panel.py"
+      - "scripts/validate_bps_panel_artifact.py"
+      - "tests/test_bps_panel.py"
+      - "tests/test_build_bps_source_panel.py"
+      - "docs/BPS_NORMALIZED_PANEL.md"
+      - ".github/workflows/bps-panel.yml"
+  pull_request:
+    paths:
+      - "data/registries/bps_panel_*.csv"
+      - "data/processed/bps/panel/**"
+      - "scripts/build_bps_source_panel.py"
+      - "scripts/validate_bps_panel.py"
+      - "scripts/validate_bps_panel_artifact.py"
+      - "tests/test_bps_panel.py"
+      - "tests/test_build_bps_source_panel.py"
+      - "docs/BPS_NORMALIZED_PANEL.md"
+      - ".github/workflows/bps-panel.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Validate BPS ingestion foundation
+        run: python scripts/validate_bps_foundation.py
+
+      - name: Validate BPS normalized-panel registry
+        run: python scripts/validate_bps_panel.py
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
