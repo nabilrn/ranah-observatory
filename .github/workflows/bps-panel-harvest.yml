@@ -10,6 +10,7 @@ on:
       - "scripts/harvest_bps.py"
       - "scripts/harvest_bps_series.py"
       - "scripts/normalize_bps_dynamic.py"
+      - "scripts/build_bps_source_panel.py"
 
 permissions:
   contents: read
@@ -31,6 +32,9 @@ jobs:
 
       - name: Require BPS API key
         run: test -n "$BPS_API_KEY"
+
+      - name: Validate panel registry
+        run: python scripts/validate_bps_panel.py
 
       - name: Harvest TPT 2018-2025
         run: >-
@@ -80,7 +84,14 @@ jobs:
           --domain 1300 --var 138 --year-range 2018 2025
           --output-dir /tmp/bps-panel/real_grdp_growth-var138
 
-      - name: Upload credential-free source-native snapshots
+      - name: Build selected source-native panel
+        run: >-
+          python scripts/build_bps_source_panel.py
+          --input-root /tmp/bps-panel
+          --output-csv /tmp/bps-panel/bps-source-native-panel.csv
+          --output-manifest /tmp/bps-panel/bps-source-native-panel.manifest.json
+
+      - name: Upload credential-free source-native snapshots and panel
         uses: actions/upload-artifact@v4
         with:
           name: bps-normalized-panel-source-native
