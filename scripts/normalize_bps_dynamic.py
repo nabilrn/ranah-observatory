@@ -47,6 +47,7 @@ def normalize_dynamic_payload(payload: Mapping[str, Any]) -> tuple[list[dict[str
         raise BPSDynamicNormalizationError("dynamic payload datacontent must be an object")
 
     vertical_label = str(payload.get("labelvervar", "")).strip()
+    last_update = str(payload.get("last_update", "")).strip()
     expected_keys: set[str] = set()
     records: list[dict[str, Any]] = []
 
@@ -67,6 +68,7 @@ def normalize_dynamic_payload(payload: Mapping[str, Any]) -> tuple[list[dict[str
 
         records.append(
             {
+                "bps_last_update": last_update,
                 "bps_var_id": _id(variable["val"]),
                 "bps_var_label": str(variable.get("label", "")).strip(),
                 "bps_var_unit": str(variable.get("unit", "")).strip(),
@@ -121,6 +123,7 @@ def write_csv(path: Path, records: list[dict[str, Any]]) -> None:
         "source_id",
         "domain",
         "retrieved_at_utc",
+        "bps_last_update",
         "bps_var_id",
         "bps_var_label",
         "bps_var_unit",

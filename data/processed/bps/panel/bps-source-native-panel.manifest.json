@@ -1,0 +1,292 @@
+{
+  "panel_csv": "bps-source-native-panel.csv",
+  "panel_csv_sha256": "4b976a0ce9500b0951b9ffd75bd14ed02a1139eea564c68899887c3cab1db505",
+  "row_count": 1240,
+  "schema": "ranah-observatory/bps-source-native-panel/v1",
+  "semantic_fingerprint_excludes": [
+    "retrieved_at_utc",
+    "source_snapshot",
+    "source_snapshot_sha256"
+  ],
+  "semantic_fingerprint_sha256": "823a9c540e368df273fdddb5cd87855cb63dba278acfea95c16f8f865da074e5",
+  "series": [
+    {
+      "bps_var_id": 139,
+      "canonical_promotion_status": "canonical_ready",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "unemployment_rate",
+      "panel_series_id": "labor_tpt_regency",
+      "periods": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 0,
+      "source_last_updates": [
+        "2025-11-10 08:58:50"
+      ]
+    },
+    {
+      "bps_var_id": 141,
+      "canonical_promotion_status": "canonical_ready",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "labor_force_participation",
+      "panel_series_id": "labor_tpak_regency",
+      "periods": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 0,
+      "source_last_updates": [
+        "2025-11-10 09:03:05"
+      ]
+    },
+    {
+      "bps_var_id": 320,
+      "canonical_promotion_status": "pending_indicator_universe_review",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "internet_access",
+      "panel_series_id": "internet_person_5plus",
+      "periods": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 595,
+      "source_last_updates": [
+        "2026-02-28 02:00:54"
+      ]
+    },
+    {
+      "bps_var_id": 361,
+      "canonical_promotion_status": "canonical_ready",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "expected_years_schooling",
+      "panel_series_id": "hdi_expected_schooling",
+      "periods": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 0,
+      "source_last_updates": [
+        "2025-11-10 11:38:08"
+      ]
+    },
+    {
+      "bps_var_id": 363,
+      "canonical_promotion_status": "canonical_ready",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "mean_years_schooling",
+      "panel_series_id": "hdi_mean_schooling",
+      "periods": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 0,
+      "source_last_updates": [
+        "2025-11-10 11:23:03"
+      ]
+    },
+    {
+      "bps_var_id": 752,
+      "canonical_promotion_status": "canonical_ready",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "life_expectancy",
+      "panel_series_id": "hdi_life_expectancy_lfsp2020",
+      "periods": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 120,
+      "rows_by_period": {
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 0,
+      "source_last_updates": [
+        "2025-11-24 11:00:21"
+      ]
+    },
+    {
+      "bps_var_id": 34,
+      "canonical_promotion_status": "canonical_ready",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "poverty_rate",
+      "panel_series_id": "poverty_headcount_regency",
+      "periods": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 0,
+      "source_last_updates": [
+        "2025-10-31 09:52:31"
+      ]
+    },
+    {
+      "bps_var_id": 138,
+      "canonical_promotion_status": "canonical_ready",
+      "geography_mapping_statuses": [
+        "qualified_current_code",
+        "qualified_source_aggregate_alias"
+      ],
+      "indicator_id": "real_grdp_growth",
+      "panel_series_id": "real_grdp_growth_regency",
+      "periods": [
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      },
+      "selected_turvar_id": 0,
+      "source_last_updates": [
+        "2026-02-27 09:56:39"
+      ]
+    }
+  ],
+  "series_count": 8,
+  "source_id": "bps_webapi"
+}
