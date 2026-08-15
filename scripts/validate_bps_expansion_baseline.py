@@ -117,10 +117,12 @@ def validate() -> tuple[list[str], dict[str, int]]:
     else:
         if acquisition.get("workflow") != "BPS Structural Expansion Harvest":
             errors.append("unexpected expansion acquisition workflow")
-        if not isinstance(acquisition.get("workflow_run_id"), int):
-            errors.append("expansion workflow_run_id must be an integer")
-        if not isinstance(acquisition.get("artifact_id"), int):
-            errors.append("expansion artifact_id must be an integer")
+        if not isinstance(acquisition.get("workflow_run_id"), int) or acquisition.get("workflow_run_id", 0) <= 0:
+            errors.append("expansion workflow_run_id must be a positive integer")
+        if not isinstance(acquisition.get("artifact_id"), int) or acquisition.get("artifact_id", 0) <= 0:
+            errors.append("expansion artifact_id must be a positive integer")
+        if not _sha256(acquisition.get("artifact_digest_sha256")):
+            errors.append("expansion artifact_digest_sha256 must be a valid SHA-256")
         if not acquisition.get("review_note"):
             errors.append("expansion baseline requires a review note")
 
