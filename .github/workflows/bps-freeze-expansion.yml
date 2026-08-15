@@ -1,0 +1,124 @@
+name: Freeze Reviewed BPS Expansion
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/bps-panel-expansion
+    paths:
+      - ".github/workflows/bps-freeze-expansion.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: freeze-bps-expansion-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out reviewed branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/bps-panel-expansion
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Validate reviewed contracts before acquisition
+        run: |
+          python scripts/validate_data_foundation.py
+          python scripts/validate_bps_foundation.py
+          python scripts/validate_bps_expansion.py
+          python scripts/validate_bps_expansion_baseline.py
+          python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Harvest reviewed expansion source families
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/harvest_bps_series.py --domain 1300 --var 668 --year-range 2018 2024 --output-dir /tmp/bps-expansion/underemployment-var668
+          python scripts/harvest_bps_series.py --domain 1300 --var 83 --year-range 2018 2025 --output-dir /tmp/bps-expansion/gini-var83
+          python scripts/harvest_bps_series.py --domain 1300 --var 282 --year-range 2018 2023 --output-dir /tmp/bps-expansion/pdrb-industry-var282
+          python scripts/harvest_bps_series.py --domain 1300 --var 276 --year-range 2018 2025 --output-dir /tmp/bps-expansion/rice-var276
+          python scripts/harvest_bps_series.py --domain 1300 --var 463 --year-range 2018 2023 --output-dir /tmp/bps-expansion/export-var463
+          python scripts/harvest_bps_series.py --domain 1300 --var 484 --period 2020 --output-dir /tmp/bps-expansion/population-var484
+
+      - name: Build reviewed expansion source panel
+        run: >-
+          python scripts/build_bps_expansion_source_panel.py
+          --input-root /tmp/bps-expansion
+          --output-csv /tmp/bps-expansion/bps-expansion-source-panel.csv
+          --output-manifest /tmp/bps-expansion/bps-expansion-source-panel.manifest.json
+
+      - name: Build canonical and held expansion layers
+        run: >-
+          python scripts/build_bps_expansion_canonical.py
+          /tmp/bps-expansion/bps-expansion-source-panel.csv
+          --output-dir /tmp/bps-expansion/canonical
+
+      - name: Validate generated expansion layers
+        run: python scripts/validate_bps_expansion_output.py /tmp/bps-expansion
+
+      - name: Require exact semantic-baseline reproduction
+        run: >-
+          python scripts/compare_bps_expansion_baseline.py
+          /tmp/bps-expansion/bps-expansion-source-panel.csv
+          /tmp/bps-expansion/canonical/bps-expansion-canonical.manifest.json
+
+      - name: Materialize reviewed expansion in Git
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="data/processed/bps/expansion"
+          mkdir -p "$target"
+          cp /tmp/bps-expansion/canonical/bps-expansion-canonical-observations.csv "$target/"
+          cp /tmp/bps-expansion/canonical/bps-expansion-canonical-provenance.csv "$target/"
+          cp /tmp/bps-expansion/canonical/bps-expansion-held-source-native.csv "$target/"
+          cp /tmp/bps-expansion/canonical/bps-expansion-canonical.manifest.json "$target/"
+          cp /tmp/bps-expansion/bps-expansion-source-panel.manifest.json "$target/"
+          python scripts/fingerprint_bps_expansion.py /tmp/bps-expansion/bps-expansion-source-panel.csv \
+            --output "$target/bps-expansion-semantic-fingerprint.json"
+          python - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path("data/processed/bps/expansion/materialization.json")
+          payload = {
+              "schema": "ranah-observatory/bps-expansion-materialization/v1",
+              "source_id": "bps_webapi",
+              "domain": "1300",
+              "source_semantic_baseline": "4afbf2cabac2afbd4980ff492c0d072ce27f9398be35141a07bc196f8fc12dc4",
+              "workflow": os.environ.get("GITHUB_WORKFLOW", "Freeze Reviewed BPS Expansion"),
+              "workflow_run_id": int(os.environ["GITHUB_RUN_ID"]),
+              "source_commit": os.environ["GITHUB_SHA"],
+              "source_row_count": 726,
+              "canonical_observation_count": 574,
+              "canonical_provenance_count": 36,
+              "held_source_native_count": 152
+          }
+          path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - name: Commit reviewed expansion materialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/processed/bps/expansion
+          if git diff --cached --quiet; then
+            echo "Reviewed expansion materialization already matches Git; nothing to commit."
+            exit 0
+          fi
+          git commit -m "data: freeze reviewed BPS structural expansion"
+          git push origin HEAD:agent/bps-panel-expansion
