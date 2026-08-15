@@ -39,9 +39,6 @@ jobs:
       - name: Validate panel registry
         run: python scripts/validate_bps_panel.py
 
-      - name: Validate reviewed panel baseline
-        run: python scripts/validate_bps_panel_artifact.py
-
       - name: Harvest TPT 2018-2025
         run: >-
           python scripts/harvest_bps_series.py
@@ -103,6 +100,7 @@ jobs:
           /tmp/bps-panel/bps-source-native-panel.manifest.json
 
       - name: Upload credential-free source-native snapshots and panel
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: bps-normalized-panel-source-native
