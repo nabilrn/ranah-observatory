@@ -100,7 +100,8 @@ class BPSPanelBuilderTests(unittest.TestCase):
             root = Path(tmp)
             registry = self._fixture(root)
             path = root / "series-var139" / "var-139-long.csv"
-            rows = list(csv.DictReader(path.open("r", encoding="utf-8", newline="")))
+            with path.open("r", encoding="utf-8", newline="") as handle:
+                rows = list(csv.DictReader(handle))
             with path.open("w", encoding="utf-8", newline="") as handle:
                 writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
                 writer.writeheader()
