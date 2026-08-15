@@ -12,7 +12,7 @@ permissions:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
     steps:
@@ -27,6 +27,13 @@ jobs:
       - name: Require BPS API key
         run: test -n "$BPS_API_KEY"
 
+      - name: Harvest Sumatera Barat subject inventory
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/subjects.json
+          subjects --max-pages 10
+
       - name: Harvest Sumatera Barat publication inventory
         run: >-
           python scripts/harvest_bps.py
@@ -39,14 +46,35 @@ jobs:
           python scripts/harvest_bps.py
           --domain 1300
           --output /tmp/bps-discovery/variables.json
-          variables --max-pages 10
+          variables --max-pages 20
 
       - name: Harvest Sumatera Barat static-table inventory
         run: >-
           python scripts/harvest_bps.py
           --domain 1300
           --output /tmp/bps-discovery/static-tables.json
-          static-tables --max-pages 5
+          static-tables --max-pages 10
+
+      - name: Harvest TPAK period metadata
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/periods-var-141-tpak.json
+          periods --var 141 --max-pages 10
+
+      - name: Harvest TPT period metadata
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/periods-var-129-tpt.json
+          periods --var 129 --max-pages 10
+
+      - name: Harvest internet-access period metadata
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/periods-var-320-internet.json
+          periods --var 320 --max-pages 10
 
       - name: Upload sanitized discovery snapshots
         uses: actions/upload-artifact@v4
