@@ -1,0 +1,132 @@
+{
+  "command": "dynamic",
+  "domain": "1300",
+  "filters": {
+    "resolved_period_label": "1971",
+    "th": "71",
+    "var": 484
+  },
+  "language": "ind",
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "130048432710": 1353372,
+      "130048433710": 1436450,
+      "130048434710": 2789822,
+      "130248432710": 123366,
+      "130248433710": 130868,
+      "130248434710": 254234,
+      "130348432710": 140458,
+      "130348433710": 154272,
+      "130348434710": 294730,
+      "130448432710": 79606,
+      "130448433710": 81715,
+      "130448434710": 161321,
+      "130548432710": 138072,
+      "130548433710": 152925,
+      "130548434710": 290997,
+      "130648432710": 269331,
+      "130648433710": 283797,
+      "130648434710": 553128,
+      "130748432710": 160853,
+      "130748433710": 186169,
+      "130748434710": 347022,
+      "130848432710": 108508,
+      "130848433710": 114762,
+      "130848434710": 223270,
+      "130948432710": 136356,
+      "130948433710": 137494,
+      "130948434710": 273850,
+      "137148432710": 100400,
+      "137148433710": 96218,
+      "137148434710": 196618,
+      "137248432710": 12610,
+      "137248433710": 12159,
+      "137248434710": 24769,
+      "137348432710": 6173,
+      "137348433710": 6253,
+      "137348434710": 12426,
+      "137448432710": 14835,
+      "137448433710": 15864,
+      "137448434710": 30699,
+      "137548432710": 31518,
+      "137548433710": 31838,
+      "137548434710": 63356,
+      "137648432710": 31286,
+      "137648433710": 32116,
+      "137648434710": 63402
+    },
+    "labelvervar": "Wilayah",
+    "last_update": "2021-01-22 08:57:53",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Kependudukan dan Migrasi",
+        "val": 519
+      }
+    ],
+    "tahun": [
+      {
+        "label": "1971",
+        "val": 71
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Laki-Laki",
+        "val": 32
+      },
+      {
+        "label": "Perempuan",
+        "val": 33
+      },
+      {
+        "label": "Laki-Laki + Perempuan",
+        "val": 34
+      }
+    ],
+    "var": [
+      {
+        "decimal": 0,
+        "def": "",
+        "label": "[Hasil Sensus dan SUPAS] Jumlah Penduduk Menurut Jenis Kelamin dan Kabupaten/Kota di Sumatera Barat",
+        "note": "1.Tahun Data 1971,1980, 1990,2000, 2010 dan 2020 bersumber hasil Sensus Penduduk<br/>\n2.Tahun Data 1995, 2005 dan 2015 bersumber hasil Survei Penduduk Antar Sensus",
+        "subj": "Kependudukan",
+        "unit": "Jiwa",
+        "val": 484
+      }
+    ],
+    "vervar": [
+      {"label": "SUMATERA BARAT (Provinsi)", "val": 1300},
+      {"label": "Kepulauan Mentawai", "val": 1301},
+      {"label": "Pesisir Selatan", "val": 1302},
+      {"label": "Kab.Solok", "val": 1303},
+      {"label": "Sijunjung", "val": 1304},
+      {"label": "Tanah Datar", "val": 1305},
+      {"label": "Padang Pariaman", "val": 1306},
+      {"label": "Agam", "val": 1307},
+      {"label": "Lima Puluh Kota", "val": 1308},
+      {"label": "Pasaman", "val": 1309},
+      {"label": "Solok Selatan", "val": 1310},
+      {"label": "Dharmasraya", "val": 1311},
+      {"label": "Pasaman Barat", "val": 1312},
+      {"label": "Padang", "val": 1371},
+      {"label": "Kota Solok", "val": 1372},
+      {"label": "Sawahlunto", "val": 1373},
+      {"label": "Padang Panjang", "val": 1374},
+      {"label": "Bukittinggi", "val": 1375},
+      {"label": "Payakumbuh", "val": 1376},
+      {"label": "Pariaman", "val": 1377}
+    ]
+  },
+  "retrieved_at_utc": "2026-08-15T15:26:14+00:00",
+  "snapshot_schema": "ranah-observatory/bps-webapi-snapshot/v1",
+  "source_id": "bps_webapi"
+}
