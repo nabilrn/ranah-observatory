@@ -1,0 +1,133 @@
+name: Freeze Reviewed BNPB Disaster Panel
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/climate-disaster-foundation
+    paths:
+      - ".github/workflows/bnpb-freeze-disaster.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: freeze-bnpb-disaster-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out reviewed branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/climate-disaster-foundation
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate reviewed contracts before acquisition
+        run: |
+          python scripts/validate_data_foundation.py
+          python scripts/validate_bps_foundation.py
+          python scripts/validate_climate_disaster_foundation.py
+          python scripts/validate_bnpb_disaster_baseline.py
+          python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Harvest reviewed BNPB DataStore resources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/bnpb
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/total-events-2010-2024.json datastore --resource-id 21044ffd-c397-4b3c-acbd-5adaa03d79e3
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/events-by-type-2024-primary.json datastore --resource-id a4daec53-1119-43ef-b05e-00ec3a4c42a4
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/events-by-type-2024-crosscheck.json datastore --resource-id 5ff9f41f-8312-4b7c-aa18-fdbedac6ee7e
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/affected-by-type-2024.json datastore --resource-id 89eb9dac-a891-477e-b264-2265f72f4e56
+
+      - name: Require reviewed source code-name pairs
+        run: >-
+          python scripts/validate_bnpb_snapshot_geography.py
+          /tmp/bnpb/total-events-2010-2024.json
+          /tmp/bnpb/events-by-type-2024-primary.json
+          /tmp/bnpb/events-by-type-2024-crosscheck.json
+          /tmp/bnpb/affected-by-type-2024.json
+
+      - name: Build reviewed disaster panel
+        run: >-
+          python scripts/build_bnpb_disaster_panel.py
+          --total-snapshot /tmp/bnpb/total-events-2010-2024.json
+          --detailed-snapshot /tmp/bnpb/events-by-type-2024-primary.json
+          --crosscheck-snapshot /tmp/bnpb/events-by-type-2024-crosscheck.json
+          --affected-snapshot /tmp/bnpb/affected-by-type-2024.json
+          --output-dir /tmp/bnpb/panel
+
+      - name: Validate generated disaster panel
+        run: python scripts/validate_bnpb_disaster_artifact.py /tmp/bnpb/panel
+
+      - name: Require exact semantic baseline reproduction
+        run: python scripts/compare_bnpb_disaster_baseline.py /tmp/bnpb/panel
+
+      - name: Materialize reviewed processed layer
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="data/processed/bnpb/disaster"
+          mkdir -p "$target"
+          cp /tmp/bnpb/panel/bnpb-disaster-source-native.csv "$target/"
+          cp /tmp/bnpb/panel/bnpb-disaster-canonical-observations.csv "$target/"
+          cp /tmp/bnpb/panel/bnpb-disaster-canonical-provenance.csv "$target/"
+          cp /tmp/bnpb/panel/bnpb-disaster-panel.manifest.json "$target/"
+          python scripts/fingerprint_bnpb_disaster.py /tmp/bnpb/panel --output "$target/bnpb-disaster-semantic-fingerprint.json"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          baseline = json.loads(Path("data/manifests/bnpb_disaster_baseline.json").read_text(encoding="utf-8"))
+          payload = {
+              "schema": "ranah-observatory/bnpb-disaster-materialization/v1",
+              "source_id": "bnpb_satu_data",
+              "source_semantic_baseline": baseline["semantic_fingerprint_sha256"],
+              "reviewed_baseline_workflow_run_id": baseline["acquisition"]["workflow_run_id"],
+              "reviewed_baseline_artifact_id": baseline["acquisition"]["artifact_id"],
+              "workflow": os.environ.get("GITHUB_WORKFLOW", "Freeze Reviewed BNPB Disaster Panel"),
+              "workflow_run_id": int(os.environ["GITHUB_RUN_ID"]),
+              "source_commit": os.environ["GITHUB_SHA"],
+              "source_native_count": baseline["source_native_count"],
+              "canonical_observation_count": baseline["canonical_observation_count"],
+              "canonical_provenance_count": baseline["canonical_provenance_count"],
+              "mapped_geography_count": baseline["mapped_geography_count"],
+              "official_crosscheck": baseline["official_crosscheck"],
+          }
+          Path("data/processed/bnpb/disaster/materialization.json").write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Upload reviewed credential-free panel
+        uses: actions/upload-artifact@v4
+        with:
+          name: bnpb-reviewed-disaster-panel
+          path: /tmp/bnpb/panel/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Commit reviewed materialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/processed/bnpb/disaster
+          if git diff --cached --quiet; then
+            echo "Reviewed BNPB materialization already matches Git; nothing to commit."
+            exit 0
+          fi
+          git commit -m "data: freeze reviewed BNPB disaster panel"
+          git push origin HEAD:agent/climate-disaster-foundation

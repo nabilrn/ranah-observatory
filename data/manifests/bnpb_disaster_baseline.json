@@ -1,0 +1,34 @@
+{
+  "schema": "ranah-observatory/bnpb-disaster-baseline/v1",
+  "source_id": "bnpb_satu_data",
+  "source_native_count": 627,
+  "canonical_observation_count": 38,
+  "canonical_provenance_count": 1,
+  "mapped_geography_count": 19,
+  "canonical_indicators": [
+    "flood_events",
+    "landslide_events"
+  ],
+  "official_crosscheck": "passed",
+  "geography_mapping": "explicit_permendagri_current_crosswalk",
+  "semantic_fingerprint_sha256": "cf5413c4bf599578efd0e3c48c0131212e74a2ed2a7af41f8e72e7fb86baf150",
+  "reviewed_source_native_sha256": "53e93ea0de85a3e8ae93ea884bfeb774cdd63bc17eeaf0fc4115c694abb334b3",
+  "reviewed_canonical_observations_sha256": "28dfdfeb855820bbd3fe3604610f336946fa4c0d9b7129221dfdee4c748df5c6",
+  "reviewed_canonical_provenance_sha256": "dbc2450987d1471dd5d322da1648ee614cbf6fe28a76bab91dfbef7df664d0f2",
+  "reviewed_manifest_sha256": "185c0ed7242975b6b3d1b11fa71c6c5fab31df92796276baccc7be775b563b5d",
+  "semantic_exclusions": [
+    "source_row_id",
+    "source_snapshot_sha256",
+    "observation_id",
+    "provenance_id",
+    "provenance retrieval/checksum fields"
+  ],
+  "acquisition": {
+    "workflow": "Climate Disaster Foundation",
+    "workflow_run_id": 31898073175,
+    "artifact_id": 9250344741,
+    "artifact_digest_sha256": "cb97d22f1b731c386ae407dd067b4845f99113d4e9dc5aa517b949c8511eaf03",
+    "source_commit": "bda6ebc0972b1a078916dc982eb79e4f74130d86",
+    "review_note": "Reviewed credential-free BNPB artifact after correcting the cross-system geography mapping from live source code/name pairs. All four reviewed DataStore resources reproduced the same 19 Sumatera Barat source code/name pairs; the two official 2024 event resources agreed for BANJIR and TANAH LONGSOR; the generated artifact contains 38 canonical event observations and 627 source-native/context/held rows. Earlier run 31897778555 was intentionally not used as a baseline because artifact audit revealed a structurally valid but semantically wrong code-to-canonical mapping before materialization."
+  }
+}
