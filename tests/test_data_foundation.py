@@ -16,7 +16,7 @@ class DataFoundationTests(unittest.TestCase):
     def test_validator_passes(self) -> None:
         errors, counts = validate()
         self.assertEqual([], errors, "\n".join(errors))
-        self.assertEqual(21, counts["geographies"])
+        self.assertGreaterEqual(counts["geographies"], 21)
         self.assertEqual(50, counts["indicators"])
         self.assertEqual(12, counts["domains"])
 
@@ -49,6 +49,8 @@ class DataFoundationTests(unittest.TestCase):
             rows = list(csv.DictReader(handle))
         actual = {row["bps_code"].strip() for row in rows if row["bps_code"].strip()}
         self.assertEqual(expected, actual)
+        current_seed = [row for row in rows if row["status"].strip() == "current"]
+        self.assertEqual(21, len(current_seed))
 
     def test_indicator_registry_covers_all_domains(self) -> None:
         with (ROOT / "data" / "registries" / "indicators.csv").open(
