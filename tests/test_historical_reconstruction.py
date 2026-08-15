@@ -19,7 +19,7 @@ class HistoricalReconstructionTests(unittest.TestCase):
         self.assertEqual(6, counts["events"])
         self.assertGreaterEqual(counts["qualified_sources"], 10)
         self.assertEqual(2, counts["gaps"])
-        self.assertEqual(1, counts["anomalies"])
+        self.assertGreaterEqual(counts["anomalies"], 1)
         self.assertEqual(1, counts["blocked_candidates"])
 
     def test_1945_1946_is_not_silently_filled(self) -> None:
@@ -75,6 +75,17 @@ class HistoricalReconstructionTests(unittest.TestCase):
         self.assertEqual("unresolved", anomaly["status"])
         self.assertIn("1970", anomaly["claim_a"])
         self.assertIn("1980", anomaly["claim_b"])
+
+    def test_bukittinggi_population_conflict_remains_visible(self) -> None:
+        path = ROOT / "data" / "registries" / "historical_source_anomalies.csv"
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        anomaly = next(
+            row for row in rows if row["anomaly_id"] == "bukittinggi_population_1971_official_conflict"
+        )
+        self.assertEqual("unresolved", anomaly["status"])
+        self.assertIn("63356", anomaly["claim_a"])
+        self.assertIn("63132", anomaly["claim_b"])
 
 
 if __name__ == "__main__":
