@@ -1,0 +1,57 @@
+name: BPS Candidate Series
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/bps-candidate-series.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Harvest TPT 2010-2026 candidate
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-series/tpt-var-129.json
+          dynamic --var 129 --th 110:126
+
+      - name: Harvest TPAK 2007-2025 candidate
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-series/tpak-var-141.json
+          dynamic --var 141 --th 107:125
+
+      - name: Harvest internet access 2011-2025 candidate
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-series/internet-var-320.json
+          dynamic --var 320 --th 111:125
+
+      - name: Upload sanitized candidate snapshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-first-candidate-series
+          path: /tmp/bps-series/
+          if-no-files-found: error
+          retention-days: 7
