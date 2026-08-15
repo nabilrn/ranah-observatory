@@ -1,0 +1,89 @@
+name: BPS Normalized Panel Harvest
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/bps-panel-harvest.yml"
+      - "data/registries/bps_panel_series.csv"
+      - "scripts/bps_client.py"
+      - "scripts/harvest_bps.py"
+      - "scripts/harvest_bps_series.py"
+      - "scripts/normalize_bps_dynamic.py"
+
+permissions:
+  contents: read
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Harvest TPT 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 139 --year-range 2018 2025
+          --output-dir /tmp/bps-panel/unemployment_rate-var139
+
+      - name: Harvest TPAK 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 141 --year-range 2018 2025
+          --output-dir /tmp/bps-panel/labor_force_participation-var141
+
+      - name: Harvest internet use 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 320 --year-range 2018 2025
+          --output-dir /tmp/bps-panel/internet_access-var320
+
+      - name: Harvest expected years schooling 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 361 --year-range 2018 2025
+          --output-dir /tmp/bps-panel/expected_years_schooling-var361
+
+      - name: Harvest mean years schooling 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 363 --year-range 2018 2025
+          --output-dir /tmp/bps-panel/mean_years_schooling-var363
+
+      - name: Harvest LF-SP2020 life expectancy 2020-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 752 --year-range 2020 2025
+          --output-dir /tmp/bps-panel/life_expectancy-var752
+
+      - name: Harvest poverty rate 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 34 --year-range 2018 2025
+          --output-dir /tmp/bps-panel/poverty_rate-var34
+
+      - name: Harvest real GRDP growth 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300 --var 138 --year-range 2018 2025
+          --output-dir /tmp/bps-panel/real_grdp_growth-var138
+
+      - name: Upload credential-free source-native snapshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-normalized-panel-source-native
+          path: /tmp/bps-panel/
+          if-no-files-found: error
+          retention-days: 14
