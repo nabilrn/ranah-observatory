@@ -15,6 +15,7 @@ on:
       - "scripts/build_bps_canonical_panel.py"
       - "scripts/compare_bps_panel_baseline.py"
       - "scripts/validate_bps_panel.py"
+      - "scripts/validate_bps_canonical_panel.py"
 
 permissions:
   contents: read
@@ -100,6 +101,11 @@ jobs:
           python scripts/build_bps_canonical_panel.py
           /tmp/bps-panel/bps-source-native-panel.csv
           --output-dir /tmp/bps-panel/canonical
+
+      - name: Validate generated canonical panel
+        run: >-
+          python scripts/validate_bps_canonical_panel.py
+          /tmp/bps-panel/canonical
 
       - name: Compare fresh harvest with reviewed semantic baseline
         run: >-
