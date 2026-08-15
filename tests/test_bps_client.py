@@ -84,6 +84,49 @@ class BPSClientTests(unittest.TestCase):
         self.assertEqual(2, len(rows))
         self.assertEqual(2, calls)
 
+    def test_period_list_uses_th_model_and_var_filter(self) -> None:
+        seen_query: dict[str, list[str]] = {}
+
+        def transport(url: str, timeout: float):
+            nonlocal seen_query
+            seen_query = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+            return {
+                "status": "OK",
+                "data-availability": "available",
+                "data": [
+                    {"page": 1, "pages": 1, "per_page": 10, "count": 2, "total": 2},
+                    [{"th_id": 125, "th": 2025}, {"th_id": 124, "th": 2024}],
+                ],
+            }
+
+        client = BPSClient("secret-token", transport=transport)
+        rows = client.list_periods(domain="1300", var=141)
+        self.assertEqual(["th"], seen_query["model"])
+        self.assertEqual(["141"], seen_query["var"])
+        self.assertEqual([125, 124], [row["th_id"] for row in rows])
+
+    def test_subject_and_derived_metadata_models(self) -> None:
+        seen_models: list[str] = []
+
+        def transport(url: str, timeout: float):
+            query = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+            model = query["model"][0]
+            seen_models.append(model)
+            return {
+                "status": "OK",
+                "data-availability": "available",
+                "data": [
+                    {"page": 1, "pages": 1, "per_page": 10, "count": 0, "total": 0},
+                    [],
+                ],
+            }
+
+        client = BPSClient("secret-token", transport=transport)
+        client.list_subjects(domain="1300")
+        client.list_derived_variables(domain="1300", var=141)
+        client.list_derived_periods(domain="1300", var=141)
+        self.assertEqual(["subject", "turvar", "turth"], seen_models)
+
     def test_dynamic_data_requires_available_payload(self) -> None:
         def transport(url: str, timeout: float):
             return {"status": "OK", "data-availability": "not-available"}
