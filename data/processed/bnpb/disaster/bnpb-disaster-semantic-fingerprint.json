@@ -1,0 +1,20 @@
+{
+  "canonical_indicators": [
+    "flood_events",
+    "landslide_events"
+  ],
+  "canonical_observation_count": 38,
+  "excluded_retrieval_fields": [
+    "source_row_id",
+    "source_snapshot_sha256",
+    "observation_id",
+    "provenance_id",
+    "provenance retrieval/checksum fields"
+  ],
+  "geography_mapping": "explicit_permendagri_current_crosswalk",
+  "mapped_geography_count": 19,
+  "official_crosscheck": "passed",
+  "schema": "ranah-observatory/bnpb-disaster-semantic-fingerprint-result/v1",
+  "semantic_fingerprint_sha256": "b460cc4660bef0360afbb155e38381caedd05f2b2a3f486caead428e11fcc0d5",
+  "source_native_count": 627
+}

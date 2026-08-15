@@ -1,0 +1,23 @@
+{
+  "canonical_indicators": [
+    "flood_events",
+    "landslide_events"
+  ],
+  "canonical_observation_count": 38,
+  "canonical_observations_sha256": "5c987ddb0dfa2b93a41ced661c898abd5d57fe903447f8ad39bd006c8d6e52e8",
+  "canonical_provenance_count": 1,
+  "canonical_provenance_sha256": "c4fa7de626a8e7166d1589e511913478b28550fa92c2e6af2fa28acee89349e8",
+  "geography_mapping": "explicit_permendagri_current_crosswalk",
+  "mapped_geography_count": 19,
+  "official_crosscheck": "passed",
+  "schema": "ranah-observatory/bnpb-disaster-panel/v1",
+  "source_id": "bnpb_satu_data",
+  "source_native_count": 627,
+  "source_native_sha256": "f95e8491066962eb8499fb28d68ba1704aca477a480a3dbe599587bb047cb846",
+  "source_snapshots": {
+    "affected_by_type_2024": "c7bea8c07e75e72c2bdd3a8676e69c9fb8517757588b3af2a9a95fea4414b4dc",
+    "events_by_type_2024_crosscheck": "32ab1fc33d4c1ed6a9c7d5568ddaee7a9a286d981a59f967addea9338d2b2342",
+    "events_by_type_2024_primary": "9cd9270eb477d9abcd4b5f53867a8f8afe96d7f112a3291bb887c0198bb50bec",
+    "total_events_2010_2024": "89f64b773892f00ea420f5b3b6a6d4ceb79bd533848d8c49925bb7478a16a5c0"
+  }
+}
