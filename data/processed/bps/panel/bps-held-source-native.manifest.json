@@ -1,0 +1,28 @@
+{
+  "canonical_geography_count": 20,
+  "csv_file": "bps-held-source-native.csv",
+  "csv_sha256": "b0ca71cce42a784e5e984448aa7bde6a291d5f5076e942b3d095909755c62bbd",
+  "held_series": [
+    "internet_person_5plus"
+  ],
+  "hold_reason": "person-level age-5-plus three-month internet-access universe is not silently promoted to the current household-oriented internet-access ontology",
+  "indicator_ids": [
+    "internet_access"
+  ],
+  "period_labels": [
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "row_count": 160,
+  "schema": "ranah-observatory/bps-held-source-native/v1",
+  "source_id": "bps_webapi",
+  "source_var_ids": [
+    "320"
+  ]
+}

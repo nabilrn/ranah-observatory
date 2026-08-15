@@ -1,0 +1,12 @@
+{
+  "canonical_observation_count": 1080,
+  "canonical_provenance_count": 54,
+  "domain": "1300",
+  "held_source_native_count": 160,
+  "schema": "ranah-observatory/bps-panel-materialization/v1",
+  "source_commit": "9c49f076f327af548b96d92ff8024ad2aa6b0784",
+  "source_id": "bps_webapi",
+  "source_semantic_baseline": "823a9c540e368df273fdddb5cd87855cb63dba278acfea95c16f8f865da074e5",
+  "workflow": "Freeze Reviewed BPS Panel",
+  "workflow_run_id": 31894643296
+}

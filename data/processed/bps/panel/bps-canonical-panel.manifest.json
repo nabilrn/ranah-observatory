@@ -1,0 +1,23 @@
+{
+  "canonical_series_count": 7,
+  "held_series": [
+    "internet_person_5plus"
+  ],
+  "observation_count": 1080,
+  "observations_file": "bps-canonical-observations.csv",
+  "observations_sha256": "78a6879baaacc7c17ca211f7dbd2fd1140ed13493a7e8e44aef2953aa04cde9e",
+  "provenance_count": 54,
+  "provenance_file": "bps-canonical-provenance.csv",
+  "provenance_sha256": "07cba51f97f3a41190316c7e2c9325480b343cca20fbe508538413da40c67f4c",
+  "schema": "ranah-observatory/bps-canonical-panel/v1",
+  "series_rows": {
+    "hdi_expected_schooling": 160,
+    "hdi_life_expectancy_lfsp2020": 120,
+    "hdi_mean_schooling": 160,
+    "labor_tpak_regency": 160,
+    "labor_tpt_regency": 160,
+    "poverty_headcount_regency": 160,
+    "real_grdp_growth_regency": 160
+  },
+  "source_id": "bps_webapi"
+}
