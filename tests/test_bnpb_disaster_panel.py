@@ -152,7 +152,11 @@ class BNPBDisasterPanelTests(unittest.TestCase):
             directory = Path(temp)
             geographies, total, detailed, crosscheck, affected = self._fixture(directory)
             _, canonical, _, _ = build(total, detailed, crosscheck, affected, geographies_path=geographies)
-            solok_ids = {row["geography_id"] for row in canonical if "Solok" in row["notes"]}
+            solok_ids = {
+                row["geography_id"]
+                for row in canonical
+                if "SOLOK" in row["notes"].upper()
+            }
             self.assertEqual(solok_ids, {"idn.13.1303", "idn.13.1372"})
 
 
