@@ -12,10 +12,12 @@ on:
       - "scripts/bnpb_client.py"
       - "scripts/harvest_bnpb.py"
       - "scripts/build_bnpb_disaster_panel.py"
+      - "scripts/validate_bnpb_snapshot_geography.py"
       - "scripts/validate_climate_disaster_foundation.py"
       - "scripts/validate_bnpb_disaster_artifact.py"
       - "tests/test_bnpb_client.py"
       - "tests/test_bnpb_disaster_panel.py"
+      - "tests/test_bnpb_snapshot_geography.py"
       - ".github/workflows/climate-disaster-foundation.yml"
   pull_request:
     paths:
@@ -27,10 +29,12 @@ on:
       - "scripts/bnpb_client.py"
       - "scripts/harvest_bnpb.py"
       - "scripts/build_bnpb_disaster_panel.py"
+      - "scripts/validate_bnpb_snapshot_geography.py"
       - "scripts/validate_climate_disaster_foundation.py"
       - "scripts/validate_bnpb_disaster_artifact.py"
       - "tests/test_bnpb_client.py"
       - "tests/test_bnpb_disaster_panel.py"
+      - "tests/test_bnpb_snapshot_geography.py"
       - ".github/workflows/climate-disaster-foundation.yml"
 
 permissions:
@@ -99,6 +103,14 @@ jobs:
         run: >-
           python scripts/harvest_bnpb.py --output /tmp/bnpb/affected-by-type-2024.json
           datastore --resource-id 89eb9dac-a891-477e-b264-2265f72f4e56
+
+      - name: Require exact reviewed BNPB source code-name pairs
+        run: >-
+          python scripts/validate_bnpb_snapshot_geography.py
+          /tmp/bnpb/total-events-2010-2024.json
+          /tmp/bnpb/events-by-type-2024-primary.json
+          /tmp/bnpb/events-by-type-2024-crosscheck.json
+          /tmp/bnpb/affected-by-type-2024.json
 
       - name: Build conservative Sumatera Barat disaster panel
         run: >-

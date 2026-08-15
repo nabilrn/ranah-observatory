@@ -40,13 +40,13 @@ BNPB publishes a separate `Kompilasi Data Kejadian dan Dampak Bencana 2025` data
 
 ## Geography contract
 
-BNPB resources label administrative codes as Permendagri codes. Canonical Ranah Observatory geography records currently use BPS statistical codes.
+BNPB DataStore metadata describes its kabupaten/kota code and name fields as based on Permendagri. Canonical Ranah Observatory geography records use BPS statistical codes. The two code systems are never assumed interchangeable.
 
-The pipeline therefore never assumes the two code systems are interchangeable.
+Live artifact review showed why this matters: in the reviewed BNPB resources, source code `1301` is `PESISIR SELATAN`, source code `1309` is `KEPULAUAN MENTAWAI`, `1310` is `DHARMASRAYA`, and `1311` is `SOLOK SELATAN`. Those assignments must not be interpreted using the canonical BPS code registry.
 
-For the first 2024 detailed panel, `data/registries/bnpb_geography_map.csv` provides an **explicit crosswalk** from the current Permendagri kabupaten/kota code to the canonical Ranah Observatory geography ID. The source Permendagri code and source administrative name remain in provenance. Administrative type (`Kabupaten`/`Kota`) is checked against the crosswalk when the source name exposes it, so duplicate names such as Solok cannot collapse into one unit. Source spelling differences are not resolved with fuzzy matching. If any of the 19 expected current Permendagri codes is absent or maps inconsistently, the build fails.
+For the first 2024 detailed panel, `data/registries/bnpb_geography_map.csv` stores the exact **code + source-name pair** observed consistently in all four reviewed BNPB resources and maps that pair to a canonical Ranah Observatory geography ID. The source code and source name remain in provenance. A live pre-build validator requires every reviewed resource to reproduce all 19 expected code/name pairs exactly; any code/name drift is a hard failure before canonical mapping occurs.
 
-The crosswalk is deliberately scoped to 2024. It does not imply that a numerically similar BPS code and Permendagri code are the same code system, nor does it authorize projecting current administrative units backward through the 2010–2024 total-event series.
+The crosswalk is deliberately scoped to the reviewed 2024 resource family. It does not claim that these assignments describe every Permendagri vintage, nor does it authorize projecting current administrative units backward through the 2010–2024 all-disaster total series.
 
 Historical administrative-boundary reconstruction remains a separate layer.
 
@@ -97,7 +97,7 @@ Every harvested artifact records:
 - source URL where known;
 - SHA-256 checksum.
 
-Canonical rows retain the BNPB source code/name and the mapping rule in notes. A second official 2024 event resource is compared before promotion; disagreement is a hard failure and must be investigated rather than averaged or silently resolved.
+Canonical rows retain the BNPB source code/name and mapping rule in notes. A second official 2024 event resource is compared before promotion; disagreement is a hard failure and must be investigated rather than averaged or silently resolved.
 
 The CKAN portal is an external dependency. Safe GET requests retry transient network/server and Cloudflare origin errors. Package metadata discovery is useful but is not allowed to block a live DataStore build when the qualified resource IDs are already pinned; the observation-producing DataStore resources remain hard requirements.
 
@@ -108,7 +108,7 @@ This foundation is ready to merge when:
 1. offline source/qualification contracts validate;
 2. CKAN client tests pass;
 3. one live credential-free BNPB harvest succeeds on GitHub Actions;
-4. all 19 current Sumatera Barat kabupaten/kota are mapped unambiguously through the explicit current crosswalk;
+4. all four reviewed DataStore resources reproduce the exact 19 Sumatera Barat code/name pairs before mapping;
 5. the two official 2024 event resources agree for Sumatera Barat on flood and landslide values;
 6. exactly 38 canonical event observations are produced;
 7. 2010–2024 total-event and affected-person rows remain explicitly source-native/held;

@@ -30,6 +30,12 @@ ALLOWED_OFFICIAL_HOSTS = {
     "gis.bmkg.go.id",
     "dataonline.bmkg.go.id",
 }
+CRITICAL_BNPB_MAPPINGS = {
+    "1301": ("PESISIR SELATAN", "idn.13.1302"),
+    "1309": ("KEPULAUAN MENTAWAI", "idn.13.1301"),
+    "1310": ("DHARMASRAYA", "idn.13.1311"),
+    "1311": ("SOLOK SELATAN", "idn.13.1310"),
+}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -77,13 +83,29 @@ def validate() -> list[str]:
     if len(geography_map) != 19:
         errors.append(f"BNPB geography crosswalk has {len(geography_map)} rows, expected 19")
     source_codes = [row["source_code_normalized"] for row in geography_map]
+    source_names = [row["source_name_expected"].upper() for row in geography_map]
     canonical_ids = [row["canonical_geography_id"] for row in geography_map]
     if len(source_codes) != len(set(source_codes)):
         errors.append("BNPB geography source codes must be unique")
+    if len(source_names) != len(set(source_names)):
+        errors.append("BNPB geography expected source names must be unique")
     if len(canonical_ids) != len(set(canonical_ids)):
         errors.append("BNPB geography canonical IDs must be unique")
     if set(canonical_ids) != set(current_sumbar):
         errors.append("BNPB geography crosswalk must cover exactly the 19 current Sumatera Barat kabupaten/kota")
+
+    by_source_code = {row["source_code_normalized"]: row for row in geography_map}
+    for code, (expected_name, expected_geography_id) in CRITICAL_BNPB_MAPPINGS.items():
+        row = by_source_code.get(code)
+        if row is None:
+            errors.append(f"BNPB geography crosswalk missing critical source code {code}")
+            continue
+        if row["source_name_expected"].upper() != expected_name or row["canonical_geography_id"] != expected_geography_id:
+            errors.append(
+                f"BNPB critical source mapping {code} changed unexpectedly: "
+                f"name={row['source_name_expected']!r} canonical={row['canonical_geography_id']!r}"
+            )
+
     for row in geography_map:
         canonical = current_sumbar.get(row["canonical_geography_id"])
         if row["source_system"] != "Permendagri":
@@ -92,10 +114,14 @@ def validate() -> list[str]:
             errors.append(f"{row['source_code_display']}: BNPB crosswalk mapping is not qualified")
         if row["applicable_start_year"] != "2024" or row["applicable_end_year"] != "2024":
             errors.append(f"{row['source_code_display']}: first BNPB crosswalk must remain scoped to 2024")
+        if not row["source_name_expected"]:
+            errors.append(f"{row['source_code_display']}: expected BNPB source name is required")
         if canonical and canonical["geography_level"] != row["source_admin_type"]:
             errors.append(f"{row['source_code_display']}: source admin type conflicts with canonical geography level")
+        if canonical and canonical["canonical_name"] != row["canonical_name"]:
+            errors.append(f"{row['source_code_display']}: crosswalk canonical name conflicts with canonical registry")
         if not row["source_code_normalized"].startswith("13"):
-            errors.append(f"{row['source_code_display']}: source code is outside Sumatera Barat Permendagri province code 13")
+            errors.append(f"{row['source_code_display']}: source code is outside the reviewed Sumatera Barat source range")
 
     qids = [row["qualification_id"] for row in qualifications]
     if len(qids) != len(set(qids)):
@@ -128,7 +154,7 @@ def validate() -> list[str]:
         "38 observations",
         "Forecast API exclusion",
         "Permendagri",
-        "explicit crosswalk",
+        "code + source-name pair",
     )
     for phrase in required_phrases:
         if phrase not in doc:

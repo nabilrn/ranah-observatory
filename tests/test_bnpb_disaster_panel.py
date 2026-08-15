@@ -14,25 +14,25 @@ from build_bnpb_disaster_panel import DISASTER_COLUMNS, build  # noqa: E402
 
 
 GEOGRAPHIES = [
-    ("idn.13.1301", "regency", "Kepulauan Mentawai", "1301", "KABUPATEN KEPULAUAN MENTAWAI", "13.01"),
-    ("idn.13.1302", "regency", "Pesisir Selatan", "1302", "KABUPATEN PESISIR SELATAN", "13.02"),
-    ("idn.13.1303", "regency", "Solok", "1303", "KABUPATEN SOLOK", "13.03"),
-    ("idn.13.1304", "regency", "Sijunjung", "1304", "KABUPATEN SIJUNJUNG", "13.04"),
-    ("idn.13.1305", "regency", "Tanah Datar", "1305", "KABUPATEN TANAH DATAR", "13.05"),
-    ("idn.13.1306", "regency", "Padang Pariaman", "1306", "KABUPATEN PADANG PARIAMAN", "13.06"),
-    ("idn.13.1307", "regency", "Agam", "1307", "KABUPATEN AGAM", "13.07"),
-    ("idn.13.1308", "regency", "Lima Puluh Kota", "1308", "KABUPATEN LIMA PULUH KOTA", "13.08"),
-    ("idn.13.1309", "regency", "Pasaman", "1309", "KABUPATEN PASAMAN", "13.09"),
-    ("idn.13.1310", "regency", "Solok Selatan", "1310", "KABUPATEN SOLOK SELATAN", "13.10"),
-    ("idn.13.1311", "regency", "Dharmasraya", "1311", "KABUPATEN DHARMASRAYA", "13.11"),
-    ("idn.13.1312", "regency", "Pasaman Barat", "1312", "KABUPATEN PASAMAN BARAT", "13.12"),
-    ("idn.13.1371", "city", "Padang", "1371", "KOTA PADANG", "13.71"),
-    ("idn.13.1372", "city", "Solok", "1372", "KOTA SOLOK", "13.72"),
-    ("idn.13.1373", "city", "Sawahlunto", "1373", "KOTA SAWAHLUNTO", "13.73"),
-    ("idn.13.1374", "city", "Padang Panjang", "1374", "KOTA PADANG PANJANG", "13.74"),
-    ("idn.13.1375", "city", "Bukittinggi", "1375", "KOTA BUKITTINGGI", "13.75"),
-    ("idn.13.1376", "city", "Payakumbuh", "1376", "KOTA PAYAKUMBUH", "13.76"),
-    ("idn.13.1377", "city", "Pariaman", "1377", "KOTA PARIAMAN", "13.77"),
+    ("idn.13.1301", "regency", "Kepulauan Mentawai", "1301", "KEPULAUAN MENTAWAI", "1309"),
+    ("idn.13.1302", "regency", "Pesisir Selatan", "1302", "PESISIR SELATAN", "1301"),
+    ("idn.13.1303", "regency", "Solok", "1303", "SOLOK", "1302"),
+    ("idn.13.1304", "regency", "Sijunjung", "1304", "SIJUNJUNG", "1303"),
+    ("idn.13.1305", "regency", "Tanah Datar", "1305", "TANAH DATAR", "1304"),
+    ("idn.13.1306", "regency", "Padang Pariaman", "1306", "PADANG PARIAMAN", "1305"),
+    ("idn.13.1307", "regency", "Agam", "1307", "AGAM", "1306"),
+    ("idn.13.1308", "regency", "Lima Puluh Kota", "1308", "LIMA PULUH KOTA", "1307"),
+    ("idn.13.1309", "regency", "Pasaman", "1309", "PASAMAN", "1308"),
+    ("idn.13.1310", "regency", "Solok Selatan", "1310", "SOLOK SELATAN", "1311"),
+    ("idn.13.1311", "regency", "Dharmasraya", "1311", "DHARMASRAYA", "1310"),
+    ("idn.13.1312", "regency", "Pasaman Barat", "1312", "PASAMAN BARAT", "1312"),
+    ("idn.13.1371", "city", "Padang", "1371", "KOTA PADANG", "1371"),
+    ("idn.13.1372", "city", "Solok", "1372", "KOTA SOLOK", "1372"),
+    ("idn.13.1373", "city", "Sawahlunto", "1373", "KOTA SAWAHLUNTO", "1373"),
+    ("idn.13.1374", "city", "Padang Panjang", "1374", "KOTA PADANG PANJANG", "1374"),
+    ("idn.13.1375", "city", "Bukittinggi", "1375", "KOTA BUKITTINGGI", "1375"),
+    ("idn.13.1376", "city", "Payakumbuh", "1376", "KOTA PAYAKUMBUH", "1376"),
+    ("idn.13.1377", "city", "Pariaman", "1377", "KOTA PARIAMAN", "1377"),
 ]
 
 
@@ -147,7 +147,7 @@ class BNPBDisasterPanelTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "cross-check mismatch"):
                 build(total, detailed, crosscheck, affected, geographies_path=geographies)
 
-    def test_duplicate_solok_names_are_resolved_by_admin_type(self) -> None:
+    def test_duplicate_solok_names_are_resolved_by_explicit_source_codes(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             directory = Path(temp)
             geographies, total, detailed, crosscheck, affected = self._fixture(directory)
@@ -156,8 +156,18 @@ class BNPBDisasterPanelTests(unittest.TestCase):
             city_rows = [row for row in canonical if row["geography_id"] == "idn.13.1372"]
             self.assertEqual(len(regency_rows), 2)
             self.assertEqual(len(city_rows), 2)
-            self.assertTrue(all("13.03:KABUPATEN SOLOK" in row["notes"] for row in regency_rows))
-            self.assertTrue(all("13.72:KOTA SOLOK" in row["notes"] for row in city_rows))
+            self.assertTrue(all("1302:SOLOK" in row["notes"] for row in regency_rows))
+            self.assertTrue(all("1372:KOTA SOLOK" in row["notes"] for row in city_rows))
+
+    def test_bnpb_source_codes_are_not_assumed_to_equal_bps_codes(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp)
+            geographies, total, detailed, crosscheck, affected = self._fixture(directory)
+            _, canonical, _, _ = build(total, detailed, crosscheck, affected, geographies_path=geographies)
+            mentawai = [row for row in canonical if row["geography_id"] == "idn.13.1301"]
+            pesisir = [row for row in canonical if row["geography_id"] == "idn.13.1302"]
+            self.assertTrue(all("1309:KEPULAUAN MENTAWAI" in row["notes"] for row in mentawai))
+            self.assertTrue(all("1301:PESISIR SELATAN" in row["notes"] for row in pesisir))
 
 
 if __name__ == "__main__":
