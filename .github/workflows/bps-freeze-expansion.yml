@@ -92,19 +92,26 @@ jobs:
             --output "$target/bps-expansion-semantic-fingerprint.json"
           python - <<'PY'
           import json, os, pathlib
+
+          baseline = json.loads(
+              pathlib.Path("data/manifests/bps_expansion_baseline.json").read_text(encoding="utf-8")
+          )
           path = pathlib.Path("data/processed/bps/expansion/materialization.json")
+          acquisition = baseline["acquisition"]
           payload = {
               "schema": "ranah-observatory/bps-expansion-materialization/v1",
               "source_id": "bps_webapi",
               "domain": "1300",
-              "source_semantic_baseline": "4afbf2cabac2afbd4980ff492c0d072ce27f9398be35141a07bc196f8fc12dc4",
+              "source_semantic_baseline": baseline["semantic_fingerprint_sha256"],
+              "reviewed_baseline_workflow_run_id": acquisition["workflow_run_id"],
+              "reviewed_baseline_artifact_id": acquisition["artifact_id"],
               "workflow": os.environ.get("GITHUB_WORKFLOW", "Freeze Reviewed BPS Expansion"),
               "workflow_run_id": int(os.environ["GITHUB_RUN_ID"]),
               "source_commit": os.environ["GITHUB_SHA"],
-              "source_row_count": 726,
-              "canonical_observation_count": 574,
-              "canonical_provenance_count": 36,
-              "held_source_native_count": 152
+              "source_row_count": baseline["source_row_count"],
+              "canonical_observation_count": baseline["canonical_observation_count"],
+              "canonical_provenance_count": baseline["canonical_provenance_count"],
+              "held_source_native_count": baseline["held_source_native_count"]
           }
           path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
           PY
