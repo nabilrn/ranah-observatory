@@ -16,8 +16,10 @@
     "qualified_current_code": 1178,
     "qualified_source_aggregate_alias": 62
   },
-  "panel_csv_sha256": "50132a314384d0af2ca46af840d6b74253adb8679f395bd060148a0c7a54f2f4",
-  "semantic_fingerprint_sha256": "e5479f2c60d18bf005801d633cb658b8aa127af357915a6f54644807865b3bce",
+  "canonical_ready_row_count": 1080,
+  "held_source_native_row_count": 160,
+  "panel_csv_sha256": "e010c020ac466e46d70035fc9294e3410058dc4efec3b631418b2a65a0a226a9",
+  "semantic_fingerprint_sha256": "823a9c540e368df273fdddb5cd87855cb63dba278acfea95c16f8f865da074e5",
   "semantic_fingerprint_excludes": [
     "retrieved_at_utc",
     "source_snapshot",
@@ -25,12 +27,13 @@
   ],
   "acquisition": {
     "workflow": "BPS Normalized Panel Harvest",
-    "workflow_run_id": 31893698385,
-    "head_sha": "3c344db5e25804c0678e616dbd6edf15be5011a7",
-    "artifact_id": 9249229747,
+    "workflow_run_id": 31894088103,
+    "head_sha": "bbe467697fb2640504329442a426525970ffa46e",
+    "artifact_id": 9249326311,
     "artifact_name": "bps-normalized-panel-source-native",
-    "artifact_digest": "sha256:e872d5574662153d6c8d5aaee9284a49a7cd15c7c3ffaa2e61f13d69b7efe4bd",
-    "artifact_retention_note": "The GitHub Actions artifact is ephemeral. The committed semantic fingerprint and source-selection registries are the durable drift contract; the source-native panel can be re-harvested from BPS WebAPI."
+    "artifact_digest": "sha256:8fd083a6982c0247e445dbb9c5e7ea11f142355841ca9c6e1a8a7d6082af2e8c",
+    "review_reason": "The semantic baseline was intentionally updated after evidence qualification promoted seven source families to canonical_ready while retaining person-level internet access as source-native only. Source values, source last_update metadata, row counts, and geography coverage were unchanged relative to the pre-qualification baseline.",
+    "artifact_retention_note": "The GitHub Actions artifact is ephemeral. The committed semantic fingerprint, qualification records, and source-selection registries are the durable drift contract; the source-native panel can be re-harvested from BPS WebAPI."
   },
   "series": [
     {
@@ -42,7 +45,7 @@
       "period_end": 2025,
       "rows": 160,
       "source_last_update": "2025-11-10 08:58:50",
-      "canonical_promotion_status": "pending_reference_period_review"
+      "canonical_promotion_status": "canonical_ready"
     },
     {
       "panel_series_id": "labor_tpak_regency",
@@ -53,7 +56,7 @@
       "period_end": 2025,
       "rows": 160,
       "source_last_update": "2025-11-10 09:03:05",
-      "canonical_promotion_status": "pending_unit_crosscheck"
+      "canonical_promotion_status": "canonical_ready"
     },
     {
       "panel_series_id": "internet_person_5plus",
@@ -75,7 +78,7 @@
       "period_end": 2025,
       "rows": 160,
       "source_last_update": "2025-11-10 11:38:08",
-      "canonical_promotion_status": "pending_period_review"
+      "canonical_promotion_status": "canonical_ready"
     },
     {
       "panel_series_id": "hdi_mean_schooling",
@@ -86,7 +89,7 @@
       "period_end": 2025,
       "rows": 160,
       "source_last_update": "2025-11-10 11:23:03",
-      "canonical_promotion_status": "pending_age_universe_review"
+      "canonical_promotion_status": "canonical_ready"
     },
     {
       "panel_series_id": "hdi_life_expectancy_lfsp2020",
@@ -97,7 +100,7 @@
       "period_end": 2025,
       "rows": 120,
       "source_last_update": "2025-11-24 11:00:21",
-      "canonical_promotion_status": "pending_period_inventory"
+      "canonical_promotion_status": "canonical_ready"
     },
     {
       "panel_series_id": "poverty_headcount_regency",
@@ -108,7 +111,7 @@
       "period_end": 2025,
       "rows": 160,
       "source_last_update": "2025-10-31 09:52:31",
-      "canonical_promotion_status": "pending_reference_month_review"
+      "canonical_promotion_status": "canonical_ready"
     },
     {
       "panel_series_id": "real_grdp_growth_regency",
@@ -119,7 +122,7 @@
       "period_end": 2025,
       "rows": 160,
       "source_last_update": "2026-02-27 09:56:39",
-      "canonical_promotion_status": "pending_unit_and_release_status_review"
+      "canonical_promotion_status": "canonical_ready"
     }
   ]
 }
