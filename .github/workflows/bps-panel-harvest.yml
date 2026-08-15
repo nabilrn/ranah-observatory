@@ -5,12 +5,15 @@ on:
   push:
     paths:
       - ".github/workflows/bps-panel-harvest.yml"
-      - "data/registries/bps_panel_series.csv"
+      - "data/manifests/bps_panel_baseline.json"
+      - "data/registries/bps_panel_*.csv"
       - "scripts/bps_client.py"
       - "scripts/harvest_bps.py"
       - "scripts/harvest_bps_series.py"
       - "scripts/normalize_bps_dynamic.py"
       - "scripts/build_bps_source_panel.py"
+      - "scripts/compare_bps_panel_baseline.py"
+      - "scripts/validate_bps_panel.py"
 
 permissions:
   contents: read
@@ -35,6 +38,9 @@ jobs:
 
       - name: Validate panel registry
         run: python scripts/validate_bps_panel.py
+
+      - name: Validate reviewed panel baseline
+        run: python scripts/validate_bps_panel_artifact.py
 
       - name: Harvest TPT 2018-2025
         run: >-
@@ -90,6 +96,11 @@ jobs:
           --input-root /tmp/bps-panel
           --output-csv /tmp/bps-panel/bps-source-native-panel.csv
           --output-manifest /tmp/bps-panel/bps-source-native-panel.manifest.json
+
+      - name: Compare fresh harvest with reviewed semantic baseline
+        run: >-
+          python scripts/compare_bps_panel_baseline.py
+          /tmp/bps-panel/bps-source-native-panel.manifest.json
 
       - name: Upload credential-free source-native snapshots and panel
         uses: actions/upload-artifact@v4
