@@ -1,0 +1,123 @@
+name: Freeze Reviewed BPS Panel
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/bps-normalized-panel
+    paths:
+      - ".github/workflows/bps-freeze-canonical.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out reviewed branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/bps-normalized-panel
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Validate reviewed contracts before acquisition
+        run: |
+          python scripts/validate_data_foundation.py
+          python scripts/validate_bps_foundation.py
+          python scripts/validate_bps_panel.py
+          python scripts/validate_bps_panel_artifact.py
+          python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Harvest reviewed source families
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/harvest_bps_series.py --domain 1300 --var 139 --year-range 2018 2025 --output-dir /tmp/bps-panel/unemployment_rate-var139
+          python scripts/harvest_bps_series.py --domain 1300 --var 141 --year-range 2018 2025 --output-dir /tmp/bps-panel/labor_force_participation-var141
+          python scripts/harvest_bps_series.py --domain 1300 --var 320 --year-range 2018 2025 --output-dir /tmp/bps-panel/internet_access-var320
+          python scripts/harvest_bps_series.py --domain 1300 --var 361 --year-range 2018 2025 --output-dir /tmp/bps-panel/expected_years_schooling-var361
+          python scripts/harvest_bps_series.py --domain 1300 --var 363 --year-range 2018 2025 --output-dir /tmp/bps-panel/mean_years_schooling-var363
+          python scripts/harvest_bps_series.py --domain 1300 --var 752 --year-range 2020 2025 --output-dir /tmp/bps-panel/life_expectancy-var752
+          python scripts/harvest_bps_series.py --domain 1300 --var 34 --year-range 2018 2025 --output-dir /tmp/bps-panel/poverty_rate-var34
+          python scripts/harvest_bps_series.py --domain 1300 --var 138 --year-range 2018 2025 --output-dir /tmp/bps-panel/real_grdp_growth-var138
+
+      - name: Build reviewed source-native panel
+        run: >-
+          python scripts/build_bps_source_panel.py
+          --input-root /tmp/bps-panel
+          --output-csv /tmp/bps-panel/bps-source-native-panel.csv
+          --output-manifest /tmp/bps-panel/bps-source-native-panel.manifest.json
+
+      - name: Require exact semantic-baseline reproduction
+        run: >-
+          python scripts/compare_bps_panel_baseline.py
+          /tmp/bps-panel/bps-source-native-panel.manifest.json
+
+      - name: Build canonical and held layers
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/bps-panel/frozen
+          python scripts/build_bps_canonical_panel.py /tmp/bps-panel/bps-source-native-panel.csv --output-dir /tmp/bps-panel/frozen
+          python scripts/validate_bps_canonical_panel.py /tmp/bps-panel/frozen
+          python scripts/build_bps_held_panel.py /tmp/bps-panel/bps-source-native-panel.csv \
+            --output-csv /tmp/bps-panel/frozen/bps-held-source-native.csv \
+            --output-manifest /tmp/bps-panel/frozen/bps-held-source-native.manifest.json
+          cp /tmp/bps-panel/bps-source-native-panel.manifest.json /tmp/bps-panel/frozen/bps-source-native-panel.manifest.json
+
+      - name: Materialize reviewed datasets in Git
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="data/processed/bps/panel"
+          mkdir -p "$target"
+          cp /tmp/bps-panel/frozen/bps-canonical-observations.csv "$target/"
+          cp /tmp/bps-panel/frozen/bps-canonical-provenance.csv "$target/"
+          cp /tmp/bps-panel/frozen/bps-canonical-panel.manifest.json "$target/"
+          cp /tmp/bps-panel/frozen/bps-held-source-native.csv "$target/"
+          cp /tmp/bps-panel/frozen/bps-held-source-native.manifest.json "$target/"
+          cp /tmp/bps-panel/frozen/bps-source-native-panel.manifest.json "$target/"
+
+          python - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path("data/processed/bps/panel/materialization.json")
+          payload = {
+              "schema": "ranah-observatory/bps-panel-materialization/v1",
+              "source_id": "bps_webapi",
+              "domain": "1300",
+              "source_semantic_baseline": "823a9c540e368df273fdddb5cd87855cb63dba278acfea95c16f8f865da074e5",
+              "workflow": os.environ.get("GITHUB_WORKFLOW", "Freeze Reviewed BPS Panel"),
+              "workflow_run_id": int(os.environ["GITHUB_RUN_ID"]),
+              "source_commit": os.environ["GITHUB_SHA"],
+              "canonical_observation_count": 1080,
+              "canonical_provenance_count": 54,
+              "held_source_native_count": 160,
+          }
+          path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - name: Commit reviewed materialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/processed/bps/panel
+          if git diff --cached --quiet; then
+            echo "Reviewed materialization already matches Git; nothing to commit."
+            exit 0
+          fi
+          git commit -m "data: freeze first reviewed BPS canonical panel"
+          git push origin HEAD:agent/bps-normalized-panel
