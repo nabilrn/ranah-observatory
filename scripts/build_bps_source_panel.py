@@ -21,6 +21,7 @@ OUTPUT_FIELDS = [
     "source_id",
     "domain",
     "retrieved_at_utc",
+    "bps_last_update",
     "bps_var_id",
     "bps_var_label",
     "bps_var_unit",
@@ -43,6 +44,15 @@ OUTPUT_FIELDS = [
     "source_snapshot_sha256",
     "canonical_geography_id",
     "geography_mapping_status",
+]
+
+VOLATILE_FINGERPRINT_FIELDS = {
+    "retrieved_at_utc",
+    "source_snapshot",
+    "source_snapshot_sha256",
+}
+SEMANTIC_FINGERPRINT_FIELDS = [
+    field for field in OUTPUT_FIELDS if field not in VOLATILE_FINGERPRINT_FIELDS
 ]
 
 
@@ -113,6 +123,20 @@ def _resolve_geography(source_id: str, period_label: str, mapping: dict[str, dic
     return row["canonical_geography_id"], status
 
 
+def semantic_fingerprint(rows: list[dict[str, str]]) -> str:
+    stable_rows = [
+        {field: row.get(field, "") for field in SEMANTIC_FINGERPRINT_FIELDS}
+        for row in sorted(rows, key=lambda item: item["panel_row_id"])
+    ]
+    payload = json.dumps(
+        stable_rows,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
 def build_panel(
     input_root: Path,
     registry_path: Path,
@@ -179,6 +203,7 @@ def build_panel(
 
         counts_by_period: dict[str, int] = {}
         mapping_statuses: set[str] = set()
+        last_updates: set[str] = set()
         for source_row in selected:
             period_label = source_row["bps_th_label"]
             snapshot = snapshots.get(period_label)
@@ -193,6 +218,8 @@ def build_panel(
                 source_row["bps_vervar_id"], period_label, geography_map
             )
             mapping_statuses.add(mapping_status)
+            if source_row.get("bps_last_update"):
+                last_updates.add(source_row["bps_last_update"])
 
             row = {field: source_row.get(field, "") for field in OUTPUT_FIELDS}
             row.update(
@@ -219,6 +246,7 @@ def build_panel(
                 "periods": sorted(counts_by_period),
                 "rows": len(selected),
                 "rows_by_period": dict(sorted(counts_by_period.items())),
+                "source_last_updates": sorted(last_updates),
                 "geography_mapping_statuses": sorted(mapping_statuses),
                 "canonical_promotion_status": config["canonical_promotion_status"],
             }
@@ -243,6 +271,8 @@ def write_panel(rows: list[dict[str, str]], manifest: dict[str, Any], output_csv
     manifest = dict(manifest)
     manifest["panel_csv"] = output_csv.name
     manifest["panel_csv_sha256"] = digest
+    manifest["semantic_fingerprint_sha256"] = semantic_fingerprint(rows)
+    manifest["semantic_fingerprint_excludes"] = sorted(VOLATILE_FINGERPRINT_FIELDS)
     output_manifest.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
