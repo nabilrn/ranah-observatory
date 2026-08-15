@@ -1,0 +1,115 @@
+{
+  "panel_csv": "bps-expansion-source-panel.csv",
+  "panel_csv_sha256": "c30438f1d95be27febcc3b3eba617ef23ea9d1c3ed40e7bf1caf1480b9352c43",
+  "row_count": 726,
+  "schema": "ranah-observatory/bps-expansion-source-panel/v1",
+  "series": [
+    {
+      "bps_var_id": 668,
+      "canonical_promotion_status": "canonical_ready",
+      "expansion_series_id": "underemployment_regency",
+      "indicator_id": "underemployment_rate",
+      "rows": 140,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20
+      }
+    },
+    {
+      "bps_var_id": 83,
+      "canonical_promotion_status": "canonical_ready_province_only",
+      "expansion_series_id": "inequality_gini",
+      "indicator_id": "gini_ratio",
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      }
+    },
+    {
+      "bps_var_id": 282,
+      "canonical_promotion_status": "canonical_ready",
+      "expansion_series_id": "agriculture_share_adhb",
+      "indicator_id": "agriculture_share_grdp",
+      "rows": 120,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20
+      }
+    },
+    {
+      "bps_var_id": 282,
+      "canonical_promotion_status": "canonical_ready",
+      "expansion_series_id": "manufacturing_share_adhb",
+      "indicator_id": "manufacturing_share_grdp",
+      "rows": 120,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20
+      }
+    },
+    {
+      "bps_var_id": 276,
+      "canonical_promotion_status": "canonical_ready",
+      "expansion_series_id": "rice_yield_ksa",
+      "indicator_id": "rice_yield",
+      "rows": 160,
+      "rows_by_period": {
+        "2018": 20,
+        "2019": 20,
+        "2020": 20,
+        "2021": 20,
+        "2022": 20,
+        "2023": 20,
+        "2024": 20,
+        "2025": 20
+      }
+    },
+    {
+      "bps_var_id": 463,
+      "canonical_promotion_status": "canonical_ready",
+      "expansion_series_id": "export_value_port_loading",
+      "indicator_id": "export_value",
+      "rows": 6,
+      "rows_by_period": {
+        "2018": 1,
+        "2019": 1,
+        "2020": 1,
+        "2021": 1,
+        "2022": 1,
+        "2023": 1
+      }
+    },
+    {
+      "bps_var_id": 484,
+      "canonical_promotion_status": "canonical_ready",
+      "expansion_series_id": "population_sp2020",
+      "indicator_id": "population_total",
+      "rows": 20,
+      "rows_by_period": {
+        "2020": 20
+      }
+    }
+  ],
+  "series_count": 7,
+  "source_id": "bps_webapi"
+}

@@ -1,0 +1,26 @@
+{
+  "canonical_series_count": 7,
+  "held_file": "bps-expansion-held-source-native.csv",
+  "held_series": [
+    "inequality_gini"
+  ],
+  "held_sha256": "12dc80453727e3b9c7ec08b38689f753e514f939c3feb5be2df1c07a25255138",
+  "held_source_native_count": 152,
+  "observation_count": 574,
+  "observations_file": "bps-expansion-canonical-observations.csv",
+  "observations_sha256": "5488af9fe6391dcbdcce241f80e2c9f3992a71708aa2b7b28b82c92186df3176",
+  "provenance_count": 36,
+  "provenance_file": "bps-expansion-canonical-provenance.csv",
+  "provenance_sha256": "e465551aacd006f9261196d5a0a6f39ede5f064f00de9d530d9689b4618f51c2",
+  "schema": "ranah-observatory/bps-expansion-canonical/v1",
+  "series_rows": {
+    "agriculture_share_adhb": 120,
+    "export_value_port_loading": 6,
+    "inequality_gini": 8,
+    "manufacturing_share_adhb": 120,
+    "population_sp2020": 20,
+    "rice_yield_ksa": 160,
+    "underemployment_regency": 140
+  },
+  "source_id": "bps_webapi"
+}

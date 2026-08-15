@@ -1,0 +1,42 @@
+source_dimension,bps_dimension_id,canonical_geography_id,mapping_type,applicable_start_year,applicable_end_year,notes
+vervar,1300,idn.13,source_aggregate_alias,2018,2025,Province aggregate alias used by Gini and SP2020 source families
+vervar,1301,idn.13.1301,direct_current_code,2018,2025,Current Kepulauan Mentawai source code
+vervar,1302,idn.13.1302,direct_current_code,2018,2025,Current Pesisir Selatan source code
+vervar,1303,idn.13.1303,direct_current_code,2018,2025,Current Solok regency source code
+vervar,1304,idn.13.1304,direct_current_code,2018,2025,Current Sijunjung source code
+vervar,1305,idn.13.1305,direct_current_code,2018,2025,Current Tanah Datar source code
+vervar,1306,idn.13.1306,direct_current_code,2018,2025,Current Padang Pariaman source code
+vervar,1307,idn.13.1307,direct_current_code,2018,2025,Current Agam source code
+vervar,1308,idn.13.1308,direct_current_code,2018,2025,Current Lima Puluh Kota source code
+vervar,1309,idn.13.1309,direct_current_code,2018,2025,Current Pasaman source code
+vervar,1310,idn.13.1310,direct_current_code,2018,2025,Current Solok Selatan source code
+vervar,1311,idn.13.1311,direct_current_code,2018,2025,Current Dharmasraya source code
+vervar,1312,idn.13.1312,direct_current_code,2018,2025,Current Pasaman Barat source code
+vervar,1371,idn.13.1371,direct_current_code,2018,2025,Current Padang city source code
+vervar,1372,idn.13.1372,direct_current_code,2018,2025,Current Solok city source code
+vervar,1373,idn.13.1373,direct_current_code,2018,2025,Current Sawahlunto source code
+vervar,1374,idn.13.1374,direct_current_code,2018,2025,Current Padang Panjang source code
+vervar,1375,idn.13.1375,direct_current_code,2018,2025,Current Bukittinggi source code
+vervar,1376,idn.13.1376,direct_current_code,2018,2025,Current Payakumbuh source code
+vervar,1377,idn.13.1377,direct_current_code,2018,2025,Current Pariaman source code
+vervar,1378,idn.13,source_aggregate_alias,2018,2025,Province aggregate alias used by underemployment and rice source families
+turvar,464,idn.13.1301,source_dimension_alias,2018,2023,PDRB geography dimension alias for Kepulauan Mentawai
+turvar,465,idn.13.1302,source_dimension_alias,2018,2023,PDRB geography dimension alias for Pesisir Selatan
+turvar,466,idn.13.1303,source_dimension_alias,2018,2023,PDRB geography dimension alias for Solok regency
+turvar,467,idn.13.1304,source_dimension_alias,2018,2023,PDRB geography dimension alias for Sijunjung
+turvar,468,idn.13.1305,source_dimension_alias,2018,2023,PDRB geography dimension alias for Tanah Datar
+turvar,469,idn.13.1306,source_dimension_alias,2018,2023,PDRB geography dimension alias for Padang Pariaman
+turvar,470,idn.13.1307,source_dimension_alias,2018,2023,PDRB geography dimension alias for Agam
+turvar,471,idn.13.1308,source_dimension_alias,2018,2023,PDRB geography dimension alias for Lima Puluh Kota
+turvar,472,idn.13.1309,source_dimension_alias,2018,2023,PDRB geography dimension alias for Pasaman
+turvar,473,idn.13.1310,source_dimension_alias,2018,2023,PDRB geography dimension alias for Solok Selatan
+turvar,474,idn.13.1311,source_dimension_alias,2018,2023,PDRB geography dimension alias for Dharmasraya
+turvar,475,idn.13.1312,source_dimension_alias,2018,2023,PDRB geography dimension alias for Pasaman Barat
+turvar,476,idn.13.1371,source_dimension_alias,2018,2023,PDRB geography dimension alias for Padang
+ turvar,477,idn.13.1372,source_dimension_alias,2018,2023,PDRB geography dimension alias for Solok city
+ turvar,478,idn.13.1373,source_dimension_alias,2018,2023,PDRB geography dimension alias for Sawahlunto
+ turvar,479,idn.13.1374,source_dimension_alias,2018,2023,PDRB geography dimension alias for Padang Panjang
+ turvar,480,idn.13.1375,source_dimension_alias,2018,2023,PDRB geography dimension alias for Bukittinggi
+ turvar,481,idn.13.1376,source_dimension_alias,2018,2023,PDRB geography dimension alias for Payakumbuh
+ turvar,482,idn.13.1377,source_dimension_alias,2018,2023,PDRB geography dimension alias for Pariaman
+ turvar,483,idn.13,source_aggregate_alias,2018,2023,PDRB geography dimension alias for Sumatera Barat province

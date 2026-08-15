@@ -1,0 +1,65 @@
+name: BPS Structural Expansion
+
+on:
+  push:
+    paths:
+      - "data/manifests/bps_expansion_baseline.json"
+      - "data/registries/bps_expansion_*.csv"
+      - "data/processed/bps/expansion/**"
+      - "scripts/build_bps_expansion_source_panel.py"
+      - "scripts/build_bps_expansion_canonical.py"
+      - "scripts/fingerprint_bps_expansion.py"
+      - "scripts/compare_bps_expansion_baseline.py"
+      - "scripts/validate_bps_expansion.py"
+      - "scripts/validate_bps_expansion_baseline.py"
+      - "scripts/validate_bps_expansion_output.py"
+      - "tests/test_bps_expansion.py"
+      - "tests/test_bps_expansion_baseline.py"
+      - "docs/BPS_PANEL_EXPANSION.md"
+      - ".github/workflows/bps-expansion.yml"
+  pull_request:
+    paths:
+      - "data/manifests/bps_expansion_baseline.json"
+      - "data/registries/bps_expansion_*.csv"
+      - "data/processed/bps/expansion/**"
+      - "scripts/build_bps_expansion_source_panel.py"
+      - "scripts/build_bps_expansion_canonical.py"
+      - "scripts/fingerprint_bps_expansion.py"
+      - "scripts/compare_bps_expansion_baseline.py"
+      - "scripts/validate_bps_expansion.py"
+      - "scripts/validate_bps_expansion_baseline.py"
+      - "scripts/validate_bps_expansion_output.py"
+      - "tests/test_bps_expansion.py"
+      - "tests/test_bps_expansion_baseline.py"
+      - "docs/BPS_PANEL_EXPANSION.md"
+      - ".github/workflows/bps-expansion.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Validate BPS ingestion foundation
+        run: python scripts/validate_bps_foundation.py
+
+      - name: Validate structural-expansion contracts
+        run: python scripts/validate_bps_expansion.py
+
+      - name: Validate frozen expansion baseline
+        run: python scripts/validate_bps_expansion_baseline.py
+
+      - name: Run complete unit-test discovery
+        run: python -m unittest discover -s tests -p "test_*.py" -v
