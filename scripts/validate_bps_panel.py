@@ -4,30 +4,26 @@ from __future__ import annotations
 import csv
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 PANEL = ROOT / "data" / "registries" / "bps_panel_series.csv"
+QUALIFICATIONS = ROOT / "data" / "registries" / "bps_panel_qualification.csv"
 GEOGRAPHY_MAP = ROOT / "data" / "registries" / "bps_panel_geography_map.csv"
 CANDIDATES = ROOT / "data" / "registries" / "bps_live_candidates.csv"
 INDICATORS = ROOT / "data" / "registries" / "indicators.csv"
 GEOGRAPHIES = ROOT / "data" / "registries" / "geographies.csv"
 
-QUALIFICATION_STATUSES = {
-    "source_metadata_qualified",
-    "methodology_specific_candidate",
+QUALIFICATION_STATUSES = {"source_metadata_qualified", "methodology_specific_candidate"}
+PROMOTION_STATUSES = {"pending_indicator_universe_review", "canonical_ready"}
+QUALIFICATION_DECISIONS = {"canonical_ready", "hold_source_native"}
+REFERENCE_PERIOD_RULES = {
+    "calendar_month_august",
+    "calendar_month_march",
+    "calendar_year",
+    "calendar_year_source_label",
 }
-PROMOTION_STATUSES = {
-    "pending_reference_period_review",
-    "pending_unit_crosscheck",
-    "pending_indicator_universe_review",
-    "pending_period_review",
-    "pending_age_universe_review",
-    "pending_period_inventory",
-    "pending_reference_month_review",
-    "pending_unit_and_release_status_review",
-    "qualified_source_native",
-    "canonical_ready",
-}
+CANONICAL_UNITS = {"percent", "years"}
 SUBPERIOD_POLICIES = {"preserve_all"}
 MAPPING_TYPES = {"direct_current_code", "source_aggregate_alias"}
 
@@ -37,9 +33,16 @@ def _read(path: Path) -> list[dict[str, str]]:
         return [{key: (value or "").strip() for key, value in row.items()} for row in csv.DictReader(handle)]
 
 
+def _official_bps_url(url: str) -> bool:
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    return parsed.scheme == "https" and (host == "bps.go.id" or host.endswith(".bps.go.id"))
+
+
 def validate() -> tuple[list[str], dict[str, int]]:
     errors: list[str] = []
     rows = _read(PANEL)
+    qualifications = _read(QUALIFICATIONS)
     geography_map = _read(GEOGRAPHY_MAP)
     candidates = _read(CANDIDATES)
     indicator_rows = _read(INDICATORS)
@@ -48,19 +51,63 @@ def validate() -> tuple[list[str], dict[str, int]]:
     canonical_geographies = {row["geography_id"]: row for row in geography_rows}
     candidate_pairs = {(row["indicator_id"], row["bps_var_id"]): row for row in candidates}
 
-    if len(rows) < 8:
-        errors.append(f"{PANEL}: first panel must retain at least 8 qualified series")
+    if len(rows) != 8:
+        errors.append(f"{PANEL}: first panel must contain exactly 8 reviewed source series")
+
+    qualification_by_id: dict[str, dict[str, str]] = {}
+    qualification_by_series: dict[str, dict[str, str]] = {}
+    for line_no, row in enumerate(qualifications, start=2):
+        prefix = f"{QUALIFICATIONS}:{line_no}"
+        required = (
+            "qualification_id", "panel_series_id", "decision", "canonical_unit",
+            "reference_period_rule", "source_universe", "method_version",
+            "quality_flags_rule", "evidence_type", "notes",
+        )
+        for field in required:
+            if not row.get(field):
+                errors.append(f"{prefix}: {field} is required")
+        qid = row.get("qualification_id", "")
+        series_id = row.get("panel_series_id", "")
+        if qid in qualification_by_id:
+            errors.append(f"{prefix}: duplicate qualification_id {qid}")
+        if series_id in qualification_by_series:
+            errors.append(f"{prefix}: duplicate panel_series_id qualification {series_id}")
+        qualification_by_id[qid] = row
+        qualification_by_series[series_id] = row
+        if row.get("decision") not in QUALIFICATION_DECISIONS:
+            errors.append(f"{prefix}: unsupported decision {row.get('decision')!r}")
+        if row.get("canonical_unit") not in CANONICAL_UNITS:
+            errors.append(f"{prefix}: unsupported canonical_unit {row.get('canonical_unit')!r}")
+        if row.get("reference_period_rule") not in REFERENCE_PERIOD_RULES:
+            errors.append(f"{prefix}: unsupported reference_period_rule {row.get('reference_period_rule')!r}")
+        evidence_type = row.get("evidence_type", "")
+        urls = [item.strip() for item in row.get("evidence_url", "").split("|") if item.strip()]
+        if evidence_type == "bps_webapi_var_metadata":
+            if urls:
+                errors.append(f"{prefix}: WebAPI-metadata-only qualification should not invent an external URL")
+        else:
+            if not urls:
+                errors.append(f"{prefix}: evidence_url is required for external qualification evidence")
+            for url in urls:
+                if not _official_bps_url(url):
+                    errors.append(f"{prefix}: qualification evidence must use an official BPS HTTPS host: {url}")
+
+    if len(qualification_by_series) != len(rows):
+        errors.append("every first-panel source series must have exactly one qualification record")
 
     ids: set[str] = set()
     pairs: set[tuple[str, str]] = set()
     panel_min_year = 9999
     panel_max_year = 0
+    ready_count = 0
+    held_count = 0
     for line_no, row in enumerate(rows, start=2):
         prefix = f"{PANEL}:{line_no}"
         required = (
             "panel_series_id", "indicator_id", "bps_var_id", "subject_id", "source_title",
             "target_start_year", "target_end_year", "selected_turvar_id", "selected_turvar_label",
-            "subperiod_policy", "qualification_status", "canonical_promotion_status", "comparability_notes",
+            "subperiod_policy", "qualification_id", "qualification_status",
+            "canonical_promotion_status", "comparability_notes",
         )
         for field in required:
             if not row.get(field):
@@ -108,36 +155,45 @@ def validate() -> tuple[list[str], dict[str, int]]:
             errors.append(f"{prefix}: unsupported subperiod_policy {row.get('subperiod_policy')!r}")
         if row.get("qualification_status") not in QUALIFICATION_STATUSES:
             errors.append(f"{prefix}: unsupported qualification_status {row.get('qualification_status')!r}")
-        if row.get("canonical_promotion_status") not in PROMOTION_STATUSES:
-            errors.append(
-                f"{prefix}: unsupported canonical_promotion_status {row.get('canonical_promotion_status')!r}"
+        promotion = row.get("canonical_promotion_status")
+        if promotion not in PROMOTION_STATUSES:
+            errors.append(f"{prefix}: unsupported canonical_promotion_status {promotion!r}")
+
+        qid = row.get("qualification_id", "")
+        qualification = qualification_by_id.get(qid)
+        if qualification is None:
+            errors.append(f"{prefix}: unresolved qualification_id {qid}")
+        else:
+            if qualification.get("panel_series_id") != series_id:
+                errors.append(f"{prefix}: qualification_id {qid} belongs to another panel series")
+            expected_promotion = (
+                "canonical_ready"
+                if qualification.get("decision") == "canonical_ready"
+                else "pending_indicator_universe_review"
             )
-        if row.get("canonical_promotion_status") == "canonical_ready":
-            errors.append(f"{prefix}: no first-panel series is allowed to be canonical_ready before source-native validation")
+            if promotion != expected_promotion:
+                errors.append(
+                    f"{prefix}: promotion status {promotion!r} disagrees with qualification decision "
+                    f"{qualification.get('decision')!r}"
+                )
+
+        if promotion == "canonical_ready":
+            ready_count += 1
+        else:
+            held_count += 1
+
+    if ready_count != 7 or held_count != 1:
+        errors.append(f"first qualification pass must yield 7 canonical-ready and 1 held series, got {ready_count}/{held_count}")
 
     by_var = {row["bps_var_id"]: row for row in rows}
-    guardrails = {
-        "141": "pending_unit_crosscheck",
-        "320": "pending_indicator_universe_review",
-        "752": "pending_period_inventory",
-        "34": "pending_reference_month_review",
-        "138": "pending_unit_and_release_status_review",
-    }
-    for var_id, expected in guardrails.items():
-        row = by_var.get(var_id)
-        if row is None:
-            errors.append(f"required guarded BPS variable {var_id} is missing from first panel")
-        elif row["canonical_promotion_status"] != expected:
-            errors.append(
-                f"var {var_id}: expected canonical_promotion_status {expected}, got {row['canonical_promotion_status']}"
-            )
-
     internet = by_var.get("320")
-    if internet and (
-        internet["selected_turvar_id"] != "595"
-        or "Pernah Mengakses Internet" not in internet["selected_turvar_label"]
-    ):
-        errors.append("var 320 must explicitly select turvar 595 Pernah Mengakses Internet")
+    if internet is None:
+        errors.append("internet source var 320 is missing")
+    else:
+        if internet["selected_turvar_id"] != "595" or "Pernah Mengakses Internet" not in internet["selected_turvar_label"]:
+            errors.append("var 320 must explicitly select turvar 595 Pernah Mengakses Internet")
+        if internet["canonical_promotion_status"] != "pending_indicator_universe_review":
+            errors.append("person-level internet source must remain held until household/person ontology is resolved")
 
     life = by_var.get("752")
     if life and int(life["target_start_year"]) < 2020:
@@ -190,22 +246,24 @@ def validate() -> tuple[list[str], dict[str, int]]:
     if not expected_local_codes.issubset(map_ids):
         errors.append("BPS panel geography map is missing one or more current kabupaten/kota codes")
     for alias in ("1300", "1378"):
-        row = next((item for item in geography_map if item["bps_vervar_id"] == alias), None)
-        if row is None:
+        alias_row = next((item for item in geography_map if item["bps_vervar_id"] == alias), None)
+        if alias_row is None:
             errors.append(f"BPS province source alias {alias} is missing")
-        elif row["canonical_geography_id"] != "idn.13" or row["mapping_type"] != "source_aggregate_alias":
+        elif alias_row["canonical_geography_id"] != "idn.13" or alias_row["mapping_type"] != "source_aggregate_alias":
             errors.append(f"BPS province source alias {alias} must map explicitly to idn.13 as source_aggregate_alias")
 
     current_bps_codes = {row["bps_code"] for row in geography_rows if row["status"] == "current" and row["bps_code"]}
     if "1378" in current_bps_codes or "1300" in current_bps_codes:
         errors.append("BPS API aggregate aliases 1300/1378 must not leak into the canonical current geography code registry")
-
     if "idn.13" not in canonical_ids_seen:
         errors.append("first-panel geography map must include the Sumatera Barat province aggregate")
 
     return errors, {
         "series": len(rows),
         "indicators": len({row["indicator_id"] for row in rows}),
+        "canonical_ready": ready_count,
+        "held_source_native": held_count,
+        "qualifications": len(qualifications),
         "geography_mappings": len(geography_map),
     }
 
@@ -219,8 +277,8 @@ def main() -> int:
         return 1
     print(
         "BPS normalized-panel registry validation passed: "
-        f"{counts['series']} source series, {counts['indicators']} indicators, "
-        f"{counts['geography_mappings']} explicit geography mappings."
+        f"{counts['series']} source series, {counts['canonical_ready']} canonical-ready, "
+        f"{counts['held_source_native']} held, {counts['geography_mappings']} geography mappings."
     )
     return 0
 
