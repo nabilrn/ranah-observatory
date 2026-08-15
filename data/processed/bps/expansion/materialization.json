@@ -1,0 +1,15 @@
+{
+  "canonical_observation_count": 574,
+  "canonical_provenance_count": 36,
+  "domain": "1300",
+  "held_source_native_count": 152,
+  "reviewed_baseline_artifact_id": 9249670152,
+  "reviewed_baseline_workflow_run_id": 31895420059,
+  "schema": "ranah-observatory/bps-expansion-materialization/v1",
+  "source_commit": "93396cecde7b92e9847a8c8d3093241962171e5e",
+  "source_id": "bps_webapi",
+  "source_row_count": 726,
+  "source_semantic_baseline": "65b9a5ae25361785bb3fa0f1028ca123f002ad01ecc228853e571f514f44e451",
+  "workflow": "Freeze Reviewed BPS Expansion",
+  "workflow_run_id": 31896669199
+}

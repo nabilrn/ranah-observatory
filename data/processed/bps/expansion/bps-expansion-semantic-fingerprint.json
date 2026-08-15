@@ -1,0 +1,10 @@
+{
+  "excluded_fields": [
+    "retrieved_at_utc",
+    "source_snapshot",
+    "source_snapshot_sha256"
+  ],
+  "row_count": 726,
+  "schema": "ranah-observatory/bps-expansion-semantic-fingerprint/v1",
+  "semantic_fingerprint_sha256": "65b9a5ae25361785bb3fa0f1028ca123f002ad01ecc228853e571f514f44e451"
+}
