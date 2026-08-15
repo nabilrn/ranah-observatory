@@ -1,0 +1,56 @@
+name: BPS Expansion Discovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/bps-panel-expansion
+    paths:
+      - ".github/workflows/bps-expansion-discovery.yml"
+      - "scripts/discover_bps_candidate_series.py"
+      - "scripts/bps_client.py"
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Run offline unit tests first
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Discover structural-economic candidates
+        run: >-
+          python scripts/discover_bps_candidate_series.py
+          --domain 1300
+          --var 668
+          --var 83
+          --var 282
+          --var 276
+          --var 463
+          --var 484
+          --var 672
+          --output /tmp/bps-expansion/candidates.json
+
+      - name: Upload credential-free candidate discovery
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-expansion-candidate-discovery
+          path: /tmp/bps-expansion/candidates.json
+          if-no-files-found: error
+          retention-days: 7
