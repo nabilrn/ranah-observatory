@@ -54,7 +54,7 @@ def year_labels(start_year: int, end_year: int) -> list[str]:
 def _write_long_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fields = [
-        "source_id", "domain", "retrieved_at_utc", "bps_var_id", "bps_var_label",
+        "source_id", "domain", "retrieved_at_utc", "bps_last_update", "bps_var_id", "bps_var_label",
         "bps_var_unit", "bps_var_decimal", "bps_var_definition", "bps_var_note", "bps_subject",
         "bps_vertical_dimension", "bps_vervar_id", "bps_vervar_label", "bps_turvar_id",
         "bps_turvar_label", "bps_th_id", "bps_th_label", "bps_turth_id", "bps_turth_label",
