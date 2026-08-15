@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: freeze-bps-reviewed-panel-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   freeze:
     runs-on: ubuntu-latest
