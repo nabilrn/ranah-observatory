@@ -165,6 +165,20 @@ class BPSClient:
                 break
             page += 1
 
+    def list_subjects(
+        self,
+        *,
+        domain: str,
+        lang: str = "ind",
+        subcat: int | None = None,
+        max_pages: int | None = None,
+    ) -> list[Mapping[str, Any]]:
+        return list(
+            self.iter_list(
+                "subject", domain=domain, lang=lang, subcat=subcat, max_pages=max_pages
+            )
+        )
+
     def list_publications(
         self,
         *,
@@ -233,6 +247,50 @@ class BPSClient:
             )
         )
 
+    def list_periods(
+        self,
+        *,
+        domain: str,
+        var: int | None = None,
+        lang: str = "ind",
+        max_pages: int | None = None,
+    ) -> list[Mapping[str, Any]]:
+        return list(
+            self.iter_list("th", domain=domain, lang=lang, var=var, max_pages=max_pages)
+        )
+
+    def list_derived_variables(
+        self,
+        *,
+        domain: str,
+        var: int | None = None,
+        group: int | None = None,
+        lang: str = "ind",
+        max_pages: int | None = None,
+    ) -> list[Mapping[str, Any]]:
+        return list(
+            self.iter_list(
+                "turvar",
+                domain=domain,
+                lang=lang,
+                var=var,
+                group=group,
+                max_pages=max_pages,
+            )
+        )
+
+    def list_derived_periods(
+        self,
+        *,
+        domain: str,
+        var: int | None = None,
+        lang: str = "ind",
+        max_pages: int | None = None,
+    ) -> list[Mapping[str, Any]]:
+        return list(
+            self.iter_list("turth", domain=domain, lang=lang, var=var, max_pages=max_pages)
+        )
+
     def get_dynamic_data(
         self,
         *,
@@ -261,7 +319,9 @@ class BPSClient:
             raise BPSApiError("BPS dynamic data is not available for the requested selection")
         return payload
 
-    def get_publication(self, *, domain: str, publication_id: str, lang: str = "ind") -> Mapping[str, Any]:
+    def get_publication(
+        self, *, domain: str, publication_id: str, lang: str = "ind"
+    ) -> Mapping[str, Any]:
         payload = self._request(
             "view",
             {

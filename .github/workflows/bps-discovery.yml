@@ -1,0 +1,85 @@
+name: BPS Discovery
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/bps-discovery.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Harvest Sumatera Barat subject inventory
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/subjects.json
+          subjects --max-pages 10
+
+      - name: Harvest Sumatera Barat publication inventory
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/publications.json
+          publications --max-pages 5
+
+      - name: Harvest Sumatera Barat variable inventory
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/variables.json
+          variables --max-pages 20
+
+      - name: Harvest Sumatera Barat static-table inventory
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/static-tables.json
+          static-tables --max-pages 10
+
+      - name: Harvest TPAK period metadata
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/periods-var-141-tpak.json
+          periods --var 141 --max-pages 10
+
+      - name: Harvest TPT period metadata
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/periods-var-129-tpt.json
+          periods --var 129 --max-pages 10
+
+      - name: Harvest internet-access period metadata
+        run: >-
+          python scripts/harvest_bps.py
+          --domain 1300
+          --output /tmp/bps-discovery/periods-var-320-internet.json
+          periods --var 320 --max-pages 10
+
+      - name: Upload sanitized discovery snapshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-sumbar-discovery
+          path: /tmp/bps-discovery/
+          if-no-files-found: error
+          retention-days: 7

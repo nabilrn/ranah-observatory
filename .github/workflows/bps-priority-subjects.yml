@@ -1,0 +1,72 @@
+name: BPS Priority Subjects
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/bps-priority-subjects.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Population variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/population.json variables --subject 12 --max-pages 20
+
+      - name: HDI variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/hdi.json variables --subject 26 --max-pages 20
+
+      - name: Poverty and inequality variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/poverty.json variables --subject 23 --max-pages 20
+
+      - name: Education variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/education.json variables --subject 28 --max-pages 20
+
+      - name: Labor variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/labor.json variables --subject 6 --max-pages 20
+
+      - name: Regency city GRDP variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/grdp-regency-city.json variables --subject 52 --max-pages 20
+
+      - name: GRDP by industry variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/grdp-industry.json variables --subject 157 --max-pages 20
+
+      - name: Food crop variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/food-crops.json variables --subject 53 --max-pages 20
+
+      - name: Export import variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/trade.json variables --subject 8 --max-pages 20
+
+      - name: Energy variables
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/energy.json variables --subject 7 --max-pages 20
+
+      - name: Population period metadata
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/periods-var-32-population.json periods --var 32 --max-pages 20
+
+      - name: Regency city TPT period metadata
+        run: python scripts/harvest_bps.py --domain 1300 --output /tmp/bps-priority/periods-var-139-tpt.json periods --var 139 --max-pages 20
+
+      - name: Upload sanitized priority snapshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-priority-subjects
+          path: /tmp/bps-priority/
+          if-no-files-found: error
+          retention-days: 7
