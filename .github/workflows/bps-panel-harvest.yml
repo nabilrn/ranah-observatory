@@ -12,6 +12,7 @@ on:
       - "scripts/harvest_bps_series.py"
       - "scripts/normalize_bps_dynamic.py"
       - "scripts/build_bps_source_panel.py"
+      - "scripts/build_bps_canonical_panel.py"
       - "scripts/compare_bps_panel_baseline.py"
       - "scripts/validate_bps_panel.py"
 
@@ -94,12 +95,18 @@ jobs:
           --output-csv /tmp/bps-panel/bps-source-native-panel.csv
           --output-manifest /tmp/bps-panel/bps-source-native-panel.manifest.json
 
+      - name: Build evidence-qualified canonical observations
+        run: >-
+          python scripts/build_bps_canonical_panel.py
+          /tmp/bps-panel/bps-source-native-panel.csv
+          --output-dir /tmp/bps-panel/canonical
+
       - name: Compare fresh harvest with reviewed semantic baseline
         run: >-
           python scripts/compare_bps_panel_baseline.py
           /tmp/bps-panel/bps-source-native-panel.manifest.json
 
-      - name: Upload credential-free source-native snapshots and panel
+      - name: Upload credential-free source-native and canonical panel artifacts
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
