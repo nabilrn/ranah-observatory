@@ -1,0 +1,97 @@
+{
+  "schema": "ranah-observatory/bps-expansion-baseline/v1",
+  "source_id": "bps_webapi",
+  "domain": "1300",
+  "source_row_count": 726,
+  "canonical_observation_count": 574,
+  "held_source_native_count": 152,
+  "canonical_provenance_count": 36,
+  "semantic_fingerprint_sha256": "4afbf2cabac2afbd4980ff492c0d072ce27f9398be35141a07bc196f8fc12dc4",
+  "semantic_fingerprint_excludes": [
+    "retrieved_at_utc",
+    "source_snapshot",
+    "source_snapshot_sha256"
+  ],
+  "reviewed_source_panel_sha256": "38311368aed77c8a8eec8ce127499f0d76a70b1503db71fa3dd6424421b8261c",
+  "reviewed_canonical_observations_sha256": "84ef0457eb5f95c608b4452bdecc8afebdc27249332beed60c5b74197184ec45",
+  "reviewed_canonical_provenance_sha256": "bda1892417f09a049f59bc05307117bfd9f7fe976b484f70b3ffbbfc013ce761",
+  "reviewed_held_source_native_sha256": "c8ac0e25a2dec7121918c907657691d979076c33032c6c01c5cced6681b9f9c6",
+  "acquisition": {
+    "workflow": "BPS Structural Expansion Harvest",
+    "workflow_run_id": 31895352820,
+    "artifact_id": 9249699141,
+    "review_note": "First successful live expansion harvest reviewed before baseline freeze. Logical source row counts, canonical/held split, units, reference periods, geography scopes, transforms, and source last_update metadata matched the intended expansion contract."
+  },
+  "series": [
+    {
+      "expansion_series_id": "underemployment_regency",
+      "bps_var_id": 668,
+      "period_start": 2018,
+      "period_end": 2024,
+      "source_rows": 140,
+      "canonical_rows": 140,
+      "held_rows": 0,
+      "source_last_update": "2024-11-21 14:32:39"
+    },
+    {
+      "expansion_series_id": "inequality_gini",
+      "bps_var_id": 83,
+      "period_start": 2018,
+      "period_end": 2025,
+      "source_rows": 160,
+      "canonical_rows": 8,
+      "held_rows": 152,
+      "source_last_update": "2026-02-18 14:26:44"
+    },
+    {
+      "expansion_series_id": "agriculture_share_adhb",
+      "bps_var_id": 282,
+      "period_start": 2018,
+      "period_end": 2023,
+      "source_rows": 120,
+      "canonical_rows": 120,
+      "held_rows": 0,
+      "source_last_update": "2025-03-06 15:18:53"
+    },
+    {
+      "expansion_series_id": "manufacturing_share_adhb",
+      "bps_var_id": 282,
+      "period_start": 2018,
+      "period_end": 2023,
+      "source_rows": 120,
+      "canonical_rows": 120,
+      "held_rows": 0,
+      "source_last_update": "2025-03-06 15:18:53"
+    },
+    {
+      "expansion_series_id": "rice_yield_ksa",
+      "bps_var_id": 276,
+      "period_start": 2018,
+      "period_end": 2025,
+      "source_rows": 160,
+      "canonical_rows": 160,
+      "held_rows": 0,
+      "source_last_update": "2026-06-01 15:15:32"
+    },
+    {
+      "expansion_series_id": "export_value_port_loading",
+      "bps_var_id": 463,
+      "period_start": 2018,
+      "period_end": 2023,
+      "source_rows": 6,
+      "canonical_rows": 6,
+      "held_rows": 0,
+      "source_last_update": "2024-08-27 10:59:48"
+    },
+    {
+      "expansion_series_id": "population_sp2020",
+      "bps_var_id": 484,
+      "period_start": 2020,
+      "period_end": 2020,
+      "source_rows": 20,
+      "canonical_rows": 20,
+      "held_rows": 0,
+      "source_last_update": "2021-01-22 08:57:53"
+    }
+  ]
+}
