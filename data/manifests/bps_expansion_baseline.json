@@ -6,21 +6,22 @@
   "canonical_observation_count": 574,
   "held_source_native_count": 152,
   "canonical_provenance_count": 36,
-  "semantic_fingerprint_sha256": "4afbf2cabac2afbd4980ff492c0d072ce27f9398be35141a07bc196f8fc12dc4",
+  "semantic_fingerprint_sha256": "65b9a5ae25361785bb3fa0f1028ca123f002ad01ecc228853e571f514f44e451",
   "semantic_fingerprint_excludes": [
     "retrieved_at_utc",
     "source_snapshot",
     "source_snapshot_sha256"
   ],
-  "reviewed_source_panel_sha256": "38311368aed77c8a8eec8ce127499f0d76a70b1503db71fa3dd6424421b8261c",
-  "reviewed_canonical_observations_sha256": "84ef0457eb5f95c608b4452bdecc8afebdc27249332beed60c5b74197184ec45",
-  "reviewed_canonical_provenance_sha256": "bda1892417f09a049f59bc05307117bfd9f7fe976b484f70b3ffbbfc013ce761",
-  "reviewed_held_source_native_sha256": "c8ac0e25a2dec7121918c907657691d979076c33032c6c01c5cced6681b9f9c6",
+  "reviewed_source_panel_sha256": "77dcf8c8ae913c439bf11a38b65410a172ba5381e75e19d9d16c9a77a07fec81",
+  "reviewed_canonical_observations_sha256": "dc3a231dfd296db55b86c97244d0875e7c7fa449229a8f63be9eb8b76ab3b3a1",
+  "reviewed_canonical_provenance_sha256": "a4600abf814988ac9400c92e55b0d3b0036e5282fb1e70e6393e38ac8a1bfad8",
+  "reviewed_held_source_native_sha256": "e769971ba473ff72a5357e08354761fd0ecd9a82676259481f6e11b48380b75d",
   "acquisition": {
     "workflow": "BPS Structural Expansion Harvest",
-    "workflow_run_id": 31895352820,
-    "artifact_id": 9249699141,
-    "review_note": "First successful live expansion harvest reviewed before baseline freeze. Logical source row counts, canonical/held split, units, reference periods, geography scopes, transforms, and source last_update metadata matched the intended expansion contract."
+    "workflow_run_id": 31895420059,
+    "artifact_id": 9249670152,
+    "artifact_digest_sha256": "0e0459880dcb8f9b373dbd21b92fb952e53d51c3021eed53557de0dffae13a43",
+    "review_note": "Baseline corrected against the surviving credential-free artifact from successful live harvest run 31895420059. The artifact was independently downloaded and re-hashed: its 726-row source panel has semantic fingerprint 65b9a5ae25361785bb3fa0f1028ca123f002ad01ecc228853e571f514f44e451. Freeze run 31895766272 independently reproduced that same semantic fingerprint, row counts, canonical/held split, and transformation contract. The prior draft baseline had incorrectly copied discovery-stage last_update metadata and referenced a non-existent artifact, so it was not valid freeze provenance."
   },
   "series": [
     {
@@ -31,7 +32,7 @@
       "source_rows": 140,
       "canonical_rows": 140,
       "held_rows": 0,
-      "source_last_update": "2024-11-21 14:32:39"
+      "source_last_update": "2025-02-25 08:12:17"
     },
     {
       "expansion_series_id": "inequality_gini",
@@ -41,7 +42,7 @@
       "source_rows": 160,
       "canonical_rows": 8,
       "held_rows": 152,
-      "source_last_update": "2026-02-18 14:26:44"
+      "source_last_update": "2026-02-28 01:15:11"
     },
     {
       "expansion_series_id": "agriculture_share_adhb",
@@ -51,7 +52,7 @@
       "source_rows": 120,
       "canonical_rows": 120,
       "held_rows": 0,
-      "source_last_update": "2025-03-06 15:18:53"
+      "source_last_update": "2024-07-28 12:49:26"
     },
     {
       "expansion_series_id": "manufacturing_share_adhb",
@@ -61,7 +62,7 @@
       "source_rows": 120,
       "canonical_rows": 120,
       "held_rows": 0,
-      "source_last_update": "2025-03-06 15:18:53"
+      "source_last_update": "2024-07-28 12:49:26"
     },
     {
       "expansion_series_id": "rice_yield_ksa",
@@ -71,7 +72,7 @@
       "source_rows": 160,
       "canonical_rows": 160,
       "held_rows": 0,
-      "source_last_update": "2026-06-01 15:15:32"
+      "source_last_update": "2026-02-05 03:32:18"
     },
     {
       "expansion_series_id": "export_value_port_loading",
@@ -81,7 +82,7 @@
       "source_rows": 6,
       "canonical_rows": 6,
       "held_rows": 0,
-      "source_last_update": "2024-08-27 10:59:48"
+      "source_last_update": "2025-07-04 08:00:16"
     },
     {
       "expansion_series_id": "population_sp2020",
