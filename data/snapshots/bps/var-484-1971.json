@@ -104,26 +104,86 @@
       }
     ],
     "vervar": [
-      {"label": "SUMATERA BARAT (Provinsi)", "val": 1300},
-      {"label": "Kepulauan Mentawai", "val": 1301},
-      {"label": "Pesisir Selatan", "val": 1302},
-      {"label": "Kab.Solok", "val": 1303},
-      {"label": "Sijunjung", "val": 1304},
-      {"label": "Tanah Datar", "val": 1305},
-      {"label": "Padang Pariaman", "val": 1306},
-      {"label": "Agam", "val": 1307},
-      {"label": "Lima Puluh Kota", "val": 1308},
-      {"label": "Pasaman", "val": 1309},
-      {"label": "Solok Selatan", "val": 1310},
-      {"label": "Dharmasraya", "val": 1311},
-      {"label": "Pasaman Barat", "val": 1312},
-      {"label": "Padang", "val": 1371},
-      {"label": "Kota Solok", "val": 1372},
-      {"label": "Sawahlunto", "val": 1373},
-      {"label": "Padang Panjang", "val": 1374},
-      {"label": "Bukittinggi", "val": 1375},
-      {"label": "Payakumbuh", "val": 1376},
-      {"label": "Pariaman", "val": 1377}
+      {
+        "label": "SUMATERA BARAT (Provinsi)",
+        "val": 1300
+      },
+      {
+        "label": "Kepulauan Mentawai",
+        "val": 1301
+      },
+      {
+        "label": "Pesisir Selatan",
+        "val": 1302
+      },
+      {
+        "label": "Kab.Solok",
+        "val": 1303
+      },
+      {
+        "label": "Sijunjung",
+        "val": 1304
+      },
+      {
+        "label": "Tanah Datar",
+        "val": 1305
+      },
+      {
+        "label": "Padang Pariaman",
+        "val": 1306
+      },
+      {
+        "label": "Agam",
+        "val": 1307
+      },
+      {
+        "label": "Lima Puluh Kota",
+        "val": 1308
+      },
+      {
+        "label": "Pasaman",
+        "val": 1309
+      },
+      {
+        "label": "Solok Selatan",
+        "val": 1310
+      },
+      {
+        "label": "Dharmasraya",
+        "val": 1311
+      },
+      {
+        "label": "Pasaman Barat",
+        "val": 1312
+      },
+      {
+        "label": "Padang",
+        "val": 1371
+      },
+      {
+        "label": "Kota Solok",
+        "val": 1372
+      },
+      {
+        "label": "Sawahlunto",
+        "val": 1373
+      },
+      {
+        "label": "Padang Panjang",
+        "val": 1374
+      },
+      {
+        "label": "Bukittinggi",
+        "val": 1375
+      },
+      {
+        "label": "Payakumbuh",
+        "val": 1376
+      },
+      {
+        "label": "Pariaman",
+        "val": 1377
+      }
     ]
   },
   "retrieved_at_utc": "2026-08-15T15:26:14+00:00",
