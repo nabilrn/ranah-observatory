@@ -1,5 +1,5 @@
 bps_vervar_id,canonical_geography_id,mapping_type,applicable_start_year,applicable_end_year,notes
-1300,idn.13,direct_current_code,2018,2025,Province aggregate used by poverty and GRDP source families
+1300,idn.13,source_aggregate_alias,2018,2025,BPS dynamic poverty and GRDP families use 1300 for the province aggregate; canonical province registry code remains 13
 1301,idn.13.1301,direct_current_code,2018,2025,Current Kepulauan Mentawai code in first panel window
 1302,idn.13.1302,direct_current_code,2018,2025,Current Pesisir Selatan code in first panel window
 1303,idn.13.1303,direct_current_code,2018,2025,Current Solok regency code in first panel window
