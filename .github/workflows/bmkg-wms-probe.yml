@@ -6,6 +6,7 @@ on:
     branches:
       - agent/bmkg-hazard-acquisition
     paths:
+      - "scripts/probe_bmkg_wms.py"
       - ".github/workflows/bmkg-wms-probe.yml"
 
 permissions:
@@ -24,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Probe official BMKG rainfall WMS once
+      - name: Probe official BMKG rainfall WMS semantics once
         run: python scripts/probe_bmkg_wms.py --output /tmp/bmkg-wms-probe.json
 
       - name: Upload credential-free probe result
