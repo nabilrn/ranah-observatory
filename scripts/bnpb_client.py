@@ -8,7 +8,7 @@ import urllib.request
 from typing import Any, Callable, Mapping
 
 DEFAULT_BASE_URL = "https://data.bnpb.go.id/api/3/action"
-RETRYABLE_HTTP_STATUS = {429, 500, 502, 503, 504}
+RETRYABLE_HTTP_STATUS = {429, 500, 502, 503, 504, 520, 521, 522, 523, 524, 525, 526, 527}
 
 
 class BNPBApiError(RuntimeError):
@@ -43,7 +43,7 @@ class BNPBClient:
         *,
         base_url: str = DEFAULT_BASE_URL,
         timeout: float = 30.0,
-        retries: int = 2,
+        retries: int = 3,
         retry_backoff_seconds: float = 0.5,
         transport: Transport | None = None,
     ) -> None:

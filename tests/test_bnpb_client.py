@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 import unittest
+import urllib.error
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
@@ -47,6 +48,21 @@ class BNPBClientTests(unittest.TestCase):
         self.assertEqual(calls, [0, 2, 4])
         self.assertEqual(result["returned"], 5)
         self.assertEqual([row["value"] for row in result["records"]], list(range(5)))
+
+    def test_cloudflare_origin_errors_are_retried_for_safe_gets(self) -> None:
+        calls = 0
+
+        def transport(url: str, timeout: float):
+            nonlocal calls
+            calls += 1
+            if calls == 1:
+                raise urllib.error.HTTPError(url, 521, "origin down", hdrs=None, fp=None)
+            return {"success": True, "result": {"id": "dataset-1"}}
+
+        client = BNPBClient(transport=transport, retries=1, retry_backoff_seconds=0)
+        result = client.package_show("dataset-1")
+        self.assertEqual(result["id"], "dataset-1")
+        self.assertEqual(calls, 2)
 
     def test_unsuccessful_ckan_payload_raises(self) -> None:
         client = BNPBClient(

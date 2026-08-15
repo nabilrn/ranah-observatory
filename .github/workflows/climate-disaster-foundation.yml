@@ -7,6 +7,7 @@ on:
       - "catalog/data-catalog.csv"
       - "data/registries/disaster_sources.csv"
       - "data/registries/bnpb_indicator_qualification.csv"
+      - "data/registries/bnpb_geography_map.csv"
       - "docs/CLIMATE_DISASTER_FOUNDATION.md"
       - "scripts/bnpb_client.py"
       - "scripts/harvest_bnpb.py"
@@ -21,6 +22,7 @@ on:
       - "catalog/data-catalog.csv"
       - "data/registries/disaster_sources.csv"
       - "data/registries/bnpb_indicator_qualification.csv"
+      - "data/registries/bnpb_geography_map.csv"
       - "docs/CLIMATE_DISASTER_FOUNDATION.md"
       - "scripts/bnpb_client.py"
       - "scripts/harvest_bnpb.py"
@@ -73,6 +75,7 @@ jobs:
           python-version: "3.12"
 
       - name: Harvest master package metadata
+        continue-on-error: true
         run: >-
           python scripts/harvest_bnpb.py --output /tmp/bnpb/master-package.json
           package --id f61d78e5-04c6-4ce8-9acf-e425dadc1f4d
@@ -110,9 +113,10 @@ jobs:
         run: python scripts/validate_bnpb_disaster_artifact.py /tmp/bnpb/panel
 
       - name: Upload credential-free research artifact
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: bnpb-climate-disaster-foundation
           path: /tmp/bnpb/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14

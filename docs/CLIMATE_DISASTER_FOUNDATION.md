@@ -44,9 +44,11 @@ BNPB resources label administrative codes as Permendagri codes. Canonical Ranah 
 
 The pipeline therefore never assumes the two code systems are interchangeable.
 
-For current Sumatera Barat kabupaten/kota, mapping is qualified from the **source administrative name plus administrative type** (`Kabupaten`/`Kota`) against the canonical registry. The source Permendagri code is retained in provenance. Duplicate names such as Solok require type-aware matching. If a source row cannot be mapped unambiguously to exactly one of the 19 current canonical kabupaten/kota, the build fails rather than guessing.
+For the first 2024 detailed panel, `data/registries/bnpb_geography_map.csv` provides an **explicit crosswalk** from the current Permendagri kabupaten/kota code to the canonical Ranah Observatory geography ID. The source Permendagri code and source administrative name remain in provenance. Administrative type (`Kabupaten`/`Kota`) is checked against the crosswalk when the source name exposes it, so duplicate names such as Solok cannot collapse into one unit. Source spelling differences are not resolved with fuzzy matching. If any of the 19 expected current Permendagri codes is absent or maps inconsistently, the build fails.
 
-Historical administrative-boundary reconstruction remains a separate layer. The current 2024 detailed resource may use current administrative units; this does not license projecting those units backward through the 2010–2024 total-event series.
+The crosswalk is deliberately scoped to 2024. It does not imply that a numerically similar BPS code and Permendagri code are the same code system, nor does it authorize projecting current administrative units backward through the 2010–2024 total-event series.
+
+Historical administrative-boundary reconstruction remains a separate layer.
 
 ## BMKG hazard lane
 
@@ -97,6 +99,8 @@ Every harvested artifact records:
 
 Canonical rows retain the BNPB source code/name and the mapping rule in notes. A second official 2024 event resource is compared before promotion; disagreement is a hard failure and must be investigated rather than averaged or silently resolved.
 
+The CKAN portal is an external dependency. Safe GET requests retry transient network/server and Cloudflare origin errors. Package metadata discovery is useful but is not allowed to block a live DataStore build when the qualified resource IDs are already pinned; the observation-producing DataStore resources remain hard requirements.
+
 ## Exit gate
 
 This foundation is ready to merge when:
@@ -104,7 +108,7 @@ This foundation is ready to merge when:
 1. offline source/qualification contracts validate;
 2. CKAN client tests pass;
 3. one live credential-free BNPB harvest succeeds on GitHub Actions;
-4. all 19 current Sumatera Barat kabupaten/kota are mapped unambiguously;
+4. all 19 current Sumatera Barat kabupaten/kota are mapped unambiguously through the explicit current crosswalk;
 5. the two official 2024 event resources agree for Sumatera Barat on flood and landslide values;
 6. exactly 38 canonical event observations are produced;
 7. 2010–2024 total-event and affected-person rows remain explicitly source-native/held;

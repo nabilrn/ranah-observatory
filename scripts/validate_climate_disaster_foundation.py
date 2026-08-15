@@ -8,6 +8,8 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "data" / "registries" / "disaster_sources.csv"
 QUALIFICATIONS = ROOT / "data" / "registries" / "bnpb_indicator_qualification.csv"
+BNPB_GEOGRAPHY_MAP = ROOT / "data" / "registries" / "bnpb_geography_map.csv"
+GEOGRAPHIES = ROOT / "data" / "registries" / "geographies.csv"
 INDICATORS = ROOT / "data" / "registries" / "indicators.csv"
 CATALOG = ROOT / "catalog" / "data-catalog.csv"
 DOC = ROOT / "docs" / "CLIMATE_DISASTER_FOUNDATION.md"
@@ -39,6 +41,14 @@ def validate() -> list[str]:
     errors: list[str] = []
     sources = read_csv(SOURCES)
     qualifications = read_csv(QUALIFICATIONS)
+    geography_map = read_csv(BNPB_GEOGRAPHY_MAP)
+    current_sumbar = {
+        row["geography_id"]: row
+        for row in read_csv(GEOGRAPHIES)
+        if row["parent_geography_id"] == "idn.13"
+        and row["status"] == "current"
+        and row["geography_level"] in {"regency", "city"}
+    }
     indicators = {row["indicator_id"]: row for row in read_csv(INDICATORS)}
     catalog = {row["source_id"]: row for row in read_csv(CATALOG)}
 
@@ -61,6 +71,31 @@ def validate() -> list[str]:
         if row["organization"] == "BNPB" and row["access_mode"] == "CKAN DataStore":
             if row["datastore_active"] != "true" or not row["resource_id"]:
                 errors.append(f"{row['source_record_id']}: DataStore source must have active resource ID")
+
+    if len(current_sumbar) != 19:
+        errors.append(f"canonical current Sumatera Barat geography count is {len(current_sumbar)}, expected 19")
+    if len(geography_map) != 19:
+        errors.append(f"BNPB geography crosswalk has {len(geography_map)} rows, expected 19")
+    source_codes = [row["source_code_normalized"] for row in geography_map]
+    canonical_ids = [row["canonical_geography_id"] for row in geography_map]
+    if len(source_codes) != len(set(source_codes)):
+        errors.append("BNPB geography source codes must be unique")
+    if len(canonical_ids) != len(set(canonical_ids)):
+        errors.append("BNPB geography canonical IDs must be unique")
+    if set(canonical_ids) != set(current_sumbar):
+        errors.append("BNPB geography crosswalk must cover exactly the 19 current Sumatera Barat kabupaten/kota")
+    for row in geography_map:
+        canonical = current_sumbar.get(row["canonical_geography_id"])
+        if row["source_system"] != "Permendagri":
+            errors.append(f"{row['source_code_display']}: BNPB crosswalk source_system must be Permendagri")
+        if row["mapping_status"] != "qualified_current_crosswalk":
+            errors.append(f"{row['source_code_display']}: BNPB crosswalk mapping is not qualified")
+        if row["applicable_start_year"] != "2024" or row["applicable_end_year"] != "2024":
+            errors.append(f"{row['source_code_display']}: first BNPB crosswalk must remain scoped to 2024")
+        if canonical and canonical["geography_level"] != row["source_admin_type"]:
+            errors.append(f"{row['source_code_display']}: source admin type conflicts with canonical geography level")
+        if not row["source_code_normalized"].startswith("13"):
+            errors.append(f"{row['source_code_display']}: source code is outside Sumatera Barat Permendagri province code 13")
 
     qids = [row["qualification_id"] for row in qualifications]
     if len(qids) != len(set(qids)):
@@ -93,6 +128,7 @@ def validate() -> list[str]:
         "38 observations",
         "Forecast API exclusion",
         "Permendagri",
+        "explicit crosswalk",
     )
     for phrase in required_phrases:
         if phrase not in doc:
