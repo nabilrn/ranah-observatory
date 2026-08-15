@@ -1,0 +1,15 @@
+{
+  "canonical_observation_count": 38,
+  "canonical_provenance_count": 1,
+  "mapped_geography_count": 19,
+  "official_crosscheck": "passed",
+  "reviewed_baseline_artifact_id": 9250344741,
+  "reviewed_baseline_workflow_run_id": 31898073175,
+  "schema": "ranah-observatory/bnpb-disaster-materialization/v1",
+  "source_commit": "ff11abe66a930385a3f6c42835e7e50e7227da47",
+  "source_id": "bnpb_satu_data",
+  "source_native_count": 627,
+  "source_semantic_baseline": "b460cc4660bef0360afbb155e38381caedd05f2b2a3f486caead428e11fcc0d5",
+  "workflow": "Freeze Reviewed BNPB Disaster Panel",
+  "workflow_run_id": 31898367412
+}

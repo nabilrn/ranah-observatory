@@ -1,0 +1,134 @@
+name: Climate Disaster Foundation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "catalog/data-catalog.csv"
+      - "data/registries/disaster_sources.csv"
+      - "data/registries/bnpb_indicator_qualification.csv"
+      - "data/registries/bnpb_geography_map.csv"
+      - "docs/CLIMATE_DISASTER_FOUNDATION.md"
+      - "scripts/bnpb_client.py"
+      - "scripts/harvest_bnpb.py"
+      - "scripts/build_bnpb_disaster_panel.py"
+      - "scripts/validate_bnpb_snapshot_geography.py"
+      - "scripts/validate_climate_disaster_foundation.py"
+      - "scripts/validate_bnpb_disaster_artifact.py"
+      - "tests/test_bnpb_client.py"
+      - "tests/test_bnpb_disaster_panel.py"
+      - "tests/test_bnpb_snapshot_geography.py"
+      - ".github/workflows/climate-disaster-foundation.yml"
+  pull_request:
+    paths:
+      - "catalog/data-catalog.csv"
+      - "data/registries/disaster_sources.csv"
+      - "data/registries/bnpb_indicator_qualification.csv"
+      - "data/registries/bnpb_geography_map.csv"
+      - "docs/CLIMATE_DISASTER_FOUNDATION.md"
+      - "scripts/bnpb_client.py"
+      - "scripts/harvest_bnpb.py"
+      - "scripts/build_bnpb_disaster_panel.py"
+      - "scripts/validate_bnpb_snapshot_geography.py"
+      - "scripts/validate_climate_disaster_foundation.py"
+      - "scripts/validate_bnpb_disaster_artifact.py"
+      - "tests/test_bnpb_client.py"
+      - "tests/test_bnpb_disaster_panel.py"
+      - "tests/test_bnpb_snapshot_geography.py"
+      - ".github/workflows/climate-disaster-foundation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Validate BPS foundation remains intact
+        run: python scripts/validate_bps_foundation.py
+
+      - name: Validate climate/disaster contracts
+        run: python scripts/validate_climate_disaster_foundation.py
+
+      - name: Run complete unit-test discovery
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+  live-bnpb:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/agent/climate-disaster-foundation') }}
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Harvest master package metadata
+        continue-on-error: true
+        run: >-
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/master-package.json
+          package --id f61d78e5-04c6-4ce8-9acf-e425dadc1f4d
+
+      - name: Harvest total kabupaten events 2010-2024
+        run: >-
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/total-events-2010-2024.json
+          datastore --resource-id 21044ffd-c397-4b3c-acbd-5adaa03d79e3
+
+      - name: Harvest primary event-by-type kabupaten 2024
+        run: >-
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/events-by-type-2024-primary.json
+          datastore --resource-id a4daec53-1119-43ef-b05e-00ec3a4c42a4
+
+      - name: Harvest independent official 2024 cross-check
+        run: >-
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/events-by-type-2024-crosscheck.json
+          datastore --resource-id 5ff9f41f-8312-4b7c-aa18-fdbedac6ee7e
+
+      - name: Harvest affected-by-type kabupaten 2024
+        run: >-
+          python scripts/harvest_bnpb.py --output /tmp/bnpb/affected-by-type-2024.json
+          datastore --resource-id 89eb9dac-a891-477e-b264-2265f72f4e56
+
+      - name: Require exact reviewed BNPB source code-name pairs
+        run: >-
+          python scripts/validate_bnpb_snapshot_geography.py
+          /tmp/bnpb/total-events-2010-2024.json
+          /tmp/bnpb/events-by-type-2024-primary.json
+          /tmp/bnpb/events-by-type-2024-crosscheck.json
+          /tmp/bnpb/affected-by-type-2024.json
+
+      - name: Build conservative Sumatera Barat disaster panel
+        run: >-
+          python scripts/build_bnpb_disaster_panel.py
+          --total-snapshot /tmp/bnpb/total-events-2010-2024.json
+          --detailed-snapshot /tmp/bnpb/events-by-type-2024-primary.json
+          --crosscheck-snapshot /tmp/bnpb/events-by-type-2024-crosscheck.json
+          --affected-snapshot /tmp/bnpb/affected-by-type-2024.json
+          --output-dir /tmp/bnpb/panel
+
+      - name: Validate generated disaster artifact
+        run: python scripts/validate_bnpb_disaster_artifact.py /tmp/bnpb/panel
+
+      - name: Upload credential-free research artifact
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: bnpb-climate-disaster-foundation
+          path: /tmp/bnpb/
+          if-no-files-found: warn
+          retention-days: 14
