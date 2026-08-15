@@ -91,12 +91,13 @@ class BPSCanonicalPanelTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             source, series, qualifications = self._write_fixture(root)
-            rows = list(csv.DictReader(source.open("r", encoding="utf-8", newline="")))
+            with source.open("r", encoding="utf-8", newline="") as handle:
+                rows = list(csv.DictReader(handle))
             row = rows[0]
             row.update(
                 {
-                    "panel_row_id": "grdp:1301:138:0:125:0",
-                    "panel_series_id": "grdp",
+                    "panel_row_id": "real_grdp_growth_regency:1301:138:0:125:0",
+                    "panel_series_id": "real_grdp_growth_regency",
                     "indicator_id": "real_grdp_growth",
                     "bps_var_id": "138",
                     "bps_var_label": "PDRB growth",
@@ -110,7 +111,7 @@ class BPSCanonicalPanelTests(unittest.TestCase):
                 writer.writerow(row)
             series.write_text(
                 "panel_series_id,qualification_id,canonical_promotion_status\n"
-                "grdp,q_grdp,canonical_ready\n",
+                "real_grdp_growth_regency,q_grdp,canonical_ready\n",
                 encoding="utf-8",
             )
             qualifications.write_text(
