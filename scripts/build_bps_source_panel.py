@@ -11,6 +11,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_REGISTRY = ROOT / "data" / "registries" / "bps_panel_series.csv"
+DEFAULT_GEOGRAPHY_MAP = ROOT / "data" / "registries" / "bps_panel_geography_map.csv"
 
 OUTPUT_FIELDS = [
     "panel_row_id",
@@ -79,8 +80,46 @@ def _panel_row_id(series_id: str, row: dict[str, str]) -> str:
     )
 
 
-def build_panel(input_root: Path, registry_path: Path) -> tuple[list[dict[str, str]], dict[str, Any]]:
+def _load_geography_map(path: Path) -> dict[str, dict[str, str]]:
+    rows = read_csv(path)
+    mapping: dict[str, dict[str, str]] = {}
+    for row in rows:
+        source_id = row["bps_vervar_id"]
+        if source_id in mapping:
+            raise ValueError(f"duplicate BPS panel geography mapping for {source_id}")
+        mapping[source_id] = row
+    return mapping
+
+
+def _resolve_geography(source_id: str, period_label: str, mapping: dict[str, dict[str, str]]) -> tuple[str, str]:
+    row = mapping.get(source_id)
+    if row is None:
+        raise ValueError(f"unmapped BPS source geography {source_id}")
+    try:
+        year = int(period_label)
+        start = int(row["applicable_start_year"])
+        end = int(row["applicable_end_year"])
+    except ValueError as exc:
+        raise ValueError(f"non-annual period or invalid geography-map range for {source_id}: {period_label}") from exc
+    if not start <= year <= end:
+        raise ValueError(
+            f"BPS source geography {source_id} is not qualified for panel year {year}; map covers {start}-{end}"
+        )
+    status = (
+        "qualified_current_code"
+        if row["mapping_type"] == "direct_current_code"
+        else "qualified_source_aggregate_alias"
+    )
+    return row["canonical_geography_id"], status
+
+
+def build_panel(
+    input_root: Path,
+    registry_path: Path,
+    geography_map_path: Path = DEFAULT_GEOGRAPHY_MAP,
+) -> tuple[list[dict[str, str]], dict[str, Any]]:
     registry = read_csv(registry_path)
+    geography_map = _load_geography_map(geography_map_path)
     panel_rows: list[dict[str, str]] = []
     series_summary: list[dict[str, Any]] = []
     seen_row_ids: set[str] = set()
@@ -139,6 +178,7 @@ def build_panel(input_root: Path, registry_path: Path) -> tuple[list[dict[str, s
             raise ValueError(f"{series_id}: selected turvar label drift detected: {sorted(selector_labels)}")
 
         counts_by_period: dict[str, int] = {}
+        mapping_statuses: set[str] = set()
         for source_row in selected:
             period_label = source_row["bps_th_label"]
             snapshot = snapshots.get(period_label)
@@ -149,6 +189,11 @@ def build_panel(input_root: Path, registry_path: Path) -> tuple[list[dict[str, s
                 raise ValueError(f"duplicate panel row id {row_id}")
             seen_row_ids.add(row_id)
 
+            canonical_geography_id, mapping_status = _resolve_geography(
+                source_row["bps_vervar_id"], period_label, geography_map
+            )
+            mapping_statuses.add(mapping_status)
+
             row = {field: source_row.get(field, "") for field in OUTPUT_FIELDS}
             row.update(
                 {
@@ -158,8 +203,8 @@ def build_panel(input_root: Path, registry_path: Path) -> tuple[list[dict[str, s
                     "canonical_promotion_status": config["canonical_promotion_status"],
                     "source_snapshot": snapshot[0],
                     "source_snapshot_sha256": snapshot[1],
-                    "canonical_geography_id": "",
-                    "geography_mapping_status": "source_native_unmapped",
+                    "canonical_geography_id": canonical_geography_id,
+                    "geography_mapping_status": mapping_status,
                 }
             )
             panel_rows.append(row)
@@ -174,6 +219,7 @@ def build_panel(input_root: Path, registry_path: Path) -> tuple[list[dict[str, s
                 "periods": sorted(counts_by_period),
                 "rows": len(selected),
                 "rows_by_period": dict(sorted(counts_by_period.items())),
+                "geography_mapping_statuses": sorted(mapping_statuses),
                 "canonical_promotion_status": config["canonical_promotion_status"],
             }
         )
@@ -207,11 +253,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build a selected, provenance-linked BPS source-native panel.")
     parser.add_argument("--input-root", required=True, type=Path)
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
+    parser.add_argument("--geography-map", type=Path, default=DEFAULT_GEOGRAPHY_MAP)
     parser.add_argument("--output-csv", required=True, type=Path)
     parser.add_argument("--output-manifest", required=True, type=Path)
     args = parser.parse_args()
     try:
-        rows, manifest = build_panel(args.input_root, args.registry)
+        rows, manifest = build_panel(args.input_root, args.registry, args.geography_map)
         write_panel(rows, manifest, args.output_csv, args.output_manifest)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
