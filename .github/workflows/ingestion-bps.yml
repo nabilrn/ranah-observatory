@@ -9,9 +9,10 @@ on:
       - "scripts/bps_publication.py"
       - "scripts/harvest_bps.py"
       - "scripts/harvest_bps_publication.py"
+      - "scripts/normalize_bps_dynamic.py"
       - "scripts/validate_bps_foundation.py"
-      - "tests/test_bps_client.py"
-      - "tests/test_bps_publication.py"
+      - "scripts/validate_bps_live_candidates.py"
+      - "tests/test_bps_*.py"
       - "docs/INGESTION_BPS.md"
       - ".github/workflows/ingestion-bps.yml"
   pull_request:
@@ -22,9 +23,10 @@ on:
       - "scripts/bps_publication.py"
       - "scripts/harvest_bps.py"
       - "scripts/harvest_bps_publication.py"
+      - "scripts/normalize_bps_dynamic.py"
       - "scripts/validate_bps_foundation.py"
-      - "tests/test_bps_client.py"
-      - "tests/test_bps_publication.py"
+      - "scripts/validate_bps_live_candidates.py"
+      - "tests/test_bps_*.py"
       - "docs/INGESTION_BPS.md"
       - ".github/workflows/ingestion-bps.yml"
 
@@ -50,6 +52,9 @@ jobs:
 
       - name: Validate BPS registries
         run: python scripts/validate_bps_foundation.py
+
+      - name: Validate BPS live candidates
+        run: python scripts/validate_bps_live_candidates.py
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
