@@ -1,0 +1,95 @@
+name: BPS Structural Expansion Harvest
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/bps-panel-expansion
+    paths:
+      - ".github/workflows/bps-expansion-harvest.yml"
+      - "data/registries/bps_expansion_*.csv"
+      - "scripts/build_bps_expansion_source_panel.py"
+      - "scripts/build_bps_expansion_canonical.py"
+      - "scripts/validate_bps_expansion.py"
+      - "scripts/harvest_bps_series.py"
+      - "scripts/normalize_bps_dynamic.py"
+      - "scripts/bps_client.py"
+
+permissions:
+  contents: read
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Validate expansion contracts
+        run: python scripts/validate_bps_expansion.py
+
+      - name: Run complete offline unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Harvest underemployment 2018-2024
+        run: >-
+          python scripts/harvest_bps_series.py --domain 1300 --var 668 --year-range 2018 2024
+          --output-dir /tmp/bps-expansion/underemployment-var668
+
+      - name: Harvest Gini 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py --domain 1300 --var 83 --year-range 2018 2025
+          --output-dir /tmp/bps-expansion/gini-var83
+
+      - name: Harvest PDRB-by-industry 2018-2023
+        run: >-
+          python scripts/harvest_bps_series.py --domain 1300 --var 282 --year-range 2018 2023
+          --output-dir /tmp/bps-expansion/pdrb-industry-var282
+
+      - name: Harvest rice KSA 2018-2025
+        run: >-
+          python scripts/harvest_bps_series.py --domain 1300 --var 276 --year-range 2018 2025
+          --output-dir /tmp/bps-expansion/rice-var276
+
+      - name: Harvest export values 2018-2023
+        run: >-
+          python scripts/harvest_bps_series.py --domain 1300 --var 463 --year-range 2018 2023
+          --output-dir /tmp/bps-expansion/export-var463
+
+      - name: Harvest SP2020 population anchor
+        run: >-
+          python scripts/harvest_bps_series.py --domain 1300 --var 484 --period 2020
+          --output-dir /tmp/bps-expansion/population-var484
+
+      - name: Build expansion source panel
+        run: >-
+          python scripts/build_bps_expansion_source_panel.py
+          --input-root /tmp/bps-expansion
+          --output-csv /tmp/bps-expansion/bps-expansion-source-panel.csv
+          --output-manifest /tmp/bps-expansion/bps-expansion-source-panel.manifest.json
+
+      - name: Build canonical and held expansion layers
+        run: >-
+          python scripts/build_bps_expansion_canonical.py
+          /tmp/bps-expansion/bps-expansion-source-panel.csv
+          --output-dir /tmp/bps-expansion/canonical
+
+      - name: Upload credential-free expansion artifact
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-structural-expansion
+          path: /tmp/bps-expansion/
+          if-no-files-found: error
+          retention-days: 14
