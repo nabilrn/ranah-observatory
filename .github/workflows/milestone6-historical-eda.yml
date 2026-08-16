@@ -1,40 +1,61 @@
-name: Milestone 6 Historical EDA Closure
+name: Milestone 6 Historical EDA Audit
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - agent/milestone6-historical-eda
+  pull_request:
     paths:
       - ".github/workflows/milestone6-historical-eda.yml"
       - "scripts/build_milestone6_historical_eda.py"
       - "scripts/audit_milestone6_historical_eda.py"
       - "tests/test_milestone6_historical_eda.py"
       - "docs/MILESTONE6_HISTORICAL_EDA.md"
+      - "data/analysis/historical/**"
+      - "data/manifests/milestone6_historical_eda*.json"
+      - "data/registries/historical_geography_events.csv"
+      - "data/registries/historical_source_inventory.csv"
+      - "data/registries/geographies.csv"
+      - "data/processed/bps/historical_population_source_native.csv"
+      - "data/processed/bps/panel/bps-canonical-observations.csv"
+      - "data/processed/bps/panel/bps-canonical-panel.manifest.json"
+      - "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv"
+      - "data/processed/climate/rainfall/chirps-rainfall-materialization.manifest.json"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone6-historical-eda.yml"
+      - "scripts/build_milestone6_historical_eda.py"
+      - "scripts/audit_milestone6_historical_eda.py"
+      - "tests/test_milestone6_historical_eda.py"
+      - "docs/MILESTONE6_HISTORICAL_EDA.md"
+      - "data/analysis/historical/**"
+      - "data/manifests/milestone6_historical_eda*.json"
+      - "data/registries/historical_geography_events.csv"
+      - "data/registries/historical_source_inventory.csv"
+      - "data/registries/geographies.csv"
+      - "data/processed/bps/historical_population_source_native.csv"
+      - "data/processed/bps/panel/bps-canonical-observations.csv"
+      - "data/processed/bps/panel/bps-canonical-panel.manifest.json"
+      - "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv"
+      - "data/processed/climate/rainfall/chirps-rainfall-materialization.manifest.json"
 
 permissions:
-  contents: write
-
-concurrency:
-  group: milestone6-historical-eda-closure
-  cancel-in-progress: true
+  contents: read
 
 jobs:
-  close:
+  audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Milestone 6 branch
+      - name: Check out repository
         uses: actions/checkout@v4
         with:
-          ref: agent/milestone6-historical-eda
-          fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Build segmented historical EDA
+      - name: Rebuild segmented historical EDA from frozen evidence
         run: python scripts/build_milestone6_historical_eda.py
 
       - name: Enforce Milestone 6 completion audit
@@ -49,21 +70,9 @@ jobs:
       - name: Revalidate repository data foundation
         run: python scripts/validate_data_foundation.py
 
-      - name: Freeze generated EDA artifacts
-        shell: bash
+      - name: Require committed Milestone 6 artifacts to be current
         run: |
-          set -euo pipefail
-          paths=(
-            data/analysis/historical
-            data/manifests/milestone6_historical_eda.json
+          git diff --exit-code -- \
+            data/analysis/historical \
+            data/manifests/milestone6_historical_eda.json \
             data/manifests/milestone6_historical_eda_audit.json
-          )
-          if [ -z "$(git status --porcelain -- "${paths[@]}")" ]; then
-            echo "Milestone 6 artifacts are already byte-identical."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${paths[@]}"
-          git commit -m "data: freeze milestone6 exploratory historical analysis"
-          git push origin HEAD:agent/milestone6-historical-eda
