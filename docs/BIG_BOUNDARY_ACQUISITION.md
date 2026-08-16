@@ -29,12 +29,14 @@ The area layer is expected to expose:
 - EPSG:4326 output;
 - JSON / GeoJSON query support;
 - `KDBBPS` — BPS kabupaten/kota code;
-- `KDPBPS` — BPS province code;
+- `KDPBPS` — source BPS province-code field retained for diagnostics;
 - `WADMKK` — kabupaten/kota name;
 - `WADMPR` — province name;
 - source geometry and metadata fields.
 
-For Sumatera Barat the query is restricted to BPS province code `13` and requests geometry in EPSG:4326.
+The first live probe established that filtering this service with `KDPBPS='13'` returned an empty feature collection even though the layer and field exist. The acquisition rule therefore selects records whose `KDBBPS` begins with `13`, then validates the complete returned code set against the canonical registry and requires `WADMPR` to identify Sumatera Barat. The source-native `KDPBPS` values are retained in the probe manifest as diagnostics rather than assumed to be the reliable selection key.
+
+Geometry is requested in EPSG:4326.
 
 ## Canonical mapping rule
 
@@ -65,6 +67,7 @@ The probe records:
 - source edition signal;
 - source response SHA-256;
 - exact returned BPS-code footprint;
+- source-native province-code and province-name values;
 - feature count;
 - geometry type/non-empty checks;
 - coordinate-pair count;
