@@ -1,0 +1,4 @@
+numpy>=2,<3
+rasterio>=1.4,<2
+shapely>=2,<3
+pyproj>=3.6,<4
