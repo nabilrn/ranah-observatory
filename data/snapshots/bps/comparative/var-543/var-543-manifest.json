@@ -1,0 +1,31 @@
+{
+  "domain": "0000",
+  "language": "ind",
+  "normalized_rows": 156,
+  "requested_period_labels": [
+    "2024",
+    "2025"
+  ],
+  "retrieved_at_utc": "2026-08-16T13:46:26+00:00",
+  "schema": "ranah-observatory/bps-source-series/v1",
+  "snapshots": [
+    {
+      "checksum": "var-543-2024.json.sha256",
+      "missing_combinations": 39,
+      "observed_values": 78,
+      "period_id": "124",
+      "period_label": "2024",
+      "snapshot": "var-543-2024.json"
+    },
+    {
+      "checksum": "var-543-2025.json.sha256",
+      "missing_combinations": 39,
+      "observed_values": 78,
+      "period_id": "125",
+      "period_label": "2025",
+      "snapshot": "var-543-2025.json"
+    }
+  ],
+  "source_id": "bps_webapi",
+  "var_id": 543
+}
