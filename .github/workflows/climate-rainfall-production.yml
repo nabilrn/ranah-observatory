@@ -38,7 +38,7 @@ jobs:
         run: python -m unittest tests.test_chirps_rainfall_production -v
 
       - name: Run full 1981-2025 CHIRPS/BIG production dry-run
-        run: python scripts/build_chirps_rainfall_production.py --output-dir artifacts/chirps-rainfall-production
+        run: python -m scripts.build_chirps_rainfall_production --output-dir artifacts/chirps-rainfall-production
 
       - name: Enforce production dry-run gates
         run: |
