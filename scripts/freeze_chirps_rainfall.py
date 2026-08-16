@@ -4,7 +4,6 @@ import argparse
 import csv
 import hashlib
 import json
-import shutil
 from pathlib import Path
 from typing import Any
 
@@ -12,6 +11,19 @@ from scripts.materialize_chirps_rainfall import PROVENANCE_FIELDS, read_csv
 
 CANDIDATE_PREFIX = "artifact://chirps-annual-rainfall-canonical-candidate/chirps-source-contract.csv#year="
 REPOSITORY_PREFIX = "repo://data/processed/climate/rainfall/chirps-source-contract.csv#year="
+
+FREEZE_MANIFEST_FIELDS = {
+    "freeze_status",
+    "canonical_repository_path",
+    "provenance_locator_scheme",
+    "frozen_from_candidate_manifest_sha256",
+    "candidate_provenance_sha256",
+}
+EPHEMERAL_MANIFEST_FIELDS = {"retrieved_at", "provenance_sha256"}
+
+
+def sha256_bytes(payload: bytes) -> str:
+    return hashlib.sha256(payload).hexdigest()
 
 
 def write_csv(path: Path, fields: list[str], rows: list[dict[str, Any]]) -> str:
@@ -49,6 +61,95 @@ def rewrite_provenance(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     return rewritten
 
 
+def _provenance_semantics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    semantic_fields = [field for field in PROVENANCE_FIELDS if field != "retrieved_at"]
+    normalized = [
+        {field: row.get(field, "") for field in semantic_fields}
+        for row in rows
+    ]
+    normalized.sort(key=lambda row: row["provenance_id"])
+    return normalized
+
+
+def provenance_equivalent_ignoring_retrieved_at(
+    existing_rows: list[dict[str, str]],
+    candidate_rows: list[dict[str, str]],
+) -> bool:
+    """Return true only when provenance differs, if at all, by retrieval time."""
+    return _provenance_semantics(existing_rows) == _provenance_semantics(candidate_rows)
+
+
+def _manifest_semantics(manifest: dict[str, Any]) -> dict[str, Any]:
+    ignored = FREEZE_MANIFEST_FIELDS | EPHEMERAL_MANIFEST_FIELDS
+    return {key: value for key, value in manifest.items() if key not in ignored}
+
+
+def manifests_semantically_equivalent(
+    candidate_manifest: dict[str, Any],
+    frozen_manifest: dict[str, Any],
+) -> bool:
+    """Compare scientific/materialization semantics, excluding freeze bookkeeping."""
+    return _manifest_semantics(candidate_manifest) == _manifest_semantics(frozen_manifest)
+
+
+def existing_repository_baseline_reusable(
+    *,
+    candidate_manifest: dict[str, Any],
+    observations_bytes: bytes,
+    source_contract_bytes: bytes,
+    frozen_provenance: list[dict[str, str]],
+    frozen_observations_path: Path,
+    frozen_provenance_path: Path,
+    frozen_contract_path: Path,
+    frozen_manifest_path: Path,
+) -> dict[str, Any] | None:
+    """Reuse an already frozen baseline when a replay changes retrieval time only.
+
+    This is deliberately conservative. Observation bytes and source-contract bytes
+    must be identical. Every provenance field except ``retrieved_at`` must be
+    identical after candidate locators are rewritten to repository scope. The
+    frozen manifest must also be internally checksum-valid and semantically
+    equivalent to the new candidate once freeze-only and retrieval-time fields
+    are excluded.
+    """
+    paths = (
+        frozen_observations_path,
+        frozen_provenance_path,
+        frozen_contract_path,
+        frozen_manifest_path,
+    )
+    if not all(path.is_file() for path in paths):
+        return None
+
+    try:
+        existing_manifest = json.loads(frozen_manifest_path.read_text(encoding="utf-8"))
+        existing_observations_bytes = frozen_observations_path.read_bytes()
+        existing_contract_bytes = frozen_contract_path.read_bytes()
+        existing_provenance_bytes = frozen_provenance_path.read_bytes()
+        existing_provenance = read_csv(frozen_provenance_path)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, KeyError, csv.Error):
+        return None
+
+    if existing_manifest.get("freeze_status") != "repository_baseline":
+        return None
+    if existing_manifest.get("observations_sha256") != sha256_bytes(existing_observations_bytes):
+        return None
+    if existing_manifest.get("source_contract_sha256") != sha256_bytes(existing_contract_bytes):
+        return None
+    if existing_manifest.get("provenance_sha256") != sha256_bytes(existing_provenance_bytes):
+        return None
+    if existing_observations_bytes != observations_bytes:
+        return None
+    if existing_contract_bytes != source_contract_bytes:
+        return None
+    if not provenance_equivalent_ignoring_retrieved_at(existing_provenance, frozen_provenance):
+        return None
+    if not manifests_semantically_equivalent(candidate_manifest, existing_manifest):
+        return None
+
+    return existing_manifest
+
+
 def freeze(candidate_dir: Path, output_dir: Path) -> dict[str, Any]:
     candidate_manifest_path = candidate_dir / "chirps-rainfall-materialization.manifest.json"
     observations_path = candidate_dir / "chirps-annual-rainfall-observations.csv"
@@ -79,8 +180,8 @@ def freeze(candidate_dir: Path, output_dir: Path) -> dict[str, Any]:
 
     observations_bytes = observations_path.read_bytes()
     source_contract_bytes = source_contract_path.read_bytes()
-    observations_sha = hashlib.sha256(observations_bytes).hexdigest()
-    source_contract_sha = hashlib.sha256(source_contract_bytes).hexdigest()
+    observations_sha = sha256_bytes(observations_bytes)
+    source_contract_sha = sha256_bytes(source_contract_bytes)
     if candidate_manifest.get("observations_sha256") != observations_sha:
         raise ValueError("candidate observation checksum mismatch")
     if candidate_manifest.get("source_contract_sha256") != source_contract_sha:
@@ -95,6 +196,19 @@ def freeze(candidate_dir: Path, output_dir: Path) -> dict[str, Any]:
     frozen_contract_path = output_dir / "chirps-source-contract.csv"
     frozen_manifest_path = output_dir / "chirps-rainfall-materialization.manifest.json"
 
+    reusable_manifest = existing_repository_baseline_reusable(
+        candidate_manifest=candidate_manifest,
+        observations_bytes=observations_bytes,
+        source_contract_bytes=source_contract_bytes,
+        frozen_provenance=frozen_provenance,
+        frozen_observations_path=frozen_observations_path,
+        frozen_provenance_path=frozen_provenance_path,
+        frozen_contract_path=frozen_contract_path,
+        frozen_manifest_path=frozen_manifest_path,
+    )
+    if reusable_manifest is not None:
+        return reusable_manifest
+
     frozen_observations_path.write_bytes(observations_bytes)
     frozen_contract_path.write_bytes(source_contract_bytes)
     frozen_provenance_sha = write_csv(frozen_provenance_path, PROVENANCE_FIELDS, frozen_provenance)
@@ -104,7 +218,7 @@ def freeze(candidate_dir: Path, output_dir: Path) -> dict[str, Any]:
         "freeze_status": "repository_baseline",
         "canonical_repository_path": "data/processed/climate/rainfall",
         "provenance_locator_scheme": REPOSITORY_PREFIX + "YYYY",
-        "frozen_from_candidate_manifest_sha256": hashlib.sha256(candidate_manifest_bytes).hexdigest(),
+        "frozen_from_candidate_manifest_sha256": sha256_bytes(candidate_manifest_bytes),
         "candidate_provenance_sha256": candidate_manifest.get("provenance_sha256", ""),
         "provenance_sha256": frozen_provenance_sha,
         "observations_sha256": observations_sha,
