@@ -1,0 +1,41 @@
+{
+  "boundary_policy": "Use the current 38-province footprint only for 2024-2025; do not silently backcast the four post-DOB Papua provinces or split pre-2024 Papua/Papua Barat observations.",
+  "comparability_regime": "bps_current_38_province_2024plus",
+  "criterion": "a comparative Indonesian panel where feasible",
+  "files": {
+    "long": "data/analysis/comparative/bps-current38-province-panel-long.csv",
+    "provenance": "data/analysis/comparative/bps-current38-province-panel-provenance.csv",
+    "wide": "data/analysis/comparative/bps-current38-province-panel-wide.csv"
+  },
+  "geography_count": 38,
+  "geography_level": "province",
+  "indicator_count": 6,
+  "indicator_ids": [
+    "poverty_rate",
+    "gini_ratio",
+    "unemployment_rate",
+    "underemployment_rate",
+    "real_grdp_per_capita",
+    "neet_rate"
+  ],
+  "milestone5_complete": true,
+  "panel_observation_count": 456,
+  "panel_provenance_count": 12,
+  "schema": "ranah-observatory/milestone5-comparative-panel/v1",
+  "source_authority": "Badan Pusat Statistik (BPS-Statistics Indonesia)",
+  "source_domain": "0000",
+  "units": {
+    "gini_ratio": "index",
+    "neet_rate": "percent",
+    "poverty_rate": "percent",
+    "real_grdp_per_capita": "million_rupiah_per_person_constant_2010",
+    "underemployment_rate": "percent",
+    "unemployment_rate": "percent"
+  },
+  "west_sumatra_complete": true,
+  "wide_row_count": 76,
+  "years": [
+    2024,
+    2025
+  ]
+}

@@ -50,10 +50,31 @@ class DataFoundationTests(unittest.TestCase):
             "r", encoding="utf-8", newline=""
         ) as handle:
             rows = list(csv.DictReader(handle))
-        actual = {row["bps_code"].strip() for row in rows if row["bps_code"].strip()}
+        current_sumbar = [
+            row
+            for row in rows
+            if row["status"].strip() == "current"
+            and (row["geography_id"].strip() == "idn.13" or row["parent_geography_id"].strip() == "idn.13")
+        ]
+        actual = {row["bps_code"].strip() for row in current_sumbar if row["bps_code"].strip()}
         self.assertEqual(expected, actual)
-        current_seed = [row for row in rows if row["status"].strip() == "current"]
-        self.assertEqual(21, len(current_seed))
+        self.assertEqual(20, len(current_sumbar))
+
+    def test_current_indonesia_province_footprint_has_38_bps_codes(self) -> None:
+        with (ROOT / "data" / "registries" / "geographies.csv").open(
+            "r", encoding="utf-8", newline=""
+        ) as handle:
+            rows = list(csv.DictReader(handle))
+        current_provinces = [
+            row
+            for row in rows
+            if row["status"].strip() == "current"
+            and row["geography_level"].strip() == "province"
+            and row["parent_geography_id"].strip() == "idn"
+        ]
+        self.assertEqual(38, len(current_provinces))
+        self.assertEqual(38, len({row["bps_code"].strip() for row in current_provinces}))
+        self.assertIn("13", {row["bps_code"].strip() for row in current_provinces})
 
     def test_indicator_registry_covers_all_domains(self) -> None:
         with (ROOT / "data" / "registries" / "indicators.csv").open(

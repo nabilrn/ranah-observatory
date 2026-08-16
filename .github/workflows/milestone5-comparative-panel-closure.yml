@@ -1,0 +1,84 @@
+name: Milestone 5 Comparative Panel Requalification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  requalify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Re-harvest 2024-2025 national BPS series
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf artifacts/milestone5-requalification
+          for var in 192 98 543 1181 288 1186; do
+            python scripts/harvest_bps_series.py \
+              --domain 0000 \
+              --var "${var}" \
+              --year-range 2024 2025 \
+              --output-dir "$GITHUB_WORKSPACE/artifacts/milestone5-requalification/source/var-${var}"
+          done
+
+      - name: Rebuild current-38 comparative panel
+        run: |
+          python scripts/materialize_bps_comparative_panel.py \
+            --raw-root "$GITHUB_WORKSPACE/artifacts/milestone5-requalification/source" \
+            --output-dir "$GITHUB_WORKSPACE/artifacts/milestone5-requalification/panel"
+
+      - name: Enforce exact regenerated panel contract
+        run: |
+          python scripts/audit_milestone5_comparative_panel.py \
+            --analysis-dir "$GITHUB_WORKSPACE/artifacts/milestone5-requalification/panel" \
+            --output /tmp/milestone5-requalification-audit.json \
+            --require-complete
+
+      - name: Require regenerated observations to match frozen panel
+        run: |
+          cmp \
+            artifacts/milestone5-requalification/panel/bps-current38-province-panel-long.csv \
+            data/analysis/comparative/bps-current38-province-panel-long.csv
+          cmp \
+            artifacts/milestone5-requalification/panel/bps-current38-province-panel-wide.csv \
+            data/analysis/comparative/bps-current38-province-panel-wide.csv
+
+      - name: Require semantic source identities to match frozen evidence
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          root = Path('.').resolve()
+          generated = root / 'artifacts/milestone5-requalification/panel/bps-current38-province-panel-provenance.csv'
+          frozen = root / 'data/analysis/comparative/bps-current38-province-panel-provenance.csv'
+
+          def semantic_map(path: Path):
+              with path.open('r', encoding='utf-8', newline='') as handle:
+                  rows = list(csv.DictReader(handle))
+              return {
+                  (row['source_series_id'], row['year']): row['semantic_result_sha256']
+                  for row in rows
+              }
+
+          if semantic_map(generated) != semantic_map(frozen):
+              raise SystemExit('semantic BPS source identity drift detected')
+          PY

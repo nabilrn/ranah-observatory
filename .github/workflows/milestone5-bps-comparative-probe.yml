@@ -1,0 +1,33 @@
+name: Milestone 5 BPS Comparative Probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Probe national BPS province-panel candidates
+        run: |
+          mkdir -p artifacts/milestone5
+          python scripts/probe_bps_comparative_panel.py \
+            --output artifacts/milestone5/bps-comparative-probe.json

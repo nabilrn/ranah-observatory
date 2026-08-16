@@ -1,7 +1,44 @@
 geography_id,geography_level,canonical_name,bps_code,parent_geography_id,valid_from,valid_to,status,source_id,notes
 idn,country,Indonesia,,,,,current,bps_webapi,Parent country record for seeded hierarchy
+idn.11,province,Aceh,11,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.12,province,Sumatera Utara,12,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
 idn.13,province,Sumatera Barat,13,idn,,,current,bps_master_wilayah_sumbar_2025,Current BPS statistical work-area code; historical boundary validity not yet asserted
 idn.13.h1958,province,Sumatera Barat (UU 61/1958),,idn,1958-07-31,,historical,bpk_legal_database,Source-era province version anchored to UU No. 61 Tahun 1958; no end date or continuity into the current boundary is asserted without later boundary evidence
+idn.14,province,Riau,14,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.15,province,Jambi,15,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.16,province,Sumatera Selatan,16,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.17,province,Bengkulu,17,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.18,province,Lampung,18,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.19,province,Kepulauan Bangka Belitung,19,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.21,province,Kepulauan Riau,21,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.31,province,DKI Jakarta,31,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.32,province,Jawa Barat,32,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.33,province,Jawa Tengah,33,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.34,province,DI Yogyakarta,34,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.35,province,Jawa Timur,35,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.36,province,Banten,36,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.51,province,Bali,51,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.52,province,Nusa Tenggara Barat,52,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.53,province,Nusa Tenggara Timur,53,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.61,province,Kalimantan Barat,61,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.62,province,Kalimantan Tengah,62,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.63,province,Kalimantan Selatan,63,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.64,province,Kalimantan Timur,64,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.65,province,Kalimantan Utara,65,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.71,province,Sulawesi Utara,71,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.72,province,Sulawesi Tengah,72,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.73,province,Sulawesi Selatan,73,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.74,province,Sulawesi Tenggara,74,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.75,province,Gorontalo,75,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.76,province,Sulawesi Barat,76,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.81,province,Maluku,81,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.82,province,Maluku Utara,82,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.91,province,Papua Barat,91,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.92,province,Papua Barat Daya,92,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.94,province,Papua,94,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.95,province,Papua Selatan,95,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.96,province,Papua Tengah,96,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
+idn.97,province,Papua Pegunungan,97,idn,,,current,bps_webapi,Current BPS 38-province Dynamic Data footprint observed in Milestone 5 probe; no historical continuity before the current province structure is asserted
 idn.13.1301,regency,Kepulauan Mentawai,1301,idn.13,,,current,bps_master_wilayah_sumbar_2025,Current BPS code; historical formation date deferred
 idn.13.1302,regency,Pesisir Selatan,1302,idn.13,,,current,bps_master_wilayah_sumbar_2025,Current BPS code; historical formation date deferred
 idn.13.1303,regency,Solok,1303,idn.13,,,current,bps_master_wilayah_sumbar_2025,Current BPS code; historical formation date deferred

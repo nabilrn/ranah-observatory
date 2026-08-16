@@ -1,0 +1,51 @@
+name: Milestone 5 Comparative Panel Audit
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone5-comparative-panel-audit.yml"
+      - "data/analysis/comparative/**"
+      - "data/snapshots/bps/comparative/**"
+      - "data/manifests/milestone5_comparative_panel_audit.json"
+      - "data/registries/bps_comparative_panel_series.csv"
+      - "data/registries/geographies.csv"
+      - "scripts/audit_milestone5_comparative_panel.py"
+      - "scripts/materialize_bps_comparative_panel.py"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone5-comparative-panel-audit.yml"
+      - "data/analysis/comparative/**"
+      - "data/snapshots/bps/comparative/**"
+      - "data/manifests/milestone5_comparative_panel_audit.json"
+      - "data/registries/bps_comparative_panel_series.csv"
+      - "data/registries/geographies.csv"
+      - "scripts/audit_milestone5_comparative_panel.py"
+      - "scripts/materialize_bps_comparative_panel.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild Milestone 5 audit report
+        run: |
+          python scripts/audit_milestone5_comparative_panel.py \
+            --output /tmp/milestone5_comparative_panel_audit.json \
+            --require-complete
+
+      - name: Require committed audit snapshot to be current
+        run: cmp /tmp/milestone5_comparative_panel_audit.json data/manifests/milestone5_comparative_panel_audit.json

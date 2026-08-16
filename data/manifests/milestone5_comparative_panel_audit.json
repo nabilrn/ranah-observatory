@@ -1,0 +1,25 @@
+{
+  "comparability_regime": "bps_current_38_province_2024plus",
+  "criterion": "a comparative Indonesian panel where feasible",
+  "errors": [],
+  "geography_count": 38,
+  "indicator_count": 6,
+  "indicator_ids": [
+    "gini_ratio",
+    "neet_rate",
+    "poverty_rate",
+    "real_grdp_per_capita",
+    "underemployment_rate",
+    "unemployment_rate"
+  ],
+  "milestone5_complete": true,
+  "panel_observation_count": 456,
+  "panel_provenance_count": 12,
+  "schema": "ranah-observatory/milestone5-comparative-panel-audit/v1",
+  "west_sumatra_complete": true,
+  "wide_row_count": 76,
+  "years": [
+    2024,
+    2025
+  ]
+}
