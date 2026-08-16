@@ -139,7 +139,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
         )
 
     count = len(qualified_ids)
-    report: dict[str, Any] = {
+    return {
         "schema": "ranah-observatory/milestone4-indicator-inventory/v1",
         "criterion": "40-60 high-value indicators with provenance",
         "minimum_indicator_count": MIN_INDICATORS,
@@ -154,14 +154,12 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
         "observation_files": observation_files,
         "provenance_files": provenance_files,
         "duplicate_observation_ids": sorted(set(duplicate_observation_ids)),
+        "missing_observation_ids": missing_observation_ids,
         "unresolved_provenance": unresolved_provenance,
         "unregistered_observed_indicator_ids": sorted(
             indicator_id for indicator_id, entry in by_indicator.items() if indicator_id and not entry["registered"]
         ),
     }
-    if missing_observation_ids:
-        report["missing_observation_ids"] = missing_observation_ids
-    return report
 
 
 def main() -> int:
@@ -180,7 +178,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
-    if report["duplicate_observation_ids"] or report.get("missing_observation_ids", []) or report["unresolved_provenance"]:
+    if report["duplicate_observation_ids"] or report["missing_observation_ids"] or report["unresolved_provenance"]:
         return 2
     if args.require_complete and not report["milestone4_complete"]:
         return 3
