@@ -8,6 +8,7 @@ on:
       - "data/registries/bps_milestone4_batch1_series.csv"
       - "scripts/extend_milestone4_indicator_registry.py"
       - "scripts/materialize_bps_milestone4_batch1.py"
+      - "scripts/patch_milestone4_road_share.py"
       - "scripts/audit_milestone4_indicators.py"
       - ".github/workflows/milestone4-bps-closure-batch.yml"
   workflow_dispatch:
@@ -40,102 +41,14 @@ jobs:
         run: test -n "$BPS_API_KEY"
 
       - name: Harden zero-denominator road-share semantics
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          path = Path('scripts/materialize_bps_milestone4_batch1.py')
-          text = path.read_text(encoding='utf-8')
-
-          def replace_once(old: str, new: str) -> None:
-              global text
-              if old in text:
-                  text = text.replace(old, new, 1)
-              elif new not in text:
-                  raise SystemExit(f'expected materializer patch anchor not found: {old[:80]!r}')
-
-          replace_once(
-              'EXPECTED_BATCH_OBSERVATIONS = 417',
-              'EXPECTED_BATCH_OBSERVATIONS = 415',
-          )
-          replace_once(
-              'def transformed_value(config: dict[str, str], rows_by_turvar: dict[str, dict[str, str]]) -> tuple[Decimal, str]:',
-              'def transformed_value(config: dict[str, str], rows_by_turvar: dict[str, dict[str, str]]) -> tuple[Decimal | None, str]:',
-          )
-          replace_once(
-              '''        denominator = sum((part for _, part in parts), Decimal("0"))
-        if denominator <= 0:
-            raise ValueError(f"{config['series_id']}: non-positive road-length denominator")
-        value = (numerator / denominator * Decimal("100")).quantize(Decimal("0.000001"))
-        detail = (
-            f"numerator={selected}:{decimal_text(numerator)}; denominator_components="
-            + "|".join(f"{tid}:{decimal_text(part)}" for tid, part in parts)
-        )''',
-              '''        denominator = sum((part for _, part in parts), Decimal("0"))
-        detail = (
-            f"numerator={selected}:{decimal_text(numerator)}; denominator_components="
-            + "|".join(f"{tid}:{decimal_text(part)}" for tid, part in parts)
-        )
-        if denominator < 0:
-            raise ValueError(f"{config['series_id']}: negative road-length denominator")
-        if denominator == 0:
-            return None, detail + "; undefined_zero_denominator=true"
-        value = (numerator / denominator * Decimal("100")).quantize(Decimal("0.000001"))''',
-          )
-          replace_once(
-              '''        produced = 0
-        for code in sorted(actual_codes):
-            geography_id = geo[code]
-            value, transform_detail = transformed_value(config, grouped[code])
-            observation_id = stable_id(''',
-              '''        produced = 0
-        undefined_codes: list[str] = []
-        for code in sorted(actual_codes):
-            geography_id = geo[code]
-            value, transform_detail = transformed_value(config, grouped[code])
-            if value is None:
-                undefined_codes.append(code)
-                continue
-            observation_id = stable_id(''',
-          )
-          replace_once(
-              '''        if produced != expected_count:
-            raise ValueError(f"{config['series_id']}: produced {produced} rows instead of {expected_count}")
-        series_summary.append({''',
-              '''        expected_produced = expected_count
-        if config["series_id"] == "m4_road_good_2024":
-            expected_undefined = {"1374", "1375"}
-            if set(undefined_codes) != expected_undefined:
-                raise ValueError(
-                    f"{config['series_id']}: undefined geography set drifted: {sorted(undefined_codes)}"
-                )
-            expected_produced = 17
-        elif undefined_codes:
-            raise ValueError(
-                f"{config['series_id']}: unexpected undefined geography values: {sorted(undefined_codes)}"
-            )
-        if produced != expected_produced:
-            raise ValueError(
-                f"{config['series_id']}: produced {produced} rows instead of {expected_produced}"
-            )
-        series_summary.append({''',
-          )
-          replace_once(
-              '''            "missing_current_geographies": sorted(EXPECTED_CODES - actual_codes),
-        })''',
-              '''            "missing_current_geographies": sorted(EXPECTED_CODES - actual_codes),
-            "undefined_current_geographies": sorted(undefined_codes),
-        })''',
-          )
-
-          path.write_text(text, encoding='utf-8')
-          PY
+        run: python scripts/patch_milestone4_road_share.py
 
       - name: Compile closure tooling
         run: >-
           python -m py_compile
           scripts/extend_milestone4_indicator_registry.py
           scripts/materialize_bps_milestone4_batch1.py
+          scripts/patch_milestone4_road_share.py
           scripts/audit_milestone4_indicators.py
 
       - name: Extend indicator registry with reviewed closure indicators
