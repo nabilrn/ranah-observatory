@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from canonical_collision import existing_canonical_collisions
 from validate_bps_population_growth_publication import read_csv, validate_source_contract
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,35 +50,6 @@ def _write_csv(path: Path, fields: list[str], rows: list[dict[str, Any]]) -> str
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def _existing_collision_keys(output_dir: Path) -> tuple[set[str], set[tuple[str, str, str, str]]]:
-    observation_ids: set[str] = set()
-    semantic_keys: set[tuple[str, str, str, str]] = set()
-    for path in (ROOT / "data" / "processed").rglob("*.csv"):
-        if output_dir in path.parents:
-            continue
-        try:
-            with path.open("r", encoding="utf-8", newline="") as handle:
-                reader = csv.DictReader(handle)
-                fields = set(reader.fieldnames or [])
-                if not {"observation_id", "indicator_id", "geography_id", "time_start"}.issubset(fields):
-                    continue
-                for row in reader:
-                    oid = (row.get("observation_id") or "").strip()
-                    if oid:
-                        observation_ids.add(oid)
-                    key = (
-                        (row.get("indicator_id") or "").strip(),
-                        (row.get("geography_id") or "").strip(),
-                        (row.get("time_start") or "").strip(),
-                        (row.get("time_end") or "").strip(),
-                    )
-                    if all(key[:3]):
-                        semantic_keys.add(key)
-        except (OSError, UnicodeDecodeError, csv.Error):
-            continue
-    return observation_ids, semantic_keys
-
-
 def build(source_path: Path, geography_path: Path, output_dir: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     source_rows = read_csv(source_path)
     validation = validate_source_contract(source_rows, read_csv(geography_path))
@@ -105,7 +77,9 @@ def build(source_path: Path, geography_path: Path, output_dir: Path) -> tuple[li
         ),
     }]
 
-    existing_ids, existing_keys = _existing_collision_keys(output_dir)
+    existing_ids, existing_keys = existing_canonical_collisions(
+        ROOT / "data" / "processed", output_dir
+    )
     observations: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
     seen_keys: set[tuple[str, str, str, str]] = set()
