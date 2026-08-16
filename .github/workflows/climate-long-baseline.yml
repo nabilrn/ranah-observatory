@@ -1,0 +1,57 @@
+name: Climate long baseline
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/probe_chirps_v3.py"
+      - "scripts/validate_climate_long_baseline.py"
+      - "tests/test_chirps_v3_probe.py"
+      - ".github/workflows/climate-long-baseline.yml"
+      - "data/registries/climate_sources.csv"
+      - "data/registries/indicators.csv"
+      - "catalog/data-catalog.csv"
+      - "docs/CLIMATE_LONG_BASELINE.md"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate climate source contracts
+        run: python scripts/validate_climate_long_baseline.py
+
+      - name: Run CHIRPS parser tests
+        run: python -m unittest tests.test_chirps_v3_probe -v
+
+      - name: Probe CHIRPS v3 final monthly COG lane
+        run: python scripts/probe_chirps_v3.py --output chirps_v3_probe.json
+
+      - name: Enforce source qualification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path("chirps_v3_probe.json").read_text(encoding="utf-8"))
+          conclusions = payload["conclusions"]
+          assert conclusions["credential_free_machine_readable_access"], payload
+          assert conclusions["stable_monthly_coverage_1981_through_2025"], payload
+          assert conclusions["range_read_transport_suitable_for_spatial_subsetting"], payload
+          assert conclusions["eligible_as_rainfall_model_estimate_candidate"], payload
+          assert not conclusions["eligible_as_observed_station_data"], payload
+          assert not conclusions["daily_extreme_rainfall_indicator_qualified_by_this_probe"], payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chirps-v3-probe
+          path: chirps_v3_probe.json
