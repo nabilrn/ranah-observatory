@@ -10,8 +10,9 @@ from typing import Any
 
 from bps_client import BPSApiError, BPSClient
 from harvest_bps_series import harvest_series
+from normalize_bps_dynamic import BPSDynamicNormalizationError
 
-# Bounded, high-value candidates for Milestone 4.  These are probes only: a
+# Bounded, high-value candidates for Milestone 4. These are probes only: a
 # successful transport result never implies canonical qualification.
 CANDIDATES: tuple[tuple[int, str], ...] = (
     (512, "urban_population_share"),
@@ -87,7 +88,11 @@ def probe(*, api_key: str, domain: str, output_dir: Path) -> dict[str, Any]:
             )
             item["status"] = "harvested_latest_period"
             item["normalized_rows"] = manifest["normalized_rows"]
-        except (BPSApiError, OSError, ValueError) as exc:
+        except (BPSApiError, BPSDynamicNormalizationError, OSError, ValueError) as exc:
+            # Discovery is deliberately fail-soft per candidate. A variable may
+            # exist in BPS metadata while its latest Dynamic Data payload is
+            # empty or uses a response shape that cannot be normalized safely.
+            item["error_type"] = type(exc).__name__
             item["error"] = str(exc)
         results.append(item)
 
@@ -98,6 +103,7 @@ def probe(*, api_key: str, domain: str, output_dir: Path) -> dict[str, Any]:
         "domain": domain,
         "candidate_count": len(results),
         "successful_probe_count": len(successful),
+        "failed_probe_count": len(results) - len(successful),
         "canonical_promotion_performed": False,
         "results": results,
     }
@@ -119,7 +125,7 @@ def main() -> int:
         return 2
     try:
         payload = probe(api_key=args.api_key, domain=str(args.domain), output_dir=args.output_dir)
-    except (BPSApiError, OSError, ValueError) as exc:
+    except (BPSApiError, BPSDynamicNormalizationError, OSError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     print(json.dumps(payload, ensure_ascii=False, indent=2))
