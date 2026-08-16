@@ -1,0 +1,13 @@
+indicator_id,bps_var_id,expected_concept,canonical_unit,candidate_role,qualification_status,notes
+poverty_rate,192,Persentase Penduduk Miskin Menurut Provinsi,percent,core_annual_candidate,probe_required,Official BPS SDG/national-domain province candidate; preserve reference-month semantics.
+gini_ratio,98,Gini Rasio,index_0_1,core_annual_candidate,probe_required,National-domain Gini candidate; inspect urban/rural or other derived dimensions before selection.
+unemployment_rate,543,Tingkat Pengangguran Terbuka Menurut Provinsi,percent,core_annual_candidate,probe_required,National-domain province candidate; select and preserve Sakernas reference period/subperiod.
+underemployment_rate,1181,Tingkat Setengah Pengangguran Menurut Provinsi,percent,core_annual_candidate,probe_required,National-domain province candidate; inspect period and methodology notes.
+real_grdp_per_capita,288,Produk Domestik Regional Bruto Per Kapita,million_idr_constant_2010,core_annual_candidate,probe_required,Must qualify constant-price/current-price component explicitly; title alone is insufficient.
+population_total,1975,Jumlah Penduduk Pertengahan Tahun,persons,core_annual_candidate,probe_required,Mid-year population estimate/projection candidate; do not conflate with census observations.
+population_growth,1976,Laju Pertumbuhan Penduduk,percent_per_year,core_annual_candidate,probe_required,National-domain population growth candidate; preserve source claim semantics.
+total_fertility_rate,1399,Angka Kelahiran Total Menurut Provinsi,births_per_woman,anchor_candidate,probe_required,Likely survey/census anchor rather than annual series; retain only source-supported periods.
+infant_mortality_rate,1584,Angka Kematian Bayi per 1000 Kelahiran Hidup Menurut Provinsi,per_1000_live_births,anchor_candidate,probe_required,Check survey/census reference period and source methodology.
+under_five_mortality_rate,1373,Angka Kematian Balita per 1000 Kelahiran Hidup Menurut Provinsi,per_1000_live_births,anchor_candidate,probe_required,Check survey/census reference period and source methodology.
+mobile_phone_use,1221,Proporsi Individu Yang Menggunakan Telepon Genggam,percent,core_annual_candidate,probe_required,Only promote if vertical geography is province and person-universe definition is stable.
+neet_rate,1186,Persentase Usia Muda 15-24 Tahun Yang Tidak Sekolah Bekerja atau Mengikuti Pelatihan,percent,core_annual_candidate,probe_required,Only promote if province dimension is explicit and source definition matches canonical NEET.
