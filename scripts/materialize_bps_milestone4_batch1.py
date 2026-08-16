@@ -11,6 +11,8 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
+from canonical_collision import existing_canonical_collisions
+
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SERIES = ROOT / "data" / "registries" / "bps_milestone4_batch1_series.csv"
 DEFAULT_GEOGRAPHIES = ROOT / "data" / "registries" / "geographies.csv"
@@ -169,35 +171,6 @@ def transformed_value(config: dict[str, str], rows_by_turvar: dict[str, dict[str
     return value, detail
 
 
-def existing_collisions(output_dir: Path) -> tuple[set[str], set[tuple[str, str, str, str]]]:
-    ids: set[str] = set()
-    keys: set[tuple[str, str, str, str]] = set()
-    for path in (ROOT / "data" / "processed").rglob("*.csv"):
-        if output_dir in path.parents:
-            continue
-        try:
-            with path.open("r", encoding="utf-8", newline="") as handle:
-                reader = csv.DictReader(handle)
-                fields = set(reader.fieldnames or [])
-                if not {"observation_id", "indicator_id", "geography_id", "time_start"}.issubset(fields):
-                    continue
-                for row in reader:
-                    oid = (row.get("observation_id") or "").strip()
-                    if oid:
-                        ids.add(oid)
-                    key = (
-                        (row.get("indicator_id") or "").strip(),
-                        (row.get("geography_id") or "").strip(),
-                        (row.get("time_start") or "").strip(),
-                        (row.get("time_end") or "").strip(),
-                    )
-                    if all(key[:3]):
-                        keys.add(key)
-        except (OSError, UnicodeDecodeError, csv.Error):
-            continue
-    return ids, keys
-
-
 def load_source(input_root: Path, config: dict[str, str]) -> tuple[list[dict[str, str]], Path]:
     var_id = config["bps_var_id"]
     period = config["period_label"]
@@ -232,7 +205,9 @@ def build(
         raise ValueError("Milestone 4 closure registry must contain exactly 22 unique indicator series")
     geo = geography_map(geography_path)
     validate_indicator_registry(indicator_path, configs)
-    existing_ids, existing_keys = existing_collisions(output_dir)
+    existing_ids, existing_keys = existing_canonical_collisions(
+        ROOT / "data" / "processed", output_dir
+    )
 
     source_cache: dict[tuple[str, str], tuple[list[dict[str, str]], Path]] = {}
     provenance_by_source: dict[tuple[str, str], dict[str, str]] = {}
