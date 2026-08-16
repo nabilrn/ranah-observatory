@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import re
 from datetime import datetime
 from email.utils import parsedate_to_datetime
@@ -33,6 +34,8 @@ SOURCE_CONTRACT_FIELDS = [
     "transport_identity", "identity_sha256", "identity_scope", "content_length_bytes", "notes",
 ]
 COG_RE = re.compile(r"chirps-v3\.0\.(\d{4})\.(\d{2})\.cog$")
+CONTENT_RANGE_RE = re.compile(r"^bytes 0-16383/([1-9][0-9]*)$")
+SHA256_RE = re.compile(r"^[0-9a-fA-F]{64}$")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -45,11 +48,32 @@ def stable_id(prefix: str, parts: Iterable[str]) -> str:
     return prefix + hashlib.sha256(token.encode("utf-8")).hexdigest()[:24]
 
 
-def _content_length_from_range(value: str) -> str:
-    if "/" not in value:
-        return ""
-    total = value.rsplit("/", 1)[-1].strip()
-    return total if total.isdigit() else ""
+def _validated_sha256(value: Any, label: str) -> str:
+    digest = str(value or "")
+    if not SHA256_RE.fullmatch(digest):
+        raise ValueError(f"{label} is not a hexadecimal SHA-256 digest")
+    return digest.lower()
+
+
+def _validated_prefix_range(item: dict[str, Any], year: int, month: int) -> tuple[str, str]:
+    try:
+        bytes_read = int(item.get("bytes_read", -1))
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"invalid CHIRPS bytes_read for {year}-{month:02d}") from exc
+    if bytes_read != 16384:
+        raise ValueError(f"CHIRPS prefix probe must read exactly 16384 bytes for {year}-{month:02d}; got {bytes_read}")
+
+    content_range = str(item.get("content_range", ""))
+    match = CONTENT_RANGE_RE.fullmatch(content_range)
+    if not match:
+        raise ValueError(
+            f"CHIRPS prefix probe must report exact bytes 0-16383/<length> range for {year}-{month:02d}; "
+            f"got {content_range!r}"
+        )
+    content_length = match.group(1)
+    if int(content_length) < bytes_read:
+        raise ValueError(f"CHIRPS reported object length is smaller than prefix read for {year}-{month:02d}")
+    return content_range, content_length
 
 
 def _latest_release(rows: list[dict[str, str]]) -> str:
@@ -81,8 +105,11 @@ def build_source_contract(production_manifest: dict[str, Any]) -> list[dict[str,
         if period in seen_periods:
             raise ValueError(f"duplicate CHIRPS source period {year}-{month:02d}")
         seen_periods.add(period)
-        if not item.get("is_tiff") or int(item.get("http_status", 0)) not in {200, 206}:
+        if item.get("is_tiff") is not True or int(item.get("http_status", 0)) not in {200, 206}:
             raise ValueError(f"unqualified CHIRPS transport identity for {year}-{month:02d}")
+
+        content_range, content_length = _validated_prefix_range(item, year, month)
+        prefix_sha = _validated_sha256(item.get("prefix_sha256"), f"CHIRPS prefix digest {year}-{month:02d}")
         rows.append({
             "contract_item_id": f"chirps_v3_final_{year:04d}_{month:02d}",
             "source_id": SOURCE_ID,
@@ -92,10 +119,10 @@ def build_source_contract(production_manifest: dict[str, Any]) -> list[dict[str,
             "locator": url,
             "source_release": str(item.get("last_modified", "")),
             "transport_identity": str(item.get("etag", "")),
-            "identity_sha256": str(item["prefix_sha256"]),
+            "identity_sha256": prefix_sha,
             "identity_scope": "sha256_first_16384_bytes_not_full_file_checksum",
-            "content_length_bytes": _content_length_from_range(str(item.get("content_range", ""))),
-            "notes": f"content_range={item.get('content_range', '')}; bytes_read={item.get('bytes_read', '')}",
+            "content_length_bytes": content_length,
+            "notes": f"content_range={content_range}; bytes_read=16384",
         })
 
     expected_periods = {(year, month) for year in range(1981, 2026) for month in range(1, 13)}
@@ -105,9 +132,13 @@ def build_source_contract(production_manifest: dict[str, Any]) -> list[dict[str,
         raise ValueError(f"CHIRPS source contract period mismatch; missing={missing}; unexpected={unexpected}")
 
     big = production_manifest["big_geometry"]
-    big_sha = str(big.get("sha256", ""))
-    if len(big_sha) != 64:
-        raise ValueError("BIG provenance lacks full response SHA-256")
+    big_sha = _validated_sha256(big.get("sha256"), "BIG full response digest")
+    try:
+        big_bytes = int(big.get("bytes", 0))
+    except (TypeError, ValueError) as exc:
+        raise ValueError("BIG provenance has invalid response byte count") from exc
+    if big_bytes <= 0:
+        raise ValueError("BIG provenance has non-positive response byte count")
     rows.append({
         "contract_item_id": "big_sumbar_kabkota_june_2026_snapshot",
         "source_id": GEOMETRY_SOURCE_ID,
@@ -119,7 +150,7 @@ def build_source_contract(production_manifest: dict[str, Any]) -> list[dict[str,
         "transport_identity": str(big.get("etag", "")),
         "identity_sha256": big_sha,
         "identity_scope": "sha256_full_geojson_query_response",
-        "content_length_bytes": str(big.get("bytes", "")),
+        "content_length_bytes": str(big_bytes),
         "notes": "current boundary snapshot only; historical boundary continuity is not established",
     })
     rows.sort(key=lambda row: row["contract_item_id"])
@@ -142,7 +173,7 @@ def build_canonical(
     production_manifest: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, str]], dict[str, Any]]:
     gates = production_manifest.get("gates", {})
-    if not gates or not all(bool(value) for value in gates.values()):
+    if not gates or not all(value is True for value in gates.values()):
         raise ValueError("production manifest did not pass every dry-run gate")
     scope = production_manifest["scope"]
     if (
@@ -155,7 +186,7 @@ def build_canonical(
 
     source_contract = build_source_contract(production_manifest)
     source_contract_sha = hashlib.sha256(csv_bytes(SOURCE_CONTRACT_FIELDS, source_contract)).hexdigest()
-    big_sha = str(production_manifest["big_geometry"]["sha256"])
+    big_sha = _validated_sha256(production_manifest["big_geometry"]["sha256"], "BIG full response digest")
     retrieved_at = str(production_manifest["generated_at"])
 
     by_year_sources: dict[int, list[dict[str, str]]] = {}
@@ -179,7 +210,10 @@ def build_canonical(
         provenance.append({
             "provenance_id": provenance_id,
             "source_id": SOURCE_ID,
-            "artifact_locator": f"repo://data/processed/climate/rainfall/chirps-source-contract.csv#year={year}",
+            "artifact_locator": (
+                "artifact://chirps-annual-rainfall-canonical-candidate/"
+                f"chirps-source-contract.csv#year={year}"
+            ),
             "retrieved_at": retrieved_at,
             "source_release": _latest_release(by_year_sources[year]),
             "checksum_sha256": source_contract_sha,
@@ -188,7 +222,7 @@ def build_canonical(
             "extraction_method": "remote_cog_range_read+geodesic_area_weighted_zonal_aggregation",
             "notes": (
                 f"year_source_files=12; geometry_source={GEOMETRY_SOURCE_ID}; geometry_response_sha256={big_sha}; "
-                "checksum_scope=committed_source_contract_artifact_not_full_upstream_raster_bytes; "
+                "checksum_scope=generated_source_contract_artifact_not_full_upstream_raster_bytes; "
                 "source_contract_records_prefix_sha256_etag_last_modified_and_content_length_for_each_COG"
             ),
         })
@@ -208,11 +242,19 @@ def build_canonical(
             raise ValueError(f"candidate evidence contract mismatch for {key}")
         if int(row["months_complete"]) != 12:
             raise ValueError(f"incomplete candidate year for {key}")
+
         value = float(row["annual_rainfall_mm"])
-        if not value > 0:
-            raise ValueError(f"non-positive annual rainfall candidate for {key}: {value}")
+        if not math.isfinite(value) or value <= 0:
+            raise ValueError(f"non-positive or non-finite annual rainfall candidate for {key}: {value}")
         min_coverage = float(row["min_valid_area_fraction"])
         mean_coverage = float(row["mean_valid_area_fraction"])
+        if (
+            not math.isfinite(min_coverage)
+            or not math.isfinite(mean_coverage)
+            or not 0.0 <= min_coverage <= 1.0
+            or not 0.0 <= mean_coverage <= 1.0
+        ):
+            raise ValueError(f"invalid candidate coverage for {key}: min={min_coverage}; mean={mean_coverage}")
         if min_coverage < 0.995:
             raise ValueError(f"candidate below production coverage threshold for {key}: {min_coverage}")
 
