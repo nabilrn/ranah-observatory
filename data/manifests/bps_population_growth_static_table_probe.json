@@ -1,0 +1,40 @@
+{
+  "schema": "ranah-observatory/bps-population-growth-static-table-probe/v1",
+  "source_id": "bps_webapi",
+  "domain": "1300",
+  "target_indicator": "population_growth",
+  "target_interval": "2010-2020",
+  "target_geography": "kabupaten_kota",
+  "official_website_table_known": true,
+  "legacy_webapi_static_table_documented": true,
+  "audited_workflow_run_id": 31934235211,
+  "audited_head_sha": "6af35d0e1106c9f6f83cf59161dd108702f4e441",
+  "audited_artifact_name": "bps-population-growth-static-table-probe",
+  "audited_artifact_digest_sha256": "62859d8de987b95bb0ba0d1910ce987fe3a74bcfec5368d8cab73e1f996046d3",
+  "searches": [
+    {
+      "mode": "keyword",
+      "keyword": "laju pertumbuhan penduduk",
+      "api_rows_returned": 0,
+      "relevant_candidates": 0
+    },
+    {
+      "mode": "keyword",
+      "keyword": "pertumbuhan penduduk",
+      "api_rows_returned": 0,
+      "relevant_candidates": 0
+    },
+    {
+      "mode": "year_enumeration",
+      "year": 2020,
+      "max_pages": 100,
+      "api_rows_returned": 0,
+      "relevant_candidates": 0
+    }
+  ],
+  "decision": "official_web_table_known_but_legacy_webapi_static_table_index_does_not_expose_candidate",
+  "canonical_promotion_performed": false,
+  "custom_growth_calculation_performed": false,
+  "next_lane": "investigate_modern_bps_statistics_table_delivery_or_official_sp2020_artifact",
+  "notes": "The credentialed WebAPI requests succeeded. Zero rows therefore records legacy Static Table index coverage for this bounded search, not absence of the official website table."
+}
