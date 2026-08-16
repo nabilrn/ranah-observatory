@@ -92,10 +92,28 @@ def feature_properties(payload: Any) -> list[dict[str, Any]]:
     return rows
 
 
+def normalize_property_name(value: Any) -> str:
+    return str(value or "").strip().casefold().replace(" ", "_")
+
+
+def precipitation_candidates(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    candidates: list[dict[str, Any]] = []
+    for row in rows:
+        name = normalize_property_name(row.get("name"))
+        description = normalize_property_name(row.get("description"))
+        units = normalize_property_name(row.get("units"))
+        if any(token in name or token in description for token in ("precip", "rain", "rainfall")):
+            candidates.append(row)
+        elif units in {"mm", "millimetres", "millimeters", "kg_m-2", "kg_m^-2", "kg_m-2"}:
+            candidates.append(row)
+    return candidates
+
+
 def inspect_feature_collection(result: Mapping[str, Any]) -> dict[str, Any]:
     out = public(result)
     payload = result.get("payload")
     rows = feature_properties(payload)
+    precip = precipitation_candidates(rows)
     out.update(
         {
             "is_feature_collection": isinstance(payload, Mapping) and payload.get("type") == "FeatureCollection",
@@ -103,6 +121,16 @@ def inspect_feature_collection(result: Mapping[str, Any]) -> dict[str, Any]:
             "number_returned": payload.get("numberReturned") if isinstance(payload, Mapping) else None,
             "feature_count": len(rows),
             "property_names": sorted({key for row in rows for key in row}),
+            "feature_names": sorted({str(row.get("name")) for row in rows if row.get("name")}),
+            "wigos_station_identifiers": sorted(
+                {
+                    str(row.get("wigos_station_identifier"))
+                    for row in rows
+                    if row.get("wigos_station_identifier")
+                }
+            ),
+            "precipitation_feature_count": len(precip),
+            "precipitation_sample_properties": precip[:5],
             "sample_properties": rows[:5],
         }
     )
@@ -110,16 +138,17 @@ def inspect_feature_collection(result: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def station_filter_query(year: int) -> dict[str, Any]:
+    # pygeoapi GET filtering uses the `filter` parameter. The BMKG WIS2
+    # endpoint rejects `filter-lang=cql2-text`; CQL JSON is a POST dialect.
     params = {
         "f": "json",
         "limit": 100,
         "datetime": f"{year:04d}-01-01T00:00:00Z/{year:04d}-12-31T23:59:59Z",
-        "filter-lang": "cql2-text",
         "filter": f"wigos_station_identifier = '{MINANGKABAU_WIGOS}'",
     }
     result = fetch_json(query_url(params))
     inspected = inspect_feature_collection(result)
-    inspected["query_strategy"] = "datetime+cql2_station_filter"
+    inspected["query_strategy"] = "datetime+get_cql_station_filter"
     inspected["year"] = year
     return inspected
 
@@ -138,26 +167,11 @@ def bbox_query(year: int) -> dict[str, Any]:
     return inspected
 
 
-def normalize_property_name(value: Any) -> str:
-    return str(value or "").strip().casefold().replace(" ", "_")
-
-
-def precipitation_candidates(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    candidates: list[dict[str, Any]] = []
-    for row in rows:
-        name = normalize_property_name(row.get("name"))
-        description = normalize_property_name(row.get("description"))
-        units = normalize_property_name(row.get("units"))
-        if any(token in name or token in description for token in ("precip", "rain", "rainfall")):
-            candidates.append(row)
-        elif units in {"mm", "millimetres", "millimeters", "kg_m-2", "kg_m^-2", "kg_m-2"}:
-            candidates.append(row)
-    return candidates
-
-
-def raw_rows_from_query(query: Mapping[str, Any]) -> list[dict[str, Any]]:
-    samples = query.get("sample_properties")
-    return [dict(row) for row in samples] if isinstance(samples, list) else []
+def unfiltered_query() -> dict[str, Any]:
+    result = fetch_json(query_url({"f": "json", "limit": 100}))
+    inspected = inspect_feature_collection(result)
+    inspected["query_strategy"] = "unfiltered_collection_sample"
+    return inspected
 
 
 def run_probe() -> dict[str, Any]:
@@ -165,6 +179,7 @@ def run_probe() -> dict[str, Any]:
     queryables_result = fetch_json(f"{QUERYABLES_URL}?f=json")
     schema_result = fetch_json(f"{SCHEMA_URL}?f=json")
     station_result = fetch_json(f"{MINANGKABAU_STATION_URL}?f=json")
+    unfiltered = unfiltered_query()
 
     collection_payload = collection_result.get("payload")
     queryables_payload = queryables_result.get("payload")
@@ -194,15 +209,6 @@ def run_probe() -> dict[str, Any]:
             fallback = bbox_query(year)
             fallback["fallback_from"] = primary
             chosen = fallback
-        rows = raw_rows_from_query(chosen)
-        chosen["precipitation_candidates_in_sample"] = precipitation_candidates(rows)
-        chosen["sample_wigos_station_identifiers"] = sorted(
-            {
-                str(row.get("wigos_station_identifier") or "")
-                for row in rows
-                if row.get("wigos_station_identifier")
-            }
-        )
         anchors.append(chosen)
 
     successful_queries = [row for row in anchors if row.get("http_status") == 200 and row.get("is_feature_collection")]
@@ -212,13 +218,20 @@ def run_probe() -> dict[str, Any]:
 
     station_identity_ok = (
         station_result.get("http_status") == 200
-        and station_properties.get("traditional_station_identifier") == "96163"
-        and str(station_properties.get("name") or "").upper().find("MINANGKABAU") >= 0
+        and str(station_properties.get("traditional_station_identifier")) == "96163"
+        and "MINANGKABAU" in str(station_properties.get("name") or "").upper()
     )
+    station_filtered_supported = all(
+        row.get("query_strategy") == "datetime+get_cql_station_filter"
+        and row.get("http_status") == 200
+        and row.get("is_feature_collection")
+        for row in anchors
+    )
+    recent_precip = int(recent.get("precipitation_feature_count") or 0) > 0
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "probe_version": 1,
+        "probe_version": 2,
         "authority": "Badan Meteorologi Klimatologi dan Geofisika",
         "source_family": "BMKG WIS2 DayCLI",
         "collection_id": COLLECTION_ID,
@@ -234,6 +247,7 @@ def run_probe() -> dict[str, Any]:
             "property_names": queryable_properties,
         },
         "schema": public(schema_result),
+        "unfiltered_items": unfiltered,
         "minangkabau_station": {
             **public(station_result),
             "wigos_station_identifier": MINANGKABAU_WIGOS,
@@ -249,11 +263,13 @@ def run_probe() -> dict[str, Any]:
             "queryables_reachable": queryables_result.get("http_status") == 200,
             "schema_reachable": schema_result.get("http_status") == 200,
             "minangkabau_station_identity_qualified": station_identity_ok,
-            "standard_station_filtered_query_supported": all(row.get("query_strategy") == "datetime+cql2_station_filter" and row.get("http_status") == 200 for row in anchors),
+            "unfiltered_collection_items_available": int(unfiltered.get("feature_count") or 0) > 0,
+            "unfiltered_number_matched": unfiltered.get("number_matched"),
+            "standard_station_filtered_query_supported": station_filtered_supported,
             "any_anchor_year_has_data": bool(anchors_with_features),
             "earliest_tested_anchor_year_with_data": earliest_anchor_with_features,
             "recent_2025_query_has_data": int(recent.get("feature_count") or 0) > 0,
-            "recent_sample_contains_precipitation_candidate": bool(recent.get("precipitation_candidates_in_sample")),
+            "recent_sample_contains_precipitation_candidate": recent_precip,
             "historical_station_rainfall_overlap_qualified": False,
             "safe_to_mark_chirps_station_validation_complete": False,
         },
