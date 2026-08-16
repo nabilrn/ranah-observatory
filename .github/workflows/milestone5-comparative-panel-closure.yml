@@ -59,7 +59,7 @@ jobs:
       - name: Materialize current-38 comparative panel
         run: |
           python scripts/materialize_bps_comparative_panel.py \
-            --raw-root data/snapshots/bps/comparative
+            --raw-root "$GITHUB_WORKSPACE/data/snapshots/bps/comparative"
 
       - name: Enforce exact Milestone 5 panel contract
         run: python scripts/audit_milestone5_comparative_panel.py --require-complete
