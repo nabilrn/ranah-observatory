@@ -63,7 +63,9 @@ Minimum metadata:
 - allowed claim types;
 - status and comparability notes.
 
-The seed backlog targets 50 indicators across the twelve research domains. `backlog` means conceptually approved for source qualification, not that comparable data already exists.
+The initial seed backlog started with 50 concepts across the twelve research domains. The registry may grow beyond 60 because it is the broader ontology and source-qualification backlog; `backlog` means conceptually approved for source qualification, not that comparable data already exists.
+
+The Research Charter's separate **40–60 high-value indicators with provenance** criterion is measured from canonical observations whose provenance resolves, not from the number of rows in this registry. That completion state is maintained in `data/manifests/milestone4_indicator_inventory.json` and enforced by the Milestone 4 indicator audit.
 
 ### Source
 
@@ -161,6 +163,8 @@ Before this branch can be considered complete:
 - geography parents resolve when present;
 - current seed BPS codes are unique;
 - every indicator uses a known domain and allowed claim-type vocabulary;
+- the indicator ontology contains at least 40 registered definitions and covers all twelve research domains;
+- the Milestone 4 audit separately enforces 40–60 canonical indicators with resolved provenance;
 - crosswalk references resolve when rows exist;
 - the JSON schema parses;
 - the standard-library validator and unit tests pass;
