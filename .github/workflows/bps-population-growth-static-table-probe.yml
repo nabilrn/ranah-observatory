@@ -37,7 +37,7 @@ jobs:
           python -m scripts.probe_bps_population_growth_static_table \
             --output artifacts/bps-population-growth-static-table/probe.json
 
-      - name: Require at least one official candidate
+      - name: Enforce bounded discovery decision
         run: |
           python - <<'PY'
           import json
@@ -45,10 +45,18 @@ jobs:
 
           payload = json.loads(Path("artifacts/bps-population-growth-static-table/probe.json").read_text(encoding="utf-8"))
           assert payload["source"] == "BPS WebAPI official Static Table API", payload
-          assert payload["candidate_count"] >= 1, payload
-          assert payload["lane_decision"] == "official_machine_readable_static_table_candidates_found", payload
           assert payload["canonical_promotion_performed"] is False, payload
-          assert all(candidate["has_html_table"] or candidate["excel_locator"] for candidate in payload["candidates"]), payload
+          assert payload["lane_decision"] in {
+              "official_machine_readable_static_table_candidates_found",
+              "official_web_table_known_but_legacy_webapi_static_table_index_does_not_expose_candidate",
+          }, payload
+          evidence = payload["search_evidence"]
+          assert len(evidence) == 3, evidence
+          assert any(item.get("mode") == "year_enumeration" and item.get("year") == 2020 for item in evidence), evidence
+          if payload["candidate_count"]:
+              assert all(candidate["has_html_table"] or candidate["excel_locator"] for candidate in payload["candidates"]), payload
+          else:
+              assert payload["lane_decision"].endswith("does_not_expose_candidate"), payload
           PY
 
       - uses: actions/upload-artifact@v4
