@@ -6,6 +6,7 @@ on:
       - "scripts/freeze_chirps_rainfall.py"
       - "scripts/validate_chirps_rainfall_freeze.py"
       - "scripts/run_chirps_rainfall_production_resilient.py"
+      - "tests/test_chirps_rainfall_freeze_idempotence.py"
       - "tests/test_chirps_raster_retry.py"
       - ".github/workflows/climate-rainfall-freeze.yml"
       - "scripts/materialize_chirps_rainfall.py"
@@ -46,6 +47,9 @@ jobs:
 
       - name: Re-run materialization regression tests
         run: python -m unittest tests.test_chirps_rainfall_materialization -v
+
+      - name: Validate freeze idempotence behavior
+        run: python -m unittest tests.test_chirps_rainfall_freeze_idempotence -v
 
       - name: Validate bounded raster retry behavior
         run: python -m unittest tests.test_chirps_raster_retry -v
