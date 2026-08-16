@@ -7,12 +7,14 @@ import json
 import urllib.error
 import urllib.parse
 import urllib.request
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
 ROOT = Path(__file__).resolve().parents[1]
 GEOGRAPHIES = ROOT / "data" / "registries" / "geographies.csv"
+BIG_CROSSWALK = ROOT / "data" / "registries" / "big_geography_map.csv"
 SERVICE_ROOT = "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_AR/MapServer"
 LAYER_URL = f"{SERVICE_ROOT}/0"
 EXPECTED_EDITION = "Juni 2026"
@@ -21,6 +23,34 @@ USER_AGENT = "ranah-observatory/0.1 (+https://github.com/nabilrn/ranah-observato
 
 def normalize_code(value: Any) -> str:
     return "".join(character for character in str(value or "") if character.isdigit())
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return [
+            {key: (value or "").strip() for key, value in row.items()}
+            for row in csv.DictReader(handle)
+        ]
+
+
+def canonical_sumbar_geographies(path: Path = GEOGRAPHIES) -> dict[str, dict[str, str]]:
+    return {
+        row["geography_id"]: row
+        for row in read_csv(path)
+        if row["parent_geography_id"] == "idn.13"
+        and row["status"] == "current"
+        and row["geography_level"] in {"regency", "city"}
+    }
+
+
+def big_crosswalk(path: Path = BIG_CROSSWALK) -> dict[str, dict[str, str]]:
+    return {
+        row["source_code_normalized"]: row
+        for row in read_csv(path)
+        if row["source_edition"] == EXPECTED_EDITION
+        and row["mapping_status"] == "qualified_current_crosswalk"
+        and row["source_system"] == "Permendagri"
+    }
 
 
 def fetch(url: str, timeout: float = 45.0) -> dict[str, Any]:
@@ -76,22 +106,6 @@ def json_body(result: Mapping[str, Any]) -> Any:
 
 def public_transport(result: Mapping[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in result.items() if key != "body"}
-
-
-def expected_sumbar_geographies(path: Path = GEOGRAPHIES) -> dict[str, dict[str, str]]:
-    with path.open("r", encoding="utf-8", newline="") as handle:
-        rows = [
-            {key: (value or "").strip() for key, value in row.items()}
-            for row in csv.DictReader(handle)
-        ]
-    return {
-        normalize_code(row["bps_code"]): row
-        for row in rows
-        if row["parent_geography_id"] == "idn.13"
-        and row["status"] == "current"
-        and row["geography_level"] in {"regency", "city"}
-        and normalize_code(row["bps_code"])
-    }
 
 
 def inspect_service(result: Mapping[str, Any]) -> dict[str, Any]:
@@ -154,7 +168,15 @@ def inspect_layer(result: Mapping[str, Any]) -> dict[str, Any]:
         for field in fields
         if isinstance(field, Mapping) and field.get("name")
     )
-    required_fields = {"KDBBPS", "KDPBPS", "WADMKK", "WADMPR", "NAMOBJ"}
+    required_fields = {
+        "KDBBPS",
+        "KDPBPS",
+        "KDPKAB",
+        "KDPPUM",
+        "WADMKK",
+        "WADMPR",
+        "NAMOBJ",
+    }
     geometry_type = str(payload.get("geometryType", ""))
     public["is_polygon_feature_layer"] = (
         str(payload.get("type", "")) == "Feature Layer"
@@ -178,26 +200,40 @@ def _coordinate_pair_count(value: Any) -> int:
 
 
 def inspect_geojson(
-    result: Mapping[str, Any], expected: Mapping[str, Mapping[str, str]]
+    result: Mapping[str, Any],
+    crosswalk: Mapping[str, Mapping[str, str]],
+    canonical: Mapping[str, Mapping[str, str]],
 ) -> dict[str, Any]:
     public = public_transport(result)
     payload = json_body(result)
+    expected_source_codes = set(crosswalk)
+    expected_canonical_ids = set(canonical)
     public.update(
         {
             "is_geojson_feature_collection": False,
-            "feature_count": 0,
-            "expected_feature_count": len(expected),
-            "bps_codes": [],
-            "missing_bps_codes": sorted(expected),
-            "unexpected_bps_codes": [],
-            "duplicate_bps_codes": [],
-            "source_kdpbps_values": [],
+            "raw_source_feature_count": 0,
+            "excluded_non_kabkota_artifact_count": 0,
+            "selected_kabkota_count": 0,
+            "expected_kabkota_count": len(expected_source_codes),
+            "source_permendagri_codes": [],
+            "missing_source_codes": sorted(expected_source_codes),
+            "unexpected_source_codes": [],
+            "duplicate_source_codes": [],
+            "mapped_canonical_geography_ids": [],
+            "missing_canonical_geography_ids": sorted(expected_canonical_ids),
+            "unexpected_canonical_geography_ids": [],
+            "name_mismatches": [],
+            "source_kdbbps_nonblank_count": 0,
+            "source_kdpbps_nonblank_count": 0,
+            "source_kdppum_values": [],
             "source_province_names": [],
-            "all_geometries_polygonal": False,
-            "all_geometries_nonempty": False,
-            "all_features_sumatera_barat": False,
+            "all_selected_features_sumatera_barat": False,
+            "all_selected_geometries_polygonal": False,
+            "all_selected_geometries_nonempty": False,
             "coordinate_pair_count": 0,
-            "name_by_bps_code": {},
+            "source_name_by_permendagri_code": {},
+            "canonical_id_by_permendagri_code": {},
+            "excluded_artifacts": [],
         }
     )
     if not isinstance(payload, Mapping) or payload.get("type") != "FeatureCollection":
@@ -206,20 +242,16 @@ def inspect_geojson(
     if not isinstance(features, list):
         return public
 
-    codes: list[str] = []
-    names: dict[str, str] = {}
-    source_province_codes: set[str] = set()
-    source_province_names: set[str] = set()
-    polygonal = True
-    nonempty = True
-    sumbar = True
-    coordinate_pairs = 0
+    selected: list[tuple[Mapping[str, Any], Mapping[str, Any], Mapping[str, Any]]] = []
+    excluded: list[dict[str, Any]] = []
+    raw_kdbbps_nonblank = 0
+    raw_kdpbps_nonblank = 0
+    raw_province_names: set[str] = set()
+    raw_kdppum_values: set[str] = set()
 
     for feature in features:
         if not isinstance(feature, Mapping):
-            polygonal = False
-            nonempty = False
-            sumbar = False
+            excluded.append({"reason": "non_mapping_feature"})
             continue
         properties = (
             feature.get("properties")
@@ -231,65 +263,131 @@ def inspect_geojson(
             if isinstance(feature.get("geometry"), Mapping)
             else {}
         )
-        code = normalize_code(properties.get("KDBBPS"))
-        if code:
-            codes.append(code)
-            names[code] = str(
-                properties.get("WADMKK") or properties.get("NAMOBJ") or ""
+        kdbbps = normalize_code(properties.get("KDBBPS"))
+        kdpbps = normalize_code(properties.get("KDPBPS"))
+        if kdbbps:
+            raw_kdbbps_nonblank += 1
+        if kdpbps:
+            raw_kdpbps_nonblank += 1
+        province_name = str(properties.get("WADMPR") or "").strip()
+        if province_name:
+            raw_province_names.add(province_name)
+        kdppum = normalize_code(properties.get("KDPPUM"))
+        if kdppum:
+            raw_kdppum_values.add(kdppum)
+
+        source_code = normalize_code(properties.get("KDPKAB"))
+        source_name = str(properties.get("WADMKK") or "").strip()
+        if not source_code or not source_name:
+            excluded.append(
+                {
+                    "objectid": properties.get("OBJECTID"),
+                    "namobj": str(properties.get("NAMOBJ") or "").strip(),
+                    "wadmkk": source_name,
+                    "kdpkab": str(properties.get("KDPKAB") or "").strip(),
+                    "remark": str(properties.get("REMARK") or "").strip(),
+                    "metadata": str(properties.get("METADATA") or "").strip(),
+                    "reason": "blank_kdpkab_or_wadmkk",
+                }
             )
-        province_code = normalize_code(properties.get("KDPBPS"))
-        province_name_raw = str(properties.get("WADMPR") or "").strip()
-        province_name = province_name_raw.casefold()
-        if province_code:
-            source_province_codes.add(province_code)
-        if province_name_raw:
-            source_province_names.add(province_name_raw)
-        if not code.startswith("13") or province_name != "sumatera barat":
+            continue
+        selected.append((feature, properties, geometry))
+
+    codes: list[str] = []
+    mapped_ids: list[str] = []
+    source_names: dict[str, str] = {}
+    canonical_by_code: dict[str, str] = {}
+    name_mismatches: list[dict[str, str]] = []
+    polygonal = True
+    nonempty = True
+    sumbar = True
+    coordinate_pairs = 0
+
+    for _feature, properties, geometry in selected:
+        source_code = normalize_code(properties.get("KDPKAB"))
+        source_name = str(properties.get("WADMKK") or "").strip()
+        province_name = str(properties.get("WADMPR") or "").strip()
+        codes.append(source_code)
+        source_names[source_code] = source_name
+        if province_name.casefold() != "sumatera barat":
             sumbar = False
+
+        mapping = crosswalk.get(source_code)
+        if mapping:
+            canonical_id = str(mapping.get("canonical_geography_id") or "")
+            if canonical_id:
+                mapped_ids.append(canonical_id)
+                canonical_by_code[source_code] = canonical_id
+            expected_name = str(mapping.get("source_name_expected") or "").strip()
+            if expected_name and source_name.casefold() != expected_name.casefold():
+                name_mismatches.append(
+                    {
+                        "source_code": source_code,
+                        "expected": expected_name,
+                        "actual": source_name,
+                    }
+                )
+
         geometry_type = str(geometry.get("type", ""))
         if geometry_type not in {"Polygon", "MultiPolygon"}:
             polygonal = False
-        coordinates = geometry.get("coordinates")
-        count = _coordinate_pair_count(coordinates)
+        count = _coordinate_pair_count(geometry.get("coordinates"))
         coordinate_pairs += count
         if count == 0:
             nonempty = False
 
-    duplicates = sorted({code for code in codes if codes.count(code) > 1})
-    code_set = set(codes)
-    expected_set = set(expected)
+    code_counts = Counter(codes)
+    source_code_set = set(codes)
+    mapped_id_set = set(mapped_ids)
     public["is_geojson_feature_collection"] = True
-    public["feature_count"] = len(features)
-    public["bps_codes"] = sorted(code_set)
-    public["missing_bps_codes"] = sorted(expected_set - code_set)
-    public["unexpected_bps_codes"] = sorted(code_set - expected_set)
-    public["duplicate_bps_codes"] = duplicates
-    public["source_kdpbps_values"] = sorted(source_province_codes)
-    public["source_province_names"] = sorted(source_province_names)
-    public["all_geometries_polygonal"] = polygonal
-    public["all_geometries_nonempty"] = nonempty
-    public["all_features_sumatera_barat"] = sumbar
+    public["raw_source_feature_count"] = len(features)
+    public["excluded_non_kabkota_artifact_count"] = len(excluded)
+    public["selected_kabkota_count"] = len(selected)
+    public["source_permendagri_codes"] = sorted(source_code_set)
+    public["missing_source_codes"] = sorted(expected_source_codes - source_code_set)
+    public["unexpected_source_codes"] = sorted(source_code_set - expected_source_codes)
+    public["duplicate_source_codes"] = sorted(
+        code for code, count in code_counts.items() if count > 1
+    )
+    public["mapped_canonical_geography_ids"] = sorted(mapped_id_set)
+    public["missing_canonical_geography_ids"] = sorted(
+        expected_canonical_ids - mapped_id_set
+    )
+    public["unexpected_canonical_geography_ids"] = sorted(
+        mapped_id_set - expected_canonical_ids
+    )
+    public["name_mismatches"] = name_mismatches
+    public["source_kdbbps_nonblank_count"] = raw_kdbbps_nonblank
+    public["source_kdpbps_nonblank_count"] = raw_kdpbps_nonblank
+    public["source_kdppum_values"] = sorted(raw_kdppum_values)
+    public["source_province_names"] = sorted(raw_province_names)
+    public["all_selected_features_sumatera_barat"] = sumbar
+    public["all_selected_geometries_polygonal"] = polygonal
+    public["all_selected_geometries_nonempty"] = nonempty
     public["coordinate_pair_count"] = coordinate_pairs
-    public["name_by_bps_code"] = dict(sorted(names.items()))
+    public["source_name_by_permendagri_code"] = dict(sorted(source_names.items()))
+    public["canonical_id_by_permendagri_code"] = dict(sorted(canonical_by_code.items()))
+    public["excluded_artifacts"] = excluded
     return public
 
 
 def build_query_url() -> str:
     params = {
-        "where": "KDBBPS LIKE '13%'",
-        "outFields": "OBJECTID,NAMOBJ,KDBBPS,KDPBPS,WADMKK,WADMPR,LUASWH,TIPADM,METADATA,SRS_ID",
+        "where": "WADMPR='Sumatera Barat'",
+        "outFields": "OBJECTID,NAMOBJ,KDBBPS,KDPBPS,KDPKAB,KDPPUM,WADMKK,WADMPR,LUASWH,TIPADM,REMARK,METADATA,SRS_ID",
         "returnGeometry": "true",
         "returnZ": "false",
         "returnM": "false",
         "outSR": "4326",
-        "orderByFields": "KDBBPS ASC",
+        "orderByFields": "OBJECTID ASC",
         "f": "geojson",
     }
     return f"{LAYER_URL}/query?{urllib.parse.urlencode(params)}"
 
 
 def run_probe(raw_output: Path | None = None) -> dict[str, Any]:
-    expected = expected_sumbar_geographies()
+    canonical = canonical_sumbar_geographies()
+    crosswalk = big_crosswalk()
     service_result = fetch(f"{SERVICE_ROOT}?f=pjson")
     layer_result = fetch(f"{LAYER_URL}?f=pjson")
     query_result = fetch(build_query_url())
@@ -304,10 +402,12 @@ def run_probe(raw_output: Path | None = None) -> dict[str, Any]:
 
     service = inspect_service(service_result)
     layer = inspect_layer(layer_result)
-    geojson = inspect_geojson(query_result, expected)
+    geojson = inspect_geojson(query_result, crosswalk, canonical)
 
     qualified = all(
         [
+            len(canonical) == 19,
+            len(crosswalk) == 19,
             service.get("http_status") == 200,
             service.get("is_arcgis_map_service"),
             service.get("edition_matches_expected"),
@@ -317,30 +417,40 @@ def run_probe(raw_output: Path | None = None) -> dict[str, Any]:
             "geoJSON" in str(layer.get("supported_query_formats", "")),
             geojson.get("http_status") == 200,
             geojson.get("is_geojson_feature_collection"),
-            geojson.get("feature_count") == len(expected) == 19,
-            not geojson.get("missing_bps_codes"),
-            not geojson.get("unexpected_bps_codes"),
-            not geojson.get("duplicate_bps_codes"),
-            geojson.get("all_geometries_polygonal"),
-            geojson.get("all_geometries_nonempty"),
-            geojson.get("all_features_sumatera_barat"),
+            geojson.get("selected_kabkota_count") == 19,
+            not geojson.get("missing_source_codes"),
+            not geojson.get("unexpected_source_codes"),
+            not geojson.get("duplicate_source_codes"),
+            not geojson.get("missing_canonical_geography_ids"),
+            not geojson.get("unexpected_canonical_geography_ids"),
+            not geojson.get("name_mismatches"),
+            geojson.get("all_selected_geometries_polygonal"),
+            geojson.get("all_selected_geometries_nonempty"),
+            geojson.get("all_selected_features_sumatera_barat"),
         ]
     )
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "probe_version": 2,
+        "probe_version": 3,
         "authority": "Badan Informasi Geospasial",
         "expected_edition": EXPECTED_EDITION,
-        "selection_rule": "normalized KDBBPS starts with 13; source WADMPR must identify Sumatera Barat",
+        "selection_rule": "query WADMPR=Sumatera Barat; client-side retain nonblank KDPKAB and WADMKK",
+        "mapping_rule": "BIG KDPKAB Permendagri/PUM code -> explicit June 2026 BIG crosswalk -> canonical geography_id",
         "service": service,
         "layer": layer,
         "sumatera_barat_geojson": geojson,
-        "canonical_geography_count": len(expected),
+        "canonical_geography_count": len(canonical),
+        "crosswalk_count": len(crosswalk),
         "conclusions": {
             "official_big_polygon_lane_qualified": qualified,
             "current_sumbar_19_geographies_exactly_covered": qualified,
             "geometry_suitable_for_current_zonal_aggregation_candidate": qualified,
+            "bps_fields_usable_as_live_join_key": bool(
+                geojson.get("source_kdbbps_nonblank_count")
+                or geojson.get("source_kdpbps_nonblank_count")
+            ),
+            "permendagri_kdpkab_crosswalk_required": True,
             "historical_boundary_continuity_established": False,
             "safe_to_project_current_boundaries_backward_without_harmonization": False,
         },
