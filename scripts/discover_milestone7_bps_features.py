@@ -15,6 +15,9 @@ from probe_bps_comparative_panel import as_list, geography_summary, label_of, pe
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "data" / "manifests" / "milestone7_bps_feature_discovery.json"
 DOMAIN = "0000"
+# National BPS subject IDs mirrored from already-qualified Ranah Observatory BPS metadata.
+# This deliberately avoids scanning the entire national variable catalog.
+SUBJECT_IDS = (2, 7, 12, 26, 52)
 
 FEATURE_GROUPS: dict[str, tuple[str, ...]] = {
     "human_capital_schooling": (
@@ -42,7 +45,7 @@ FEATURE_GROUPS: dict[str, tuple[str, ...]] = {
     "urbanization": (
         "penduduk perkotaan",
         "urban population",
-        "perkotaan",
+        "persentase penduduk perkotaan",
     ),
     "digital_connectivity": (
         "akses internet",
@@ -166,7 +169,7 @@ def probe(client: BPSClient, row: Mapping[str, Any], groups: list[str]) -> dict[
 def main() -> int:
     parser = argparse.ArgumentParser(description="Discover national BPS structural feature candidates for Milestone 7.")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--max-probes", type=int, default=80)
+    parser.add_argument("--max-probes", type=int, default=50)
     args = parser.parse_args()
 
     api_key = os.environ.get("BPS_API_KEY", "").strip()
@@ -174,10 +177,18 @@ def main() -> int:
         print("error: BPS_API_KEY is required", file=sys.stderr)
         return 2
     client = BPSClient(api_key, retries=3, retry_backoff_seconds=1.0)
+    variables: list[Mapping[str, Any]] = []
+    seen_catalog_ids: set[int] = set()
     try:
-        variables = client.list_variables(domain=DOMAIN)
+        for subject_id in SUBJECT_IDS:
+            for row in client.list_variables(domain=DOMAIN, subject=subject_id):
+                var_id = var_id_of(row)
+                if var_id is None or var_id in seen_catalog_ids:
+                    continue
+                seen_catalog_ids.add(var_id)
+                variables.append(row)
     except BPSApiError as exc:
-        print(f"error: unable to list national BPS variables: {exc}", file=sys.stderr)
+        print(f"error: unable to list targeted national BPS variables: {exc}", file=sys.stderr)
         return 2
 
     matches: list[tuple[Mapping[str, Any], list[str]]] = []
@@ -196,6 +207,7 @@ def main() -> int:
         "schema": "ranah-observatory/milestone7-bps-feature-discovery/v1",
         "domain": DOMAIN,
         "source_authority": "Badan Pusat Statistik (BPS-Statistics Indonesia)",
+        "subject_ids_scanned": list(SUBJECT_IDS),
         "variable_count_scanned": len(variables),
         "keyword_match_count": len(matches),
         "probed_count": len(results),
