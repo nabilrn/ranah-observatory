@@ -39,27 +39,45 @@ def detail_static_table(client: BPSClient, table_id: str) -> Mapping[str, Any]:
     return data
 
 
+def collect_relevant(rows: list[Mapping[str, Any]], discovered: dict[str, Mapping[str, Any]]) -> list[dict[str, str]]:
+    relevant: list[dict[str, str]] = []
+    for row in rows:
+        table_id = normalize_text(row.get("table_id") or row.get("id"))
+        title = normalize_text(row.get("title"))
+        if not table_id or not is_relevant_title(title):
+            continue
+        discovered[table_id] = row
+        relevant.append({"table_id": table_id, "title": title})
+    return relevant
+
+
 def discover(client: BPSClient) -> dict[str, Any]:
     discovered: dict[str, Mapping[str, Any]] = {}
     search_evidence: list[dict[str, Any]] = []
 
     for keyword in KEYWORDS:
         rows = client.list_static_tables(domain=DOMAIN, keyword=keyword, max_pages=20)
-        relevant = []
-        for row in rows:
-            table_id = normalize_text(row.get("table_id") or row.get("id"))
-            title = normalize_text(row.get("title"))
-            if not table_id or not is_relevant_title(title):
-                continue
-            discovered[table_id] = row
-            relevant.append({"table_id": table_id, "title": title})
         search_evidence.append(
             {
+                "mode": "keyword",
                 "keyword": keyword,
                 "api_rows_returned": len(rows),
-                "relevant_rows": relevant,
+                "relevant_rows": collect_relevant(rows, discovered),
             }
         )
+
+    # New-generation website tables may not be indexed by the legacy keyword
+    # endpoint. Enumerate the bounded 2020 static-table slice before concluding
+    # that the WebAPI lane does not expose the known official website table.
+    year_rows = client.list_static_tables(domain=DOMAIN, year=2020, max_pages=100)
+    search_evidence.append(
+        {
+            "mode": "year_enumeration",
+            "year": 2020,
+            "api_rows_returned": len(year_rows),
+            "relevant_rows": collect_relevant(year_rows, discovered),
+        }
+    )
 
     candidates: list[dict[str, Any]] = []
     for table_id, list_row in sorted(discovered.items(), key=lambda item: item[0]):
@@ -94,7 +112,7 @@ def discover(client: BPSClient) -> dict[str, Any]:
         "lane_decision": (
             "official_machine_readable_static_table_candidates_found"
             if candidates
-            else "official_web_table_known_but_webapi_static_table_candidate_not_found"
+            else "official_web_table_known_but_legacy_webapi_static_table_index_does_not_expose_candidate"
         ),
         "canonical_promotion_performed": False,
     }
