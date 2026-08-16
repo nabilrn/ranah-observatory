@@ -1,0 +1,320 @@
+{
+  "criterion": "40-60 high-value indicators with provenance",
+  "duplicate_observation_ids": [],
+  "inventory": [
+    {
+      "claim_types": [
+        "derived"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "agriculture_share_grdp",
+      "observation_count": 120,
+      "provenance_count": 6,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "model_estimate"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "annual_rainfall",
+      "observation_count": 855,
+      "provenance_count": 45,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/panel/bps-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "expected_years_schooling",
+      "observation_count": 160,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+      ],
+      "geography_count": 1,
+      "indicator_id": "export_value",
+      "observation_count": 6,
+      "provenance_count": 6,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bnpb/disaster/bnpb-disaster-canonical-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "flood_events",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+      ],
+      "geography_count": 1,
+      "indicator_id": "gini_ratio",
+      "observation_count": 8,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/panel/bps-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "labor_force_participation",
+      "observation_count": 160,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bnpb/disaster/bnpb-disaster-canonical-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "landslide_events",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/panel/bps-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "life_expectancy",
+      "observation_count": 120,
+      "provenance_count": 6,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "derived"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "manufacturing_share_grdp",
+      "observation_count": 120,
+      "provenance_count": 6,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/panel/bps-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "mean_years_schooling",
+      "observation_count": 160,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "derived"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/demography/population-growth-2010-2020-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "population_growth",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "population_total",
+      "observation_count": 20,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/panel/bps-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "poverty_rate",
+      "observation_count": 160,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/panel/bps-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "real_grdp_growth",
+      "observation_count": 160,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "derived"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "rice_yield",
+      "observation_count": 160,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "underemployment_rate",
+      "observation_count": 140,
+      "provenance_count": 7,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/panel/bps-canonical-observations.csv"
+      ],
+      "geography_count": 20,
+      "indicator_id": "unemployment_rate",
+      "observation_count": 160,
+      "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    }
+  ],
+  "maximum_initial_target_count": 60,
+  "milestone4_complete": false,
+  "minimum_indicator_count": 40,
+  "observation_file_count": 5,
+  "observation_files": [
+    "data/processed/bnpb/disaster/bnpb-disaster-canonical-observations.csv",
+    "data/processed/bps/demography/population-growth-2010-2020-observations.csv",
+    "data/processed/bps/expansion/bps-expansion-canonical-observations.csv",
+    "data/processed/bps/panel/bps-canonical-observations.csv",
+    "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv"
+  ],
+  "provenance_file_count": 5,
+  "provenance_files": [
+    "data/processed/bnpb/disaster/bnpb-disaster-canonical-provenance.csv",
+    "data/processed/bps/demography/population-growth-2010-2020-provenance.csv",
+    "data/processed/bps/expansion/bps-expansion-canonical-provenance.csv",
+    "data/processed/bps/panel/bps-canonical-provenance.csv",
+    "data/processed/climate/rainfall/chirps-annual-rainfall-provenance.csv"
+  ],
+  "qualified_indicator_count": 18,
+  "qualified_indicator_ids": [
+    "agriculture_share_grdp",
+    "annual_rainfall",
+    "expected_years_schooling",
+    "export_value",
+    "flood_events",
+    "gini_ratio",
+    "labor_force_participation",
+    "landslide_events",
+    "life_expectancy",
+    "manufacturing_share_grdp",
+    "mean_years_schooling",
+    "population_growth",
+    "population_total",
+    "poverty_rate",
+    "real_grdp_growth",
+    "rice_yield",
+    "underemployment_rate",
+    "unemployment_rate"
+  ],
+  "remaining_to_minimum": 22,
+  "schema": "ranah-observatory/milestone4-indicator-inventory/v1",
+  "unregistered_observed_indicator_ids": [],
+  "unresolved_provenance": []
+}
