@@ -79,11 +79,27 @@ Ranah Observatory therefore must not transform this WMS directly into:
 
 A separate official source carrying explicit observation dates/vintages is required.
 
+## Open Data operational lane
+
+The separate official BMKG Data Terbuka portal is now qualified for credential-free **operational** feeds:
+
+- three-day village/kelurahan weather forecasts via JSON;
+- active weather nowcast warnings via RSS and Common Alerting Protocol XML;
+- latest and rolling recent earthquake products via JSON/XML.
+
+These feeds remove authentication as a bottleneck for prospective weather context, active hazard warnings, and recent earthquake context. They do **not** solve the historical observed-station climate requirement.
+
+The forecast product remains forecast evidence, CAP remains warning evidence, and recent earthquake lists remain bounded operational products. None is promoted into the longitudinal climate panel.
+
+See `docs/BMKG_OPEN_DATA_FEEDS.md` for endpoint contracts, probe semantics, and canonical guardrails.
+
 ## Next climate lane
 
-The preferred next source family remains BMKG observed station/climate data rather than a forecast product. BMKG Data Online is retained as the primary candidate because it exposes observed climate parameters, but its authenticated acquisition workflow must be handled separately.
+The preferred observed source family remains BMKG station/climate data rather than a forecast product. BMKG Data Online is retained as the primary BMKG candidate because it exposes observed climate parameters, but its authenticated acquisition workflow must be handled separately.
 
 Other official BMKG map products may be useful as climatological context or spatial covariates if their reference period is explicit. For example, a 30-year rainfall normal is a climatological normal, not an annual observation, and must remain a separate indicator/concept.
+
+For the long historical baseline, a separate research deliverable may qualify dated gridded or reanalysis products. Any such product must retain its own evidence class and may not be silently relabelled as an observed BMKG station series.
 
 ## Research rule
 
