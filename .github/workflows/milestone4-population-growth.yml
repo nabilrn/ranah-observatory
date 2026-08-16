@@ -1,33 +1,24 @@
-name: Milestone 4 Population Growth
+name: Milestone 4 Population Growth Requalification
 
 on:
-  push:
-    branches:
-      - agent/milestone4-indicator-batch-1
+  pull_request:
     paths:
       - "data/registries/bps_population_growth_2010_2020_publication.csv"
       - "data/registries/geographies.csv"
+      - "data/processed/bps/demography/**"
       - "scripts/validate_bps_population_growth_publication.py"
       - "scripts/materialize_bps_population_growth.py"
       - ".github/workflows/milestone4-population-growth.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: milestone4-population-growth-${{ github.ref }}
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  materialize:
-    if: github.actor != 'github-actions[bot]'
+  requalify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: agent/milestone4-indicator-batch-1
-          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -38,10 +29,10 @@ jobs:
           python scripts/validate_bps_population_growth_publication.py
           --output /tmp/bps-population-growth-source-contract.json
 
-      - name: Materialize canonical population growth
+      - name: Rebuild canonical population growth deterministically
         run: python scripts/materialize_bps_population_growth.py
 
-      - name: Revalidate frozen output
+      - name: Revalidate rebuilt output
         run: python scripts/materialize_bps_population_growth.py --validate-only
 
       - name: Enforce exact promotion contract
@@ -59,16 +50,5 @@ jobs:
           assert p['canonical_promotion_performed'] is True, p
           PY
 
-      - name: Commit deterministic canonical outputs
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/processed/bps/demography/
-          if git diff --cached --quiet; then
-            echo "Population-growth canonical output already matches Git."
-            exit 0
-          fi
-          git commit -m "data: freeze BPS population growth"
-          git push origin HEAD:agent/milestone4-indicator-batch-1
+      - name: Require deterministic repository state
+        run: git diff --exit-code -- data/processed/bps/demography/
