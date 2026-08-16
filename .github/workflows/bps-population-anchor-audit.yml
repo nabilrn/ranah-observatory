@@ -1,0 +1,88 @@
+name: BPS population anchor audit
+
+on:
+  pull_request:
+    paths:
+      - "data/registries/bps_population_anchor_qualification.csv"
+      - "data/manifests/bps_population_anchor_audit.json"
+      - "scripts/validate_bps_population_anchors.py"
+      - "tests/test_bps_population_anchors.py"
+      - ".github/workflows/bps-population-anchor-audit.yml"
+      - "docs/BPS_POPULATION_ANCHORS.md"
+      - "scripts/harvest_bps_series.py"
+      - "scripts/bps_client.py"
+      - "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-anchor-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate offline qualification contract
+        run: |
+          python -m unittest tests.test_bps_population_anchors -v
+          python -m scripts.validate_bps_population_anchors \
+            --output /tmp/bps-population-anchor-offline.json
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Re-harvest official census and SUPAS anchor family
+        run: >-
+          python scripts/harvest_bps_series.py
+          --domain 1300
+          --var 484
+          --period 1971
+          --period 1980
+          --period 1990
+          --period 1995
+          --period 2000
+          --period 2005
+          --period 2010
+          --period 2015
+          --period 2020
+          --output-dir /tmp/bps-population-anchor-live
+
+      - name: Validate live semantic profile and SP2020 cross-check
+        run: |
+          python -m scripts.validate_bps_population_anchors \
+            --source-long /tmp/bps-population-anchor-live/var-484-long.csv \
+            --output /tmp/bps-population-anchor-live-report.json
+
+      - name: Enforce bounded promotion decision
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path("/tmp/bps-population-anchor-live-report.json").read_text(encoding="utf-8"))
+          live = payload["live_source_validation"]
+          assert live["source_total_sex_row_count"] == 156, payload
+          assert live["source_integrity_anomaly"]["year"] == 1995, payload
+          assert live["source_integrity_anomaly"]["classification"] == "hold_key_label_alignment_anomaly", payload
+          assert live["source_integrity_anomaly"]["auto_remap_allowed"] is False, payload
+          assert live["sp2020_crosscheck"]["row_count"] == 20, payload
+          assert live["sp2020_crosscheck"]["values_match_existing_canonical"] is True, payload
+          assert live["population_growth_derivation_ready"] is False, payload
+          assert payload["promotion_decision"]["additional_current_population_total_rows"] == 0, payload
+          assert payload["promotion_decision"]["population_growth_rows"] == 0, payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bps-population-anchor-audit
+          path: |
+            /tmp/bps-population-anchor-offline.json
+            /tmp/bps-population-anchor-live-report.json
