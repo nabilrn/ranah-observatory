@@ -480,7 +480,7 @@ def build_findings(
                 "statement": (
                     f"{row['indicator_id']} changes from {row['start_value']} {row['unit']} in {row['start_year']} "
                     f"to {row['end_value']} {row['unit']} in {row['end_year']} "
-                    f"({row['endpoint_direction']}; absolute change {row['absolute_change']} {row['absolute_change_unit']})."
+                    f"({row['endpoint_direction']}; absolute change {row['absolute_change']} {row['absolute_change_unit'].replace('_', ' ')})."
                 ),
                 "source_paths": "data/processed/bps/panel/bps-canonical-observations.csv",
                 "boundary_regime": "current_sumatera_barat_bps",

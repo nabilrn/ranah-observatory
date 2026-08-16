@@ -46,7 +46,7 @@
   "output_sha256": {
     "climate_signals": "6713c9bd23c65b6d930aa52375260f068beae8b8a37a44f636f4796d2b0a5f8d",
     "climate_yearly": "ca0654228f3cc08fa975cecd53e677639ec47ec89c3fc28bb9608b0c63a8c57f",
-    "findings": "0929491027eccb395b8e73cd6ec62832f10e1fa5c452f5a6ce1ac8c54f4b7ec7",
+    "findings": "af4101e51b607eb2c3309ccd0a364115c8e441aa02b15d14a89b65ba89d17b2f",
     "historical_population_anchor": "517bd81412fee86d8f386cef832f0c47f720ff6d2615d6729394253ea9c7d613",
     "modern_summary": "77922b1fbec2f129aafdecf296b19fe69e3dbde40c10217097e0e80146b6e8f1",
     "modern_trajectory": "4f3c95181f5eb9a3ad5b877cf62452c0bf3ebeda9316006bcb83561e81427960",
