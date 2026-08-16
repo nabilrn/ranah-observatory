@@ -1,0 +1,79 @@
+name: Climate rainfall sanity
+
+on:
+  pull_request:
+    paths:
+      - "scripts/check_chirps_rainfall_sanity.py"
+      - "tests/test_chirps_rainfall_sanity.py"
+      - "scripts/validate_chirps_rainfall_freeze.py"
+      - ".github/workflows/climate-rainfall-sanity.yml"
+      - "data/processed/climate/rainfall/**"
+      - "data/registries/geographies.csv"
+      - "docs/CLIMATE_RAINFALL_SANITY.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-sanity-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate frozen rainfall baseline
+        run: python -m scripts.validate_chirps_rainfall_freeze
+
+      - name: Run frozen-series sanity tests
+        run: python -m unittest tests.test_chirps_rainfall_sanity -v
+
+      - name: Build bounded sanity report
+        run: |
+          python -m scripts.check_chirps_rainfall_sanity \
+            --output artifacts/chirps-rainfall-sanity/chirps-rainfall-sanity-report.json
+
+      - name: Enforce sanity-review evidence gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("artifacts/chirps-rainfall-sanity/chirps-rainfall-sanity-report.json")
+          payload = json.loads(path.read_text(encoding="utf-8"))
+          assert payload["schema"] == "ranah-observatory/chirps-rainfall-sanity/v1", payload
+          assert payload["baseline"]["observation_count"] == 855, payload
+          assert payload["baseline"]["geography_count"] == 19, payload
+          assert payload["baseline"]["claim_type"] == "model_estimate", payload
+          assert payload["baseline"]["minimum_valid_area_fraction"] >= 0.995, payload
+
+          transition = payload["diagnostics"]["transition_1997_1998"]
+          assert transition["positive_geography_count"] == 19, transition
+          assert transition["directionally_synchronous"] is True, transition
+          assert transition["classification"] == "plausible_regional_climate_signal_pending_independent_station_validation", transition
+
+          spatial = payload["diagnostics"]["spatial_iqr"]
+          assert spatial["flag_count"] == 28, spatial
+          counts = {gid: item["count"] for gid, item in spatial["counts_by_geography"].items()}
+          assert counts == {
+              "idn.13.1306": 7,
+              "idn.13.1371": 4,
+              "idn.13.1375": 1,
+              "idn.13.1376": 1,
+              "idn.13.1377": 15,
+          }, counts
+
+          review = payload["review_classifications"]
+          assert review["independent_station_validation"] == "pending", review
+          assert review["safe_to_upgrade_claim_type_to_observed"] is False, review
+          assert all(payload["gates"].values()), payload["gates"]
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chirps-rainfall-sanity-report
+          path: artifacts/chirps-rainfall-sanity/chirps-rainfall-sanity-report.json
