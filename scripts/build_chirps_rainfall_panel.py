@@ -5,6 +5,7 @@ import csv
 import hashlib
 import json
 import math
+import shutil
 import sys
 import tempfile
 import time
@@ -18,7 +19,6 @@ from typing import Any, Iterable, Mapping
 import numpy as np
 import rasterio
 from pyproj import Transformer
-from rasterio.errors import RasterioIOError
 from rasterio.windows import Window, from_bounds
 from shapely.geometry import box, shape
 from shapely.ops import transform as shapely_transform
@@ -35,21 +35,27 @@ from probe_big_sumbar_boundaries import (  # noqa: E402
     run_probe as run_big_probe,
 )
 
-CHIRPS_MONTHLY_COG_BASE = "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/global/cogs"
+CHIRPS_ANNUAL_TIF_BASE = "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/annual/global/tifs"
 CHIRPS_SOURCE_ID = "chirps_v3"
 INDICATOR_ID = "annual_rainfall"
 UNIT = "millimetres"
 CLAIM_TYPE = "model_estimate"
-METHOD_REVISION = "chirps-v3-final-monthly_fractional-area-v1"
+METHOD_REVISION = "chirps-v3-final-annual_fractional-area-v1"
 WEIGHT_CRS = "EPSG:6933"
 SOURCE_START_YEAR = 1981
 SOURCE_END_YEAR = 2025
 NODATA_THRESHOLD = -9000.0
 MIN_VALID_AREA_FRACTION = 0.98
-RANGE_READ_ATTEMPTS = 5
-FULL_DOWNLOAD_ATTEMPTS = 3
+DOWNLOAD_ATTEMPTS = 5
 DOWNLOAD_CHUNK_BYTES = 1024 * 1024
+POLITE_DELAY_SECONDS = 2.0
 USER_AGENT = "ranah-observatory/0.1 (+https://github.com/nabilrn/ranah-observatory)"
+
+EQUIVALENCE_REFERENCE = "data/validation/chirps/chirps-v3-2025-annual-monthly-equivalence.csv"
+EQUIVALENCE_YEAR = 2025
+EQUIVALENCE_MAX_ABS_MM = 0.000460631
+EQUIVALENCE_MAX_RELATIVE_PERCENT = 0.000013209810
+EQUIVALENCE_ANNUAL_TIF_SHA256 = "e24f177b53c05eae36bf636b7ed42223948dce37350115ac157211f118b1e70c"
 
 OBSERVATION_FIELDS = [
     "observation_id",
@@ -69,19 +75,28 @@ OBSERVATION_FIELDS = [
     "notes",
 ]
 
-MONTHLY_DIAGNOSTIC_FIELDS = [
+ANNUAL_DIAGNOSTIC_FIELDS = [
     "geography_id",
     "canonical_name",
     "source_permendagri_code",
     "year",
-    "month",
-    "spatial_mean_precipitation_mm",
+    "annual_rainfall_mm",
     "valid_area_fraction",
     "valid_weight_area_m2",
     "polygon_weight_area_m2",
     "valid_pixel_intersections",
     "total_pixel_intersections",
     "source_url",
+    "source_sha256",
+    "source_bytes",
+]
+
+SOURCE_ARTIFACT_FIELDS = [
+    "year",
+    "source_url",
+    "retrieved_at",
+    "bytes",
+    "sha256",
 ]
 
 PROVENANCE_FIELDS = [
@@ -119,8 +134,8 @@ class GridSignature:
     resolution: tuple[float, float]
 
 
-def chirps_month_url(year: int, month: int) -> str:
-    return f"{CHIRPS_MONTHLY_COG_BASE}/chirps-v3.0.{year:04d}.{month:02d}.cog"
+def chirps_annual_url(year: int) -> str:
+    return f"{CHIRPS_ANNUAL_TIF_BASE}/chirps-v3.0.{year:04d}.tif"
 
 
 def deterministic_id(prefix: str, *parts: str) -> str:
@@ -143,19 +158,6 @@ def write_csv(path: Path, fieldnames: list[str], rows: Iterable[Mapping[str, Any
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in fieldnames})
-
-
-def gdal_env_options() -> dict[str, str]:
-    return {
-        "GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
-        "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".cog",
-        "GDAL_HTTP_MULTIRANGE": "YES",
-        "GDAL_HTTP_MERGE_CONSECUTIVE_RANGES": "YES",
-        "GDAL_HTTP_MAX_RETRY": "4",
-        "GDAL_HTTP_RETRY_DELAY": "1",
-        "VSI_CACHE": "TRUE",
-        "VSI_CACHE_SIZE": str(32 * 1024 * 1024),
-    }
 
 
 def grid_signature(dataset: rasterio.io.DatasetReader) -> GridSignature:
@@ -182,32 +184,32 @@ def assert_grid_compatible(dataset: rasterio.io.DatasetReader, expected: GridSig
         raise ValueError(f"CHIRPS y resolution changed unexpectedly: {actual.resolution[1]}")
 
 
-def _read_window_once(
-    source: str,
-    expected_grid: GridSignature,
-    union_window: Window,
-) -> np.ndarray:
-    with rasterio.Env(**gdal_env_options()):
-        with rasterio.open(source) as dataset:
-            assert_grid_compatible(dataset, expected_grid)
-            return dataset.read(1, window=union_window)
+def _download_backoff_seconds(attempt: int, status: int | None = None) -> float:
+    if status in {403, 429}:
+        return float(min(15 * attempt, 60))
+    return float(min(2 ** (attempt - 1), 16))
 
 
-def _download_remote_cog(source: str, target: Path) -> str:
+def download_annual_tif(source: str, target: Path) -> tuple[str, int]:
     last_error: BaseException | None = None
-    for attempt in range(1, FULL_DOWNLOAD_ATTEMPTS + 1):
+    for attempt in range(1, DOWNLOAD_ATTEMPTS + 1):
         digest = hashlib.sha256()
+        bytes_written = 0
         try:
             request = urllib.request.Request(
                 source,
                 headers={
-                    "Accept": "application/octet-stream,*/*",
+                    "Accept": "image/tiff,application/octet-stream,*/*",
                     "User-Agent": USER_AGENT,
+                    "Connection": "close",
                 },
             )
-            with urllib.request.urlopen(request, timeout=120.0) as response:
-                if int(getattr(response, "status", 200)) != 200:
-                    raise OSError(f"unexpected HTTP status {getattr(response, 'status', None)}")
+            with urllib.request.urlopen(request, timeout=180.0) as response:
+                status = int(getattr(response, "status", 200))
+                if status != 200:
+                    raise OSError(f"unexpected HTTP status {status}")
+                expected_length_raw = response.headers.get("Content-Length")
+                expected_length = int(expected_length_raw) if expected_length_raw and expected_length_raw.isdigit() else None
                 with target.open("wb") as handle:
                     while True:
                         chunk = response.read(DOWNLOAD_CHUNK_BYTES)
@@ -215,62 +217,46 @@ def _download_remote_cog(source: str, target: Path) -> str:
                             break
                         handle.write(chunk)
                         digest.update(chunk)
-            if target.stat().st_size <= 0:
-                raise OSError("downloaded CHIRPS COG is empty")
-            return digest.hexdigest()
+                        bytes_written += len(chunk)
+            if bytes_written <= 0:
+                raise OSError("downloaded CHIRPS annual TIFF is empty")
+            if expected_length is not None and bytes_written != expected_length:
+                raise OSError(
+                    f"download length mismatch: expected {expected_length} bytes, got {bytes_written}"
+                )
+            with target.open("rb") as handle:
+                prefix = handle.read(4)
+            if prefix not in {b"II*\x00", b"MM\x00*"}:
+                raise OSError(f"downloaded object is not a TIFF: prefix={prefix!r}")
+            return digest.hexdigest(), bytes_written
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            target.unlink(missing_ok=True)
+            status = exc.code
+            if attempt < DOWNLOAD_ATTEMPTS:
+                delay = _download_backoff_seconds(attempt, status)
+                print(
+                    f"annual TIFF HTTP {status} for {source} on attempt {attempt}/{DOWNLOAD_ATTEMPTS}; "
+                    f"retrying in {delay:.0f}s",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                time.sleep(delay)
         except (OSError, urllib.error.URLError, TimeoutError) as exc:
             last_error = exc
             target.unlink(missing_ok=True)
-            if attempt < FULL_DOWNLOAD_ATTEMPTS:
-                delay = min(2 ** (attempt - 1), 8)
+            if attempt < DOWNLOAD_ATTEMPTS:
+                delay = _download_backoff_seconds(attempt)
                 print(
-                    f"full-download retry {attempt}/{FULL_DOWNLOAD_ATTEMPTS} for {source}: {exc}; "
-                    f"retrying in {delay}s",
+                    f"annual TIFF download failed for {source} on attempt {attempt}/{DOWNLOAD_ATTEMPTS}: "
+                    f"{exc}; retrying in {delay:.0f}s",
                     file=sys.stderr,
                     flush=True,
                 )
                 time.sleep(delay)
-    raise RasterioIOError(
-        f"full-download fallback failed after {FULL_DOWNLOAD_ATTEMPTS} attempts for {source}: {last_error}"
+    raise RuntimeError(
+        f"CHIRPS annual TIFF download failed after {DOWNLOAD_ATTEMPTS} attempts for {source}: {last_error}"
     )
-
-
-def read_raster_window_resilient(
-    source: str | Path,
-    expected_grid: GridSignature,
-    union_window: Window,
-) -> tuple[np.ndarray, str, int, str]:
-    source_text = str(source)
-    if not source_text.startswith(("http://", "https://")):
-        return _read_window_once(source_text, expected_grid, union_window), "local", 1, ""
-
-    last_error: RasterioIOError | None = None
-    for attempt in range(1, RANGE_READ_ATTEMPTS + 1):
-        try:
-            array = _read_window_once(source_text, expected_grid, union_window)
-            return array, "http_range", attempt, ""
-        except RasterioIOError as exc:
-            last_error = exc
-            if attempt < RANGE_READ_ATTEMPTS:
-                delay = min(2 ** (attempt - 1), 8)
-                print(
-                    f"range-read retry {attempt}/{RANGE_READ_ATTEMPTS} for {source_text}: {exc}; "
-                    f"reopening in {delay}s",
-                    file=sys.stderr,
-                    flush=True,
-                )
-                time.sleep(delay)
-
-    print(
-        f"range reads exhausted for {source_text}: {last_error}; using full-download fallback",
-        file=sys.stderr,
-        flush=True,
-    )
-    with tempfile.TemporaryDirectory(prefix="chirps-cog-") as temp_dir:
-        local_path = Path(temp_dir) / "source.cog"
-        checksum = _download_remote_cog(source_text, local_path)
-        array = _read_window_once(str(local_path), expected_grid, union_window)
-    return array, "full_download_fallback", RANGE_READ_ATTEMPTS, checksum
 
 
 def load_and_select_big_features(raw_geojson: Path) -> list[dict[str, Any]]:
@@ -282,7 +268,9 @@ def load_and_select_big_features(raw_geojson: Path) -> list[dict[str, Any]]:
     crosswalk = big_crosswalk()
     canonical = canonical_sumbar_geographies()
     if len(crosswalk) != 19 or len(canonical) != 19:
-        raise ValueError("BIG crosswalk and canonical geography registry must each contain 19 current Sumatera Barat units")
+        raise ValueError(
+            "BIG crosswalk and canonical geography registry must each contain 19 current Sumatera Barat units"
+        )
 
     selected: list[dict[str, Any]] = []
     seen_codes: set[str] = set()
@@ -290,7 +278,11 @@ def load_and_select_big_features(raw_geojson: Path) -> list[dict[str, Any]]:
     for feature in features:
         if not isinstance(feature, Mapping):
             continue
-        properties = feature.get("properties") if isinstance(feature.get("properties"), Mapping) else {}
+        properties = (
+            feature.get("properties")
+            if isinstance(feature.get("properties"), Mapping)
+            else {}
+        )
         code = normalize_code(properties.get("KDPKAB"))
         source_name = str(properties.get("WADMKK") or "").strip()
         if not code or not source_name:
@@ -309,9 +301,10 @@ def load_and_select_big_features(raw_geojson: Path) -> list[dict[str, Any]]:
             raise ValueError(f"BIG selected feature {code} is outside Sumatera Barat")
         canonical_id = mapping["canonical_geography_id"]
         if canonical_id not in canonical:
-            raise ValueError(f"BIG mapping {code} resolves outside current canonical Sumatera Barat: {canonical_id}")
-        geometry = feature.get("geometry")
-        geom = shape(geometry)
+            raise ValueError(
+                f"BIG mapping {code} resolves outside current canonical Sumatera Barat: {canonical_id}"
+            )
+        geom = shape(feature.get("geometry"))
         if geom.is_empty or not geom.is_valid or geom.geom_type not in {"Polygon", "MultiPolygon"}:
             raise ValueError(f"BIG geometry for {code} is invalid or non-polygonal")
         selected.append(
@@ -353,8 +346,14 @@ def compute_fractional_area_weights(
         candidate = from_bounds(minx, miny, maxx, maxy, dataset.transform)
         row_start = max(0, int(math.floor(candidate.row_off)) - 1)
         col_start = max(0, int(math.floor(candidate.col_off)) - 1)
-        row_stop = min(dataset.height, int(math.ceil(candidate.row_off + candidate.height)) + 1)
-        col_stop = min(dataset.width, int(math.ceil(candidate.col_off + candidate.width)) + 1)
+        row_stop = min(
+            dataset.height,
+            int(math.ceil(candidate.row_off + candidate.height)) + 1,
+        )
+        col_stop = min(
+            dataset.width,
+            int(math.ceil(candidate.col_off + candidate.width)) + 1,
+        )
 
         prepared = prep(geom)
         rows: list[int] = []
@@ -366,7 +365,12 @@ def compute_fractional_area_weights(
             for col in range(col_start, col_stop):
                 x0 = dataset.transform.c + col * dataset.transform.a
                 x1 = x0 + dataset.transform.a
-                cell = box(min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1))
+                cell = box(
+                    min(x0, x1),
+                    min(y0, y1),
+                    max(x0, x1),
+                    max(y0, y1),
+                )
                 if not prepared.intersects(cell):
                     continue
                 intersection = geom.intersection(cell)
@@ -384,7 +388,8 @@ def compute_fractional_area_weights(
         area_ratio = sum(areas) / polygon_area_m2
         if not 0.995 <= area_ratio <= 1.005:
             raise ValueError(
-                f"Fractional pixel intersections do not reconstruct polygon area for {item['geography_id']}: ratio={area_ratio}"
+                f"Fractional pixel intersections do not reconstruct polygon area for "
+                f"{item['geography_id']}: ratio={area_ratio}"
             )
         weights.append(
             GeographyWeights(
@@ -414,7 +419,7 @@ def compute_fractional_area_weights(
     return weights, union_window
 
 
-def weighted_month_value(
+def weighted_raster_value(
     array: np.ndarray,
     window: Window,
     item: GeographyWeights,
@@ -441,115 +446,52 @@ def weighted_month_value(
     return value, valid_area_fraction, valid_area_m2, valid_count, total_count
 
 
-def process_month(
-    year: int,
-    month: int,
-    expected_grid: GridSignature,
-    weights: list[GeographyWeights],
-    union_window: Window,
-    raster_source: str | Path | None = None,
-) -> list[dict[str, Any]]:
-    source = str(raster_source) if raster_source is not None else chirps_month_url(year, month)
-    array, transport_mode, read_attempts, fallback_sha256 = read_raster_window_resilient(
-        source, expected_grid, union_window
+def build_observation(
+    diagnostic: Mapping[str, Any],
+    provenance_id: str,
+) -> dict[str, Any]:
+    geography_id = str(diagnostic["geography_id"])
+    year = int(diagnostic["year"])
+    value = float(diagnostic["annual_rainfall_mm"])
+    coverage = float(diagnostic["valid_area_fraction"])
+    observation_id = deterministic_id(
+        "chirpsobs",
+        INDICATOR_ID,
+        geography_id,
+        str(year),
+        METHOD_REVISION,
+        BIG_EDITION,
     )
-    if transport_mode != "http_range" or read_attempts > 1:
-        print(
-            f"CHIRPS {year:04d}-{month:02d} transport={transport_mode} attempts={read_attempts} "
-            f"fallback_sha256={fallback_sha256 or '-'}",
-            file=sys.stderr,
-            flush=True,
-        )
-
-    rows: list[dict[str, Any]] = []
-    for item in weights:
-        value, coverage, valid_area_m2, valid_count, total_count = weighted_month_value(
-            array, union_window, item
-        )
-        rows.append(
-            {
-                "geography_id": item.geography_id,
-                "canonical_name": item.canonical_name,
-                "source_permendagri_code": item.source_permendagri_code,
-                "year": year,
-                "month": month,
-                "spatial_mean_precipitation_mm": round(value, 6),
-                "valid_area_fraction": round(coverage, 9),
-                "valid_weight_area_m2": round(valid_area_m2, 3),
-                "polygon_weight_area_m2": round(item.polygon_area_m2, 3),
-                "valid_pixel_intersections": valid_count,
-                "total_pixel_intersections": total_count,
-                "source_url": source,
-            }
-        )
-    return rows
+    return {
+        "observation_id": observation_id,
+        "indicator_id": INDICATOR_ID,
+        "geography_id": geography_id,
+        "time_start": f"{year:04d}-01-01",
+        "time_end": f"{year:04d}-12-31",
+        "frequency": "annual",
+        "value_numeric": round(value, 3),
+        "unit": UNIT,
+        "claim_type": CLAIM_TYPE,
+        "provenance_id": provenance_id,
+        "suppressed": "false",
+        "comparable": "true",
+        "methodology_version": METHOD_REVISION,
+        "price_basis": "",
+        "notes": (
+            "source=CHIRPS v3 Final annual; spatial_frame=current-boundary reconstruction "
+            f"using BIG {BIG_EDITION}; aggregation=fractional-area-weighted spatial mean of "
+            f"official annual precipitation raster over valid CHIRPS land cells; "
+            f"valid_area_fraction={coverage:.6f}; claim is model_estimate, not direct BMKG "
+            "station observation."
+        ),
+    }
 
 
-def build_annual_observations(
-    monthly_rows: list[dict[str, Any]],
+def validate_observations(
+    observations: list[dict[str, Any]],
     start_year: int,
     end_year: int,
-    provenance_id: str,
-) -> list[dict[str, Any]]:
-    grouped: dict[tuple[str, int], list[dict[str, Any]]] = {}
-    for row in monthly_rows:
-        key = (str(row["geography_id"]), int(row["year"]))
-        grouped.setdefault(key, []).append(row)
-
-    expected_keys = {
-        (geography_id, year)
-        for geography_id in {str(row["geography_id"]) for row in monthly_rows}
-        for year in range(start_year, end_year + 1)
-    }
-    if set(grouped) != expected_keys:
-        missing = sorted(expected_keys - set(grouped))
-        unexpected = sorted(set(grouped) - expected_keys)
-        raise ValueError(f"Monthly aggregation key mismatch; missing={missing[:5]} unexpected={unexpected[:5]}")
-
-    observations: list[dict[str, Any]] = []
-    for (geography_id, year), rows in sorted(grouped.items()):
-        rows = sorted(rows, key=lambda row: int(row["month"]))
-        months = [int(row["month"]) for row in rows]
-        if months != list(range(1, 13)):
-            raise ValueError(f"Incomplete monthly coverage for {geography_id} {year}: {months}")
-        annual_value = sum(float(row["spatial_mean_precipitation_mm"]) for row in rows)
-        min_coverage = min(float(row["valid_area_fraction"]) for row in rows)
-        observation_id = deterministic_id(
-            "chirpsobs",
-            INDICATOR_ID,
-            geography_id,
-            str(year),
-            METHOD_REVISION,
-            BIG_EDITION,
-        )
-        observations.append(
-            {
-                "observation_id": observation_id,
-                "indicator_id": INDICATOR_ID,
-                "geography_id": geography_id,
-                "time_start": f"{year:04d}-01-01",
-                "time_end": f"{year:04d}-12-31",
-                "frequency": "annual",
-                "value_numeric": round(annual_value, 3),
-                "unit": UNIT,
-                "claim_type": CLAIM_TYPE,
-                "provenance_id": provenance_id,
-                "suppressed": "false",
-                "comparable": "true",
-                "methodology_version": METHOD_REVISION,
-                "price_basis": "",
-                "notes": (
-                    "source=CHIRPS v3 Final monthly; spatial_frame=current-boundary reconstruction "
-                    f"using BIG {BIG_EDITION}; aggregation=sum of 12 fractional-area-weighted monthly "
-                    f"means over valid CHIRPS land cells; minimum_monthly_valid_area_fraction={min_coverage:.6f}; "
-                    "claim is model_estimate, not direct BMKG station observation."
-                ),
-            }
-        )
-    return observations
-
-
-def validate_observations(observations: list[dict[str, Any]], start_year: int, end_year: int) -> None:
+) -> None:
     expected_count = 19 * (end_year - start_year + 1)
     if len(observations) != expected_count:
         raise ValueError(f"Expected {expected_count} annual observations, got {len(observations)}")
@@ -569,122 +511,182 @@ def validate_observations(observations: list[dict[str, Any]], start_year: int, e
             )
 
 
+def _prepare_geometry(
+    output_dir: Path,
+    geometry_geojson: Path | None,
+) -> tuple[Path, dict[str, Any] | None]:
+    output_geometry = output_dir / "big_sumbar_boundaries_june_2026.source.geojson"
+    if geometry_geojson is None:
+        big_manifest = run_big_probe(raw_output=output_geometry)
+        if not big_manifest["conclusions"]["official_big_polygon_lane_qualified"]:
+            raise ValueError("Live BIG geometry failed qualification gate")
+        return output_geometry, big_manifest
+
+    source = geometry_geojson.resolve()
+    destination = output_geometry.resolve()
+    if source != destination:
+        shutil.copyfile(source, destination)
+    return output_geometry, None
+
+
 def build_panel(
     start_year: int,
     end_year: int,
     output_dir: Path,
     geometry_geojson: Path | None = None,
-    template_raster: str | Path | None = None,
 ) -> dict[str, Any]:
     if not SOURCE_START_YEAR <= start_year <= end_year <= SOURCE_END_YEAR:
         raise ValueError(
-            f"Requested years must be within stable qualified range {SOURCE_START_YEAR}-{SOURCE_END_YEAR}"
+            f"Requested years must be within stable qualified range "
+            f"{SOURCE_START_YEAR}-{SOURCE_END_YEAR}"
         )
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    geometry_path = geometry_geojson or output_dir / "big_sumbar_boundaries_june_2026.source.geojson"
-    big_manifest: dict[str, Any] | None = None
-    if geometry_geojson is None:
-        big_manifest = run_big_probe(raw_output=geometry_path)
-        if not big_manifest["conclusions"]["official_big_polygon_lane_qualified"]:
-            raise ValueError("Live BIG geometry failed qualification gate")
+    geometry_path, big_manifest = _prepare_geometry(output_dir, geometry_geojson)
     selected_features = load_and_select_big_features(geometry_path)
-
-    first_source = str(template_raster) if template_raster is not None else chirps_month_url(start_year, 1)
-    with rasterio.Env(**gdal_env_options()):
-        with rasterio.open(first_source) as template:
-            expected_grid = grid_signature(template)
-            assert_grid_compatible(template, expected_grid)
-            weights, union_window = compute_fractional_area_weights(selected_features, template)
 
     retrieved_at = datetime.now(timezone.utc).isoformat()
     provenance_id = deterministic_id(
         "chirpsprov",
-        "CHIRPS-v3-Final-monthly",
+        "CHIRPS-v3-Final-annual",
         f"{start_year}-{end_year}",
         BIG_EDITION,
         METHOD_REVISION,
     )
 
-    monthly_rows: list[dict[str, Any]] = []
-    for year in range(start_year, end_year + 1):
-        for month in range(1, 13):
-            source_override: str | Path | None = None
-            if template_raster is not None:
-                if start_year != end_year or month != 1:
-                    raise ValueError("template_raster override is only supported for a one-month test harness")
-                source_override = template_raster
-            month_rows = process_month(
-                year,
-                month,
-                expected_grid,
-                weights,
-                union_window,
-                raster_source=source_override,
+    diagnostics: list[dict[str, Any]] = []
+    observations: list[dict[str, Any]] = []
+    source_artifacts: list[dict[str, Any]] = []
+    expected_grid: GridSignature | None = None
+    weights: list[GeographyWeights] | None = None
+    union_window: Window | None = None
+
+    with tempfile.TemporaryDirectory(prefix="chirps-annual-") as temp_dir:
+        temp_root = Path(temp_dir)
+        for index, year in enumerate(range(start_year, end_year + 1)):
+            source_url = chirps_annual_url(year)
+            local_tif = temp_root / f"chirps-v3.0.{year:04d}.tif"
+            source_sha256, source_bytes = download_annual_tif(source_url, local_tif)
+            year_retrieved_at = datetime.now(timezone.utc).isoformat()
+
+            with rasterio.open(local_tif) as dataset:
+                if expected_grid is None:
+                    expected_grid = grid_signature(dataset)
+                    assert_grid_compatible(dataset, expected_grid)
+                    weights, union_window = compute_fractional_area_weights(
+                        selected_features, dataset
+                    )
+                else:
+                    assert_grid_compatible(dataset, expected_grid)
+                if weights is None or union_window is None:
+                    raise RuntimeError("CHIRPS spatial weights were not initialized")
+                array = dataset.read(1, window=union_window)
+
+            source_artifacts.append(
+                {
+                    "year": year,
+                    "source_url": source_url,
+                    "retrieved_at": year_retrieved_at,
+                    "bytes": source_bytes,
+                    "sha256": source_sha256,
+                }
             )
-            monthly_rows.extend(month_rows)
+
+            for item in weights:
+                value, coverage, valid_area_m2, valid_count, total_count = weighted_raster_value(
+                    array, union_window, item
+                )
+                diagnostic = {
+                    "geography_id": item.geography_id,
+                    "canonical_name": item.canonical_name,
+                    "source_permendagri_code": item.source_permendagri_code,
+                    "year": year,
+                    "annual_rainfall_mm": round(value, 6),
+                    "valid_area_fraction": round(coverage, 9),
+                    "valid_weight_area_m2": round(valid_area_m2, 3),
+                    "polygon_weight_area_m2": round(item.polygon_area_m2, 3),
+                    "valid_pixel_intersections": valid_count,
+                    "total_pixel_intersections": total_count,
+                    "source_url": source_url,
+                    "source_sha256": source_sha256,
+                    "source_bytes": source_bytes,
+                }
+                diagnostics.append(diagnostic)
+                observations.append(build_observation(diagnostic, provenance_id))
+
             print(
-                f"processed CHIRPS {year:04d}-{month:02d}: "
-                f"{len(month_rows)} geographies",
+                f"processed CHIRPS annual {year}: {len(weights)} geographies; "
+                f"source_bytes={source_bytes} sha256={source_sha256[:12]}...",
                 flush=True,
             )
+            local_tif.unlink(missing_ok=True)
+            if index < (end_year - start_year):
+                time.sleep(POLITE_DELAY_SECONDS)
 
-    annual_observations = build_annual_observations(
-        monthly_rows, start_year, end_year, provenance_id
-    )
-    validate_observations(annual_observations, start_year, end_year)
+    if expected_grid is None:
+        raise RuntimeError("No CHIRPS annual rasters were processed")
+    validate_observations(observations, start_year, end_year)
 
     observations_path = output_dir / "chirps-v3-annual-rainfall-current-boundaries.csv"
-    monthly_path = output_dir / "chirps-v3-monthly-zonal-diagnostics.csv"
+    diagnostics_path = output_dir / "chirps-v3-annual-zonal-diagnostics.csv"
+    source_artifacts_path = output_dir / "chirps-v3-annual-source-artifacts.csv"
     provenance_path = output_dir / "chirps-v3-rainfall-provenance.csv"
     manifest_path = output_dir / "chirps-v3-rainfall-panel.manifest.json"
 
-    write_csv(observations_path, OBSERVATION_FIELDS, annual_observations)
-    write_csv(monthly_path, MONTHLY_DIAGNOSTIC_FIELDS, monthly_rows)
+    write_csv(observations_path, OBSERVATION_FIELDS, observations)
+    write_csv(diagnostics_path, ANNUAL_DIAGNOSTIC_FIELDS, diagnostics)
+    write_csv(source_artifacts_path, SOURCE_ARTIFACT_FIELDS, source_artifacts)
 
     provenance_row = {
         "provenance_id": provenance_id,
         "source_id": CHIRPS_SOURCE_ID,
-        "artifact_locator": f"{CHIRPS_MONTHLY_COG_BASE}/chirps-v3.0.YYYY.MM.cog",
+        "artifact_locator": f"{CHIRPS_ANNUAL_TIF_BASE}/chirps-v3.0.YYYY.tif",
         "retrieved_at": retrieved_at,
-        "source_release": "CHIRPS v3 Final monthly",
-        "checksum_sha256": "",
+        "source_release": "CHIRPS v3 Final annual",
+        "checksum_sha256": sha256_file(source_artifacts_path),
         "parser_revision": "build_chirps_rainfall_panel.py",
         "transform_revision": METHOD_REVISION,
         "extraction_method": "derived",
         "notes": (
             f"Years {start_year}-{end_year}; BIG {BIG_EDITION} current polygon frame; "
-            f"fractional pixel intersection areas computed in {WEIGHT_CRS}; source monthly COG "
-            "values spatially averaged over valid land cells then summed across 12 months. "
-            "Primary transport is HTTP range-read with per-month reopen retries and a full-file "
-            "download fallback for exhausted range-read transport errors. Individual remote COG "
-            "checksums are not materialized when only range reads are used; source URLs, version, "
-            "grid signature, diagnostics, and output checksums are retained."
+            f"fractional pixel intersection areas computed in {WEIGHT_CRS}; official CHIRPS v3 "
+            "Final annual TIFFs downloaded sequentially with source-level SHA-256 checksums and "
+            f"a {POLITE_DELAY_SECONDS:.1f}s inter-request delay; each annual raster is spatially "
+            "averaged over valid land cells. Direct annual-raster aggregation was validated against "
+            f"the 2025 sum-of-monthly-COGs implementation with maximum absolute difference "
+            f"{EQUIVALENCE_MAX_ABS_MM:.9f} mm."
         ),
     }
     write_csv(provenance_path, PROVENANCE_FIELDS, [provenance_row])
 
-    values = [float(row["value_numeric"]) for row in annual_observations]
-    coverages = [float(row["valid_area_fraction"]) for row in monthly_rows]
+    values = [float(row["value_numeric"]) for row in observations]
+    coverages = [float(row["valid_area_fraction"]) for row in diagnostics]
     manifest = {
         "generated_at": retrieved_at,
-        "panel_version": 1,
+        "panel_version": 2,
         "indicator_id": INDICATOR_ID,
         "claim_type": CLAIM_TYPE,
         "unit": UNIT,
-        "years": {"start": start_year, "end": end_year, "count": end_year - start_year + 1},
+        "years": {
+            "start": start_year,
+            "end": end_year,
+            "count": end_year - start_year + 1,
+        },
         "geography": {
             "count": 19,
             "spatial_frame": "current_boundary_reconstruction",
             "source": "Badan Informasi Geospasial",
             "source_edition": BIG_EDITION,
-            "mapping": "BIG KDPKAB Permendagri/PUM -> explicit June 2026 crosswalk -> canonical geography_id",
+            "mapping": (
+                "BIG KDPKAB Permendagri/PUM -> explicit June 2026 crosswalk -> "
+                "canonical geography_id"
+            ),
             "raw_geojson_sha256": sha256_file(geometry_path),
         },
         "chirps": {
-            "source": "CHIRPS v3 Final monthly",
-            "monthly_cog_base": CHIRPS_MONTHLY_COG_BASE,
-            "monthly_raster_count": (end_year - start_year + 1) * 12,
+            "source": "CHIRPS v3 Final annual",
+            "annual_tif_base": CHIRPS_ANNUAL_TIF_BASE,
+            "annual_raster_count": end_year - start_year + 1,
             "grid": {
                 "crs": expected_grid.crs,
                 "width": expected_grid.width,
@@ -692,27 +694,43 @@ def build_panel(
                 "transform": list(expected_grid.transform),
                 "resolution": list(expected_grid.resolution),
             },
-            "nodata_rule": f"non-finite, negative, or <= {NODATA_THRESHOLD} excluded; valid area re-normalized",
+            "nodata_rule": (
+                f"non-finite, negative, or <= {NODATA_THRESHOLD} excluded; "
+                "valid area re-normalized"
+            ),
             "transport": {
-                "primary": "http_range",
-                "range_read_attempts": RANGE_READ_ATTEMPTS,
-                "fallback": "full_download_then_local_window_read",
-                "full_download_attempts": FULL_DOWNLOAD_ATTEMPTS,
+                "mode": "sequential_full_download",
+                "download_attempts": DOWNLOAD_ATTEMPTS,
+                "polite_inter_request_delay_seconds": POLITE_DELAY_SECONDS,
+                "source_level_sha256": True,
             },
         },
         "method": {
             "revision": METHOD_REVISION,
             "weight_crs": WEIGHT_CRS,
             "pixel_weighting": "fractional polygon-pixel intersection area",
-            "monthly_statistic": "area-weighted spatial mean over valid CHIRPS land pixels",
-            "annual_statistic": "sum of 12 monthly spatial means",
+            "annual_statistic": (
+                "area-weighted spatial mean of official CHIRPS annual precipitation raster"
+            ),
             "minimum_required_valid_area_fraction": MIN_VALID_AREA_FRACTION,
         },
+        "cross_granularity_validation": {
+            "reference": EQUIVALENCE_REFERENCE,
+            "year": EQUIVALENCE_YEAR,
+            "annual_tif_sha256": EQUIVALENCE_ANNUAL_TIF_SHA256,
+            "max_absolute_difference_mm": EQUIVALENCE_MAX_ABS_MM,
+            "max_relative_difference_percent": EQUIVALENCE_MAX_RELATIVE_PERCENT,
+            "interpretation": (
+                "official annual TIFF zonal means are numerically equivalent to the previously "
+                "validated sum of twelve monthly COG zonal means within floating-point rounding"
+            ),
+        },
         "quality": {
-            "observation_count": len(annual_observations),
-            "monthly_diagnostic_count": len(monthly_rows),
-            "minimum_monthly_valid_area_fraction": min(coverages),
-            "maximum_monthly_valid_area_fraction": max(coverages),
+            "observation_count": len(observations),
+            "annual_diagnostic_count": len(diagnostics),
+            "source_artifact_count": len(source_artifacts),
+            "minimum_valid_area_fraction": min(coverages),
+            "maximum_valid_area_fraction": max(coverages),
             "minimum_annual_rainfall_mm": min(values),
             "maximum_annual_rainfall_mm": max(values),
         },
@@ -725,7 +743,12 @@ def build_panel(
         },
         "big_live_probe": big_manifest,
     }
-    for path in (observations_path, monthly_path, provenance_path):
+    for path in (
+        observations_path,
+        diagnostics_path,
+        source_artifacts_path,
+        provenance_path,
+    ):
         manifest["outputs"][path.name] = {
             "bytes": path.stat().st_size,
             "sha256": sha256_file(path),
@@ -739,7 +762,10 @@ def build_panel(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build annual CHIRPS v3 rainfall model-estimate panel for current Sumatera Barat boundaries"
+        description=(
+            "Build annual CHIRPS v3 rainfall model-estimate panel for current "
+            "Sumatera Barat boundaries"
+        )
     )
     parser.add_argument("--start-year", type=int, default=SOURCE_START_YEAR)
     parser.add_argument("--end-year", type=int, default=SOURCE_END_YEAR)
@@ -751,7 +777,9 @@ def main() -> None:
     parser.add_argument(
         "--geometry-geojson",
         type=Path,
-        help="Optional pre-qualified raw BIG GeoJSON snapshot; live BIG probe is used when omitted",
+        help=(
+            "Optional pre-qualified raw BIG GeoJSON snapshot; live BIG probe is used when omitted"
+        ),
     )
     args = parser.parse_args()
 
