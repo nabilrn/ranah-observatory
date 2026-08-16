@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - "requirements-climate.txt"
       - "scripts/build_chirps_rainfall_panel.py"
       - "scripts/validate_chirps_rainfall_panel.py"
       - "tests/test_chirps_rainfall_panel.py"
@@ -28,9 +29,10 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip"
+          cache-dependency-path: requirements-climate.txt
 
       - name: Install geospatial dependencies
-        run: python -m pip install "numpy>=2,<3" "rasterio>=1.4,<2" "shapely>=2,<3" "pyproj>=3.6,<4"
+        run: python -m pip install -r requirements-climate.txt
 
       - name: Compile CHIRPS pipeline
         run: python -m py_compile scripts/build_chirps_rainfall_panel.py scripts/validate_chirps_rainfall_panel.py
