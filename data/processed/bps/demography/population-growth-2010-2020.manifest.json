@@ -1,0 +1,19 @@
+{
+  "canonical_observation_count": 19,
+  "canonical_promotion_performed": true,
+  "canonical_provenance_count": 1,
+  "claim_type": "derived",
+  "formula_match_count": 19,
+  "frequency": "annualized_interval",
+  "indicator_id": "population_growth",
+  "interval_months": 124,
+  "observations_file": "population-growth-2010-2020-observations.csv",
+  "observations_sha256": "cde8a3e25b3258fda642da1cb6518b21e30d8bdeb7497cfa47309e45eef13ad2",
+  "provenance_file": "population-growth-2010-2020-provenance.csv",
+  "provenance_sha256": "71fc4331f09c0206dbf971d6652fffe86ada916a9536c7ea6087ba5c84b8c748",
+  "schema": "ranah-observatory/bps-population-growth-canonical/v1",
+  "source_contract_sha256": "de111b487762cd1c3306b9d0813511402c3a8712ee97dcbcac321816463cadc8",
+  "source_id": "bps_publication_web",
+  "time_end": "2020-09-30",
+  "time_start": "2010-05-01"
+}
