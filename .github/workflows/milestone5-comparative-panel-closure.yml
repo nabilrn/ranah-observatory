@@ -1,0 +1,71 @@
+name: Milestone 5 Comparative Panel Closure
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/milestone5-comparative-panel
+    paths:
+      - ".github/workflows/milestone5-comparative-panel-closure.yml"
+      - "data/registries/bps_comparative_panel_series.csv"
+      - "data/registries/geographies.csv"
+      - "scripts/bps_client.py"
+      - "scripts/harvest_bps_series.py"
+      - "scripts/normalize_bps_dynamic.py"
+      - "scripts/materialize_bps_comparative_panel.py"
+
+permissions:
+  contents: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out Milestone 5 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone5-comparative-panel
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Harvest locked 2024-2025 national BPS series
+        shell: bash
+        run: |
+          set -euo pipefail
+          for var in 192 98 543 1181 288 1186; do
+            rm -rf "data/raw/bps/comparative/var-${var}"
+            python scripts/harvest_bps_series.py \
+              --domain 0000 \
+              --var "${var}" \
+              --year-range 2024 2025 \
+              --output-dir "data/raw/bps/comparative/var-${var}"
+          done
+
+      - name: Materialize current-38 comparative panel
+        run: python scripts/materialize_bps_comparative_panel.py
+
+      - name: Validate repository data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Commit frozen source evidence and panel
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain -- data/raw/bps/comparative data/analysis/comparative)" ]; then
+            echo "Comparative panel is already byte-identical."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw/bps/comparative data/analysis/comparative
+          git commit -m "data: freeze milestone5 comparative province panel"
+          git push origin HEAD:agent/milestone5-comparative-panel
