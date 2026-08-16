@@ -1,37 +1,19 @@
-name: Milestone 4 BPS Closure Batch
+name: Milestone 4 BPS Requalification
 
 on:
-  push:
-    branches:
-      - agent/milestone4-indicator-batch-1
-    paths:
-      - "data/registries/bps_milestone4_batch1_series.csv"
-      - "scripts/extend_milestone4_indicator_registry.py"
-      - "scripts/materialize_bps_milestone4_batch1.py"
-      - "scripts/patch_milestone4_road_share.py"
-      - "scripts/audit_milestone4_indicators.py"
-      - ".github/workflows/milestone4-bps-closure-batch.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: milestone4-bps-closure-${{ github.ref }}
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  materialize-and-close-gate:
-    if: github.actor != 'github-actions[bot]'
+  requalify:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
       BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: agent/milestone4-indicator-batch-1
-          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -40,18 +22,14 @@ jobs:
       - name: Require BPS API key
         run: test -n "$BPS_API_KEY"
 
-      - name: Harden zero-denominator road-share semantics
-        run: python scripts/patch_milestone4_road_share.py
-
-      - name: Compile closure tooling
+      - name: Compile Milestone 4 tooling
         run: >-
           python -m py_compile
           scripts/extend_milestone4_indicator_registry.py
           scripts/materialize_bps_milestone4_batch1.py
-          scripts/patch_milestone4_road_share.py
           scripts/audit_milestone4_indicators.py
 
-      - name: Extend indicator registry with reviewed closure indicators
+      - name: Verify indicator registry extension is idempotent
         run: python scripts/extend_milestone4_indicator_registry.py
 
       - name: Re-harvest exact qualified BPS source periods
@@ -102,32 +80,34 @@ jobs:
           773,2022
           EOF
 
-      - name: Materialize 22-indicator canonical closure batch
+      - name: Rebuild canonical closure batch in place
         run: >-
           python scripts/materialize_bps_milestone4_batch1.py
           --input-root /tmp/milestone4-bps-closure
 
-      - name: Revalidate frozen closure batch
+      - name: Revalidate rebuilt batch
         run: python scripts/materialize_bps_milestone4_batch1.py --validate-only
 
-      - name: Build and hard-gate Milestone 4 inventory
-        run: python scripts/audit_milestone4_indicators.py --require-complete
+      - name: Rebuild Milestone 4 inventory
+        run: >-
+          python scripts/audit_milestone4_indicators.py
+          --output /tmp/milestone4_indicator_inventory.json
+          --require-complete
 
-      - name: Enforce exact Milestone 4 closure contract
+      - name: Enforce exact closure contract
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
           batch = json.loads(Path('data/processed/bps/milestone4/bps-milestone4-batch1.manifest.json').read_text())
-          audit = json.loads(Path('data/manifests/milestone4_indicator_inventory.json').read_text())
+          audit = json.loads(Path('/tmp/milestone4_indicator_inventory.json').read_text())
 
           assert batch['indicator_count'] == 22, batch
           assert batch['observation_count'] == 415, batch
           assert batch['provenance_count'] == 19, batch
           assert batch['source_snapshot_count'] == 19, batch
           assert batch['semantic_source_locks_enforced'] is True, batch
-          assert batch['canonical_promotion_performed'] is True, batch
 
           road = next(item for item in batch['series'] if item['series_id'] == 'm4_road_good_2024')
           assert road['row_count'] == 17, road
@@ -142,20 +122,9 @@ jobs:
           assert audit['unregistered_observed_indicator_ids'] == [], audit
           PY
 
-      - name: Commit reviewed canonical closure batch
-        shell: bash
+      - name: Require deterministic repository state
         run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            scripts/materialize_bps_milestone4_batch1.py \
+          cmp /tmp/milestone4_indicator_inventory.json data/manifests/milestone4_indicator_inventory.json
+          git diff --exit-code -- \
             data/registries/indicators.csv \
-            data/processed/bps/milestone4/ \
-            data/manifests/milestone4_indicator_inventory.json
-          if git diff --cached --quiet; then
-            echo "Milestone 4 closure outputs already match Git."
-            exit 0
-          fi
-          git commit -m "data: complete milestone 4 indicator foundation"
-          git push origin HEAD:agent/milestone4-indicator-batch-1
+            data/processed/bps/milestone4/
