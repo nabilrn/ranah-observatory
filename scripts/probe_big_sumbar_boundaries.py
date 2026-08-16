@@ -4,7 +4,6 @@ import argparse
 import csv
 import hashlib
 import json
-import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -113,13 +112,20 @@ def inspect_service(result: Mapping[str, Any]) -> dict[str, Any]:
 
     spatial_reference = payload.get("spatialReference")
     if not isinstance(spatial_reference, Mapping):
-        spatial_reference = payload.get("fullExtent", {}).get("spatialReference", {}) if isinstance(payload.get("fullExtent"), Mapping) else {}
+        full_extent = payload.get("fullExtent")
+        spatial_reference = (
+            full_extent.get("spatialReference", {})
+            if isinstance(full_extent, Mapping)
+            else {}
+        )
 
     description = str(payload.get("serviceDescription", ""))
     public["is_arcgis_map_service"] = True
     public["service_description"] = description
     public["copyright_text"] = str(payload.get("copyrightText", ""))
-    public["spatial_reference_wkid"] = spatial_reference.get("wkid") if isinstance(spatial_reference, Mapping) else None
+    public["spatial_reference_wkid"] = (
+        spatial_reference.get("wkid") if isinstance(spatial_reference, Mapping) else None
+    )
     public["supported_query_formats"] = str(payload.get("supportedQueryFormats", ""))
     public["edition_matches_expected"] = EXPECTED_EDITION.lower() in description.lower()
     return public
@@ -171,7 +177,9 @@ def _coordinate_pair_count(value: Any) -> int:
     return sum(_coordinate_pair_count(item) for item in value)
 
 
-def inspect_geojson(result: Mapping[str, Any], expected: Mapping[str, Mapping[str, str]]) -> dict[str, Any]:
+def inspect_geojson(
+    result: Mapping[str, Any], expected: Mapping[str, Mapping[str, str]]
+) -> dict[str, Any]:
     public = public_transport(result)
     payload = json_body(result)
     public.update(
@@ -183,6 +191,8 @@ def inspect_geojson(result: Mapping[str, Any], expected: Mapping[str, Mapping[st
             "missing_bps_codes": sorted(expected),
             "unexpected_bps_codes": [],
             "duplicate_bps_codes": [],
+            "source_kdpbps_values": [],
+            "source_province_names": [],
             "all_geometries_polygonal": False,
             "all_geometries_nonempty": False,
             "all_features_sumatera_barat": False,
@@ -198,6 +208,8 @@ def inspect_geojson(result: Mapping[str, Any], expected: Mapping[str, Mapping[st
 
     codes: list[str] = []
     names: dict[str, str] = {}
+    source_province_codes: set[str] = set()
+    source_province_names: set[str] = set()
     polygonal = True
     nonempty = True
     sumbar = True
@@ -207,16 +219,32 @@ def inspect_geojson(result: Mapping[str, Any], expected: Mapping[str, Mapping[st
         if not isinstance(feature, Mapping):
             polygonal = False
             nonempty = False
+            sumbar = False
             continue
-        properties = feature.get("properties") if isinstance(feature.get("properties"), Mapping) else {}
-        geometry = feature.get("geometry") if isinstance(feature.get("geometry"), Mapping) else {}
+        properties = (
+            feature.get("properties")
+            if isinstance(feature.get("properties"), Mapping)
+            else {}
+        )
+        geometry = (
+            feature.get("geometry")
+            if isinstance(feature.get("geometry"), Mapping)
+            else {}
+        )
         code = normalize_code(properties.get("KDBBPS"))
         if code:
             codes.append(code)
-            names[code] = str(properties.get("WADMKK") or properties.get("NAMOBJ") or "")
+            names[code] = str(
+                properties.get("WADMKK") or properties.get("NAMOBJ") or ""
+            )
         province_code = normalize_code(properties.get("KDPBPS"))
-        province_name = str(properties.get("WADMPR") or "").strip().casefold()
-        if province_code != "13" or province_name != "sumatera barat":
+        province_name_raw = str(properties.get("WADMPR") or "").strip()
+        province_name = province_name_raw.casefold()
+        if province_code:
+            source_province_codes.add(province_code)
+        if province_name_raw:
+            source_province_names.add(province_name_raw)
+        if not code.startswith("13") or province_name != "sumatera barat":
             sumbar = False
         geometry_type = str(geometry.get("type", ""))
         if geometry_type not in {"Polygon", "MultiPolygon"}:
@@ -236,6 +264,8 @@ def inspect_geojson(result: Mapping[str, Any], expected: Mapping[str, Mapping[st
     public["missing_bps_codes"] = sorted(expected_set - code_set)
     public["unexpected_bps_codes"] = sorted(code_set - expected_set)
     public["duplicate_bps_codes"] = duplicates
+    public["source_kdpbps_values"] = sorted(source_province_codes)
+    public["source_province_names"] = sorted(source_province_names)
     public["all_geometries_polygonal"] = polygonal
     public["all_geometries_nonempty"] = nonempty
     public["all_features_sumatera_barat"] = sumbar
@@ -246,7 +276,7 @@ def inspect_geojson(result: Mapping[str, Any], expected: Mapping[str, Mapping[st
 
 def build_query_url() -> str:
     params = {
-        "where": "KDPBPS='13'",
+        "where": "KDBBPS LIKE '13%'",
         "outFields": "OBJECTID,NAMOBJ,KDBBPS,KDPBPS,WADMKK,WADMPR,LUASWH,TIPADM,METADATA,SRS_ID",
         "returnGeometry": "true",
         "returnZ": "false",
@@ -264,7 +294,11 @@ def run_probe(raw_output: Path | None = None) -> dict[str, Any]:
     layer_result = fetch(f"{LAYER_URL}?f=pjson")
     query_result = fetch(build_query_url())
 
-    if raw_output and isinstance(query_result.get("body"), (bytes, bytearray)) and query_result.get("http_status") == 200:
+    if (
+        raw_output
+        and isinstance(query_result.get("body"), (bytes, bytearray))
+        and query_result.get("http_status") == 200
+    ):
         raw_output.parent.mkdir(parents=True, exist_ok=True)
         raw_output.write_bytes(bytes(query_result["body"]))
 
@@ -295,9 +329,10 @@ def run_probe(raw_output: Path | None = None) -> dict[str, Any]:
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "probe_version": 1,
+        "probe_version": 2,
         "authority": "Badan Informasi Geospasial",
         "expected_edition": EXPECTED_EDITION,
+        "selection_rule": "normalized KDBBPS starts with 13; source WADMPR must identify Sumatera Barat",
         "service": service,
         "layer": layer,
         "sumatera_barat_geojson": geojson,
@@ -313,7 +348,9 @@ def run_probe(raw_output: Path | None = None) -> dict[str, Any]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Probe BIG current Sumatera Barat kabupaten/kota polygons")
+    parser = argparse.ArgumentParser(
+        description="Probe BIG current Sumatera Barat kabupaten/kota polygons"
+    )
     parser.add_argument("--output", type=Path, help="JSON qualification manifest")
     parser.add_argument("--raw-output", type=Path, help="Raw source GeoJSON snapshot")
     args = parser.parse_args()
