@@ -1,0 +1,64 @@
+name: Climate rainfall drift
+
+on:
+  pull_request:
+    paths:
+      - "scripts/check_chirps_rainfall_drift.py"
+      - "scripts/validate_chirps_rainfall_freeze.py"
+      - "tests/test_chirps_rainfall_drift.py"
+      - ".github/workflows/climate-rainfall-drift.yml"
+      - "data/processed/climate/rainfall/**"
+      - "docs/CLIMATE_RAINFALL_DRIFT.md"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Upstream source-identity coverage"
+        required: true
+        default: "annual-anchors"
+        type: choice
+        options:
+          - "annual-anchors"
+          - "full"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-check-drift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run offline drift-comparison tests
+        run: python -m unittest tests.test_chirps_rainfall_drift -v
+
+      - name: Validate frozen rainfall baseline before network checks
+        run: python -m scripts.validate_chirps_rainfall_freeze
+
+      - name: Resolve drift-check mode
+        id: mode
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "value=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=annual-anchors" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Compare frozen source identities with live upstream
+        run: |
+          python -m scripts.check_chirps_rainfall_drift \
+            --mode "${{ steps.mode.outputs.value }}" \
+            --output chirps-rainfall-drift-report.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chirps-rainfall-drift-${{ steps.mode.outputs.value }}
+          path: chirps-rainfall-drift-report.json
+          if-no-files-found: ignore
