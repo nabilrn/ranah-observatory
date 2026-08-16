@@ -20,6 +20,7 @@ ALLOWED_HOSTS = {
     "www.chc.ucsb.edu",
     "data.chc.ucsb.edu",
     "cds.climate.copernicus.eu",
+    "wis2node.bmkg.go.id",
 }
 EXPECTED_CATALOG_IDS = {"chirps_v3", "era5_land"}
 EXPECTED_INDICATOR_CONTRACTS = {
