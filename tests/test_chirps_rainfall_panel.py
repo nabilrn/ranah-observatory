@@ -13,12 +13,15 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from build_chirps_rainfall_panel import (  # noqa: E402
     CLAIM_TYPE,
+    EQUIVALENCE_MAX_ABS_MM,
+    EQUIVALENCE_MAX_RELATIVE_PERCENT,
     METHOD_REVISION,
     GeographyWeights,
-    build_annual_observations,
+    build_observation,
+    chirps_annual_url,
     compute_fractional_area_weights,
     deterministic_id,
-    weighted_month_value,
+    weighted_raster_value,
 )
 
 
@@ -69,7 +72,7 @@ class CHIRPSRainfallPanelTests(unittest.TestCase):
         reconstructed = float(weights[0].areas_m2.sum()) / weights[0].polygon_area_m2
         self.assertAlmostEqual(reconstructed, 1.0, places=3)
 
-    def test_weighted_month_value_renormalizes_valid_area(self) -> None:
+    def test_weighted_raster_value_renormalizes_valid_area(self) -> None:
         item = GeographyWeights(
             geography_id="idn.13.1371",
             canonical_name="Padang",
@@ -81,13 +84,12 @@ class CHIRPSRainfallPanelTests(unittest.TestCase):
             polygon_area_m2=100.0,
         )
         array = np.asarray([[100.0, 200.0], [300.0, -9999.0]], dtype=np.float32)
-        # The nodata cell carries only 25% of polygon area, so lower the threshold for this unit test.
         import build_chirps_rainfall_panel as module
 
         previous = module.MIN_VALID_AREA_FRACTION
         module.MIN_VALID_AREA_FRACTION = 0.70
         try:
-            value, coverage, valid_area, valid_count, total_count = weighted_month_value(
+            value, coverage, valid_area, valid_count, total_count = weighted_raster_value(
                 array,
                 window=module.Window(col_off=20, row_off=10, width=2, height=2),
                 item=item,
@@ -101,32 +103,30 @@ class CHIRPSRainfallPanelTests(unittest.TestCase):
         self.assertEqual(valid_count, 2)
         self.assertEqual(total_count, 3)
 
-    def test_annual_observation_requires_twelve_months_and_keeps_model_estimate(self) -> None:
-        rows = [
-            {
-                "geography_id": "idn.13.1371",
-                "year": 2025,
-                "month": month,
-                "spatial_mean_precipitation_mm": 100.0 + month,
-                "valid_area_fraction": 0.999,
-            }
-            for month in range(1, 13)
-        ]
-        observations = build_annual_observations(
-            rows,
-            start_year=2025,
-            end_year=2025,
-            provenance_id="prov-test",
-        )
-        self.assertEqual(len(observations), 1)
-        observation = observations[0]
+    def test_annual_observation_preserves_direct_annual_value_and_model_estimate(self) -> None:
+        diagnostic = {
+            "geography_id": "idn.13.1371",
+            "year": 2025,
+            "annual_rainfall_mm": 4389.212234,
+            "valid_area_fraction": 0.9995,
+        }
+        observation = build_observation(diagnostic, provenance_id="prov-test")
         self.assertEqual(observation["claim_type"], CLAIM_TYPE)
         self.assertEqual(observation["methodology_version"], METHOD_REVISION)
-        self.assertEqual(observation["value_numeric"], sum(100.0 + month for month in range(1, 13)))
+        self.assertEqual(observation["value_numeric"], 4389.212)
+        self.assertEqual(observation["time_start"], "2025-01-01")
+        self.assertEqual(observation["time_end"], "2025-12-31")
+        self.assertIn("CHIRPS v3 Final annual", observation["notes"])
         self.assertIn("current-boundary reconstruction", observation["notes"])
+        self.assertIn("model_estimate", observation["notes"])
 
-        with self.assertRaises(ValueError):
-            build_annual_observations(rows[:-1], 2025, 2025, "prov-test")
+    def test_annual_url_and_equivalence_contract_are_pinned(self) -> None:
+        self.assertEqual(
+            chirps_annual_url(2025),
+            "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/annual/global/tifs/chirps-v3.0.2025.tif",
+        )
+        self.assertLess(EQUIVALENCE_MAX_ABS_MM, 0.001)
+        self.assertLess(EQUIVALENCE_MAX_RELATIVE_PERCENT, 0.0001)
 
     def test_deterministic_id_is_stable_and_namespaced(self) -> None:
         first = deterministic_id("chirpsobs", "annual_rainfall", "idn.13.1371", "2025")
