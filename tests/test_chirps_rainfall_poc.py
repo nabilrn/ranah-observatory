@@ -26,7 +26,7 @@ class ChirpsRainfallPocTests(unittest.TestCase):
         self.assertAlmostEqual(coverage, 1.0)
         self.assertEqual(valid_cells, 4)
 
-    def test_nodata_is_excluded_not_treated_as_zero(self) -> None:
+    def test_chirps_missing_sentinel_is_excluded_even_without_gdal_nodata(self) -> None:
         weights = build_area_weights(
             box(0.0, 0.0, 2.0, 2.0),
             Affine(1.0, 0.0, 0.0, 0.0, -1.0, 2.0),
@@ -34,7 +34,7 @@ class ChirpsRainfallPocTests(unittest.TestCase):
             width=2,
         )
         values = np.array([[20.0, -9999.0], [20.0, -9999.0]], dtype=float)
-        mean, coverage, valid_cells = weighted_mean_with_coverage(values, weights, -9999.0)
+        mean, coverage, valid_cells = weighted_mean_with_coverage(values, weights, None)
         self.assertAlmostEqual(mean, 20.0)
         self.assertAlmostEqual(coverage, 0.5, places=6)
         self.assertEqual(valid_cells, 2)
