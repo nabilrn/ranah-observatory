@@ -18,6 +18,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: milestone5-comparative-panel-closure
+  cancel-in-progress: true
+
 jobs:
   close:
     runs-on: ubuntu-latest
