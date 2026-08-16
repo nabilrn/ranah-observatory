@@ -12,10 +12,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: milestone7-bps-feature-discovery
+  cancel-in-progress: true
+
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     env:
       BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
     steps:
@@ -49,4 +53,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$path"
           git commit -m "data: freeze milestone7 BPS feature discovery"
+          git pull --rebase origin agent/milestone7-baseline-frontier
           git push origin HEAD:agent/milestone7-baseline-frontier
