@@ -1,0 +1,56 @@
+name: BMKG WIS2 DayCLI probe
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/probe_bmkg_wis2_daycli.py"
+      - "tests/test_bmkg_wis2_daycli.py"
+      - ".github/workflows/bmkg-wis2-daycli-probe.yml"
+      - "docs/BMKG_STATION_OVERLAP_QUALIFICATION.md"
+      - "data/registries/climate_sources.csv"
+      - "catalog/data-catalog.csv"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run offline WIS2 DayCLI probe tests
+        run: python -m unittest tests.test_bmkg_wis2_daycli -v
+
+      - name: Probe official BMKG WIS2 DayCLI and Minangkabau station
+        run: python scripts/probe_bmkg_wis2_daycli.py --output bmkg_wis2_daycli_probe.json
+
+      - name: Enforce authority and transport qualification only
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path("bmkg_wis2_daycli_probe.json").read_text(encoding="utf-8"))
+          conclusions = payload["conclusions"]
+          assert conclusions["official_daycli_collection_reachable"], payload
+          assert conclusions["queryables_reachable"], payload
+          assert conclusions["schema_reachable"], payload
+          assert conclusions["minangkabau_station_identity_qualified"], payload
+          assert payload["minangkabau_station"]["wigos_station_identifier"] == "0-20000-0-96163", payload
+          assert str(payload["minangkabau_station"]["traditional_station_identifier"]) == "96163", payload
+          assert conclusions["safe_to_mark_chirps_station_validation_complete"] is False, payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bmkg-wis2-daycli-probe
+          path: bmkg_wis2_daycli_probe.json
+          if-no-files-found: ignore
