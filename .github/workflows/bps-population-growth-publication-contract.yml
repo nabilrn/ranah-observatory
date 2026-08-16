@@ -1,0 +1,61 @@
+name: BPS population growth publication contract
+
+on:
+  pull_request:
+    paths:
+      - "data/registries/bps_population_growth_2010_2020_publication.csv"
+      - "scripts/validate_bps_population_growth_publication.py"
+      - "tests/test_bps_population_growth_publication.py"
+      - "docs/BPS_POPULATION_GROWTH_PUBLICATION_CONTRACT.md"
+      - ".github/workflows/bps-population-growth-publication-contract.yml"
+      - "data/registries/geographies.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run bounded source-contract tests
+        run: python -m unittest tests.test_bps_population_growth_publication -v
+
+      - name: Build source-contract validation report
+        run: |
+          python -m scripts.validate_bps_population_growth_publication \
+            --output artifacts/bps-population-growth-publication/report.json
+
+      - name: Enforce source-contract gate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path("artifacts/bps-population-growth-publication/report.json").read_text(encoding="utf-8"))
+          validation = payload["validation"]
+          assert validation["source_row_count"] == 19, payload
+          assert validation["geography_count"] == 19, payload
+          assert validation["population_2010_row_sum"] == 4_846_909, payload
+          assert validation["population_2020_row_sum"] == 5_534_472, payload
+          assert validation["interval_months"] == 124, payload
+          assert validation["formula_match_count"] == 19, payload
+          assert validation["target_indicator"] == "population_growth", payload
+          assert validation["target_claim_type"] == "derived", payload
+          assert validation["canonical_promotion_ready"] is False, payload
+          assert validation["canonical_promotion_performed"] is False, payload
+          assert payload["decision"]["source_contract_qualified"] is True, payload
+          assert payload["decision"]["canonical_growth_rows_added"] == 0, payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bps-population-growth-publication-contract
+          path: artifacts/bps-population-growth-publication/report.json
