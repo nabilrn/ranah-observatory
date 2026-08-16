@@ -76,12 +76,12 @@ class CHIRPSRainfallPanelTests(unittest.TestCase):
             source_permendagri_code="1371",
             source_name="Kota Padang",
             rows=np.asarray([10, 10, 11], dtype=np.int32),
-            cols=np.asarray([20, 21, 20], dtype=np.int32),
+            cols=np.asarray([20, 21, 21], dtype=np.int32),
             areas_m2=np.asarray([50.0, 25.0, 25.0], dtype=np.float64),
             polygon_area_m2=100.0,
         )
         array = np.asarray([[100.0, 200.0], [300.0, -9999.0]], dtype=np.float32)
-        # The nodata cell carries only 25% of polygon area, so lower the threshold for this unit test
+        # The nodata cell carries only 25% of polygon area, so lower the threshold for this unit test.
         import build_chirps_rainfall_panel as module
 
         previous = module.MIN_VALID_AREA_FRACTION
