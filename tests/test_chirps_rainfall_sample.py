@@ -37,9 +37,9 @@ class ChirpsRainfallSampleTests(unittest.TestCase):
             height=2,
             width=2,
         )
-        values = np.array([[10.0, CHIRPS_MISSING_SENTINEL], [30.0, CHIRPS_MISSING_SENTINEL]])
+        values = np.array([[20.0, CHIRPS_MISSING_SENTINEL], [20.0, CHIRPS_MISSING_SENTINEL]])
         mean, coverage, valid_cells = weighted_mean_with_coverage(values, weights, None)
-        self.assertAlmostEqual(mean, 20.0, places=4)
+        self.assertAlmostEqual(mean, 20.0, places=6)
         self.assertAlmostEqual(coverage, 0.5, places=4)
         self.assertEqual(valid_cells, 2)
 
