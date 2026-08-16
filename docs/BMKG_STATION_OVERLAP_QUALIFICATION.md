@@ -77,6 +77,8 @@ This is an important distinction: the API and metadata collection exist, but the
 
 The zero result is not attributed to a bad Minangkabau filter because the unfiltered collection itself also returns zero matched items.
 
+The live conclusion was reproduced after correcting the pygeoapi GET-filter syntax, so the empty result is not retained from the earlier invalid `filter-lang` request.
+
 ## Qualification decision
 
 BMKG WIS2 DayCLI is qualified in this project as:
@@ -124,6 +126,10 @@ Priority:
 3. only if those routes cannot provide sufficient overlap, define a specific BMKG Data Online manual extraction request.
 
 Any secondary archive transport must be documented as the archive/distribution source, while BMKG/WIGOS remains the authority for station identity.
+
+## CI compatibility note
+
+The repository's general validation workflows intentionally do not install the heavy optional geospatial stack. CHIRPS geospatial unit modules therefore skip only when those optional packages are unavailable; the dedicated climate workflows install the dependencies and continue to execute the tests normally. This prevents unrelated catalogue/metadata changes from failing because a general workflow lacks Rasterio or NumPy while preserving full geospatial regression coverage in the workflows that own it.
 
 ## Promotion gate for CHIRPS validation
 
