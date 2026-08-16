@@ -1,0 +1,57 @@
+name: BPS population reference periods
+
+on:
+  pull_request:
+    paths:
+      - "data/registries/bps_population_reference_periods.csv"
+      - "data/registries/bps_population_anchor_qualification.csv"
+      - "scripts/validate_bps_population_reference_periods.py"
+      - "tests/test_bps_population_reference_periods.py"
+      - "docs/BPS_POPULATION_REFERENCE_PERIODS.md"
+      - ".github/workflows/bps-population-reference-periods.yml"
+      - "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-reference-periods:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run bounded reference-period tests
+        run: python -m unittest tests.test_bps_population_reference_periods -v
+
+      - name: Build reference-period audit report
+        run: |
+          python -m scripts.validate_bps_population_reference_periods \
+            --output artifacts/bps-population-reference-periods/report.json
+
+      - name: Enforce no-growth promotion gate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path("artifacts/bps-population-reference-periods/report.json").read_text(encoding="utf-8"))
+          periods = payload["reference_periods"]
+          assert periods["qualified_point_reference_years"] == [2010], payload
+          assert periods["qualified_window_only_years"] == [2015, 2020], payload
+          assert periods["custom_population_growth_ready"] is False, payload
+          assert payload["anchor_registry_crosscheck"]["growth_still_blocked"] is True, payload
+          assert payload["sp2020_canonical_crosscheck"]["canonical_population_rows"] == 20, payload
+          assert payload["sp2020_canonical_crosscheck"]["matches_qualified_reference_window"] is True, payload
+          assert payload["growth_decision"]["custom_derived_growth_rows_ready"] == 0, payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bps-population-reference-period-audit
+          path: artifacts/bps-population-reference-periods/report.json
