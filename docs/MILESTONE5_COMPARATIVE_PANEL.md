@@ -69,9 +69,11 @@ Initial source discovery is recorded in:
 - `data/registries/bps_comparative_panel_candidates.csv`;
 - `data/manifests/milestone5_bps_comparative_probe.json`.
 
-Frozen source evidence for the promoted panel is stored under:
+The repository intentionally ignores `data/raw/` so raw acquisition output is not committed blindly. The reviewed Milestone 5 source evidence is therefore frozen in the repository's tracked BPS snapshot store:
 
-- `data/raw/bps/comparative/`.
+- `data/snapshots/bps/comparative/`.
+
+Each promoted source-year retains the harvested BPS payload, byte checksum, normalized source-native rows, and source-series manifest. The panel provenance additionally records a semantic SHA-256 over the BPS `result` payload so retrieval-wrapper timestamps are distinguishable from source-content drift.
 
 The comparative products are stored under:
 
@@ -101,6 +103,18 @@ The long panel intentionally uses `panel_observation_id` / `panel_provenance_id`
 - wide and long representations agree numerically.
 
 The committed audit report is `data/manifests/milestone5_comparative_panel_audit.json`.
+
+## Reproduction
+
+The materializer can be replayed against the committed frozen source evidence with:
+
+```bash
+python scripts/materialize_bps_comparative_panel.py \
+  --raw-root data/snapshots/bps/comparative
+python scripts/audit_milestone5_comparative_panel.py --require-complete
+```
+
+A fresh BPS re-harvest should be compared by its semantic source payload and rebuilt panel values before replacing the frozen baseline; retrieval timestamps alone are not evidence of statistical drift.
 
 ## Boundary of this milestone
 
