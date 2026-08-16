@@ -6,7 +6,6 @@ on:
       - "scripts/freeze_chirps_rainfall.py"
       - "scripts/validate_chirps_rainfall_freeze.py"
       - "scripts/run_chirps_rainfall_production_resilient.py"
-      - "tests/test_chirps_raster_retry.py"
       - ".github/workflows/climate-rainfall-freeze.yml"
       - "scripts/materialize_chirps_rainfall.py"
       - "scripts/build_chirps_rainfall_production.py"
@@ -47,6 +46,9 @@ jobs:
       - name: Re-run materialization regression tests
         run: python -m unittest tests.test_chirps_rainfall_materialization -v
 
+      - name: Validate repository-freeze idempotence guards
+        run: python -m unittest tests.test_chirps_rainfall_freeze -v
+
       - name: Validate bounded raster retry behavior
         run: python -m unittest tests.test_chirps_raster_retry -v
 
@@ -79,7 +81,7 @@ jobs:
             artifacts/chirps-rainfall-production/chirps_rainfall_production_manifest.json \
             --output-dir artifacts/chirps-rainfall-materialization
 
-      - name: Freeze candidate into repository-baseline form
+      - name: Freeze or reuse repository baseline
         run: |
           python -m scripts.freeze_chirps_rainfall \
             artifacts/chirps-rainfall-materialization \
@@ -88,7 +90,7 @@ jobs:
       - name: Validate frozen repository baseline
         run: python -m scripts.validate_chirps_rainfall_freeze
 
-      - name: Commit generated baseline to PR branch
+      - name: Commit generated baseline to PR branch only when content actually changed
         env:
           HEAD_REF: ${{ github.head_ref }}
         run: |
@@ -96,7 +98,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/processed/climate/rainfall/
           if git diff --cached --quiet; then
-            echo "Frozen baseline already matches generated output."
+            echo "Frozen baseline already matches generated output; no baseline commit needed."
             exit 0
           fi
           git commit -m "data: freeze CHIRPS annual rainfall baseline"
