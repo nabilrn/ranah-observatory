@@ -131,6 +131,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
                 "geography_count": len({gid for gid in entry["geography_ids"] if gid}),
                 "claim_types": sorted(ct for ct in entry["claim_types"] if ct),
                 "provenance_count": len({pid for pid in entry["provenance_ids"] if pid}),
+                "missing_observation_id_count": entry["missing_observation_id_count"],
                 "unresolved_provenance_count": unresolved_count,
                 "files": sorted(entry["files"]),
                 "counts_toward_milestone4": qualified,
