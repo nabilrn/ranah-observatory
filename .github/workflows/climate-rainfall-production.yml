@@ -5,7 +5,9 @@ on:
   pull_request:
     paths:
       - "scripts/build_chirps_rainfall_production.py"
+      - "scripts/run_chirps_rainfall_production_resilient.py"
       - "tests/test_chirps_rainfall_production.py"
+      - "tests/test_chirps_raster_retry.py"
       - ".github/workflows/climate-rainfall-production.yml"
       - "scripts/build_chirps_rainfall_sample.py"
       - "data/registries/big_geography_map.csv"
@@ -37,8 +39,30 @@ jobs:
       - name: Run production contract tests
         run: python -m unittest tests.test_chirps_rainfall_production -v
 
-      - name: Run full 1981-2025 CHIRPS/BIG production dry-run
-        run: python -m scripts.build_chirps_rainfall_production --output-dir artifacts/chirps-rainfall-production
+      - name: Validate bounded raster retry behavior
+        run: python -m unittest tests.test_chirps_raster_retry -v
+
+      - name: Run full 1981-2025 CHIRPS/BIG production dry-run with bounded fresh-process retry
+        run: |
+          set -uo pipefail
+          success=0
+          for attempt in 1 2 3; do
+            echo "CHIRPS production attempt ${attempt}/3"
+            rm -rf artifacts/chirps-rainfall-production
+            if python -m scripts.run_chirps_rainfall_production_resilient \
+              --output-dir artifacts/chirps-rainfall-production; then
+              success=1
+              break
+            fi
+            echo "Attempt ${attempt}/3 failed before a complete 540-COG production manifest."
+            if [ "${attempt}" -lt 3 ]; then
+              sleep $((attempt * 15))
+            fi
+          done
+          if [ "${success}" -ne 1 ]; then
+            echo "All three fresh-process CHIRPS production attempts failed."
+            exit 1
+          fi
 
       - name: Enforce production dry-run gates
         run: |
