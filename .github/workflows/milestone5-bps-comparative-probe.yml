@@ -40,7 +40,7 @@ jobs:
 
       - name: Commit probe report when changed
         run: |
-          if git diff --quiet -- data/manifests/milestone5_bps_comparative_probe.json; then
+          if [ -z "$(git status --porcelain -- data/manifests/milestone5_bps_comparative_probe.json)" ]; then
             echo "Probe report unchanged."
             exit 0
           fi
