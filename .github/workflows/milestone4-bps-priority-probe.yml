@@ -35,7 +35,7 @@ jobs:
           from pathlib import Path
           p = json.loads(Path('/tmp/milestone4-bps/milestone4-bps-priority-probe.json').read_text())
           assert p['candidate_count'] == 24, p
-          assert p['successful_probe_count'] >= 0, p
+          assert p['successful_probe_count'] + p['failed_probe_count'] == p['candidate_count'], p
           assert p['canonical_promotion_performed'] is False, p
           PY
 
