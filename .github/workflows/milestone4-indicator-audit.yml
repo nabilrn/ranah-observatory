@@ -1,0 +1,61 @@
+name: Milestone 4 Indicator Audit
+
+on:
+  push:
+    branches:
+      - agent/milestone4-indicator-batch-1
+    paths:
+      - "data/processed/**"
+      - "data/registries/indicators.csv"
+      - "scripts/audit_milestone4_indicators.py"
+      - ".github/workflows/milestone4-indicator-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone4-indicator-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/milestone4-indicator-batch-1
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build provenance-resolved Milestone 4 inventory
+        run: python scripts/audit_milestone4_indicators.py
+
+      - name: Print current milestone gate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('data/manifests/milestone4_indicator_inventory.json').read_text())
+          print(f"Qualified indicators: {p['qualified_indicator_count']}")
+          print(f"Remaining to 40: {p['remaining_to_minimum']}")
+          print(f"Milestone 4 complete: {p['milestone4_complete']}")
+          PY
+
+      - name: Commit inventory snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/manifests/milestone4_indicator_inventory.json
+          if git diff --cached --quiet; then
+            echo "Milestone 4 inventory already matches Git."
+            exit 0
+          fi
+          git commit -m "research: refresh milestone 4 inventory"
+          git push origin HEAD:agent/milestone4-indicator-batch-1
