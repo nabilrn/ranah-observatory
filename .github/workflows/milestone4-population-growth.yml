@@ -1,0 +1,54 @@
+name: Milestone 4 Population Growth Requalification
+
+on:
+  pull_request:
+    paths:
+      - "data/registries/bps_population_growth_2010_2020_publication.csv"
+      - "data/registries/geographies.csv"
+      - "data/processed/bps/demography/**"
+      - "scripts/validate_bps_population_growth_publication.py"
+      - "scripts/materialize_bps_population_growth.py"
+      - ".github/workflows/milestone4-population-growth.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  requalify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Revalidate publication source contract
+        run: >-
+          python scripts/validate_bps_population_growth_publication.py
+          --output /tmp/bps-population-growth-source-contract.json
+
+      - name: Rebuild canonical population growth deterministically
+        run: python scripts/materialize_bps_population_growth.py
+
+      - name: Revalidate rebuilt output
+        run: python scripts/materialize_bps_population_growth.py --validate-only
+
+      - name: Enforce exact promotion contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('data/processed/bps/demography/population-growth-2010-2020.manifest.json').read_text())
+          assert p['canonical_observation_count'] == 19, p
+          assert p['canonical_provenance_count'] == 1, p
+          assert p['formula_match_count'] == 19, p
+          assert p['indicator_id'] == 'population_growth', p
+          assert p['claim_type'] == 'derived', p
+          assert p['interval_months'] == 124, p
+          assert p['canonical_promotion_performed'] is True, p
+          PY
+
+      - name: Require deterministic repository state
+        run: git diff --exit-code -- data/processed/bps/demography/

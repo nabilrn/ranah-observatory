@@ -207,9 +207,15 @@ def validate() -> tuple[list[str], dict[str, int]]:
                 f"{prefix}: unknown allowed claim types: {', '.join(unknown_claim_types)}"
             )
 
-    if not 40 <= len(indicators) <= 60:
+    # The indicator registry is the research ontology/backlog and may contain
+    # more than the initial 40-60 indicators. The Research Charter's 40-60
+    # success criterion applies to indicators with canonical observations and
+    # resolved provenance, which is enforced separately by the Milestone 4
+    # indicator audit. Data-foundation validation only requires a sufficiently
+    # broad ontology and validates every registered row structurally.
+    if len(indicators) < 40:
         errors.append(
-            f"{indicator_path}: expected 40-60 core indicators, found {len(indicators)}"
+            f"{indicator_path}: expected at least 40 registered indicator definitions, found {len(indicators)}"
         )
     missing_domains = sorted(DOMAINS - represented_domains)
     if missing_domains:
@@ -314,7 +320,7 @@ def main() -> int:
         f"{counts['sources']} sources, "
         f"{counts['geographies']} geographies, "
         f"{counts['crosswalks']} crosswalks, "
-        f"{counts['indicators']} indicators across {counts['domains']} domains."
+        f"{counts['indicators']} registered indicator definitions across {counts['domains']} domains."
     )
     return 0
 

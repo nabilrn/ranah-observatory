@@ -1,0 +1,134 @@
+name: Milestone 4 BPS Requalification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  requalify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Compile Milestone 4 tooling
+        run: >-
+          python -m py_compile
+          scripts/extend_milestone4_indicator_registry.py
+          scripts/materialize_bps_milestone4_batch1.py
+          scripts/audit_milestone4_indicators.py
+          scripts/canonical_collision.py
+
+      - name: Verify indicator registry extension is idempotent
+        run: python scripts/extend_milestone4_indicator_registry.py
+
+      - name: Re-harvest exact qualified BPS source periods
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/milestone4-bps-closure
+          mkdir -p /tmp/milestone4-bps-closure
+          while IFS=, read -r var year; do
+            success=0
+            for attempt in 1 2 3; do
+              echo "Harvesting BPS var=${var} period=${year} attempt=${attempt}/3"
+              rm -rf "/tmp/milestone4-bps-closure/var-${var}"
+              if python scripts/harvest_bps_series.py \
+                --var "${var}" \
+                --period "${year}" \
+                --output-dir "/tmp/milestone4-bps-closure/var-${var}"; then
+                success=1
+                break
+              fi
+              if [ "${attempt}" -lt 3 ]; then
+                sleep $((attempt * 3))
+              fi
+            done
+            if [ "${success}" -ne 1 ]; then
+              echo "BPS acquisition failed after 3 attempts for var=${var} period=${year}."
+              exit 1
+            fi
+          done <<'EOF'
+          512,2020
+          883,2025
+          877,2025
+          320,2025
+          555,2024
+          774,2025
+          319,2025
+          289,2024
+          875,2025
+          876,2025
+          878,2025
+          879,2025
+          884,2025
+          727,2024
+          729,2024
+          492,2024
+          760,2024
+          473,2025
+          773,2022
+          EOF
+
+      - name: Rebuild canonical closure batch in place
+        run: >-
+          python scripts/materialize_bps_milestone4_batch1.py
+          --input-root /tmp/milestone4-bps-closure
+
+      - name: Revalidate rebuilt batch
+        run: python scripts/materialize_bps_milestone4_batch1.py --validate-only
+
+      - name: Rebuild Milestone 4 inventory
+        run: >-
+          python scripts/audit_milestone4_indicators.py
+          --output /tmp/milestone4_indicator_inventory.json
+          --require-complete
+
+      - name: Enforce exact closure contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          batch = json.loads(Path('data/processed/bps/milestone4/bps-milestone4-batch1.manifest.json').read_text())
+          audit = json.loads(Path('/tmp/milestone4_indicator_inventory.json').read_text())
+
+          assert batch['indicator_count'] == 22, batch
+          assert batch['observation_count'] == 415, batch
+          assert batch['provenance_count'] == 19, batch
+          assert batch['source_snapshot_count'] == 19, batch
+          assert batch['semantic_source_locks_enforced'] is True, batch
+
+          road = next(item for item in batch['series'] if item['series_id'] == 'm4_road_good_2024')
+          assert road['row_count'] == 17, road
+          assert road['missing_current_geographies'] == [], road
+          assert road['undefined_current_geographies'] == ['1374', '1375'], road
+
+          assert audit['qualified_indicator_count'] == 40, audit
+          assert audit['remaining_to_minimum'] == 0, audit
+          assert audit['milestone4_complete'] is True, audit
+          assert audit['duplicate_observation_ids'] == [], audit
+          assert audit.get('missing_observation_ids', []) == [], audit
+          assert audit['unresolved_provenance'] == [], audit
+          assert audit['unregistered_observed_indicator_ids'] == [], audit
+          PY
+
+      - name: Require deterministic repository state
+        run: |
+          cmp /tmp/milestone4_indicator_inventory.json data/manifests/milestone4_indicator_inventory.json
+          git diff --exit-code -- \
+            data/registries/indicators.csv \
+            data/processed/bps/milestone4/
