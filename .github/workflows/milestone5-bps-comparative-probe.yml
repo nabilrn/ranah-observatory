@@ -1,0 +1,51 @@
+name: Milestone 5 BPS Comparative Probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/milestone5-comparative-panel
+    paths:
+      - ".github/workflows/milestone5-bps-comparative-probe.yml"
+      - "data/registries/bps_comparative_panel_candidates.csv"
+      - "scripts/bps_client.py"
+      - "scripts/probe_bps_comparative_panel.py"
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone5-comparative-panel
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Probe national BPS province-panel candidates
+        run: python scripts/probe_bps_comparative_panel.py
+
+      - name: Commit probe report when changed
+        run: |
+          if git diff --quiet -- data/manifests/milestone5_bps_comparative_probe.json; then
+            echo "Probe report unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/manifests/milestone5_bps_comparative_probe.json
+          git commit -m "data: record milestone5 national BPS probe"
+          git push origin HEAD:agent/milestone5-comparative-panel
