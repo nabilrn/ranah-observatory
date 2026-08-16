@@ -1,0 +1,51 @@
+name: CHIRPS rainfall panel
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_chirps_rainfall_panel.py"
+      - "scripts/validate_chirps_rainfall_panel.py"
+      - "tests/test_chirps_rainfall_panel.py"
+      - ".github/workflows/chirps-rainfall-panel.yml"
+      - "data/registries/big_geography_map.csv"
+      - "data/registries/geographies.csv"
+      - "data/registries/climate_sources.csv"
+      - "data/registries/indicators.csv"
+      - "docs/CHIRPS_RAINFALL_PANEL.md"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-2025:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install geospatial dependencies
+        run: python -m pip install "numpy>=2,<3" "rasterio>=1.4,<2" "shapely>=2,<3" "pyproj>=3.6,<4"
+
+      - name: Compile CHIRPS pipeline
+        run: python -m py_compile scripts/build_chirps_rainfall_panel.py scripts/validate_chirps_rainfall_panel.py
+
+      - name: Run offline aggregation tests
+        run: python -m unittest tests.test_chirps_rainfall_panel -v
+
+      - name: Materialize CHIRPS 2025 smoke panel
+        run: python scripts/build_chirps_rainfall_panel.py --start-year 2025 --end-year 2025 --output-dir build/chirps-smoke
+
+      - name: Validate materialized smoke panel
+        run: python scripts/validate_chirps_rainfall_panel.py build/chirps-smoke
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chirps-rainfall-panel-smoke-2025
+          path: build/chirps-smoke/
+          if-no-files-found: error
