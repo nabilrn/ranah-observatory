@@ -22,7 +22,7 @@ EXPECTED_CODES = {
     "1310", "1311", "1312", "1371", "1372", "1373", "1374", "1375", "1376", "1377",
 }
 EXPECTED_BATCH_INDICATORS = 22
-EXPECTED_BATCH_OBSERVATIONS = 417
+EXPECTED_BATCH_OBSERVATIONS = 415
 EXPECTED_BATCH_PROVENANCE = 19
 
 # These timestamps and BPS metadata versions come from the successful bounded
@@ -125,7 +125,7 @@ def decimal_text(value: Decimal) -> str:
     return text or "0"
 
 
-def transformed_value(config: dict[str, str], rows_by_turvar: dict[str, dict[str, str]]) -> tuple[Decimal, str]:
+def transformed_value(config: dict[str, str], rows_by_turvar: dict[str, dict[str, str]]) -> tuple[Decimal | None, str]:
     transform = config["transform"]
     selected = config["selected_turvar_id"]
     denominator_ids = [item for item in config["denominator_turvar_ids"].split("|") if item]
@@ -155,13 +155,15 @@ def transformed_value(config: dict[str, str], rows_by_turvar: dict[str, dict[str
         numerator = get(selected)
         parts = [(tid, get(tid)) for tid in denominator_ids]
         denominator = sum((part for _, part in parts), Decimal("0"))
-        if denominator <= 0:
-            raise ValueError(f"{config['series_id']}: non-positive road-length denominator")
-        value = (numerator / denominator * Decimal("100")).quantize(Decimal("0.000001"))
         detail = (
             f"numerator={selected}:{decimal_text(numerator)}; denominator_components="
             + "|".join(f"{tid}:{decimal_text(part)}" for tid, part in parts)
         )
+        if denominator < 0:
+            raise ValueError(f"{config['series_id']}: negative road-length denominator")
+        if denominator == 0:
+            return None, detail + "; undefined_zero_denominator=true"
+        value = (numerator / denominator * Decimal("100")).quantize(Decimal("0.000001"))
     else:
         raise ValueError(f"{config['series_id']}: unsupported transform {transform!r}")
     return value, detail
@@ -296,9 +298,13 @@ def build(
             raise ValueError(f"{config['series_id']}: unsupported expected geography count {expected_count}")
 
         produced = 0
+        undefined_codes: list[str] = []
         for code in sorted(actual_codes):
             geography_id = geo[code]
             value, transform_detail = transformed_value(config, grouped[code])
+            if value is None:
+                undefined_codes.append(code)
+                continue
             observation_id = stable_id(
                 "bpsm4obs_", config["indicator_id"], geography_id, config["time_start"], config["time_end"], provenance_id
             )
@@ -335,8 +341,22 @@ def build(
                 ),
             })
             produced += 1
-        if produced != expected_count:
-            raise ValueError(f"{config['series_id']}: produced {produced} rows instead of {expected_count}")
+        expected_produced = expected_count
+        if config["series_id"] == "m4_road_good_2024":
+            expected_undefined = {"1374", "1375"}
+            if set(undefined_codes) != expected_undefined:
+                raise ValueError(
+                    f"{config['series_id']}: undefined geography set drifted: {sorted(undefined_codes)}"
+                )
+            expected_produced = 17
+        elif undefined_codes:
+            raise ValueError(
+                f"{config['series_id']}: unexpected undefined geography values: {sorted(undefined_codes)}"
+            )
+        if produced != expected_produced:
+            raise ValueError(
+                f"{config['series_id']}: produced {produced} rows instead of {expected_produced}"
+            )
         series_summary.append({
             "series_id": config["series_id"],
             "indicator_id": config["indicator_id"],
@@ -346,6 +366,7 @@ def build(
             "claim_type": config["claim_type"],
             "transform": config["transform"],
             "missing_current_geographies": sorted(EXPECTED_CODES - actual_codes),
+            "undefined_current_geographies": sorted(undefined_codes),
         })
 
     provenance = sorted(provenance_by_source.values(), key=lambda row: row["provenance_id"])

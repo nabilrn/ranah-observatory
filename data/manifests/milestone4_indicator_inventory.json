@@ -38,6 +38,96 @@
       ],
       "counts_toward_milestone4": true,
       "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "average_employee_wage",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "child_mortality_rate",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "dependency_ratio",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "domestic_investment_realization",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "elderly_population_share",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "employed_population",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
         "data/processed/bps/panel/bps-canonical-observations.csv"
       ],
       "geography_count": 20,
@@ -83,12 +173,102 @@
       ],
       "counts_toward_milestone4": true,
       "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "food_inadequacy_prevalence",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "foreign_investment_realization",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
         "data/processed/bps/expansion/bps-expansion-canonical-observations.csv"
       ],
       "geography_count": 1,
       "indicator_id": "gini_ratio",
       "observation_count": 8,
       "provenance_count": 8,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "household_expenditure_per_capita_monthly",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "infant_mortality_rate",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "internet_access",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "labor_force_count",
+      "observation_count": 19,
+      "provenance_count": 1,
       "registered": true,
       "unresolved_provenance_count": 0
     },
@@ -118,6 +298,21 @@
       "geography_count": 19,
       "indicator_id": "landslide_events",
       "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 18,
+      "indicator_id": "large_medium_industry_employment",
+      "observation_count": 18,
       "provenance_count": 1,
       "registered": true,
       "unresolved_provenance_count": 0
@@ -169,6 +364,51 @@
     },
     {
       "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "mobile_phone_use",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "neet_rate",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "derived"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "net_migration_rate",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
         "derived"
       ],
       "counts_toward_milestone4": true,
@@ -214,6 +454,21 @@
     },
     {
       "claim_types": [
+        "derived"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "provincial_road_length",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
         "observed"
       ],
       "counts_toward_milestone4": true,
@@ -244,6 +499,51 @@
     },
     {
       "claim_types": [
+        "derived"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 17,
+      "indicator_id": "road_condition_good",
+      "observation_count": 17,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "total_fertility_rate",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "under_five_mortality_rate",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
         "observed"
       ],
       "counts_toward_milestone4": true,
@@ -263,6 +563,21 @@
       ],
       "counts_toward_milestone4": true,
       "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "unemployed_population",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "observed"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
         "data/processed/bps/panel/bps-canonical-observations.csv"
       ],
       "geography_count": 20,
@@ -271,49 +586,88 @@
       "provenance_count": 8,
       "registered": true,
       "unresolved_provenance_count": 0
+    },
+    {
+      "claim_types": [
+        "model_estimate"
+      ],
+      "counts_toward_milestone4": true,
+      "files": [
+        "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv"
+      ],
+      "geography_count": 19,
+      "indicator_id": "urban_population_share",
+      "observation_count": 19,
+      "provenance_count": 1,
+      "registered": true,
+      "unresolved_provenance_count": 0
     }
   ],
   "maximum_initial_target_count": 60,
-  "milestone4_complete": false,
+  "milestone4_complete": true,
   "minimum_indicator_count": 40,
-  "observation_file_count": 5,
+  "observation_file_count": 6,
   "observation_files": [
     "data/processed/bnpb/disaster/bnpb-disaster-canonical-observations.csv",
     "data/processed/bps/demography/population-growth-2010-2020-observations.csv",
     "data/processed/bps/expansion/bps-expansion-canonical-observations.csv",
+    "data/processed/bps/milestone4/bps-milestone4-batch1-observations.csv",
     "data/processed/bps/panel/bps-canonical-observations.csv",
     "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv"
   ],
-  "provenance_file_count": 5,
+  "provenance_file_count": 6,
   "provenance_files": [
     "data/processed/bnpb/disaster/bnpb-disaster-canonical-provenance.csv",
     "data/processed/bps/demography/population-growth-2010-2020-provenance.csv",
     "data/processed/bps/expansion/bps-expansion-canonical-provenance.csv",
+    "data/processed/bps/milestone4/bps-milestone4-batch1-provenance.csv",
     "data/processed/bps/panel/bps-canonical-provenance.csv",
     "data/processed/climate/rainfall/chirps-annual-rainfall-provenance.csv"
   ],
-  "qualified_indicator_count": 18,
+  "qualified_indicator_count": 40,
   "qualified_indicator_ids": [
     "agriculture_share_grdp",
     "annual_rainfall",
+    "average_employee_wage",
+    "child_mortality_rate",
+    "dependency_ratio",
+    "domestic_investment_realization",
+    "elderly_population_share",
+    "employed_population",
     "expected_years_schooling",
     "export_value",
     "flood_events",
+    "food_inadequacy_prevalence",
+    "foreign_investment_realization",
     "gini_ratio",
+    "household_expenditure_per_capita_monthly",
+    "infant_mortality_rate",
+    "internet_access",
+    "labor_force_count",
     "labor_force_participation",
     "landslide_events",
+    "large_medium_industry_employment",
     "life_expectancy",
     "manufacturing_share_grdp",
     "mean_years_schooling",
+    "mobile_phone_use",
+    "neet_rate",
+    "net_migration_rate",
     "population_growth",
     "population_total",
     "poverty_rate",
+    "provincial_road_length",
     "real_grdp_growth",
     "rice_yield",
+    "road_condition_good",
+    "total_fertility_rate",
+    "under_five_mortality_rate",
     "underemployment_rate",
-    "unemployment_rate"
+    "unemployed_population",
+    "unemployment_rate",
+    "urban_population_share"
   ],
-  "remaining_to_minimum": 22,
+  "remaining_to_minimum": 0,
   "schema": "ranah-observatory/milestone4-indicator-inventory/v1",
   "unregistered_observed_indicator_ids": [],
   "unresolved_provenance": []

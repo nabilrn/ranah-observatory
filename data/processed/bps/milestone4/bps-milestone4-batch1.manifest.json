@@ -1,0 +1,285 @@
+{
+  "canonical_promotion_performed": true,
+  "held_candidates": [
+    {
+      "bps_var_id": 427,
+      "reason": "BPS Dynamic Data datacontent is not an object in the qualified probe"
+    },
+    {
+      "bps_var_id": 797,
+      "reason": "electricity customer count is not household electricity access"
+    },
+    {
+      "bps_var_id": 759,
+      "reason": "industry category ids 1 2 3 are not semantically qualified from current artifact"
+    },
+    {
+      "bps_var_id": 855,
+      "reason": "formal informal classification rule requires separate qualification"
+    },
+    {
+      "bps_var_id": 303,
+      "reason": "source dimension is industry class rather than a regency city geography panel"
+    }
+  ],
+  "indicator_count": 22,
+  "observation_count": 415,
+  "observations_file": "bps-milestone4-batch1-observations.csv",
+  "observations_sha256": "bf164ade3b54077db85d34b3e9dfb56b1fdeec46a4f16f632da7eb32cde0a251",
+  "provenance_count": 19,
+  "provenance_file": "bps-milestone4-batch1-provenance.csv",
+  "provenance_sha256": "8c3f4fdfcfd573bdbadbc8726fde281ee8910392fa44449351ba002116145a0f",
+  "schema": "ranah-observatory/bps-milestone4-closure-batch/v1",
+  "semantic_source_locks_enforced": true,
+  "series": [
+    {
+      "bps_var_id": 512,
+      "claim_type": "model_estimate",
+      "indicator_id": "urban_population_share",
+      "missing_current_geographies": [],
+      "period_label": "2020",
+      "row_count": 19,
+      "series_id": "m4_urban_share_2020",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 883,
+      "claim_type": "derived",
+      "indicator_id": "net_migration_rate",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_net_migration_2025",
+      "transform": "multiply_10",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 877,
+      "claim_type": "observed",
+      "indicator_id": "infant_mortality_rate",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_imr_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 320,
+      "claim_type": "observed",
+      "indicator_id": "internet_access",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_internet_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 555,
+      "claim_type": "derived",
+      "indicator_id": "road_condition_good",
+      "missing_current_geographies": [],
+      "period_label": "2024",
+      "row_count": 17,
+      "series_id": "m4_road_good_2024",
+      "transform": "share_selected_over_sum_turvar_ids",
+      "undefined_current_geographies": [
+        "1374",
+        "1375"
+      ]
+    },
+    {
+      "bps_var_id": 774,
+      "claim_type": "observed",
+      "indicator_id": "neet_rate",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_neet_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 319,
+      "claim_type": "observed",
+      "indicator_id": "mobile_phone_use",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_mobile_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 289,
+      "claim_type": "observed",
+      "indicator_id": "average_employee_wage",
+      "missing_current_geographies": [],
+      "period_label": "2024",
+      "row_count": 19,
+      "series_id": "m4_wage_2024",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 875,
+      "claim_type": "observed",
+      "indicator_id": "dependency_ratio",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_dependency_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 876,
+      "claim_type": "observed",
+      "indicator_id": "total_fertility_rate",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_tfr_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 878,
+      "claim_type": "observed",
+      "indicator_id": "child_mortality_rate",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_cmr_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 879,
+      "claim_type": "observed",
+      "indicator_id": "under_five_mortality_rate",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_u5mr_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 884,
+      "claim_type": "observed",
+      "indicator_id": "elderly_population_share",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_elderly_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 727,
+      "claim_type": "observed",
+      "indicator_id": "domestic_investment_realization",
+      "missing_current_geographies": [],
+      "period_label": "2024",
+      "row_count": 19,
+      "series_id": "m4_pmdn_2024",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 729,
+      "claim_type": "observed",
+      "indicator_id": "foreign_investment_realization",
+      "missing_current_geographies": [],
+      "period_label": "2024",
+      "row_count": 19,
+      "series_id": "m4_pma_2024",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 492,
+      "claim_type": "observed",
+      "indicator_id": "household_expenditure_per_capita_monthly",
+      "missing_current_geographies": [],
+      "period_label": "2024",
+      "row_count": 19,
+      "series_id": "m4_expenditure_2024",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 760,
+      "claim_type": "observed",
+      "indicator_id": "food_inadequacy_prevalence",
+      "missing_current_geographies": [],
+      "period_label": "2024",
+      "row_count": 19,
+      "series_id": "m4_food_inadequacy_2024",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 473,
+      "claim_type": "observed",
+      "indicator_id": "labor_force_count",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_labor_force_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 473,
+      "claim_type": "observed",
+      "indicator_id": "employed_population",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_employed_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 473,
+      "claim_type": "observed",
+      "indicator_id": "unemployed_population",
+      "missing_current_geographies": [],
+      "period_label": "2025",
+      "row_count": 19,
+      "series_id": "m4_unemployed_2025",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 555,
+      "claim_type": "derived",
+      "indicator_id": "provincial_road_length",
+      "missing_current_geographies": [],
+      "period_label": "2024",
+      "row_count": 19,
+      "series_id": "m4_provincial_road_length_2024",
+      "transform": "sum_turvar_ids",
+      "undefined_current_geographies": []
+    },
+    {
+      "bps_var_id": 773,
+      "claim_type": "observed",
+      "indicator_id": "large_medium_industry_employment",
+      "missing_current_geographies": [
+        "1301"
+      ],
+      "period_label": "2022",
+      "row_count": 18,
+      "series_id": "m4_large_medium_industry_employment_2022",
+      "transform": "identity",
+      "undefined_current_geographies": []
+    }
+  ],
+  "source_id": "bps_webapi",
+  "source_snapshot_count": 19
+}
