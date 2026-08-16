@@ -5,8 +5,11 @@ import csv
 import hashlib
 import json
 import math
-import os
 import sys
+import tempfile
+import time
+import urllib.error
+import urllib.request
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -15,6 +18,7 @@ from typing import Any, Iterable, Mapping
 import numpy as np
 import rasterio
 from pyproj import Transformer
+from rasterio.errors import RasterioIOError
 from rasterio.windows import Window, from_bounds
 from shapely.geometry import box, shape
 from shapely.ops import transform as shapely_transform
@@ -42,6 +46,10 @@ SOURCE_START_YEAR = 1981
 SOURCE_END_YEAR = 2025
 NODATA_THRESHOLD = -9000.0
 MIN_VALID_AREA_FRACTION = 0.98
+RANGE_READ_ATTEMPTS = 5
+FULL_DOWNLOAD_ATTEMPTS = 3
+DOWNLOAD_CHUNK_BYTES = 1024 * 1024
+USER_AGENT = "ranah-observatory/0.1 (+https://github.com/nabilrn/ranah-observatory)"
 
 OBSERVATION_FIELDS = [
     "observation_id",
@@ -172,6 +180,97 @@ def assert_grid_compatible(dataset: rasterio.io.DatasetReader, expected: GridSig
         raise ValueError(f"CHIRPS x resolution changed unexpectedly: {actual.resolution[0]}")
     if not math.isclose(actual.resolution[1], 0.05, rel_tol=0.0, abs_tol=1e-6):
         raise ValueError(f"CHIRPS y resolution changed unexpectedly: {actual.resolution[1]}")
+
+
+def _read_window_once(
+    source: str,
+    expected_grid: GridSignature,
+    union_window: Window,
+) -> np.ndarray:
+    with rasterio.Env(**gdal_env_options()):
+        with rasterio.open(source) as dataset:
+            assert_grid_compatible(dataset, expected_grid)
+            return dataset.read(1, window=union_window)
+
+
+def _download_remote_cog(source: str, target: Path) -> str:
+    last_error: BaseException | None = None
+    for attempt in range(1, FULL_DOWNLOAD_ATTEMPTS + 1):
+        digest = hashlib.sha256()
+        try:
+            request = urllib.request.Request(
+                source,
+                headers={
+                    "Accept": "application/octet-stream,*/*",
+                    "User-Agent": USER_AGENT,
+                },
+            )
+            with urllib.request.urlopen(request, timeout=120.0) as response:
+                if int(getattr(response, "status", 200)) != 200:
+                    raise OSError(f"unexpected HTTP status {getattr(response, 'status', None)}")
+                with target.open("wb") as handle:
+                    while True:
+                        chunk = response.read(DOWNLOAD_CHUNK_BYTES)
+                        if not chunk:
+                            break
+                        handle.write(chunk)
+                        digest.update(chunk)
+            if target.stat().st_size <= 0:
+                raise OSError("downloaded CHIRPS COG is empty")
+            return digest.hexdigest()
+        except (OSError, urllib.error.URLError, TimeoutError) as exc:
+            last_error = exc
+            target.unlink(missing_ok=True)
+            if attempt < FULL_DOWNLOAD_ATTEMPTS:
+                delay = min(2 ** (attempt - 1), 8)
+                print(
+                    f"full-download retry {attempt}/{FULL_DOWNLOAD_ATTEMPTS} for {source}: {exc}; "
+                    f"retrying in {delay}s",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                time.sleep(delay)
+    raise RasterioIOError(
+        f"full-download fallback failed after {FULL_DOWNLOAD_ATTEMPTS} attempts for {source}: {last_error}"
+    )
+
+
+def read_raster_window_resilient(
+    source: str | Path,
+    expected_grid: GridSignature,
+    union_window: Window,
+) -> tuple[np.ndarray, str, int, str]:
+    source_text = str(source)
+    if not source_text.startswith(("http://", "https://")):
+        return _read_window_once(source_text, expected_grid, union_window), "local", 1, ""
+
+    last_error: RasterioIOError | None = None
+    for attempt in range(1, RANGE_READ_ATTEMPTS + 1):
+        try:
+            array = _read_window_once(source_text, expected_grid, union_window)
+            return array, "http_range", attempt, ""
+        except RasterioIOError as exc:
+            last_error = exc
+            if attempt < RANGE_READ_ATTEMPTS:
+                delay = min(2 ** (attempt - 1), 8)
+                print(
+                    f"range-read retry {attempt}/{RANGE_READ_ATTEMPTS} for {source_text}: {exc}; "
+                    f"reopening in {delay}s",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                time.sleep(delay)
+
+    print(
+        f"range reads exhausted for {source_text}: {last_error}; using full-download fallback",
+        file=sys.stderr,
+        flush=True,
+    )
+    with tempfile.TemporaryDirectory(prefix="chirps-cog-") as temp_dir:
+        local_path = Path(temp_dir) / "source.cog"
+        checksum = _download_remote_cog(source_text, local_path)
+        array = _read_window_once(str(local_path), expected_grid, union_window)
+    return array, "full_download_fallback", RANGE_READ_ATTEMPTS, checksum
 
 
 def load_and_select_big_features(raw_geojson: Path) -> list[dict[str, Any]]:
@@ -351,10 +450,16 @@ def process_month(
     raster_source: str | Path | None = None,
 ) -> list[dict[str, Any]]:
     source = str(raster_source) if raster_source is not None else chirps_month_url(year, month)
-    with rasterio.Env(**gdal_env_options()):
-        with rasterio.open(source) as dataset:
-            assert_grid_compatible(dataset, expected_grid)
-            array = dataset.read(1, window=union_window)
+    array, transport_mode, read_attempts, fallback_sha256 = read_raster_window_resilient(
+        source, expected_grid, union_window
+    )
+    if transport_mode != "http_range" or read_attempts > 1:
+        print(
+            f"CHIRPS {year:04d}-{month:02d} transport={transport_mode} attempts={read_attempts} "
+            f"fallback_sha256={fallback_sha256 or '-'}",
+            file=sys.stderr,
+            flush=True,
+        )
 
     rows: list[dict[str, Any]] = []
     for item in weights:
@@ -551,8 +656,10 @@ def build_panel(
             f"Years {start_year}-{end_year}; BIG {BIG_EDITION} current polygon frame; "
             f"fractional pixel intersection areas computed in {WEIGHT_CRS}; source monthly COG "
             "values spatially averaged over valid land cells then summed across 12 months. "
-            "Individual remote COG checksums are not materialized by range-read ingestion; "
-            "source URLs, version, grid signature, diagnostics, and output checksums are retained."
+            "Primary transport is HTTP range-read with per-month reopen retries and a full-file "
+            "download fallback for exhausted range-read transport errors. Individual remote COG "
+            "checksums are not materialized when only range reads are used; source URLs, version, "
+            "grid signature, diagnostics, and output checksums are retained."
         ),
     }
     write_csv(provenance_path, PROVENANCE_FIELDS, [provenance_row])
@@ -586,6 +693,12 @@ def build_panel(
                 "resolution": list(expected_grid.resolution),
             },
             "nodata_rule": f"non-finite, negative, or <= {NODATA_THRESHOLD} excluded; valid area re-normalized",
+            "transport": {
+                "primary": "http_range",
+                "range_read_attempts": RANGE_READ_ATTEMPTS,
+                "fallback": "full_download_then_local_window_read",
+                "full_download_attempts": FULL_DOWNLOAD_ATTEMPTS,
+            },
         },
         "method": {
             "revision": METHOD_REVISION,
