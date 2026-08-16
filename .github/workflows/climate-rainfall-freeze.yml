@@ -50,8 +50,27 @@ jobs:
       - name: Validate bounded raster retry behavior
         run: python -m unittest tests.test_chirps_raster_retry -v
 
-      - name: Rebuild full 1981-2025 rainfall candidates with bounded raster retry
-        run: python -m scripts.run_chirps_rainfall_production_resilient --output-dir artifacts/chirps-rainfall-production
+      - name: Rebuild full 1981-2025 rainfall candidates with bounded fresh-process retry
+        run: |
+          set -uo pipefail
+          success=0
+          for attempt in 1 2 3; do
+            echo "CHIRPS production attempt ${attempt}/3"
+            rm -rf artifacts/chirps-rainfall-production
+            if python -m scripts.run_chirps_rainfall_production_resilient \
+              --output-dir artifacts/chirps-rainfall-production; then
+              success=1
+              break
+            fi
+            echo "Attempt ${attempt}/3 failed before a complete 540-COG production manifest."
+            if [ "${attempt}" -lt 3 ]; then
+              sleep $((attempt * 15))
+            fi
+          done
+          if [ "${success}" -ne 1 ]; then
+            echo "All three fresh-process CHIRPS production attempts failed."
+            exit 1
+          fi
 
       - name: Rebuild canonical candidate
         run: |
