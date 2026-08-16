@@ -1,0 +1,57 @@
+name: BPS population growth static table probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_bps_population_growth_static_table.py"
+      - "tests/test_bps_population_growth_static_table_probe.py"
+      - ".github/workflows/bps-population-growth-static-table-probe.yml"
+      - "docs/BPS_POPULATION_GROWTH_OFFICIAL_LANE.md"
+      - "scripts/bps_client.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe-static-table:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run offline discovery tests
+        run: python -m unittest tests.test_bps_population_growth_static_table_probe -v
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Probe official BPS Static Table API
+        run: |
+          python -m scripts.probe_bps_population_growth_static_table \
+            --output artifacts/bps-population-growth-static-table/probe.json
+
+      - name: Require at least one official candidate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path("artifacts/bps-population-growth-static-table/probe.json").read_text(encoding="utf-8"))
+          assert payload["source"] == "BPS WebAPI official Static Table API", payload
+          assert payload["candidate_count"] >= 1, payload
+          assert payload["lane_decision"] == "official_machine_readable_static_table_candidates_found", payload
+          assert payload["canonical_promotion_performed"] is False, payload
+          assert all(candidate["has_html_table"] or candidate["excel_locator"] for candidate in payload["candidates"]), payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bps-population-growth-static-table-probe
+          path: artifacts/bps-population-growth-static-table/probe.json
