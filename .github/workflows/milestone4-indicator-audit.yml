@@ -27,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
@@ -52,6 +54,7 @@ jobs:
           assert p['remaining_to_minimum'] == 0, p
           assert p['milestone4_complete'] is True, p
           assert p['duplicate_observation_ids'] == [], p
+          assert p['missing_observation_ids'] == [], p
           assert p['unresolved_provenance'] == [], p
           assert p['unregistered_observed_indicator_ids'] == [], p
           PY
