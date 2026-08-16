@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import unittest
 
 from scripts.materialize_chirps_rainfall import (
@@ -91,6 +92,16 @@ class ChirpsRainfallMaterializationTests(unittest.TestCase):
         self.assertIn("observed_station_equivalence=false", row["notes"])
         self.assertIn("independent_station_validation=pending", row["notes"])
 
+    def test_candidate_provenance_uses_existing_artifact_locator(self) -> None:
+        _, provenance, _, _ = build_canonical(synthetic_annual_rows(), synthetic_manifest())
+        self.assertTrue(all(
+            row["artifact_locator"].startswith(
+                "artifact://chirps-annual-rainfall-canonical-candidate/chirps-source-contract.csv#year="
+            )
+            for row in provenance
+        ))
+        self.assertTrue(all("generated_source_contract_artifact" in row["notes"] for row in provenance))
+
     def test_source_contract_does_not_call_prefix_hash_full_file_checksum(self) -> None:
         _, provenance, source_contract, _ = build_canonical(synthetic_annual_rows(), synthetic_manifest())
         chirps_rows = [row for row in source_contract if row["source_id"] == "chirps_v3"]
@@ -106,11 +117,54 @@ class ChirpsRainfallMaterializationTests(unittest.TestCase):
         self.assertEqual(big[0]["identity_sha256"], "a" * 64)
         self.assertEqual(manifest["big_geometry_response_sha256"], "a" * 64)
 
+    def test_rejects_non_boolean_false_gate(self) -> None:
+        manifest = synthetic_manifest()
+        manifest["gates"]["b"] = "false"
+        with self.assertRaises(ValueError):
+            build_canonical(synthetic_annual_rows(), manifest)
+
+    def test_rejects_short_chirps_prefix_read(self) -> None:
+        manifest = synthetic_manifest()
+        manifest["chirps_source_files"][0]["bytes_read"] = 1024
+        with self.assertRaises(ValueError):
+            build_canonical(synthetic_annual_rows(), manifest)
+
+    def test_rejects_wrong_chirps_content_range(self) -> None:
+        manifest = synthetic_manifest()
+        manifest["chirps_source_files"][0]["content_range"] = "bytes 0-1023/30000000"
+        with self.assertRaises(ValueError):
+            build_canonical(synthetic_annual_rows(), manifest)
+
+    def test_rejects_non_hex_chirps_prefix_digest(self) -> None:
+        manifest = synthetic_manifest()
+        manifest["chirps_source_files"][0]["prefix_sha256"] = "z" * 64
+        with self.assertRaises(ValueError):
+            build_canonical(synthetic_annual_rows(), manifest)
+
+    def test_rejects_non_hex_big_digest(self) -> None:
+        manifest = synthetic_manifest()
+        manifest["big_geometry"]["sha256"] = "x" * 64
+        with self.assertRaises(ValueError):
+            build_canonical(synthetic_annual_rows(), manifest)
+
     def test_rejects_candidate_below_coverage_gate(self) -> None:
         annual = synthetic_annual_rows()
         annual[0]["min_valid_area_fraction"] = "0.90"
         with self.assertRaises(ValueError):
             build_canonical(annual, synthetic_manifest())
+
+    def test_rejects_non_finite_rainfall(self) -> None:
+        annual = synthetic_annual_rows()
+        annual[0]["annual_rainfall_mm"] = "nan"
+        with self.assertRaises(ValueError):
+            build_canonical(annual, synthetic_manifest())
+
+    def test_rejects_non_finite_or_out_of_range_coverage(self) -> None:
+        for value in ("nan", "inf", "1.01", "-0.01"):
+            annual = synthetic_annual_rows()
+            annual[0]["mean_valid_area_fraction"] = value
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                build_canonical(annual, synthetic_manifest())
 
     def test_rejects_observed_claim_masquerading_as_chirps(self) -> None:
         annual = synthetic_annual_rows()
