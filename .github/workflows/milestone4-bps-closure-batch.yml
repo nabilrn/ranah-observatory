@@ -14,6 +14,8 @@ jobs:
       BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
@@ -118,6 +120,7 @@ jobs:
           assert audit['remaining_to_minimum'] == 0, audit
           assert audit['milestone4_complete'] is True, audit
           assert audit['duplicate_observation_ids'] == [], audit
+          assert audit['missing_observation_ids'] == [], audit
           assert audit['unresolved_provenance'] == [], audit
           assert audit['unregistered_observed_indicator_ids'] == [], audit
           PY
