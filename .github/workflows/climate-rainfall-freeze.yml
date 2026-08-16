@@ -5,6 +5,8 @@ on:
     paths:
       - "scripts/freeze_chirps_rainfall.py"
       - "scripts/validate_chirps_rainfall_freeze.py"
+      - "scripts/run_chirps_rainfall_production_resilient.py"
+      - "tests/test_chirps_raster_retry.py"
       - ".github/workflows/climate-rainfall-freeze.yml"
       - "scripts/materialize_chirps_rainfall.py"
       - "scripts/build_chirps_rainfall_production.py"
@@ -45,8 +47,11 @@ jobs:
       - name: Re-run materialization regression tests
         run: python -m unittest tests.test_chirps_rainfall_materialization -v
 
-      - name: Rebuild full 1981-2025 rainfall candidates
-        run: python -m scripts.build_chirps_rainfall_production --output-dir artifacts/chirps-rainfall-production
+      - name: Validate bounded raster retry behavior
+        run: python -m unittest tests.test_chirps_raster_retry -v
+
+      - name: Rebuild full 1981-2025 rainfall candidates with bounded raster retry
+        run: python -m scripts.run_chirps_rainfall_production_resilient --output-dir artifacts/chirps-rainfall-production
 
       - name: Rebuild canonical candidate
         run: |
