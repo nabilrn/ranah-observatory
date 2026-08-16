@@ -1,0 +1,69 @@
+name: Milestone 6 Historical EDA Closure
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/milestone6-historical-eda
+    paths:
+      - ".github/workflows/milestone6-historical-eda.yml"
+      - "scripts/build_milestone6_historical_eda.py"
+      - "scripts/audit_milestone6_historical_eda.py"
+      - "tests/test_milestone6_historical_eda.py"
+      - "docs/MILESTONE6_HISTORICAL_EDA.md"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone6-historical-eda-closure
+  cancel-in-progress: true
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Milestone 6 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone6-historical-eda
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build segmented historical EDA
+        run: python scripts/build_milestone6_historical_eda.py
+
+      - name: Enforce Milestone 6 completion audit
+        run: python scripts/audit_milestone6_historical_eda.py --require-complete
+
+      - name: Run Milestone 6 tests
+        run: python -m unittest tests.test_milestone6_historical_eda -v
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Revalidate repository data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Freeze generated EDA artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          paths=(
+            data/analysis/historical
+            data/manifests/milestone6_historical_eda.json
+            data/manifests/milestone6_historical_eda_audit.json
+          )
+          if [ -z "$(git status --porcelain -- "${paths[@]}")" ]; then
+            echo "Milestone 6 artifacts are already byte-identical."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${paths[@]}"
+          git commit -m "data: freeze milestone6 exploratory historical analysis"
+          git push origin HEAD:agent/milestone6-historical-eda
