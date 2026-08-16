@@ -4,7 +4,6 @@ import argparse
 import csv
 import hashlib
 import json
-import shutil
 from pathlib import Path
 from typing import Any
 
@@ -12,6 +11,12 @@ from scripts.materialize_chirps_rainfall import PROVENANCE_FIELDS, read_csv
 
 CANDIDATE_PREFIX = "artifact://chirps-annual-rainfall-canonical-candidate/chirps-source-contract.csv#year="
 REPOSITORY_PREFIX = "repo://data/processed/climate/rainfall/chirps-source-contract.csv#year="
+FROZEN_FILENAMES = (
+    "chirps-annual-rainfall-observations.csv",
+    "chirps-annual-rainfall-provenance.csv",
+    "chirps-source-contract.csv",
+    "chirps-rainfall-materialization.manifest.json",
+)
 
 
 def write_csv(path: Path, fields: list[str], rows: list[dict[str, Any]]) -> str:
@@ -47,6 +52,57 @@ def rewrite_provenance(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     if len({row["provenance_id"] for row in rewritten}) != 45:
         raise ValueError("duplicate provenance IDs during freeze")
     return rewritten
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _existing_paths(output_dir: Path) -> dict[str, Path]:
+    return {name: output_dir / name for name in FROZEN_FILENAMES}
+
+
+def reuse_existing_baseline_if_identical(
+    output_dir: Path,
+    *,
+    candidate_observations_sha: str,
+    candidate_source_contract_sha: str,
+) -> dict[str, Any] | None:
+    paths = _existing_paths(output_dir)
+    exists = {name: path.is_file() for name, path in paths.items()}
+    if not any(exists.values()):
+        return None
+    if not all(exists.values()):
+        missing = sorted(name for name, present in exists.items() if not present)
+        raise ValueError(f"refusing to freeze over partial existing baseline; missing={missing}")
+
+    manifest_path = paths["chirps-rainfall-materialization.manifest.json"]
+    existing_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if existing_manifest.get("freeze_status") != "repository_baseline":
+        raise ValueError("existing rainfall output is not a repository_baseline")
+
+    actual_observations_sha = _sha256(paths["chirps-annual-rainfall-observations.csv"])
+    actual_provenance_sha = _sha256(paths["chirps-annual-rainfall-provenance.csv"])
+    actual_contract_sha = _sha256(paths["chirps-source-contract.csv"])
+    if existing_manifest.get("observations_sha256") != actual_observations_sha:
+        raise ValueError("existing frozen observation file does not match its manifest")
+    if existing_manifest.get("provenance_sha256") != actual_provenance_sha:
+        raise ValueError("existing frozen provenance file does not match its manifest")
+    if existing_manifest.get("source_contract_sha256") != actual_contract_sha:
+        raise ValueError("existing frozen source contract does not match its manifest")
+
+    if (
+        actual_observations_sha == candidate_observations_sha
+        and actual_contract_sha == candidate_source_contract_sha
+    ):
+        result = dict(existing_manifest)
+        result["freeze_action"] = "reused_identical_repository_baseline"
+        return result
+
+    raise ValueError(
+        "candidate observations or source contract differ from the existing frozen baseline; "
+        "automatic replacement is forbidden and requires an explicit requalification/freeze phase"
+    )
 
 
 def freeze(candidate_dir: Path, output_dir: Path) -> dict[str, Any]:
@@ -86,6 +142,14 @@ def freeze(candidate_dir: Path, output_dir: Path) -> dict[str, Any]:
     if candidate_manifest.get("source_contract_sha256") != source_contract_sha:
         raise ValueError("candidate source-contract checksum mismatch")
 
+    reused = reuse_existing_baseline_if_identical(
+        output_dir,
+        candidate_observations_sha=observations_sha,
+        candidate_source_contract_sha=source_contract_sha,
+    )
+    if reused is not None:
+        return reused
+
     provenance_rows = read_csv(provenance_path)
     frozen_provenance = rewrite_provenance(provenance_rows)
 
@@ -102,6 +166,7 @@ def freeze(candidate_dir: Path, output_dir: Path) -> dict[str, Any]:
     frozen_manifest = dict(candidate_manifest)
     frozen_manifest.update({
         "freeze_status": "repository_baseline",
+        "freeze_action": "created_repository_baseline",
         "canonical_repository_path": "data/processed/climate/rainfall",
         "provenance_locator_scheme": REPOSITORY_PREFIX + "YYYY",
         "frozen_from_candidate_manifest_sha256": hashlib.sha256(candidate_manifest_bytes).hexdigest(),
