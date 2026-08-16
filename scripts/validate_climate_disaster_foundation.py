@@ -23,12 +23,21 @@ EXPECTED_SOURCE_IDS = {
     "bnpb_damage_loss_rrrp_2017_2024",
     "bnpb_compilation_2025",
     "bmkg_satu_peta_rainfall_wms",
+    "bmkg_open_forecast",
+    "bmkg_open_nowcast_cap",
+    "bmkg_open_earthquake",
     "bmkg_dataonline_station_daily",
 }
 ALLOWED_OFFICIAL_HOSTS = {
     "data.bnpb.go.id",
     "gis.bmkg.go.id",
+    "data.bmkg.go.id",
     "dataonline.bmkg.go.id",
+}
+EXPECTED_BMKG_OPERATIONAL_ROLES = {
+    "bmkg_open_forecast": "operational_context_only",
+    "bmkg_open_nowcast_cap": "operational_hazard_context",
+    "bmkg_open_earthquake": "operational_event_context",
 }
 CRITICAL_BNPB_MAPPINGS = {
     "1301": ("PESISIR SELATAN", "idn.13.1302"),
@@ -69,6 +78,7 @@ def validate() -> list[str]:
     if len(resource_ids) != len(set(resource_ids)):
         errors.append("nonblank disaster resource IDs must be unique")
 
+    source_by_id = {row["source_record_id"]: row for row in sources}
     for row in sources:
         url = row["official_url"]
         parsed = urlparse(url)
@@ -77,6 +87,19 @@ def validate() -> list[str]:
         if row["organization"] == "BNPB" and row["access_mode"] == "CKAN DataStore":
             if row["datastore_active"] != "true" or not row["resource_id"]:
                 errors.append(f"{row['source_record_id']}: DataStore source must have active resource ID")
+
+    for source_id, expected_role in EXPECTED_BMKG_OPERATIONAL_ROLES.items():
+        row = source_by_id.get(source_id)
+        if row is None:
+            continue
+        if row["organization"] != "BMKG":
+            errors.append(f"{source_id}: operational source must remain BMKG")
+        if row["qualification_status"] != "qualified":
+            errors.append(f"{source_id}: operational source must remain qualified")
+        if row["canonical_role"] != expected_role:
+            errors.append(
+                f"{source_id}: canonical role changed from {expected_role!r} to {row['canonical_role']!r}"
+            )
 
     if len(current_sumbar) != 19:
         errors.append(f"canonical current Sumatera Barat geography count is {len(current_sumbar)}, expected 19")
@@ -142,7 +165,7 @@ def validate() -> list[str]:
     if total_context and total_context[0]["indicator_id"]:
         errors.append("all-disaster total series must not masquerade as a canonical indicator")
 
-    for required_catalog_id in ("bnpb_satu_data", "bmkg_satu_peta"):
+    for required_catalog_id in ("bnpb_satu_data", "bmkg_satu_peta", "bmkg_open_data"):
         if required_catalog_id not in catalog:
             errors.append(f"catalog missing {required_catalog_id}")
 
