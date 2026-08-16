@@ -2,14 +2,17 @@ from __future__ import annotations
 
 import unittest
 
-from scripts.build_chirps_rainfall_production import (
-    EXPECTED_ANNUAL_ROWS,
-    EXPECTED_COG_COUNT,
-    EXPECTED_MONTHLY_ROWS,
-    MIN_VALID_AREA_FRACTION,
-    PRODUCTION_YEARS,
-    annualize_monthly,
-)
+try:
+    from scripts.build_chirps_rainfall_production import (
+        EXPECTED_ANNUAL_ROWS,
+        EXPECTED_COG_COUNT,
+        EXPECTED_MONTHLY_ROWS,
+        MIN_VALID_AREA_FRACTION,
+        PRODUCTION_YEARS,
+        annualize_monthly,
+    )
+except ModuleNotFoundError as exc:  # dedicated climate workflows install these deps
+    raise unittest.SkipTest(f"optional geospatial test dependencies unavailable: {exc}") from exc
 
 
 class ChirpsRainfallProductionTests(unittest.TestCase):
