@@ -58,15 +58,26 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
     by_indicator: dict[str, dict[str, Any]] = {}
     seen_observation_ids: set[str] = set()
     duplicate_observation_ids: list[str] = []
+    missing_observation_ids: list[dict[str, str]] = []
     unresolved_provenance: list[dict[str, str]] = []
 
     for path, row in observations:
         oid = row.get("observation_id", "")
-        if oid in seen_observation_ids:
-            duplicate_observation_ids.append(oid)
-        seen_observation_ids.add(oid)
-
         indicator_id = row.get("indicator_id", "")
+        if not oid:
+            missing_observation_ids.append(
+                {
+                    "indicator_id": indicator_id,
+                    "geography_id": row.get("geography_id", ""),
+                    "time_start": row.get("time_start", ""),
+                    "file": path.relative_to(ROOT).as_posix(),
+                }
+            )
+        elif oid in seen_observation_ids:
+            duplicate_observation_ids.append(oid)
+        else:
+            seen_observation_ids.add(oid)
+
         provenance_id = row.get("provenance_id", "")
         entry = by_indicator.setdefault(
             indicator_id,
@@ -77,9 +88,12 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
                 "provenance_ids": set(),
                 "files": set(),
                 "registered": indicator_id in registered,
+                "missing_observation_id_count": 0,
             },
         )
         entry["observation_count"] += 1
+        if not oid:
+            entry["missing_observation_id_count"] += 1
         entry["geography_ids"].add(row.get("geography_id", ""))
         entry["claim_types"].add(row.get("claim_type", ""))
         entry["provenance_ids"].add(provenance_id)
@@ -103,6 +117,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
             bool(indicator_id)
             and entry["registered"]
             and entry["observation_count"] > 0
+            and entry["missing_observation_id_count"] == 0
             and len(entry["provenance_ids"]) > 0
             and unresolved_count == 0
         )
@@ -116,6 +131,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
                 "geography_count": len({gid for gid in entry["geography_ids"] if gid}),
                 "claim_types": sorted(ct for ct in entry["claim_types"] if ct),
                 "provenance_count": len({pid for pid in entry["provenance_ids"] if pid}),
+                "missing_observation_id_count": entry["missing_observation_id_count"],
                 "unresolved_provenance_count": unresolved_count,
                 "files": sorted(entry["files"]),
                 "counts_toward_milestone4": qualified,
@@ -138,6 +154,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
         "observation_files": observation_files,
         "provenance_files": provenance_files,
         "duplicate_observation_ids": sorted(set(duplicate_observation_ids)),
+        "missing_observation_ids": missing_observation_ids,
         "unresolved_provenance": unresolved_provenance,
         "unregistered_observed_indicator_ids": sorted(
             indicator_id for indicator_id, entry in by_indicator.items() if indicator_id and not entry["registered"]
@@ -161,7 +178,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
-    if report["duplicate_observation_ids"] or report["unresolved_provenance"]:
+    if report["duplicate_observation_ids"] or report["missing_observation_ids"] or report["unresolved_provenance"]:
         return 2
     if args.require_complete and not report["milestone4_complete"]:
         return 3
