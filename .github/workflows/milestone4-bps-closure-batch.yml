@@ -61,11 +61,25 @@ jobs:
           rm -rf /tmp/milestone4-bps-closure
           mkdir -p /tmp/milestone4-bps-closure
           while IFS=, read -r var year; do
-            echo "Harvesting BPS var=${var} period=${year}"
-            python scripts/harvest_bps_series.py \
-              --var "${var}" \
-              --period "${year}" \
-              --output-dir "/tmp/milestone4-bps-closure/var-${var}"
+            success=0
+            for attempt in 1 2 3; do
+              echo "Harvesting BPS var=${var} period=${year} attempt=${attempt}/3"
+              rm -rf "/tmp/milestone4-bps-closure/var-${var}"
+              if python scripts/harvest_bps_series.py \
+                --var "${var}" \
+                --period "${year}" \
+                --output-dir "/tmp/milestone4-bps-closure/var-${var}"; then
+                success=1
+                break
+              fi
+              if [ "${attempt}" -lt 3 ]; then
+                sleep $((attempt * 3))
+              fi
+            done
+            if [ "${success}" -ne 1 ]; then
+              echo "BPS acquisition failed after 3 attempts for var=${var} period=${year}."
+              exit 1
+            fi
           done <<'EOF'
           512,2020
           883,2025
