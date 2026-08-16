@@ -58,11 +58,13 @@ def select_probe_period(periods: list[dict[str, Any]]) -> dict[str, Any] | None:
 
 
 def label_of(item: Mapping[str, Any]) -> str:
-    return str(item.get("label", item.get("vervar", item.get("name", ""))) or "").strip()
+    raw = item.get("label", item.get("vervar", item.get("name", "")))
+    return "" if raw is None else str(raw).strip()
 
 
 def value_of(item: Mapping[str, Any]) -> str:
-    return str(item.get("val", item.get("vervar_id", item.get("id", ""))) or "").strip()
+    raw = item.get("val", item.get("vervar_id", item.get("id", "")))
+    return "" if raw is None else str(raw).strip()
 
 
 def geography_summary(payload: Mapping[str, Any]) -> dict[str, Any]:
