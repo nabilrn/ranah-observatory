@@ -1,0 +1,70 @@
+name: Climate rainfall production dry-run
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/build_chirps_rainfall_production.py"
+      - "tests/test_chirps_rainfall_production.py"
+      - ".github/workflows/climate-rainfall-production.yml"
+      - "scripts/build_chirps_rainfall_sample.py"
+      - "data/registries/big_geography_map.csv"
+      - "docs/CLIMATE_RAINFALL_PRODUCTION.md"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-run-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install geospatial dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install \
+            numpy==2.3.5 \
+            rasterio==1.5.0 \
+            shapely==2.1.2 \
+            pyproj==3.7.2
+
+      - name: Run production contract tests
+        run: python -m unittest tests.test_chirps_rainfall_production -v
+
+      - name: Run full 1981-2025 CHIRPS/BIG production dry-run
+        run: python scripts/build_chirps_rainfall_production.py --output-dir artifacts/chirps-rainfall-production
+
+      - name: Enforce production dry-run gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("artifacts/chirps-rainfall-production/chirps_rainfall_production_manifest.json")
+          payload = json.loads(path.read_text(encoding="utf-8"))
+          assert payload["scope"]["first_year"] == 1981, payload
+          assert payload["scope"]["last_year"] == 2025, payload
+          assert payload["scope"]["year_count"] == 45, payload
+          assert payload["scope"]["geography_count"] == 19, payload
+          assert payload["scope"]["source_cog_count"] == 540, payload
+          assert payload["scope"]["monthly_row_count"] == 10260, payload
+          assert payload["scope"]["annual_row_count"] == 855, payload
+          assert payload["scope"]["not_canonical_materialization"], payload
+          assert payload["method"]["claim_type"] == "model_estimate", payload
+          assert payload["method"]["spatial_frame"] == "fixed_current_boundary_june_2026", payload
+          assert payload["method"]["coverage_threshold"] == 0.995, payload
+          assert not payload["method"]["historical_boundary_continuity_claimed"], payload
+          assert payload["diagnostics"]["coverage"]["minimum_valid_area_fraction"] >= 0.995, payload
+          assert all(payload["gates"].values()), payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chirps-rainfall-production-1981-2025
+          path: artifacts/chirps-rainfall-production/
