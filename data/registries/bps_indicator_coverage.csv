@@ -49,3 +49,20 @@ historical_population,archive,historical_publication,populasi penduduk sensus Su
 historical_literacy,archive,historical_publication,melek huruf buta huruf literacy Sumatera Barat,historical_inventory,Definition and age universe must be extracted from source
 historical_school_enrollment,archive,historical_publication,murid sekolah enrollment pendidikan Sumatera Barat,historical_inventory,Education-system mapping required
 historical_transport_access,archive,historical_publication,jalan kereta pelabuhan transportasi Sumatera Barat,historical_inventory,Mixed quantitative and qualitative evidence likely
+average_employee_wage,primary,dynamic_or_publication,upah gaji buruh karyawan rata rata upah bersih,candidate,Sakernas reference month employee universe and nominal price level must be retained
+child_mortality_rate,primary,census_or_dynamic,angka kematian anak AKA child mortality SUPAS,candidate,Preserve the official SUPAS child-mortality definition and estimation method
+dependency_ratio,primary,census_or_dynamic,rasio ketergantungan dependency ratio penduduk,candidate,Age-group definition and census or survey methodology must be retained
+domestic_investment_realization,primary,dynamic_or_publication,PMDN realisasi investasi dalam negeri tambahan investasi,candidate,Reporting coverage project definition revisions and nominal units must be retained
+elderly_population_share,primary,census_or_dynamic,lansia penduduk lanjut usia persentase SUPAS,candidate,Age threshold and survey methodology must be retained
+employed_population,primary,dynamic_or_publication,penduduk bekerja bekerja Sakernas,candidate,Sakernas reference month working-age universe and employment definition must be retained
+food_inadequacy_prevalence,primary,dynamic_or_publication,ketidakcukupan konsumsi pangan prevalensi pangan,candidate,Estimation methodology dietary-energy threshold and reference period must be retained
+foreign_investment_realization,primary,dynamic_or_publication,PMA realisasi investasi asing tambahan investasi,candidate,Reporting coverage project definition revisions and nominal units must be retained
+household_expenditure_per_capita_monthly,primary,dynamic_or_publication,pengeluaran per kapita sebulan makanan non makanan Susenas,candidate,Survey period nominal prices and welfare aggregate definition must be retained
+labor_force_count,primary,dynamic_or_publication,angkatan kerja jumlah angkatan kerja Sakernas,candidate,Sakernas reference month weighting and age universe must be retained
+large_medium_industry_employment,primary,dynamic_or_publication,industri besar sedang tenaga kerja pekerja,candidate,Industrial establishment size classification and source geography omissions must be retained
+mobile_phone_use,primary,dynamic_or_publication,telepon seluler menggunakan handphone usia 5 tahun,candidate,Qualified source universe is persons age 5+ with a three-month recall period
+neet_rate,primary,dynamic_or_publication,NEET tidak bekerja sekolah pelatihan usia 15 24,candidate,Age universe education training and Sakernas period must be retained
+provincial_road_length,derived_input,dynamic_or_publication,panjang jalan provinsi kondisi jalan baik sedang rusak,derived_candidate,Derived as the sum of provincial-road condition categories and must not be interpreted as total road-network length
+total_fertility_rate,primary,census_or_dynamic,total fertility rate TFR angka fertilitas total SUPAS,candidate,Official fertility estimation methodology and reference period must be retained
+under_five_mortality_rate,primary,census_or_dynamic,angka kematian balita AKBA under five mortality SUPAS,candidate,Preserve the official SUPAS under-five mortality definition and estimation method
+unemployed_population,primary,dynamic_or_publication,pengangguran terbuka jumlah pengangguran Sakernas,candidate,Sakernas reference month weighting and unemployment definition must be retained
