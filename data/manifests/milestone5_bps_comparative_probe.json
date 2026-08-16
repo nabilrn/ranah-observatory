@@ -1,0 +1,2984 @@
+{
+  "candidate_count": 12,
+  "domain": "0000",
+  "province_panel_candidate_count": 10,
+  "results": [
+    {
+      "bps_var_id": 192,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "percent",
+      "datacontent_count": 232,
+      "datacontent_type": "dict",
+      "expected_concept": "Persentase Penduduk Miskin Menurut Provinsi",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "poverty_rate",
+      "periods": [
+        {
+          "label": "2007",
+          "period_id": 107,
+          "year": 2007
+        },
+        {
+          "label": "2008",
+          "period_id": 108,
+          "year": 2008
+        },
+        {
+          "label": "2009",
+          "period_id": 109,
+          "year": 2009
+        },
+        {
+          "label": "2010",
+          "period_id": 110,
+          "year": 2010
+        },
+        {
+          "label": "2011",
+          "period_id": 111,
+          "year": 2011
+        },
+        {
+          "label": "2012",
+          "period_id": 112,
+          "year": 2012
+        },
+        {
+          "label": "2013",
+          "period_id": 113,
+          "year": 2013
+        },
+        {
+          "label": "2014",
+          "period_id": 114,
+          "year": 2014
+        },
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        },
+        {
+          "label": "2026",
+          "period_id": 126,
+          "year": 2026
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "d3e911bc6048ec6a6bb012bfc5804c98117eeb7c94c4997c4e6e1ee15bec0870",
+      "source_note": "<p><br /></p><ul><li>Data Provinsi Kalimantan Utara pada tahun 2013 dan 2014 masih bergabung dengan Provinsi Kalimantan Timur</li><li>Angka Provinsi Papua Barat dan Papua sebelum tahun 2024 merupakan angka provinsi sebelum mengalami pemekaran Daerah Otonom Baru (DOB)</li></ul><p><br /></p>",
+      "source_title": "Persentase Penduduk Miskin (P0) Menurut Provinsi dan Daerah",
+      "source_unit": "Persen",
+      "turtahun": [
+        {
+          "label": "Semester 1 (Maret)",
+          "value": "61"
+        },
+        {
+          "label": "Semester 2 (September)",
+          "value": "62"
+        },
+        {
+          "label": "Tahunan",
+          "value": "63"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Perkotaan",
+          "value": "432"
+        },
+        {
+          "label": "Perdesaan",
+          "value": "433"
+        },
+        {
+          "label": "Jumlah",
+          "value": "434"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 98,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "index_0_1",
+      "datacontent_count": 232,
+      "datacontent_type": "dict",
+      "expected_concept": "Gini Rasio",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "gini_ratio",
+      "periods": [
+        {
+          "label": "2002",
+          "period_id": 102,
+          "year": 2002
+        },
+        {
+          "label": "2005",
+          "period_id": 105,
+          "year": 2005
+        },
+        {
+          "label": "2007",
+          "period_id": 107,
+          "year": 2007
+        },
+        {
+          "label": "2008",
+          "period_id": 108,
+          "year": 2008
+        },
+        {
+          "label": "2009",
+          "period_id": 109,
+          "year": 2009
+        },
+        {
+          "label": "2010",
+          "period_id": 110,
+          "year": 2010
+        },
+        {
+          "label": "2011",
+          "period_id": 111,
+          "year": 2011
+        },
+        {
+          "label": "2012",
+          "period_id": 112,
+          "year": 2012
+        },
+        {
+          "label": "2013",
+          "period_id": 113,
+          "year": 2013
+        },
+        {
+          "label": "2014",
+          "period_id": 114,
+          "year": 2014
+        },
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        },
+        {
+          "label": "2026",
+          "period_id": 126,
+          "year": 2026
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "84be38470adc801111bcfda5192335ded2a9489f9488aaf670f75cdfc1ac0959",
+      "source_note": "- Sumber  : BPS, Susenas  \n<br />- Tahun 2002, Susenas Modul Konsumsi reguler\n<br />- Tahun 2005, Susenas Panel (Februari)\n<br />- Tahun 2006-2010, Susenas Panel (Maret)\n<br />- Tahun 2011-2016, Susenas Modul Konsumsi (Maret dan September)\n<br />- Angka Provinsi Papua Barat dan Papua sebelum tahun 2024 merupakan angka provinsi sebelum mengalami pemekaran Daerah Otonom Baru (DOB)",
+      "source_title": "Gini Ratio Menurut Provinsi dan Daerah",
+      "source_unit": "",
+      "turtahun": [
+        {
+          "label": "Semester 1 (Maret)",
+          "value": "61"
+        },
+        {
+          "label": "Semester 2 (September)",
+          "value": "62"
+        },
+        {
+          "label": "Tahunan",
+          "value": "63"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Perkotaan",
+          "value": "189"
+        },
+        {
+          "label": "Perdesaan",
+          "value": "190"
+        },
+        {
+          "label": "Perkotaan+Perdesaan",
+          "value": "191"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 543,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "percent",
+      "datacontent_count": 78,
+      "datacontent_type": "dict",
+      "expected_concept": "Tingkat Pengangguran Terbuka Menurut Provinsi",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "unemployment_rate",
+      "periods": [
+        {
+          "label": "1986",
+          "period_id": 86,
+          "year": 1986
+        },
+        {
+          "label": "1987",
+          "period_id": 87,
+          "year": 1987
+        },
+        {
+          "label": "1988",
+          "period_id": 88,
+          "year": 1988
+        },
+        {
+          "label": "1989",
+          "period_id": 89,
+          "year": 1989
+        },
+        {
+          "label": "1990",
+          "period_id": 90,
+          "year": 1990
+        },
+        {
+          "label": "1991",
+          "period_id": 91,
+          "year": 1991
+        },
+        {
+          "label": "1992",
+          "period_id": 92,
+          "year": 1992
+        },
+        {
+          "label": "1993",
+          "period_id": 93,
+          "year": 1993
+        },
+        {
+          "label": "1994",
+          "period_id": 94,
+          "year": 1994
+        },
+        {
+          "label": "1996",
+          "period_id": 96,
+          "year": 1996
+        },
+        {
+          "label": "1997",
+          "period_id": 97,
+          "year": 1997
+        },
+        {
+          "label": "1998",
+          "period_id": 98,
+          "year": 1998
+        },
+        {
+          "label": "1999",
+          "period_id": 99,
+          "year": 1999
+        },
+        {
+          "label": "2000",
+          "period_id": 100,
+          "year": 2000
+        },
+        {
+          "label": "2001",
+          "period_id": 101,
+          "year": 2001
+        },
+        {
+          "label": "2002",
+          "period_id": 102,
+          "year": 2002
+        },
+        {
+          "label": "2003",
+          "period_id": 103,
+          "year": 2003
+        },
+        {
+          "label": "2004",
+          "period_id": 104,
+          "year": 2004
+        },
+        {
+          "label": "2005",
+          "period_id": 105,
+          "year": 2005
+        },
+        {
+          "label": "2006",
+          "period_id": 106,
+          "year": 2006
+        },
+        {
+          "label": "2007",
+          "period_id": 107,
+          "year": 2007
+        },
+        {
+          "label": "2008",
+          "period_id": 108,
+          "year": 2008
+        },
+        {
+          "label": "2009",
+          "period_id": 109,
+          "year": 2009
+        },
+        {
+          "label": "2010",
+          "period_id": 110,
+          "year": 2010
+        },
+        {
+          "label": "2011",
+          "period_id": 111,
+          "year": 2011
+        },
+        {
+          "label": "2012",
+          "period_id": 112,
+          "year": 2012
+        },
+        {
+          "label": "2013",
+          "period_id": 113,
+          "year": 2013
+        },
+        {
+          "label": "2014",
+          "period_id": 114,
+          "year": 2014
+        },
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        },
+        {
+          "label": "2026",
+          "period_id": 126,
+          "year": 2026
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "410d37ba122bce8a3fcdfce46a083873b6a17ac66c7a47cd8384bbdb8274efa2",
+      "source_note": "<p>Data 2011-2013 menggunakan Backcast dari Penimbang Proyeksi Komponen                    <br />Data 2018-2020 menggunakan Backcast dari Penimbang berbasis SUPAS 2015                    <br />1986-1998, penghitungan tanpa data Provinsi Timor Timor                    <br />Pada tahun 1995, Sakernas tidak dilaksanakan                    <br />Pada tahun 2000, tanpa Maluku                    <br />Sumber: Survei Angkatan Kerja Nasional (Sakernas)                    <br /><br /><br /></p><p><br /></p><p><br /></p>",
+      "source_title": "Tingkat Pengangguran Terbuka Menurut Provinsi",
+      "source_unit": "Persen",
+      "turtahun": [
+        {
+          "label": "Februari",
+          "value": "189"
+        },
+        {
+          "label": "Agustus",
+          "value": "190"
+        },
+        {
+          "label": "Tahunan",
+          "value": "191"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1181,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "percent",
+      "datacontent_count": 39,
+      "datacontent_type": "dict",
+      "expected_concept": "Tingkat Setengah Pengangguran Menurut Provinsi",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "underemployment_rate",
+      "periods": [
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "2333f8c9fc87917d0e5d2c91241df68298ddbfe6c811f2d1502c124a924c8981",
+      "source_note": "<p>Sumber: Sakernas, BPS</p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p>",
+      "source_title": "Tingkat Setengah Pengangguran Menurut Provinsi",
+      "source_unit": "Persen",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 288,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "million_idr_constant_2010",
+      "datacontent_count": 78,
+      "datacontent_type": "dict",
+      "expected_concept": "Produk Domestik Regional Bruto Per Kapita",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "real_grdp_per_capita",
+      "periods": [
+        {
+          "label": "2010",
+          "period_id": 110,
+          "year": 2010
+        },
+        {
+          "label": "2011",
+          "period_id": 111,
+          "year": 2011
+        },
+        {
+          "label": "2012",
+          "period_id": 112,
+          "year": 2012
+        },
+        {
+          "label": "2013",
+          "period_id": 113,
+          "year": 2013
+        },
+        {
+          "label": "2014",
+          "period_id": 114,
+          "year": 2014
+        },
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "d935da061f211916a792e5ac50ff593f85a670352bfcf36043a9a247a37d4817",
+      "source_note": "<p><ul><li>Perbedaan antara jumlah PDRB 34 Provinsi dan PDB Indonesia antara lain disebabkan oleh diskrepansi statistik </li><li>Data 2023: Angka sementara</li><li> Data 2024: Angka sangat sementara</li></ul></p>",
+      "source_title": "[Seri 2010] Produk Domestik Regional Bruto Per Kapita",
+      "source_unit": "Ribu Rupiah",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Harga Berlaku",
+          "value": "530"
+        },
+        {
+          "label": "Harga Konstan 2010",
+          "value": "531"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1975,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "persons",
+      "datacontent_count": 1,
+      "datacontent_type": "dict",
+      "expected_concept": "Jumlah Penduduk Pertengahan Tahun",
+      "geography": {
+        "geographies": [
+          {
+            "label": "Indonesia",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 1,
+        "labelvervar": "Indonesia",
+        "non_aggregate_geography_count": 0,
+        "west_sumatra_entries": []
+      },
+      "hold_reasons": [
+        "vertical_variable_not_province",
+        "fewer_than_30_nonaggregate_geographies",
+        "west_sumatra_missing"
+      ],
+      "indicator_id": "population_total",
+      "periods": [
+        {
+          "label": "1960",
+          "period_id": 60,
+          "year": 1960
+        },
+        {
+          "label": "2010",
+          "period_id": 110,
+          "year": 2010
+        },
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        },
+        {
+          "label": "2026",
+          "period_id": 126,
+          "year": 2026
+        }
+      ],
+      "probe_status": "hold_structure",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "a8dc42c4c90196be5eb2d549b16030459a0a21dc4a8b0732822b4350d37d83c4",
+      "source_note": "<p><br /></p><p style=\"color:#0000FF;\"><a href=\"https://sirusa.web.bps.go.id/metadata/indikator/55041\">Metadata Indikator</a></p><p>\n<br /></p><p><br /></p><p><br /></p><div>Sumber data  yang digunakan yaitu data hasil sensus penduduk dan proyeksi penduduk. Untuk tahun yang tidak dilaksanakan sensus penduduk, data kependudukan diperoleh dari hasil proyeksi penduduk. Sensus penduduk dilaksanakan di tahun berakhiran 0. Proyeksi penduduk merupakan suatu perhitungan ilmiah yang didasarkan pada asumsi dari komponen-komponen perubahan penduduk, yaitu kelahiran, kematian, dan migrasi.</div><p><br /></p><p><br /></p><p><br /></p><div><br /></div><p><br /></p><p><br /></p><p><br /></p><div>Untuk tahun 2015-2019, data yang digunakan adalah Proyeksi penduduk Indonesia 2015–2045.</div><p><br /></p><p><br /></p><p><br /></p><div>Untuk tahun 2020, data yang digunakan adalah data hasil Sensus Penduduk 2020.</div><p><br /></p><p><br /></p><p><br /></p><div>Untuk tahun 2021-2022, data yang digunakan adalah Proyeksi Penduduk Interim 2020-2023. Proyeksi Penduduk Interim 2020-2023 menggunakan data dasar penduduk hasil perapihan umur dari data Administrasi Kependudukan dan SP2020 dengan menggunakan asumsi Angka Kelahiran Total sejak tahun 2020 konstan 2,1 (sesuai Proyeksi Survei Penduduk antar Sensus (SUPAS) 2015-2045), Angka Kematian Bayi (AKB) meneruskan hasil Proyeksi SUPAS 2015-2045, dan pola migrasi 2020 sama dengan pola migrasi hasil SUPAS 2015. Untuk tahun 2023-2025 berdasarkan hasil Proyeksi Penduduk Indonesia 2020-2050 Hasil Sensus Penduduk 2020 </div><p><br /></p><p><br /></p><p><br /></p>",
+      "source_title": "Jumlah Penduduk Pertengahan Tahun",
+      "source_unit": "Ribu Jiwa",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1976,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "percent_per_year",
+      "datacontent_count": 1,
+      "datacontent_type": "dict",
+      "expected_concept": "Laju Pertumbuhan Penduduk",
+      "geography": {
+        "geographies": [
+          {
+            "label": "Indonesia",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 1,
+        "labelvervar": "Indonesia",
+        "non_aggregate_geography_count": 0,
+        "west_sumatra_entries": []
+      },
+      "hold_reasons": [
+        "vertical_variable_not_province",
+        "fewer_than_30_nonaggregate_geographies",
+        "west_sumatra_missing"
+      ],
+      "indicator_id": "population_growth",
+      "periods": [
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        }
+      ],
+      "probe_status": "hold_structure",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "7245086073d014c469aa720a47d7035218cf17635c7800d9610c27ac5d5fe561",
+      "source_note": "<p>Laju pertumbuhan penduduk per tahun adalah angka yang menunjukkan rata-rata tingkat pertambahan penduduk per tahun dalam jangka waktu tertentu. Metode penghitungan laju pertumbuhan penduduk yang digunakan oleh BPS adalah metode geometrik. Sumber data penduduk yang digunakan adalah Proyeksi Penduduk Indonesia 2015-2045 (pertengahan tahun/Juni) untuk data penduduk tahun 2015-2019, Sensus Penduduk 2020 (September) untuk data penduduk tahun 2020, dan Proyeksi Penduduk Interim 2020-2023 (pertengahan tahun/Juni) untuk data penduduk tahun 2021-2022. Data Penduduk tahun 2023 berdasarkan Proyeksi Penduduk Indonesia 2020-2050 (pertengahan tahun/Juni) Hasil Sensus Penduduk 2020.\n\n1. Laju pertumbuhan penduduk 2015 dihitung berdasarkan penduduk tahun 2010 (Mei) dibandingkan dengan penduduk tahun 2015 (Juni)\n2. Laju pertumbuhan penduduk 2016 dihitung berdasarkan penduduk tahun 2010 (Mei) dibandingkan dengan penduduk tahun 2016 (Juni)\n3. Laju pertumbuhan penduduk 2017 dihitung berdasarkan penduduk tahun 2010 (Mei) dibandingkan dengan penduduk tahun 2017 (Juni)\n4. Laju pertumbuhan penduduk 2018 dihitung berdasarkan penduduk tahun 2010 (Mei) dibandingkan dengan penduduk tahun 2018 (Juni)\n5. Laju pertumbuhan penduduk 2019 dihitung berdasarkan penduduk tahun 2010 (Mei) dibandingkan dengan penduduk tahun 2019 (Juni)\n6. Laju pertumbuhan penduduk 2020 dihitung berdasarkan penduduk tahun 2010 (Mei) dibandingkan dengan penduduk tahun 2020 (September)\n7. Laju pertumbuhan penduduk 2021 dihitung berdasarkan penduduk tahun 2020 (September) dibandingkan dengan penduduk tahun 2021 (Juni)\n8. Laju pertumbuhan penduduk 2022 dihitung berdasarkan penduduk tahun 2020 (September) dibandingkan dengan penduduk tahun 2022 (Juni)\n9. Laju pertumbuhan penduduk 2023 dihitung berdasarkan penduduk tahun 2020 (September) dibandingkan dengan penduduk tahun 2023 (Juni), Laju pertumbuhan penduduk 2024 dihitung berdasarkan penduduk tahun 2020 (September) dibandingkan dengan penduduk tahun 2024(Juni)<br /></p>\n10. Laju pertumbuhan penduduk 2025 dihitung berdasarkan penduduk tahun 2020 (September) dibandingkan dengan penduduk tahun 2025 (Juni)",
+      "source_title": "Laju Pertumbuhan Penduduk",
+      "source_unit": "Persen",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1399,
+      "candidate_role": "anchor_candidate",
+      "canonical_unit": "births_per_woman",
+      "datacontent_count": 35,
+      "datacontent_type": "dict",
+      "expected_concept": "Angka Kelahiran Total Menurut Provinsi",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "total_fertility_rate",
+      "periods": [
+        {
+          "label": "2012",
+          "period_id": 112,
+          "year": 2012
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2017",
+        "period_id": 117,
+        "year": 2017
+      },
+      "semantic_sha256": "2bf4ca4c6f1afefeaeefc957c3a0b4099a17636bfc83ff2d457ae33387422ebe",
+      "source_note": "<p><br /></p><p>Sumber : Survei Demografi dan Kesehatan Indonesia<br /></p><p><br /></p>",
+      "source_title": "Angka Kelahiran Total Menurut Provinsi",
+      "source_unit": "",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1584,
+      "candidate_role": "anchor_candidate",
+      "canonical_unit": "per_1000_live_births",
+      "datacontent_count": 1,
+      "datacontent_type": "dict",
+      "expected_concept": "Angka Kematian Bayi per 1000 Kelahiran Hidup Menurut Provinsi",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "infant_mortality_rate",
+      "periods": [
+        {
+          "label": "2012",
+          "period_id": 112,
+          "year": 2012
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2017",
+        "period_id": 117,
+        "year": 2017
+      },
+      "semantic_sha256": "c6b7546dca8df322c6348d295b9adcb473834ebfca8eb17718e1367cacba5dc4",
+      "source_note": "<p>Sumber : SDKI<br />\nCatatan :\n</p><ul><li>Angka Kematian Bayi (AKB) Indonesia tahun 2012 dan 2017 dengan rujukan periode 5 tahun sebelum survei</li>\n<li>AKB untuk angka disagregasi menurut provinsi dengan rujukan periode 10 tahun sebelum survei</li>\n<li>AKB untuk provinsi tahun 2017 tidak ada</li>\n</ul>",
+      "source_title": "Angka Kematian Bayi (AKB) Per 1000 Kelahiran Hidup Menurut Provinsi",
+      "source_unit": "",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1373,
+      "candidate_role": "anchor_candidate",
+      "canonical_unit": "per_1000_live_births",
+      "datacontent_count": 1,
+      "datacontent_type": "dict",
+      "expected_concept": "Angka Kematian Balita per 1000 Kelahiran Hidup Menurut Provinsi",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "under_five_mortality_rate",
+      "periods": [
+        {
+          "label": "2012",
+          "period_id": 112,
+          "year": 2012
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2017",
+        "period_id": 117,
+        "year": 2017
+      },
+      "semantic_sha256": "32300c8d5fa58129f2d540ab822c8196cbe140fe8caf4726f3c1c05d4c161030",
+      "source_note": "Sumber : SDKI\n<br>\nCatatan : \n<ul>\n<li> Angka Indonesia tahun 2012 dan 2017 dengan rujukan periode 5 tahun sebelum survei</li>\n<li>Angka provinsi dengan rujukan periode 10 tahun sebelum survei</li>\n<li>Angka provinsi tahun 2017 tidak ada</li>\n</ul>",
+      "source_title": "Angka Kematian Balita Per 1000 Kelahiran Hidup Menurut Provinsi",
+      "source_unit": "",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1221,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "percent",
+      "datacontent_count": 39,
+      "datacontent_type": "dict",
+      "expected_concept": "Proporsi Individu Yang Menggunakan Telepon Genggam",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "mobile_phone_use",
+      "periods": [
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "b0b15a6c6c64c58937f00836b925764ec34b24ec86faaccbe598a0e74f41ea98",
+      "source_note": "<p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p>Sumber: Susenas Kor, BPS</p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p>Proporsi individu umur 5 tahun ke atas</p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p>",
+      "source_title": "5.b.1* Proporsi Individu yang Menguasai/Memiliki Telepon Genggam Menurut Provinsi",
+      "source_unit": "Persen",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "bps_var_id": 1186,
+      "candidate_role": "core_annual_candidate",
+      "canonical_unit": "percent",
+      "datacontent_count": 39,
+      "datacontent_type": "dict",
+      "expected_concept": "Persentase Usia Muda 15-24 Tahun Yang Tidak Sekolah Bekerja atau Mengikuti Pelatihan",
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "indicator_id": "neet_rate",
+      "periods": [
+        {
+          "label": "2015",
+          "period_id": 115,
+          "year": 2015
+        },
+        {
+          "label": "2016",
+          "period_id": 116,
+          "year": 2016
+        },
+        {
+          "label": "2017",
+          "period_id": 117,
+          "year": 2017
+        },
+        {
+          "label": "2018",
+          "period_id": 118,
+          "year": 2018
+        },
+        {
+          "label": "2019",
+          "period_id": 119,
+          "year": 2019
+        },
+        {
+          "label": "2020",
+          "period_id": 120,
+          "year": 2020
+        },
+        {
+          "label": "2021",
+          "period_id": 121,
+          "year": 2021
+        },
+        {
+          "label": "2022",
+          "period_id": 122,
+          "year": 2022
+        },
+        {
+          "label": "2023",
+          "period_id": 123,
+          "year": 2023
+        },
+        {
+          "label": "2024",
+          "period_id": 124,
+          "year": 2024
+        },
+        {
+          "label": "2025",
+          "period_id": 125,
+          "year": 2025
+        }
+      ],
+      "probe_status": "province_panel_candidate",
+      "selected_probe_period": {
+        "label": "2025",
+        "period_id": 125,
+        "year": 2025
+      },
+      "semantic_sha256": "1e9343f6eb2f8192f8855aa0b34d8ffa2ab9f615666d842ba09bc55cd13c9458",
+      "source_note": "<p>Sumber: Sakernas, BPS</p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p>",
+      "source_title": "Persentase Usia Muda (15-24 Tahun) Yang Sedang Tidak Sekolah, Bekerja Atau Mengikuti Pelatihan",
+      "source_unit": "Persen",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": ""
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "schema": "ranah-observatory/milestone5-bps-comparative-probe/v1",
+  "source_api": "https://webapi.bps.go.id/v1/api/list",
+  "source_authority": "Badan Pusat Statistik (BPS-Statistics Indonesia)"
+}
