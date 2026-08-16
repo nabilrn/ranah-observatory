@@ -1,0 +1,54 @@
+name: Milestone 4 BPS Priority Probe
+
+on:
+  push:
+    branches:
+      - agent/milestone4-indicator-batch-1
+    paths:
+      - "scripts/probe_bps_milestone4.py"
+      - ".github/workflows/milestone4-bps-priority-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Compile priority probe
+        run: python -m py_compile scripts/probe_bps_milestone4.py
+
+      - name: Probe bounded high-value candidates
+        run: python scripts/probe_bps_milestone4.py --output-dir /tmp/milestone4-bps
+
+      - name: Require at least one successful candidate transport
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('/tmp/milestone4-bps/milestone4-bps-priority-probe.json').read_text())
+          assert p['candidate_count'] == 24, p
+          assert p['successful_probe_count'] > 0, p
+          assert p['canonical_promotion_performed'] is False, p
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: milestone4-bps-priority-probe
+          path: /tmp/milestone4-bps/
+          if-no-files-found: error
+          retention-days: 7
