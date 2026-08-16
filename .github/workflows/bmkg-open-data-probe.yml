@@ -1,0 +1,49 @@
+name: BMKG open-data probe
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/probe_bmkg_open_data.py"
+      - "tests/test_bmkg_open_data_probe.py"
+      - ".github/workflows/bmkg-open-data-probe.yml"
+      - "docs/BMKG_OPEN_DATA_FEEDS.md"
+      - "docs/BMKG_HAZARD_ACQUISITION.md"
+      - "catalog/data-catalog.csv"
+      - "data/registries/disaster_sources.csv"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run parser and semantic tests
+        run: python -m unittest tests.test_bmkg_open_data_probe -v
+
+      - name: Probe official BMKG open-data feeds
+        run: python scripts/probe_bmkg_open_data.py --output bmkg_open_data_probe.json
+
+      - name: Enforce operational qualification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          payload = json.loads(Path("bmkg_open_data_probe.json").read_text(encoding="utf-8"))
+          assert payload["conclusions"]["operational_context_feeds_qualified_when_http_and_shape_checks_pass"], payload
+          assert not payload["conclusions"]["historical_climate_panel_supported"], payload
+          assert not payload["conclusions"]["forecast_usable_for_longitudinal_observed_climate"], payload
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bmkg-open-data-probe
+          path: bmkg_open_data_probe.json
