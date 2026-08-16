@@ -1,0 +1,62 @@
+{
+  "schema": "ranah-observatory/bmkg-rainfall-wms-qualification/v1",
+  "source_id": "bmkg_satu_peta",
+  "service_name": "Peta_Curah_Hujan_dan_Hari_Hujan_",
+  "official_registry": "https://gis.bmkg.go.id/portal/dataapi",
+  "registry_declared_format": "WMS",
+  "registry_declared_access": "Publik",
+  "hosted_runner_access": {
+    "arcgis_rest_http_status": 200,
+    "wms_getcapabilities_http_status": 200,
+    "usable_wms_capabilities": true,
+    "rest_path_wms_http_status": 400,
+    "preferred_wms_path": "/arcgis/services/Peta_Curah_Hujan_dan_Hari_Hujan_/MapServer/WMSServer"
+  },
+  "service_layers": [
+    {
+      "rest_layer_id": 0,
+      "name": "Peta Hari Hujan",
+      "type": "Feature Layer",
+      "geometry_type": "esriGeometryPoint",
+      "measure_fields": ["TTALHH"],
+      "arcgis_time_info": null
+    },
+    {
+      "rest_layer_id": 1,
+      "name": "Peta Curah Hujan",
+      "type": "Feature Layer",
+      "geometry_type": "esriGeometryPolygon",
+      "measure_fields": ["CRHHJN"],
+      "arcgis_time_info": null
+    }
+  ],
+  "wms_named_layers": [
+    {
+      "name": "1",
+      "title": "Peta Hari Hujan",
+      "time_dimensions": []
+    },
+    {
+      "name": "2",
+      "title": "Peta Curah Hujan",
+      "time_dimensions": []
+    }
+  ],
+  "temporal_qualification": {
+    "arcgis_service_time_info": null,
+    "arcgis_layer_time_info_present": false,
+    "wms_time_dimension_present": false,
+    "classification": "accessible_no_time_dimension_static_or_current_map",
+    "canonical_suitability": "not_suitable_as_historical_panel_without_separate_vintage_metadata",
+    "decision": "Do not materialize this service as annual_rainfall_mm, extreme_rainfall_days, or any historical climate panel. A separate official vintage/time source is required."
+  },
+  "reviewed_probe": {
+    "workflow": "BMKG Rainfall WMS Probe",
+    "workflow_run_id": 31898690617,
+    "artifact_id": 9250489861,
+    "artifact_digest_sha256": "a261b5e91778d2ae89293d8a87c15ce65d1f7d6320be5369f88b61e485a9dc55",
+    "probe_json_sha256": "85e518c7eef1e607cb8fb00cf6b5c3bdc7c4ca60bb3afb3a4d2e06fec0358735",
+    "source_commit": "99da1ceb17f18544916b299d5c404ee93f140303"
+  },
+  "notes": "The official WMS is operational and queryable from a GitHub-hosted runner, but neither ArcGIS REST metadata nor WMS capabilities exposes a reproducible time axis. This is a source qualification result, not a climate observation dataset."
+}
