@@ -1,0 +1,48 @@
+name: BIG boundary probe
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/probe_big_sumbar_boundaries.py"
+      - "scripts/check_big_boundary_probe.py"
+      - "scripts/validate_big_boundary_foundation.py"
+      - "tests/test_big_sumbar_boundaries.py"
+      - ".github/workflows/big-boundary-probe.yml"
+      - "data/registries/geospatial_sources.csv"
+      - "data/registries/big_geography_map.csv"
+      - "data/registries/geographies.csv"
+      - "catalog/data-catalog.csv"
+      - "docs/BIG_BOUNDARY_ACQUISITION.md"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate BIG source and crosswalk contracts
+        run: python scripts/validate_big_boundary_foundation.py
+
+      - name: Run offline BIG parser and mapping tests
+        run: python -m unittest tests.test_big_sumbar_boundaries -v
+
+      - name: Probe official BIG service and snapshot Sumatera Barat source objects
+        run: python scripts/probe_big_sumbar_boundaries.py --output big_sumbar_boundary_probe.json --raw-output big_sumbar_boundaries_june_2026.geojson
+
+      - name: Enforce live probe result
+        run: python scripts/check_big_boundary_probe.py big_sumbar_boundary_probe.json big_sumbar_boundaries_june_2026.geojson
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: big-sumbar-boundaries-june-2026
+          path: |
+            big_sumbar_boundary_probe.json
+            big_sumbar_boundaries_june_2026.geojson

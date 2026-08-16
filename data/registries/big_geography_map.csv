@@ -1,0 +1,20 @@
+source_code_normalized,source_code_display,source_name_expected,source_admin_type,canonical_geography_id,canonical_name,source_edition,mapping_status,source_system,notes
+1301,13.01,PESISIR SELATAN,regency,idn.13.1302,Pesisir Selatan,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code; intentionally not equated to BPS code 1301
+1302,13.02,SOLOK,regency,idn.13.1303,Solok,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code; Kabupaten Solok is distinct from Kota Solok
+1303,13.03,SIJUNJUNG,regency,idn.13.1304,Sijunjung,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1304,13.04,TANAH DATAR,regency,idn.13.1305,Tanah Datar,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1305,13.05,PADANG PARIAMAN,regency,idn.13.1306,Padang Pariaman,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1306,13.06,AGAM,regency,idn.13.1307,Agam,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1307,13.07,LIMA PULUH KOTA,regency,idn.13.1308,Lima Puluh Kota,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1308,13.08,PASAMAN,regency,idn.13.1309,Pasaman,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1309,13.09,KEPULAUAN MENTAWAI,regency,idn.13.1301,Kepulauan Mentawai,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code; intentionally not equated to BPS code 1309
+1310,13.10,DHARMASRAYA,regency,idn.13.1311,Dharmasraya,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1311,13.11,SOLOK SELATAN,regency,idn.13.1310,Solok Selatan,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1312,13.12,PASAMAN BARAT,regency,idn.13.1312,Pasaman Barat,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1371,13.71,KOTA PADANG,city,idn.13.1371,Padang,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1372,13.72,KOTA SOLOK,city,idn.13.1372,Solok,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code; Kota Solok is distinct from Kabupaten Solok
+1373,13.73,KOTA SAWAHLUNTO,city,idn.13.1373,Sawahlunto,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1374,13.74,KOTA PADANG PANJANG,city,idn.13.1374,Padang Panjang,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1375,13.75,KOTA BUKITTINGGI,city,idn.13.1375,Bukittinggi,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1376,13.76,KOTA PAYAKUMBUH,city,idn.13.1376,Payakumbuh,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
+1377,13.77,KOTA PARIAMAN,city,idn.13.1377,Pariaman,Juni 2026,qualified_current_crosswalk,Permendagri,BIG KDPKAB/PUM code
