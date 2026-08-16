@@ -131,7 +131,6 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
                 "geography_count": len({gid for gid in entry["geography_ids"] if gid}),
                 "claim_types": sorted(ct for ct in entry["claim_types"] if ct),
                 "provenance_count": len({pid for pid in entry["provenance_ids"] if pid}),
-                "missing_observation_id_count": entry["missing_observation_id_count"],
                 "unresolved_provenance_count": unresolved_count,
                 "files": sorted(entry["files"]),
                 "counts_toward_milestone4": qualified,
@@ -139,7 +138,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
         )
 
     count = len(qualified_ids)
-    return {
+    report: dict[str, Any] = {
         "schema": "ranah-observatory/milestone4-indicator-inventory/v1",
         "criterion": "40-60 high-value indicators with provenance",
         "minimum_indicator_count": MIN_INDICATORS,
@@ -154,12 +153,14 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
         "observation_files": observation_files,
         "provenance_files": provenance_files,
         "duplicate_observation_ids": sorted(set(duplicate_observation_ids)),
-        "missing_observation_ids": missing_observation_ids,
         "unresolved_provenance": unresolved_provenance,
         "unregistered_observed_indicator_ids": sorted(
             indicator_id for indicator_id, entry in by_indicator.items() if indicator_id and not entry["registered"]
         ),
     }
+    if missing_observation_ids:
+        report["missing_observation_ids"] = missing_observation_ids
+    return report
 
 
 def main() -> int:
@@ -178,7 +179,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
-    if report["duplicate_observation_ids"] or report["missing_observation_ids"] or report["unresolved_provenance"]:
+    if report["duplicate_observation_ids"] or report.get("missing_observation_ids", []) or report["unresolved_provenance"]:
         return 2
     if args.require_complete and not report["milestone4_complete"]:
         return 3
