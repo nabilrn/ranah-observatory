@@ -1,0 +1,78 @@
+name: Milestone 6 Historical EDA Audit
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone6-historical-eda.yml"
+      - "scripts/build_milestone6_historical_eda.py"
+      - "scripts/audit_milestone6_historical_eda.py"
+      - "tests/test_milestone6_historical_eda.py"
+      - "docs/MILESTONE6_HISTORICAL_EDA.md"
+      - "data/analysis/historical/**"
+      - "data/manifests/milestone6_historical_eda*.json"
+      - "data/registries/historical_geography_events.csv"
+      - "data/registries/historical_source_inventory.csv"
+      - "data/registries/geographies.csv"
+      - "data/processed/bps/historical_population_source_native.csv"
+      - "data/processed/bps/panel/bps-canonical-observations.csv"
+      - "data/processed/bps/panel/bps-canonical-panel.manifest.json"
+      - "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv"
+      - "data/processed/climate/rainfall/chirps-rainfall-materialization.manifest.json"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone6-historical-eda.yml"
+      - "scripts/build_milestone6_historical_eda.py"
+      - "scripts/audit_milestone6_historical_eda.py"
+      - "tests/test_milestone6_historical_eda.py"
+      - "docs/MILESTONE6_HISTORICAL_EDA.md"
+      - "data/analysis/historical/**"
+      - "data/manifests/milestone6_historical_eda*.json"
+      - "data/registries/historical_geography_events.csv"
+      - "data/registries/historical_source_inventory.csv"
+      - "data/registries/geographies.csv"
+      - "data/processed/bps/historical_population_source_native.csv"
+      - "data/processed/bps/panel/bps-canonical-observations.csv"
+      - "data/processed/bps/panel/bps-canonical-panel.manifest.json"
+      - "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv"
+      - "data/processed/climate/rainfall/chirps-rainfall-materialization.manifest.json"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild segmented historical EDA from frozen evidence
+        run: python scripts/build_milestone6_historical_eda.py
+
+      - name: Enforce Milestone 6 completion audit
+        run: python scripts/audit_milestone6_historical_eda.py --require-complete
+
+      - name: Run Milestone 6 tests
+        run: python -m unittest tests.test_milestone6_historical_eda -v
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Revalidate repository data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Require committed Milestone 6 artifacts to be current
+        run: |
+          git diff --exit-code -- \
+            data/analysis/historical \
+            data/manifests/milestone6_historical_eda.json \
+            data/manifests/milestone6_historical_eda_audit.json

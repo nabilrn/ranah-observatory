@@ -1,0 +1,8 @@
+indicator_id,start_year,end_year,observation_count,start_value,end_value,absolute_change,absolute_change_unit,unit,minimum_year,minimum_value,maximum_year,maximum_value,endpoint_direction,trend_qualified,interpretation_rule
+expected_years_schooling,2018,2025,8,13.95,14.31,0.36,years,years,2018,13.95,2025,14.31,increase,true,descriptive endpoint/min/max only; no causal interpretation
+labor_force_participation,2018,2025,8,67.56,71.34,3.78,percentage_points,percent,2018,67.56,2025,71.34,increase,false,context only; source cross-regime comparability remains unresolved
+life_expectancy,2020,2025,6,73.5,74.69,1.19,years,years,2020,73.5,2025,74.69,increase,true,descriptive endpoint/min/max only; no causal interpretation
+mean_years_schooling,2018,2025,8,8.76,9.77,1.01,years,years,2018,8.76,2025,9.77,increase,true,descriptive endpoint/min/max only; no causal interpretation
+poverty_rate,2018,2025,8,6.65,5.35,-1.3,percentage_points,percent,2025,5.35,2018,6.65,decrease,true,descriptive endpoint/min/max only; no causal interpretation
+real_grdp_growth,2018,2025,8,5.14,3.37,-1.77,percentage_points,percent,2020,-1.61,2018,5.14,decrease,true,descriptive endpoint/min/max only; no causal interpretation
+unemployment_rate,2018,2025,8,5.66,5.62,-0.04,percentage_points,percent,2019,5.38,2020,6.88,decrease,false,context only; source cross-regime comparability remains unresolved
