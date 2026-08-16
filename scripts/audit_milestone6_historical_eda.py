@@ -197,6 +197,9 @@ def audit(analysis_dir: Path, manifest_path: Path) -> dict[str, Any]:
     for row in summary:
         if row["indicator_id"] in TREND_QUALIFIED and int(row["observation_count"]) < 6:
             errors.append(f"trend-qualified series {row['indicator_id']} has fewer than six observations")
+        expected_change_unit = "percentage_points" if row.get("unit") == "percent" else row.get("unit")
+        if row.get("absolute_change_unit") != expected_change_unit:
+            errors.append(f"absolute-change unit drift for {row.get('indicator_id')}")
     grdp = next((row for row in summary if row["indicator_id"] == "real_grdp_growth"), None)
     if not grdp or grdp["minimum_year"] != "2020" or float(grdp["minimum_value"]) >= 0:
         errors.append("modern GRDP series no longer has a negative 2020 minimum within the 2018-2025 window")

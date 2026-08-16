@@ -265,6 +265,7 @@ def build_modern_trajectory() -> tuple[list[dict[str, Any]], list[dict[str, Any]
         expected_count = 2025 - expected_start + 1
         if len(values) != expected_count:
             raise Milestone6Error(f"{indicator_id} expected {expected_count} annual rows; got {len(values)}")
+        change_unit = "percentage_points" if contract["unit"] == "percent" else contract["unit"]
         summary_rows.append(
             {
                 "indicator_id": indicator_id,
@@ -274,6 +275,7 @@ def build_modern_trajectory() -> tuple[list[dict[str, Any]], list[dict[str, Any]
                 "start_value": format_number(start_value),
                 "end_value": format_number(end_value),
                 "absolute_change": format_number(end_value - start_value),
+                "absolute_change_unit": change_unit,
                 "unit": contract["unit"],
                 "minimum_year": minimum[0],
                 "minimum_value": format_number(minimum[1]),
@@ -478,7 +480,7 @@ def build_findings(
                 "statement": (
                     f"{row['indicator_id']} changes from {row['start_value']} {row['unit']} in {row['start_year']} "
                     f"to {row['end_value']} {row['unit']} in {row['end_year']} "
-                    f"({row['endpoint_direction']}; absolute change {row['absolute_change']} {row['unit']})."
+                    f"({row['endpoint_direction']}; absolute change {row['absolute_change']} {row['absolute_change_unit']})."
                 ),
                 "source_paths": "data/processed/bps/panel/bps-canonical-observations.csv",
                 "boundary_regime": "current_sumatera_barat_bps",
@@ -556,7 +558,7 @@ def build(output_dir: Path, manifest_path: Path) -> dict[str, Any]:
         files["modern_summary"],
         [
             "indicator_id", "start_year", "end_year", "observation_count", "start_value", "end_value",
-            "absolute_change", "unit", "minimum_year", "minimum_value", "maximum_year", "maximum_value",
+            "absolute_change", "absolute_change_unit", "unit", "minimum_year", "minimum_value", "maximum_year", "maximum_value",
             "endpoint_direction", "trend_qualified", "interpretation_rule",
         ],
         modern_summary,
