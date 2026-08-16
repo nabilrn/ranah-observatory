@@ -1,0 +1,20 @@
+geography_id,geography_name,rainfall_1997_mm,rainfall_1998_mm,change_1997_to_1998_percent,wetter_in_1998,maximum_absolute_yoy_transition,maximum_yoy_change_percent,claim_class,spatial_frame,historical_boundary_continuity_claimed,independent_station_validation,causal_claim
+idn.13.1301,Kepulauan Mentawai,1323.346219,3366.798193,154.415522156,true,1997->1998,154.415522156,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1302,Pesisir Selatan,1211.186143,3184.260441,162.904299178,true,1997->1998,162.904299178,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1303,Solok,1278.792362,2558.610956,100.080250088,true,1997->1998,100.080250088,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1304,Sijunjung,1431.855199,2616.08676,82.7060977833,true,1997->1998,82.7060977833,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1305,Tanah Datar,1165.213481,2296.129909,97.0565863201,true,1997->1998,97.0565863201,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1306,Padang Pariaman,1679.393271,3557.425218,111.828002376,true,1997->1998,111.828002376,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1307,Agam,1291.430432,2547.194346,97.2382160807,true,1997->1998,97.2382160807,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1308,Lima Puluh Kota,1392.537792,2367.921749,70.0436255736,true,1997->1998,70.0436255736,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1309,Pasaman,1918.170033,2743.859992,43.0457125695,true,1994->1995,52.5314490009,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1310,Solok Selatan,1332.270615,2674.791489,100.769382653,true,1997->1998,100.769382653,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1311,Dharmasraya,1635.720817,2785.065825,70.2653531125,true,1997->1998,70.2653531125,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1312,Pasaman Barat,2034.227997,3169.321086,55.7996984937,true,1997->1998,55.7996984937,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1371,Padang,1605.142434,3506.970947,118.48347366,true,1997->1998,118.48347366,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1372,Solok,1352.896348,2696.811521,99.3361520257,true,1997->1998,99.3361520257,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1373,Sawahlunto,1355.004248,2502.183962,84.6624440988,true,1997->1998,84.6624440988,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1374,Padang Panjang,1209.724845,2520.830776,108.380507883,true,1997->1998,108.380507883,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1375,Bukittinggi,1004.027669,2049.169946,104.094967626,true,1997->1998,104.094967626,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1376,Payakumbuh,1012.170461,1934.576864,91.1315275975,true,1997->1998,91.1315275975,model_estimate,fixed_current_boundary_june_2026,false,pending,false
+idn.13.1377,Pariaman,1679.490692,3763.368165,124.077941183,true,1997->1998,124.077941183,model_estimate,fixed_current_boundary_june_2026,false,pending,false

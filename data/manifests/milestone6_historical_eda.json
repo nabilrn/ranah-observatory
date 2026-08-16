@@ -1,0 +1,68 @@
+{
+  "causal_analysis_performed": false,
+  "climate": {
+    "all_19_wetter_1998_vs_1997": true,
+    "change_1997_to_1998_percent_max": 162.9042991783964,
+    "change_1997_to_1998_percent_min": 43.045712569527986,
+    "dominant_max_yoy_transition": "1997->1998",
+    "dominant_max_yoy_transition_geography_count": 18,
+    "geography_count": 19,
+    "year_count": 45
+  },
+  "criterion": "exploratory historical analysis",
+  "explicit_gap_count": 2,
+  "finding_count": 9,
+  "frontier_or_expected_performance_model_performed": false,
+  "historical_current_geography_bridge_performed": false,
+  "historical_population_1971": {
+    "local_count": 14,
+    "local_sum": 2789822.0,
+    "province_value": 2789822.0,
+    "source_snapshot_sha256": "b0d808a6b59b018c7a28f5d47b882f17248eb9ae2d0b05a6acb62366ca2813e1"
+  },
+  "historical_population_anchor_count": 1,
+  "methodological_constraints": [
+    "Do not concatenate Sumatera Tengah, idn.13.h1958, and current idn.13 without an explicit reconstruction.",
+    "Do not calculate 1971-to-current population growth from the source-era anchor.",
+    "CHIRPS 1981-2025 is a model-estimate diagnostic on fixed June 2026 current boundaries, not historical boundary reconstruction.",
+    "Modern BPS summaries are descriptive; labor-force series remain contextual where source cross-regime comparability is unresolved.",
+    "No causal attribution, frontier modelling, or wasted-potential estimation is performed in Milestone 6."
+  ],
+  "milestone6_complete": true,
+  "modern": {
+    "observation_count": 54,
+    "series_count": 7,
+    "trend_qualified_count": 5
+  },
+  "output_files": {
+    "climate_signals": "data/analysis/historical/west-sumatra-chirps-geography-signals.csv",
+    "climate_yearly": "data/analysis/historical/west-sumatra-chirps-regional-year-summary.csv",
+    "findings": "data/analysis/historical/west-sumatra-exploratory-findings.csv",
+    "historical_population_anchor": "data/analysis/historical/west-sumatra-1971-population-anchor.csv",
+    "modern_summary": "data/analysis/historical/west-sumatra-modern-trend-summary.csv",
+    "modern_trajectory": "data/analysis/historical/west-sumatra-modern-trajectory-2018-2025.csv",
+    "timeline": "data/analysis/historical/west-sumatra-source-era-timeline.csv"
+  },
+  "output_sha256": {
+    "climate_signals": "6713c9bd23c65b6d930aa52375260f068beae8b8a37a44f636f4796d2b0a5f8d",
+    "climate_yearly": "ca0654228f3cc08fa975cecd53e677639ec47ec89c3fc28bb9608b0c63a8c57f",
+    "findings": "5de02b506855b3e3534070dda9667d3a0f2fd03be7348bad5c22e07fcc51614a",
+    "historical_population_anchor": "517bd81412fee86d8f386cef832f0c47f720ff6d2615d6729394253ea9c7d613",
+    "modern_summary": "e9016f8b31ece553e2be4ae5049db4353458ab69221b6481be82fece58e93295",
+    "modern_trajectory": "4f3c95181f5eb9a3ad5b877cf62452c0bf3ebeda9316006bcb83561e81427960",
+    "timeline": "3b085c277e3864c45542bfd18b087f1448f783cee538239dc795960186b6ca86"
+  },
+  "schema": "ranah-observatory/milestone6-historical-eda/v1",
+  "scope": "segmented_evidence_regimes_no_historical_boundary_harmonization",
+  "source_sha256": {
+    "bps_canonical_manifest": "2461bddf89bc57dde4af21a7238ebd362dcf0603753712769f9bf39781a7668b",
+    "bps_canonical_observations": "78a6879baaacc7c17ca211f7dbd2fd1140ed13493a7e8e44aef2953aa04cde9e",
+    "chirps_manifest": "f0eb67a7d2d1957ff6cc2ab789351f6dd339ef022be87bc84fb5287b3ec60854",
+    "chirps_observations": "566d1da1faa383c71764dd877f772b1965ed12dbce2d2cf7c42b4f7c04d9dcbf",
+    "geographies": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de",
+    "historical_geography_events": "383210e793e3319ccd7f213a990a79f6081ee1b849f0139eaab3454fe3060d88",
+    "historical_population_source_native": "7c3dc65902c5ebe75d6e8580ec3dd9302577b64a51d9b2d7a33dfb12371eced5",
+    "historical_source_inventory": "32bcfc2f8cbea5ea6905e532cc8554dafafb1bd4cd401b49440fd3aedd74111c"
+  },
+  "timeline_row_count": 8
+}
