@@ -5,7 +5,7 @@ on:
     paths:
       - ".github/workflows/milestone5-comparative-panel-audit.yml"
       - "data/analysis/comparative/**"
-      - "data/raw/bps/comparative/**"
+      - "data/snapshots/bps/comparative/**"
       - "data/manifests/milestone5_comparative_panel_audit.json"
       - "data/registries/bps_comparative_panel_series.csv"
       - "data/registries/geographies.csv"
@@ -17,7 +17,7 @@ on:
     paths:
       - ".github/workflows/milestone5-comparative-panel-audit.yml"
       - "data/analysis/comparative/**"
-      - "data/raw/bps/comparative/**"
+      - "data/snapshots/bps/comparative/**"
       - "data/manifests/milestone5_comparative_panel_audit.json"
       - "data/registries/bps_comparative_panel_series.csv"
       - "data/registries/geographies.csv"
