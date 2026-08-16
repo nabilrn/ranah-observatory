@@ -2,18 +2,21 @@ from __future__ import annotations
 
 import unittest
 
-import numpy as np
-from affine import Affine
-from shapely.geometry import box
+try:
+    import numpy as np
+    from affine import Affine
+    from shapely.geometry import box
 
-from scripts.build_chirps_rainfall_sample import (
-    CHIRPS_MISSING_SENTINEL,
-    SAMPLE_YEARS,
-    annualize_monthly,
-    build_area_weights,
-    build_diagnostics,
-    weighted_mean_with_coverage,
-)
+    from scripts.build_chirps_rainfall_sample import (
+        CHIRPS_MISSING_SENTINEL,
+        SAMPLE_YEARS,
+        annualize_monthly,
+        build_area_weights,
+        build_diagnostics,
+        weighted_mean_with_coverage,
+    )
+except ModuleNotFoundError as exc:  # dedicated climate workflows install these deps
+    raise unittest.SkipTest(f"optional geospatial test dependencies unavailable: {exc}") from exc
 
 
 class ChirpsRainfallSampleTests(unittest.TestCase):
