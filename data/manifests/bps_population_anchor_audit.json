@@ -1,0 +1,47 @@
+{
+  "schema": "ranah-observatory/bps-population-anchor-audit/v1",
+  "source_id": "bps_webapi",
+  "domain": "1300",
+  "bps_var_id": 484,
+  "source_family": "[Hasil Sensus dan SUPAS] Jumlah Penduduk Menurut Jenis Kelamin dan Kabupaten/Kota di Sumatera Barat",
+  "audited_workflow_run_id": 31894824526,
+  "audited_workflow_head_sha": "489ad5b053dd3baf9bc88ae653513c76680536f0",
+  "audited_artifact_name": "bps-census-supas-var-484",
+  "audited_artifact_digest_sha256": "a0ca1710a649d42e78ef290860c7d48715e7deec2f2789f11d90257733ef7c68",
+  "audited_retrieved_at_utc": "2026-08-15T16:11:37+00:00",
+  "bps_last_update": "2021-01-22 08:57:53",
+  "requested_anchor_years": [1971, 1980, 1990, 1995, 2000, 2005, 2010, 2015, 2020],
+  "all_sex_category_id": 34,
+  "audited_normalized_all_sex_rows": 156,
+  "period_total_sex_row_counts": {
+    "1971": 15,
+    "1980": 15,
+    "1990": 15,
+    "1995": 15,
+    "2000": 16,
+    "2005": 20,
+    "2010": 20,
+    "2015": 20,
+    "2020": 20
+  },
+  "source_note_semantics": {
+    "census_years": [1971, 1980, 1990, 2000, 2010, 2020],
+    "supas_years": [1995, 2005, 2015]
+  },
+  "integrity_findings": {
+    "1995": {
+      "decision": "hold_key_label_alignment_anomaly",
+      "missing_from_expected_source_era_profile": ["1300", "1302", "1371"],
+      "unexpected_under_current_metadata_interpretation": ["1301", "1310", "1377"],
+      "automatic_positional_remap_allowed": false,
+      "note": "The API datacontent key profile is shifted relative to the current vervar metadata. Preserve the source response as an anomaly; do not repair labels or geography IDs by inference."
+    }
+  },
+  "promotion_state": {
+    "sp2020_2020": "already_canonical_in_bps_expansion",
+    "additional_population_total_rows_promoted_by_this_phase": 0,
+    "population_growth_rows_derived_by_this_phase": 0,
+    "population_growth_status": "blocked_pending_definitionally_and_geographically_compatible_anchor_pairs"
+  },
+  "durability_rule": "This audit freezes qualification decisions and source-profile provenance only. The 156 source-native values are intentionally not hand-copied into the repository; a later deterministic materialization step must generate them from a verified harvest."
+}
