@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import unittest
 
-from rasterio.errors import RasterioIOError
-
-from scripts.run_chirps_rainfall_production_resilient import RetryingRasterDataset
+try:
+    from rasterio.errors import RasterioIOError
+    from scripts.run_chirps_rainfall_production_resilient import RetryingRasterDataset
+except ModuleNotFoundError as exc:  # dedicated climate workflows install rasterio
+    raise unittest.SkipTest(f"optional geospatial test dependencies unavailable: {exc}") from exc
 
 
 class FakeDataset:
