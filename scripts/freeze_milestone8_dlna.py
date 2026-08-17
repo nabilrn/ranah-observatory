@@ -11,7 +11,8 @@ from pathlib import Path
 from typing import Any, Iterator, Mapping
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = ROOT / "data/snapshots/disaster/milestone8/dlna-2009"
+METADATA_DIR = ROOT / "data/snapshots/disaster/milestone8/dlna-2009"
+RAW_PDF_PATH = ROOT / "data/raw/milestone8/disaster/dlna-2009/source.pdf"
 MANIFEST_PATH = ROOT / "data/manifests/milestone8_source_freeze.json"
 WORLD_BANK_RECORD_URL = "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/177951468285048532/west-sumatra-and-jambi-natural-disasters-damage-loss-and-preliminary-needs-assessment"
 WORLD_BANK_API_BASE = "https://search.worldbank.org/api/v3/wds"
@@ -27,30 +28,28 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def write_bytes_with_hash(path: Path, data: bytes) -> str:
+def write_text_snapshot(path: Path, data: bytes) -> str:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(data)
     digest = sha256_bytes(data)
-    path.with_suffix(path.suffix + ".sha256").write_text(
-        f"{digest}  {path.name}\n", encoding="utf-8"
-    )
+    path.with_suffix(path.suffix + ".sha256").write_text(f"{digest}  {path.name}\n", encoding="utf-8")
     return digest
 
 
-def fetch_bytes(
-    url: str,
-    *,
-    accept: str,
-    timeout: float = 60.0,
-    retries: int = 3,
-) -> tuple[bytes, str, str]:
+def write_raw_pdf(path: Path, data: bytes, checksum_path: Path) -> str:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    digest = sha256_bytes(data)
+    checksum_path.parent.mkdir(parents=True, exist_ok=True)
+    checksum_path.write_text(f"{digest}  source.pdf\n", encoding="utf-8")
+    return digest
+
+
+def fetch_bytes(url: str, *, accept: str, timeout: float = 60.0, retries: int = 3) -> tuple[bytes, str, str]:
     errors: list[str] = []
     for attempt in range(retries + 1):
         try:
-            request = urllib.request.Request(
-                url,
-                headers={"Accept": accept, "User-Agent": USER_AGENT},
-            )
+            request = urllib.request.Request(url, headers={"Accept": accept, "User-Agent": USER_AGENT})
             with urllib.request.urlopen(request, timeout=timeout) as response:
                 data = response.read()
                 final_url = response.geturl()
@@ -88,60 +87,29 @@ def resolve_world_bank_pdf() -> tuple[str, dict[str, Any], str]:
         }
     )
     api_url = f"{WORLD_BANK_API_BASE}?{query}"
-    raw, final_api_url, content_type = fetch_bytes(
-        api_url,
-        accept="application/json,*/*;q=0.8",
-        timeout=45.0,
-        retries=3,
-    )
+    raw, final_api_url, content_type = fetch_bytes(api_url, accept="application/json,*/*;q=0.8", timeout=45.0, retries=3)
     try:
         payload = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-        raise RuntimeError(
-            f"World Bank D&R API did not return valid JSON; content_type={content_type}"
-        ) from exc
+        raise RuntimeError(f"World Bank D&R API did not return valid JSON; content_type={content_type}") from exc
 
-    target_tokens = {
-        "west",
-        "sumatra",
-        "jambi",
-        "natural",
-        "disasters",
-        "damage",
-        "loss",
-        "preliminary",
-        "needs",
-        "assessment",
-    }
+    target_tokens = {"west", "sumatra", "jambi", "natural", "disasters", "damage", "loss", "preliminary", "needs", "assessment"}
     candidates: list[dict[str, Any]] = []
     for row in walk_mappings(payload):
         pdfurl = str(row.get("pdfurl", "") or "").strip()
         title = normalize_title(row.get("display_title") or row.get("repnme"))
         if not pdfurl or not title:
             continue
-        title_tokens = set(title.split())
-        if target_tokens.issubset(title_tokens):
+        if target_tokens.issubset(set(title.split())):
             candidates.append(dict(row))
 
-    # Deduplicate API structures that repeat the same record at multiple nesting levels.
     unique: dict[tuple[str, str], dict[str, Any]] = {}
     for row in candidates:
-        key = (str(row.get("id", "")), str(row.get("pdfurl", "")))
-        unique[key] = row
+        unique[(str(row.get("id", "")), str(row.get("pdfurl", "")))] = row
     candidates = list(unique.values())
-
     if len(candidates) != 1:
-        summary = [
-            {
-                "id": row.get("id"),
-                "display_title": row.get("display_title"),
-                "pdfurl": row.get("pdfurl"),
-            }
-            for row in candidates
-        ]
-        raise RuntimeError(
-            f"expected one World Bank DLNA record, got {len(candidates)}; matches={summary}"
-        )
+        summary = [{"id": row.get("id"), "display_title": row.get("display_title"), "pdfurl": row.get("pdfurl")} for row in candidates]
+        raise RuntimeError(f"expected one World Bank DLNA record, got {len(candidates)}; matches={summary}")
 
     record = candidates[0]
     pdf_url = str(record["pdfurl"]).strip()
@@ -152,27 +120,18 @@ def resolve_world_bank_pdf() -> tuple[str, dict[str, Any], str]:
 
 def validate_pdf(data: bytes, *, content_type: str) -> None:
     if not data.startswith(b"%PDF-"):
-        raise RuntimeError(
-            f"m8_damage_dlna: downloaded bytes are not a PDF; content_type={content_type}"
-        )
+        raise RuntimeError(f"m8_damage_dlna: downloaded bytes are not a PDF; content_type={content_type}")
     if len(data) < 1_000_000:
         raise RuntimeError(f"m8_damage_dlna: PDF is implausibly small ({len(data)} bytes)")
 
 
 def update_manifest(snapshot: dict[str, Any]) -> None:
     if not MANIFEST_PATH.exists():
-        raise RuntimeError(
-            "Milestone 8 BPS source manifest is missing; run the BPS freezer with --skip-dlna first"
-        )
+        raise RuntimeError("Milestone 8 BPS source manifest is missing; run the BPS freezer first")
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     if manifest.get("schema") != "ranah-observatory/milestone8-source-freeze/v1":
         raise RuntimeError("unexpected Milestone 8 source-freeze manifest schema")
-
-    snapshots = [
-        row
-        for row in manifest.get("snapshots", [])
-        if row.get("source_plan_id") != "m8_damage_dlna"
-    ]
+    snapshots = [row for row in manifest.get("snapshots", []) if row.get("source_plan_id") != "m8_damage_dlna"]
     snapshots.append(snapshot)
     snapshots.sort(key=lambda row: str(row.get("source_plan_id", "")))
     manifest["snapshots"] = snapshots
@@ -181,10 +140,7 @@ def update_manifest(snapshot: dict[str, Any]) -> None:
     manifest["outcome_extracted"] = False
     manifest["exposure_extracted"] = False
     manifest["causal_effect_estimated"] = False
-    MANIFEST_PATH.write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
+    MANIFEST_PATH.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -196,11 +152,10 @@ def main() -> int:
         retries=3,
     )
     validate_pdf(pdf_bytes, content_type=content_type)
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    METADATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    pdf_path = OUTPUT_DIR / "source.pdf"
-    metadata_path = OUTPUT_DIR / "source-metadata.json"
-
+    metadata_path = METADATA_DIR / "source-metadata.json"
+    checksum_path = METADATA_DIR / "source.pdf.sha256"
     metadata = {
         "schema": "ranah-observatory/milestone8-disaster-publication-snapshot/v1",
         "source_plan_id": "m8_damage_dlna",
@@ -217,19 +172,19 @@ def main() -> int:
         "content_type": content_type,
         "gfdrr_context_url": GFDRR_CONTEXT_URL,
         "gfdrr_legacy_pdf_url": GFDRR_LEGACY_PDF_URL,
-        "note": "PDF URL is resolved dynamically from the official World Bank Documents & Reports API. Report authority remains the joint government-led assessment; World Bank/GFDRR are evidence hosts/partners.",
+        "raw_storage_policy": "PDF bytes live under gitignored data/raw during acquisition and are uploaded as a GitHub Actions artifact; Git stores metadata, SHA-256, and derived text only.",
     }
-    metadata_bytes = (
-        json.dumps(metadata, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    ).encode("utf-8")
-    metadata_hash = write_bytes_with_hash(metadata_path, metadata_bytes)
-    pdf_hash = write_bytes_with_hash(pdf_path, pdf_bytes)
+    metadata_bytes = (json.dumps(metadata, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    metadata_hash = write_text_snapshot(metadata_path, metadata_bytes)
+    pdf_hash = write_raw_pdf(RAW_PDF_PATH, pdf_bytes, checksum_path)
 
     snapshot = {
         "source_plan_id": "m8_damage_dlna",
         "metadata_path": str(metadata_path.relative_to(ROOT)),
         "metadata_sha256": metadata_hash,
-        "pdf_path": str(pdf_path.relative_to(ROOT)),
+        "checksum_path": str(checksum_path.relative_to(ROOT)),
+        "raw_pdf_runtime_path": str(RAW_PDF_PATH.relative_to(ROOT)),
+        "raw_pdf_git_tracked": False,
         "pdf_sha256": pdf_hash,
         "pdf_bytes": len(pdf_bytes),
         "host": "World Bank Documents & Reports",
