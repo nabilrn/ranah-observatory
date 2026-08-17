@@ -17,11 +17,6 @@ DEFAULT_OUTPUT = ROOT / "data" / "manifests" / "milestone7_bps_feature_discovery
 DOMAIN = "0000"
 MODEL_YEAR = 2024
 
-# Four preregistered capability candidates. IDs are all national-domain BPS IDs:
-# - 1429 and 398 were discovered and frozen from national WebAPI subject catalogs.
-# - 417 and 2273 are national BPS Statistics Table IDs discovered from official
-#   www.bps.go.id table pages and are re-probed through WebAPI here. A public table
-#   page is discovery evidence only; promotion still requires the exact WebAPI checks.
 DIRECT_CANDIDATES: tuple[dict[str, Any], ...] = (
     {
         "subject_id": 28,
@@ -55,6 +50,14 @@ DIRECT_CANDIDATES: tuple[dict[str, Any], ...] = (
         "groups": ["digital_connectivity"],
         "origin": "national BPS subject 2 catalog; frozen in milestone7 discovery v4/v5",
     },
+    {
+        "subject_id": 7,
+        "subject_label": "Energi",
+        "var_id": 856,
+        "title": "Persentase Rumah Tangga menurut Provinsi, Klasifikasi Desa, dan Sumber Penerangan Utama dari Listrik PLN",
+        "groups": ["electricity_access"],
+        "origin": "https://www.bps.go.id/id/statistics-table/2/ODU2IzI%3D/persentase-rumah-tangga-menurut-provinsi--klasifikasi-desa--dan-sumber-penerangan-utama-dari-listrik-pln.html",
+    },
 )
 
 FEATURE_TERMS: dict[str, tuple[str, ...]] = {
@@ -62,6 +65,7 @@ FEATURE_TERMS: dict[str, tuple[str, ...]] = {
     "human_capital_expected_schooling": ("harapan lama sekolah",),
     "health_life_expectancy": ("umur harapan hidup", "angka harapan hidup"),
     "digital_connectivity": ("mengakses internet", "akses internet"),
+    "electricity_access": ("listrik pln", "penerangan utama dari listrik"),
 }
 
 
@@ -71,10 +75,19 @@ def normalize(value: str) -> str:
 
 def matched_feature_groups(text: str) -> list[str]:
     norm = normalize(text)
-    return [
-        group for group, terms in FEATURE_TERMS.items()
-        if any(normalize(term) in norm for term in terms)
-    ]
+    return [group for group, terms in FEATURE_TERMS.items() if any(normalize(term) in norm for term in terms)]
+
+
+def province_subset(geography: Mapping[str, Any]) -> list[dict[str, str]]:
+    subset: list[dict[str, str]] = []
+    for item in geography.get("geographies", []):
+        value = str(item.get("value", "")).strip()
+        label = re.sub(r"</?b>", "", str(item.get("label", "")), flags=re.IGNORECASE).strip()
+        # BPS province vertical IDs are four digits with the last two digits 00.
+        # Kabupaten/kota IDs occupy the last two digits; 9999 is Indonesia aggregate.
+        if re.fullmatch(r"\d{4}", value) and value.endswith("00") and value != "9999":
+            subset.append({"value": value, "label": label})
+    return subset
 
 
 def probe_candidate(client: BPSClient, candidate: Mapping[str, Any]) -> dict[str, Any]:
@@ -90,9 +103,7 @@ def probe_candidate(client: BPSClient, candidate: Mapping[str, Any]) -> dict[str
     try:
         periods = period_candidates(client.list_periods(domain=DOMAIN, var=var_id))
         selected = next((row for row in periods if row.get("year") == MODEL_YEAR), None)
-        result["available_years"] = sorted(
-            {int(row["year"]) for row in periods if isinstance(row.get("year"), int)}
-        )
+        result["available_years"] = sorted({int(row["year"]) for row in periods if isinstance(row.get("year"), int)})
         result["selected_model_period"] = selected
         if selected is None or selected.get("period_id") in (None, ""):
             result["probe_status"] = "hold_no_2024_period"
@@ -100,6 +111,7 @@ def probe_candidate(client: BPSClient, candidate: Mapping[str, Any]) -> dict[str
 
         payload = client.get_dynamic_data(domain=DOMAIN, var=var_id, th=selected["period_id"])
         geography = geography_summary(payload)
+        provinces = province_subset(geography)
         var_meta = as_list(payload.get("var"))
         turvar = as_list(payload.get("turvar"))
         turtahun = as_list(payload.get("turtahun"))
@@ -108,31 +120,28 @@ def probe_candidate(client: BPSClient, candidate: Mapping[str, Any]) -> dict[str
         source_unit = str(var_meta[0].get("unit", "") if var_meta else "").strip()
         source_note = str(var_meta[0].get("note", "") if var_meta else "").strip()
         semantic_groups = matched_feature_groups(source_title)
-        result.update(
-            {
-                "source_title": source_title,
-                "source_unit": source_unit,
-                "source_note": source_note,
-                "semantic_feature_groups": semantic_groups,
-                "geography": geography,
-                "turvar": [{"value": value_of(item), "label": label_of(item)} for item in turvar],
-                "turtahun": [{"value": value_of(item), "label": label_of(item)} for item in turtahun],
-                "datacontent_count": len(datacontent) if isinstance(datacontent, Mapping) else 0,
-            }
-        )
+        result.update({
+            "source_title": source_title,
+            "source_unit": source_unit,
+            "source_note": source_note,
+            "semantic_feature_groups": semantic_groups,
+            "geography": geography,
+            "province_subset": provinces,
+            "province_subset_count": len(provinces),
+            "turvar": [{"value": value_of(item), "label": label_of(item)} for item in turvar],
+            "turtahun": [{"value": value_of(item), "label": label_of(item)} for item in turtahun],
+            "datacontent_count": len(datacontent) if isinstance(datacontent, Mapping) else 0,
+        })
         checks = {
             "semantic_title_match": bool(semantic_groups),
-            "vertical_is_province": "provinsi" in geography["labelvervar"].casefold(),
-            "exactly_38_nonaggregate_geographies": geography["non_aggregate_geography_count"] == 38,
-            "west_sumatra_present": bool(geography["west_sumatra_entries"]),
+            "vertical_contains_province": "provinsi" in geography["labelvervar"].casefold(),
+            "exactly_38_province_subset": len(provinces) == 38,
+            "west_sumatra_in_province_subset": any(row["value"] == "1300" for row in provinces),
             "datacontent_present": isinstance(datacontent, Mapping) and len(datacontent) > 0,
             "model_year_is_2024": selected.get("year") == MODEL_YEAR,
         }
         result["structure_checks"] = checks
-        result["probe_status"] = (
-            "semantic_current38_2024_candidate"
-            if all(checks.values()) else "hold_semantics_or_structure"
-        )
+        result["probe_status"] = "semantic_current38_2024_candidate" if all(checks.values()) else "hold_semantics_or_structure"
     except (BPSApiError, ValueError, TypeError) as exc:
         result["probe_status"] = "probe_error"
         result["error"] = str(exc)
@@ -140,7 +149,7 @@ def probe_candidate(client: BPSClient, candidate: Mapping[str, Any]) -> dict[str
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Probe four national BPS capability candidates for Milestone 7.")
+    parser = argparse.ArgumentParser(description="Probe national BPS capability candidates for Milestone 7.")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
     api_key = os.environ.get("BPS_API_KEY", "").strip()
@@ -150,19 +159,14 @@ def main() -> int:
     client = BPSClient(api_key, retries=3, retry_backoff_seconds=1.0)
     results = [probe_candidate(client, candidate) for candidate in DIRECT_CANDIDATES]
     report = {
-        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v6",
+        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v7",
         "domain": DOMAIN,
         "model_year": MODEL_YEAR,
+        "province_filter_contract": "four-digit BPS vervar ID ending in 00, excluding 9999 Indonesia aggregate",
         "candidate_count": len(results),
-        "semantic_current38_2024_candidate_count": sum(
-            row.get("probe_status") == "semantic_current38_2024_candidate" for row in results
-        ),
+        "semantic_current38_2024_candidate_count": sum(row.get("probe_status") == "semantic_current38_2024_candidate" for row in results),
         "feature_candidate_counts": {
-            group: sum(
-                group in row.get("semantic_feature_groups", [])
-                and row.get("probe_status") == "semantic_current38_2024_candidate"
-                for row in results
-            )
+            group: sum(group in row.get("semantic_feature_groups", []) and row.get("probe_status") == "semantic_current38_2024_candidate" for row in results)
             for group in FEATURE_TERMS
         },
         "candidate_summary": [
@@ -173,7 +177,7 @@ def main() -> int:
                 "probe_status": row.get("probe_status"),
                 "available_years": row.get("available_years", []),
                 "labelvervar": (row.get("geography") or {}).get("labelvervar", ""),
-                "non_aggregate_geography_count": (row.get("geography") or {}).get("non_aggregate_geography_count", 0),
+                "province_subset_count": row.get("province_subset_count", 0),
                 "turvar": row.get("turvar", []),
                 "turtahun": row.get("turtahun", []),
             }
@@ -181,8 +185,8 @@ def main() -> int:
         ],
         "results": results,
         "interpretation": (
-            "Discovery only. Passing title/period/geography checks are necessary but not sufficient. "
-            "Final promotion requires explicit selector, unit, denominator, methodology and frozen values."
+            "Discovery only. Mixed province/kabupaten/kota sources may qualify only after the explicit BPS vertical-ID province filter yields exactly 38 current provinces. "
+            "Final promotion still requires selector, unit, denominator, methodology and frozen-value review."
         ),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
