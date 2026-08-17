@@ -126,7 +126,9 @@ After penalty selection:
 5. report the actual-to-predicted ratio and percentage residual;
 6. back-transform the expected level with an explicitly documented retransformation rule.
 
-A Duan-style smearing correction may be used for the level-scale expected value, but the uncorrected log-scale prediction and residual must remain available.
+### Locked level retransformation rule
+
+Before fitting the model, Milestone 7 locks the level retransformation rule to a **Duan smearing correction**. On the final 37-province training fit, compute the arithmetic mean of `exp(observed_log_target - fitted_log_target)` and multiply `exp(predicted_log_target)` by that factor for the reported level-scale expected value. The uncorrected log prediction and `exp(predicted_log_target)` remain in the output so the correction is auditable.
 
 ## Uncertainty and support
 
@@ -140,6 +142,10 @@ The model must report:
 - an exploratory prediction interval for West Sumatra derived from held-out residuals;
 - whether each West Sumatra feature lies inside the min/max support of the 37-province training set;
 - the maximum absolute training-standardized z-score of West Sumatra’s feature vector.
+
+### Locked exploratory interval rule
+
+Before fitting the model, Milestone 7 locks the exploratory interval to the empirical **2.5th and 97.5th percentiles** of selected-model leave-one-province-out log residuals, using linear interpolation between adjacent ordered residuals. The two residual quantiles are added to the West Sumatra predicted log target and exponentiated. This interval is explicitly descriptive/predictive; it is not a parametric confidence interval and not a causal uncertainty interval.
 
 If West Sumatra is materially outside training support, the estimate must be labelled extrapolative rather than silently presented as comparable.
 
