@@ -1,0 +1,71 @@
+name: Milestone 7 BPS Feature Freeze
+
+on:
+  push:
+    branches:
+      - agent/milestone7-baseline-frontier
+    paths:
+      - "data/registries/milestone7_expected_performance_features.csv"
+      - "scripts/build_milestone7_feature_frame.py"
+      - ".github/workflows/milestone7-bps-feature-freeze.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone7-bps-feature-freeze
+  cancel-in-progress: true
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out Milestone 7 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone7-baseline-frontier
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Freeze 2024 BPS predictor sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          for var in 1429 417 398 856; do
+            python scripts/harvest_bps_series.py \
+              --domain 0000 \
+              --var "$var" \
+              --period 2024 \
+              --output-dir "data/snapshots/bps/milestone7/var-$var"
+          done
+
+      - name: Build exact current-38 feature frame
+        run: python scripts/build_milestone7_feature_frame.py
+
+      - name: Commit frozen evidence and feature frame
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/snapshots/bps/milestone7 \
+                  data/analysis/expected_performance \
+                  data/manifests/milestone7_feature_frame.json
+          if git diff --cached --quiet; then
+            echo "Frozen feature evidence unchanged."
+            exit 0
+          fi
+          git commit -m "data: freeze milestone7 model feature evidence"
+          git pull --rebase origin agent/milestone7-baseline-frontier
+          git push origin HEAD:agent/milestone7-baseline-frontier

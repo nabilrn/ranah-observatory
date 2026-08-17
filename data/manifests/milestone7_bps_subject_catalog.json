@@ -1,0 +1,634 @@
+{
+  "domain": "0000",
+  "interpretation": "National-domain subject IDs are discovery evidence only; no subject ID is inherited from provincial domains.",
+  "relevant_subject_count": 10,
+  "schema": "ranah-observatory/milestone7-bps-subject-catalog/v1",
+  "source_authority": "Badan Pusat Statistik (BPS-Statistics Indonesia)",
+  "subject_count": 52,
+  "subjects": [
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 40,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Gender"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 40,
+      "subject_label": "Gender"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 153,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Geografi"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 153,
+      "subject_label": "Geografi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 151,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Iklim"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 151,
+      "subject_label": "Iklim"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 26,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Indeks Pembangunan Manusia"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 26,
+      "subject_label": "Indeks Pembangunan Manusia"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 23,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Kemiskinan dan Ketimpangan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 23,
+      "subject_label": "Kemiskinan dan Ketimpangan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 12,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Kependudukan"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 12,
+      "subject_label": "Kependudukan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 30,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Kesehatan"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 30,
+      "subject_label": "Kesehatan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 5,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Konsumsi dan Pengeluaran"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 5,
+      "subject_label": "Konsumsi dan Pengeluaran"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 152,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Lingkungan Hidup"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 152,
+      "subject_label": "Lingkungan Hidup"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 101,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Pemerintahan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 101,
+      "subject_label": "Pemerintahan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 28,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Pendidikan"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 28,
+      "subject_label": "Pendidikan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 29,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Perumahan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 29,
+      "subject_label": "Perumahan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 34,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Politik dan Keamanan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 34,
+      "subject_label": "Politik dan Keamanan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 168,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Potensi Desa"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 168,
+      "subject_label": "Potensi Desa"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 27,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Sosial Budaya"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 27,
+      "subject_label": "Sosial Budaya"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 6,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Tenaga Kerja"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 6,
+      "subject_label": "Tenaga Kerja"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 180,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Tujuan Pembangunan Berkelanjutan 2025"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 180,
+      "subject_label": "Tujuan Pembangunan Berkelanjutan 2025"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 181,
+        "subcat": "Sosial dan Kependudukan",
+        "subcat_id": 1,
+        "title": "Tujuan Pembangunan Berkelanjutan Edisi I"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 181,
+      "subject_label": "Tujuan Pembangunan Berkelanjutan Edisi I"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 8,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Ekspor-Impor"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 8,
+      "subject_label": "Ekspor-Impor"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 7,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Energi"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 7,
+      "subject_label": "Energi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 102,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Harga Eceran"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 102,
+      "subject_label": "Harga Eceran"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 20,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Harga Perdagangan Besar"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 20,
+      "subject_label": "Harga Perdagangan Besar"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 36,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Harga Produsen"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 36,
+      "subject_label": "Harga Produsen"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 9,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Industri Besar dan Sedang"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 9,
+      "subject_label": "Industri Besar dan Sedang"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 170,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Industri Mikro dan Kecil"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 170,
+      "subject_label": "Industri Mikro dan Kecil"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 3,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Inflasi"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 3,
+      "subject_label": "Inflasi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 105,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Input output"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 105,
+      "subject_label": "Input output"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 25,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "ITB-ITK"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 25,
+      "subject_label": "ITB-ITK"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 13,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Keuangan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 13,
+      "subject_label": "Keuangan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 2,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Komunikasi"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 2,
+      "subject_label": "Komunikasi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 4,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Konstruksi"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 4,
+      "subject_label": "Konstruksi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 179,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Matrik Investasi"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 179,
+      "subject_label": "Matrik Investasi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 100,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Neraca Arus Dana"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 100,
+      "subject_label": "Neraca Arus Dana"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 178,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Neraca Institusi Terintegrasi"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 178,
+      "subject_label": "Neraca Institusi Terintegrasi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 104,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Neraca Sosial Ekonomi"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 104,
+      "subject_label": "Neraca Sosial Ekonomi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 22,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Nilai Tukar Petani"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 22,
+      "subject_label": "Nilai Tukar Petani"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 16,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Pariwisata"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 16,
+      "subject_label": "Pariwisata"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 173,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Perdagangan Dalam Negeri"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 173,
+      "subject_label": "Perdagangan Dalam Negeri"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 11,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Produk Domestik Bruto (Lapangan Usaha)"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 11,
+      "subject_label": "Produk Domestik Bruto (Lapangan Usaha)"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 169,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Produk Domestik Bruto (Pengeluaran)"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 169,
+      "subject_label": "Produk Domestik Bruto (Pengeluaran)"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 52,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Produk Domestik Regional Bruto (Lapangan Usaha)"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 52,
+      "subject_label": "Produk Domestik Regional Bruto (Lapangan Usaha)"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 171,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Produk Domestik Regional Bruto (Pengeluaran)"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 171,
+      "subject_label": "Produk Domestik Regional Bruto (Pengeluaran)"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 17,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Transportasi"
+      },
+      "relevant_to_m7": true,
+      "subject_id": 17,
+      "subject_label": "Transportasi"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 19,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Upah Buruh"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 19,
+      "subject_label": "Upah Buruh"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 35,
+        "subcat": "Ekonomi dan Perdagangan",
+        "subcat_id": 2,
+        "title": "Usaha Mikro Kecil"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 35,
+      "subject_label": "Usaha Mikro Kecil"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 55,
+        "subcat": "Pertanian dan Pertambangan",
+        "subcat_id": 3,
+        "title": "Hortikultura"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 55,
+      "subject_label": "Hortikultura"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 60,
+        "subcat": "Pertanian dan Pertambangan",
+        "subcat_id": 3,
+        "title": "Kehutanan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 60,
+      "subject_label": "Kehutanan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 56,
+        "subcat": "Pertanian dan Pertambangan",
+        "subcat_id": 3,
+        "title": "Perikanan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 56,
+      "subject_label": "Perikanan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 54,
+        "subcat": "Pertanian dan Pertambangan",
+        "subcat_id": 3,
+        "title": "Perkebunan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 54,
+      "subject_label": "Perkebunan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 10,
+        "subcat": "Pertanian dan Pertambangan",
+        "subcat_id": 3,
+        "title": "Pertambangan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 10,
+      "subject_label": "Pertambangan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 24,
+        "subcat": "Pertanian dan Pertambangan",
+        "subcat_id": 3,
+        "title": "Peternakan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 24,
+      "subject_label": "Peternakan"
+    },
+    {
+      "metadata": {
+        "ntabel": null,
+        "sub_id": 53,
+        "subcat": "Pertanian dan Pertambangan",
+        "subcat_id": 3,
+        "title": "Tanaman Pangan"
+      },
+      "relevant_to_m7": false,
+      "subject_id": 53,
+      "subject_label": "Tanaman Pangan"
+    }
+  ]
+}

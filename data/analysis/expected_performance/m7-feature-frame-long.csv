@@ -1,0 +1,153 @@
+geography_id,geography_name,bps_province_code,year,feature_id,feature_group,value,unit,bps_var_id,bps_turvar_id,bps_turth_id,source_key
+idn.11,Aceh,11,2024,m7_hls_method_new,human_capital_expected_schooling,14.39,years,417,0,0,110041701240
+idn.11,Aceh,11,2024,m7_household_internet_access,digital_connectivity,88.95,percent_households,398,191,0,11003981911240
+idn.11,Aceh,11,2024,m7_household_pln_lighting,electricity_access,99.73,percent_households,856,191,0,11008561911240
+idn.11,Aceh,11,2024,m7_rls_age15_plus,human_capital_schooling,9.95,years,1429,0,0,1100142901240
+idn.12,Sumatera Utara,12,2024,m7_hls_method_new,human_capital_expected_schooling,13.49,years,417,0,0,120041701240
+idn.12,Sumatera Utara,12,2024,m7_household_internet_access,digital_connectivity,92.3,percent_households,398,191,0,12003981911240
+idn.12,Sumatera Utara,12,2024,m7_household_pln_lighting,electricity_access,99.23,percent_households,856,191,0,12008561911240
+idn.12,Sumatera Utara,12,2024,m7_rls_age15_plus,human_capital_schooling,10.18,years,1429,0,0,1200142901240
+idn.13,Sumatera Barat,13,2024,m7_hls_method_new,human_capital_expected_schooling,14.3,years,417,0,0,130041701240
+idn.13,Sumatera Barat,13,2024,m7_household_internet_access,digital_connectivity,91.89,percent_households,398,191,0,13003981911240
+idn.13,Sumatera Barat,13,2024,m7_household_pln_lighting,electricity_access,98.95,percent_households,856,191,0,13008561911240
+idn.13,Sumatera Barat,13,2024,m7_rls_age15_plus,human_capital_schooling,9.72,years,1429,0,0,1300142901240
+idn.14,Riau,14,2024,m7_hls_method_new,human_capital_expected_schooling,13.42,years,417,0,0,140041701240
+idn.14,Riau,14,2024,m7_household_internet_access,digital_connectivity,94.16,percent_households,398,191,0,14003981911240
+idn.14,Riau,14,2024,m7_household_pln_lighting,electricity_access,96.6,percent_households,856,191,0,14008561911240
+idn.14,Riau,14,2024,m7_rls_age15_plus,human_capital_schooling,9.69,years,1429,0,0,1400142901240
+idn.15,Jambi,15,2024,m7_hls_method_new,human_capital_expected_schooling,13.14,years,417,0,0,150041701240
+idn.15,Jambi,15,2024,m7_household_internet_access,digital_connectivity,90.59,percent_households,398,191,0,15003981911240
+idn.15,Jambi,15,2024,m7_household_pln_lighting,electricity_access,98.9,percent_households,856,191,0,15008561911240
+idn.15,Jambi,15,2024,m7_rls_age15_plus,human_capital_schooling,9.26,years,1429,0,0,1500142901240
+idn.16,Sumatera Selatan,16,2024,m7_hls_method_new,human_capital_expected_schooling,12.64,years,417,0,0,160041701240
+idn.16,Sumatera Selatan,16,2024,m7_household_internet_access,digital_connectivity,90.94,percent_households,398,191,0,16003981911240
+idn.16,Sumatera Selatan,16,2024,m7_household_pln_lighting,electricity_access,97.02,percent_households,856,191,0,16008561911240
+idn.16,Sumatera Selatan,16,2024,m7_rls_age15_plus,human_capital_schooling,8.98,years,1429,0,0,1600142901240
+idn.17,Bengkulu,17,2024,m7_hls_method_new,human_capital_expected_schooling,13.75,years,417,0,0,170041701240
+idn.17,Bengkulu,17,2024,m7_household_internet_access,digital_connectivity,90.62,percent_households,398,191,0,17003981911240
+idn.17,Bengkulu,17,2024,m7_household_pln_lighting,electricity_access,99.75,percent_households,856,191,0,17008561911240
+idn.17,Bengkulu,17,2024,m7_rls_age15_plus,human_capital_schooling,9.4,years,1429,0,0,1700142901240
+idn.18,Lampung,18,2024,m7_hls_method_new,human_capital_expected_schooling,12.78,years,417,0,0,180041701240
+idn.18,Lampung,18,2024,m7_household_internet_access,digital_connectivity,91.57,percent_households,398,191,0,18003981911240
+idn.18,Lampung,18,2024,m7_household_pln_lighting,electricity_access,99.21,percent_households,856,191,0,18008561911240
+idn.18,Lampung,18,2024,m7_rls_age15_plus,human_capital_schooling,8.8,years,1429,0,0,1800142901240
+idn.19,Kepulauan Bangka Belitung,19,2024,m7_hls_method_new,human_capital_expected_schooling,12.49,years,417,0,0,190041701240
+idn.19,Kepulauan Bangka Belitung,19,2024,m7_household_internet_access,digital_connectivity,92.14,percent_households,398,191,0,19003981911240
+idn.19,Kepulauan Bangka Belitung,19,2024,m7_household_pln_lighting,electricity_access,99.66,percent_households,856,191,0,19008561911240
+idn.19,Kepulauan Bangka Belitung,19,2024,m7_rls_age15_plus,human_capital_schooling,8.78,years,1429,0,0,1900142901240
+idn.21,Kepulauan Riau,21,2024,m7_hls_method_new,human_capital_expected_schooling,13.27,years,417,0,0,210041701240
+idn.21,Kepulauan Riau,21,2024,m7_household_internet_access,digital_connectivity,97.57,percent_households,398,191,0,21003981911240
+idn.21,Kepulauan Riau,21,2024,m7_household_pln_lighting,electricity_access,98.39,percent_households,856,191,0,21008561911240
+idn.21,Kepulauan Riau,21,2024,m7_rls_age15_plus,human_capital_schooling,10.65,years,1429,0,0,2100142901240
+idn.31,DKI Jakarta,31,2024,m7_hls_method_new,human_capital_expected_schooling,13.51,years,417,0,0,310041701240
+idn.31,DKI Jakarta,31,2024,m7_household_internet_access,digital_connectivity,98.18,percent_households,398,191,0,31003981911240
+idn.31,DKI Jakarta,31,2024,m7_household_pln_lighting,electricity_access,99.97,percent_households,856,191,0,31008561911240
+idn.31,DKI Jakarta,31,2024,m7_rls_age15_plus,human_capital_schooling,11.49,years,1429,0,0,3100142901240
+idn.32,Jawa Barat,32,2024,m7_hls_method_new,human_capital_expected_schooling,12.8,years,417,0,0,320041701240
+idn.32,Jawa Barat,32,2024,m7_household_internet_access,digital_connectivity,90.58,percent_households,398,191,0,32003981911240
+idn.32,Jawa Barat,32,2024,m7_household_pln_lighting,electricity_access,99.9,percent_households,856,191,0,32008561911240
+idn.32,Jawa Barat,32,2024,m7_rls_age15_plus,human_capital_schooling,9.24,years,1429,0,0,3200142901240
+idn.33,Jawa Tengah,33,2024,m7_hls_method_new,human_capital_expected_schooling,12.86,years,417,0,0,330041701240
+idn.33,Jawa Tengah,33,2024,m7_household_internet_access,digital_connectivity,88.89,percent_households,398,191,0,33003981911240
+idn.33,Jawa Tengah,33,2024,m7_household_pln_lighting,electricity_access,99.94,percent_households,856,191,0,33008561911240
+idn.33,Jawa Tengah,33,2024,m7_rls_age15_plus,human_capital_schooling,8.47,years,1429,0,0,3300142901240
+idn.34,DI Yogyakarta,34,2024,m7_hls_method_new,human_capital_expected_schooling,15.7,years,417,0,0,340041701240
+idn.34,DI Yogyakarta,34,2024,m7_household_internet_access,digital_connectivity,89.5,percent_households,398,191,0,34003981911240
+idn.34,DI Yogyakarta,34,2024,m7_household_pln_lighting,electricity_access,100,percent_households,856,191,0,34008561911240
+idn.34,DI Yogyakarta,34,2024,m7_rls_age15_plus,human_capital_schooling,10.23,years,1429,0,0,3400142901240
+idn.35,Jawa Timur,35,2024,m7_hls_method_new,human_capital_expected_schooling,13.43,years,417,0,0,350041701240
+idn.35,Jawa Timur,35,2024,m7_household_internet_access,digital_connectivity,86.9,percent_households,398,191,0,35003981911240
+idn.35,Jawa Timur,35,2024,m7_household_pln_lighting,electricity_access,99.71,percent_households,856,191,0,35008561911240
+idn.35,Jawa Timur,35,2024,m7_rls_age15_plus,human_capital_schooling,8.69,years,1429,0,0,3500142901240
+idn.36,Banten,36,2024,m7_hls_method_new,human_capital_expected_schooling,13.1,years,417,0,0,360041701240
+idn.36,Banten,36,2024,m7_household_internet_access,digital_connectivity,93.02,percent_households,398,191,0,36003981911240
+idn.36,Banten,36,2024,m7_household_pln_lighting,electricity_access,99.79,percent_households,856,191,0,36008561911240
+idn.36,Banten,36,2024,m7_rls_age15_plus,human_capital_schooling,9.55,years,1429,0,0,3600142901240
+idn.51,Bali,51,2024,m7_hls_method_new,human_capital_expected_schooling,13.62,years,417,0,0,510041701240
+idn.51,Bali,51,2024,m7_household_internet_access,digital_connectivity,92.16,percent_households,398,191,0,51003981911240
+idn.51,Bali,51,2024,m7_household_pln_lighting,electricity_access,99.9,percent_households,856,191,0,51008561911240
+idn.51,Bali,51,2024,m7_rls_age15_plus,human_capital_schooling,9.87,years,1429,0,0,5100142901240
+idn.52,Nusa Tenggara Barat,52,2024,m7_hls_method_new,human_capital_expected_schooling,13.98,years,417,0,0,520041701240
+idn.52,Nusa Tenggara Barat,52,2024,m7_household_internet_access,digital_connectivity,86.54,percent_households,398,191,0,52003981911240
+idn.52,Nusa Tenggara Barat,52,2024,m7_household_pln_lighting,electricity_access,99.89,percent_households,856,191,0,52008561911240
+idn.52,Nusa Tenggara Barat,52,2024,m7_rls_age15_plus,human_capital_schooling,8.5,years,1429,0,0,5200142901240
+idn.53,Nusa Tenggara Timur,53,2024,m7_hls_method_new,human_capital_expected_schooling,13.23,years,417,0,0,530041701240
+idn.53,Nusa Tenggara Timur,53,2024,m7_household_internet_access,digital_connectivity,82.45,percent_households,398,191,0,53003981911240
+idn.53,Nusa Tenggara Timur,53,2024,m7_household_pln_lighting,electricity_access,91.01,percent_households,856,191,0,53008561911240
+idn.53,Nusa Tenggara Timur,53,2024,m7_rls_age15_plus,human_capital_schooling,8.48,years,1429,0,0,5300142901240
+idn.61,Kalimantan Barat,61,2024,m7_hls_method_new,human_capital_expected_schooling,12.68,years,417,0,0,610041701240
+idn.61,Kalimantan Barat,61,2024,m7_household_internet_access,digital_connectivity,92.65,percent_households,398,191,0,61003981911240
+idn.61,Kalimantan Barat,61,2024,m7_household_pln_lighting,electricity_access,92.95,percent_households,856,191,0,61008561911240
+idn.61,Kalimantan Barat,61,2024,m7_rls_age15_plus,human_capital_schooling,8.28,years,1429,0,0,6100142901240
+idn.62,Kalimantan Tengah,62,2024,m7_hls_method_new,human_capital_expected_schooling,12.77,years,417,0,0,620041701240
+idn.62,Kalimantan Tengah,62,2024,m7_household_internet_access,digital_connectivity,92.13,percent_households,398,191,0,62003981911240
+idn.62,Kalimantan Tengah,62,2024,m7_household_pln_lighting,electricity_access,89.04,percent_households,856,191,0,62008561911240
+idn.62,Kalimantan Tengah,62,2024,m7_rls_age15_plus,human_capital_schooling,9.17,years,1429,0,0,6200142901240
+idn.63,Kalimantan Selatan,63,2024,m7_hls_method_new,human_capital_expected_schooling,12.87,years,417,0,0,630041701240
+idn.63,Kalimantan Selatan,63,2024,m7_household_internet_access,digital_connectivity,89.22,percent_households,398,191,0,63003981911240
+idn.63,Kalimantan Selatan,63,2024,m7_household_pln_lighting,electricity_access,98.89,percent_households,856,191,0,63008561911240
+idn.63,Kalimantan Selatan,63,2024,m7_rls_age15_plus,human_capital_schooling,9.02,years,1429,0,0,6300142901240
+idn.64,Kalimantan Timur,64,2024,m7_hls_method_new,human_capital_expected_schooling,14.03,years,417,0,0,640041701240
+idn.64,Kalimantan Timur,64,2024,m7_household_internet_access,digital_connectivity,95.45,percent_households,398,191,0,64003981911240
+idn.64,Kalimantan Timur,64,2024,m7_household_pln_lighting,electricity_access,96.5,percent_households,856,191,0,64008561911240
+idn.64,Kalimantan Timur,64,2024,m7_rls_age15_plus,human_capital_schooling,10.22,years,1429,0,0,6400142901240
+idn.65,Kalimantan Utara,65,2024,m7_hls_method_new,human_capital_expected_schooling,13.21,years,417,0,0,650041701240
+idn.65,Kalimantan Utara,65,2024,m7_household_internet_access,digital_connectivity,94.58,percent_households,398,191,0,65003981911240
+idn.65,Kalimantan Utara,65,2024,m7_household_pln_lighting,electricity_access,96.18,percent_households,856,191,0,65008561911240
+idn.65,Kalimantan Utara,65,2024,m7_rls_age15_plus,human_capital_schooling,9.58,years,1429,0,0,6500142901240
+idn.71,Sulawesi Utara,71,2024,m7_hls_method_new,human_capital_expected_schooling,12.97,years,417,0,0,710041701240
+idn.71,Sulawesi Utara,71,2024,m7_household_internet_access,digital_connectivity,89.31,percent_households,398,191,0,71003981911240
+idn.71,Sulawesi Utara,71,2024,m7_household_pln_lighting,electricity_access,99.67,percent_households,856,191,0,71008561911240
+idn.71,Sulawesi Utara,71,2024,m7_rls_age15_plus,human_capital_schooling,10.02,years,1429,0,0,7100142901240
+idn.72,Sulawesi Tengah,72,2024,m7_hls_method_new,human_capital_expected_schooling,13.34,years,417,0,0,720041701240
+idn.72,Sulawesi Tengah,72,2024,m7_household_internet_access,digital_connectivity,87.94,percent_households,398,191,0,72003981911240
+idn.72,Sulawesi Tengah,72,2024,m7_household_pln_lighting,electricity_access,96.6,percent_households,856,191,0,72008561911240
+idn.72,Sulawesi Tengah,72,2024,m7_rls_age15_plus,human_capital_schooling,9.28,years,1429,0,0,7200142901240
+idn.73,Sulawesi Selatan,73,2024,m7_hls_method_new,human_capital_expected_schooling,13.55,years,417,0,0,730041701240
+idn.73,Sulawesi Selatan,73,2024,m7_household_internet_access,digital_connectivity,92.18,percent_households,398,191,0,73003981911240
+idn.73,Sulawesi Selatan,73,2024,m7_household_pln_lighting,electricity_access,98.23,percent_households,856,191,0,73008561911240
+idn.73,Sulawesi Selatan,73,2024,m7_rls_age15_plus,human_capital_schooling,9.22,years,1429,0,0,7300142901240
+idn.74,Sulawesi Tenggara,74,2024,m7_hls_method_new,human_capital_expected_schooling,13.71,years,417,0,0,740041701240
+idn.74,Sulawesi Tenggara,74,2024,m7_household_internet_access,digital_connectivity,91.7,percent_households,398,191,0,74003981911240
+idn.74,Sulawesi Tenggara,74,2024,m7_household_pln_lighting,electricity_access,97.83,percent_households,856,191,0,74008561911240
+idn.74,Sulawesi Tenggara,74,2024,m7_rls_age15_plus,human_capital_schooling,9.74,years,1429,0,0,7400142901240
+idn.75,Gorontalo,75,2024,m7_hls_method_new,human_capital_expected_schooling,13.17,years,417,0,0,750041701240
+idn.75,Gorontalo,75,2024,m7_household_internet_access,digital_connectivity,90.17,percent_households,398,191,0,75003981911240
+idn.75,Gorontalo,75,2024,m7_household_pln_lighting,electricity_access,98.99,percent_households,856,191,0,75008561911240
+idn.75,Gorontalo,75,2024,m7_rls_age15_plus,human_capital_schooling,8.64,years,1429,0,0,7500142901240
+idn.76,Sulawesi Barat,76,2024,m7_hls_method_new,human_capital_expected_schooling,12.89,years,417,0,0,760041701240
+idn.76,Sulawesi Barat,76,2024,m7_household_internet_access,digital_connectivity,89.67,percent_households,398,191,0,76003981911240
+idn.76,Sulawesi Barat,76,2024,m7_household_pln_lighting,electricity_access,94.99,percent_households,856,191,0,76008561911240
+idn.76,Sulawesi Barat,76,2024,m7_rls_age15_plus,human_capital_schooling,8.56,years,1429,0,0,7600142901240
+idn.81,Maluku,81,2024,m7_hls_method_new,human_capital_expected_schooling,14.09,years,417,0,0,810041701240
+idn.81,Maluku,81,2024,m7_household_internet_access,digital_connectivity,87.27,percent_households,398,191,0,81003981911240
+idn.81,Maluku,81,2024,m7_household_pln_lighting,electricity_access,95.37,percent_households,856,191,0,81008561911240
+idn.81,Maluku,81,2024,m7_rls_age15_plus,human_capital_schooling,10.44,years,1429,0,0,8100142901240
+idn.82,Maluku Utara,82,2024,m7_hls_method_new,human_capital_expected_schooling,13.75,years,417,0,0,820041701240
+idn.82,Maluku Utara,82,2024,m7_household_internet_access,digital_connectivity,87.28,percent_households,398,191,0,82003981911240
+idn.82,Maluku Utara,82,2024,m7_household_pln_lighting,electricity_access,94.27,percent_households,856,191,0,82008561911240
+idn.82,Maluku Utara,82,2024,m7_rls_age15_plus,human_capital_schooling,9.7,years,1429,0,0,8200142901240
+idn.91,Papua Barat,91,2024,m7_hls_method_new,human_capital_expected_schooling,13.17,years,417,0,0,910041701240
+idn.91,Papua Barat,91,2024,m7_household_internet_access,digital_connectivity,85.51,percent_households,398,191,0,91003981911240
+idn.91,Papua Barat,91,2024,m7_household_pln_lighting,electricity_access,82.31,percent_households,856,191,0,91008561911240
+idn.91,Papua Barat,91,2024,m7_rls_age15_plus,human_capital_schooling,9.87,years,1429,0,0,9100142901240
+idn.92,Papua Barat Daya,92,2024,m7_hls_method_new,human_capital_expected_schooling,13.88,years,417,0,0,920041701240
+idn.92,Papua Barat Daya,92,2024,m7_household_internet_access,digital_connectivity,88.49,percent_households,398,191,0,92003981911240
+idn.92,Papua Barat Daya,92,2024,m7_household_pln_lighting,electricity_access,87.86,percent_households,856,191,0,92008561911240
+idn.92,Papua Barat Daya,92,2024,m7_rls_age15_plus,human_capital_schooling,10.48,years,1429,0,0,9200142901240
+idn.94,Papua,94,2024,m7_hls_method_new,human_capital_expected_schooling,13.72,years,417,0,0,940041701240
+idn.94,Papua,94,2024,m7_household_internet_access,digital_connectivity,81.99,percent_households,398,191,0,94003981911240
+idn.94,Papua,94,2024,m7_household_pln_lighting,electricity_access,90.24,percent_households,856,191,0,94008561911240
+idn.94,Papua,94,2024,m7_rls_age15_plus,human_capital_schooling,10.7,years,1429,0,0,9400142901240
+idn.95,Papua Selatan,95,2024,m7_hls_method_new,human_capital_expected_schooling,12.67,years,417,0,0,950041701240
+idn.95,Papua Selatan,95,2024,m7_household_internet_access,digital_connectivity,65.71,percent_households,398,191,0,95003981911240
+idn.95,Papua Selatan,95,2024,m7_household_pln_lighting,electricity_access,67.05,percent_households,856,191,0,95008561911240
+idn.95,Papua Selatan,95,2024,m7_rls_age15_plus,human_capital_schooling,8.99,years,1429,0,0,9500142901240
+idn.96,Papua Tengah,96,2024,m7_hls_method_new,human_capital_expected_schooling,9.63,years,417,0,0,960041701240
+idn.96,Papua Tengah,96,2024,m7_household_internet_access,digital_connectivity,36.08,percent_households,398,191,0,96003981911240
+idn.96,Papua Tengah,96,2024,m7_household_pln_lighting,electricity_access,35.27,percent_households,856,191,0,96008561911240
+idn.96,Papua Tengah,96,2024,m7_rls_age15_plus,human_capital_schooling,6.17,years,1429,0,0,9600142901240
+idn.97,Papua Pegunungan,97,2024,m7_hls_method_new,human_capital_expected_schooling,9.97,years,417,0,0,970041701240
+idn.97,Papua Pegunungan,97,2024,m7_household_internet_access,digital_connectivity,12.15,percent_households,398,191,0,97003981911240
+idn.97,Papua Pegunungan,97,2024,m7_household_pln_lighting,electricity_access,14.53,percent_households,856,191,0,97008561911240
+idn.97,Papua Pegunungan,97,2024,m7_rls_age15_plus,human_capital_schooling,5.1,years,1429,0,0,9700142901240

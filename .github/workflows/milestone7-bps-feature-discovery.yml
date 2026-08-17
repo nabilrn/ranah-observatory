@@ -1,0 +1,58 @@
+name: Milestone 7 BPS Feature Discovery
+
+on:
+  push:
+    branches:
+      - agent/milestone7-baseline-frontier
+    paths:
+      - "scripts/discover_milestone7_bps_subjects.py"
+      - "scripts/discover_milestone7_bps_features.py"
+      - ".github/workflows/milestone7-bps-feature-discovery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone7-bps-feature-discovery
+  cancel-in-progress: true
+
+jobs:
+  discover-features:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out Milestone 7 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone7-baseline-frontier
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Discover structural feature candidates from verified national subjects
+        run: python scripts/discover_milestone7_bps_features.py
+
+      - name: Freeze feature discovery report on branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          path="data/manifests/milestone7_bps_feature_discovery.json"
+          if [ -z "$(git status --porcelain -- "$path")" ]; then
+            echo "Feature discovery report unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$path"
+          git commit -m "data: freeze milestone7 BPS feature discovery"
+          git pull --rebase origin agent/milestone7-baseline-frontier
+          git push origin HEAD:agent/milestone7-baseline-frontier

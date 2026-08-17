@@ -1,0 +1,41 @@
+{
+  "actual_to_expected_ratio": 0.9403716031522822,
+  "claim_limits": [
+    "not a causal estimate",
+    "not a production frontier",
+    "not a counterfactual policy effect",
+    "not an estimate of monetary value lost"
+  ],
+  "claim_type": "predictive/model estimate",
+  "duan_smearing_factor": 1.0854859228159106,
+  "exploratory_prediction_interval_level": {
+    "lower": 14.106571200470668,
+    "upper": 92.4877239907019
+  },
+  "geography_id": "idn.13",
+  "geography_name": "Sumatera Barat",
+  "log_residual_observed_minus_predicted": 0.020547582529049535,
+  "loocv_empirical_residual_q025": -0.8641524358043731,
+  "loocv_empirical_residual_q975": 1.0162827548861648,
+  "observed_level": 34.16975,
+  "observed_log_target": 3.53134074974,
+  "percentage_residual_vs_expected": -5.962839684771781,
+  "predicted_log_target": 3.5107931672109505,
+  "reference_year": 2024,
+  "schema": "ranah-observatory/milestone7-west-sumatra-expected-performance/v1",
+  "selected_penalty": 0.1,
+  "sensitivity_ols": {
+    "duan_smearing_factor": 1.0850056430949515,
+    "predicted_log_target": 3.514402344707117,
+    "smearing_corrected_expected_level": 36.45167944475621
+  },
+  "smearing_corrected_expected_level": 36.336433262613745,
+  "support": {
+    "all_features_inside_training_univariate_minmax": true,
+    "interpretation": "within marginal training support",
+    "maximum_absolute_training_standardized_z": 1.1136975251901373
+  },
+  "target": "real_grdp_per_capita",
+  "target_unit": "million_rupiah_per_person_constant_2010",
+  "uncorrected_exp_predicted_log_level": 33.47480837738704
+}

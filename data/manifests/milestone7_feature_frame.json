@@ -1,0 +1,31 @@
+{
+  "feature_count": 4,
+  "feature_ids": [
+    "m7_rls_age15_plus",
+    "m7_hls_method_new",
+    "m7_household_internet_access",
+    "m7_household_pln_lighting"
+  ],
+  "geography_count": 38,
+  "geography_regime": "bps_current_38_province_2024plus",
+  "model_row_count": 38,
+  "observation_count": 152,
+  "output_hashes": {
+    "data/analysis/expected_performance/m7-feature-frame-long.csv": "44da8c0defef279ca2ab3a58b674078eb1e89b8972b169cea9d34cf01497d14b",
+    "data/analysis/expected_performance/m7-feature-frame-wide.csv": "0a758160b7942aa405f981594e4a6a6dbcfd82154883bbd729d86a4472f106d8",
+    "data/analysis/expected_performance/m7-model-frame-2024.csv": "2dc326c433f5b47990233f3c30793564f5878ab79418ac675e49503cb9deef9a"
+  },
+  "province_filter_contract": "current province registry mapped to BPS source vervar as bps_code + '00'",
+  "schema": "ranah-observatory/milestone7-feature-frame/v1",
+  "source_hashes": {
+    "data/snapshots/bps/milestone7/var-1429/var-1429-long.csv": "0b36d9210d603695c44335eb97475fca0e674069df9ad948b1530ad7f470ace7",
+    "data/snapshots/bps/milestone7/var-398/var-398-long.csv": "5950fe92938f29c5bef2cc7b5d3be19777528dd6eb2835e22954e78499e70b8b",
+    "data/snapshots/bps/milestone7/var-417/var-417-long.csv": "974efc66fbf968e40136b42bf7512e0e9155f017be2851be1d16833d2f02e6b4",
+    "data/snapshots/bps/milestone7/var-856/var-856-long.csv": "8598a82ef52c1fabd98567a865b446cc6a23a924cd08f3ab86e3490495cf8718"
+  },
+  "target": "real_grdp_per_capita",
+  "target_source": "data/analysis/comparative/bps-current38-province-panel-wide.csv",
+  "target_unit": "million_rupiah_per_person_constant_2010",
+  "west_sumatra_present": true,
+  "year": 2024
+}

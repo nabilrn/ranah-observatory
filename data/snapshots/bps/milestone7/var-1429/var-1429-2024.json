@@ -1,0 +1,254 @@
+{
+  "command": "dynamic",
+  "domain": "0000",
+  "filters": {
+    "resolved_period_label": "2024",
+    "th": "124",
+    "var": 1429
+  },
+  "language": "ind",
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "1100142901240": 9.95,
+      "1200142901240": 10.18,
+      "1300142901240": 9.72,
+      "1400142901240": 9.69,
+      "1500142901240": 9.26,
+      "1600142901240": 8.98,
+      "1700142901240": 9.4,
+      "1800142901240": 8.8,
+      "1900142901240": 8.78,
+      "2100142901240": 10.65,
+      "3100142901240": 11.49,
+      "3200142901240": 9.24,
+      "3300142901240": 8.47,
+      "3400142901240": 10.23,
+      "3500142901240": 8.69,
+      "3600142901240": 9.55,
+      "5100142901240": 9.87,
+      "5200142901240": 8.5,
+      "5300142901240": 8.48,
+      "6100142901240": 8.28,
+      "6200142901240": 9.17,
+      "6300142901240": 9.02,
+      "6400142901240": 10.22,
+      "6500142901240": 9.58,
+      "7100142901240": 10.02,
+      "7200142901240": 9.28,
+      "7300142901240": 9.22,
+      "7400142901240": 9.74,
+      "7500142901240": 8.64,
+      "7600142901240": 8.56,
+      "8100142901240": 10.44,
+      "8200142901240": 9.7,
+      "9100142901240": 9.87,
+      "9200142901240": 10.48,
+      "9400142901240": 10.7,
+      "9500142901240": 8.99,
+      "9600142901240": 6.17,
+      "9700142901240": 5.1,
+      "9999142901240": 9.22
+    },
+    "labelvervar": "38 Provinsi",
+    "last_update": "2025-12-12 14:04:14",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Pendidikan",
+        "val": 521
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2024",
+        "val": 124
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "",
+        "label": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
+        "note": "Sumber: BPS, Susenas",
+        "subj": "Pendidikan",
+        "unit": "",
+        "val": 1429
+      }
+    ],
+    "vervar": [
+      {
+        "label": "ACEH",
+        "val": 1100
+      },
+      {
+        "label": "SUMATERA UTARA",
+        "val": 1200
+      },
+      {
+        "label": "SUMATERA BARAT",
+        "val": 1300
+      },
+      {
+        "label": "RIAU",
+        "val": 1400
+      },
+      {
+        "label": "JAMBI",
+        "val": 1500
+      },
+      {
+        "label": "SUMATERA SELATAN",
+        "val": 1600
+      },
+      {
+        "label": "BENGKULU",
+        "val": 1700
+      },
+      {
+        "label": "LAMPUNG",
+        "val": 1800
+      },
+      {
+        "label": "KEP. BANGKA BELITUNG",
+        "val": 1900
+      },
+      {
+        "label": "KEP. RIAU",
+        "val": 2100
+      },
+      {
+        "label": "DKI JAKARTA",
+        "val": 3100
+      },
+      {
+        "label": "JAWA BARAT",
+        "val": 3200
+      },
+      {
+        "label": "JAWA TENGAH",
+        "val": 3300
+      },
+      {
+        "label": "DI YOGYAKARTA",
+        "val": 3400
+      },
+      {
+        "label": "JAWA TIMUR",
+        "val": 3500
+      },
+      {
+        "label": "BANTEN",
+        "val": 3600
+      },
+      {
+        "label": "BALI",
+        "val": 5100
+      },
+      {
+        "label": "NUSA TENGGARA BARAT",
+        "val": 5200
+      },
+      {
+        "label": "NUSA TENGGARA TIMUR",
+        "val": 5300
+      },
+      {
+        "label": "KALIMANTAN BARAT",
+        "val": 6100
+      },
+      {
+        "label": "KALIMANTAN TENGAH",
+        "val": 6200
+      },
+      {
+        "label": "KALIMANTAN SELATAN",
+        "val": 6300
+      },
+      {
+        "label": "KALIMANTAN TIMUR",
+        "val": 6400
+      },
+      {
+        "label": "KALIMANTAN UTARA",
+        "val": 6500
+      },
+      {
+        "label": "SULAWESI UTARA",
+        "val": 7100
+      },
+      {
+        "label": "SULAWESI TENGAH",
+        "val": 7200
+      },
+      {
+        "label": "SULAWESI SELATAN",
+        "val": 7300
+      },
+      {
+        "label": "SULAWESI TENGGARA",
+        "val": 7400
+      },
+      {
+        "label": "GORONTALO",
+        "val": 7500
+      },
+      {
+        "label": "SULAWESI BARAT",
+        "val": 7600
+      },
+      {
+        "label": "MALUKU",
+        "val": 8100
+      },
+      {
+        "label": "MALUKU UTARA",
+        "val": 8200
+      },
+      {
+        "label": "PAPUA BARAT",
+        "val": 9100
+      },
+      {
+        "label": "PAPUA BARAT DAYA",
+        "val": 9200
+      },
+      {
+        "label": "PAPUA",
+        "val": 9400
+      },
+      {
+        "label": "PAPUA SELATAN",
+        "val": 9500
+      },
+      {
+        "label": "PAPUA TENGAH",
+        "val": 9600
+      },
+      {
+        "label": "PAPUA PEGUNUNGAN",
+        "val": 9700
+      },
+      {
+        "label": "INDONESIA",
+        "val": 9999
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-17T15:25:39+00:00",
+  "snapshot_schema": "ranah-observatory/bps-webapi-snapshot/v1",
+  "source_id": "bps_webapi"
+}
