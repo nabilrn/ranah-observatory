@@ -1,0 +1,91 @@
+name: Milestone 7 Expected Performance Audit
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone7-expected-performance.yml"
+      - "research/MILESTONE7_MODEL_SPEC.md"
+      - "scripts/build_milestone7_feature_frame.py"
+      - "scripts/build_milestone7_expected_performance_model.py"
+      - "scripts/audit_milestone7_expected_performance.py"
+      - "tests/test_milestone7_expected_performance.py"
+      - "docs/MILESTONE7_EXPECTED_PERFORMANCE.md"
+      - "data/registries/milestone7_expected_performance_features.csv"
+      - "data/registries/geographies.csv"
+      - "data/snapshots/bps/milestone7/**"
+      - "data/analysis/comparative/bps-current38-province-panel-wide.csv"
+      - "data/analysis/expected_performance/**"
+      - "data/manifests/milestone7_feature_frame.json"
+      - "data/manifests/milestone7_expected_performance*.json"
+  push:
+    branches:
+      - main
+      - agent/milestone7-baseline-frontier
+    paths:
+      - ".github/workflows/milestone7-expected-performance.yml"
+      - "research/MILESTONE7_MODEL_SPEC.md"
+      - "scripts/build_milestone7_feature_frame.py"
+      - "scripts/build_milestone7_expected_performance_model.py"
+      - "scripts/audit_milestone7_expected_performance.py"
+      - "tests/test_milestone7_expected_performance.py"
+      - "docs/MILESTONE7_EXPECTED_PERFORMANCE.md"
+      - "data/registries/milestone7_expected_performance_features.csv"
+      - "data/registries/geographies.csv"
+      - "data/snapshots/bps/milestone7/**"
+      - "data/analysis/comparative/bps-current38-province-panel-wide.csv"
+      - "data/analysis/expected_performance/**"
+      - "data/manifests/milestone7_feature_frame.json"
+      - "data/manifests/milestone7_expected_performance*.json"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify frozen BPS source checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          for var in 1429 417 398 856; do
+            dir="data/snapshots/bps/milestone7/var-$var"
+            (
+              cd "$dir"
+              sha256sum -c "var-$var-2024.json.sha256"
+              sha256sum -c "var-$var-periods.json.sha256"
+            )
+          done
+
+      - name: Rebuild exact current-38 feature frame from frozen evidence
+        run: python scripts/build_milestone7_feature_frame.py
+
+      - name: Rebuild preregistered expected-performance baseline
+        run: python scripts/build_milestone7_expected_performance_model.py
+
+      - name: Enforce Milestone 7 completion audit
+        run: python scripts/audit_milestone7_expected_performance.py --require-complete
+
+      - name: Run Milestone 7 tests
+        run: python -m unittest tests.test_milestone7_expected_performance -v
+
+      - name: Revalidate repository data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Require committed Milestone 7 artifacts to be current
+        run: |
+          git diff --exit-code -- \
+            data/analysis/expected_performance \
+            data/manifests/milestone7_feature_frame.json \
+            data/manifests/milestone7_expected_performance_model.json \
+            data/manifests/milestone7_expected_performance_audit.json
