@@ -38,7 +38,16 @@ jobs:
         run: test -n "$BPS_API_KEY"
 
       - name: Freeze official BPS outcome publications and government DLNA mirror bytes
-        run: python -m scripts.freeze_milestone8_earthquake_sources
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.freeze_milestone8_earthquake_sources 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 12 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 8 source freeze failure::$message"
+          exit 1
 
       - name: Verify frozen PDFs and checksums
         shell: bash
