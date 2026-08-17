@@ -1,0 +1,39 @@
+geography_id,geography_name,bps_province_code,year,m7_rls_age15_plus,m7_hls_method_new,m7_household_internet_access,m7_household_pln_lighting
+idn.11,Aceh,11,2024,9.95,14.39,88.95,99.73
+idn.12,Sumatera Utara,12,2024,10.18,13.49,92.3,99.23
+idn.13,Sumatera Barat,13,2024,9.72,14.3,91.89,98.95
+idn.14,Riau,14,2024,9.69,13.42,94.16,96.6
+idn.15,Jambi,15,2024,9.26,13.14,90.59,98.9
+idn.16,Sumatera Selatan,16,2024,8.98,12.64,90.94,97.02
+idn.17,Bengkulu,17,2024,9.4,13.75,90.62,99.75
+idn.18,Lampung,18,2024,8.8,12.78,91.57,99.21
+idn.19,Kepulauan Bangka Belitung,19,2024,8.78,12.49,92.14,99.66
+idn.21,Kepulauan Riau,21,2024,10.65,13.27,97.57,98.39
+idn.31,DKI Jakarta,31,2024,11.49,13.51,98.18,99.97
+idn.32,Jawa Barat,32,2024,9.24,12.8,90.58,99.9
+idn.33,Jawa Tengah,33,2024,8.47,12.86,88.89,99.94
+idn.34,DI Yogyakarta,34,2024,10.23,15.7,89.5,100
+idn.35,Jawa Timur,35,2024,8.69,13.43,86.9,99.71
+idn.36,Banten,36,2024,9.55,13.1,93.02,99.79
+idn.51,Bali,51,2024,9.87,13.62,92.16,99.9
+idn.52,Nusa Tenggara Barat,52,2024,8.5,13.98,86.54,99.89
+idn.53,Nusa Tenggara Timur,53,2024,8.48,13.23,82.45,91.01
+idn.61,Kalimantan Barat,61,2024,8.28,12.68,92.65,92.95
+idn.62,Kalimantan Tengah,62,2024,9.17,12.77,92.13,89.04
+idn.63,Kalimantan Selatan,63,2024,9.02,12.87,89.22,98.89
+idn.64,Kalimantan Timur,64,2024,10.22,14.03,95.45,96.5
+idn.65,Kalimantan Utara,65,2024,9.58,13.21,94.58,96.18
+idn.71,Sulawesi Utara,71,2024,10.02,12.97,89.31,99.67
+idn.72,Sulawesi Tengah,72,2024,9.28,13.34,87.94,96.6
+idn.73,Sulawesi Selatan,73,2024,9.22,13.55,92.18,98.23
+idn.74,Sulawesi Tenggara,74,2024,9.74,13.71,91.7,97.83
+idn.75,Gorontalo,75,2024,8.64,13.17,90.17,98.99
+idn.76,Sulawesi Barat,76,2024,8.56,12.89,89.67,94.99
+idn.81,Maluku,81,2024,10.44,14.09,87.27,95.37
+idn.82,Maluku Utara,82,2024,9.7,13.75,87.28,94.27
+idn.91,Papua Barat,91,2024,9.87,13.17,85.51,82.31
+idn.92,Papua Barat Daya,92,2024,10.48,13.88,88.49,87.86
+idn.94,Papua,94,2024,10.7,13.72,81.99,90.24
+idn.95,Papua Selatan,95,2024,8.99,12.67,65.71,67.05
+idn.96,Papua Tengah,96,2024,6.17,9.63,36.08,35.27
+idn.97,Papua Pegunungan,97,2024,5.1,9.97,12.15,14.53

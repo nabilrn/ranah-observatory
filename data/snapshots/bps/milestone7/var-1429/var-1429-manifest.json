@@ -1,0 +1,22 @@
+{
+  "domain": "0000",
+  "language": "ind",
+  "normalized_rows": 39,
+  "requested_period_labels": [
+    "2024"
+  ],
+  "retrieved_at_utc": "2026-08-17T15:25:39+00:00",
+  "schema": "ranah-observatory/bps-source-series/v1",
+  "snapshots": [
+    {
+      "checksum": "var-1429-2024.json.sha256",
+      "missing_combinations": 0,
+      "observed_values": 39,
+      "period_id": "124",
+      "period_label": "2024",
+      "snapshot": "var-1429-2024.json"
+    }
+  ],
+  "source_id": "bps_webapi",
+  "var_id": 1429
+}
