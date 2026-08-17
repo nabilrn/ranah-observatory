@@ -6,6 +6,8 @@ on:
       - agent/milestone8-earthquake-quasi-causal
     paths:
       - "scripts/extract_milestone8_pdf_text.py"
+      - "scripts/freeze_milestone8_earthquake_sources.py"
+      - "scripts/freeze_milestone8_dlna.py"
       - "data/snapshots/bps/milestone8/**"
       - "data/snapshots/disaster/milestone8/**"
       - ".github/workflows/milestone8-pdf-text-extraction.yml"
@@ -21,7 +23,9 @@ concurrency:
 jobs:
   extract:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
     steps:
       - name: Check out Milestone 8 branch
         uses: actions/checkout@v4
@@ -34,12 +38,45 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
       - name: Install Poppler text extraction tools
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
 
-      - name: Extract page-preserving text from frozen PDFs
+      - name: Hydrate gitignored raw PDFs from qualified upstream sources
+        run: |
+          python -m scripts.freeze_milestone8_earthquake_sources --skip-dlna
+          python -m scripts.freeze_milestone8_dlna
+
+      - name: Require hydrated bytes to match committed source hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          verify_one() {
+            committed_checksum_path="$1"
+            raw_pdf="$2"
+            expected="$(git show "HEAD:$committed_checksum_path" | awk '{print $1}')"
+            actual="$(sha256sum "$raw_pdf" | awk '{print $1}')"
+            if [ "$expected" != "$actual" ]; then
+              echo "Hash drift for $raw_pdf: expected=$expected actual=$actual" >&2
+              exit 1
+            fi
+          }
+          verify_one data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256 data/raw/milestone8/bps/grdp-2005-2009/source.pdf
+          verify_one data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256 data/raw/milestone8/bps/grdp-2009-2013/source.pdf
+          verify_one data/snapshots/disaster/milestone8/dlna-2009/source.pdf.sha256 data/raw/milestone8/disaster/dlna-2009/source.pdf
+
+      - name: Restore committed metadata before transformation
+        run: |
+          git restore -- \
+            data/snapshots/bps/milestone8 \
+            data/snapshots/disaster/milestone8 \
+            data/manifests/milestone8_source_freeze.json
+
+      - name: Extract page-preserving text from verified raw PDFs
         run: python -m scripts.extract_milestone8_pdf_text
 
       - name: Commit deterministic text and discovery manifest
@@ -55,6 +92,6 @@ jobs:
             echo "Milestone 8 PDF text artifacts unchanged."
             exit 0
           fi
-          git commit -m "data: extract milestone8 frozen PDF text"
+          git commit -m "data: extract milestone8 verified source text"
           git pull --rebase origin agent/milestone8-earthquake-quasi-causal
           git push origin HEAD:agent/milestone8-earthquake-quasi-causal
