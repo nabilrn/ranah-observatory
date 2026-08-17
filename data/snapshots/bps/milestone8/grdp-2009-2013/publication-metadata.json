@@ -1,12 +1,12 @@
 {
   "domain": "1373",
-  "final_download_url": "https://webapi.bps.go.id/download.php?f=My9vFIjNeo39lwQD9yheFmxvUzJGNkRkYllNbndvb2FwaFcvci9WeGJGZERVeWJCdkcyQW9xL0RnQkZMVXNGWTdqenZxTlVWN3JKV1kwNzUxSjAwVStCRUhFVmgyYXhBZmlUS3ZBcy8xR0xUYkd4bTgxeWpJT01PaEdFeitTZnNiZmhyaVRwUTUrU2lEOWU1UTgrbzhudlF2YlZqVlhDSE9lWEsrb0dkenlWNnQ5VTFNeG9jY0VsWVZVeEFHVk1UaERIaE1sQ3RFcm9CR05GWHpZL3hGOHRLMko2NDFaalJzWW82SFYvQ1BzSDFETFYrd0VEUWVUWWhzNFJ0R1BCejVqbHlaVURjRms2Ky9QWWM=",
+  "final_download_url": "https://webapi.bps.go.id/download.php?f=i+YKSaSZh4cvC9G+ztxuJVdjSDFEK3FyMHQ0c2ZxamVhT2hsdi9nc0JKNTJxZmsxNkpRVUkydkUzUW5lOEowZk5uOVExZCtWbUZzM0daZEYxZ1pKak9aWjBZaUlwbkhFb3dLdm1rMVZMMm5qc0tnUmp3d3J6WUtWNDdtWm1XYUxSakRZZllGdmZ3a0k2ZkR4TlNPdkx3bUkzb3Z2bENCYlUybWsyWElzWnh0ZEJmSDJpVE5KZitLWUprcG94UjJFeC9kREtHejdlZWxVWXQ5VEtsTnp4UzcvK05jRFZZa0JxWXJDMGMyMFlOWEQwRGJ4b0duMkZJNm5vUEJRMzFiWVBVendDTUduYmtoSjE2ZFI=",
   "publication": {
     "abstract": "",
-    "cover": "https://webapi.bps.go.id/cover.php?f=kL2vyH3arzpAMC9+hFtNSUNyUTMwUTlqRWRmRlNuRVhQU1YwVDN5UHlsdnlZN0pUcmRGMG4vWitDZUtYOC8rZnRyTEd6TW5GRVVRSnp1M2VQSEJmS1lwMW5RdXZvOS9HY3E5R3RTeEtQdnlXd0REdXJEVlRpVWNwL0c1c1RlQzBneWJSNWhUVHBpbGtzRFFu",
+    "cover": "https://webapi.bps.go.id/cover.php?f=wFm/gItD5xw/l1nIqTIsKGJoSUFvS1lxR29URzlWUUFWVXBsaFlObTc3cGFYaVZXaDh3M3NLak5xVFhrK09HZWlYVDZlVDd1MW9hcmR4ZWgvbWpHaEh2VjZnZEd1T3pBeTZpQUZPdnVyZEFHV2Q3eUloSHE4aVJnMkRXVGQ2cGpSUG5CT1FDQ1E0S0NJU2Fa",
     "id_subject_csa": null,
     "issn": "",
-    "pdf": "https://webapi.bps.go.id/download.php?f=My9vFIjNeo39lwQD9yheFmxvUzJGNkRkYllNbndvb2FwaFcvci9WeGJGZERVeWJCdkcyQW9xL0RnQkZMVXNGWTdqenZxTlVWN3JKV1kwNzUxSjAwVStCRUhFVmgyYXhBZmlUS3ZBcy8xR0xUYkd4bTgxeWpJT01PaEdFeitTZnNiZmhyaVRwUTUrU2lEOWU1UTgrbzhudlF2YlZqVlhDSE9lWEsrb0dkenlWNnQ5VTFNeG9jY0VsWVZVeEFHVk1UaERIaE1sQ3RFcm9CR05GWHpZL3hGOHRLMko2NDFaalJzWW82SFYvQ1BzSDFETFYrd0VEUWVUWWhzNFJ0R1BCejVqbHlaVURjRms2Ky9QWWM=",
+    "pdf": "https://webapi.bps.go.id/download.php?f=i+YKSaSZh4cvC9G+ztxuJVdjSDFEK3FyMHQ0c2ZxamVhT2hsdi9nc0JKNTJxZmsxNkpRVUkydkUzUW5lOEowZk5uOVExZCtWbUZzM0daZEYxZ1pKak9aWjBZaUlwbkhFb3dLdm1rMVZMMm5qc0tnUmp3d3J6WUtWNDdtWm1XYUxSakRZZllGdmZ3a0k2ZkR4TlNPdkx3bUkzb3Z2bENCYlUybWsyWElzWnh0ZEJmSDJpVE5KZitLWUprcG94UjJFeC9kREtHejdlZWxVWXQ5VEtsTnp4UzcvK05jRFZZa0JxWXJDMGMyMFlOWEQwRGJ4b0duMkZJNm5vUEJRMzFiWVBVendDTUduYmtoSjE2ZFI=",
     "pub_id": "09a8175fa67d4c80d2183354",
     "rl_date": "2014-11-11",
     "sch_date": "2014-11-11",
@@ -15,8 +15,9 @@
     "title": "SAWAHLUNTO DALAM ANGKA 2014",
     "updt_date": null
   },
+  "raw_storage_policy": "PDF bytes live under gitignored data/raw during acquisition and are uploaded as a GitHub Actions artifact; Git stores metadata, SHA-256, and derived text only.",
   "requested_publication_id": "09a8175fa67d4c80d2183354",
-  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=My9vFIjNeo39lwQD9yheFmxvUzJGNkRkYllNbndvb2FwaFcvci9WeGJGZERVeWJCdkcyQW9xL0RnQkZMVXNGWTdqenZxTlVWN3JKV1kwNzUxSjAwVStCRUhFVmgyYXhBZmlUS3ZBcy8xR0xUYkd4bTgxeWpJT01PaEdFeitTZnNiZmhyaVRwUTUrU2lEOWU1UTgrbzhudlF2YlZqVlhDSE9lWEsrb0dkenlWNnQ5VTFNeG9jY0VsWVZVeEFHVk1UaERIaE1sQ3RFcm9CR05GWHpZL3hGOHRLMko2NDFaalJzWW82SFYvQ1BzSDFETFYrd0VEUWVUWWhzNFJ0R1BCejVqbHlaVURjRms2Ky9QWWM=",
+  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=i+YKSaSZh4cvC9G+ztxuJVdjSDFEK3FyMHQ0c2ZxamVhT2hsdi9nc0JKNTJxZmsxNkpRVUkydkUzUW5lOEowZk5uOVExZCtWbUZzM0daZEYxZ1pKak9aWjBZaUlwbkhFb3dLdm1rMVZMMm5qc0tnUmp3d3J6WUtWNDdtWm1XYUxSakRZZllGdmZ3a0k2ZkR4TlNPdkx3bUkzb3Z2bENCYlUybWsyWElzWnh0ZEJmSDJpVE5KZitLWUprcG94UjJFeC9kREtHejdlZWxVWXQ5VEtsTnp4UzcvK05jRFZZa0JxWXJDMGMyMFlOWEQwRGJ4b0duMkZJNm5vUEJRMzFiWVBVendDTUduYmtoSjE2ZFI=",
   "retrieval_method": "BPS WebAPI publication metadata -> official pdf URL",
   "schema": "ranah-observatory/milestone8-bps-publication-snapshot/v1",
   "source_plan_id": "m8_grdp_post"

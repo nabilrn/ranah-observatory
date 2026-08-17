@@ -3,6 +3,7 @@
   "criterion": "one focused causal or quasi-causal case study",
   "exposure_extracted": false,
   "outcome_extracted": false,
+  "raw_pdf_policy": "gitignored data/raw plus workflow artifact; no raw PDF tracked in Git",
   "schema": "ranah-observatory/milestone8-source-freeze/v1",
   "snapshot_count": 3,
   "snapshots": [
@@ -16,22 +17,26 @@
       "source_plan_id": "m8_damage_dlna"
     },
     {
+      "checksum_path": "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2009-2013/publication-metadata.json",
-      "metadata_sha256": "658b2c9ef5dfa5b3e4cbf03e5fc5117799871e63c9352abe525a9b84e150d438",
+      "metadata_sha256": "b2aa706b3f1c803572d0fcc67258e6165a231760a88e78f994ededc66c08108e",
       "pdf_bytes": 24110985,
-      "pdf_path": "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf",
       "pdf_sha256": "c066499a4c050296e4ffdd10192ba4c6748da920bf0975fa887e2ed13e998612",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-2009-2013/source.pdf",
       "release_date": "2014-11-11",
       "source_plan_id": "m8_grdp_post",
       "title": "SAWAHLUNTO DALAM ANGKA 2014",
       "updated_date": null
     },
     {
+      "checksum_path": "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2005-2009/publication-metadata.json",
-      "metadata_sha256": "de7067b884decb1021153dc718afd205c0cf34cf20b99d7d240bf828effe9441",
+      "metadata_sha256": "637eff733f72866402be31e9df32dc74b0dc0d2acf0109d17846783670b23b73",
       "pdf_bytes": 4585911,
-      "pdf_path": "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf",
       "pdf_sha256": "c54ae285a81e01255f354103d271419ba8d4748c4e9f19d58c94d81c8b3d338e",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-2005-2009/source.pdf",
       "release_date": "2010-08-23",
       "source_plan_id": "m8_grdp_pre",
       "title": "Perkembangan Ekonomi Sumatera Barat (Tinjauan Pendapatan Domestik Regional Bruto Provinsi Sumatera Barat Dan Kabupaten/Kota Tahun 2005 Ã¢â‚¬â€œ 2009)",
