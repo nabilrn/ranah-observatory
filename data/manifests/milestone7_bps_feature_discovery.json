@@ -1,30 +1,115 @@
 {
-  "candidate_count": 7,
-  "catalog_subjects": [
+  "candidate_count": 4,
+  "candidate_summary": [
     {
-      "subject_id": 28,
-      "subject_label": "Pendidikan"
+      "available_years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "bps_var_id": 1429,
+      "feature_groups": [
+        "human_capital_schooling"
+      ],
+      "labelvervar": "38 Provinsi",
+      "non_aggregate_geography_count": 38,
+      "probe_status": "semantic_current38_2024_candidate",
+      "source_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": "0"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
     },
     {
-      "subject_id": 30,
-      "subject_label": "Kesehatan"
-    }
-  ],
-  "direct_candidate_ids": [
-    398,
-    1975
-  ],
-  "domain": "0000",
-  "feature_candidate_counts": {
-    "digital_connectivity": 1,
-    "health_life_expectancy": 0,
-    "human_capital_expected_schooling": 0,
-    "human_capital_schooling": 1,
-    "population_scale": 0
-  },
-  "interpretation": "Discovery only. Exact 2024/current-38 shape plus title semantics is necessary but not sufficient. Final feature promotion requires selector, unit, denominator, methodology and frozen-value review.",
-  "model_year": 2024,
-  "results": [
+      "available_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "bps_var_id": 417,
+      "feature_groups": [
+        "human_capital_expected_schooling"
+      ],
+      "labelvervar": "Provinsi/Kabupaten/Kota/Indonesia",
+      "non_aggregate_geography_count": 578,
+      "probe_status": "hold_semantics_or_structure",
+      "source_title": "[Metode Baru] Harapan Lama Sekolah",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": "0"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "available_years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "bps_var_id": 2273,
+      "feature_groups": [
+        "health_life_expectancy"
+      ],
+      "labelvervar": "38 Provinsi",
+      "non_aggregate_geography_count": 38,
+      "probe_status": "semantic_current38_2024_candidate",
+      "source_title": "Umur Harapan Hidup saat lahir menurut Provinsi dan Jenis Kelamin (menggunakan UHH hasil SP2020 LF)",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": "0"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Laki-laki",
+          "value": "211"
+        },
+        {
+          "label": "Perempuan",
+          "value": "212"
+        }
+      ]
+    },
     {
       "available_years": [
         2009,
@@ -45,14 +130,2908 @@
         2024
       ],
       "bps_var_id": 398,
-      "candidate_origin": "milestone7 national catalog discovery v4",
+      "feature_groups": [
+        "digital_connectivity"
+      ],
+      "labelvervar": "38 Provinsi",
+      "non_aggregate_geography_count": 38,
+      "probe_status": "semantic_current38_2024_candidate",
+      "source_title": "Persentase Rumah Tangga yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi dan Klasifikasi Daerah",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": "0"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Perkotaan",
+          "value": "189"
+        },
+        {
+          "label": "Perdesaan",
+          "value": "190"
+        },
+        {
+          "label": "Perkotaan+Perdesaan",
+          "value": "191"
+        }
+      ]
+    }
+  ],
+  "domain": "0000",
+  "feature_candidate_counts": {
+    "digital_connectivity": 1,
+    "health_life_expectancy": 1,
+    "human_capital_expected_schooling": 0,
+    "human_capital_schooling": 1
+  },
+  "interpretation": "Discovery only. Passing title/period/geography checks are necessary but not sufficient. Final promotion requires explicit selector, unit, denominator, methodology and frozen values.",
+  "model_year": 2024,
+  "results": [
+    {
+      "available_years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "bps_var_id": 1429,
+      "candidate_origin": "national BPS subject 28 catalog; frozen in milestone7 discovery v5",
+      "catalog_feature_groups": [
+        "human_capital_schooling"
+      ],
+      "catalog_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
+      "datacontent_count": 39,
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "probe_status": "semantic_current38_2024_candidate",
+      "selected_model_period": {
+        "label": "2024",
+        "period_id": 124,
+        "year": 2024
+      },
+      "semantic_feature_groups": [
+        "human_capital_schooling"
+      ],
+      "source_note": "Sumber: BPS, Susenas",
+      "source_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
+      "source_unit": "",
+      "structure_checks": {
+        "datacontent_present": true,
+        "exactly_38_nonaggregate_geographies": true,
+        "model_year_is_2024": true,
+        "semantic_title_match": true,
+        "vertical_is_province": true,
+        "west_sumatra_present": true
+      },
+      "subject_id": 28,
+      "subject_label": "Pendidikan",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": "0"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "available_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "bps_var_id": 417,
+      "candidate_origin": "https://www.bps.go.id/id/statistics-table/2/NDE3IzI%3D/-metode-baru--harapan-lama-sekolah.html",
+      "catalog_feature_groups": [
+        "human_capital_expected_schooling"
+      ],
+      "catalog_title": "[Metode Baru] Harapan Lama Sekolah",
+      "datacontent_count": 553,
+      "geography": {
+        "geographies": [
+          {
+            "label": "<b>ACEH</b>",
+            "value": "1100"
+          },
+          {
+            "label": "Simeulue",
+            "value": "1101"
+          },
+          {
+            "label": "Aceh Singkil",
+            "value": "1102"
+          },
+          {
+            "label": "Aceh Selatan",
+            "value": "1103"
+          },
+          {
+            "label": "Aceh Tenggara",
+            "value": "1104"
+          },
+          {
+            "label": "Aceh Timur",
+            "value": "1105"
+          },
+          {
+            "label": "Aceh Tengah",
+            "value": "1106"
+          },
+          {
+            "label": "Aceh Barat",
+            "value": "1107"
+          },
+          {
+            "label": "Aceh Besar",
+            "value": "1108"
+          },
+          {
+            "label": "Pidie",
+            "value": "1109"
+          },
+          {
+            "label": "Bireuen",
+            "value": "1110"
+          },
+          {
+            "label": "Aceh Utara",
+            "value": "1111"
+          },
+          {
+            "label": "Aceh Barat Daya",
+            "value": "1112"
+          },
+          {
+            "label": "Gayo Lues",
+            "value": "1113"
+          },
+          {
+            "label": "Aceh Tamiang",
+            "value": "1114"
+          },
+          {
+            "label": "Nagan Raya",
+            "value": "1115"
+          },
+          {
+            "label": "Aceh Jaya",
+            "value": "1116"
+          },
+          {
+            "label": "Bener Meriah",
+            "value": "1117"
+          },
+          {
+            "label": "Pidie Jaya",
+            "value": "1118"
+          },
+          {
+            "label": "Kota Banda Aceh",
+            "value": "1171"
+          },
+          {
+            "label": "Kota Sabang",
+            "value": "1172"
+          },
+          {
+            "label": "Kota Langsa",
+            "value": "1173"
+          },
+          {
+            "label": "Kota Lhokseumawe",
+            "value": "1174"
+          },
+          {
+            "label": "Kota Subulussalam",
+            "value": "1175"
+          },
+          {
+            "label": "<b>SUMATERA UTARA</b>",
+            "value": "1200"
+          },
+          {
+            "label": "Nias",
+            "value": "1201"
+          },
+          {
+            "label": "Mandailing Natal",
+            "value": "1202"
+          },
+          {
+            "label": "Tapanuli Selatan",
+            "value": "1203"
+          },
+          {
+            "label": "Tapanuli Tengah",
+            "value": "1204"
+          },
+          {
+            "label": "Tapanuli Utara",
+            "value": "1205"
+          },
+          {
+            "label": "Toba Samosir / Toba",
+            "value": "1206"
+          },
+          {
+            "label": "Labuhan Batu",
+            "value": "1207"
+          },
+          {
+            "label": "Asahan",
+            "value": "1208"
+          },
+          {
+            "label": "Simalungun",
+            "value": "1209"
+          },
+          {
+            "label": "Dairi",
+            "value": "1210"
+          },
+          {
+            "label": "Karo",
+            "value": "1211"
+          },
+          {
+            "label": "Deli Serdang",
+            "value": "1212"
+          },
+          {
+            "label": "Langkat",
+            "value": "1213"
+          },
+          {
+            "label": "Nias Selatan",
+            "value": "1214"
+          },
+          {
+            "label": "Humbang Hasundutan",
+            "value": "1215"
+          },
+          {
+            "label": "Pakpak Bharat",
+            "value": "1216"
+          },
+          {
+            "label": "Samosir",
+            "value": "1217"
+          },
+          {
+            "label": "Serdang Bedagai",
+            "value": "1218"
+          },
+          {
+            "label": "Batu Bara",
+            "value": "1219"
+          },
+          {
+            "label": "Padang Lawas Utara",
+            "value": "1220"
+          },
+          {
+            "label": "Padang Lawas",
+            "value": "1221"
+          },
+          {
+            "label": "Labuhan Batu Selatan",
+            "value": "1222"
+          },
+          {
+            "label": "Labuhan Batu Utara",
+            "value": "1223"
+          },
+          {
+            "label": "Nias Utara",
+            "value": "1224"
+          },
+          {
+            "label": "Nias Barat",
+            "value": "1225"
+          },
+          {
+            "label": "Kota Sibolga",
+            "value": "1271"
+          },
+          {
+            "label": "Kota Tanjung Balai",
+            "value": "1272"
+          },
+          {
+            "label": "Kota Pematang Siantar",
+            "value": "1273"
+          },
+          {
+            "label": "Kota Tebing Tinggi",
+            "value": "1274"
+          },
+          {
+            "label": "Kota Medan",
+            "value": "1275"
+          },
+          {
+            "label": "Kota Binjai",
+            "value": "1276"
+          },
+          {
+            "label": "Kota Padangsidimpuan",
+            "value": "1277"
+          },
+          {
+            "label": "Kota Gunungsitoli",
+            "value": "1278"
+          },
+          {
+            "label": "<b>SUMATERA BARAT</b>",
+            "value": "1300"
+          },
+          {
+            "label": "Kepulauan Mentawai",
+            "value": "1301"
+          },
+          {
+            "label": "Pesisir Selatan",
+            "value": "1302"
+          },
+          {
+            "label": "Solok",
+            "value": "1303"
+          },
+          {
+            "label": "Sijunjung",
+            "value": "1304"
+          },
+          {
+            "label": "Tanah Datar",
+            "value": "1305"
+          },
+          {
+            "label": "Padang Pariaman",
+            "value": "1306"
+          },
+          {
+            "label": "Agam",
+            "value": "1307"
+          },
+          {
+            "label": "Lima Puluh Kota",
+            "value": "1308"
+          },
+          {
+            "label": "Pasaman",
+            "value": "1309"
+          },
+          {
+            "label": "Solok Selatan",
+            "value": "1310"
+          },
+          {
+            "label": "Dharmasraya",
+            "value": "1311"
+          },
+          {
+            "label": "Pasaman Barat",
+            "value": "1312"
+          },
+          {
+            "label": "Kota Padang",
+            "value": "1371"
+          },
+          {
+            "label": "Kota Solok",
+            "value": "1372"
+          },
+          {
+            "label": "Kota Sawah Lunto",
+            "value": "1373"
+          },
+          {
+            "label": "Kota Padang Panjang",
+            "value": "1374"
+          },
+          {
+            "label": "Kota Bukittinggi",
+            "value": "1375"
+          },
+          {
+            "label": "Kota Payakumbuh",
+            "value": "1376"
+          },
+          {
+            "label": "Kota Pariaman",
+            "value": "1377"
+          },
+          {
+            "label": "<b>RIAU</b>",
+            "value": "1400"
+          },
+          {
+            "label": "Kuantan Singingi",
+            "value": "1401"
+          },
+          {
+            "label": "Indragiri Hulu",
+            "value": "1402"
+          },
+          {
+            "label": "Indragiri Hilir",
+            "value": "1403"
+          },
+          {
+            "label": "Pelalawan",
+            "value": "1404"
+          },
+          {
+            "label": "Siak",
+            "value": "1405"
+          },
+          {
+            "label": "Kampar",
+            "value": "1406"
+          },
+          {
+            "label": "Rokan Hulu",
+            "value": "1407"
+          },
+          {
+            "label": "Bengkalis",
+            "value": "1408"
+          },
+          {
+            "label": "Rokan Hilir",
+            "value": "1409"
+          },
+          {
+            "label": "Kepulauan Meranti",
+            "value": "1410"
+          },
+          {
+            "label": "Kota Pekanbaru",
+            "value": "1471"
+          },
+          {
+            "label": "Kota Dumai",
+            "value": "1473"
+          },
+          {
+            "label": "<b>JAMBI</b>",
+            "value": "1500"
+          },
+          {
+            "label": "Kerinci",
+            "value": "1501"
+          },
+          {
+            "label": "Merangin",
+            "value": "1502"
+          },
+          {
+            "label": "Sarolangun",
+            "value": "1503"
+          },
+          {
+            "label": "Batang Hari",
+            "value": "1504"
+          },
+          {
+            "label": "Muaro Jambi",
+            "value": "1505"
+          },
+          {
+            "label": "Tanjung Jabung Timur",
+            "value": "1506"
+          },
+          {
+            "label": "Tanjung Jabung Barat",
+            "value": "1507"
+          },
+          {
+            "label": "Tebo",
+            "value": "1508"
+          },
+          {
+            "label": "Bungo",
+            "value": "1509"
+          },
+          {
+            "label": "Kota Jambi",
+            "value": "1571"
+          },
+          {
+            "label": "Kota Sungai Penuh",
+            "value": "1572"
+          },
+          {
+            "label": "<b>SUMATERA SELATAN</b>",
+            "value": "1600"
+          },
+          {
+            "label": "Ogan Komering Ulu",
+            "value": "1601"
+          },
+          {
+            "label": "Ogan Komering Ilir",
+            "value": "1602"
+          },
+          {
+            "label": "Muara Enim",
+            "value": "1603"
+          },
+          {
+            "label": "Lahat",
+            "value": "1604"
+          },
+          {
+            "label": "Musi Rawas",
+            "value": "1605"
+          },
+          {
+            "label": "Musi Banyuasin",
+            "value": "1606"
+          },
+          {
+            "label": "Banyu Asin",
+            "value": "1607"
+          },
+          {
+            "label": "Ogan Komering Ulu Selatan",
+            "value": "1608"
+          },
+          {
+            "label": "Ogan Komering Ulu Timur",
+            "value": "1609"
+          },
+          {
+            "label": "Ogan Ilir",
+            "value": "1610"
+          },
+          {
+            "label": "Empat Lawang",
+            "value": "1611"
+          },
+          {
+            "label": "Penukal Abab Lematang Ilir",
+            "value": "1612"
+          },
+          {
+            "label": "Musi Rawas Utara",
+            "value": "1613"
+          },
+          {
+            "label": "Kota Palembang",
+            "value": "1671"
+          },
+          {
+            "label": "Kota Prabumulih",
+            "value": "1672"
+          },
+          {
+            "label": "Kota Pagar Alam",
+            "value": "1673"
+          },
+          {
+            "label": "Kota Lubuklinggau",
+            "value": "1674"
+          },
+          {
+            "label": "<b>BENGKULU</b>",
+            "value": "1700"
+          },
+          {
+            "label": "Bengkulu Selatan",
+            "value": "1701"
+          },
+          {
+            "label": "Rejang Lebong",
+            "value": "1702"
+          },
+          {
+            "label": "Bengkulu Utara",
+            "value": "1703"
+          },
+          {
+            "label": "Kaur",
+            "value": "1704"
+          },
+          {
+            "label": "Seluma",
+            "value": "1705"
+          },
+          {
+            "label": "Mukomuko",
+            "value": "1706"
+          },
+          {
+            "label": "Lebong",
+            "value": "1707"
+          },
+          {
+            "label": "Kepahiang",
+            "value": "1708"
+          },
+          {
+            "label": "Bengkulu Tengah",
+            "value": "1709"
+          },
+          {
+            "label": "Kota Bengkulu",
+            "value": "1771"
+          },
+          {
+            "label": "<b>LAMPUNG</b>",
+            "value": "1800"
+          },
+          {
+            "label": "Lampung Barat",
+            "value": "1801"
+          },
+          {
+            "label": "Tanggamus",
+            "value": "1802"
+          },
+          {
+            "label": "Lampung Selatan",
+            "value": "1803"
+          },
+          {
+            "label": "Lampung Timur",
+            "value": "1804"
+          },
+          {
+            "label": "Lampung Tengah",
+            "value": "1805"
+          },
+          {
+            "label": "Lampung Utara",
+            "value": "1806"
+          },
+          {
+            "label": "Way Kanan",
+            "value": "1807"
+          },
+          {
+            "label": "Tulangbawang",
+            "value": "1808"
+          },
+          {
+            "label": "Pesawaran",
+            "value": "1809"
+          },
+          {
+            "label": "Pringsewu",
+            "value": "1810"
+          },
+          {
+            "label": "Mesuji",
+            "value": "1811"
+          },
+          {
+            "label": "Tulang Bawang Barat",
+            "value": "1812"
+          },
+          {
+            "label": "Pesisir Barat",
+            "value": "1813"
+          },
+          {
+            "label": "Kota Bandar Lampung",
+            "value": "1871"
+          },
+          {
+            "label": "Kota Metro",
+            "value": "1872"
+          },
+          {
+            "label": "<b>KEP. BANGKA BELITUNG</b>",
+            "value": "1900"
+          },
+          {
+            "label": "Bangka",
+            "value": "1901"
+          },
+          {
+            "label": "Belitung",
+            "value": "1902"
+          },
+          {
+            "label": "Bangka Barat",
+            "value": "1903"
+          },
+          {
+            "label": "Bangka Tengah",
+            "value": "1904"
+          },
+          {
+            "label": "Bangka Selatan",
+            "value": "1905"
+          },
+          {
+            "label": "Belitung Timur",
+            "value": "1906"
+          },
+          {
+            "label": "Kota Pangkal Pinang",
+            "value": "1971"
+          },
+          {
+            "label": "<b>KEPULAUAN RIAU</b>",
+            "value": "2100"
+          },
+          {
+            "label": "Karimun",
+            "value": "2101"
+          },
+          {
+            "label": "Bintan",
+            "value": "2102"
+          },
+          {
+            "label": "Natuna",
+            "value": "2103"
+          },
+          {
+            "label": "Lingga",
+            "value": "2104"
+          },
+          {
+            "label": "Kepulauan Anambas",
+            "value": "2105"
+          },
+          {
+            "label": "Kota Batam",
+            "value": "2171"
+          },
+          {
+            "label": "Kota Tanjung Pinang",
+            "value": "2172"
+          },
+          {
+            "label": "<b>DKI JAKARTA</b>",
+            "value": "3100"
+          },
+          {
+            "label": "Kep. Seribu",
+            "value": "3101"
+          },
+          {
+            "label": "Kota Jakarta Selatan",
+            "value": "3171"
+          },
+          {
+            "label": "Kota Jakarta Timur",
+            "value": "3172"
+          },
+          {
+            "label": "Kota Jakarta Pusat",
+            "value": "3173"
+          },
+          {
+            "label": "Kota Jakarta Barat",
+            "value": "3174"
+          },
+          {
+            "label": "Kota Jakarta Utara",
+            "value": "3175"
+          },
+          {
+            "label": "<b>JAWA BARAT</b>",
+            "value": "3200"
+          },
+          {
+            "label": "Bogor",
+            "value": "3201"
+          },
+          {
+            "label": "Sukabumi",
+            "value": "3202"
+          },
+          {
+            "label": "Cianjur",
+            "value": "3203"
+          },
+          {
+            "label": "Bandung",
+            "value": "3204"
+          },
+          {
+            "label": "Garut",
+            "value": "3205"
+          },
+          {
+            "label": "Tasikmalaya",
+            "value": "3206"
+          },
+          {
+            "label": "Ciamis",
+            "value": "3207"
+          },
+          {
+            "label": "Kuningan",
+            "value": "3208"
+          },
+          {
+            "label": "Cirebon",
+            "value": "3209"
+          },
+          {
+            "label": "Majalengka",
+            "value": "3210"
+          },
+          {
+            "label": "Sumedang",
+            "value": "3211"
+          },
+          {
+            "label": "Indramayu",
+            "value": "3212"
+          },
+          {
+            "label": "Subang",
+            "value": "3213"
+          },
+          {
+            "label": "Purwakarta",
+            "value": "3214"
+          },
+          {
+            "label": "Karawang",
+            "value": "3215"
+          },
+          {
+            "label": "Bekasi",
+            "value": "3216"
+          },
+          {
+            "label": "Bandung Barat",
+            "value": "3217"
+          },
+          {
+            "label": "Pangandaran",
+            "value": "3218"
+          },
+          {
+            "label": "Kota Bogor",
+            "value": "3271"
+          },
+          {
+            "label": "Kota Sukabumi",
+            "value": "3272"
+          },
+          {
+            "label": "Kota Bandung",
+            "value": "3273"
+          },
+          {
+            "label": "Kota Cirebon",
+            "value": "3274"
+          },
+          {
+            "label": "Kota Bekasi",
+            "value": "3275"
+          },
+          {
+            "label": "Kota Depok",
+            "value": "3276"
+          },
+          {
+            "label": "Kota Cimahi",
+            "value": "3277"
+          },
+          {
+            "label": "Kota Tasikmalaya",
+            "value": "3278"
+          },
+          {
+            "label": "Kota Banjar",
+            "value": "3279"
+          },
+          {
+            "label": "<b>JAWA TENGAH</b>",
+            "value": "3300"
+          },
+          {
+            "label": "Cilacap",
+            "value": "3301"
+          },
+          {
+            "label": "Banyumas",
+            "value": "3302"
+          },
+          {
+            "label": "Purbalingga",
+            "value": "3303"
+          },
+          {
+            "label": "Banjarnegara",
+            "value": "3304"
+          },
+          {
+            "label": "Kebumen",
+            "value": "3305"
+          },
+          {
+            "label": "Purworejo",
+            "value": "3306"
+          },
+          {
+            "label": "Wonosobo",
+            "value": "3307"
+          },
+          {
+            "label": "Magelang",
+            "value": "3308"
+          },
+          {
+            "label": "Boyolali",
+            "value": "3309"
+          },
+          {
+            "label": "Klaten",
+            "value": "3310"
+          },
+          {
+            "label": "Sukoharjo",
+            "value": "3311"
+          },
+          {
+            "label": "Wonogiri",
+            "value": "3312"
+          },
+          {
+            "label": "Karanganyar",
+            "value": "3313"
+          },
+          {
+            "label": "Sragen",
+            "value": "3314"
+          },
+          {
+            "label": "Grobogan",
+            "value": "3315"
+          },
+          {
+            "label": "Blora",
+            "value": "3316"
+          },
+          {
+            "label": "Rembang",
+            "value": "3317"
+          },
+          {
+            "label": "Pati",
+            "value": "3318"
+          },
+          {
+            "label": "Kudus",
+            "value": "3319"
+          },
+          {
+            "label": "Jepara",
+            "value": "3320"
+          },
+          {
+            "label": "Demak",
+            "value": "3321"
+          },
+          {
+            "label": "Semarang",
+            "value": "3322"
+          },
+          {
+            "label": "Temanggung",
+            "value": "3323"
+          },
+          {
+            "label": "Kendal",
+            "value": "3324"
+          },
+          {
+            "label": "Batang",
+            "value": "3325"
+          },
+          {
+            "label": "Pekalongan",
+            "value": "3326"
+          },
+          {
+            "label": "Pemalang",
+            "value": "3327"
+          },
+          {
+            "label": "Tegal",
+            "value": "3328"
+          },
+          {
+            "label": "Brebes",
+            "value": "3329"
+          },
+          {
+            "label": "Kota Magelang",
+            "value": "3371"
+          },
+          {
+            "label": "Kota Surakarta",
+            "value": "3372"
+          },
+          {
+            "label": "Kota Salatiga",
+            "value": "3373"
+          },
+          {
+            "label": "Kota Semarang",
+            "value": "3374"
+          },
+          {
+            "label": "Kota Pekalongan",
+            "value": "3375"
+          },
+          {
+            "label": "Kota Tegal",
+            "value": "3376"
+          },
+          {
+            "label": "<b>D I YOGYAKARTA</b>",
+            "value": "3400"
+          },
+          {
+            "label": "Kulon Progo",
+            "value": "3401"
+          },
+          {
+            "label": "Bantul",
+            "value": "3402"
+          },
+          {
+            "label": "Gunung Kidul",
+            "value": "3403"
+          },
+          {
+            "label": "Sleman",
+            "value": "3404"
+          },
+          {
+            "label": "Kota Yogyakarta",
+            "value": "3471"
+          },
+          {
+            "label": "<b>JAWA TIMUR<b>",
+            "value": "3500"
+          },
+          {
+            "label": "Pacitan",
+            "value": "3501"
+          },
+          {
+            "label": "Ponorogo",
+            "value": "3502"
+          },
+          {
+            "label": "Trenggalek",
+            "value": "3503"
+          },
+          {
+            "label": "Tulungagung",
+            "value": "3504"
+          },
+          {
+            "label": "Blitar",
+            "value": "3505"
+          },
+          {
+            "label": "Kediri",
+            "value": "3506"
+          },
+          {
+            "label": "Malang",
+            "value": "3507"
+          },
+          {
+            "label": "Lumajang",
+            "value": "3508"
+          },
+          {
+            "label": "Jember",
+            "value": "3509"
+          },
+          {
+            "label": "Banyuwangi",
+            "value": "3510"
+          },
+          {
+            "label": "Bondowoso",
+            "value": "3511"
+          },
+          {
+            "label": "Situbondo",
+            "value": "3512"
+          },
+          {
+            "label": "Probolinggo",
+            "value": "3513"
+          },
+          {
+            "label": "Pasuruan",
+            "value": "3514"
+          },
+          {
+            "label": "Sidoarjo",
+            "value": "3515"
+          },
+          {
+            "label": "Mojokerto",
+            "value": "3516"
+          },
+          {
+            "label": "Jombang",
+            "value": "3517"
+          },
+          {
+            "label": "Nganjuk",
+            "value": "3518"
+          },
+          {
+            "label": "Madiun",
+            "value": "3519"
+          },
+          {
+            "label": "Magetan",
+            "value": "3520"
+          },
+          {
+            "label": "Ngawi",
+            "value": "3521"
+          },
+          {
+            "label": "Bojonegoro",
+            "value": "3522"
+          },
+          {
+            "label": "Tuban",
+            "value": "3523"
+          },
+          {
+            "label": "Lamongan",
+            "value": "3524"
+          },
+          {
+            "label": "Gresik",
+            "value": "3525"
+          },
+          {
+            "label": "Bangkalan",
+            "value": "3526"
+          },
+          {
+            "label": "Sampang",
+            "value": "3527"
+          },
+          {
+            "label": "Pamekasan",
+            "value": "3528"
+          },
+          {
+            "label": "Sumenep",
+            "value": "3529"
+          },
+          {
+            "label": "Kota Kediri",
+            "value": "3571"
+          },
+          {
+            "label": "Kota Blitar",
+            "value": "3572"
+          },
+          {
+            "label": "Kota Malang",
+            "value": "3573"
+          },
+          {
+            "label": "Kota Probolinggo",
+            "value": "3574"
+          },
+          {
+            "label": "Kota Pasuruan",
+            "value": "3575"
+          },
+          {
+            "label": "Kota Mojokerto",
+            "value": "3576"
+          },
+          {
+            "label": "Kota Madiun",
+            "value": "3577"
+          },
+          {
+            "label": "Kota Surabaya",
+            "value": "3578"
+          },
+          {
+            "label": "Kota Batu",
+            "value": "3579"
+          },
+          {
+            "label": "<b>BANTEN</b>",
+            "value": "3600"
+          },
+          {
+            "label": "Pandeglang",
+            "value": "3601"
+          },
+          {
+            "label": "Lebak",
+            "value": "3602"
+          },
+          {
+            "label": "Tangerang",
+            "value": "3603"
+          },
+          {
+            "label": "Serang",
+            "value": "3604"
+          },
+          {
+            "label": "Kota Tangerang",
+            "value": "3671"
+          },
+          {
+            "label": "Kota Cilegon",
+            "value": "3672"
+          },
+          {
+            "label": "Kota Serang",
+            "value": "3673"
+          },
+          {
+            "label": "Kota Tangerang Selatan",
+            "value": "3674"
+          },
+          {
+            "label": "<b>BALI</b>",
+            "value": "5100"
+          },
+          {
+            "label": "Jembrana",
+            "value": "5101"
+          },
+          {
+            "label": "Tabanan",
+            "value": "5102"
+          },
+          {
+            "label": "Badung",
+            "value": "5103"
+          },
+          {
+            "label": "Gianyar",
+            "value": "5104"
+          },
+          {
+            "label": "Klungkung",
+            "value": "5105"
+          },
+          {
+            "label": "Bangli",
+            "value": "5106"
+          },
+          {
+            "label": "Karangasem",
+            "value": "5107"
+          },
+          {
+            "label": "Buleleng",
+            "value": "5108"
+          },
+          {
+            "label": "Kota Denpasar",
+            "value": "5171"
+          },
+          {
+            "label": "<b>NUSA TENGGARA BARAT</b>",
+            "value": "5200"
+          },
+          {
+            "label": "Lombok Barat",
+            "value": "5201"
+          },
+          {
+            "label": "Lombok Tengah",
+            "value": "5202"
+          },
+          {
+            "label": "Lombok Timur",
+            "value": "5203"
+          },
+          {
+            "label": "Sumbawa",
+            "value": "5204"
+          },
+          {
+            "label": "Dompu",
+            "value": "5205"
+          },
+          {
+            "label": "Bima",
+            "value": "5206"
+          },
+          {
+            "label": "Sumbawa Barat",
+            "value": "5207"
+          },
+          {
+            "label": "Lombok Utara",
+            "value": "5208"
+          },
+          {
+            "label": "Kota Mataram",
+            "value": "5271"
+          },
+          {
+            "label": "Kota Bima",
+            "value": "5272"
+          },
+          {
+            "label": "<b>NUSA TENGGARA TIMUR</b>",
+            "value": "5300"
+          },
+          {
+            "label": "Sumba Barat",
+            "value": "5301"
+          },
+          {
+            "label": "Sumba Timur",
+            "value": "5302"
+          },
+          {
+            "label": "Kupang",
+            "value": "5303"
+          },
+          {
+            "label": "Timor Tengah Selatan",
+            "value": "5304"
+          },
+          {
+            "label": "Timor Tengah Utara",
+            "value": "5305"
+          },
+          {
+            "label": "Belu",
+            "value": "5306"
+          },
+          {
+            "label": "Alor",
+            "value": "5307"
+          },
+          {
+            "label": "Lembata",
+            "value": "5308"
+          },
+          {
+            "label": "Flores Timur",
+            "value": "5309"
+          },
+          {
+            "label": "Sikka",
+            "value": "5310"
+          },
+          {
+            "label": "Ende",
+            "value": "5311"
+          },
+          {
+            "label": "Ngada",
+            "value": "5312"
+          },
+          {
+            "label": "Manggarai",
+            "value": "5313"
+          },
+          {
+            "label": "Rote Ndao",
+            "value": "5314"
+          },
+          {
+            "label": "Manggarai Barat",
+            "value": "5315"
+          },
+          {
+            "label": "Sumba Tengah",
+            "value": "5316"
+          },
+          {
+            "label": "Sumba Barat Daya",
+            "value": "5317"
+          },
+          {
+            "label": "Nagekeo",
+            "value": "5318"
+          },
+          {
+            "label": "Manggarai Timur",
+            "value": "5319"
+          },
+          {
+            "label": "Sabu Raijua",
+            "value": "5320"
+          },
+          {
+            "label": "Malaka",
+            "value": "5321"
+          },
+          {
+            "label": "Kota Kupang",
+            "value": "5371"
+          },
+          {
+            "label": "<b>KALIMANTAN BARAT</b>",
+            "value": "6100"
+          },
+          {
+            "label": "Sambas",
+            "value": "6101"
+          },
+          {
+            "label": "Bengkayang",
+            "value": "6102"
+          },
+          {
+            "label": "Landak",
+            "value": "6103"
+          },
+          {
+            "label": "Mempawah",
+            "value": "6104"
+          },
+          {
+            "label": "Sanggau",
+            "value": "6105"
+          },
+          {
+            "label": "Ketapang",
+            "value": "6106"
+          },
+          {
+            "label": "Sintang",
+            "value": "6107"
+          },
+          {
+            "label": "Kapuas Hulu",
+            "value": "6108"
+          },
+          {
+            "label": "Sekadau",
+            "value": "6109"
+          },
+          {
+            "label": "Melawi",
+            "value": "6110"
+          },
+          {
+            "label": "Kayong Utara",
+            "value": "6111"
+          },
+          {
+            "label": "Kubu Raya",
+            "value": "6112"
+          },
+          {
+            "label": "Kota Pontianak",
+            "value": "6171"
+          },
+          {
+            "label": "Kota Singkawang",
+            "value": "6172"
+          },
+          {
+            "label": "<b>KALIMANTAN TENGAH</b>",
+            "value": "6200"
+          },
+          {
+            "label": "Kotawaringin Barat",
+            "value": "6201"
+          },
+          {
+            "label": "Kotawaringin Timur",
+            "value": "6202"
+          },
+          {
+            "label": "Kapuas",
+            "value": "6203"
+          },
+          {
+            "label": "Barito Selatan",
+            "value": "6204"
+          },
+          {
+            "label": "Barito Utara",
+            "value": "6205"
+          },
+          {
+            "label": "Sukamara",
+            "value": "6206"
+          },
+          {
+            "label": "Lamandau",
+            "value": "6207"
+          },
+          {
+            "label": "Seruyan",
+            "value": "6208"
+          },
+          {
+            "label": "Katingan",
+            "value": "6209"
+          },
+          {
+            "label": "Pulang Pisau",
+            "value": "6210"
+          },
+          {
+            "label": "Gunung Mas",
+            "value": "6211"
+          },
+          {
+            "label": "Barito Timur",
+            "value": "6212"
+          },
+          {
+            "label": "Murung Raya",
+            "value": "6213"
+          },
+          {
+            "label": "Kota Palangka Raya",
+            "value": "6271"
+          },
+          {
+            "label": "<b>KALIMANTAN SELATAN</b>",
+            "value": "6300"
+          },
+          {
+            "label": "Tanah Laut",
+            "value": "6301"
+          },
+          {
+            "label": "Kotabaru",
+            "value": "6302"
+          },
+          {
+            "label": "Banjar",
+            "value": "6303"
+          },
+          {
+            "label": "Barito Kuala",
+            "value": "6304"
+          },
+          {
+            "label": "Tapin",
+            "value": "6305"
+          },
+          {
+            "label": "Hulu Sungai Selatan",
+            "value": "6306"
+          },
+          {
+            "label": "Hulu Sungai Tengah",
+            "value": "6307"
+          },
+          {
+            "label": "Hulu Sungai Utara",
+            "value": "6308"
+          },
+          {
+            "label": "Tabalong",
+            "value": "6309"
+          },
+          {
+            "label": "Tanah Bumbu",
+            "value": "6310"
+          },
+          {
+            "label": "Balangan",
+            "value": "6311"
+          },
+          {
+            "label": "Kota Banjarmasin",
+            "value": "6371"
+          },
+          {
+            "label": "Kota Banjar Baru",
+            "value": "6372"
+          },
+          {
+            "label": "<b>KALIMANTAN TIMUR</b>",
+            "value": "6400"
+          },
+          {
+            "label": "Paser",
+            "value": "6401"
+          },
+          {
+            "label": "Kutai Barat",
+            "value": "6402"
+          },
+          {
+            "label": "Kutai Kartanegara",
+            "value": "6403"
+          },
+          {
+            "label": "Kutai Timur",
+            "value": "6404"
+          },
+          {
+            "label": "Berau",
+            "value": "6405"
+          },
+          {
+            "label": "Penajam Paser Utara",
+            "value": "6409"
+          },
+          {
+            "label": "Mahakam Ulu",
+            "value": "6411"
+          },
+          {
+            "label": "Kota Balikpapan",
+            "value": "6471"
+          },
+          {
+            "label": "Kota Samarinda",
+            "value": "6472"
+          },
+          {
+            "label": "Kota Bontang",
+            "value": "6474"
+          },
+          {
+            "label": "<b>KALIMANTAN UTARA</b>",
+            "value": "6500"
+          },
+          {
+            "label": "Malinau",
+            "value": "6501"
+          },
+          {
+            "label": "Bulungan",
+            "value": "6502"
+          },
+          {
+            "label": "Tana Tidung",
+            "value": "6503"
+          },
+          {
+            "label": "Nunukan",
+            "value": "6504"
+          },
+          {
+            "label": "Kota Tarakan",
+            "value": "6571"
+          },
+          {
+            "label": "<b>SULAWESI UTARA</b>",
+            "value": "7100"
+          },
+          {
+            "label": "Bolaang Mongondow",
+            "value": "7101"
+          },
+          {
+            "label": "Minahasa",
+            "value": "7102"
+          },
+          {
+            "label": "Kepulauan Sangihe",
+            "value": "7103"
+          },
+          {
+            "label": "Kepulauan Talaud",
+            "value": "7104"
+          },
+          {
+            "label": "Minahasa Selatan",
+            "value": "7105"
+          },
+          {
+            "label": "Minahasa Utara",
+            "value": "7106"
+          },
+          {
+            "label": "Bolaang Mongondow Utara",
+            "value": "7107"
+          },
+          {
+            "label": "Siau Tagulandang Biaro",
+            "value": "7108"
+          },
+          {
+            "label": "Minahasa Tenggara",
+            "value": "7109"
+          },
+          {
+            "label": "Bolaang Mongondow Selatan",
+            "value": "7110"
+          },
+          {
+            "label": "Bolaang Mongondow Timur",
+            "value": "7111"
+          },
+          {
+            "label": "Kota Manado",
+            "value": "7171"
+          },
+          {
+            "label": "Kota Bitung",
+            "value": "7172"
+          },
+          {
+            "label": "Kota Tomohon",
+            "value": "7173"
+          },
+          {
+            "label": "Kota Kotamobagu",
+            "value": "7174"
+          },
+          {
+            "label": "<b>SULAWESI TENGAH</b>",
+            "value": "7200"
+          },
+          {
+            "label": "Banggai Kepulauan",
+            "value": "7201"
+          },
+          {
+            "label": "Banggai",
+            "value": "7202"
+          },
+          {
+            "label": "Morowali",
+            "value": "7203"
+          },
+          {
+            "label": "Poso",
+            "value": "7204"
+          },
+          {
+            "label": "Donggala",
+            "value": "7205"
+          },
+          {
+            "label": "Toli-Toli",
+            "value": "7206"
+          },
+          {
+            "label": "Buol",
+            "value": "7207"
+          },
+          {
+            "label": "Parigi Moutong",
+            "value": "7208"
+          },
+          {
+            "label": "Tojo Una-Una",
+            "value": "7209"
+          },
+          {
+            "label": "Sigi",
+            "value": "7210"
+          },
+          {
+            "label": "Banggai Laut",
+            "value": "7211"
+          },
+          {
+            "label": "Morowali Utara",
+            "value": "7212"
+          },
+          {
+            "label": "Kota Palu",
+            "value": "7271"
+          },
+          {
+            "label": "<b>SULAWESI SELATAN</b>",
+            "value": "7300"
+          },
+          {
+            "label": "Kepulauan Selayar",
+            "value": "7301"
+          },
+          {
+            "label": "Bulukumba",
+            "value": "7302"
+          },
+          {
+            "label": "Bantaeng",
+            "value": "7303"
+          },
+          {
+            "label": "Jeneponto",
+            "value": "7304"
+          },
+          {
+            "label": "Takalar",
+            "value": "7305"
+          },
+          {
+            "label": "Gowa",
+            "value": "7306"
+          },
+          {
+            "label": "Sinjai",
+            "value": "7307"
+          },
+          {
+            "label": "Maros",
+            "value": "7308"
+          },
+          {
+            "label": "Pangkajene dan Kepulauan",
+            "value": "7309"
+          },
+          {
+            "label": "Barru",
+            "value": "7310"
+          },
+          {
+            "label": "Bone",
+            "value": "7311"
+          },
+          {
+            "label": "Soppeng",
+            "value": "7312"
+          },
+          {
+            "label": "Wajo",
+            "value": "7313"
+          },
+          {
+            "label": "Sidenreng Rappang",
+            "value": "7314"
+          },
+          {
+            "label": "Pinrang",
+            "value": "7315"
+          },
+          {
+            "label": "Enrekang",
+            "value": "7316"
+          },
+          {
+            "label": "Luwu",
+            "value": "7317"
+          },
+          {
+            "label": "Tana Toraja",
+            "value": "7318"
+          },
+          {
+            "label": "Luwu Utara",
+            "value": "7322"
+          },
+          {
+            "label": "Luwu Timur",
+            "value": "7325"
+          },
+          {
+            "label": "Toraja Utara",
+            "value": "7326"
+          },
+          {
+            "label": "Kota Makasar",
+            "value": "7371"
+          },
+          {
+            "label": "Kota Parepare",
+            "value": "7372"
+          },
+          {
+            "label": "Kota Palopo",
+            "value": "7373"
+          },
+          {
+            "label": "<b>SULAWESI TENGGARA</b>",
+            "value": "7400"
+          },
+          {
+            "label": "Buton",
+            "value": "7401"
+          },
+          {
+            "label": "Muna",
+            "value": "7402"
+          },
+          {
+            "label": "Konawe",
+            "value": "7403"
+          },
+          {
+            "label": "Kolaka",
+            "value": "7404"
+          },
+          {
+            "label": "Konawe Selatan",
+            "value": "7405"
+          },
+          {
+            "label": "Bombana",
+            "value": "7406"
+          },
+          {
+            "label": "Wakatobi",
+            "value": "7407"
+          },
+          {
+            "label": "Kolaka Utara",
+            "value": "7408"
+          },
+          {
+            "label": "Buton Utara",
+            "value": "7409"
+          },
+          {
+            "label": "Konawe Utara",
+            "value": "7410"
+          },
+          {
+            "label": "Kolaka Timur",
+            "value": "7411"
+          },
+          {
+            "label": "Konawe Kepulauan",
+            "value": "7412"
+          },
+          {
+            "label": "Muna Barat",
+            "value": "7413"
+          },
+          {
+            "label": "Buton Tengah",
+            "value": "7414"
+          },
+          {
+            "label": "Buton Selatan",
+            "value": "7415"
+          },
+          {
+            "label": "Kota Kendari",
+            "value": "7471"
+          },
+          {
+            "label": "Kota Baubau",
+            "value": "7472"
+          },
+          {
+            "label": "<b>GORONTALO</b>",
+            "value": "7500"
+          },
+          {
+            "label": "Boalemo",
+            "value": "7501"
+          },
+          {
+            "label": "Gorontalo",
+            "value": "7502"
+          },
+          {
+            "label": "Pohuwato",
+            "value": "7503"
+          },
+          {
+            "label": "Bone Bolango",
+            "value": "7504"
+          },
+          {
+            "label": "Gorontalo Utara",
+            "value": "7505"
+          },
+          {
+            "label": "Kota Gorontalo",
+            "value": "7571"
+          },
+          {
+            "label": "<b>SULAWESI BARAT</b>",
+            "value": "7600"
+          },
+          {
+            "label": "Majene",
+            "value": "7601"
+          },
+          {
+            "label": "Polewali Mandar",
+            "value": "7602"
+          },
+          {
+            "label": "Mamasa",
+            "value": "7603"
+          },
+          {
+            "label": "Mamuju",
+            "value": "7604"
+          },
+          {
+            "label": "Mamuju Utara / Pasangkayu",
+            "value": "7605"
+          },
+          {
+            "label": "Mamuju Tengah",
+            "value": "7606"
+          },
+          {
+            "label": "<b>MALUKU</b>",
+            "value": "8100"
+          },
+          {
+            "label": "Maluku Tenggara Barat / Kepulauan Tanimbar",
+            "value": "8101"
+          },
+          {
+            "label": "Maluku Tenggara",
+            "value": "8102"
+          },
+          {
+            "label": "Maluku Tengah",
+            "value": "8103"
+          },
+          {
+            "label": "Buru",
+            "value": "8104"
+          },
+          {
+            "label": "Kepulauan Aru",
+            "value": "8105"
+          },
+          {
+            "label": "Seram Bagian Barat",
+            "value": "8106"
+          },
+          {
+            "label": "Seram Bagian Timur",
+            "value": "8107"
+          },
+          {
+            "label": "Maluku Barat Daya",
+            "value": "8108"
+          },
+          {
+            "label": "Buru Selatan",
+            "value": "8109"
+          },
+          {
+            "label": "Kota Ambon",
+            "value": "8171"
+          },
+          {
+            "label": "Kota Tual",
+            "value": "8172"
+          },
+          {
+            "label": "<b>MALUKU UTARA</b>",
+            "value": "8200"
+          },
+          {
+            "label": "Halmahera Barat",
+            "value": "8201"
+          },
+          {
+            "label": "Halmahera Tengah",
+            "value": "8202"
+          },
+          {
+            "label": "Kepulauan Sula",
+            "value": "8203"
+          },
+          {
+            "label": "Halmahera Selatan",
+            "value": "8204"
+          },
+          {
+            "label": "Halmahera Utara",
+            "value": "8205"
+          },
+          {
+            "label": "Halmahera Timur",
+            "value": "8206"
+          },
+          {
+            "label": "Pulau Morotai",
+            "value": "8207"
+          },
+          {
+            "label": "Pulau Taliabu",
+            "value": "8208"
+          },
+          {
+            "label": "Kota Ternate",
+            "value": "8271"
+          },
+          {
+            "label": "Kota Tidore Kepulauan",
+            "value": "8272"
+          },
+          {
+            "label": "<b>PAPUA BARAT</b>",
+            "value": "9100"
+          },
+          {
+            "label": "Fakfak",
+            "value": "9101"
+          },
+          {
+            "label": "Kaimana",
+            "value": "9102"
+          },
+          {
+            "label": "Teluk Wondama",
+            "value": "9103"
+          },
+          {
+            "label": "Teluk Bintuni",
+            "value": "9104"
+          },
+          {
+            "label": "Manokwari",
+            "value": "9105"
+          },
+          {
+            "label": "Sorong Selatan",
+            "value": "9106"
+          },
+          {
+            "label": "Sorong",
+            "value": "9107"
+          },
+          {
+            "label": "Raja Ampat",
+            "value": "9108"
+          },
+          {
+            "label": "Tambrauw",
+            "value": "9109"
+          },
+          {
+            "label": "Maybrat",
+            "value": "9110"
+          },
+          {
+            "label": "Manokwari Selatan",
+            "value": "9111"
+          },
+          {
+            "label": "Pegunungan Arfak",
+            "value": "9112"
+          },
+          {
+            "label": "Kota Sorong",
+            "value": "9171"
+          },
+          {
+            "label": "<b>PAPUA BARAT DAYA</b>",
+            "value": "9200"
+          },
+          {
+            "label": "Raja Ampat",
+            "value": "9201"
+          },
+          {
+            "label": "Sorong",
+            "value": "9202"
+          },
+          {
+            "label": "Sorong Selatan",
+            "value": "9203"
+          },
+          {
+            "label": "Maybrat",
+            "value": "9204"
+          },
+          {
+            "label": "Tambrauw",
+            "value": "9205"
+          },
+          {
+            "label": "Kota Sorong",
+            "value": "9271"
+          },
+          {
+            "label": "<b>PAPUA</b>",
+            "value": "9400"
+          },
+          {
+            "label": "Merauke",
+            "value": "9401"
+          },
+          {
+            "label": "Jayawijaya",
+            "value": "9402"
+          },
+          {
+            "label": "Jayapura",
+            "value": "9403"
+          },
+          {
+            "label": "Nabire",
+            "value": "9404"
+          },
+          {
+            "label": "Kepulauan Yapen",
+            "value": "9408"
+          },
+          {
+            "label": "Biak Numfor",
+            "value": "9409"
+          },
+          {
+            "label": "Paniai",
+            "value": "9410"
+          },
+          {
+            "label": "Puncak Jaya",
+            "value": "9411"
+          },
+          {
+            "label": "Mimika",
+            "value": "9412"
+          },
+          {
+            "label": "Boven Digoel",
+            "value": "9413"
+          },
+          {
+            "label": "Mappi",
+            "value": "9414"
+          },
+          {
+            "label": "Asmat",
+            "value": "9415"
+          },
+          {
+            "label": "Yahukimo",
+            "value": "9416"
+          },
+          {
+            "label": "Pegunungan Bintang",
+            "value": "9417"
+          },
+          {
+            "label": "Tolikara",
+            "value": "9418"
+          },
+          {
+            "label": "Sarmi",
+            "value": "9419"
+          },
+          {
+            "label": "Keerom",
+            "value": "9420"
+          },
+          {
+            "label": "Waropen",
+            "value": "9426"
+          },
+          {
+            "label": "Supiori",
+            "value": "9427"
+          },
+          {
+            "label": "Mamberamo Raya",
+            "value": "9428"
+          },
+          {
+            "label": "Nduga",
+            "value": "9429"
+          },
+          {
+            "label": "Lanny Jaya",
+            "value": "9430"
+          },
+          {
+            "label": "Mamberamo Tengah",
+            "value": "9431"
+          },
+          {
+            "label": "Yalimo",
+            "value": "9432"
+          },
+          {
+            "label": "Puncak",
+            "value": "9433"
+          },
+          {
+            "label": "Dogiyai",
+            "value": "9434"
+          },
+          {
+            "label": "Intan Jaya",
+            "value": "9435"
+          },
+          {
+            "label": "Deiyai",
+            "value": "9436"
+          },
+          {
+            "label": "Kota Jayapura",
+            "value": "9471"
+          },
+          {
+            "label": "<b>PAPUA SELATAN</b>",
+            "value": "9500"
+          },
+          {
+            "label": "Merauke",
+            "value": "9501"
+          },
+          {
+            "label": "Boven Digoel",
+            "value": "9502"
+          },
+          {
+            "label": "Mappi",
+            "value": "9503"
+          },
+          {
+            "label": "Asmat",
+            "value": "9504"
+          },
+          {
+            "label": "<b>PAPUA TENGAH</b>",
+            "value": "9600"
+          },
+          {
+            "label": "Mimika",
+            "value": "9601"
+          },
+          {
+            "label": "Dogiyai",
+            "value": "9602"
+          },
+          {
+            "label": "Deiyai",
+            "value": "9603"
+          },
+          {
+            "label": "Nabire",
+            "value": "9604"
+          },
+          {
+            "label": "Paniai",
+            "value": "9605"
+          },
+          {
+            "label": "Intan Jaya",
+            "value": "9606"
+          },
+          {
+            "label": "Puncak",
+            "value": "9607"
+          },
+          {
+            "label": "Puncak Jaya",
+            "value": "9608"
+          },
+          {
+            "label": "<b>PAPUA PEGUNUNGAN</b>",
+            "value": "9700"
+          },
+          {
+            "label": "Nduga",
+            "value": "9701"
+          },
+          {
+            "label": "Jayawijaya",
+            "value": "9702"
+          },
+          {
+            "label": "Lanny Jaya",
+            "value": "9703"
+          },
+          {
+            "label": "Tolikara",
+            "value": "9704"
+          },
+          {
+            "label": "Mamberamo Tengah",
+            "value": "9705"
+          },
+          {
+            "label": "Yalimo",
+            "value": "9706"
+          },
+          {
+            "label": "Yahukimo",
+            "value": "9707"
+          },
+          {
+            "label": "Pegunungan Bintang",
+            "value": "9708"
+          },
+          {
+            "label": "<b>INDONESIA</b>",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 579,
+        "labelvervar": "Provinsi/Kabupaten/Kota/Indonesia",
+        "non_aggregate_geography_count": 578,
+        "west_sumatra_entries": [
+          {
+            "label": "<b>SUMATERA BARAT</b>",
+            "value": "1300"
+          }
+        ]
+      },
+      "probe_status": "hold_semantics_or_structure",
+      "selected_model_period": {
+        "label": "2024",
+        "period_id": 124,
+        "year": 2024
+      },
+      "semantic_feature_groups": [
+        "human_capital_expected_schooling"
+      ],
+      "source_note": "<p><br /></p><p><br /></p><p><br /></p><p>Untuk penjelasan lebih lanjut mengenai IPM metode baru silahkan klik link di bawah ini\n<br /><a href=\"https://searchengine.web.bps.go.id/filemenu/Booklet-IPM-Metode-Baru.pdf\">-Booklet IPM metode Baru</a>\n<br /><a href=\"https://searchengine.web.bps.go.id/filemenu/Bahan-Sosialisasi-IPM-Metode-Baru.pdf\">-Bahan Sosialisasi IPM metode baru</a><br /></p><p><br /></p><p><br /></p><p><br /></p>",
+      "source_title": "[Metode Baru] Harapan Lama Sekolah",
+      "source_unit": "Tahun",
+      "structure_checks": {
+        "datacontent_present": true,
+        "exactly_38_nonaggregate_geographies": false,
+        "model_year_is_2024": true,
+        "semantic_title_match": true,
+        "vertical_is_province": true,
+        "west_sumatra_present": true
+      },
+      "subject_id": 26,
+      "subject_label": "Indeks Pembangunan Manusia",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": "0"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Tidak ada",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "available_years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "bps_var_id": 2273,
+      "candidate_origin": "https://www.bps.go.id/id/statistics-table/2/MjI3MyMy/umur-harapan-hidup-saat-lahir-menurut-provinsi-dan-jenis-kelamin--menggunakan-uhh-hasil-sp2020-lf-.html",
+      "catalog_feature_groups": [
+        "health_life_expectancy"
+      ],
+      "catalog_title": "Umur Harapan Hidup saat lahir menurut Provinsi dan Jenis Kelamin (menggunakan UHH hasil SP2020 LF)",
+      "datacontent_count": 78,
+      "geography": {
+        "geographies": [
+          {
+            "label": "ACEH",
+            "value": "1100"
+          },
+          {
+            "label": "SUMATERA UTARA",
+            "value": "1200"
+          },
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          },
+          {
+            "label": "RIAU",
+            "value": "1400"
+          },
+          {
+            "label": "JAMBI",
+            "value": "1500"
+          },
+          {
+            "label": "SUMATERA SELATAN",
+            "value": "1600"
+          },
+          {
+            "label": "BENGKULU",
+            "value": "1700"
+          },
+          {
+            "label": "LAMPUNG",
+            "value": "1800"
+          },
+          {
+            "label": "KEP. BANGKA BELITUNG",
+            "value": "1900"
+          },
+          {
+            "label": "KEP. RIAU",
+            "value": "2100"
+          },
+          {
+            "label": "DKI JAKARTA",
+            "value": "3100"
+          },
+          {
+            "label": "JAWA BARAT",
+            "value": "3200"
+          },
+          {
+            "label": "JAWA TENGAH",
+            "value": "3300"
+          },
+          {
+            "label": "DI YOGYAKARTA",
+            "value": "3400"
+          },
+          {
+            "label": "JAWA TIMUR",
+            "value": "3500"
+          },
+          {
+            "label": "BANTEN",
+            "value": "3600"
+          },
+          {
+            "label": "BALI",
+            "value": "5100"
+          },
+          {
+            "label": "NUSA TENGGARA BARAT",
+            "value": "5200"
+          },
+          {
+            "label": "NUSA TENGGARA TIMUR",
+            "value": "5300"
+          },
+          {
+            "label": "KALIMANTAN BARAT",
+            "value": "6100"
+          },
+          {
+            "label": "KALIMANTAN TENGAH",
+            "value": "6200"
+          },
+          {
+            "label": "KALIMANTAN SELATAN",
+            "value": "6300"
+          },
+          {
+            "label": "KALIMANTAN TIMUR",
+            "value": "6400"
+          },
+          {
+            "label": "KALIMANTAN UTARA",
+            "value": "6500"
+          },
+          {
+            "label": "SULAWESI UTARA",
+            "value": "7100"
+          },
+          {
+            "label": "SULAWESI TENGAH",
+            "value": "7200"
+          },
+          {
+            "label": "SULAWESI SELATAN",
+            "value": "7300"
+          },
+          {
+            "label": "SULAWESI TENGGARA",
+            "value": "7400"
+          },
+          {
+            "label": "GORONTALO",
+            "value": "7500"
+          },
+          {
+            "label": "SULAWESI BARAT",
+            "value": "7600"
+          },
+          {
+            "label": "MALUKU",
+            "value": "8100"
+          },
+          {
+            "label": "MALUKU UTARA",
+            "value": "8200"
+          },
+          {
+            "label": "PAPUA BARAT",
+            "value": "9100"
+          },
+          {
+            "label": "PAPUA BARAT DAYA",
+            "value": "9200"
+          },
+          {
+            "label": "PAPUA",
+            "value": "9400"
+          },
+          {
+            "label": "PAPUA SELATAN",
+            "value": "9500"
+          },
+          {
+            "label": "PAPUA TENGAH",
+            "value": "9600"
+          },
+          {
+            "label": "PAPUA PEGUNUNGAN",
+            "value": "9700"
+          },
+          {
+            "label": "INDONESIA",
+            "value": "9999"
+          }
+        ],
+        "geography_count_including_aggregates": 39,
+        "labelvervar": "38 Provinsi",
+        "non_aggregate_geography_count": 38,
+        "west_sumatra_entries": [
+          {
+            "label": "SUMATERA BARAT",
+            "value": "1300"
+          }
+        ]
+      },
+      "probe_status": "semantic_current38_2024_candidate",
+      "selected_model_period": {
+        "label": "2024",
+        "period_id": 124,
+        "year": 2024
+      },
+      "semantic_feature_groups": [
+        "health_life_expectancy"
+      ],
+      "source_note": "",
+      "source_title": "Umur Harapan Hidup saat lahir menurut Provinsi dan Jenis Kelamin (menggunakan UHH hasil SP2020 LF)",
+      "source_unit": "",
+      "structure_checks": {
+        "datacontent_present": true,
+        "exactly_38_nonaggregate_geographies": true,
+        "model_year_is_2024": true,
+        "semantic_title_match": true,
+        "vertical_is_province": true,
+        "west_sumatra_present": true
+      },
+      "subject_id": 30,
+      "subject_label": "Kesehatan",
+      "turtahun": [
+        {
+          "label": "Tahun",
+          "value": "0"
+        }
+      ],
+      "turvar": [
+        {
+          "label": "Laki-laki",
+          "value": "211"
+        },
+        {
+          "label": "Perempuan",
+          "value": "212"
+        }
+      ]
+    },
+    {
+      "available_years": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "bps_var_id": 398,
+      "candidate_origin": "national BPS subject 2 catalog; frozen in milestone7 discovery v4/v5",
       "catalog_feature_groups": [
         "digital_connectivity"
       ],
-      "catalog_metadata": {
-        "title": "Persentase Rumah Tangga yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi dan Klasifikasi Daerah",
-        "var_id": 398
-      },
       "catalog_title": "Persentase Rumah Tangga yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi dan Klasifikasi Daerah",
       "datacontent_count": 116,
       "geography": {
@@ -266,656 +3245,8 @@
           "value": "191"
         }
       ]
-    },
-    {
-      "available_years": [
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "bps_var_id": 1429,
-      "candidate_origin": "verified national subject catalog",
-      "catalog_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "catalog_metadata": {
-        "def": "",
-        "graph_id": 1,
-        "graph_name": "bar",
-        "notes": "Sumber: BPS, Susenas",
-        "sub_id": 28,
-        "sub_name": "Pendidikan",
-        "subcsa_id": 521,
-        "subcsa_name": "Pendidikan",
-        "title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
-        "unit": "Tidak Ada Satuan",
-        "var_id": 1429,
-        "vertical": 1
-      },
-      "catalog_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
-      "datacontent_count": 39,
-      "geography": {
-        "geographies": [
-          {
-            "label": "ACEH",
-            "value": "1100"
-          },
-          {
-            "label": "SUMATERA UTARA",
-            "value": "1200"
-          },
-          {
-            "label": "SUMATERA BARAT",
-            "value": "1300"
-          },
-          {
-            "label": "RIAU",
-            "value": "1400"
-          },
-          {
-            "label": "JAMBI",
-            "value": "1500"
-          },
-          {
-            "label": "SUMATERA SELATAN",
-            "value": "1600"
-          },
-          {
-            "label": "BENGKULU",
-            "value": "1700"
-          },
-          {
-            "label": "LAMPUNG",
-            "value": "1800"
-          },
-          {
-            "label": "KEP. BANGKA BELITUNG",
-            "value": "1900"
-          },
-          {
-            "label": "KEP. RIAU",
-            "value": "2100"
-          },
-          {
-            "label": "DKI JAKARTA",
-            "value": "3100"
-          },
-          {
-            "label": "JAWA BARAT",
-            "value": "3200"
-          },
-          {
-            "label": "JAWA TENGAH",
-            "value": "3300"
-          },
-          {
-            "label": "DI YOGYAKARTA",
-            "value": "3400"
-          },
-          {
-            "label": "JAWA TIMUR",
-            "value": "3500"
-          },
-          {
-            "label": "BANTEN",
-            "value": "3600"
-          },
-          {
-            "label": "BALI",
-            "value": "5100"
-          },
-          {
-            "label": "NUSA TENGGARA BARAT",
-            "value": "5200"
-          },
-          {
-            "label": "NUSA TENGGARA TIMUR",
-            "value": "5300"
-          },
-          {
-            "label": "KALIMANTAN BARAT",
-            "value": "6100"
-          },
-          {
-            "label": "KALIMANTAN TENGAH",
-            "value": "6200"
-          },
-          {
-            "label": "KALIMANTAN SELATAN",
-            "value": "6300"
-          },
-          {
-            "label": "KALIMANTAN TIMUR",
-            "value": "6400"
-          },
-          {
-            "label": "KALIMANTAN UTARA",
-            "value": "6500"
-          },
-          {
-            "label": "SULAWESI UTARA",
-            "value": "7100"
-          },
-          {
-            "label": "SULAWESI TENGAH",
-            "value": "7200"
-          },
-          {
-            "label": "SULAWESI SELATAN",
-            "value": "7300"
-          },
-          {
-            "label": "SULAWESI TENGGARA",
-            "value": "7400"
-          },
-          {
-            "label": "GORONTALO",
-            "value": "7500"
-          },
-          {
-            "label": "SULAWESI BARAT",
-            "value": "7600"
-          },
-          {
-            "label": "MALUKU",
-            "value": "8100"
-          },
-          {
-            "label": "MALUKU UTARA",
-            "value": "8200"
-          },
-          {
-            "label": "PAPUA BARAT",
-            "value": "9100"
-          },
-          {
-            "label": "PAPUA BARAT DAYA",
-            "value": "9200"
-          },
-          {
-            "label": "PAPUA",
-            "value": "9400"
-          },
-          {
-            "label": "PAPUA SELATAN",
-            "value": "9500"
-          },
-          {
-            "label": "PAPUA TENGAH",
-            "value": "9600"
-          },
-          {
-            "label": "PAPUA PEGUNUNGAN",
-            "value": "9700"
-          },
-          {
-            "label": "INDONESIA",
-            "value": "9999"
-          }
-        ],
-        "geography_count_including_aggregates": 39,
-        "labelvervar": "38 Provinsi",
-        "non_aggregate_geography_count": 38,
-        "west_sumatra_entries": [
-          {
-            "label": "SUMATERA BARAT",
-            "value": "1300"
-          }
-        ]
-      },
-      "probe_status": "semantic_current38_2024_candidate",
-      "selected_model_period": {
-        "label": "2024",
-        "period_id": 124,
-        "year": 2024
-      },
-      "semantic_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "source_note": "Sumber: BPS, Susenas",
-      "source_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
-      "source_unit": "",
-      "structure_checks": {
-        "datacontent_present": true,
-        "exactly_38_nonaggregate_geographies": true,
-        "model_year_is_2024": true,
-        "semantic_title_match": true,
-        "vertical_is_province": true,
-        "west_sumatra_present": true
-      },
-      "subject_id": 28,
-      "subject_label": "Pendidikan",
-      "turtahun": [
-        {
-          "label": "Tahun",
-          "value": "0"
-        }
-      ],
-      "turvar": [
-        {
-          "label": "Tidak ada",
-          "value": "0"
-        }
-      ]
-    },
-    {
-      "available_years": [
-        2011,
-        2012,
-        2013,
-        2014,
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "bps_var_id": 1430,
-      "candidate_origin": "verified national subject catalog",
-      "catalog_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "catalog_metadata": {
-        "def": "",
-        "graph_id": 1,
-        "graph_name": "bar",
-        "notes": "Sumber: BPS, Susenas\n",
-        "sub_id": 28,
-        "sub_name": "Pendidikan",
-        "subcsa_id": 521,
-        "subcsa_name": "Pendidikan",
-        "title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Klasifikasi Desa",
-        "unit": "Tidak Ada Satuan",
-        "var_id": 1430,
-        "vertical": 527
-      },
-      "catalog_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Klasifikasi Desa",
-      "datacontent_count": 3,
-      "geography": {
-        "geographies": [
-          {
-            "label": "Perkotaan",
-            "value": "1"
-          },
-          {
-            "label": "Perdesaan",
-            "value": "2"
-          },
-          {
-            "label": "Perkotaan + Perdesaan",
-            "value": "3"
-          }
-        ],
-        "geography_count_including_aggregates": 3,
-        "labelvervar": "Klasifikasi Desa",
-        "non_aggregate_geography_count": 3,
-        "west_sumatra_entries": []
-      },
-      "probe_status": "hold_semantics_or_structure",
-      "selected_model_period": {
-        "label": "2024",
-        "period_id": 124,
-        "year": 2024
-      },
-      "semantic_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "source_note": "Sumber: BPS, Susenas",
-      "source_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Klasifikasi Desa",
-      "source_unit": "",
-      "structure_checks": {
-        "datacontent_present": true,
-        "exactly_38_nonaggregate_geographies": false,
-        "model_year_is_2024": true,
-        "semantic_title_match": true,
-        "vertical_is_province": false,
-        "west_sumatra_present": false
-      },
-      "subject_id": 28,
-      "subject_label": "Pendidikan",
-      "turtahun": [
-        {
-          "label": "Tahun",
-          "value": "0"
-        }
-      ],
-      "turvar": [
-        {
-          "label": "Tidak ada",
-          "value": "0"
-        }
-      ]
-    },
-    {
-      "available_years": [
-        2011,
-        2012,
-        2013,
-        2014,
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "bps_var_id": 1431,
-      "candidate_origin": "verified national subject catalog",
-      "catalog_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "catalog_metadata": {
-        "def": "",
-        "graph_id": 1,
-        "graph_name": "bar",
-        "notes": "Sumber: BPS, Susenas\n",
-        "sub_id": 28,
-        "sub_name": "Pendidikan",
-        "subcsa_id": 521,
-        "subcsa_name": "Pendidikan",
-        "title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Jenis Kelamin",
-        "unit": "Tidak Ada Satuan",
-        "var_id": 1431,
-        "vertical": 217
-      },
-      "catalog_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Jenis Kelamin",
-      "datacontent_count": 2,
-      "geography": {
-        "geographies": [
-          {
-            "label": "Laki - Laki",
-            "value": "1"
-          },
-          {
-            "label": "Perempuan",
-            "value": "2"
-          }
-        ],
-        "geography_count_including_aggregates": 2,
-        "labelvervar": "Jenis Kelamin",
-        "non_aggregate_geography_count": 2,
-        "west_sumatra_entries": []
-      },
-      "probe_status": "hold_semantics_or_structure",
-      "selected_model_period": {
-        "label": "2024",
-        "period_id": 124,
-        "year": 2024
-      },
-      "semantic_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "source_note": "Sumber: BPS, Susenas",
-      "source_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Jenis Kelamin",
-      "source_unit": "",
-      "structure_checks": {
-        "datacontent_present": true,
-        "exactly_38_nonaggregate_geographies": false,
-        "model_year_is_2024": true,
-        "semantic_title_match": true,
-        "vertical_is_province": false,
-        "west_sumatra_present": false
-      },
-      "subject_id": 28,
-      "subject_label": "Pendidikan",
-      "turtahun": [
-        {
-          "label": "Tahun",
-          "value": "0"
-        }
-      ],
-      "turvar": [
-        {
-          "label": "Tidak ada",
-          "value": "0"
-        }
-      ]
-    },
-    {
-      "available_years": [
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025
-      ],
-      "bps_var_id": 1432,
-      "candidate_origin": "verified national subject catalog",
-      "catalog_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "catalog_metadata": {
-        "def": "",
-        "graph_id": 1,
-        "graph_name": "bar",
-        "notes": "Sumber: BSP, Susenas\n",
-        "sub_id": 28,
-        "sub_name": "Pendidikan",
-        "subcsa_id": 521,
-        "subcsa_name": "Pendidikan",
-        "title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Kuintil Pengeluaran",
-        "unit": "Tidak Ada Satuan",
-        "var_id": 1432,
-        "vertical": 342
-      },
-      "catalog_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Kuintil Pengeluaran",
-      "datacontent_count": 5,
-      "geography": {
-        "geographies": [
-          {
-            "label": "Kuintil 1",
-            "value": "1"
-          },
-          {
-            "label": "Kuintil 2",
-            "value": "2"
-          },
-          {
-            "label": "Kuintil 3",
-            "value": "3"
-          },
-          {
-            "label": "Kuintil 4",
-            "value": "4"
-          },
-          {
-            "label": "Kuintil 5",
-            "value": "5"
-          }
-        ],
-        "geography_count_including_aggregates": 5,
-        "labelvervar": "Kuintil Pengeluaran",
-        "non_aggregate_geography_count": 5,
-        "west_sumatra_entries": []
-      },
-      "probe_status": "hold_semantics_or_structure",
-      "selected_model_period": {
-        "label": "2024",
-        "period_id": 124,
-        "year": 2024
-      },
-      "semantic_feature_groups": [
-        "human_capital_schooling"
-      ],
-      "source_note": "Sumber: BSP, Susenas",
-      "source_title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Kuintil Pengeluaran",
-      "source_unit": "",
-      "structure_checks": {
-        "datacontent_present": true,
-        "exactly_38_nonaggregate_geographies": false,
-        "model_year_is_2024": true,
-        "semantic_title_match": true,
-        "vertical_is_province": false,
-        "west_sumatra_present": false
-      },
-      "subject_id": 28,
-      "subject_label": "Pendidikan",
-      "turtahun": [
-        {
-          "label": "Tahun",
-          "value": "0"
-        }
-      ],
-      "turvar": [
-        {
-          "label": "Tidak ada",
-          "value": "0"
-        }
-      ]
-    },
-    {
-      "available_years": [
-        1960,
-        2010,
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025,
-        2026
-      ],
-      "bps_var_id": 1975,
-      "candidate_origin": "data/registries/bps_comparative_panel_candidates.csv",
-      "catalog_feature_groups": [
-        "population_scale"
-      ],
-      "catalog_metadata": {
-        "title": "Jumlah Penduduk Pertengahan Tahun",
-        "var_id": 1975
-      },
-      "catalog_title": "Jumlah Penduduk Pertengahan Tahun",
-      "datacontent_count": 1,
-      "geography": {
-        "geographies": [
-          {
-            "label": "Indonesia",
-            "value": "9999"
-          }
-        ],
-        "geography_count_including_aggregates": 1,
-        "labelvervar": "Indonesia",
-        "non_aggregate_geography_count": 0,
-        "west_sumatra_entries": []
-      },
-      "probe_status": "hold_semantics_or_structure",
-      "selected_model_period": {
-        "label": "2024",
-        "period_id": 124,
-        "year": 2024
-      },
-      "semantic_feature_groups": [
-        "population_scale"
-      ],
-      "source_note": "<p><br /></p><p style=\"color:#0000FF;\"><a href=\"https://sirusa.web.bps.go.id/metadata/indikator/55041\">Metadata Indikator</a></p><p>\n<br /></p><p><br /></p><p><br /></p><div>Sumber data  yang digunakan yaitu data hasil sensus penduduk dan proyeksi penduduk. Untuk tahun yang tidak dilaksanakan sensus penduduk, data kependudukan diperoleh dari hasil proyeksi penduduk. Sensus penduduk dilaksanakan di tahun berakhiran 0. Proyeksi penduduk merupakan suatu perhitungan ilmiah yang didasarkan pada asumsi dari komponen-komponen perubahan penduduk, yaitu kelahiran, kematian, dan migrasi.</div><p><br /></p><p><br /></p><p><br /></p><div><br /></div><p><br /></p><p><br /></p><p><br /></p><div>Untuk tahun 2015-2019, data yang digunakan adalah Proyeksi penduduk Indonesia 2015–2045.</div><p><br /></p><p><br /></p><p><br /></p><div>Untuk tahun 2020, data yang digunakan adalah data hasil Sensus Penduduk 2020.</div><p><br /></p><p><br /></p><p><br /></p><div>Untuk tahun 2021-2022, data yang digunakan adalah Proyeksi Penduduk Interim 2020-2023. Proyeksi Penduduk Interim 2020-2023 menggunakan data dasar penduduk hasil perapihan umur dari data Administrasi Kependudukan dan SP2020 dengan menggunakan asumsi Angka Kelahiran Total sejak tahun 2020 konstan 2,1 (sesuai Proyeksi Survei Penduduk antar Sensus (SUPAS) 2015-2045), Angka Kematian Bayi (AKB) meneruskan hasil Proyeksi SUPAS 2015-2045, dan pola migrasi 2020 sama dengan pola migrasi hasil SUPAS 2015. Untuk tahun 2023-2025 berdasarkan hasil Proyeksi Penduduk Indonesia 2020-2050 Hasil Sensus Penduduk 2020 </div><p><br /></p><p><br /></p><p><br /></p>",
-      "source_title": "Jumlah Penduduk Pertengahan Tahun",
-      "source_unit": "Ribu Jiwa",
-      "structure_checks": {
-        "datacontent_present": true,
-        "exactly_38_nonaggregate_geographies": false,
-        "model_year_is_2024": true,
-        "semantic_title_match": true,
-        "vertical_is_province": false,
-        "west_sumatra_present": false
-      },
-      "subject_id": 12,
-      "subject_label": "Kependudukan",
-      "turtahun": [
-        {
-          "label": "Tahun",
-          "value": "0"
-        }
-      ],
-      "turvar": [
-        {
-          "label": "Tidak ada",
-          "value": "0"
-        }
-      ]
-    },
-    {
-      "available_years": [
-        2010,
-        2011,
-        2012,
-        2013,
-        2014,
-        2015,
-        2016
-      ],
-      "bps_var_id": 1433,
-      "candidate_origin": "verified national subject catalog",
-      "catalog_feature_groups": [
-        "population_scale"
-      ],
-      "catalog_metadata": {
-        "def": "",
-        "graph_id": 1,
-        "graph_name": "bar",
-        "notes": "&lt;ul&gt;&lt;li&gt; Tahun 2010-2013 : Jamkesmas, ASKES, Jamsostek, Jamkesda, Asuransi Perusahaan, Asuransi swasta dll\n&lt;/li&gt;&lt;li&gt; Tahun 2014-2016 : Kepesertaan Jaminan Kesehatan Nasional\n&lt;/li&gt;&lt;/ul&gt;\n",
-        "sub_id": 30,
-        "sub_name": "Kesehatan",
-        "subcsa_id": 562,
-        "subcsa_name": "Perbankan, Asuransi dan Finansial",
-        "title": "Jumlah Penduduk Yang Dicakup Asuransi Kesehatan Atau Sistem Kesehatan Masyarakat",
-        "unit": "Orang",
-        "var_id": 1433,
-        "vertical": 1
-      },
-      "catalog_title": "Jumlah Penduduk Yang Dicakup Asuransi Kesehatan Atau Sistem Kesehatan Masyarakat",
-      "probe_status": "hold_no_2024_period",
-      "selected_model_period": null,
-      "subject_id": 30,
-      "subject_label": "Kesehatan"
     }
   ],
-  "schema": "ranah-observatory/milestone7-bps-feature-discovery/v5",
-  "semantic_current38_2024_candidate_count": 2,
-  "subject_catalog_source": "data/manifests/milestone7_bps_subject_catalog.json",
-  "subject_variable_counts": [
-    {
-      "catalog_mode": "year_2024_catalog_filter",
-      "matched_variable_count": 4,
-      "subject_id": 28,
-      "subject_label": "Pendidikan",
-      "variable_count": 49
-    },
-    {
-      "catalog_mode": "year_2024_catalog_filter",
-      "matched_variable_count": 1,
-      "subject_id": 30,
-      "subject_label": "Kesehatan",
-      "variable_count": 41
-    }
-  ]
+  "schema": "ranah-observatory/milestone7-bps-feature-discovery/v6",
+  "semantic_current38_2024_candidate_count": 3
 }
