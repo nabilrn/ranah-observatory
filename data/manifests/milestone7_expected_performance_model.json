@@ -1,0 +1,47 @@
+{
+  "beats_naive_benchmark": true,
+  "causal_analysis_performed": false,
+  "completion_gate_passed": true,
+  "criterion": "one baseline expected-performance/frontier model",
+  "errors": [],
+  "feature_count": 4,
+  "feature_ids": [
+    "m7_rls_age15_plus",
+    "m7_hls_method_new",
+    "m7_household_internet_access",
+    "m7_household_pln_lighting"
+  ],
+  "focal_holdout": "idn.13",
+  "frontier_model_performed": false,
+  "geography_regime": "bps_current_38_province_2024plus",
+  "loocv_mae_log": 0.37842961135509595,
+  "loocv_rmse_log": 0.4961558334822314,
+  "model_type": "ridge_expected_performance_baseline",
+  "monetary_wasted_potential_estimated": false,
+  "naive_loocv_rmse_log": 0.6093148340424953,
+  "output_hashes": {
+    "data/analysis/expected_performance/m7-model-coefficients.csv": "5ba80528d20c1a4fa153e7b1c23cd72263a1a4cec6724b43411443d536b6209a",
+    "data/analysis/expected_performance/m7-ridge-loocv-summary.csv": "fef7ea5f5a9dca8d041b14e89846da616475692d6fd0445d2319e8d4b8c61831",
+    "data/analysis/expected_performance/m7-ridge-selected-loocv-predictions.csv": "7848d476f59b3bf0e23e13fcbf26dc0533760699dafff40387a655d3e058b431",
+    "data/analysis/expected_performance/m7-west-sumatra-expected-performance.json": "1e3c39fbed0725809844696fd95518fd5455de15c1cfdfdece945514c4927c6f",
+    "data/analysis/expected_performance/m7-west-sumatra-support.csv": "175c9411610a8ca6f85b59958a238704b4af0235691010d97fcf4a0b12fa019d"
+  },
+  "penalty_grid": [
+    0.0,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "reference_year": 2024,
+  "schema": "ranah-observatory/milestone7-expected-performance-model/v1",
+  "selected_penalty": 0.1,
+  "source_hashes": {
+    "data/analysis/expected_performance/m7-model-frame-2024.csv": "2dc326c433f5b47990233f3c30793564f5878ab79418ac675e49503cb9deef9a",
+    "data/registries/milestone7_expected_performance_features.csv": "a3d06ff934e1bfb00a91d51b03ebeeef98f5c6ba40c83fb391dfe2f13b5922d7",
+    "research/MILESTONE7_MODEL_SPEC.md": "e0727fff9dbe451a5e7d7fcf29b8da13b736bb34ea4421f83533c01279e6f39c"
+  },
+  "training_geography_count": 37,
+  "west_sumatra_target_excluded_from_selection_and_fit": true
+}

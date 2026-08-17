@@ -1,0 +1,5 @@
+feature_id,west_sumatra_value,training_min,training_max,training_mean,training_scale,west_sumatra_z,inside_univariate_minmax
+m7_rls_age15_plus,9.72,5.1,11.49,9.28081081081,1.14667646272,0.383010555696,true
+m7_hls_method_new,14.3,9.63,15.7,13.1802702703,1.00541637599,1.11369752519,true
+m7_household_internet_access,91.89,12.15,98.18,86.1227027027,15.9639109292,0.361270951892,true
+m7_household_pln_lighting,98.95,14.53,100,92.037027027,17.3942624689,0.397428346579,true

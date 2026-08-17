@@ -1,0 +1,5 @@
+feature_id,selected_penalty,selected_standardized_coefficient,ols_standardized_coefficient
+m7_rls_age15_plus,0.1,0.482453494012,0.470728988514
+m7_hls_method_new,0.1,-0.354781949187,-0.345669345528
+m7_household_internet_access,0.1,0.737898171042,0.816186955558
+m7_household_pln_lighting,0.1,-0.652107115486,-0.728428699608
