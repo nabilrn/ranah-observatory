@@ -17,25 +17,14 @@ DEFAULT_OUTPUT = ROOT / "data" / "manifests" / "milestone7_bps_feature_discovery
 DOMAIN = "0000"
 MODEL_YEAR = 2024
 
-SUBJECT_TERMS = (
-    "pendidikan",
-    "pembangunan manusia",
-    "kesehatan",
-    "kependudukan",
-    "penduduk",
-    "demografi",
-    "telekomunikasi",
-    "teknologi informasi",
-    "komunikasi",
-    "transportasi",
-    "jalan",
-    "energi",
-    "listrik",
-    "produk domestik regional bruto",
-    "pdrb",
-    "lapangan usaha",
-    "neraca regional",
-    "kesejahteraan rakyat",
+# These IDs/labels are frozen from data/manifests/milestone7_bps_subject_catalog.json,
+# which was retrieved directly from national BPS domain 0000. They are not inherited
+# from the Sumatera Barat domain.
+VERIFIED_NATIONAL_SUBJECTS: tuple[tuple[int, str], ...] = (
+    (26, "Indeks Pembangunan Manusia"),
+    (12, "Kependudukan"),
+    (2, "Komunikasi"),
+    (52, "Produk Domestik Regional Bruto (Lapangan Usaha)"),
 )
 
 FEATURE_TERMS: dict[str, tuple[str, ...]] = {
@@ -45,13 +34,6 @@ FEATURE_TERMS: dict[str, tuple[str, ...]] = {
     "population_density": ("kepadatan penduduk",),
     "urbanization": ("persentase penduduk perkotaan", "penduduk perkotaan"),
     "digital_connectivity": ("mengakses internet", "akses internet"),
-    "physical_connectivity_road": ("panjang jalan",),
-    "electricity_access": (
-        "akses listrik",
-        "sumber penerangan listrik",
-        "rumah tangga pengguna listrik",
-        "rumah tangga berlistrik",
-    ),
     "sector_structure": (
         "produk domestik regional bruto menurut lapangan usaha",
         "pdrb menurut lapangan usaha",
@@ -61,15 +43,7 @@ FEATURE_TERMS: dict[str, tuple[str, ...]] = {
 
 
 def normalize(value: str) -> str:
-    value = value.casefold().replace("–", "-").replace("—", "-")
-    return re.sub(r"\s+", " ", value).strip()
-
-
-def scalar_text(row: Mapping[str, Any]) -> str:
-    return " ".join(
-        str(value) for value in row.values()
-        if isinstance(value, (str, int, float)) and str(value).strip()
-    )
+    return re.sub(r"\s+", " ", value.casefold().replace("–", "-").replace("—", "-")).strip()
 
 
 def first_text(row: Mapping[str, Any], keys: tuple[str, ...]) -> str:
@@ -82,22 +56,14 @@ def first_text(row: Mapping[str, Any], keys: tuple[str, ...]) -> str:
 
 def first_int(row: Mapping[str, Any], keys: tuple[str, ...]) -> int | None:
     for key in keys:
-        raw = row.get(key)
-        if raw in (None, ""):
+        value = row.get(key)
+        if value in (None, ""):
             continue
         try:
-            return int(str(raw).strip())
+            return int(str(value).strip())
         except ValueError:
             continue
     return None
-
-
-def subject_id_of(row: Mapping[str, Any]) -> int | None:
-    return first_int(row, ("sub_id", "subject_id", "subj", "id", "val"))
-
-
-def subject_label_of(row: Mapping[str, Any]) -> str:
-    return first_text(row, ("title", "label", "sub", "subject", "name")) or scalar_text(row)
 
 
 def var_id_of(row: Mapping[str, Any]) -> int | None:
@@ -105,28 +71,22 @@ def var_id_of(row: Mapping[str, Any]) -> int | None:
 
 
 def var_label_of(row: Mapping[str, Any]) -> str:
-    return first_text(row, ("title", "label", "var", "name")) or scalar_text(row)
+    label = first_text(row, ("title", "label", "var", "name"))
+    if label:
+        return label
+    return " ".join(
+        str(value) for value in row.values()
+        if isinstance(value, (str, int, float)) and str(value).strip()
+    )
 
 
 def matched_feature_groups(text: str) -> list[str]:
     norm = normalize(text)
     return [
-        group for group, needles in FEATURE_TERMS.items()
-        if any(normalize(needle) in norm for needle in needles)
+        group
+        for group, terms in FEATURE_TERMS.items()
+        if any(normalize(term) in norm for term in terms)
     ]
-
-
-def is_relevant_subject(row: Mapping[str, Any]) -> bool:
-    norm = normalize(subject_label_of(row))
-    return any(normalize(term) in norm for term in SUBJECT_TERMS)
-
-
-def compact_subject(row: Mapping[str, Any]) -> dict[str, Any]:
-    return {
-        "subject_id": subject_id_of(row),
-        "label": subject_label_of(row),
-        "metadata": dict(row),
-    }
 
 
 def probe_candidate(
@@ -204,9 +164,18 @@ def probe_candidate(
     return result
 
 
+def list_subject_variables(
+    client: BPSClient, subject_id: int
+) -> tuple[list[Mapping[str, Any]], str]:
+    rows = client.list_variables(domain=DOMAIN, subject=subject_id, year=MODEL_YEAR)
+    if rows:
+        return rows, "year_2024_catalog_filter"
+    return client.list_variables(domain=DOMAIN, subject=subject_id), "unfiltered_catalog_fallback"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Discover national-domain BPS structural features for Milestone 7 from national subject metadata."
+        description="Discover 2024 national BPS structural features for the Milestone 7 baseline model."
     )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
@@ -215,34 +184,20 @@ def main() -> int:
     if not api_key:
         print("error: BPS_API_KEY is required", file=sys.stderr)
         return 2
-
     client = BPSClient(api_key, retries=3, retry_backoff_seconds=1.0)
-    try:
-        subjects = client.list_subjects(domain=DOMAIN)
-    except BPSApiError as exc:
-        print(f"error: unable to list national BPS subjects: {exc}", file=sys.stderr)
-        return 2
 
-    relevant_subjects = [
-        row for row in subjects
-        if subject_id_of(row) is not None and is_relevant_subject(row)
-    ]
     variable_candidates: list[tuple[int, str, Mapping[str, Any], list[str]]] = []
-    seen_vars: set[int] = set()
     subject_variable_counts: list[dict[str, Any]] = []
+    seen_vars: set[int] = set()
 
-    for subject in relevant_subjects:
-        subject_id = subject_id_of(subject)
-        assert subject_id is not None
-        subject_label = subject_label_of(subject)
+    for subject_id, subject_label in VERIFIED_NATIONAL_SUBJECTS:
         try:
-            rows = client.list_variables(domain=DOMAIN, subject=subject_id, year=MODEL_YEAR)
+            rows, catalog_mode = list_subject_variables(client, subject_id)
         except BPSApiError as exc:
             subject_variable_counts.append(
                 {"subject_id": subject_id, "subject_label": subject_label, "error": str(exc)}
             )
             continue
-
         matched = 0
         for row in rows:
             groups = matched_feature_groups(var_label_of(row))
@@ -256,7 +211,8 @@ def main() -> int:
             {
                 "subject_id": subject_id,
                 "subject_label": subject_label,
-                "variable_count_2024": len(rows),
+                "catalog_mode": catalog_mode,
+                "variable_count": len(rows),
                 "matched_variable_count": matched,
             }
         )
@@ -272,19 +228,15 @@ def main() -> int:
         )
         for subject_id, subject_label, row, groups in variable_candidates
     ]
-
     report = {
-        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v3",
+        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v4",
         "domain": DOMAIN,
         "model_year": MODEL_YEAR,
-        "source_authority": "Badan Pusat Statistik (BPS-Statistics Indonesia)",
-        "discovery_method": (
-            "national subject catalog -> relevant national subjects -> 2024 national variable catalog -> "
-            "semantic title filter -> exact 2024 dynamic-data probe"
-        ),
-        "subject_count": len(subjects),
-        "relevant_subject_count": len(relevant_subjects),
-        "relevant_subjects": [compact_subject(row) for row in relevant_subjects],
+        "subject_catalog_source": "data/manifests/milestone7_bps_subject_catalog.json",
+        "verified_national_subjects": [
+            {"subject_id": subject_id, "subject_label": subject_label}
+            for subject_id, subject_label in VERIFIED_NATIONAL_SUBJECTS
+        ],
         "subject_variable_counts": subject_variable_counts,
         "candidate_count": len(results),
         "semantic_current38_2024_candidate_count": sum(
@@ -300,9 +252,8 @@ def main() -> int:
         },
         "results": results,
         "interpretation": (
-            "Discovery only. IDs and subjects are obtained from national domain 0000 metadata. "
-            "A semantic title + exact-38-province 2024 match is still not final model qualification: "
-            "derived selectors, denominator, methodology, units, and provenance must be frozen and reviewed."
+            "Discovery only. Subject IDs are verified national-domain metadata. Candidate promotion still requires "
+            "selector, methodology, unit, denominator and exact 38-province value qualification."
         ),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -310,22 +261,12 @@ def main() -> int:
         json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    print(
-        json.dumps(
-            {
-                "subject_count": report["subject_count"],
-                "relevant_subject_count": report["relevant_subject_count"],
-                "candidate_count": report["candidate_count"],
-                "semantic_current38_2024_candidate_count": report[
-                    "semantic_current38_2024_candidate_count"
-                ],
-                "feature_candidate_counts": report["feature_candidate_counts"],
-            },
-            ensure_ascii=False,
-            indent=2,
-            sort_keys=True,
-        )
-    )
+    print(json.dumps({
+        "candidate_count": report["candidate_count"],
+        "semantic_current38_2024_candidate_count": report["semantic_current38_2024_candidate_count"],
+        "feature_candidate_counts": report["feature_candidate_counts"],
+        "subject_variable_counts": report["subject_variable_counts"],
+    }, ensure_ascii=False, indent=2, sort_keys=True))
     return 0
 
 
