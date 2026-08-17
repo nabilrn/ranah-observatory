@@ -17,28 +17,42 @@ DEFAULT_OUTPUT = ROOT / "data" / "manifests" / "milestone7_bps_feature_discovery
 DOMAIN = "0000"
 MODEL_YEAR = 2024
 
-# These IDs/labels are frozen from data/manifests/milestone7_bps_subject_catalog.json,
-# which was retrieved directly from national BPS domain 0000. They are not inherited
-# from the Sumatera Barat domain.
-VERIFIED_NATIONAL_SUBJECTS: tuple[tuple[int, str], ...] = (
-    (26, "Indeks Pembangunan Manusia"),
-    (12, "Kependudukan"),
-    (2, "Komunikasi"),
-    (52, "Produk Domestik Regional Bruto (Lapangan Usaha)"),
+# Frozen from the national-domain subject catalog. This pass targets only the two
+# subject catalogs most likely to contain schooling/health capability variables.
+CATALOG_SUBJECTS: tuple[tuple[int, str], ...] = (
+    (28, "Pendidikan"),
+    (30, "Kesehatan"),
+)
+
+# These national-domain IDs come from already-frozen Ranah Observatory evidence:
+# var 398 was found by the preceding national catalog discovery pass; var 1975 is
+# recorded in the Milestone 5 national candidate registry. Both are re-probed here
+# against exact 2024 current-38 semantics before any promotion.
+DIRECT_CANDIDATES: tuple[dict[str, Any], ...] = (
+    {
+        "subject_id": 2,
+        "subject_label": "Komunikasi",
+        "var_id": 398,
+        "title": "Persentase Rumah Tangga yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi dan Klasifikasi Daerah",
+        "groups": ["digital_connectivity"],
+        "origin": "milestone7 national catalog discovery v4",
+    },
+    {
+        "subject_id": 12,
+        "subject_label": "Kependudukan",
+        "var_id": 1975,
+        "title": "Jumlah Penduduk Pertengahan Tahun",
+        "groups": ["population_scale"],
+        "origin": "data/registries/bps_comparative_panel_candidates.csv",
+    },
 )
 
 FEATURE_TERMS: dict[str, tuple[str, ...]] = {
     "human_capital_schooling": ("rata-rata lama sekolah", "rata rata lama sekolah"),
     "human_capital_expected_schooling": ("harapan lama sekolah",),
     "health_life_expectancy": ("umur harapan hidup", "angka harapan hidup"),
-    "population_density": ("kepadatan penduduk",),
-    "urbanization": ("persentase penduduk perkotaan", "penduduk perkotaan"),
-    "digital_connectivity": ("mengakses internet", "akses internet"),
-    "sector_structure": (
-        "produk domestik regional bruto menurut lapangan usaha",
-        "pdrb menurut lapangan usaha",
-    ),
     "population_scale": ("jumlah penduduk", "proyeksi penduduk"),
+    "digital_connectivity": ("mengakses internet", "akses internet"),
 }
 
 
@@ -83,8 +97,7 @@ def var_label_of(row: Mapping[str, Any]) -> str:
 def matched_feature_groups(text: str) -> list[str]:
     norm = normalize(text)
     return [
-        group
-        for group, terms in FEATURE_TERMS.items()
+        group for group, terms in FEATURE_TERMS.items()
         if any(normalize(term) in norm for term in terms)
     ]
 
@@ -96,6 +109,7 @@ def probe_candidate(
     subject_label: str,
     variable_row: Mapping[str, Any],
     discovery_groups: list[str],
+    origin: str,
 ) -> dict[str, Any]:
     var_id = var_id_of(variable_row)
     result: dict[str, Any] = {
@@ -104,6 +118,7 @@ def probe_candidate(
         "bps_var_id": var_id,
         "catalog_title": var_label_of(variable_row),
         "catalog_feature_groups": discovery_groups,
+        "candidate_origin": origin,
         "catalog_metadata": dict(variable_row),
     }
     if var_id is None:
@@ -127,7 +142,6 @@ def probe_candidate(
         turvar = as_list(payload.get("turvar"))
         turtahun = as_list(payload.get("turtahun"))
         datacontent = payload.get("datacontent")
-
         source_title = str(var_meta[0].get("label", "") if var_meta else "").strip()
         source_unit = str(var_meta[0].get("unit", "") if var_meta else "").strip()
         source_note = str(var_meta[0].get("note", "") if var_meta else "").strip()
@@ -155,8 +169,7 @@ def probe_candidate(
         result["structure_checks"] = checks
         result["probe_status"] = (
             "semantic_current38_2024_candidate"
-            if all(checks.values())
-            else "hold_semantics_or_structure"
+            if all(checks.values()) else "hold_semantics_or_structure"
         )
     except (BPSApiError, ValueError, TypeError) as exc:
         result["probe_status"] = "probe_error"
@@ -164,9 +177,7 @@ def probe_candidate(
     return result
 
 
-def list_subject_variables(
-    client: BPSClient, subject_id: int
-) -> tuple[list[Mapping[str, Any]], str]:
+def list_subject_variables(client: BPSClient, subject_id: int) -> tuple[list[Mapping[str, Any]], str]:
     rows = client.list_variables(domain=DOMAIN, subject=subject_id, year=MODEL_YEAR)
     if rows:
         return rows, "year_2024_catalog_filter"
@@ -174,70 +185,75 @@ def list_subject_variables(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Discover 2024 national BPS structural features for the Milestone 7 baseline model."
-    )
+    parser = argparse.ArgumentParser(description="Discover qualified-looking national BPS features for Milestone 7.")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
-
     api_key = os.environ.get("BPS_API_KEY", "").strip()
     if not api_key:
         print("error: BPS_API_KEY is required", file=sys.stderr)
         return 2
     client = BPSClient(api_key, retries=3, retry_backoff_seconds=1.0)
 
-    variable_candidates: list[tuple[int, str, Mapping[str, Any], list[str]]] = []
-    subject_variable_counts: list[dict[str, Any]] = []
-    seen_vars: set[int] = set()
+    candidates: list[tuple[int, str, Mapping[str, Any], list[str], str]] = []
+    counts: list[dict[str, Any]] = []
+    seen: set[int] = set()
 
-    for subject_id, subject_label in VERIFIED_NATIONAL_SUBJECTS:
+    for subject_id, subject_label in CATALOG_SUBJECTS:
         try:
-            rows, catalog_mode = list_subject_variables(client, subject_id)
+            rows, mode = list_subject_variables(client, subject_id)
         except BPSApiError as exc:
-            subject_variable_counts.append(
-                {"subject_id": subject_id, "subject_label": subject_label, "error": str(exc)}
-            )
+            counts.append({"subject_id": subject_id, "subject_label": subject_label, "error": str(exc)})
             continue
         matched = 0
         for row in rows:
             groups = matched_feature_groups(var_label_of(row))
             var_id = var_id_of(row)
-            if not groups or var_id is None or var_id in seen_vars:
+            if not groups or var_id is None or var_id in seen:
                 continue
-            seen_vars.add(var_id)
+            seen.add(var_id)
             matched += 1
-            variable_candidates.append((subject_id, subject_label, row, groups))
-        subject_variable_counts.append(
-            {
-                "subject_id": subject_id,
-                "subject_label": subject_label,
-                "catalog_mode": catalog_mode,
-                "variable_count": len(rows),
-                "matched_variable_count": matched,
-            }
-        )
+            candidates.append((subject_id, subject_label, row, groups, "verified national subject catalog"))
+        counts.append({
+            "subject_id": subject_id,
+            "subject_label": subject_label,
+            "catalog_mode": mode,
+            "variable_count": len(rows),
+            "matched_variable_count": matched,
+        })
 
-    variable_candidates.sort(key=lambda item: (item[3][0], item[0], var_id_of(item[2]) or 0))
+    for direct in DIRECT_CANDIDATES:
+        var_id = int(direct["var_id"])
+        if var_id in seen:
+            continue
+        seen.add(var_id)
+        candidates.append((
+            int(direct["subject_id"]),
+            str(direct["subject_label"]),
+            {"var_id": var_id, "title": str(direct["title"])},
+            list(direct["groups"]),
+            str(direct["origin"]),
+        ))
+
+    candidates.sort(key=lambda item: (item[3][0], item[0], var_id_of(item[2]) or 0))
     results = [
         probe_candidate(
             client,
-            subject_id=subject_id,
-            subject_label=subject_label,
+            subject_id=sid,
+            subject_label=slabel,
             variable_row=row,
             discovery_groups=groups,
+            origin=origin,
         )
-        for subject_id, subject_label, row, groups in variable_candidates
+        for sid, slabel, row, groups, origin in candidates
     ]
     report = {
-        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v4",
+        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v5",
         "domain": DOMAIN,
         "model_year": MODEL_YEAR,
         "subject_catalog_source": "data/manifests/milestone7_bps_subject_catalog.json",
-        "verified_national_subjects": [
-            {"subject_id": subject_id, "subject_label": subject_label}
-            for subject_id, subject_label in VERIFIED_NATIONAL_SUBJECTS
-        ],
-        "subject_variable_counts": subject_variable_counts,
+        "catalog_subjects": [{"subject_id": i, "subject_label": n} for i, n in CATALOG_SUBJECTS],
+        "direct_candidate_ids": [int(row["var_id"]) for row in DIRECT_CANDIDATES],
+        "subject_variable_counts": counts,
         "candidate_count": len(results),
         "semantic_current38_2024_candidate_count": sum(
             row.get("probe_status") == "semantic_current38_2024_candidate" for row in results
@@ -252,15 +268,12 @@ def main() -> int:
         },
         "results": results,
         "interpretation": (
-            "Discovery only. Subject IDs are verified national-domain metadata. Candidate promotion still requires "
-            "selector, methodology, unit, denominator and exact 38-province value qualification."
+            "Discovery only. Exact 2024/current-38 shape plus title semantics is necessary but not sufficient. "
+            "Final feature promotion requires selector, unit, denominator, methodology and frozen-value review."
         ),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(
-        json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
+    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({
         "candidate_count": report["candidate_count"],
         "semantic_current38_2024_candidate_count": report["semantic_current38_2024_candidate_count"],
