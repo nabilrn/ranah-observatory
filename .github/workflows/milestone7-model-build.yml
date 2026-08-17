@@ -9,6 +9,8 @@ on:
       - "data/registries/milestone7_expected_performance_features.csv"
       - "data/analysis/expected_performance/m7-model-frame-2024.csv"
       - "scripts/build_milestone7_expected_performance_model.py"
+      - "scripts/audit_milestone7_expected_performance.py"
+      - "tests/test_milestone7_expected_performance.py"
       - ".github/workflows/milestone7-model-build.yml"
   workflow_dispatch:
 
@@ -38,7 +40,13 @@ jobs:
       - name: Build preregistered expected-performance baseline
         run: python scripts/build_milestone7_expected_performance_model.py
 
-      - name: Commit model outputs
+      - name: Enforce Milestone 7 audit
+        run: python scripts/audit_milestone7_expected_performance.py --require-complete
+
+      - name: Run Milestone 7 tests
+        run: python -m unittest tests.test_milestone7_expected_performance -v
+
+      - name: Commit model and audit outputs
         shell: bash
         run: |
           set -euo pipefail
@@ -49,11 +57,12 @@ jobs:
                   data/analysis/expected_performance/m7-model-coefficients.csv \
                   data/analysis/expected_performance/m7-west-sumatra-support.csv \
                   data/analysis/expected_performance/m7-west-sumatra-expected-performance.json \
-                  data/manifests/milestone7_expected_performance_model.json
+                  data/manifests/milestone7_expected_performance_model.json \
+                  data/manifests/milestone7_expected_performance_audit.json
           if git diff --cached --quiet; then
-            echo "Model outputs unchanged."
+            echo "Model and audit outputs unchanged."
             exit 0
           fi
-          git commit -m "model: freeze milestone7 expected-performance baseline"
+          git commit -m "audit: freeze milestone7 completion report"
           git pull --rebase origin agent/milestone7-baseline-frontier
           git push origin HEAD:agent/milestone7-baseline-frontier
