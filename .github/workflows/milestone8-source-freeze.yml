@@ -1,0 +1,72 @@
+name: Milestone 8 Source Freeze
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/freeze_milestone8_earthquake_sources.py"
+      - ".github/workflows/milestone8-source-freeze.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-source-freeze
+  cancel-in-progress: true
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Freeze official BPS outcome publications and government DLNA mirror bytes
+        run: python scripts/freeze_milestone8_earthquake_sources.py
+
+      - name: Verify frozen PDFs and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          for dir in \
+            data/snapshots/bps/milestone8/grdp-2005-2009 \
+            data/snapshots/bps/milestone8/grdp-2009-2013 \
+            data/snapshots/disaster/milestone8/dlna-2009; do
+            test -s "$dir/source.pdf"
+            head -c 5 "$dir/source.pdf" | grep -q '%PDF-'
+            (cd "$dir" && sha256sum -c source.pdf.sha256)
+          done
+
+      - name: Commit immutable source snapshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/snapshots/bps/milestone8 \
+            data/snapshots/disaster/milestone8 \
+            data/manifests/milestone8_source_freeze.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 source snapshots unchanged."
+            exit 0
+          fi
+          git commit -m "data: freeze milestone8 earthquake source evidence"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal
