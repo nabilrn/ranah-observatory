@@ -8,18 +8,20 @@
   "snapshot_count": 3,
   "snapshots": [
     {
+      "checksum_path": "data/snapshots/disaster/milestone8/dlna-2009/source.pdf.sha256",
       "host": "World Bank Documents & Reports",
       "metadata_path": "data/snapshots/disaster/milestone8/dlna-2009/source-metadata.json",
-      "metadata_sha256": "ad5383e30cfeb338e3407faefed4b8779009798c1bb934c482de0783b1ffa3f5",
+      "metadata_sha256": "2689c5ba016b24da76418b41737d52030f7440d47e4c0ff8b643bedfb58f7edb",
       "pdf_bytes": 12321956,
-      "pdf_path": "data/snapshots/disaster/milestone8/dlna-2009/source.pdf",
       "pdf_sha256": "4a04ebd6fd15308c8d4f8ee49bf36ecbad88e81dbec9c3d3c88ec47a1e498bcd",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/disaster/dlna-2009/source.pdf",
       "source_plan_id": "m8_damage_dlna"
     },
     {
       "checksum_path": "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2009-2013/publication-metadata.json",
-      "metadata_sha256": "b2aa706b3f1c803572d0fcc67258e6165a231760a88e78f994ededc66c08108e",
+      "metadata_sha256": "9555118ce552ad81fb8d6dca4d059b2ef8918b82fed3a741ca3580e6220bfc26",
       "pdf_bytes": 24110985,
       "pdf_sha256": "c066499a4c050296e4ffdd10192ba4c6748da920bf0975fa887e2ed13e998612",
       "raw_pdf_git_tracked": false,
@@ -32,7 +34,7 @@
     {
       "checksum_path": "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2005-2009/publication-metadata.json",
-      "metadata_sha256": "637eff733f72866402be31e9df32dc74b0dc0d2acf0109d17846783670b23b73",
+      "metadata_sha256": "c42c2cd480775b418847f1a56e93cb8480926aca309343def8dedf78bc4221fd",
       "pdf_bytes": 4585911,
       "pdf_sha256": "c54ae285a81e01255f354103d271419ba8d4748c4e9f19d58c94d81c8b3d338e",
       "raw_pdf_git_tracked": false,

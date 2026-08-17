@@ -1,12 +1,12 @@
 {
   "domain": "1373",
-  "final_download_url": "https://webapi.bps.go.id/download.php?f=i+YKSaSZh4cvC9G+ztxuJVdjSDFEK3FyMHQ0c2ZxamVhT2hsdi9nc0JKNTJxZmsxNkpRVUkydkUzUW5lOEowZk5uOVExZCtWbUZzM0daZEYxZ1pKak9aWjBZaUlwbkhFb3dLdm1rMVZMMm5qc0tnUmp3d3J6WUtWNDdtWm1XYUxSakRZZllGdmZ3a0k2ZkR4TlNPdkx3bUkzb3Z2bENCYlUybWsyWElzWnh0ZEJmSDJpVE5KZitLWUprcG94UjJFeC9kREtHejdlZWxVWXQ5VEtsTnp4UzcvK05jRFZZa0JxWXJDMGMyMFlOWEQwRGJ4b0duMkZJNm5vUEJRMzFiWVBVendDTUduYmtoSjE2ZFI=",
+  "final_download_url": "https://webapi.bps.go.id/download.php?f=SbZ9rXbiZr6BiNx3dflODW9zMERvZ1lUbGFxQys0UGtPc0p1anQwbnh6OTl5RnA5TjFuK2dseUs0YjZYVnBBVGNJLzJlVEo3bUoxYXBjQnFjYkVFRmRWckYyaldjdnNFb3BvZ1lQWHNLb3hMaDRNKy9WNGdEWVVjb2czMzBORmtFeU8rZ1dIWXFGTmVPTVRxRUkzYmlpUkJRR2Z2RmZaNS9kT0hUNEdUUkZEWjU1N1FkTk5yZ0dGVUMzOTNxZm1walNNWm9EZkdlZWFHbGZjTzltNjVLK1BOUVNjbkdXWjVuczhjT2xVeVZjNTlrdDBKc2cvMTVDaVovYjNYbkxxd2l6UngrdERlNmVTb2dERnc=",
   "publication": {
     "abstract": "",
-    "cover": "https://webapi.bps.go.id/cover.php?f=wFm/gItD5xw/l1nIqTIsKGJoSUFvS1lxR29URzlWUUFWVXBsaFlObTc3cGFYaVZXaDh3M3NLak5xVFhrK09HZWlYVDZlVDd1MW9hcmR4ZWgvbWpHaEh2VjZnZEd1T3pBeTZpQUZPdnVyZEFHV2Q3eUloSHE4aVJnMkRXVGQ2cGpSUG5CT1FDQ1E0S0NJU2Fa",
+    "cover": "https://webapi.bps.go.id/cover.php?f=XrZaIBitW42mLgFAh13NlDV6cEhhZ0pTSlE3eE4ySjRtOEpRN0puMFVPZ3pWSmdOU2djQW9neHc5RGg1RTFJNkFGdGd4enE2MlhpVWtWRFhWL1FYMG0zdDJnYmwxc0tGZkp3T0pydU9HUWduU1RKck8yOEo4UnRMV1BiM1JQenhwbjF3MGV2VmMrZ01NOE5r",
     "id_subject_csa": null,
     "issn": "",
-    "pdf": "https://webapi.bps.go.id/download.php?f=i+YKSaSZh4cvC9G+ztxuJVdjSDFEK3FyMHQ0c2ZxamVhT2hsdi9nc0JKNTJxZmsxNkpRVUkydkUzUW5lOEowZk5uOVExZCtWbUZzM0daZEYxZ1pKak9aWjBZaUlwbkhFb3dLdm1rMVZMMm5qc0tnUmp3d3J6WUtWNDdtWm1XYUxSakRZZllGdmZ3a0k2ZkR4TlNPdkx3bUkzb3Z2bENCYlUybWsyWElzWnh0ZEJmSDJpVE5KZitLWUprcG94UjJFeC9kREtHejdlZWxVWXQ5VEtsTnp4UzcvK05jRFZZa0JxWXJDMGMyMFlOWEQwRGJ4b0duMkZJNm5vUEJRMzFiWVBVendDTUduYmtoSjE2ZFI=",
+    "pdf": "https://webapi.bps.go.id/download.php?f=SbZ9rXbiZr6BiNx3dflODW9zMERvZ1lUbGFxQys0UGtPc0p1anQwbnh6OTl5RnA5TjFuK2dseUs0YjZYVnBBVGNJLzJlVEo3bUoxYXBjQnFjYkVFRmRWckYyaldjdnNFb3BvZ1lQWHNLb3hMaDRNKy9WNGdEWVVjb2czMzBORmtFeU8rZ1dIWXFGTmVPTVRxRUkzYmlpUkJRR2Z2RmZaNS9kT0hUNEdUUkZEWjU1N1FkTk5yZ0dGVUMzOTNxZm1walNNWm9EZkdlZWFHbGZjTzltNjVLK1BOUVNjbkdXWjVuczhjT2xVeVZjNTlrdDBKc2cvMTVDaVovYjNYbkxxd2l6UngrdERlNmVTb2dERnc=",
     "pub_id": "09a8175fa67d4c80d2183354",
     "rl_date": "2014-11-11",
     "sch_date": "2014-11-11",
@@ -17,7 +17,7 @@
   },
   "raw_storage_policy": "PDF bytes live under gitignored data/raw during acquisition and are uploaded as a GitHub Actions artifact; Git stores metadata, SHA-256, and derived text only.",
   "requested_publication_id": "09a8175fa67d4c80d2183354",
-  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=i+YKSaSZh4cvC9G+ztxuJVdjSDFEK3FyMHQ0c2ZxamVhT2hsdi9nc0JKNTJxZmsxNkpRVUkydkUzUW5lOEowZk5uOVExZCtWbUZzM0daZEYxZ1pKak9aWjBZaUlwbkhFb3dLdm1rMVZMMm5qc0tnUmp3d3J6WUtWNDdtWm1XYUxSakRZZllGdmZ3a0k2ZkR4TlNPdkx3bUkzb3Z2bENCYlUybWsyWElzWnh0ZEJmSDJpVE5KZitLWUprcG94UjJFeC9kREtHejdlZWxVWXQ5VEtsTnp4UzcvK05jRFZZa0JxWXJDMGMyMFlOWEQwRGJ4b0duMkZJNm5vUEJRMzFiWVBVendDTUduYmtoSjE2ZFI=",
+  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=SbZ9rXbiZr6BiNx3dflODW9zMERvZ1lUbGFxQys0UGtPc0p1anQwbnh6OTl5RnA5TjFuK2dseUs0YjZYVnBBVGNJLzJlVEo3bUoxYXBjQnFjYkVFRmRWckYyaldjdnNFb3BvZ1lQWHNLb3hMaDRNKy9WNGdEWVVjb2czMzBORmtFeU8rZ1dIWXFGTmVPTVRxRUkzYmlpUkJRR2Z2RmZaNS9kT0hUNEdUUkZEWjU1N1FkTk5yZ0dGVUMzOTNxZm1walNNWm9EZkdlZWFHbGZjTzltNjVLK1BOUVNjbkdXWjVuczhjT2xVeVZjNTlrdDBKc2cvMTVDaVovYjNYbkxxd2l6UngrdERlNmVTb2dERnc=",
   "retrieval_method": "BPS WebAPI publication metadata -> official pdf URL",
   "schema": "ranah-observatory/milestone8-bps-publication-snapshot/v1",
   "source_plan_id": "m8_grdp_post"
