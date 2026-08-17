@@ -27,7 +27,8 @@ class BPSPublicationTarget:
     keyword: str
     release_year: int
     title_tokens: tuple[str, ...]
-    output_dir: Path
+    metadata_dir: Path
+    raw_pdf_path: Path
 
 
 BPS_TARGETS = (
@@ -38,7 +39,8 @@ BPS_TARGETS = (
         keyword="Perkembangan Ekonomi Sumatera Barat",
         release_year=2010,
         title_tokens=("perkembangan ekonomi sumatera barat", "2005", "2009"),
-        output_dir=ROOT / "data/snapshots/bps/milestone8/grdp-2005-2009",
+        metadata_dir=ROOT / "data/snapshots/bps/milestone8/grdp-2005-2009",
+        raw_pdf_path=ROOT / "data/raw/milestone8/bps/grdp-2005-2009/source.pdf",
     ),
     BPSPublicationTarget(
         source_id="m8_grdp_post",
@@ -47,12 +49,10 @@ BPS_TARGETS = (
         keyword="Sawahlunto Dalam Angka 2014",
         release_year=2014,
         title_tokens=("sawahlunto", "dalam angka", "2014"),
-        output_dir=ROOT / "data/snapshots/bps/milestone8/grdp-2009-2013",
+        metadata_dir=ROOT / "data/snapshots/bps/milestone8/grdp-2009-2013",
+        raw_pdf_path=ROOT / "data/raw/milestone8/bps/grdp-2009-2013/source.pdf",
     ),
 )
-
-DLNA_URL = "https://www.preventionweb.net/media/75466/download"
-DLNA_OUTPUT_DIR = ROOT / "data/snapshots/disaster/milestone8/dlna-2009"
 
 
 def canonical_text(value: Any) -> str:
@@ -63,12 +63,24 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def write_bytes_with_hash(path: Path, data: bytes) -> str:
+def write_text_snapshot(path: Path, data: bytes) -> str:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(data)
     digest = sha256_bytes(data)
     path.with_suffix(path.suffix + ".sha256").write_text(
         f"{digest}  {path.name}\n", encoding="utf-8"
+    )
+    return digest
+
+
+def write_raw_pdf(path: Path, data: bytes, checksum_path: Path) -> str:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    digest = sha256_bytes(data)
+    checksum_path.parent.mkdir(parents=True, exist_ok=True)
+    checksum_path.write_text(
+        f"{digest}  source.pdf\n",
+        encoding="utf-8",
     )
     return digest
 
@@ -118,9 +130,6 @@ def publication_matches(row: Mapping[str, Any], target: BPSPublicationTarget) ->
 
 
 def resolve_bps_publication(client: BPSClient, target: BPSPublicationTarget) -> Mapping[str, Any]:
-    # First use the immutable publication identifier embedded in the official BPS
-    # publication URL. Fall back to a constrained list query only if an older API
-    # deployment does not accept that identifier in the detail endpoint.
     try:
         payload = client._request(  # noqa: SLF001 - no public generic view helper exists yet
             "view",
@@ -166,9 +175,9 @@ def freeze_bps_target(client: BPSClient, target: BPSPublicationTarget) -> dict[s
     pdf_bytes, final_url = fetch_bytes(pdf_url)
     validate_pdf(pdf_bytes, source_id=target.source_id)
 
-    target.output_dir.mkdir(parents=True, exist_ok=True)
-    metadata_path = target.output_dir / "publication-metadata.json"
-    source_path = target.output_dir / "source.pdf"
+    target.metadata_dir.mkdir(parents=True, exist_ok=True)
+    metadata_path = target.metadata_dir / "publication-metadata.json"
+    checksum_path = target.metadata_dir / "source.pdf.sha256"
 
     metadata = {
         "schema": "ranah-observatory/milestone8-bps-publication-snapshot/v1",
@@ -179,22 +188,21 @@ def freeze_bps_target(client: BPSClient, target: BPSPublicationTarget) -> dict[s
         "publication": publication,
         "resolved_pdf_url": pdf_url,
         "final_download_url": final_url,
+        "raw_storage_policy": "PDF bytes live under gitignored data/raw during acquisition and are uploaded as a GitHub Actions artifact; Git stores metadata, SHA-256, and derived text only.",
     }
-    metadata_path.write_text(
-        json.dumps(metadata, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
-    metadata_hash = write_bytes_with_hash(
-        metadata_path,
-        metadata_path.read_bytes(),
-    )
-    pdf_hash = write_bytes_with_hash(source_path, pdf_bytes)
+    metadata_bytes = (
+        json.dumps(metadata, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    ).encode("utf-8")
+    metadata_hash = write_text_snapshot(metadata_path, metadata_bytes)
+    pdf_hash = write_raw_pdf(target.raw_pdf_path, pdf_bytes, checksum_path)
 
     return {
         "source_plan_id": target.source_id,
         "metadata_path": str(metadata_path.relative_to(ROOT)),
         "metadata_sha256": metadata_hash,
-        "pdf_path": str(source_path.relative_to(ROOT)),
+        "checksum_path": str(checksum_path.relative_to(ROOT)),
+        "raw_pdf_runtime_path": str(target.raw_pdf_path.relative_to(ROOT)),
+        "raw_pdf_git_tracked": False,
         "pdf_sha256": pdf_hash,
         "pdf_bytes": len(pdf_bytes),
         "title": publication.get("title"),
@@ -203,48 +211,10 @@ def freeze_bps_target(client: BPSClient, target: BPSPublicationTarget) -> dict[s
     }
 
 
-def freeze_dlna() -> dict[str, Any]:
-    pdf_bytes, final_url = fetch_bytes(DLNA_URL)
-    validate_pdf(pdf_bytes, source_id="m8_damage_dlna")
-    DLNA_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    source_path = DLNA_OUTPUT_DIR / "source.pdf"
-    metadata_path = DLNA_OUTPUT_DIR / "source-metadata.json"
-
-    metadata = {
-        "schema": "ranah-observatory/milestone8-disaster-publication-snapshot/v1",
-        "source_plan_id": "m8_damage_dlna",
-        "authority": "BNPB; Bappenas; Provincial and District/City Governments of West Sumatra and Jambi",
-        "title": "West Sumatra and Jambi Natural Disasters: Damage, Loss and Preliminary Needs Assessment",
-        "publication_year": 2009,
-        "authority_catalog_url": "https://perpustakaan.bnpb.go.id/inlislite/opac/detail-opac?id=1663",
-        "mirror_download_url": DLNA_URL,
-        "final_download_url": final_url,
-        "note": "Bytes are frozen from the PreventionWeb mirror; authority remains the joint government report, not the mirror.",
-    }
-    metadata_path.write_text(
-        json.dumps(metadata, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
-    metadata_hash = write_bytes_with_hash(metadata_path, metadata_path.read_bytes())
-    pdf_hash = write_bytes_with_hash(source_path, pdf_bytes)
-    return {
-        "source_plan_id": "m8_damage_dlna",
-        "metadata_path": str(metadata_path.relative_to(ROOT)),
-        "metadata_sha256": metadata_hash,
-        "pdf_path": str(source_path.relative_to(ROOT)),
-        "pdf_sha256": pdf_hash,
-        "pdf_bytes": len(pdf_bytes),
-    }
-
-
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Freeze Milestone 8 earthquake source publications")
-    parser.add_argument(
-        "--skip-dlna",
-        action="store_true",
-        help="freeze only BPS publications",
-    )
-    args = parser.parse_args()
+    parser = argparse.ArgumentParser(description="Freeze Milestone 8 BPS earthquake outcome publications")
+    parser.add_argument("--skip-dlna", action="store_true", help="retained for workflow compatibility; DLNA is handled by a separate freezer")
+    parser.parse_args()
 
     api_key = os.environ.get("BPS_API_KEY", "").strip()
     if not api_key:
@@ -252,8 +222,6 @@ def main() -> int:
 
     client = BPSClient(api_key, timeout=45.0, retries=3, retry_backoff_seconds=1.0)
     snapshots = [freeze_bps_target(client, target) for target in BPS_TARGETS]
-    if not args.skip_dlna:
-        snapshots.append(freeze_dlna())
 
     manifest_path = ROOT / "data/manifests/milestone8_source_freeze.json"
     manifest = {
@@ -261,7 +229,8 @@ def main() -> int:
         "criterion": "one focused causal or quasi-causal case study",
         "snapshot_count": len(snapshots),
         "snapshots": snapshots,
-        "source_bytes_frozen": True,
+        "raw_pdf_policy": "gitignored data/raw plus workflow artifact; no raw PDF tracked in Git",
+        "source_bytes_frozen": False,
         "outcome_extracted": False,
         "exposure_extracted": False,
         "causal_effect_estimated": False,
