@@ -17,33 +17,43 @@ DEFAULT_OUTPUT = ROOT / "data" / "manifests" / "milestone7_bps_feature_discovery
 DOMAIN = "0000"
 MODEL_YEAR = 2024
 
-# Frozen from the national-domain subject catalog. This pass targets only the two
-# subject catalogs most likely to contain schooling/health capability variables.
-CATALOG_SUBJECTS: tuple[tuple[int, str], ...] = (
-    (28, "Pendidikan"),
-    (30, "Kesehatan"),
-)
-
-# These national-domain IDs come from already-frozen Ranah Observatory evidence:
-# var 398 was found by the preceding national catalog discovery pass; var 1975 is
-# recorded in the Milestone 5 national candidate registry. Both are re-probed here
-# against exact 2024 current-38 semantics before any promotion.
+# Four preregistered capability candidates. IDs are all national-domain BPS IDs:
+# - 1429 and 398 were discovered and frozen from national WebAPI subject catalogs.
+# - 417 and 2273 are national BPS Statistics Table IDs discovered from official
+#   www.bps.go.id table pages and are re-probed through WebAPI here. A public table
+#   page is discovery evidence only; promotion still requires the exact WebAPI checks.
 DIRECT_CANDIDATES: tuple[dict[str, Any], ...] = (
+    {
+        "subject_id": 28,
+        "subject_label": "Pendidikan",
+        "var_id": 1429,
+        "title": "Rata-Rata Lama Sekolah Penduduk Umur 15 Tahun ke Atas Menurut Provinsi",
+        "groups": ["human_capital_schooling"],
+        "origin": "national BPS subject 28 catalog; frozen in milestone7 discovery v5",
+    },
+    {
+        "subject_id": 26,
+        "subject_label": "Indeks Pembangunan Manusia",
+        "var_id": 417,
+        "title": "[Metode Baru] Harapan Lama Sekolah",
+        "groups": ["human_capital_expected_schooling"],
+        "origin": "https://www.bps.go.id/id/statistics-table/2/NDE3IzI%3D/-metode-baru--harapan-lama-sekolah.html",
+    },
+    {
+        "subject_id": 30,
+        "subject_label": "Kesehatan",
+        "var_id": 2273,
+        "title": "Umur Harapan Hidup saat lahir menurut Provinsi dan Jenis Kelamin (menggunakan UHH hasil SP2020 LF)",
+        "groups": ["health_life_expectancy"],
+        "origin": "https://www.bps.go.id/id/statistics-table/2/MjI3MyMy/umur-harapan-hidup-saat-lahir-menurut-provinsi-dan-jenis-kelamin--menggunakan-uhh-hasil-sp2020-lf-.html",
+    },
     {
         "subject_id": 2,
         "subject_label": "Komunikasi",
         "var_id": 398,
         "title": "Persentase Rumah Tangga yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi dan Klasifikasi Daerah",
         "groups": ["digital_connectivity"],
-        "origin": "milestone7 national catalog discovery v4",
-    },
-    {
-        "subject_id": 12,
-        "subject_label": "Kependudukan",
-        "var_id": 1975,
-        "title": "Jumlah Penduduk Pertengahan Tahun",
-        "groups": ["population_scale"],
-        "origin": "data/registries/bps_comparative_panel_candidates.csv",
+        "origin": "national BPS subject 2 catalog; frozen in milestone7 discovery v4/v5",
     },
 )
 
@@ -51,47 +61,12 @@ FEATURE_TERMS: dict[str, tuple[str, ...]] = {
     "human_capital_schooling": ("rata-rata lama sekolah", "rata rata lama sekolah"),
     "human_capital_expected_schooling": ("harapan lama sekolah",),
     "health_life_expectancy": ("umur harapan hidup", "angka harapan hidup"),
-    "population_scale": ("jumlah penduduk", "proyeksi penduduk"),
     "digital_connectivity": ("mengakses internet", "akses internet"),
 }
 
 
 def normalize(value: str) -> str:
     return re.sub(r"\s+", " ", value.casefold().replace("–", "-").replace("—", "-")).strip()
-
-
-def first_text(row: Mapping[str, Any], keys: tuple[str, ...]) -> str:
-    for key in keys:
-        value = row.get(key)
-        if value not in (None, ""):
-            return str(value).strip()
-    return ""
-
-
-def first_int(row: Mapping[str, Any], keys: tuple[str, ...]) -> int | None:
-    for key in keys:
-        value = row.get(key)
-        if value in (None, ""):
-            continue
-        try:
-            return int(str(value).strip())
-        except ValueError:
-            continue
-    return None
-
-
-def var_id_of(row: Mapping[str, Any]) -> int | None:
-    return first_int(row, ("var_id", "id", "val", "var"))
-
-
-def var_label_of(row: Mapping[str, Any]) -> str:
-    label = first_text(row, ("title", "label", "var", "name"))
-    if label:
-        return label
-    return " ".join(
-        str(value) for value in row.values()
-        if isinstance(value, (str, int, float)) and str(value).strip()
-    )
 
 
 def matched_feature_groups(text: str) -> list[str]:
@@ -102,29 +77,16 @@ def matched_feature_groups(text: str) -> list[str]:
     ]
 
 
-def probe_candidate(
-    client: BPSClient,
-    *,
-    subject_id: int,
-    subject_label: str,
-    variable_row: Mapping[str, Any],
-    discovery_groups: list[str],
-    origin: str,
-) -> dict[str, Any]:
-    var_id = var_id_of(variable_row)
+def probe_candidate(client: BPSClient, candidate: Mapping[str, Any]) -> dict[str, Any]:
+    var_id = int(candidate["var_id"])
     result: dict[str, Any] = {
-        "subject_id": subject_id,
-        "subject_label": subject_label,
+        "subject_id": int(candidate["subject_id"]),
+        "subject_label": str(candidate["subject_label"]),
         "bps_var_id": var_id,
-        "catalog_title": var_label_of(variable_row),
-        "catalog_feature_groups": discovery_groups,
-        "candidate_origin": origin,
-        "catalog_metadata": dict(variable_row),
+        "catalog_title": str(candidate["title"]),
+        "catalog_feature_groups": list(candidate["groups"]),
+        "candidate_origin": str(candidate["origin"]),
     }
-    if var_id is None:
-        result["probe_status"] = "hold_missing_var_id"
-        return result
-
     try:
         periods = period_candidates(client.list_periods(domain=DOMAIN, var=var_id))
         selected = next((row for row in periods if row.get("year") == MODEL_YEAR), None)
@@ -177,15 +139,8 @@ def probe_candidate(
     return result
 
 
-def list_subject_variables(client: BPSClient, subject_id: int) -> tuple[list[Mapping[str, Any]], str]:
-    rows = client.list_variables(domain=DOMAIN, subject=subject_id, year=MODEL_YEAR)
-    if rows:
-        return rows, "year_2024_catalog_filter"
-    return client.list_variables(domain=DOMAIN, subject=subject_id), "unfiltered_catalog_fallback"
-
-
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Discover qualified-looking national BPS features for Milestone 7.")
+    parser = argparse.ArgumentParser(description="Probe four national BPS capability candidates for Milestone 7.")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
     api_key = os.environ.get("BPS_API_KEY", "").strip()
@@ -193,67 +148,11 @@ def main() -> int:
         print("error: BPS_API_KEY is required", file=sys.stderr)
         return 2
     client = BPSClient(api_key, retries=3, retry_backoff_seconds=1.0)
-
-    candidates: list[tuple[int, str, Mapping[str, Any], list[str], str]] = []
-    counts: list[dict[str, Any]] = []
-    seen: set[int] = set()
-
-    for subject_id, subject_label in CATALOG_SUBJECTS:
-        try:
-            rows, mode = list_subject_variables(client, subject_id)
-        except BPSApiError as exc:
-            counts.append({"subject_id": subject_id, "subject_label": subject_label, "error": str(exc)})
-            continue
-        matched = 0
-        for row in rows:
-            groups = matched_feature_groups(var_label_of(row))
-            var_id = var_id_of(row)
-            if not groups or var_id is None or var_id in seen:
-                continue
-            seen.add(var_id)
-            matched += 1
-            candidates.append((subject_id, subject_label, row, groups, "verified national subject catalog"))
-        counts.append({
-            "subject_id": subject_id,
-            "subject_label": subject_label,
-            "catalog_mode": mode,
-            "variable_count": len(rows),
-            "matched_variable_count": matched,
-        })
-
-    for direct in DIRECT_CANDIDATES:
-        var_id = int(direct["var_id"])
-        if var_id in seen:
-            continue
-        seen.add(var_id)
-        candidates.append((
-            int(direct["subject_id"]),
-            str(direct["subject_label"]),
-            {"var_id": var_id, "title": str(direct["title"])},
-            list(direct["groups"]),
-            str(direct["origin"]),
-        ))
-
-    candidates.sort(key=lambda item: (item[3][0], item[0], var_id_of(item[2]) or 0))
-    results = [
-        probe_candidate(
-            client,
-            subject_id=sid,
-            subject_label=slabel,
-            variable_row=row,
-            discovery_groups=groups,
-            origin=origin,
-        )
-        for sid, slabel, row, groups, origin in candidates
-    ]
+    results = [probe_candidate(client, candidate) for candidate in DIRECT_CANDIDATES]
     report = {
-        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v5",
+        "schema": "ranah-observatory/milestone7-bps-feature-discovery/v6",
         "domain": DOMAIN,
         "model_year": MODEL_YEAR,
-        "subject_catalog_source": "data/manifests/milestone7_bps_subject_catalog.json",
-        "catalog_subjects": [{"subject_id": i, "subject_label": n} for i, n in CATALOG_SUBJECTS],
-        "direct_candidate_ids": [int(row["var_id"]) for row in DIRECT_CANDIDATES],
-        "subject_variable_counts": counts,
         "candidate_count": len(results),
         "semantic_current38_2024_candidate_count": sum(
             row.get("probe_status") == "semantic_current38_2024_candidate" for row in results
@@ -266,10 +165,24 @@ def main() -> int:
             )
             for group in FEATURE_TERMS
         },
+        "candidate_summary": [
+            {
+                "bps_var_id": row.get("bps_var_id"),
+                "source_title": row.get("source_title", row.get("catalog_title", "")),
+                "feature_groups": row.get("semantic_feature_groups", row.get("catalog_feature_groups", [])),
+                "probe_status": row.get("probe_status"),
+                "available_years": row.get("available_years", []),
+                "labelvervar": (row.get("geography") or {}).get("labelvervar", ""),
+                "non_aggregate_geography_count": (row.get("geography") or {}).get("non_aggregate_geography_count", 0),
+                "turvar": row.get("turvar", []),
+                "turtahun": row.get("turtahun", []),
+            }
+            for row in results
+        ],
         "results": results,
         "interpretation": (
-            "Discovery only. Exact 2024/current-38 shape plus title semantics is necessary but not sufficient. "
-            "Final feature promotion requires selector, unit, denominator, methodology and frozen-value review."
+            "Discovery only. Passing title/period/geography checks are necessary but not sufficient. "
+            "Final promotion requires explicit selector, unit, denominator, methodology and frozen values."
         ),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -278,7 +191,7 @@ def main() -> int:
         "candidate_count": report["candidate_count"],
         "semantic_current38_2024_candidate_count": report["semantic_current38_2024_candidate_count"],
         "feature_candidate_counts": report["feature_candidate_counts"],
-        "subject_variable_counts": report["subject_variable_counts"],
+        "candidate_summary": report["candidate_summary"],
     }, ensure_ascii=False, indent=2, sort_keys=True))
     return 0
 
