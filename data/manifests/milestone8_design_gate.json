@@ -13,7 +13,8 @@
   "baseline_year": 2008,
   "partial_treatment_year": 2009,
   "design_preregistered": true,
-  "geography_2005_2013_qualified": false,
+  "geography_2005_2013_qualified": true,
+  "geography_qualification_scope": "M8 analytical footprint only; no general historical backcast",
   "preperiod_outcome_frozen": false,
   "postperiod_outcome_frozen": false,
   "overlap_2009_reconciled": false,
@@ -26,7 +27,6 @@
   "causal_claim_authorized": false,
   "milestone8_complete": false,
   "blocking_reasons": [
-    "historical boundary validity for the intended 19 kabupaten/kota is not yet qualified for 2005-2013",
     "official BPS pre/post outcome blocks are web-verified but not yet frozen and reconciled",
     "government DLNA damage exposure is identified but the full 19-geography treatment frame is not yet frozen",
     "identification diagnostics and falsification tests have not yet been run"
