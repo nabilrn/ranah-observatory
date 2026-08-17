@@ -1,0 +1,59 @@
+name: Milestone 7 Model Build
+
+on:
+  push:
+    branches:
+      - agent/milestone7-baseline-frontier
+    paths:
+      - "research/MILESTONE7_MODEL_SPEC.md"
+      - "data/registries/milestone7_expected_performance_features.csv"
+      - "data/analysis/expected_performance/m7-model-frame-2024.csv"
+      - "scripts/build_milestone7_expected_performance_model.py"
+      - ".github/workflows/milestone7-model-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone7-model-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 7 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone7-baseline-frontier
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build preregistered expected-performance baseline
+        run: python scripts/build_milestone7_expected_performance_model.py
+
+      - name: Commit model outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/analysis/expected_performance/m7-ridge-loocv-summary.csv \
+                  data/analysis/expected_performance/m7-ridge-selected-loocv-predictions.csv \
+                  data/analysis/expected_performance/m7-model-coefficients.csv \
+                  data/analysis/expected_performance/m7-west-sumatra-support.csv \
+                  data/analysis/expected_performance/m7-west-sumatra-expected-performance.json \
+                  data/manifests/milestone7_expected_performance_model.json
+          if git diff --cached --quiet; then
+            echo "Model outputs unchanged."
+            exit 0
+          fi
+          git commit -m "model: freeze milestone7 expected-performance baseline"
+          git pull --rebase origin agent/milestone7-baseline-frontier
+          git push origin HEAD:agent/milestone7-baseline-frontier
