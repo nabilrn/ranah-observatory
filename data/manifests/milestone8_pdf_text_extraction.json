@@ -6,6 +6,12 @@
   "source_count": 3,
   "sources": [
     {
+      "candidate_slice_pages": [
+        84,
+        92
+      ],
+      "candidate_slice_path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2005-2009-pages-84-92.txt",
+      "candidate_slice_sha256": "4eae5c3404c947c5b8be6ef3e594017327dab2c4edf93d8ae448797cdf4a9b8a",
       "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
       "ocr_performed": false,
       "pattern_hits": {
@@ -410,6 +416,12 @@
       "visible_character_count": 501215
     },
     {
+      "candidate_slice_pages": [
+        410,
+        415
+      ],
+      "candidate_slice_path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2009-2013-pages-410-415.txt",
+      "candidate_slice_sha256": "1070c319fb4504ef4a275c52ec676a4545b1405a86a7529d19be4e4e8de2bc3e",
       "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
       "ocr_performed": false,
       "pattern_hits": {
@@ -739,6 +751,12 @@
       "visible_character_count": 356572
     },
     {
+      "candidate_slice_pages": [
+        96,
+        103
+      ],
+      "candidate_slice_path": "data/processed/milestone8/source_text/candidate-pages/dlna-2009-pages-96-103.txt",
+      "candidate_slice_sha256": "39bf38c3621c0ccbfd16ce4bdd14299a21020f61a369ffb0b079f154a17fec8f",
       "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
       "ocr_performed": false,
       "pattern_hits": {
