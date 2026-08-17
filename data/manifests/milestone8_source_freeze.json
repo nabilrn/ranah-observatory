@@ -21,7 +21,7 @@
     {
       "checksum_path": "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2009-2013/publication-metadata.json",
-      "metadata_sha256": "9555118ce552ad81fb8d6dca4d059b2ef8918b82fed3a741ca3580e6220bfc26",
+      "metadata_sha256": "35a6ff0b85123a6bc34d8da580060e017061e7f77879b06b49672c4c5c5bd6b1",
       "pdf_bytes": 24110985,
       "pdf_sha256": "c066499a4c050296e4ffdd10192ba4c6748da920bf0975fa887e2ed13e998612",
       "raw_pdf_git_tracked": false,
@@ -34,7 +34,7 @@
     {
       "checksum_path": "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2005-2009/publication-metadata.json",
-      "metadata_sha256": "c42c2cd480775b418847f1a56e93cb8480926aca309343def8dedf78bc4221fd",
+      "metadata_sha256": "9fcc33b9324803173e116294776040091bd3abbf7ac8d4def507f27efd3729cc",
       "pdf_bytes": 4585911,
       "pdf_sha256": "c54ae285a81e01255f354103d271419ba8d4748c4e9f19d58c94d81c8b3d338e",
       "raw_pdf_git_tracked": false,
