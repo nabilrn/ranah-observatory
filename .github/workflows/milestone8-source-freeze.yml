@@ -6,6 +6,7 @@ on:
       - agent/milestone8-earthquake-quasi-causal
     paths:
       - "scripts/freeze_milestone8_earthquake_sources.py"
+      - "scripts/freeze_milestone8_dlna.py"
       - ".github/workflows/milestone8-source-freeze.yml"
   workflow_dispatch:
 
@@ -37,12 +38,15 @@ jobs:
       - name: Require BPS API key
         run: test -n "$BPS_API_KEY"
 
-      - name: Freeze official BPS outcome publications and government DLNA mirror bytes
+      - name: Freeze official BPS outcome publications and government DLNA bytes
         shell: bash
         run: |
           set -o pipefail
           log="$(mktemp)"
-          if python -m scripts.freeze_milestone8_earthquake_sources 2>&1 | tee "$log"; then
+          if {
+            python -m scripts.freeze_milestone8_earthquake_sources --skip-dlna
+            python -m scripts.freeze_milestone8_dlna
+          } 2>&1 | tee "$log"; then
             exit 0
           fi
           message="$(tail -n 12 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
