@@ -17,22 +17,22 @@ SOURCES = {
     "m8_grdp_pre": {
         "pdf": ROOT / "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf",
         "text": OUT_DIR / "bps-grdp-2005-2009.txt",
-        "slice": OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-84-92.txt",
-        "slice_pages": (84, 92),
+        "slices": [
+            (OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-35-55.txt", 35, 55),
+            (OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-84-92.txt", 84, 92),
+        ],
         "patterns": ["harga konstan", "kabupaten/kota", "2005", "2009", "produk domestik regional bruto", "pertumbuhan ekonomi"],
     },
     "m8_grdp_post": {
         "pdf": ROOT / "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf",
         "text": OUT_DIR / "bps-grdp-2009-2013.txt",
-        "slice": OUT_DIR / "candidate-pages/bps-grdp-2009-2013-pages-410-415.txt",
-        "slice_pages": (410, 415),
+        "slices": [(OUT_DIR / "candidate-pages/bps-grdp-2009-2013-pages-410-415.txt", 410, 415)],
         "patterns": ["13.1.2", "harga konstan", "kabupaten/kota", "2009", "2013", "produk domestik regional bruto"],
     },
     "m8_damage_dlna": {
         "pdf": ROOT / "data/snapshots/disaster/milestone8/dlna-2009/source.pdf",
         "text": OUT_DIR / "dlna-2009.txt",
-        "slice": OUT_DIR / "candidate-pages/dlna-2009-pages-96-103.txt",
-        "slice_pages": (96, 103),
+        "slices": [(OUT_DIR / "candidate-pages/dlna-2009-pages-96-103.txt", 96, 103)],
         "patterns": ["housing", "heavily damaged", "moderately damaged", "lightly damaged", "Padang Pariaman", "Pariaman", "pre-disaster", "damage and loss"],
     },
 }
@@ -83,7 +83,7 @@ def pattern_hits(text: str, patterns: list[str], max_hits_per_pattern: int = 12)
     return result
 
 
-def write_slice(raw_text: str, output: Path, start_page: int, end_page: int, expected_pages: int) -> None:
+def write_slice(raw_text: str, output: Path, start_page: int, end_page: int, expected_pages: int) -> dict[str, Any]:
     if start_page < 1 or end_page > expected_pages or start_page > end_page:
         raise RuntimeError(f"invalid candidate page slice {start_page}-{end_page} for {expected_pages}-page PDF")
     pages = raw_text.split("\f")
@@ -92,13 +92,16 @@ def write_slice(raw_text: str, output: Path, start_page: int, end_page: int, exp
         chunks.append(f"===== PDF PAGE {page_no} =====\n{pages[page_no - 1].rstrip()}\n")
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text("\n".join(chunks), encoding="utf-8")
+    return {
+        "path": str(output.relative_to(ROOT)),
+        "pages": [start_page, end_page],
+        "sha256": sha256(output),
+    }
 
 
 def extract_one(source_id: str, spec: dict[str, Any]) -> dict[str, Any]:
     pdf: Path = spec["pdf"]
     text_path: Path = spec["text"]
-    slice_path: Path = spec["slice"]
-    slice_start, slice_end = spec["slice_pages"]
     if not pdf.exists():
         raise RuntimeError(f"missing frozen PDF for {source_id}: {pdf.relative_to(ROOT)}")
     expected_pages = page_count(pdf)
@@ -111,7 +114,7 @@ def extract_one(source_id: str, spec: dict[str, Any]) -> dict[str, Any]:
     visible_chars = sum(1 for char in raw_text if not char.isspace())
     if visible_chars < max(1000, expected_pages * 100):
         raise RuntimeError(f"{source_id}: extracted text is unexpectedly sparse ({visible_chars} visible chars across {expected_pages} pages); OCR is not silently enabled")
-    write_slice(raw_text, slice_path, slice_start, slice_end, expected_pages)
+    slice_reports = [write_slice(raw_text, path, start, end, expected_pages) for path, start, end in spec["slices"]]
     return {
         "source_plan_id": source_id,
         "pdf_path": str(pdf.relative_to(ROOT)),
@@ -121,9 +124,7 @@ def extract_one(source_id: str, spec: dict[str, Any]) -> dict[str, Any]:
         "text_sha256": sha256(text_path),
         "text_bytes": text_path.stat().st_size,
         "visible_character_count": visible_chars,
-        "candidate_slice_path": str(slice_path.relative_to(ROOT)),
-        "candidate_slice_pages": [slice_start, slice_end],
-        "candidate_slice_sha256": sha256(slice_path),
+        "candidate_slices": slice_reports,
         "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
         "ocr_performed": False,
         "pattern_hits": pattern_hits(raw_text, spec["patterns"]),
