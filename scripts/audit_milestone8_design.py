@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -13,33 +14,22 @@ SPEC = ROOT / "research/MILESTONE8_QUASI_CAUSAL_SPEC.md"
 SOURCE_PLAN = ROOT / "data/registries/milestone8_earthquake_source_plan.csv"
 GEOGRAPHY_CONTRACT = ROOT / "data/registries/milestone8_geography_contract.csv"
 DESIGN_GATE = ROOT / "data/manifests/milestone8_design_gate.json"
+EXPOSURE_MANIFEST = ROOT / "data/manifests/milestone8_shakemap_exposure_candidate.json"
+EXPOSURE_CSV = ROOT / "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv"
 
 EXPECTED_GEOGRAPHIES = {
-    "idn.13.1301",
-    "idn.13.1302",
-    "idn.13.1303",
-    "idn.13.1304",
-    "idn.13.1305",
-    "idn.13.1306",
-    "idn.13.1307",
-    "idn.13.1308",
-    "idn.13.1309",
-    "idn.13.1310",
-    "idn.13.1311",
-    "idn.13.1312",
-    "idn.13.1371",
-    "idn.13.1372",
-    "idn.13.1373",
-    "idn.13.1374",
-    "idn.13.1375",
-    "idn.13.1376",
-    "idn.13.1377",
+    "idn.13.1301", "idn.13.1302", "idn.13.1303", "idn.13.1304", "idn.13.1305",
+    "idn.13.1306", "idn.13.1307", "idn.13.1308", "idn.13.1309", "idn.13.1310",
+    "idn.13.1311", "idn.13.1312", "idn.13.1371", "idn.13.1372", "idn.13.1373",
+    "idn.13.1374", "idn.13.1375", "idn.13.1376", "idn.13.1377",
 }
 
 EXPECTED_SOURCE_IDS = {
     "m8_event_bnpb",
     "m8_damage_dlna",
     "m8_damage_dlna_mirror",
+    "m8_usgs_shakemap",
+    "m8_big_fixed_boundary",
     "m8_grdp_pre",
     "m8_grdp_post",
     "m8_padang_validation",
@@ -62,87 +52,99 @@ LOCKED_DESIGN = {
     "target_start_year": 2005,
     "target_end_year": 2013,
     "primary_outcome": "log_real_grdp_constant_2000",
-    "primary_exposure": "heavy_housing_damage_share",
-    "secondary_exposure": "any_housing_damage_share",
+    "original_primary_exposure": "heavy_housing_damage_share",
+    "primary_exposure": "area_mean_pga_pct_g",
+    "primary_exposure_standardized_form": "z(area_mean_pga_pct_g)",
     "primary_design": "continuous_intensity_two_way_fixed_effects_event_study",
     "baseline_year": 2008,
     "partial_treatment_year": 2009,
 }
 
 REQUIRED_SPEC_PHRASES = [
+    "Amendment 1 — physical shaking exposure, before outcome-model fitting",
     "30 September 2009",
+    "area_mean_pga_pct_g",
+    "fixed-current-boundary",
     "continuous-intensity two-way fixed-effects event study",
     "2008 (`k=-1`) is the omitted baseline",
     "partial-treatment year",
     "wild cluster bootstrap",
     "quasi-causal estimate",
     "association",
-    "No causal or quasi-causal effect has yet been estimated.",
+    "No outcome model has been fit",
 ]
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8", newline="") as handle:
-        return [
-            {key: (value or "").strip() for key, value in row.items()}
-            for row in csv.DictReader(handle)
-        ]
+        return [{key: (value or "").strip() for key, value in row.items()} for row in csv.DictReader(handle)]
 
 
 def audit() -> dict[str, Any]:
     errors: list[str] = []
-    required = [SPEC, SOURCE_PLAN, GEOGRAPHY_CONTRACT, DESIGN_GATE]
+    required = [SPEC, SOURCE_PLAN, GEOGRAPHY_CONTRACT, DESIGN_GATE, EXPOSURE_MANIFEST, EXPOSURE_CSV]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.exists()]
     if missing:
         return {
-            "schema": "ranah-observatory/milestone8-design-audit/v1",
-            "criterion": "one focused causal or quasi-causal case study",
+            "schema": "ranah-observatory/milestone8-design-audit/v2",
+            "criterion": LOCKED_DESIGN["criterion"],
             "errors": [f"missing required file: {path}" for path in missing],
             "design_preregistered": False,
             "milestone8_complete": False,
         }
 
     gate = json.loads(DESIGN_GATE.read_text(encoding="utf-8"))
+    exposure_manifest = json.loads(EXPOSURE_MANIFEST.read_text(encoding="utf-8"))
     spec_text = SPEC.read_text(encoding="utf-8")
     source_rows = read_csv(SOURCE_PLAN)
     geography_rows = read_csv(GEOGRAPHY_CONTRACT)
+    exposure_rows = read_csv(EXPOSURE_CSV)
 
-    if gate.get("schema") != "ranah-observatory/milestone8-design-gate/v1":
+    if gate.get("schema") != "ranah-observatory/milestone8-design-gate/v2":
         errors.append("Milestone 8 design-gate schema drift")
-
     for key, expected in LOCKED_DESIGN.items():
         if gate.get(key) != expected:
             errors.append(f"Milestone 8 locked design drift: {key}")
 
     if gate.get("design_preregistered") is not True:
         errors.append("Milestone 8 design must remain preregistered")
+    if gate.get("design_amendment_count") != 1:
+        errors.append("Milestone 8 must retain exactly one pre-fit design amendment")
+    if gate.get("amendment_1_applied_before_outcome_model_fit") is not True:
+        errors.append("Milestone 8 Amendment 1 must remain explicitly pre-fit")
+    if gate.get("outcome_model_fit") is not False:
+        errors.append("Milestone 8 design audit must remain pre outcome-model fit")
     if gate.get("geography_2005_2013_qualified") is not True:
         errors.append("Milestone 8 geography gate is not qualified")
     if gate.get("geography_qualification_scope") != "M8 analytical footprint only; no general historical backcast":
         errors.append("Milestone 8 geography qualification scope drift")
+    if gate.get("primary_exposure_spatial_frame") != "BIG June 2026 fixed-current-boundary polygons":
+        errors.append("Milestone 8 primary-exposure spatial frame drift")
+    if gate.get("historical_boundary_continuity_claimed_for_exposure") is not False:
+        errors.append("Milestone 8 must not claim historical boundary continuity for exposure polygons")
+    if gate.get("full_exposure_19_geographies_frozen") is not True:
+        errors.append("Milestone 8 physical exposure must cover exact 19 geographies before fit")
+    if gate.get("housing_damage_reporting_geography_count") != 12:
+        errors.append("Milestone 8 must retain observed 12-geography DLNA reporting limitation")
+    if gate.get("housing_damage_zero_fill_forbidden") is not True:
+        errors.append("Milestone 8 must forbid zero-filling unreported DLNA geographies")
 
-    # This audit intentionally protects the current pre-estimation state. Once the
-    # data and identification gates are closed, update this contract in the same PR
-    # as the model implementation rather than silently upgrading claim strength.
+    # Claim strength stays locked until a later model/audit revision closes identification gates.
     if gate.get("quasi_causal_effect_estimated") is not False:
         errors.append("Milestone 8 foundation must not yet claim an estimated quasi-causal effect")
     if gate.get("causal_claim_authorized") is not False:
         errors.append("Milestone 8 foundation must not yet authorize causal language")
     if gate.get("milestone8_complete") is not False:
-        errors.append("Milestone 8 cannot be complete at the preregistration-only stage")
+        errors.append("Milestone 8 cannot be complete at the design/data-qualification stage")
 
-    unresolved_data_gates = [
-        "preperiod_outcome_frozen",
-        "postperiod_outcome_frozen",
-        "overlap_2009_reconciled",
-        "full_exposure_19_geographies_frozen",
-        "pretrend_diagnostics_passed",
-        "placebo_checks_passed",
-        "influence_sensitivity_passed",
-        "small_cluster_inference_implemented",
-    ]
-    if all(gate.get(key) is True for key in unresolved_data_gates):
-        errors.append("Milestone 8 foundation audit expected unresolved downstream gates")
     blocking_reasons = gate.get("blocking_reasons")
     if not isinstance(blocking_reasons, list) or not blocking_reasons:
         errors.append("Milestone 8 incomplete state must retain explicit blocking reasons")
@@ -162,6 +164,12 @@ def audit() -> dict[str, Any]:
         if not row.get("authority") or not row.get("title") or not row.get("qualification_status"):
             errors.append(f"Incomplete source-plan metadata for {row.get('source_plan_id')}")
 
+    source_by_id = {row["source_plan_id"]: row for row in source_rows}
+    if source_by_id.get("m8_usgs_shakemap", {}).get("role") != "primary_treatment_exposure":
+        errors.append("USGS ShakeMap must remain the primary treatment-exposure source")
+    if source_by_id.get("m8_damage_dlna", {}).get("role") != "secondary_damage_validation":
+        errors.append("DLNA housing damage must remain secondary validation after Amendment 1")
+
     geography_ids = [row.get("geography_id", "") for row in geography_rows]
     if len(geography_rows) != 19:
         errors.append("Milestone 8 geography contract must contain exactly 19 rows")
@@ -169,7 +177,6 @@ def audit() -> dict[str, Any]:
         errors.append("Milestone 8 geography contract contains duplicate geography IDs")
     if set(geography_ids) != EXPECTED_GEOGRAPHIES:
         errors.append("Milestone 8 geography footprint drift")
-
     for row in geography_rows:
         gid = row.get("geography_id", "")
         if row.get("analysis_start") != "2005" or row.get("analysis_end") != "2013":
@@ -178,22 +185,53 @@ def audit() -> dict[str, Any]:
             errors.append(f"Milestone 8 geography not qualified: {gid}")
         if not row.get("qualification_basis"):
             errors.append(f"Milestone 8 geography lacks qualification basis: {gid}")
-
     geography_by_id = {row["geography_id"]: row for row in geography_rows if row.get("geography_id")}
     for gid, legal_token in LEGAL_ANCHORS_REQUIRED.items():
-        anchor = geography_by_id.get(gid, {}).get("legal_anchor", "")
-        if legal_token not in anchor:
+        if legal_token not in geography_by_id.get(gid, {}).get("legal_anchor", ""):
             errors.append(f"Milestone 8 legal anchor missing or drifted for {gid}")
 
+    if exposure_manifest.get("schema") != "ranah-observatory/milestone8-shakemap-exposure-candidate/v1":
+        errors.append("Milestone 8 ShakeMap exposure manifest schema drift")
+    if exposure_manifest.get("primary_candidate") != "area_mean_pga_pct_g":
+        errors.append("Milestone 8 ShakeMap primary candidate drift")
+    if exposure_manifest.get("primary_candidate_selected_before_outcome_model_fit") is not True:
+        errors.append("ShakeMap primary candidate must be selected before outcome-model fit")
+    if exposure_manifest.get("geography_count") != 19 or exposure_manifest.get("all_19_geographies_have_grid_support") is not True:
+        errors.append("Milestone 8 ShakeMap candidate must cover exact 19 geographies")
+    if exposure_manifest.get("historical_boundary_continuity_claimed") is not False:
+        errors.append("ShakeMap candidate must not claim historical boundary continuity")
+    if exposure_manifest.get("outcome_model_fit") is not False or exposure_manifest.get("causal_effect_estimated") is not False:
+        errors.append("ShakeMap candidate manifest must remain pre-model and non-causal")
+    if exposure_manifest.get("output_sha256") != sha256(EXPOSURE_CSV):
+        errors.append("Milestone 8 ShakeMap exposure output SHA-256 drift")
+
+    exposure_ids = [row.get("geography_id", "") for row in exposure_rows]
+    if len(exposure_rows) != 19 or set(exposure_ids) != EXPECTED_GEOGRAPHIES or len(set(exposure_ids)) != 19:
+        errors.append("Milestone 8 ShakeMap exposure CSV footprint drift")
+    for row in exposure_rows:
+        try:
+            pga = float(row.get("area_mean_pga_pct_g", "nan"))
+            count = int(row.get("grid_point_count", "0"))
+        except ValueError:
+            errors.append(f"Invalid ShakeMap exposure numeric values for {row.get('geography_id')}")
+            continue
+        if not (pga > 0.0) or count <= 0:
+            errors.append(f"Non-positive ShakeMap exposure/support for {row.get('geography_id')}")
+
     return {
-        "schema": "ranah-observatory/milestone8-design-audit/v1",
+        "schema": "ranah-observatory/milestone8-design-audit/v2",
         "criterion": LOCKED_DESIGN["criterion"],
         "case_study": LOCKED_DESIGN["case_study"],
         "event_date": LOCKED_DESIGN["event_date"],
         "geography_count": len(geography_rows),
         "source_plan_count": len(source_rows),
+        "primary_exposure": gate.get("primary_exposure"),
+        "design_amendment_count": gate.get("design_amendment_count"),
         "design_preregistered": gate.get("design_preregistered") is True,
+        "amendment_applied_before_outcome_model_fit": gate.get("amendment_1_applied_before_outcome_model_fit") is True,
         "geography_2005_2013_qualified": gate.get("geography_2005_2013_qualified") is True,
+        "full_exposure_19_geographies_frozen": gate.get("full_exposure_19_geographies_frozen") is True,
+        "outcome_model_fit": gate.get("outcome_model_fit") is True,
         "quasi_causal_effect_estimated": gate.get("quasi_causal_effect_estimated") is True,
         "causal_claim_authorized": gate.get("causal_claim_authorized") is True,
         "milestone8_complete": gate.get("milestone8_complete") is True,
@@ -207,19 +245,21 @@ def main() -> int:
     parser.add_argument(
         "--require-preregistered",
         action="store_true",
-        help="fail unless the preregistered design and geography contract pass while causal claims remain locked",
+        help="fail unless the preregistered/amended design passes while outcome-model and causal claims remain locked",
     )
     args = parser.parse_args()
-
     report = audit()
     print(json.dumps(report, indent=2, sort_keys=True))
-
     if report["errors"]:
         return 1
     if args.require_preregistered:
         if report.get("design_preregistered") is not True:
             return 1
-        if report.get("geography_2005_2013_qualified") is not True:
+        if report.get("amendment_applied_before_outcome_model_fit") is not True:
+            return 1
+        if report.get("full_exposure_19_geographies_frozen") is not True:
+            return 1
+        if report.get("outcome_model_fit") is not False:
             return 1
         if report.get("quasi_causal_effect_estimated") is not False:
             return 1
