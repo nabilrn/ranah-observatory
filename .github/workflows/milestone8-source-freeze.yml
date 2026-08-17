@@ -38,7 +38,7 @@ jobs:
         run: test -n "$BPS_API_KEY"
 
       - name: Freeze official BPS outcome publications and government DLNA mirror bytes
-        run: python scripts/freeze_milestone8_earthquake_sources.py
+        run: python -m scripts.freeze_milestone8_earthquake_sources
 
       - name: Verify frozen PDFs and checksums
         shell: bash
