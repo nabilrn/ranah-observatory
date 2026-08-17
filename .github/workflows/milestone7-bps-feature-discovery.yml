@@ -18,9 +18,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  discover-subjects:
+  discover-features:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
     steps:
@@ -38,21 +38,21 @@ jobs:
       - name: Require BPS API key
         run: test -n "$BPS_API_KEY"
 
-      - name: Discover national BPS subject catalog
-        run: python scripts/discover_milestone7_bps_subjects.py
+      - name: Discover structural feature candidates from verified national subjects
+        run: python scripts/discover_milestone7_bps_features.py
 
-      - name: Freeze subject catalog on branch
+      - name: Freeze feature discovery report on branch
         shell: bash
         run: |
           set -euo pipefail
-          path="data/manifests/milestone7_bps_subject_catalog.json"
+          path="data/manifests/milestone7_bps_feature_discovery.json"
           if [ -z "$(git status --porcelain -- "$path")" ]; then
-            echo "Subject catalog unchanged."
+            echo "Feature discovery report unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$path"
-          git commit -m "data: freeze milestone7 BPS subject catalog"
+          git commit -m "data: freeze milestone7 BPS feature discovery"
           git pull --rebase origin agent/milestone7-baseline-frontier
           git push origin HEAD:agent/milestone7-baseline-frontier
