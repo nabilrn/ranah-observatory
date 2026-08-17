@@ -15,7 +15,7 @@ MANIFEST_PATH = ROOT / "data/manifests/milestone8_pdf_text_extraction.json"
 
 SOURCES = {
     "m8_grdp_pre": {
-        "pdf": ROOT / "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf",
+        "pdf": ROOT / "data/raw/milestone8/bps/grdp-2005-2009/source.pdf",
         "text": OUT_DIR / "bps-grdp-2005-2009.txt",
         "slices": [
             (OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-35-55.txt", 35, 55),
@@ -24,13 +24,13 @@ SOURCES = {
         "patterns": ["harga konstan", "kabupaten/kota", "2005", "2009", "produk domestik regional bruto", "pertumbuhan ekonomi"],
     },
     "m8_grdp_post": {
-        "pdf": ROOT / "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf",
+        "pdf": ROOT / "data/raw/milestone8/bps/grdp-2009-2013/source.pdf",
         "text": OUT_DIR / "bps-grdp-2009-2013.txt",
         "slices": [(OUT_DIR / "candidate-pages/bps-grdp-2009-2013-pages-410-415.txt", 410, 415)],
         "patterns": ["13.1.2", "harga konstan", "kabupaten/kota", "2009", "2013", "produk domestik regional bruto"],
     },
     "m8_damage_dlna": {
-        "pdf": ROOT / "data/snapshots/disaster/milestone8/dlna-2009/source.pdf",
+        "pdf": ROOT / "data/raw/milestone8/disaster/dlna-2009/source.pdf",
         "text": OUT_DIR / "dlna-2009.txt",
         "slices": [(OUT_DIR / "candidate-pages/dlna-2009-pages-96-103.txt", 96, 103)],
         "patterns": ["housing", "heavily damaged", "moderately damaged", "lightly damaged", "Padang Pariaman", "Pariaman", "pre-disaster", "damage and loss"],
@@ -92,18 +92,14 @@ def write_slice(raw_text: str, output: Path, start_page: int, end_page: int, exp
         chunks.append(f"===== PDF PAGE {page_no} =====\n{pages[page_no - 1].rstrip()}\n")
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text("\n".join(chunks), encoding="utf-8")
-    return {
-        "path": str(output.relative_to(ROOT)),
-        "pages": [start_page, end_page],
-        "sha256": sha256(output),
-    }
+    return {"path": str(output.relative_to(ROOT)), "pages": [start_page, end_page], "sha256": sha256(output)}
 
 
 def extract_one(source_id: str, spec: dict[str, Any]) -> dict[str, Any]:
     pdf: Path = spec["pdf"]
     text_path: Path = spec["text"]
     if not pdf.exists():
-        raise RuntimeError(f"missing frozen PDF for {source_id}: {pdf.relative_to(ROOT)}")
+        raise RuntimeError(f"missing runtime raw PDF for {source_id}: {pdf.relative_to(ROOT)}")
     expected_pages = page_count(pdf)
     text_path.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(["pdftotext", "-layout", "-enc", "UTF-8", str(pdf), str(text_path)], check=True)
@@ -117,7 +113,8 @@ def extract_one(source_id: str, spec: dict[str, Any]) -> dict[str, Any]:
     slice_reports = [write_slice(raw_text, path, start, end, expected_pages) for path, start, end in spec["slices"]]
     return {
         "source_plan_id": source_id,
-        "pdf_path": str(pdf.relative_to(ROOT)),
+        "raw_pdf_runtime_path": str(pdf.relative_to(ROOT)),
+        "raw_pdf_git_tracked": False,
         "pdf_sha256": sha256(pdf),
         "pdf_page_count": expected_pages,
         "text_path": str(text_path.relative_to(ROOT)),
@@ -139,6 +136,7 @@ def main() -> int:
         "criterion": "one focused causal or quasi-causal case study",
         "source_count": len(outputs),
         "sources": outputs,
+        "raw_pdf_git_tracked": False,
         "ocr_performed": False,
         "table_values_extracted": False,
         "causal_effect_estimated": False,
