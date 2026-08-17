@@ -2,6 +2,7 @@
   "causal_effect_estimated": false,
   "criterion": "one focused causal or quasi-causal case study",
   "ocr_performed": false,
+  "raw_pdf_git_tracked": false,
   "schema": "ranah-observatory/milestone8-pdf-text-extraction/v1",
   "source_count": 3,
   "sources": [
@@ -419,8 +420,9 @@
         }
       },
       "pdf_page_count": 236,
-      "pdf_path": "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf",
       "pdf_sha256": "c54ae285a81e01255f354103d271419ba8d4748c4e9f19d58c94d81c8b3d338e",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-2005-2009/source.pdf",
       "source_plan_id": "m8_grdp_pre",
       "text_bytes": 1421097,
       "text_path": "data/processed/milestone8/source_text/bps-grdp-2005-2009.txt",
@@ -758,8 +760,9 @@
         }
       },
       "pdf_page_count": 421,
-      "pdf_path": "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf",
       "pdf_sha256": "c066499a4c050296e4ffdd10192ba4c6748da920bf0975fa887e2ed13e998612",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-2009-2013/source.pdf",
       "source_plan_id": "m8_grdp_post",
       "text_bytes": 1036653,
       "text_path": "data/processed/milestone8/source_text/bps-grdp-2009-2013.txt",
@@ -1297,8 +1300,9 @@
         }
       },
       "pdf_page_count": 209,
-      "pdf_path": "data/snapshots/disaster/milestone8/dlna-2009/source.pdf",
       "pdf_sha256": "4a04ebd6fd15308c8d4f8ee49bf36ecbad88e81dbec9c3d3c88ec47a1e498bcd",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/disaster/dlna-2009/source.pdf",
       "source_plan_id": "m8_damage_dlna",
       "text_bytes": 613544,
       "text_path": "data/processed/milestone8/source_text/dlna-2009.txt",
