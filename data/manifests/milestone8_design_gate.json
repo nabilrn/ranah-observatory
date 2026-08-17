@@ -15,8 +15,8 @@
   "design_preregistered": true,
   "geography_2005_2013_qualified": true,
   "geography_qualification_scope": "M8 analytical footprint only; no general historical backcast",
-  "preperiod_outcome_frozen": false,
-  "postperiod_outcome_frozen": false,
+  "preperiod_outcome_frozen": true,
+  "postperiod_outcome_frozen": true,
   "overlap_2009_reconciled": false,
   "full_exposure_19_geographies_frozen": false,
   "pretrend_diagnostics_passed": false,
@@ -27,8 +27,8 @@
   "causal_claim_authorized": false,
   "milestone8_complete": false,
   "blocking_reasons": [
-    "official BPS pre/post outcome blocks are web-verified but not yet frozen and reconciled",
-    "government DLNA damage exposure is identified but the full 19-geography treatment frame is not yet frozen",
+    "frozen BPS pre/post publications still require deterministic table extraction and 2009 overlap reconciliation",
+    "frozen government DLNA still requires extraction of one complete qualified 19-geography treatment frame",
     "identification diagnostics and falsification tests have not yet been run"
   ]
 }
