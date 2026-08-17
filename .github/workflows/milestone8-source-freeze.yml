@@ -53,20 +53,33 @@ jobs:
           echo "::error title=Milestone 8 source freeze failure::$message"
           exit 1
 
-      - name: Verify frozen PDFs and checksums
+      - name: Verify runtime raw PDFs against committed-style checksum records
         shell: bash
         run: |
           set -euo pipefail
-          for dir in \
-            data/snapshots/bps/milestone8/grdp-2005-2009 \
-            data/snapshots/bps/milestone8/grdp-2009-2013 \
-            data/snapshots/disaster/milestone8/dlna-2009; do
-            test -s "$dir/source.pdf"
-            head -c 5 "$dir/source.pdf" | grep -q '%PDF-'
-            (cd "$dir" && sha256sum -c source.pdf.sha256)
-          done
+          verify_one() {
+            checksum_file="$1"
+            raw_pdf="$2"
+            test -s "$raw_pdf"
+            head -c 5 "$raw_pdf" | grep -q '%PDF-'
+            expected="$(awk '{print $1}' "$checksum_file")"
+            actual="$(sha256sum "$raw_pdf" | awk '{print $1}')"
+            test "$expected" = "$actual"
+          }
+          verify_one data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256 data/raw/milestone8/bps/grdp-2005-2009/source.pdf
+          verify_one data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256 data/raw/milestone8/bps/grdp-2009-2013/source.pdf
+          verify_one data/snapshots/disaster/milestone8/dlna-2009/source.pdf.sha256 data/raw/milestone8/disaster/dlna-2009/source.pdf
 
-      - name: Commit immutable source snapshots
+      - name: Upload raw source PDFs as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone8-raw-source-pdfs-${{ github.run_id }}
+          path: data/raw/milestone8/**/*.pdf
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+      - name: Commit source metadata and hashes only
         shell: bash
         run: |
           set -euo pipefail
@@ -77,9 +90,9 @@ jobs:
             data/snapshots/disaster/milestone8 \
             data/manifests/milestone8_source_freeze.json
           if git diff --cached --quiet; then
-            echo "Milestone 8 source snapshots unchanged."
+            echo "Milestone 8 source metadata unchanged."
             exit 0
           fi
-          git commit -m "data: freeze milestone8 earthquake source evidence"
+          git commit -m "data: freeze milestone8 source metadata and hashes"
           git pull --rebase origin agent/milestone8-earthquake-quasi-causal
           git push origin HEAD:agent/milestone8-earthquake-quasi-causal
