@@ -1,0 +1,50 @@
+name: Milestone 8 Design Audit
+
+on:
+  pull_request:
+    paths:
+      - "research/MILESTONE8_QUASI_CAUSAL_SPEC.md"
+      - "data/registries/milestone8_earthquake_source_plan.csv"
+      - "data/registries/milestone8_geography_contract.csv"
+      - "data/manifests/milestone8_design_gate.json"
+      - "scripts/audit_milestone8_design.py"
+      - "tests/test_milestone8_design.py"
+      - ".github/workflows/milestone8-design-audit.yml"
+  push:
+    branches:
+      - main
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "research/MILESTONE8_QUASI_CAUSAL_SPEC.md"
+      - "data/registries/milestone8_earthquake_source_plan.csv"
+      - "data/registries/milestone8_geography_contract.csv"
+      - "data/manifests/milestone8_design_gate.json"
+      - "scripts/audit_milestone8_design.py"
+      - "tests/test_milestone8_design.py"
+      - ".github/workflows/milestone8-design-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Enforce preregistered Milestone 8 design
+        run: python scripts/audit_milestone8_design.py --require-preregistered
+
+      - name: Run Milestone 8 design tests
+        run: python -m unittest tests.test_milestone8_design -v
+
+      - name: Revalidate repository data foundation
+        run: python scripts/validate_data_foundation.py

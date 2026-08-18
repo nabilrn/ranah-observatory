@@ -1,0 +1,56 @@
+{
+  "all_source_bytes_frozen": true,
+  "anomalies_resolved": false,
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "outcome_model_fit": false,
+  "schema": "ranah-observatory/milestone8-grdp-anomaly-source-freeze/v1",
+  "source_count": 3,
+  "sources": [
+    {
+      "checksum_path": "data/snapshots/bps/milestone8/crosschecks/bukittinggi-grdp-2011-2013/source.pdf.sha256",
+      "domain": "1375",
+      "metadata_path": "data/snapshots/bps/milestone8/crosschecks/bukittinggi-grdp-2011-2013/publication-metadata.json",
+      "metadata_sha256": "de667ae84f0afd5e1a36306da0c4b5f4d061598e38f72ca8f9ac98d50ef1b0d7",
+      "pdf_bytes": 1325462,
+      "pdf_sha256": "83a0d6faa78e2ec21f08fbd517dec18591fd85e4dfec21d9ea5edd793cca45ec",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/crosschecks/bukittinggi-grdp-2011-2013/source.pdf",
+      "requested_publication_id": "44d13f6979435a1a50fc1df9",
+      "resolution_method": "BPS WebAPI constrained publication list; exact historical publication ID + title semantics",
+      "resolved_publication_id": "44d13f6979435a1a50fc1df9",
+      "source_id": "m8_bukittinggi_grdp_crosscheck",
+      "title": "Produk Domestik Regional Bruto Kota Bukittinggi 2011-2013"
+    },
+    {
+      "checksum_path": "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2013/source.pdf.sha256",
+      "domain": "1310",
+      "metadata_path": "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2013/publication-metadata.json",
+      "metadata_sha256": "cff76a734e1672d3127cd7a1801d00ac486e0f024e537b58c570c499a181267c",
+      "pdf_bytes": 5268117,
+      "pdf_sha256": "9de52317c9939b4ac4a7c5df8e8f7c1b5d3c81d1c0814279a4ebe8f54d77e11c",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/crosschecks/solok-selatan-dalam-angka-2013/source.pdf",
+      "requested_publication_id": "b71346df5fc0c753641b0063",
+      "resolution_method": "BPS WebAPI constrained publication list; exact historical publication ID + title semantics",
+      "resolved_publication_id": "b71346df5fc0c753641b0063",
+      "source_id": "m8_solok_selatan_grdp_crosscheck",
+      "title": "Solok Selatan Dalam Angka 2013"
+    },
+    {
+      "checksum_path": "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2012/source.pdf.sha256",
+      "domain": "1310",
+      "metadata_path": "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2012/publication-metadata.json",
+      "metadata_sha256": "9ba3f53cbf3d58b13b7fc2ac0a51972cf44ac3942f7469b4c62779bd43e36ec5",
+      "pdf_bytes": 4193234,
+      "pdf_sha256": "ad401e1f3cadd4c47ea3bce72a4be9fad334f6944f9a73740e2fdc43d4d1bb36",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/crosschecks/solok-selatan-dalam-angka-2012/source.pdf",
+      "requested_publication_id": "70d4c08198648cf11a27982c",
+      "resolution_method": "BPS WebAPI constrained publication list; exact historical publication ID + title semantics",
+      "resolved_publication_id": "70d4c08198648cf11a27982c",
+      "source_id": "m8_solok_selatan_grdp_crosscheck_2012",
+      "title": "Solok Selatan Dalam Angka 2012"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+name: Milestone 8 Case Study Synthesis
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/build_milestone8_case_study.py"
+      - "data/manifests/milestone8_event_study.json"
+      - "data/manifests/milestone8_housing_damage_validation.json"
+      - "data/manifests/milestone8_growth_robustness.json"
+      - "data/manifests/milestone8_grdp_source_anomaly_resolution.json"
+      - "data/manifests/milestone8_grdp_overlap.json"
+      - "data/manifests/milestone8_shakemap_exposure_candidate.json"
+      - "data/analysis/quasi_causal/m8-event-study-primary.csv"
+      - "data/analysis/quasi_causal/m8-event-study-exposure-sensitivity.csv"
+      - "research/MILESTONE8_INFERENCE_PROTOCOL.md"
+      - ".github/workflows/milestone8-case-study-synthesis.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-case-study-synthesis
+  cancel-in-progress: true
+
+jobs:
+  synthesize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build final fail-closed case-study synthesis
+        run: python -m scripts.build_milestone8_case_study
+
+      - name: Commit deterministic synthesis artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/quasi_causal/m8-earthquake-case-study-findings.csv \
+            data/manifests/milestone8_case_study.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 case-study synthesis unchanged."
+            exit 0
+          fi
+          git commit -m "analysis: complete M8 earthquake case-study synthesis"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal

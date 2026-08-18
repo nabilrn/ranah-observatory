@@ -1,0 +1,2829 @@
+{
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "ocr_performed": false,
+  "raw_pdf_git_tracked": false,
+  "schema": "ranah-observatory/milestone8-pdf-text-extraction/v1",
+  "source_count": 4,
+  "sources": [
+    {
+      "candidate_slices": [
+        {
+          "pages": [
+            35,
+            55
+          ],
+          "path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2005-2009-pages-35-55.txt",
+          "sha256": "8cb2cceab4ac2b5f794d3ff46bef175d7b6f8b2ac31094e418170e91d4f450c0"
+        },
+        {
+          "pages": [
+            56,
+            75
+          ],
+          "path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2005-2009-pages-56-75.txt",
+          "sha256": "68c0c056883eb819bb2b1de86e1610dac534e0657973cc36af78c24a33fc0f65"
+        },
+        {
+          "pages": [
+            76,
+            83
+          ],
+          "path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2005-2009-pages-76-83.txt",
+          "sha256": "754359063b92ccf1c9237b84eab65280611aff760d5f81d62451da9142400a48"
+        },
+        {
+          "pages": [
+            84,
+            92
+          ],
+          "path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2005-2009-pages-84-92.txt",
+          "sha256": "4eae5c3404c947c5b8be6ef3e594017327dab2c4edf93d8ae448797cdf4a9b8a"
+        }
+      ],
+      "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
+      "ocr_performed": false,
+      "pattern_hits": {
+        "2005": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "Regional Bruto Provinsi Sumatera Barat dan Kabupaten/Kota) Tahun 2005 – 2009 ini merupakan",
+              "line_on_page": 5,
+              "page": 3
+            },
+            {
+              "excerpt": "tahun 2005 hanya sebesar 16,31 %.",
+              "line_on_page": 75,
+              "page": 4
+            },
+            {
+              "excerpt": "BAB II TINJAUAN PENDAPATAN SUMATRA BARAT TAHUN 2005 – 2009 ......... 13",
+              "line_on_page": 76,
+              "page": 5
+            },
+            {
+              "excerpt": "DI SUMATRA BARAT (2005 - 2009) .............................................................. 67",
+              "line_on_page": 61,
+              "page": 6
+            },
+            {
+              "excerpt": "2005 – 2009 .................................................................................................. 14",
+              "line_on_page": 5,
+              "page": 7
+            },
+            {
+              "excerpt": "Tabel 2.2 Pertumbuhan Riil Sektor Ekonomi Tahun 2005 – 2009 (Persen) ................... 15",
+              "line_on_page": 6,
+              "page": 7
+            },
+            {
+              "excerpt": "Berlaku Sumatra Barat 2005 - 2009 .............................................................. 17",
+              "line_on_page": 8,
+              "page": 7
+            },
+            {
+              "excerpt": "Berlaku 2005 -2009 (persen) ........................................................................ 22",
+              "line_on_page": 10,
+              "page": 7
+            },
+            {
+              "excerpt": "2005 – 2009 .................................................................................................. 27",
+              "line_on_page": 29,
+              "page": 7
+            },
+            {
+              "excerpt": "Tabel 4.5 Peranan sektor Pertanian Di Kabupaten / Kota tahun 2005 – 2009................. 41",
+              "line_on_page": 67,
+              "page": 7
+            },
+            {
+              "excerpt": "Kota Periode 2005 – 2009 ............................................................................ 43",
+              "line_on_page": 69,
+              "page": 7
+            },
+            {
+              "excerpt": "Tabel 4.9 Peran Sektor Jasa – Jasa Kabupaten / Kota, Periode 2005 - 2009 ................ 47",
+              "line_on_page": 74,
+              "page": 7
+            },
+            {
+              "excerpt": "2005 - 2009 ................................................................................................... 50",
+              "line_on_page": 2,
+              "page": 8
+            },
+            {
+              "excerpt": "Provinsi Sumatra Barat, Periode 2005 - 2009 ............................................. 53",
+              "line_on_page": 4,
+              "page": 8
+            },
+            {
+              "excerpt": "Sumatra Barat, Periode 2005 - 2009 ........................................................... 54",
+              "line_on_page": 7,
+              "page": 8
+            },
+            {
+              "excerpt": "Jasa Provinsi Sumatra Barat, Periode 2005 - 2009 ..................................... 57",
+              "line_on_page": 9,
+              "page": 8
+            },
+            {
+              "excerpt": "Sektor Angkutan dan Komunikasi Sumatra Barat, Periode 2005 - 2009 ..... 59",
+              "line_on_page": 11,
+              "page": 8
+            },
+            {
+              "excerpt": "Sumatra Barat, 2005 – 2009 ........................................................................... 23",
+              "line_on_page": 5,
+              "page": 9
+            },
+            {
+              "excerpt": "Gambar 2 Laju Pertumbuhan Sektor Listrik dan air Bersih 2005 – 2009 (Persen) ......... 25",
+              "line_on_page": 6,
+              "page": 9
+            },
+            {
+              "excerpt": "Gambar 3 Peranan dan Laju Pertumbuhan Sektor Bangunan 2005 - 2009 ................. 26",
+              "line_on_page": 7,
+              "page": 9
+            },
+            {
+              "excerpt": "Sumatra Barat 2005 -2009 (persen) ............................................................... 28",
+              "line_on_page": 9,
+              "page": 9
+            },
+            {
+              "excerpt": "PDRB Sumatera Barat, 2005 - 2009................................................................ 29",
+              "line_on_page": 11,
+              "page": 9
+            },
+            {
+              "excerpt": "terhadap Total PDRB Sumatera Barat 2005 – 2009 .................................... 30",
+              "line_on_page": 18,
+              "page": 9
+            },
+            {
+              "excerpt": "2005 – 2009 .................................................................................................. 36",
+              "line_on_page": 26,
+              "page": 9
+            },
+            {
+              "excerpt": "Gambar 8 Laju Pertumbuhan Ekonomi Kabupaten / Kota 2005 – 2009 ........................ 38",
+              "line_on_page": 29,
+              "page": 9
+            },
+            {
+              "excerpt": "Gambar 9 Peranan Sektor Pertanian Kabupaten / Kota 2005 – 2009 ............................. 42",
+              "line_on_page": 35,
+              "page": 9
+            },
+            {
+              "excerpt": "Kota, 2005 – 2009 ......................................................................................... 45",
+              "line_on_page": 47,
+              "page": 9
+            },
+            {
+              "excerpt": "Gambar 11 Peranan Sektor Jasa - Jasa Kabupaten / Kota, Periode 2005 – 2009 ............. 48",
+              "line_on_page": 53,
+              "page": 9
+            },
+            {
+              "excerpt": "2005 – 2009 .................................................................................................... 51",
+              "line_on_page": 65,
+              "page": 9
+            },
+            {
+              "excerpt": "Provinsi, Periode 2005 - 2009 ..................................................................... 52",
+              "line_on_page": 67,
+              "page": 9
+            }
+          ]
+        },
+        "2009": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "Regional Bruto Provinsi Sumatera Barat dan Kabupaten/Kota) Tahun 2005 – 2009 ini merupakan",
+              "line_on_page": 5,
+              "page": 3
+            },
+            {
+              "excerpt": "disebabkan oleh keterbatasan data, sehingga angka yang disajikan khususnya untuk tahun 2009",
+              "line_on_page": 40,
+              "page": 3
+            },
+            {
+              "excerpt": "termasuk Kabupaten/ Kota pada tahun 2009 mengalami perlambatan bila dibandingkan dengan",
+              "line_on_page": 5,
+              "page": 4
+            },
+            {
+              "excerpt": "pada tanggal 30 September 2009 yang melanda Provinsi Sumatera Barat (Khususnya wilayah Kota",
+              "line_on_page": 7,
+              "page": 4
+            },
+            {
+              "excerpt": "dibandingkan laju ekonomi pada tahun 2009 yang mencapai 6,37 % menjadi 4,16 % ditahun 2009.",
+              "line_on_page": 28,
+              "page": 4
+            },
+            {
+              "excerpt": "Konstribusi sektor jasa-jasa pada tahun 2009 sebesar 15,95 %, naik dari pada tahun 2008",
+              "line_on_page": 72,
+              "page": 4
+            },
+            {
+              "excerpt": "BAB II TINJAUAN PENDAPATAN SUMATRA BARAT TAHUN 2005 – 2009 ......... 13",
+              "line_on_page": 76,
+              "page": 5
+            },
+            {
+              "excerpt": "DI SUMATRA BARAT (2005 - 2009) .............................................................. 67",
+              "line_on_page": 61,
+              "page": 6
+            },
+            {
+              "excerpt": "2005 – 2009 .................................................................................................. 14",
+              "line_on_page": 5,
+              "page": 7
+            },
+            {
+              "excerpt": "Tabel 2.2 Pertumbuhan Riil Sektor Ekonomi Tahun 2005 – 2009 (Persen) ................... 15",
+              "line_on_page": 6,
+              "page": 7
+            },
+            {
+              "excerpt": "Berlaku Sumatra Barat 2005 - 2009 .............................................................. 17",
+              "line_on_page": 8,
+              "page": 7
+            },
+            {
+              "excerpt": "Berlaku 2005 -2009 (persen) ........................................................................ 22",
+              "line_on_page": 10,
+              "page": 7
+            },
+            {
+              "excerpt": "2005 – 2009 .................................................................................................. 27",
+              "line_on_page": 29,
+              "page": 7
+            },
+            {
+              "excerpt": "2008 - 2009 ................................................................................................... 35",
+              "line_on_page": 41,
+              "page": 7
+            },
+            {
+              "excerpt": "Ekonomi 2009 .............................................................................................. 38",
+              "line_on_page": 53,
+              "page": 7
+            },
+            {
+              "excerpt": "Tabel 4.3 Laju Pertumbuhan Ekonomi Kabupaten / Kota, 2009 (%) .............................. 38",
+              "line_on_page": 59,
+              "page": 7
+            },
+            {
+              "excerpt": "Sektor Pertanian, 2009 ................................................................................. 40",
+              "line_on_page": 66,
+              "page": 7
+            },
+            {
+              "excerpt": "Tabel 4.5 Peranan sektor Pertanian Di Kabupaten / Kota tahun 2005 – 2009................. 41",
+              "line_on_page": 67,
+              "page": 7
+            },
+            {
+              "excerpt": "Kota Periode 2005 – 2009 ............................................................................ 43",
+              "line_on_page": 69,
+              "page": 7
+            },
+            {
+              "excerpt": "Perdagangan, Hotel dan Restoran Tahun 2009 ............................................ 44",
+              "line_on_page": 71,
+              "page": 7
+            },
+            {
+              "excerpt": "Sektor Jasa – Jasa Tahun 2009 ..................................................................... 46",
+              "line_on_page": 73,
+              "page": 7
+            },
+            {
+              "excerpt": "Tabel 4.9 Peran Sektor Jasa – Jasa Kabupaten / Kota, Periode 2005 - 2009 ................ 47",
+              "line_on_page": 74,
+              "page": 7
+            },
+            {
+              "excerpt": "Sektor Pengangkutan dan Komunikasi Tahun 2009 .................................... 49",
+              "line_on_page": 76,
+              "page": 7
+            },
+            {
+              "excerpt": "2005 - 2009 ................................................................................................... 50",
+              "line_on_page": 2,
+              "page": 8
+            },
+            {
+              "excerpt": "Provinsi Sumatra Barat, Periode 2005 - 2009 ............................................. 53",
+              "line_on_page": 4,
+              "page": 8
+            },
+            {
+              "excerpt": "Sumatra Barat, Periode 2005 - 2009 ........................................................... 54",
+              "line_on_page": 7,
+              "page": 8
+            },
+            {
+              "excerpt": "Jasa Provinsi Sumatra Barat, Periode 2005 - 2009 ..................................... 57",
+              "line_on_page": 9,
+              "page": 8
+            },
+            {
+              "excerpt": "Sektor Angkutan dan Komunikasi Sumatra Barat, Periode 2005 - 2009 ..... 59",
+              "line_on_page": 11,
+              "page": 8
+            },
+            {
+              "excerpt": "PDRB Perkapita Provinsi, 2009",
+              "line_on_page": 24,
+              "page": 8
+            },
+            {
+              "excerpt": "Sumatra Barat, 2005 – 2009 ........................................................................... 23",
+              "line_on_page": 5,
+              "page": 9
+            }
+          ]
+        },
+        "atas dasar harga konstan 2000": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "Selanjutnya nilai tambah bruto atas dasar harga konstan 2000 merupakan selisih antara",
+              "line_on_page": 4,
+              "page": 18
+            },
+            {
+              "excerpt": "konstan 2000 diperoleh dari perkalian output atas dasar harga konstan 2000 masing-masing",
+              "line_on_page": 10,
+              "page": 18
+            },
+            {
+              "excerpt": "Nilai tambah masing-masing tahun atas dasar harga konstan 2000 diperoleh dengan cara",
+              "line_on_page": 15,
+              "page": 18
+            },
+            {
+              "excerpt": "Nilai tambah atas dasar harga konstan 2000 diperoleh dengan cara membagi nilai tambah",
+              "line_on_page": 58,
+              "page": 18
+            },
+            {
+              "excerpt": "Indeks Perkembangan PDRB Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 81
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 83
+            },
+            {
+              "excerpt": "Laju Pertumbuhan PDRB Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 85
+            },
+            {
+              "excerpt": "Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 89
+            },
+            {
+              "excerpt": "Perkapita Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 91
+            },
+            {
+              "excerpt": "Perkapita Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 93
+            },
+            {
+              "excerpt": "Perkapita Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 95
+            },
+            {
+              "excerpt": "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009",
+              "line_on_page": 2,
+              "page": 97
+            },
+            {
+              "excerpt": "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009",
+              "line_on_page": 2,
+              "page": 99
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 101
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 103
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 105
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2005",
+              "line_on_page": 2,
+              "page": 190
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2006",
+              "line_on_page": 2,
+              "page": 191
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2007",
+              "line_on_page": 2,
+              "page": 192
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2008",
+              "line_on_page": 2,
+              "page": 193
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2009**)",
+              "line_on_page": 2,
+              "page": 194
+            },
+            {
+              "excerpt": "Persentase PDRB Terhadap Jumlah 19 Kabupaten/Kota Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2005",
+              "line_on_page": 2,
+              "page": 200
+            },
+            {
+              "excerpt": "Persentase PDRB Terhadap Jumlah 19 Kabupaten/Kota Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2006",
+              "line_on_page": 2,
+              "page": 201
+            },
+            {
+              "excerpt": "Persentase PDRB Terhadap Jumlah 19 Kabupaten/Kota Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2007",
+              "line_on_page": 2,
+              "page": 202
+            },
+            {
+              "excerpt": "Persentase PDRB Terhadap Jumlah 19 Kabupaten/Kota Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2008*)",
+              "line_on_page": 2,
+              "page": 203
+            },
+            {
+              "excerpt": "Persentase PDRB Terhadap Jumlah 19 Kabupaten/Kota Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota dan Lapangan Usaha, 2009**)",
+              "line_on_page": 2,
+              "page": 204
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 206
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Sektor Pertambangan dan Penggalian Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 208
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Sektor Industri Pengolahan Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 210
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Sektor Listrik, Gas & Air Bersih Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 212
+            }
+          ]
+        },
+        "harga konstan": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "PDRB Kabupaten/Kota ini disajikan atas dasar harga berlaku dan harga konstan 2000. Disamping",
+              "line_on_page": 16,
+              "page": 3
+            },
+            {
+              "excerpt": "1.6 Perhitungan Produk regional Atas Dasar Harga Konstan ........................................... 8",
+              "line_on_page": 69,
+              "page": 5
+            },
+            {
+              "excerpt": "Harga Konstan",
+              "line_on_page": 39,
+              "page": 11
+            },
+            {
+              "excerpt": "mengeliminasi faktor inflasi merupakan PDRB atas dasar harga konstan. Dengan alasan inilah",
+              "line_on_page": 7,
+              "page": 15
+            },
+            {
+              "excerpt": "market price) dan atas dasar harga konstan (at constant market price).",
+              "line_on_page": 9,
+              "page": 15
+            },
+            {
+              "excerpt": "dasar harga konstan pada masing-masing tahun yang sama dikalikan dengan 100. Indeks ini",
+              "line_on_page": 52,
+              "page": 17
+            },
+            {
+              "excerpt": "1.6. Penghitungan Produk Regional Atas Dasar Harga Konstan",
+              "line_on_page": 64,
+              "page": 17
+            },
+            {
+              "excerpt": "atas dasar harga konstan 2000.",
+              "line_on_page": 78,
+              "page": 17
+            },
+            {
+              "excerpt": "Selanjutnya nilai tambah bruto atas dasar harga konstan 2000 merupakan selisih antara",
+              "line_on_page": 4,
+              "page": 18
+            },
+            {
+              "excerpt": "konstan 2000 diperoleh dari perkalian output atas dasar harga konstan 2000 masing-masing",
+              "line_on_page": 10,
+              "page": 18
+            },
+            {
+              "excerpt": "Nilai tambah masing-masing tahun atas dasar harga konstan 2000 diperoleh dengan cara",
+              "line_on_page": 15,
+              "page": 18
+            },
+            {
+              "excerpt": "terhadap penghitungan output atas dasar harga konstan, kemudian menggunakan ratio nilai",
+              "line_on_page": 32,
+              "page": 18
+            },
+            {
+              "excerpt": "tambah terhadap output atas dasar harga konstan yang sama. Ratio tersebut diperoleh dari survei",
+              "line_on_page": 38,
+              "page": 18
+            },
+            {
+              "excerpt": "Nilai tambah atas dasar harga konstan 2000 diperoleh dengan cara membagi nilai tambah",
+              "line_on_page": 58,
+              "page": 18
+            },
+            {
+              "excerpt": "PDRB perkapita riil dapat dilihat dari penilaian PDRB atas dasar harga konstan",
+              "line_on_page": 14,
+              "page": 66
+            },
+            {
+              "excerpt": "PDRB Sumatera Barat Atas Dasar Harga Konstan (2000)",
+              "line_on_page": 2,
+              "page": 77
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Sumatera Barat Atas Dasar Harga Konstan",
+              "line_on_page": 2,
+              "page": 79
+            },
+            {
+              "excerpt": "Indeks Perkembangan PDRB Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 81
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 83
+            },
+            {
+              "excerpt": "Laju Pertumbuhan PDRB Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 85
+            },
+            {
+              "excerpt": "Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 89
+            },
+            {
+              "excerpt": "Perkapita Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 91
+            },
+            {
+              "excerpt": "Perkapita Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 93
+            },
+            {
+              "excerpt": "Perkapita Sumatera Barat Atas Dasar Harga Konstan 2000",
+              "line_on_page": 3,
+              "page": 95
+            },
+            {
+              "excerpt": "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009",
+              "line_on_page": 2,
+              "page": 97
+            },
+            {
+              "excerpt": "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009",
+              "line_on_page": 2,
+              "page": 99
+            },
+            {
+              "excerpt": "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 101
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 103
+            },
+            {
+              "excerpt": "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000",
+              "line_on_page": 2,
+              "page": 105
+            },
+            {
+              "excerpt": "PDRB Kabupaten Kepulauan Mentawai Atas Dasar Harga Konstan (2000)",
+              "line_on_page": 2,
+              "page": 108
+            }
+          ]
+        },
+        "kabupaten/kota": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "Regional Bruto Provinsi Sumatera Barat dan Kabupaten/Kota) Tahun 2005 – 2009 ini merupakan",
+              "line_on_page": 5,
+              "page": 3
+            },
+            {
+              "excerpt": "ekonomi hasil penyusunan oleh masing-masing BPS Kabupaten/Kota yang telah direkonsiliasi",
+              "line_on_page": 9,
+              "page": 3
+            },
+            {
+              "excerpt": "PDRB Kabupaten/Kota ini disajikan atas dasar harga berlaku dan harga konstan 2000. Disamping",
+              "line_on_page": 16,
+              "page": 3
+            },
+            {
+              "excerpt": "masing Kabupaten/Kota dan Provinsi, peranan PDRB masing-masing Kabupaten/Kota terhadap",
+              "line_on_page": 24,
+              "page": 3
+            },
+            {
+              "excerpt": "total PDRB Provinsi, peranan sektoral PDRB Kabupaten/Kota terhadap sektor yang sama di",
+              "line_on_page": 27,
+              "page": 3
+            },
+            {
+              "excerpt": "Publikasi Pendapatan Regional kabupaten/kota Provinsi Sumatera Barat 2005-2009",
+              "line_on_page": 44,
+              "page": 12
+            },
+            {
+              "excerpt": "Dalam publikasi ini disajikan data PDRB kabupaten/kota se Sumatera Barat yang",
+              "line_on_page": 66,
+              "page": 12
+            },
+            {
+              "excerpt": "dihitung langsung oleh BPS kabupaten/kota bekerjasama dengan BPS Provinsi Sumatera Barat.",
+              "line_on_page": 67,
+              "page": 12
+            },
+            {
+              "excerpt": "Sumatera Barat selama periode 2005-2009. Kondisi ekonomi di masing-masing kabupaten/kota",
+              "line_on_page": 9,
+              "page": 38
+            },
+            {
+              "excerpt": "Selain itu akan disajikan juga hubungan antara PDRB kabupaten/kota dengan PDRB",
+              "line_on_page": 27,
+              "page": 38
+            },
+            {
+              "excerpt": "Provinsi. Secara teori dapat dijelaskan bahwa PDRB kabupaten/kota merupakan bagian dari",
+              "line_on_page": 29,
+              "page": 38
+            },
+            {
+              "excerpt": "PDRB Provinsi. Dengan demikian perubahan yang terjadi di tingkat kabupaten/kota akan",
+              "line_on_page": 32,
+              "page": 38
+            },
+            {
+              "excerpt": "Dari hasil penghitungan PDRB kabupaten/kota tersebut juga dapat diketahui/ dianalisis",
+              "line_on_page": 58,
+              "page": 38
+            },
+            {
+              "excerpt": "perbandingan kombinasi laju pertumbuhan PDRB kabupaten/kota terhadap laju pertumbuhan",
+              "line_on_page": 59,
+              "page": 38
+            },
+            {
+              "excerpt": "PDRB Provinsi dan PDRB perkapita kabupaten/kota terhadap PDRB perkapita Provinsi,",
+              "line_on_page": 60,
+              "page": 38
+            },
+            {
+              "excerpt": "beberapa hal antara lain kabupaten/kota yang :",
+              "line_on_page": 62,
+              "page": 38
+            },
+            {
+              "excerpt": "4.1. Analisis Antar Kabupaten/Kota",
+              "line_on_page": 4,
+              "page": 39
+            },
+            {
+              "excerpt": "Nilai tambah yang terbentuk dalam PDRB suatu daerah (kabupaten/kota) biasanya",
+              "line_on_page": 6,
+              "page": 39
+            },
+            {
+              "excerpt": "dibandingkan 18 kabupaten/kota lainnya di Sumatera Barat.",
+              "line_on_page": 37,
+              "page": 39
+            },
+            {
+              "excerpt": "Kabupaten/Kota Kabupaten/Kota",
+              "line_on_page": 10,
+              "page": 40
+            },
+            {
+              "excerpt": "Peranan PDRB Kabupaten/Kota terhadap Total PDRB Sumatera Barat 2005 - 2009",
+              "line_on_page": 9,
+              "page": 41
+            },
+            {
+              "excerpt": "Jika diamati besarnya peranan PDRB masing-masing Kabupaten/Kota terhadap PDRB",
+              "line_on_page": 28,
+              "page": 41
+            },
+            {
+              "excerpt": "keberhasilan Kabupaten/Kota bersangkutan meningkatkan produksi sektoralnya. Hal ini",
+              "line_on_page": 15,
+              "page": 42
+            },
+            {
+              "excerpt": "Nama Dan Banyaknya Kabupaten/Kota",
+              "line_on_page": 5,
+              "page": 43
+            },
+            {
+              "excerpt": "Laju Pertumbuhan Ekonomi Kabupaten/Kota, 2009 (%)",
+              "line_on_page": 32,
+              "page": 43
+            },
+            {
+              "excerpt": "Kabupaten/Kota Laju Pertumbuhan",
+              "line_on_page": 38,
+              "page": 43
+            },
+            {
+              "excerpt": "Pada pertumbuhan tertinggi yaitu di atas 6,00 dicatat oleh 6 daerah Kabupaten/Kota.",
+              "line_on_page": 9,
+              "page": 44
+            },
+            {
+              "excerpt": "Kabupaten/Kota 2005 – 2009",
+              "line_on_page": 28,
+              "page": 44
+            },
+            {
+              "excerpt": "Berdasarkan hasil perhitungan PDRB menurut Kabupaten/Kota, tampak dengan jelas",
+              "line_on_page": 4,
+              "page": 45
+            },
+            {
+              "excerpt": "Peranan Sektor Pertanian Di Kabupaten/KotaTahun 2005-2009",
+              "line_on_page": 10,
+              "page": 46
+            }
+          ]
+        },
+        "pdrb per kapita": {
+          "hit_count_capped": 1,
+          "hits": [
+            {
+              "excerpt": "4.5 Perbandingan Laju Pertumbuhan dan PDRB Per Kapita",
+              "line_on_page": 67,
+              "page": 66
+            }
+          ]
+        },
+        "pdrb perkapita": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "Provinsi, PDRB Perkapita dan sebagainya.",
+              "line_on_page": 33,
+              "page": 3
+            },
+            {
+              "excerpt": "2.3 PDRB Perkapita ......................................................................................................... 16",
+              "line_on_page": 79,
+              "page": 5
+            },
+            {
+              "excerpt": "4.4 PDRB Perkapita ....................................................................................................... 59",
+              "line_on_page": 47,
+              "page": 6
+            },
+            {
+              "excerpt": "4.5 Perbandingan Laju Pertumbuhan dan PDRB Perkapita ........................................... 61",
+              "line_on_page": 54,
+              "page": 6
+            },
+            {
+              "excerpt": "Tabel 2.3 PDRB Perkapita dan Pendapatan Regioana Perkapita Atas Dasar Harga",
+              "line_on_page": 7,
+              "page": 7
+            },
+            {
+              "excerpt": "PDRB Provinsi dan PDRB Perkapita Kabupaten / Kota terhadap",
+              "line_on_page": 23,
+              "page": 8
+            },
+            {
+              "excerpt": "PDRB Perkapita Provinsi, 2009",
+              "line_on_page": 24,
+              "page": 8
+            },
+            {
+              "excerpt": "Gambar 18 Perbandingan PDRB Perkapita Kabupaten / Kota terhadap PDRB Perkapita",
+              "line_on_page": 76,
+              "page": 9
+            },
+            {
+              "excerpt": "Gambar 19 Plot Laju Pertumbuhan dan PDRB Perkapita 2009 ......................................... 64",
+              "line_on_page": 1,
+              "page": 10
+            },
+            {
+              "excerpt": "PDRB PERKAPITA",
+              "line_on_page": 28,
+              "page": 20
+            },
+            {
+              "excerpt": "2.3. PDRB Perkapita",
+              "line_on_page": 57,
+              "page": 24
+            },
+            {
+              "excerpt": "Selama lima tahun terakhir, PDRB Perkapita Sumatera Barat memperlihatkan",
+              "line_on_page": 59,
+              "page": 24
+            },
+            {
+              "excerpt": "Secara konsepsional PDRB Perkapita merupakan hasil bagi antara nilai nominal PDRB",
+              "line_on_page": 63,
+              "page": 24
+            },
+            {
+              "excerpt": "Dari tabel 2.3. terlihat bahwa PDRB perkapita Sumatera Barat tahun 2009 mencapai",
+              "line_on_page": 71,
+              "page": 24
+            },
+            {
+              "excerpt": "Cukup tingginya PDRB perkapita dan Pendapatan Regional Perkapita pada lima tahun",
+              "line_on_page": 8,
+              "page": 25
+            },
+            {
+              "excerpt": "PDRB Perkapita dan Pendapatan Regional Perkapita",
+              "line_on_page": 14,
+              "page": 25
+            },
+            {
+              "excerpt": "PDRB Perkapita 2005 9 783 910,75 18,73",
+              "line_on_page": 35,
+              "page": 25
+            },
+            {
+              "excerpt": "PDRB Perkapita",
+              "line_on_page": 41,
+              "page": 37
+            },
+            {
+              "excerpt": "struktur perekonomian, laju pertumbuhan, PDRB perkapita dan sebagainya.",
+              "line_on_page": 11,
+              "page": 38
+            },
+            {
+              "excerpt": "PDRB Provinsi dan PDRB perkapita kabupaten/kota terhadap PDRB perkapita Provinsi,",
+              "line_on_page": 60,
+              "page": 38
+            },
+            {
+              "excerpt": "a. mengalami pertumbuhan riil PDRB dan PDRB perkapita yang lebih tinggi dibandingkan",
+              "line_on_page": 63,
+              "page": 38
+            },
+            {
+              "excerpt": "b. mempunyai pertumbuhan riil PDRB lebih tinggi, namun mencatat PDRB perkapita lebih",
+              "line_on_page": 65,
+              "page": 38
+            },
+            {
+              "excerpt": "c. mempunyai pertumbuhan riil PDRB lebih rendah, namun mencapai PDRB perkapita lebih",
+              "line_on_page": 67,
+              "page": 38
+            },
+            {
+              "excerpt": "d. mengalami pertumbuhan riil PDRB beserta PDRB perkapitanya lebih rendah dari angka",
+              "line_on_page": 69,
+              "page": 38
+            },
+            {
+              "excerpt": "4.4. PDRB Perkapita",
+              "line_on_page": 80,
+              "page": 64
+            },
+            {
+              "excerpt": "adalah dengan melihat perkembangan PDRB perkapita. Dengan tersedianya data tersebut,",
+              "line_on_page": 83,
+              "page": 64
+            },
+            {
+              "excerpt": "PDRB perkapita diperoleh dari hasil pembagian antara PDRB dengan jumlah penduduk",
+              "line_on_page": 86,
+              "page": 64
+            },
+            {
+              "excerpt": "pertengahan tahun. Jadi, besarnya PDRB perkapita tersebut sangat dipengaruhi oleh kedua",
+              "line_on_page": 87,
+              "page": 64
+            },
+            {
+              "excerpt": "variabel diatas. Dengan disajikannya PDRB perkapita seluruh Kabupaten/Kota, akan membantu",
+              "line_on_page": 4,
+              "page": 65
+            },
+            {
+              "excerpt": "Terhadap PDRB Provinsi dan PDRB Perkapita Kabupaten/ Kota",
+              "line_on_page": 9,
+              "page": 65
+            }
+          ]
+        },
+        "pertumbuhan ekonomi": {
+          "hit_count_capped": 28,
+          "hits": [
+            {
+              "excerpt": "tabel agregat, publikasi ini juga menyajikan data mengenai laju pertumbuhan ekonomi masing-",
+              "line_on_page": 21,
+              "page": 3
+            },
+            {
+              "excerpt": "Barat yang mengakibatkan akselerasi laju pertumbuhan ekonomi Sumatera Barat melambat",
+              "line_on_page": 25,
+              "page": 4
+            },
+            {
+              "excerpt": "yang mencatat pertumbuhan diatas pertumbuhan ekonomi Sumatera Barat, dan hanya ada 1",
+              "line_on_page": 40,
+              "page": 4
+            },
+            {
+              "excerpt": "Kabupaten yang mencatat pertumbuhan ekonominya dibawah pertumbuhan ekonomi Provinsi",
+              "line_on_page": 46,
+              "page": 4
+            },
+            {
+              "excerpt": "2.2 Pertumbuhan Ekonomi ............................................................................................... 14",
+              "line_on_page": 78,
+              "page": 5
+            },
+            {
+              "excerpt": "4.1.2 Pertumbuhan Ekonomi Kabupaten dan Kota .................................................. 37",
+              "line_on_page": 27,
+              "page": 6
+            },
+            {
+              "excerpt": "Tabel 4.3 Laju Pertumbuhan Ekonomi Kabupaten / Kota, 2009 (%) .............................. 38",
+              "line_on_page": 59,
+              "page": 7
+            },
+            {
+              "excerpt": "Gambar 8 Laju Pertumbuhan Ekonomi Kabupaten / Kota 2005 – 2009 ........................ 38",
+              "line_on_page": 29,
+              "page": 9
+            },
+            {
+              "excerpt": "- Tingkat pertumbuhan ekonomi suatu daerah.",
+              "line_on_page": 22,
+              "page": 12
+            },
+            {
+              "excerpt": "pertumbuhan agregat nilai tambah yang dihasilkan, atau pertumbuhan ekonomi (economic",
+              "line_on_page": 29,
+              "page": 17
+            },
+            {
+              "excerpt": "PERTUMBUHAN EKONOMI",
+              "line_on_page": 20,
+              "page": 20
+            },
+            {
+              "excerpt": "2.2. Pertumbuhan Ekonomi",
+              "line_on_page": 69,
+              "page": 22
+            },
+            {
+              "excerpt": "Pertumbuhan ekonomi merupakan suatu gambaran mengenai dampak pembangunan",
+              "line_on_page": 71,
+              "page": 22
+            },
+            {
+              "excerpt": "4.1.2. Pertumbuhan Ekonomi Kabupaten/ Kota",
+              "line_on_page": 12,
+              "page": 42
+            },
+            {
+              "excerpt": "berpendapat bahwa laju pertumbuhan ekonomi suatu daerah merupakan kinerja pembangunan",
+              "line_on_page": 27,
+              "page": 42
+            },
+            {
+              "excerpt": "Selain berguna untuk mengukur kinerja pembangunan, pertumbuhan ekonomi juga",
+              "line_on_page": 44,
+              "page": 42
+            },
+            {
+              "excerpt": "melambat jika dibandingkan dengan tahun 2008. Pertumbuhan ekonomi Sumatra Barat pada",
+              "line_on_page": 64,
+              "page": 42
+            },
+            {
+              "excerpt": "Menurut Laju Pertumbuhan Ekonomi, 2009",
+              "line_on_page": 6,
+              "page": 43
+            },
+            {
+              "excerpt": "Laju Pertumbuhan Ekonomi Kabupaten/Kota, 2009 (%)",
+              "line_on_page": 32,
+              "page": 43
+            },
+            {
+              "excerpt": "Tingkat pertumbuhan ekonomi terendah di kelompok ini dicapai oleh Kab Padang Pariaman",
+              "line_on_page": 5,
+              "page": 44
+            },
+            {
+              "excerpt": "Laju Pertumbuhan Ekonomi",
+              "line_on_page": 25,
+              "page": 44
+            },
+            {
+              "excerpt": "di Sumbar yang mengakibatkan akselarasi laju pertumbuhan ekonomi Sumatera Barat melambat",
+              "line_on_page": 52,
+              "page": 56
+            },
+            {
+              "excerpt": "Kondisi ekonomi yang diharapkan adalah pertumbuhan ekonomi yang tinggi dengan",
+              "line_on_page": 69,
+              "page": 66
+            },
+            {
+              "excerpt": "dibarengi PDRB perkapita yang juga tinggi. Sehinga, pertumbuhan ekonomi yang dicapai oleh",
+              "line_on_page": 70,
+              "page": 66
+            },
+            {
+              "excerpt": "Menurut Kriteria Pertumbuhan Ekonomi dan PDRB Perkapita Dibandingkan Dengan",
+              "line_on_page": 28,
+              "page": 67
+            },
+            {
+              "excerpt": "pada anggapan dasar bahwa pertumbuhan ekonomi suatu daerah dipengaruhi oleh tiga",
+              "line_on_page": 15,
+              "page": 71
+            },
+            {
+              "excerpt": "daerah pada sektor-sektor yang mengalami pertumbuhan ekonomi tinggi atau lamban pada",
+              "line_on_page": 12,
+              "page": 73
+            },
+            {
+              "excerpt": "Komponen komponen Kesenjangan Pertumbuhan Ekonomi Regional",
+              "line_on_page": 2,
+              "page": 232
+            }
+          ]
+        },
+        "produk domestik regional bruto": {
+          "hit_count_capped": 14,
+          "hits": [
+            {
+              "excerpt": "PRODUK DOMESTIK REGIONAL BRUTO 100,00 100,00 100,00 100,00 100,00",
+              "line_on_page": 64,
+              "page": 22
+            },
+            {
+              "excerpt": "PRODUK DOMESTIK REGIONAL BRUTO",
+              "line_on_page": 53,
+              "page": 23
+            },
+            {
+              "excerpt": "PRODUK DOMESTIK REGIONAL BRUTO 100,00 100,00 100,00 100,00 100,00",
+              "line_on_page": 48,
+              "page": 28
+            },
+            {
+              "excerpt": "PRODUK DOMESTIK REGIONAL BRUTO 100,00 100,00 100,00 100,00 100,00",
+              "line_on_page": 71,
+              "page": 30
+            },
+            {
+              "excerpt": "PRODUK DOMESTIK REGIONAL BRUTO",
+              "line_on_page": 36,
+              "page": 33
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 44 674 569,24 53 029 588,10 59 799 045,30 70 614 210,04 76 295 430,26",
+              "line_on_page": 16,
+              "page": 88
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 29 159 480,53 30 949 945,10 32 912 968,59 35 007 921,57 36 464 582,69",
+              "line_on_page": 16,
+              "page": 89
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar 195,17 231,68 261,25 308,50 333,32",
+              "line_on_page": 16,
+              "page": 90
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar 127,39 135,21 143,79 152,94 159,31",
+              "line_on_page": 16,
+              "page": 91
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar 119,58 118,70 112,77 118,09 108,05",
+              "line_on_page": 16,
+              "page": 92
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar 105,73 106,14 106,34 106,37 104,16",
+              "line_on_page": 16,
+              "page": 93
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar 19,58 18,70 12,77 18,09 8,05",
+              "line_on_page": 16,
+              "page": 94
+            },
+            {
+              "excerpt": "1 Produk Domestik Regional Bruto ADH. Pasar 5,73 6,14 6,34 6,37 4,16",
+              "line_on_page": 16,
+              "page": 95
+            },
+            {
+              "excerpt": "Produk Domestik Regional Bruto (PDRB) Provinsi Sumatera",
+              "line_on_page": 11,
+              "page": 236
+            }
+          ]
+        }
+      },
+      "pdf_page_count": 236,
+      "pdf_sha256": "c54ae285a81e01255f354103d271419ba8d4748c4e9f19d58c94d81c8b3d338e",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-2005-2009/source.pdf",
+      "source_plan_id": "m8_grdp_pre",
+      "text_bytes": 1421097,
+      "text_path": "data/processed/milestone8/source_text/bps-grdp-2005-2009.txt",
+      "text_sha256": "b01acd9679b9b56eae117a5ae47f5f578bc118195cb6d32b157b8b187ef39741",
+      "visible_character_count": 501215
+    },
+    {
+      "candidate_slices": [],
+      "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
+      "ocr_performed": false,
+      "pattern_hits": {
+        "2005 2006 2007 2008 2009": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "atas dasar harga konstan": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "harga konstan 2000": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "kepulauan mentawai": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "kota padang": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "padang pariaman": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "sumatera barat": {
+          "hit_count_capped": 0,
+          "hits": []
+        }
+      },
+      "pdf_page_count": 191,
+      "pdf_sha256": "8ecd1a8eb85338161f7db9a826e2b364371de91a41566fca717cf4a47d8178ef",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-kabkota-indonesia-2005-2009/source.pdf",
+      "source_plan_id": "m8_grdp_pre_national",
+      "text_bytes": 847462,
+      "text_path": "data/processed/milestone8/source_text/bps-grdp-kabkota-indonesia-2005-2009.txt",
+      "text_sha256": "115964bb88714f9759a41b84c1be60bb2165637c9c4a9e83492fbf4748065846",
+      "visible_character_count": 273997
+    },
+    {
+      "candidate_slices": [
+        {
+          "pages": [
+            410,
+            415
+          ],
+          "path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2009-2013-pages-410-415.txt",
+          "sha256": "1070c319fb4504ef4a275c52ec676a4545b1405a86a7529d19be4e4e8de2bc3e"
+        }
+      ],
+      "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
+      "ocr_performed": false,
+      "pattern_hits": {
+        "13.1.2": {
+          "hit_count_capped": 3,
+          "hits": [
+            {
+              "excerpt": "13.1.2 Produk Domestik Regional Bruto Atas Dasar Harga Konstan 371",
+              "line_on_page": 31,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.2 Gross Regional Domestic Product at Constant Prices by District 373",
+              "line_on_page": 57,
+              "page": 63
+            },
+            {
+              "excerpt": "13.1.2",
+              "line_on_page": 6,
+              "page": 413
+            }
+          ]
+        },
+        "2009": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "Kecamatan Tahun 2009-2013………………………………………………………..",
+              "line_on_page": 89,
+              "page": 37
+            },
+            {
+              "excerpt": "Pendidikan yang Ditamatkan Masa Bakti Tahun 2009-2013……... ……",
+              "line_on_page": 2,
+              "page": 38
+            },
+            {
+              "excerpt": "Kecamatan di Sawahlunto 2009-2013(Ribuan) ..............................",
+              "line_on_page": 33,
+              "page": 42
+            },
+            {
+              "excerpt": "Sawahlunto 2009-2013 (Ribuan) ...................................................",
+              "line_on_page": 38,
+              "page": 42
+            },
+            {
+              "excerpt": "Sawahlunto 2009-2013 (Ribuan) ...................................................",
+              "line_on_page": 49,
+              "page": 42
+            },
+            {
+              "excerpt": "Menurut Lapangan Usaha Tahun 2009-2013 (Juta Rupiah) ........",
+              "line_on_page": 68,
+              "page": 49
+            },
+            {
+              "excerpt": "Menurut Kab./Kota di Provinsi Sumatera Barat 2009-2013……….",
+              "line_on_page": 27,
+              "page": 50
+            },
+            {
+              "excerpt": "Menurut Kab/Kota di Provinsi Sumatera Barat 2009-2013………..",
+              "line_on_page": 36,
+              "page": 50
+            },
+            {
+              "excerpt": "Menurut Kabupaten/Kota di Provinsi Sumatera Barat 2009-",
+              "line_on_page": 60,
+              "page": 50
+            },
+            {
+              "excerpt": "Menurut Kabupaten/Kota di Provinsi Sumatera Barat 2009-2013",
+              "line_on_page": 74,
+              "page": 50
+            },
+            {
+              "excerpt": "Barat Tahun 2009-2013 ……………………………………………………………",
+              "line_on_page": 86,
+              "page": 50
+            },
+            {
+              "excerpt": "Barat 2009-2012 ……………………………………………………………………….",
+              "line_on_page": 88,
+              "page": 50
+            },
+            {
+              "excerpt": "Barat 2009-2013 ………………………………………………………………………",
+              "line_on_page": 90,
+              "page": 50
+            },
+            {
+              "excerpt": "at 2009-2011 ……………………………………………………………………….",
+              "line_on_page": 92,
+              "page": 50
+            },
+            {
+              "excerpt": "District Party in Sawahlunto (Periode 2009-2014) ..........................",
+              "line_on_page": 59,
+              "page": 51
+            },
+            {
+              "excerpt": "Political Parties and District Year 2009-2014..................................",
+              "line_on_page": 78,
+              "page": 51
+            },
+            {
+              "excerpt": "and Level of Education Completed Bakti Year Period 2009-2014….",
+              "line_on_page": 80,
+              "page": 51
+            },
+            {
+              "excerpt": "4.4.2 Marriage according to the number of sub 2009-2012.................... 169",
+              "line_on_page": 1,
+              "page": 57
+            },
+            {
+              "excerpt": "2009-2012......................................................................................",
+              "line_on_page": 77,
+              "page": 57
+            },
+            {
+              "excerpt": "2009-2012.....................................................................................",
+              "line_on_page": 2,
+              "page": 60
+            },
+            {
+              "excerpt": "District or City in the province of West Sumatra 2009-2013……..",
+              "line_on_page": 51,
+              "page": 63
+            },
+            {
+              "excerpt": "or City in the province of West Sumatra 2009-2013………………….",
+              "line_on_page": 63,
+              "page": 63
+            },
+            {
+              "excerpt": "District or City in the province of Sumatera Barat 2009-2013.....",
+              "line_on_page": 77,
+              "page": 63
+            },
+            {
+              "excerpt": "or City in the province of Sumatera Barat 2009-2013..……………..",
+              "line_on_page": 84,
+              "page": 63
+            },
+            {
+              "excerpt": "Barat 2009-2013..........................................................................",
+              "line_on_page": 88,
+              "page": 63
+            },
+            {
+              "excerpt": "2009-2013 ...................................................................................",
+              "line_on_page": 90,
+              "page": 63
+            },
+            {
+              "excerpt": "2009 9939 27345 100",
+              "line_on_page": 97,
+              "page": 75
+            },
+            {
+              "excerpt": "2009 3.293 5.258 8.855",
+              "line_on_page": 96,
+              "page": 76
+            },
+            {
+              "excerpt": "2009 10 27 27 - - 27.345",
+              "line_on_page": 78,
+              "page": 89
+            },
+            {
+              "excerpt": "2009 16 4 20",
+              "line_on_page": 57,
+              "page": 90
+            }
+          ]
+        },
+        "2013": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "WALIKOTA SAWAHLUNTO (2013-2018)",
+              "line_on_page": 2,
+              "page": 10
+            },
+            {
+              "excerpt": "Visi Walikota Sawahlunto 2013-2018 :",
+              "line_on_page": 5,
+              "page": 10
+            },
+            {
+              "excerpt": "MAYOR of Sawahlunto (2013-2018)",
+              "line_on_page": 2,
+              "page": 11
+            },
+            {
+              "excerpt": "Mayor of Sawahlunto Vision 2013-2018:",
+              "line_on_page": 7,
+              "page": 11
+            },
+            {
+              "excerpt": "Publikasi “SAWAHLUNTO DALAM ANGKA 2013” merupakan",
+              "line_on_page": 3,
+              "page": 14
+            },
+            {
+              "excerpt": "The “SAWAHLUNTO IN FIGURES 2013” is continuation of the previous",
+              "line_on_page": 3,
+              "page": 15
+            },
+            {
+              "excerpt": "Table According to the land use is widespread and District 2013",
+              "line_on_page": 4,
+              "page": 37
+            },
+            {
+              "excerpt": "1..1.2 Luas Wilayah Menurut Kecamatan di Kota Sawahlunto 2013………... 9",
+              "line_on_page": 7,
+              "page": 37
+            },
+            {
+              "excerpt": "1.1.3 Tinggi Ibu Kecamatan Dari Permukaan Laut di Sawahlunto 2013 10",
+              "line_on_page": 8,
+              "page": 37
+            },
+            {
+              "excerpt": "Kecamatan Tahun 2009-2013………………………………………………………..",
+              "line_on_page": 89,
+              "page": 37
+            },
+            {
+              "excerpt": "Pendidikan yang Ditamatkan Masa Bakti Tahun 2009-2013……... ……",
+              "line_on_page": 2,
+              "page": 38
+            },
+            {
+              "excerpt": "2.3.4 Kegiatan Sosial, Seni Budaya dan Olah Raga 2008-2013 ……………….. 39",
+              "line_on_page": 9,
+              "page": 38
+            },
+            {
+              "excerpt": "Sawahlunto Menurut Pendidikan 2013…………………………………………….",
+              "line_on_page": 17,
+              "page": 38
+            },
+            {
+              "excerpt": "Pendidikan 2013……………………………………………………………………………. 49",
+              "line_on_page": 53,
+              "page": 38
+            },
+            {
+              "excerpt": "Menurut Golongan 2013………………………………………………………………. 50",
+              "line_on_page": 66,
+              "page": 38
+            },
+            {
+              "excerpt": "Kecamatan di Sawahlunto 2009-2013(Ribuan) ..............................",
+              "line_on_page": 33,
+              "page": 42
+            },
+            {
+              "excerpt": "Sawahlunto 2009-2013 (Ribuan) ...................................................",
+              "line_on_page": 38,
+              "page": 42
+            },
+            {
+              "excerpt": "Sawahlunto 2009-2013 (Ribuan) ...................................................",
+              "line_on_page": 49,
+              "page": 42
+            },
+            {
+              "excerpt": "4.2.11 Jumlah Posyandu menurut Strata di Kota Sawahlunto 2013 ……….. 161",
+              "line_on_page": 17,
+              "page": 43
+            },
+            {
+              "excerpt": "Tahun 2010-2013 ...........................................................................",
+              "line_on_page": 85,
+              "page": 46
+            },
+            {
+              "excerpt": "2008-2013…………………………………………………………………………………..",
+              "line_on_page": 88,
+              "page": 46
+            },
+            {
+              "excerpt": "Menurut Lapangan Usaha Tahun 2011-2013 (Jutaan Rupiah) .......",
+              "line_on_page": 21,
+              "page": 49
+            },
+            {
+              "excerpt": "Menurut Lapangan Usaha Tahun 2011-2013 (Jutaan Rupiah) .......",
+              "line_on_page": 26,
+              "page": 49
+            },
+            {
+              "excerpt": "Konstan 2000 Menurut Lapangan Usaha Tahun 2011-2013 (Juta",
+              "line_on_page": 32,
+              "page": 49
+            },
+            {
+              "excerpt": "Konstan 2000 Menurut Lapangan Usaha Tahun 2011-2013",
+              "line_on_page": 49,
+              "page": 49
+            },
+            {
+              "excerpt": "Menurut Lapangan Usaha Tahun 2009-2013 (Juta Rupiah) ........",
+              "line_on_page": 68,
+              "page": 49
+            },
+            {
+              "excerpt": "Lapangan Usaha 2011-2013……………………………………………………….",
+              "line_on_page": 91,
+              "page": 49
+            },
+            {
+              "excerpt": "gan Usaha (Tahun Sebelumnya = 100,00) 2011-2013 ……………...",
+              "line_on_page": 93,
+              "page": 49
+            },
+            {
+              "excerpt": "Tahun 2004-2013 ……………………………………………………………………..",
+              "line_on_page": 8,
+              "page": 50
+            },
+            {
+              "excerpt": "Menurut Kab./Kota di Provinsi Sumatera Barat 2009-2013……….",
+              "line_on_page": 27,
+              "page": 50
+            }
+          ]
+        },
+        "harga konstan": {
+          "hit_count_capped": 13,
+          "hits": [
+            {
+              "excerpt": "harga konstan 2000, setiap barang dan jasa dinilai dengan harga tetap yang terjadi",
+              "line_on_page": 7,
+              "page": 28
+            },
+            {
+              "excerpt": "13.1.2 Produk Domestik Regional Bruto Atas Dasar Harga Konstan 371",
+              "line_on_page": 31,
+              "page": 50
+            },
+            {
+              "excerpt": "Harga Konstan di Sumatera Barat (persen) ……………………………..",
+              "line_on_page": 48,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.5 Produk Domestik Regional Bruto Atas Dasar Harga Konstan",
+              "line_on_page": 73,
+              "page": 50
+            },
+            {
+              "excerpt": "1. PDRB Atas Dasar Harga Konstan 474.38 494.71 494,71",
+              "line_on_page": 26,
+              "page": 323
+            },
+            {
+              "excerpt": "1. PDRB Atas Dasar Harga Konstan 550.06 582,97 617,98",
+              "line_on_page": 20,
+              "page": 324
+            },
+            {
+              "excerpt": "“harga konstan”. Disebut sebagai harga market prices, all aggregates are valued",
+              "line_on_page": 7,
+              "page": 377
+            },
+            {
+              "excerpt": "berjalan, sedangkan harga konstan by valuing all aggregates at fixed base",
+              "line_on_page": 10,
+              "page": 377
+            },
+            {
+              "excerpt": "Tabel Distribusi Produk Domestik Regional Bruto Atas Dasar Harga Konstan 1)",
+              "line_on_page": 3,
+              "page": 382
+            },
+            {
+              "excerpt": "Tabel Distribusi Produk Domestik Regional Bruto Atas Dasar Harga Konstan 2)",
+              "line_on_page": 3,
+              "page": 384
+            },
+            {
+              "excerpt": "Tabel Pendapatan Regional dan Angka-Angka Atas Dasar Harga Konstan",
+              "line_on_page": 4,
+              "page": 389
+            },
+            {
+              "excerpt": "Produk Domestik Regional Bruto Atas Dasar Harga Konstan",
+              "line_on_page": 3,
+              "page": 413
+            },
+            {
+              "excerpt": "Laju Pertumbuhan PDRB Atas Dasar Harga Konstan Menurut Kab/",
+              "line_on_page": 3,
+              "page": 414
+            }
+          ]
+        },
+        "kabupaten/kota": {
+          "hit_count_capped": 6,
+          "hits": [
+            {
+              "excerpt": "XIII Perbandingan Antar Kabupaten/Kota......................................................... 367",
+              "line_on_page": 85,
+              "page": 35
+            },
+            {
+              "excerpt": "Menurut Kabupaten/Kota di Provinsi Sumatera Barat 2009-",
+              "line_on_page": 60,
+              "page": 50
+            },
+            {
+              "excerpt": "Menurut Kabupaten/Kota di Provinsi Sumatera Barat 2009-2013",
+              "line_on_page": 74,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.7 Indeks Pembangunan Manusia Kabupaten/Kota di Sumatera 376",
+              "line_on_page": 87,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.8 Tingkat Pengangguran Terbuka Kabupaten/Kota di Sumatera 377",
+              "line_on_page": 89,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.9 Indeks Kemahalan Konstruksi Kabupaten/Kota di Sumatera Bar- 378",
+              "line_on_page": 91,
+              "page": 50
+            }
+          ]
+        },
+        "produk domestik regional bruto": {
+          "hit_count_capped": 20,
+          "hits": [
+            {
+              "excerpt": "b. Produk domestik regional bruto (PDRB) secara sederhana dapat diartikan",
+              "line_on_page": 49,
+              "page": 27
+            },
+            {
+              "excerpt": "10.1.1 Produk Domestik Regional Bruto Atas Dasar Harga Berlaku 331",
+              "line_on_page": 15,
+              "page": 49
+            },
+            {
+              "excerpt": "10.1.2 Produk Domestik Regional Bruto Atas Dasar Harga Berlaku 2000 a. 333",
+              "line_on_page": 25,
+              "page": 49
+            },
+            {
+              "excerpt": "10.1.3 Distribusi Produk Domestik Regional Bruto Atas Dasar Harga 335",
+              "line_on_page": 28,
+              "page": 49
+            },
+            {
+              "excerpt": "10.1.4 Distribusi Produk Domestik Regional Bruto Atas Dasar Harga 337",
+              "line_on_page": 43,
+              "page": 49
+            },
+            {
+              "excerpt": "13.1.1 Produk Domestik Regional Bruto Atas Dasar Harga Berlaku 370",
+              "line_on_page": 26,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.2 Produk Domestik Regional Bruto Atas Dasar Harga Konstan 371",
+              "line_on_page": 31,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.4 Produk Domestik Regional Bruto Atas Dasar Harga Berlaku 373",
+              "line_on_page": 54,
+              "page": 50
+            },
+            {
+              "excerpt": "13.1.5 Produk Domestik Regional Bruto Atas Dasar Harga Konstan",
+              "line_on_page": 73,
+              "page": 50
+            },
+            {
+              "excerpt": "Produk Domestik Regional Bruto GRDP and its aggregations are",
+              "line_on_page": 3,
+              "page": 377
+            },
+            {
+              "excerpt": "Tabel Produk Domestik Regional Bruto Atas Dasar Harga Berlaku 1) Menurut",
+              "line_on_page": 4,
+              "page": 378
+            },
+            {
+              "excerpt": "Tabel Produk Domestik Regional Bruto Atas Dasar Harga Berlaku 2) Menurut",
+              "line_on_page": 3,
+              "page": 380
+            },
+            {
+              "excerpt": "Tabel Distribusi Produk Domestik Regional Bruto Atas Dasar Harga Konstan 1)",
+              "line_on_page": 3,
+              "page": 382
+            },
+            {
+              "excerpt": "Tabel Distribusi Produk Domestik Regional Bruto Atas Dasar Harga Konstan 2)",
+              "line_on_page": 3,
+              "page": 384
+            },
+            {
+              "excerpt": "1. Produk Domestik Regional Bruto ADH. Pasar 1.121.634,47 1.274.070,67 1.425.280,34 1.630.894,99",
+              "line_on_page": 14,
+              "page": 386
+            },
+            {
+              "excerpt": "1. Produk Domestik Regional Bruto ADH. Pasar 980.668,46 1.119.866,75 1.255.160,93 1.439.923,56",
+              "line_on_page": 11,
+              "page": 387
+            },
+            {
+              "excerpt": "1. Produk Domestik Regional Bruto ADH. Pasar 519.599,07 550.056,74 582.968,72 617.979,14",
+              "line_on_page": 13,
+              "page": 388
+            },
+            {
+              "excerpt": "1. Produk Domestik Regional Bruto ADH. Pasar 452.689,73 481.622,80 512.807,60 546.207,89",
+              "line_on_page": 13,
+              "page": 389
+            },
+            {
+              "excerpt": "Produk Domestik Regional Bruto Atas Dasar Harga Berlaku",
+              "line_on_page": 3,
+              "page": 412
+            },
+            {
+              "excerpt": "Produk Domestik Regional Bruto Atas Dasar Harga Konstan",
+              "line_on_page": 3,
+              "page": 413
+            }
+          ]
+        }
+      },
+      "pdf_page_count": 421,
+      "pdf_sha256": "c066499a4c050296e4ffdd10192ba4c6748da920bf0975fa887e2ed13e998612",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-2009-2013/source.pdf",
+      "source_plan_id": "m8_grdp_post",
+      "text_bytes": 1036653,
+      "text_path": "data/processed/milestone8/source_text/bps-grdp-2009-2013.txt",
+      "text_sha256": "3f9b8b46eea8c3e95ee6b89d64f413ba46f25e61df103a8d789b41cd9ae7f4a6",
+      "visible_character_count": 356572
+    },
+    {
+      "candidate_slices": [
+        {
+          "pages": [
+            96,
+            103
+          ],
+          "path": "data/processed/milestone8/source_text/candidate-pages/dlna-2009-pages-96-103.txt",
+          "sha256": "39bf38c3621c0ccbfd16ce4bdd14299a21020f61a369ffb0b079f154a17fec8f"
+        }
+      ],
+      "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
+      "ocr_performed": false,
+      "pattern_hits": {
+        "Padang Pariaman": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "the district of Padang Pariaman (Kabupaten Padang Pariaman). Historical data on seismic activity",
+              "line_on_page": 10,
+              "page": 15
+            },
+            {
+              "excerpt": "Padang, Kota Pariaman serta Kab. Padang Pariaman. Data historis yang mencatat kegiatan seismik",
+              "line_on_page": 10,
+              "page": 20
+            },
+            {
+              "excerpt": "Padang and at V-VI MMI in the surrounding districts, including Kab. Padang Pariaman",
+              "line_on_page": 7,
+              "page": 30
+            },
+            {
+              "excerpt": "and many one-storey houses in the surrounding districts. Eight districts (Padang Pariaman, Agam,",
+              "line_on_page": 9,
+              "page": 30
+            },
+            {
+              "excerpt": "the local geological and geotechnical characteristics of Kota Padang and Kab. Padang Pariaman, the",
+              "line_on_page": 12,
+              "page": 31
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 675 527 528",
+              "line_on_page": 28,
+              "page": 32
+            },
+            {
+              "excerpt": "Pasaman Barat, Kab. Agam, Kab. Padang Pariaman, Kota Pariaman, and Kab. Pesisir Selatan.",
+              "line_on_page": 11,
+              "page": 33
+            },
+            {
+              "excerpt": "Pariaman (population: 338,098) and in Kab. Padang Pariaman (population: 78,920).",
+              "line_on_page": 17,
+              "page": 33
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 387 8.13 0.17 1,520 255",
+              "line_on_page": 30,
+              "page": 37
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 4,328 7.3 0.1 387 11.32 90.1 50.1",
+              "line_on_page": 12,
+              "page": 38
+            },
+            {
+              "excerpt": "decile). However, four of the affected districts, namely Kab. Padang Pariaman, Kab. Pesisir Selatan,",
+              "line_on_page": 21,
+              "page": 39
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 62.5 17.1 6",
+              "line_on_page": 33,
+              "page": 39
+            },
+            {
+              "excerpt": "rural areas such as Kab. Padang Pariaman, which has the largest number of severly damaged homes,",
+              "line_on_page": 15,
+              "page": 43
+            },
+            {
+              "excerpt": "Padang Pariaman, Kota Pariaman, Pasaman Barat and Pesisir Selatan) based on a purposive",
+              "line_on_page": 19,
+              "page": 45
+            },
+            {
+              "excerpt": "4 Kab. Padang Pariaman 27.6 49.0 13.3 10.2",
+              "line_on_page": 21,
+              "page": 51
+            },
+            {
+              "excerpt": "conservation forestland in Agam, Padang and Padang Pariaman. No timber production from the",
+              "line_on_page": 32,
+              "page": 58
+            },
+            {
+              "excerpt": "the larger area and more sophisticated construction. Kota Pariaman and Kab. Padang Pariaman are",
+              "line_on_page": 8,
+              "page": 64
+            },
+            {
+              "excerpt": "Government of Kab. Padang Pariaman.",
+              "line_on_page": 16,
+              "page": 64
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman and",
+              "line_on_page": 25,
+              "page": 69
+            },
+            {
+              "excerpt": "Padang Pariaman and Kota Pariaman",
+              "line_on_page": 34,
+              "page": 73
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 63,538.2 42,514.2 42,834.7 148,887.1",
+              "line_on_page": 16,
+              "page": 75
+            },
+            {
+              "excerpt": "buildings were located in the earthquake affected area. Kab. Padang Pariaman has the largest",
+              "line_on_page": 11,
+              "page": 77
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman is the most affected district, followed by Kota Padang. Estimated",
+              "line_on_page": 6,
+              "page": 78
+            },
+            {
+              "excerpt": "damage and losses in Kab. Padang Pariaman are Rp 112 billion or 36 percent of the total damage",
+              "line_on_page": 7,
+              "page": 78
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 110,855.0 1,156 112,011.2",
+              "line_on_page": 17,
+              "page": 78
+            },
+            {
+              "excerpt": "facilities available in Kota Padang Panjang and Kab. Padang Pariaman are youth rehabilitation",
+              "line_on_page": 15,
+              "page": 80
+            },
+            {
+              "excerpt": "supplies and repairs and limited emergency repairs of irrigation canals in Kab. Padang Pariaman and",
+              "line_on_page": 37,
+              "page": 86
+            },
+            {
+              "excerpt": "locations in Kab. Pariaman, and Kab. Padang Pariaman.",
+              "line_on_page": 29,
+              "page": 91
+            },
+            {
+              "excerpt": "as Inna Muara are open, but some of the rooms required renovation. In Padang Pariaman, 16 out of",
+              "line_on_page": 45,
+              "page": 91
+            },
+            {
+              "excerpt": "the rural areas of Kab. Padang Pariaman,",
+              "line_on_page": 27,
+              "page": 98
+            }
+          ]
+        },
+        "Pariaman": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "affected districts are the cities of Padang and Pariaman (Kota Padang and Kota Pariaman), as well as",
+              "line_on_page": 9,
+              "page": 15
+            },
+            {
+              "excerpt": "the district of Padang Pariaman (Kabupaten Padang Pariaman). Historical data on seismic activity",
+              "line_on_page": 10,
+              "page": 15
+            },
+            {
+              "excerpt": "education and health facilities in the province are damaged, Kota Padang and Kab. Pariaman being",
+              "line_on_page": 12,
+              "page": 16
+            },
+            {
+              "excerpt": "sized enterprises (SMEs), mainly located in the urban areas of Kota Padang and Kab. Pariaman,",
+              "line_on_page": 27,
+              "page": 16
+            },
+            {
+              "excerpt": "Padang, Kota Pariaman serta Kab. Padang Pariaman. Data historis yang mencatat kegiatan seismik",
+              "line_on_page": 10,
+              "page": 20
+            },
+            {
+              "excerpt": "Padang dan Kabupaten Pariaman sebagai daerah yang mengalami kerusakan terparah. Sektor",
+              "line_on_page": 19,
+              "page": 21
+            },
+            {
+              "excerpt": "Pariaman, sementara perusahaan-perusahaan besar mengalami kerusakan yang relatif lebih kecil.",
+              "line_on_page": 36,
+              "page": 21
+            },
+            {
+              "excerpt": "kilometers off the coast northwest of Pariaman at 0.84 longitude and 99.65 lattitude. A major Mw",
+              "line_on_page": 10,
+              "page": 29
+            },
+            {
+              "excerpt": "Pariaman",
+              "line_on_page": 64,
+              "page": 29
+            },
+            {
+              "excerpt": "Pariaman Sawahlunto",
+              "line_on_page": 65,
+              "page": 29
+            },
+            {
+              "excerpt": "Padang and at V-VI MMI in the surrounding districts, including Kab. Padang Pariaman",
+              "line_on_page": 7,
+              "page": 30
+            },
+            {
+              "excerpt": "and many one-storey houses in the surrounding districts. Eight districts (Padang Pariaman, Agam,",
+              "line_on_page": 9,
+              "page": 30
+            },
+            {
+              "excerpt": "(Padang, Pariaman, Bukit Tinggi, Solok and Pariaman) were most impacted by the ground shaking.",
+              "line_on_page": 11,
+              "page": 30
+            },
+            {
+              "excerpt": "the local geological and geotechnical characteristics of Kota Padang and Kab. Padang Pariaman, the",
+              "line_on_page": 12,
+              "page": 31
+            },
+            {
+              "excerpt": "Pariaman, burying a significant propotion of the inhabitants.",
+              "line_on_page": 19,
+              "page": 32
+            },
+            {
+              "excerpt": "Kota Pariaman - 32 148 278",
+              "line_on_page": 24,
+              "page": 32
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 675 527 528",
+              "line_on_page": 28,
+              "page": 32
+            },
+            {
+              "excerpt": "Kota Pariaman, Kota Bukit Tinggi, Kota Solok, Kota Padang Panjang, Kab. Pariaman, Kab. Agam,",
+              "line_on_page": 7,
+              "page": 33
+            },
+            {
+              "excerpt": "Pasaman Barat, Kab. Agam, Kab. Padang Pariaman, Kota Pariaman, and Kab. Pesisir Selatan.",
+              "line_on_page": 11,
+              "page": 33
+            },
+            {
+              "excerpt": "Pariaman (population: 338,098) and in Kab. Padang Pariaman (population: 78,920).",
+              "line_on_page": 17,
+              "page": 33
+            },
+            {
+              "excerpt": "for Kota Pariaman to 4.6 percent for Kota Solok.",
+              "line_on_page": 13,
+              "page": 37
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 387 8.13 0.17 1,520 255",
+              "line_on_page": 30,
+              "page": 37
+            },
+            {
+              "excerpt": "Kota Pariaman 71 1.48 0.03 98 723",
+              "line_on_page": 40,
+              "page": 37
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 4,328 7.3 0.1 387 11.32 90.1 50.1",
+              "line_on_page": 12,
+              "page": 38
+            },
+            {
+              "excerpt": "Kota Pariaman 1,126 1.9 0.0 71 15.94 127.0 71.3",
+              "line_on_page": 22,
+              "page": 38
+            },
+            {
+              "excerpt": "decile). However, four of the affected districts, namely Kab. Padang Pariaman, Kab. Pesisir Selatan,",
+              "line_on_page": 21,
+              "page": 39
+            },
+            {
+              "excerpt": "Kab. Padang Pariaman 62.5 17.1 6",
+              "line_on_page": 33,
+              "page": 39
+            },
+            {
+              "excerpt": "Kota Pariaman 3.9 5.9 1",
+              "line_on_page": 46,
+              "page": 39
+            },
+            {
+              "excerpt": "Kota Padang and Kota Pariaman are at risk of larger ground amplification from",
+              "line_on_page": 22,
+              "page": 41
+            },
+            {
+              "excerpt": "Kota Padang and Kota Pariaman and the northern districts are situated on the very-high to high",
+              "line_on_page": 27,
+              "page": 41
+            }
+          ]
+        },
+        "damage and loss": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "The assessment of damage and losses is derived from the number of damaged units, as reported by",
+              "line_on_page": 21,
+              "page": 4
+            },
+            {
+              "excerpt": "3.1 Assessment Methodology and Summary of Damage and Losses ..................................................................... 27",
+              "line_on_page": 32,
+              "page": 6
+            },
+            {
+              "excerpt": "5.5. The Damage and Losses ........................................................................................................................................ 107",
+              "line_on_page": 18,
+              "page": 7
+            },
+            {
+              "excerpt": "Table 3. 1 Summary of the West Sumatra earthquake damage and losses ............................................................. 27",
+              "line_on_page": 39,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 2 Damage and losses in the environment sector ......................................................................................... 32",
+              "line_on_page": 40,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 4 Damage and losses in the government sector .......................................................................................... 35",
+              "line_on_page": 42,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 5 Damage and losses in the government sector .......................................................................................... 39",
+              "line_on_page": 43,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 7 Summary of damage and losses to the education sector ........................................................................ 43",
+              "line_on_page": 45,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 8 Summary of damage and losses in the health sector ............................................................................... 48",
+              "line_on_page": 46,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 9 Summary of damage and losses to religious facilities by religion .......................................................... 50",
+              "line_on_page": 47,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 10 Summary of damage and losses to religious facilities by district ......................................................... 51",
+              "line_on_page": 48,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 11 Damage and losses to facilities for the poor and vulnerable ............................................................... 53",
+              "line_on_page": 49,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 12 Damage and losses ...................................................................................................................................... 58",
+              "line_on_page": 50,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 15 Summary of damage and losses of trade & industry ............................................................................. 62",
+              "line_on_page": 53,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 16 Damage and losses by enterprise size ...................................................................................................... 63",
+              "line_on_page": 54,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 17 Summary damage and losses in the tourism industry ........................................................................... 64",
+              "line_on_page": 55,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 18 Damage and loss estimates in financial sector ....................................................................................... 67",
+              "line_on_page": 56,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 20 Estimated summary of damage and losses in the housing sector ....................................................... 73",
+              "line_on_page": 6,
+              "page": 9
+            },
+            {
+              "excerpt": "Table 3. 22 Summary of damage and losses in the water and sanitation sector .................................................... 80",
+              "line_on_page": 9,
+              "page": 9
+            },
+            {
+              "excerpt": "Table 3. 25 Summary of damage and losses in telecommunications ....................................................................... 89",
+              "line_on_page": 12,
+              "page": 9
+            },
+            {
+              "excerpt": "Table 3. 26 Summary of damage and losses in the power sector ............................................................................. 93",
+              "line_on_page": 13,
+              "page": 9
+            },
+            {
+              "excerpt": "Table 5. 4 Damage and loss estimates by the district government of Kab. Kerinci ........................................... 108",
+              "line_on_page": 22,
+              "page": 9
+            },
+            {
+              "excerpt": "Box 3. 1 Measuring damage and losses: the ECLAC methodology ........................................................................ 29",
+              "line_on_page": 36,
+              "page": 9
+            },
+            {
+              "excerpt": "DALA Damage and Loss Assessment",
+              "line_on_page": 39,
+              "page": 10
+            },
+            {
+              "excerpt": "destruction of the earthquake, both in terms of lives lost and material damage and losses.",
+              "line_on_page": 14,
+              "page": 15
+            },
+            {
+              "excerpt": "Damage and losses in West Sumatra are estimated at Rp 21.6 trillion, equivalent to about",
+              "line_on_page": 16,
+              "page": 15
+            },
+            {
+              "excerpt": "US$2.3 billion. Almost 80 percent of all damage and losses are recorded in the infrastructure",
+              "line_on_page": 17,
+              "page": 15
+            },
+            {
+              "excerpt": "disasters, housing is the worst affected sector, with damage and losses estimated at over Rp 15",
+              "line_on_page": 19,
+              "page": 15
+            },
+            {
+              "excerpt": "Over 88 percent of all damage and losses are of a private nature. This is primarily the result of",
+              "line_on_page": 23,
+              "page": 15
+            },
+            {
+              "excerpt": "large damage and losses in the housing sector, which is primarily privately owned, and by the fact",
+              "line_on_page": 24,
+              "page": 15
+            }
+          ]
+        },
+        "heavily damaged": {
+          "hit_count_capped": 18,
+          "hits": [
+            {
+              "excerpt": "Padang and Kota Pariaman, were heavily damaged. Many government agencies have been relocated",
+              "line_on_page": 31,
+              "page": 63
+            },
+            {
+              "excerpt": "heavily damaged houses were of inadequate",
+              "line_on_page": 18,
+              "page": 98
+            },
+            {
+              "excerpt": "houses, categorizing damage on the basis of ―destroyed or heavily damaged,‖ ―medium damage,‖",
+              "line_on_page": 35,
+              "page": 99
+            },
+            {
+              "excerpt": "houses (including the heavily damaged ones) some assets could be saved. For this category ,",
+              "line_on_page": 23,
+              "page": 101
+            },
+            {
+              "excerpt": "permanent and non-permanent respectively (per family) are calculated for heavily damaged houses.",
+              "line_on_page": 25,
+              "page": 101
+            },
+            {
+              "excerpt": "25 million per heavily damaged house and Rp 10 million for lightly damaged houses might be",
+              "line_on_page": 20,
+              "page": 102
+            },
+            {
+              "excerpt": "base-stations in heavily damaged/collapsed shopping malls (photo) and hotels do not require an",
+              "line_on_page": 8,
+              "page": 117
+            },
+            {
+              "excerpt": "network grid, which includes the heavily damaged",
+              "line_on_page": 17,
+              "page": 118
+            },
+            {
+              "excerpt": "Heavily Damaged 62 13 - 12 39 1",
+              "line_on_page": 24,
+              "page": 134
+            },
+            {
+              "excerpt": "Heavily Damaged - - - - - - -",
+              "line_on_page": 28,
+              "page": 134
+            },
+            {
+              "excerpt": "Heavily Damaged - - - - - - -",
+              "line_on_page": 32,
+              "page": 134
+            },
+            {
+              "excerpt": "Heavily Damaged - 3 - - - -",
+              "line_on_page": 36,
+              "page": 134
+            },
+            {
+              "excerpt": "Heavily Damaged - 1 - - - - -",
+              "line_on_page": 40,
+              "page": 134
+            },
+            {
+              "excerpt": "Heavily Damaged - - - - - - -",
+              "line_on_page": 8,
+              "page": 135
+            },
+            {
+              "excerpt": "Heavily Damaged - 1 - - - - -",
+              "line_on_page": 12,
+              "page": 135
+            },
+            {
+              "excerpt": "Heavily Damaged - - 1 - - - -",
+              "line_on_page": 16,
+              "page": 135
+            },
+            {
+              "excerpt": "Destroyed / heavily damaged 15,000,000 Central government",
+              "line_on_page": 39,
+              "page": 147
+            },
+            {
+              "excerpt": "1 Heavily damaged (cannot be used without structural repair) 44",
+              "line_on_page": 37,
+              "page": 203
+            }
+          ]
+        },
+        "housing": {
+          "hit_count_capped": 30,
+          "hits": [
+            {
+              "excerpt": "3.5.1. Housing .......................................................................................................................................................... 69",
+              "line_on_page": 47,
+              "page": 6
+            },
+            {
+              "excerpt": "Housing .................................................................................................................................................................. 120",
+              "line_on_page": 35,
+              "page": 7
+            },
+            {
+              "excerpt": "Map 3. 3 Housing destruction areas ............................................................................................................................. 69",
+              "line_on_page": 20,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 2. 2 Community expectations on funding sources for housing repair ......................................................... 20",
+              "line_on_page": 34,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 19 Summary of damage in the housing sector ............................................................................................. 72",
+              "line_on_page": 57,
+              "page": 8
+            },
+            {
+              "excerpt": "Table 3. 20 Estimated summary of damage and losses in the housing sector ....................................................... 73",
+              "line_on_page": 6,
+              "page": 9
+            },
+            {
+              "excerpt": "Table 3. 21 Estimated summary of recovery needs to be financed by the Government for the housing sector",
+              "line_on_page": 7,
+              "page": 9
+            },
+            {
+              "excerpt": "Table 7. 1 Level of housing rehabilitation grants ..................................................................................................... 120",
+              "line_on_page": 23,
+              "page": 9
+            },
+            {
+              "excerpt": "sectors (including housing), followed by the productive sectors with 11 percent. In line with similar",
+              "line_on_page": 18,
+              "page": 15
+            },
+            {
+              "excerpt": "disasters, housing is the worst affected sector, with damage and losses estimated at over Rp 15",
+              "line_on_page": 19,
+              "page": 15
+            },
+            {
+              "excerpt": "large damage and losses in the housing sector, which is primarily privately owned, and by the fact",
+              "line_on_page": 24,
+              "page": 15
+            },
+            {
+              "excerpt": "of damage to housing, in line with the extent of damage observed in other similar disasters.",
+              "line_on_page": 42,
+              "page": 15
+            },
+            {
+              "excerpt": "About 31 percent of the total housing stock in the affected districts has been either destroyed or",
+              "line_on_page": 43,
+              "page": 15
+            },
+            {
+              "excerpt": "damaged. The reconstruction of housing should be based on compliance with existing building",
+              "line_on_page": 45,
+              "page": 15
+            },
+            {
+              "excerpt": "activities. The reconstruction of transport, infrastructure, and housing, as well as economic recovery,",
+              "line_on_page": 27,
+              "page": 17
+            },
+            {
+              "excerpt": "assessments recommend the use of community-driven approaches to rebuild housing, community",
+              "line_on_page": 37,
+              "page": 17
+            },
+            {
+              "excerpt": "In the housing sector, which accounts for around 78 percent of all needs, the Government",
+              "line_on_page": 44,
+              "page": 17
+            },
+            {
+              "excerpt": "has adopted a policy of assistance for the rebuilding of housing. This assistance will provide",
+              "line_on_page": 45,
+              "page": 17
+            },
+            {
+              "excerpt": "Rp 15 million for destroyed or badly damaged housing, Rp 10 million for medium-damaged housing",
+              "line_on_page": 46,
+              "page": 17
+            },
+            {
+              "excerpt": "and a maximum of Rp 1 million for lightly damaged housing. However, this may prove to be",
+              "line_on_page": 47,
+              "page": 17
+            },
+            {
+              "excerpt": "damage is to housing, with little information is yet available on damage to infrastructure and the",
+              "line_on_page": 13,
+              "page": 18
+            },
+            {
+              "excerpt": "3 Lack of,or no shelter / housing 16.9",
+              "line_on_page": 12,
+              "page": 46
+            },
+            {
+              "excerpt": "their daily activities, regardless of the housing rehabilitation and reconstruction program. Nearly",
+              "line_on_page": 17,
+              "page": 47
+            },
+            {
+              "excerpt": "Table 2. 2 Community expectations on funding sources for housing repair",
+              "line_on_page": 28,
+              "page": 47
+            },
+            {
+              "excerpt": "Housing 15,649.4 297.6 15,947.0 15,947.0 0.0",
+              "line_on_page": 11,
+              "page": 55
+            },
+            {
+              "excerpt": "country, with housing taking up the largest overall share at Rp 15.9 trillion (74 percent) of",
+              "line_on_page": 47,
+              "page": 55
+            },
+            {
+              "excerpt": "The assessed sectors are: (i) infrastructure, consisting of housing, water and sanitation, road",
+              "line_on_page": 14,
+              "page": 56
+            },
+            {
+              "excerpt": "housing, water, and agriculture — and are dealt with in those sections of this report.",
+              "line_on_page": 27,
+              "page": 57
+            },
+            {
+              "excerpt": "housing and infrastructure will require significant amounts of timber, and sand. The price of sawn",
+              "line_on_page": 33,
+              "page": 59
+            },
+            {
+              "excerpt": "disaster resistant housing and non-engineered buildings, and community-based micro",
+              "line_on_page": 34,
+              "page": 66
+            }
+          ]
+        },
+        "lightly damaged": {
+          "hit_count_capped": 16,
+          "hits": [
+            {
+              "excerpt": "and a maximum of Rp 1 million for lightly damaged housing. However, this may prove to be",
+              "line_on_page": 47,
+              "page": 17
+            },
+            {
+              "excerpt": "only slightly damaged buildings.",
+              "line_on_page": 18,
+              "page": 71
+            },
+            {
+              "excerpt": "slightly damaged facilities first, children will be able to resume their activities in a relatively shorter",
+              "line_on_page": 17,
+              "page": 79
+            },
+            {
+              "excerpt": "medium, or lightly damaged. In terms of the type of facilities, the damage mostly affects orphanages,",
+              "line_on_page": 31,
+              "page": 79
+            },
+            {
+              "excerpt": "for lightly damaged properties and by 75 percent for moderately damaged properties. Similarly, the",
+              "line_on_page": 39,
+              "page": 92
+            },
+            {
+              "excerpt": "25 million per heavily damaged house and Rp 10 million for lightly damaged houses might be",
+              "line_on_page": 20,
+              "page": 102
+            },
+            {
+              "excerpt": "Lightly Damaged 986 1 3 1 - - 6",
+              "line_on_page": 26,
+              "page": 134
+            },
+            {
+              "excerpt": "Lightly Damaged 9 1 2 - - - -",
+              "line_on_page": 30,
+              "page": 134
+            },
+            {
+              "excerpt": "Lightly Damaged 15 - - - - - -",
+              "line_on_page": 34,
+              "page": 134
+            },
+            {
+              "excerpt": "Lightly Damaged 481 1 1 - - - 2",
+              "line_on_page": 38,
+              "page": 134
+            },
+            {
+              "excerpt": "Lightly Damaged - - - - - - -",
+              "line_on_page": 6,
+              "page": 135
+            },
+            {
+              "excerpt": "Lightly Damaged - 1 - - - - -",
+              "line_on_page": 10,
+              "page": 135
+            },
+            {
+              "excerpt": "Lightly Damaged - 1 - - - - -",
+              "line_on_page": 14,
+              "page": 135
+            },
+            {
+              "excerpt": "Lightly Damaged - - - - - - -",
+              "line_on_page": 18,
+              "page": 135
+            },
+            {
+              "excerpt": "Lightly damaged 1,000,000 Provincial governments",
+              "line_on_page": 43,
+              "page": 147
+            },
+            {
+              "excerpt": "4 Lightly damaged (could be used safely, need repair) 8",
+              "line_on_page": 40,
+              "page": 203
+            }
+          ]
+        },
+        "moderately damaged": {
+          "hit_count_capped": 11,
+          "hits": [
+            {
+              "excerpt": "worship. Places of worship for more than 42,000 households are moderately damaged, while",
+              "line_on_page": 33,
+              "page": 78
+            },
+            {
+              "excerpt": "for lightly damaged properties and by 75 percent for moderately damaged properties. Similarly, the",
+              "line_on_page": 39,
+              "page": 92
+            },
+            {
+              "excerpt": "Moderately Damaged 438 27 3 3 2 - 4",
+              "line_on_page": 25,
+              "page": 134
+            },
+            {
+              "excerpt": "Moderately Damaged 1 - - - - - -",
+              "line_on_page": 29,
+              "page": 134
+            },
+            {
+              "excerpt": "Moderately Damaged 1 - - - - - -",
+              "line_on_page": 33,
+              "page": 134
+            },
+            {
+              "excerpt": "Moderately Damaged 42 6 2 - - - 1",
+              "line_on_page": 37,
+              "page": 134
+            },
+            {
+              "excerpt": "Moderately Damaged - - - - - - -",
+              "line_on_page": 41,
+              "page": 134
+            },
+            {
+              "excerpt": "Moderately Damaged - - - - - - -",
+              "line_on_page": 9,
+              "page": 135
+            },
+            {
+              "excerpt": "Moderately Damaged - - - - - - -",
+              "line_on_page": 13,
+              "page": 135
+            },
+            {
+              "excerpt": "Moderately Damaged - - - - - - -",
+              "line_on_page": 17,
+              "page": 135
+            },
+            {
+              "excerpt": "regard to the tourism sector, a targeted tax holiday to assist those with lightly to moderately damaged",
+              "line_on_page": 7,
+              "page": 150
+            }
+          ]
+        },
+        "pre-disaster": {
+          "hit_count_capped": 22,
+          "hits": [
+            {
+              "excerpt": "Pre-disaster conditions",
+              "line_on_page": 29,
+              "page": 57
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 6,
+              "page": 63
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 35,
+              "page": 68
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 32,
+              "page": 72
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 6,
+              "page": 77
+            },
+            {
+              "excerpt": "Hindus. The pre-disaster data indicate that there were around 4,381 mosques, 12,189 surau/langgar,",
+              "line_on_page": 9,
+              "page": 77
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 34,
+              "page": 79
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 6,
+              "page": 83
+            },
+            {
+              "excerpt": "before these ricefields can be reclaimed and the pre-disaster production can be realized again. Other",
+              "line_on_page": 29,
+              "page": 85
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 38,
+              "page": 87
+            },
+            {
+              "excerpt": "Pre-Disaster Conditions",
+              "line_on_page": 13,
+              "page": 91
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 32,
+              "page": 93
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 11,
+              "page": 97
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 34,
+              "page": 105
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 29,
+              "page": 110
+            },
+            {
+              "excerpt": "“The network was back at pre-disaster traffic levels after 3-4 days” – Operator manager",
+              "line_on_page": 8,
+              "page": 115
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 41,
+              "page": 115
+            },
+            {
+              "excerpt": "All the main operators reported that the traffic was back to the normal pre-disaster levels",
+              "line_on_page": 12,
+              "page": 117
+            },
+            {
+              "excerpt": "Pre-disaster Conditions",
+              "line_on_page": 27,
+              "page": 118
+            },
+            {
+              "excerpt": "Table A.17: Number of religious buildings pre-disaster in West Sumatera",
+              "line_on_page": 20,
+              "page": 178
+            },
+            {
+              "excerpt": "Table A.33: Snapshot of West Sumatra Banking Sector, Pre-disaster, as of End of August",
+              "line_on_page": 10,
+              "page": 194
+            },
+            {
+              "excerpt": "Table A.34: Commercial Banking Credits by Sector in West Sumatra, Pre-disaster, as of August, 2009",
+              "line_on_page": 6,
+              "page": 195
+            }
+          ]
+        }
+      },
+      "pdf_page_count": 209,
+      "pdf_sha256": "4a04ebd6fd15308c8d4f8ee49bf36ecbad88e81dbec9c3d3c88ec47a1e498bcd",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/disaster/dlna-2009/source.pdf",
+      "source_plan_id": "m8_damage_dlna",
+      "text_bytes": 613544,
+      "text_path": "data/processed/milestone8/source_text/dlna-2009.txt",
+      "text_sha256": "fe628c5b9cccde3bb2c42cd157c532dbb7236822f804a09e4d9ef0e2d7308126",
+      "visible_character_count": 373853
+    }
+  ],
+  "table_values_extracted": false
+}

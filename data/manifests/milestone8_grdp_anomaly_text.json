@@ -1,0 +1,888 @@
+{
+  "anomalies_resolved": false,
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "outcome_model_fit": false,
+  "schema": "ranah-observatory/milestone8-grdp-anomaly-text/v1",
+  "source_count": 3,
+  "sources": [
+    {
+      "candidate_slices": [
+        {
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            21,
+            22,
+            23,
+            24,
+            27,
+            28,
+            29,
+            36,
+            37,
+            38
+          ],
+          "path": "data/processed/milestone8/anomaly_crosschecks/m8_bukittinggi_grdp_crosscheck-candidate-pages.txt",
+          "sha256": "66e89fb59d1890f13632148d76a744b1db5f83c5c462e7cd948ecc5bb2a4a879"
+        }
+      ],
+      "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
+      "ocr_performed": false,
+      "pdf_page_count": 41,
+      "pdf_sha256": "83a0d6faa78e2ec21f08fbd517dec18591fd85e4dfec21d9ea5edd793cca45ec",
+      "source_id": "m8_bukittinggi_grdp_crosscheck",
+      "term_hits": {
+        "1.039.252": {
+          "count": 0,
+          "hits": []
+        },
+        "1.093.252": {
+          "count": 2,
+          "hits": [
+            {
+              "context": "Personal & Household Services PDRB 1.093.252,85 1.163.140,55 1.235.499,39 * Angka Diperbaiki / Revised Figures",
+              "line": 120,
+              "page": 28
+            },
+            {
+              "context": "Produk Domestik Regional Bruto 1.093.252,85 1.163.140,55 1.235.499,39 Atas Dasar Harga Pasar GRDP at Market Prices",
+              "line": 16,
+              "page": 37
+            }
+          ]
+        },
+        "1.163.140": {
+          "count": 3,
+          "hits": [
+            {
+              "context": "tahun 2012 nilai tambah yang dihasilkan sebesar 1.163.140,55 juta rupiah. ht",
+              "line": 74,
+              "page": 16
+            },
+            {
+              "context": "Personal & Household Services PDRB 1.093.252,85 1.163.140,55 1.235.499,39 * Angka Diperbaiki / Revised Figures",
+              "line": 120,
+              "page": 28
+            },
+            {
+              "context": "Produk Domestik Regional Bruto 1.093.252,85 1.163.140,55 1.235.499,39 Atas Dasar Harga Pasar GRDP at Market Prices",
+              "line": 16,
+              "page": 37
+            }
+          ]
+        },
+        "1.235.499": {
+          "count": 3,
+          "hits": [
+            {
+              "context": "nilai tambah yang dihasilkan pada tahun 2013 adalah sebesar 1.235.499,39 juta rupiah. Dibandingkan ://",
+              "line": 62,
+              "page": 16
+            },
+            {
+              "context": "Personal & Household Services PDRB 1.093.252,85 1.163.140,55 1.235.499,39 * Angka Diperbaiki / Revised Figures",
+              "line": 120,
+              "page": 28
+            },
+            {
+              "context": "Produk Domestik Regional Bruto 1.093.252,85 1.163.140,55 1.235.499,39 Atas Dasar Harga Pasar GRDP at Market Prices",
+              "line": 16,
+              "page": 37
+            }
+          ]
+        },
+        "Jumlah": {
+          "count": 14,
+          "hits": [
+            {
+              "context": "Jumlah Halaman / Total Page : iv + 34 Halaman ng",
+              "line": 28,
+              "page": 3
+            },
+            {
+              "context": "a. Dari segi Produksi Produk Domestik Regional Bruto merupakan jumlah nilai tambah barang dan jasa akhir yang",
+              "line": 14,
+              "page": 10
+            },
+            {
+              "context": "a k ot Produk Domestik Regional Bruto adalah jumlah balas jasa yang diterima oleh faktor-faktor gi",
+              "line": 37,
+              "page": 10
+            },
+            {
+              "context": "adalah jumlah upah/gaji, sewa tanah, keuntungan, bunga modal, penyusutan dan pajak tak bu",
+              "line": 54,
+              "page": 10
+            },
+            {
+              "context": "Produk Domestik Regional Bruto adalah jumlah pengeluaran yang dilakukan untuk konsumsi rumah tangga dan lembaga swasta yang tidak mencari untung, konsumsi pemerintah, pembentukan modal tetap, perubahan stock dan ekspor netto (Barang keluar dikurangi",
+              "line": 73,
+              "page": 10
+            },
+            {
+              "context": "1.2.2. PDRB Atas Dasar Harga Berlaku Adalah jumlah nilai tambah atau pendapatan atau pengeluaran yang dinilai atas dasar harga pada tahun berjalan.",
+              "line": 82,
+              "page": 10
+            },
+            {
+              "context": "1.2.3. PDRB Atas Dasar Harga Konstan Adalah jumlah nilai tambah atau pengeluaran yang dinilai atas dasar harga tetap tahun tertentu. Harga yang digunakan adalah harga yang terjadi pada tahun 2000.",
+              "line": 8,
+              "page": 11
+            },
+            {
+              "context": "1.2.4. PDRB Atas Dasar Harga Pasar. Merupakan penjumlahan nilai tambah bruto dari seluruh hasil usaha, yang meliputi balas jasa",
+              "line": 13,
+              "page": 11
+            },
+            {
+              "context": "Adalah Produk Domestik Regional Bruto Atas Dasar harga Pasar dibagi dengan jumlah penduduk pertengahan tahun.",
+              "line": 64,
+              "page": 11
+            },
+            {
+              "context": "Perkiraan nilai tambah dengan pendekatan pendapatan adalah dengan cara penjumlahan semua balas jasa faktor– faktor produksi (upah dan gaji, surplus usaha) termasuk juga penyusutan dan pajak tak langsung netto. Di dalam surplus usaha termasuk bunga modal netto (selisih bunga yang diterima dengan yang dibayar), sewa",
+              "line": 70,
+              "page": 12
+            },
+            {
+              "context": ".id indikator produksi seperti tenaga kerja, jumlah perusahaan dan lainnya, yang dianggap",
+              "line": 19,
+              "page": 14
+            },
+            {
+              "context": "Secara konsepsional PDRB Perkapita merupakan hasil bagi antara nilai Nominal PDRB dengan jumlah penduduk pertengahan tahun pada tahun yang sama. PDRB perkapita menggambarkan rata-rata pembentukan nilai tambah yang dinikmati oleh masing-masing penduduk. Namun PDRB perkapita masih mengandung penyusutan, pajak tak langsung neto. Untuk menggambarkan nilai",
+              "line": 86,
+              "page": 22
+            },
+            {
+              "context": "tambah neto, diperlukan indikator lain yaitu pendapatan regional perkapita, dimana pendapatan regional perkapita diperoleh setelah PDRB dikurangi dengan penyusutan dan pajak tak langsung neto, kemudian dibagi dengan jumlah penduduk pertengahan tahun.",
+              "line": 91,
+              "page": 22
+            },
+            {
+              "context": "Secara umum PDRB perkapita maupun pendapatan perkapita penduduk Kota Bukittinggi selalu mengalami peningkatan dari tahun ke tahun. Hal ini disebabkan lebih tingginya peningkatan PDRB yang beberapa tahun terakhir tumbuh di atas lima persen, dibandingkan dengan jumlah penduduk Kota Bukittinggi yang tumbuh tidak sampai dua persen setiap tahunnya.",
+              "line": 8,
+              "page": 23
+            }
+          ]
+        },
+        "Produk Domestik Regional Bruto Kota Bukittinggi Atas Dasar Harga Konstan 2000": {
+          "count": 2,
+          "hits": [
+            {
+              "context": "Table Produk Domestik Regional Bruto Kota Bukittinggi Atas dasar Harga Konstan 2000 Menurut Lapangan Usaha (Jutaan Rupiah), 2011-2013 ki",
+              "line": 54,
+              "page": 6
+            },
+            {
+              "context": "TABEL / TABLE 2 : Produk Domestik Regional Bruto Kota Bukittinggi Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha (Jutaan Rupiah) 2010 – 2012 Gross Regional Domestic Product of Bukittinggi City at Constant Market Price",
+              "line": 5,
+              "page": 28
+            }
+          ]
+        }
+      },
+      "text_bytes": 143379,
+      "text_path": "data/processed/milestone8/anomaly_crosschecks/bukittinggi-grdp-2011-2013.txt",
+      "text_sha256": "0d48a04dfc4b2245b58e52dfec3f5bc448c4acfcab006ac9260dadc28d245a94",
+      "visible_character_count": 60194
+    },
+    {
+      "candidate_slices": [
+        {
+          "pages": [
+            33,
+            34,
+            35,
+            36,
+            37,
+            42,
+            43,
+            44,
+            326,
+            327,
+            328,
+            329,
+            330,
+            331,
+            332,
+            333,
+            334,
+            335,
+            336,
+            337,
+            338,
+            339,
+            340,
+            341,
+            342,
+            343,
+            344,
+            345,
+            346,
+            347,
+            348
+          ],
+          "path": "data/processed/milestone8/anomaly_crosschecks/m8_solok_selatan_grdp_crosscheck-candidate-pages.txt",
+          "sha256": "5223fbff4deb184f9263ac89623cd479a102adedc75d418b95e192960a0ae235"
+        }
+      ],
+      "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
+      "ocr_performed": false,
+      "pdf_page_count": 350,
+      "pdf_sha256": "9de52317c9939b4ac4a7c5df8e8f7c1b5d3c81d1c0814279a4ebe8f54d77e11c",
+      "source_id": "m8_solok_selatan_grdp_crosscheck",
+      "term_hits": {
+        "694.409": {
+          "count": 0,
+          "hits": []
+        },
+        "694.917": {
+          "count": 2,
+          "hits": [
+            {
+              "context": "Services PDRB/GRDP 694.917,80 739.663,15 Catatan / Note : *) Angka Diperbaiki/Revised Figures **)",
+              "line": 74,
+              "page": 329
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 694.917,80 739.663,15 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 341
+            }
+          ]
+        },
+        "739.663": {
+          "count": 2,
+          "hits": [
+            {
+              "context": "Services PDRB/GRDP 694.917,80 739.663,15 Catatan / Note : *) Angka Diperbaiki/Revised Figures **)",
+              "line": 74,
+              "page": 329
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 694.917,80 739.663,15 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 341
+            }
+          ]
+        },
+        "740.174": {
+          "count": 0,
+          "hits": []
+        },
+        "Produk Domestik Regional Bruto": {
+          "count": 9,
+          "hits": [
+            {
+              "context": "produksi, kecuali sektor pemerintahan (jasa-jasa) dipakai pendekatan pendapatan. Produk Domestik Regional Bruto (PDRB) secara sederhana dapat diartikan b. sebagai keseluruhan nilai tambah Bruto dari kegiatan perekonomian di suatu wilayah",
+              "line": 17,
+              "page": 43
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 1.623.023,72 1.865.869,76 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 340
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 694.917,80 739.663,15 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 341
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 295,22 301,63 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 342
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 159,22 160,73 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 343
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 115,28 114,96 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 344
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 106,35 106,44 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 345
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 15,28 14,96 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 346
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 6,35 6,44 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 347
+            }
+          ]
+        },
+        "harga konstan": {
+          "count": 18,
+          "hits": [
+            {
+              "context": "Industrial Origin, 2011-2012 (Million Rupiah) ……………………………………….. 280 9.2 PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha 2011-2012 (Jutaan Rupiah)/ GRDP of Solok Selatan Regency at 2000 Constant Prices by",
+              "line": 12,
+              "page": 34
+            },
+            {
+              "context": "9.4 Distribusi Persentase PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha 2011-2012/ GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2011-2012 ………………………………………………………………………283",
+              "line": 23,
+              "page": 34
+            },
+            {
+              "context": "9.8 Indeks Berantai PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha 2011- 2012 ( Tahun Sebelumnya = 100)/ Link Index of GRDP Of Solok Selatan at 2000 Constant Prices by",
+              "line": 1,
+              "page": 35
+            },
+            {
+              "context": "9.14 Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 2011 – 2012/ Trend of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices 2011 – 2012 ……………………………………….. 293",
+              "line": 28,
+              "page": 35
+            },
+            {
+              "context": "9.16 Indeks Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2011 – 2012/ Index of Regional Product Aggregate of Solok Selatan Regency at 2000 Constant Prices 2011 – 2012 ………………………………………. 295",
+              "line": 38,
+              "page": 35
+            },
+            {
+              "context": "9.18 Indeks Berantai Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 2011 – 2012/ Link Index of Regional Product Agregate of Solok Selatan Regency at 2000 Constant Prices 2011 – 2012 …………………………. 297",
+              "line": 7,
+              "page": 36
+            },
+            {
+              "context": "9.20 Laju Pertumbuhan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 2011 – 2012/ Growth Rate of Regional Product Agregate of Solok Selatan Regency at 2000 Constant Market Price, 2011 – 2012 ………………….299",
+              "line": 17,
+              "page": 36
+            },
+            {
+              "context": "konstan 2000. Untuk penyajian atas dasar harga berlaku semua agregat pendapatan dinilai atas dasar harga berlaku pada tahun penghitungan. Untuk penyajian atas dasar harga konstan, setiap produk barang dan jasa dinilai dengan harga tetap yang terjadi dalam tahun dasar (2000)",
+              "line": 35,
+              "page": 43
+            },
+            {
+              "context": "berlaku tahun 2011 sebesar 1,62 triliun rupiah jika dibandingkan tahun 2012 mengalami kenaikan sebesar 14,96 persen. Dilihat dari PDRB atas dasar harga konstan 2000, perekonomian Kabupaten Solok Selatan tumbuh sebesar 6,44 persen dari 739,66 milyar rupiah tahun 2011 menjadi 694,92 milyar rupiah untuk tahun 2012.",
+              "line": 13,
+              "page": 327
+            },
+            {
+              "context": "Tabel PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 2011 – 2012 (Jutaan Rupiah) 9.2 Table GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2011 – 2012 (Million Rupiahs)",
+              "line": 4,
+              "page": 329
+            },
+            {
+              "context": "Tabel Distribusi Persentase PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.4 Table 2011 – 2012",
+              "line": 4,
+              "page": 331
+            },
+            {
+              "context": "Tabel Indeks Perkembangan PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.6 Table 2011 – 2012 (2000 = 100)",
+              "line": 4,
+              "page": 333
+            },
+            {
+              "context": "Tabel Indeks Berantai PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.8 Table 2011 – 2012 (Tahun Sebelumnya = 100)",
+              "line": 4,
+              "page": 335
+            },
+            {
+              "context": "Tabel Laju Pertumbuhan PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.10 Table 2011 – 2012",
+              "line": 4,
+              "page": 337
+            },
+            {
+              "context": "Tabel Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.14 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2011 - 2012 Trend of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2011 - 2012",
+              "line": 6,
+              "page": 341
+            },
+            {
+              "context": "Tabel Indeks Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.16 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2011 - 2012 Index of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2011 - 2012",
+              "line": 6,
+              "page": 343
+            },
+            {
+              "context": "Tabel Indeks Berantai Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.18 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2011 - 2012 Link Index of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2011 - 2012",
+              "line": 6,
+              "page": 345
+            },
+            {
+              "context": "Tabel Laju Pertumbuhan Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.20 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2011 - 2012 Growth Rate of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2011 - 2012",
+              "line": 6,
+              "page": 347
+            }
+          ]
+        }
+      },
+      "text_bytes": 627483,
+      "text_path": "data/processed/milestone8/anomaly_crosschecks/solok-selatan-dalam-angka-2013.txt",
+      "text_sha256": "962a283d59e8b956d4d3309f62b377f17d701db9c791be2458cb99a57cef89ac",
+      "visible_character_count": 275860
+    },
+    {
+      "candidate_slices": [
+        {
+          "pages": [
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            40,
+            41,
+            42,
+            312,
+            313,
+            314,
+            315,
+            316,
+            317,
+            318,
+            319,
+            320,
+            321,
+            322,
+            323,
+            324,
+            325,
+            326,
+            327,
+            328,
+            329,
+            330,
+            331,
+            332
+          ],
+          "path": "data/processed/milestone8/anomaly_crosschecks/m8_solok_selatan_grdp_crosscheck_2012-candidate-pages.txt",
+          "sha256": "85af89f968ed8b96117a340b0641ee868058545e01004be5d5eabfa3aaefb76c"
+        }
+      ],
+      "extraction_method": "Poppler pdftotext -layout -enc UTF-8",
+      "ocr_performed": false,
+      "pdf_page_count": 335,
+      "pdf_sha256": "ad401e1f3cadd4c47ea3bce72a4be9fad334f6944f9a73740e2fdc43d4d1bb36",
+      "source_id": "m8_solok_selatan_grdp_crosscheck_2012",
+      "term_hits": {
+        "2010 – 2011": {
+          "count": 30,
+          "hits": [
+            {
+              "context": "6.1.2 Jumlah Industri Kecil/ Kerajinan 2010 - 2011/ Number of Small Scale Industries 2010 – 2011 …………………………………………219 xxvii",
+              "line": 92,
+              "page": 27
+            },
+            {
+              "context": "6.1.3 Banyaknya Tenaga Kerja yang Terserap Pada Industri Kecil/ Kerajinan 2010 - 2011 / Number of Workers Absorbed by Small Scale Industries 2010 – 2011 …………………………………………………………..220 6.1.4 Nilai Produksi Industri Kecil/ Kerajian 2010 - 2011/",
+              "line": 3,
+              "page": 28
+            },
+            {
+              "context": "6.1.4 Nilai Produksi Industri Kecil/ Kerajian 2010 - 2011/ Production Value of Small Scale Industries 2010 – 2011 ……………………………………………………. 221",
+              "line": 6,
+              "page": 28
+            },
+            {
+              "context": "6.1.10 Banyaknya Sarana Perdagangan Menurut Jenisnya di Kabupaten Solok Selatan 2010 – 2011/ Many Means of Trading by Type in Solok Selatan Regency 2010 – 2011 ………………………………………………………….227",
+              "line": 77,
+              "page": 28
+            },
+            {
+              "context": "6.1.10 Banyaknya Sarana Perdagangan Menurut Jenisnya di Kabupaten Solok Selatan 2010 – 2011/ Many Means of Trading by Type in Solok Selatan Regency 2010 – 2011 ………………………………………………………….227 6.1.11 Jumlah Koperasi Menurut Jenis Koperasi dan Kecamatan di Kabupaten",
+              "line": 78,
+              "page": 28
+            },
+            {
+              "context": "go 7.3.4 Sektor Jasa Hiburan Di Kabupaten Solok Selatan 2010 - 2011/ Tourism Sectors in Solok Selatan Regency 2010 – 2011 ………………………….. 259",
+              "line": 13,
+              "page": 31
+            },
+            {
+              "context": "Current Prices by Industrial Origin, 2010 – 2011 ……………………………………..280 ol",
+              "line": 52,
+              "page": 32
+            },
+            {
+              "context": "9.6 Indeks Perkembangan PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha 2010 – 2011 (2000=100)/ Index of GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2010-2011 (2000 = 100) ……………………………………………..283",
+              "line": 84,
+              "page": 32
+            },
+            {
+              "context": "ps 9.10 Laju Pertumbuhan PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 2010 – 2011/",
+              "line": 20,
+              "page": 33
+            },
+            {
+              "context": "b. Prices by Industrial Origin, 2010 – 2011 …………………………………………………….287 ka 9.11 Indeks Implisit PDRB Kabupaten Solok Selatan Menurut Lapangan",
+              "line": 30,
+              "page": 33
+            },
+            {
+              "context": "an Usaha 2010 – 2011/ Implicit Price Index of GRDP of Solok Selatan Regency by Industrial Origin 2010-2011 ……………………………………………………288 t",
+              "line": 35,
+              "page": 33
+            },
+            {
+              "context": "9.12 Laju Inflasi PDRB Kabupaten Solok Selatan Menurut Lapangan Usaha, 2010 – 2011/ Inflation Rate of GRDP of Solok Selatan Regency by ok",
+              "line": 45,
+              "page": 33
+            },
+            {
+              "context": "Industrial Origin, 2010 – 2011 …………………………………………………………………..289 ol",
+              "line": 51,
+              "page": 33
+            },
+            {
+              "context": "9.14 Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 2010 – 2011/ Trend of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices 2010 – 2011 ……………………………………….. 291",
+              "line": 79,
+              "page": 33
+            },
+            {
+              "context": "Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 2010 – 2011/ Trend of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices 2010 – 2011 ……………………………………….. 291 9.15 Indeks Perkembangan Agregate Pendapatan Regional dan Angka-Angka",
+              "line": 80,
+              "page": 33
+            },
+            {
+              "context": "9.15 Indeks Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Berlaku 2010 – 2011/ Index of Regional Product Aggregate of Solok Selatan Regency at Current Market Prices 2009 – 2011 ……………………………………. 292",
+              "line": 84,
+              "page": 33
+            },
+            {
+              "context": "9.16 Indeks Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2010 – 2011/ Index of Regional Product Aggregate of Solok Selatan Regency at 2000 Constant Prices 2010 – 2011 ………………………………………. 293",
+              "line": 89,
+              "page": 33
+            },
+            {
+              "context": "Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2010 – 2011/ Index of Regional Product Aggregate of Solok Selatan Regency at 2000 Constant Prices 2010 – 2011 ………………………………………. 293 xxxiii",
+              "line": 90,
+              "page": 33
+            },
+            {
+              "context": "9.17 Indeks Berantai Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Berlaku 2010 – 2011/ Link Index of Regional Product Agregate of Solok Selatan Regency at Current Market Price 2010 – 2011 ………………………… 294",
+              "line": 3,
+              "page": 34
+            },
+            {
+              "context": "Perkapita Kabupaten Solok Selatan Atas Dasar Harga Berlaku 2010 – 2011/ Link Index of Regional Product Agregate of Solok Selatan Regency at Current Market Price 2010 – 2011 ………………………… 294 9.18 Indeks Berantai Agregate Pendapatan Regional dan Angka-Angka",
+              "line": 4,
+              "page": 34
+            },
+            {
+              "context": "Perkapita Kabupaten Solok Selatan Atas Dasar Harga Berlaku ka 2010 – 2011/ Growth Rate of Regional Product Agregate of Solok Selatan Regency at Current Market Prices 2010 – 2011 ………………………….. 296 an",
+              "line": 32,
+              "page": 34
+            },
+            {
+              "context": "ka 2010 – 2011/ Growth Rate of Regional Product Agregate of Solok Selatan Regency at Current Market Prices 2010 – 2011 ………………………….. 296 an",
+              "line": 33,
+              "page": 34
+            },
+            {
+              "context": "2010 – 2011/ Growth Rate of Regional Product Agregate of Solok Selatan Regency at 2000 Constant Market Price, 2010 – 2011 ………………….297 ok",
+              "line": 48,
+              "page": 34
+            },
+            {
+              "context": "2010 – 2011/ Growth Rate of Regional Product Agregate of Solok Selatan Regency at 2000 Constant Market Price, 2010 – 2011 ………………….297 ok ol",
+              "line": 49,
+              "page": 34
+            },
+            {
+              "context": "Gambar 9.1 Distribusi Persentase PDRB Kabupaten Solok Selatan Atas Dasar Harga Figure Berlaku Menurut Lapangan Usaha, 2010 – 2011/ Percentage Distribution of GRDP of Solok Selatan Regency at Current Prices by Industrial Origin, 2010 – 2011 ………………………………………….298",
+              "line": 88,
+              "page": 35
+            },
+            {
+              "context": "Figure Berlaku Menurut Lapangan Usaha, 2010 – 2011/ Percentage Distribution of GRDP of Solok Selatan Regency at Current Prices by Industrial Origin, 2010 – 2011 ………………………………………….298",
+              "line": 90,
+              "page": 35
+            },
+            {
+              "context": "Tabel PDRB Kabupaten Solok Selatan Atas Dasar Harga Berlaku Menurut Lapangan Usaha, 2010 – 2011 (Jutaan Rupiah) 9.1 Table GRDP of Solok Selatan Regency at Current Price by Industrial Origin, 2010 – 2011 (Million Rupiahs)",
+              "line": 4,
+              "page": 314
+            },
+            {
+              "context": "Tabel PDRB Kabupaten Solok Selatan Atas Dasar Harga Berlaku Menurut Lapangan Usaha, 2010 – 2011 (Jutaan Rupiah) 9.1 Table GRDP of Solok Selatan Regency at Current Price by Industrial Origin, 2010 – 2011 (Million Rupiahs)",
+              "line": 6,
+              "page": 314
+            },
+            {
+              "context": "Tabel PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 2010 – 2011 (Jutaan Rupiah) 9.2 Table GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2010 – 2011 (Million Rupiahs)",
+              "line": 4,
+              "page": 315
+            },
+            {
+              "context": "Tabel PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 2010 – 2011 (Jutaan Rupiah) 9.2 Table GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2010 – 2011 (Million Rupiahs)",
+              "line": 6,
+              "page": 315
+            }
+          ]
+        },
+        "2010-2011": {
+          "count": 13,
+          "hits": [
+            {
+              "context": "go 9.1 PDRB Kabupaten Solok Selatan Atas Dasar Harga Berlaku Menurut Lapangan Usaha 2010-2011 (Jutaan Rupiah)/",
+              "line": 12,
+              "page": 32
+            },
+            {
+              "context": "ps GRDP of Solok Selatan Regency at Current Market Prices by Industrial Origin, 2010-2011 (Million Rupiah) ……………………………………….. 278",
+              "line": 20,
+              "page": 32
+            },
+            {
+              "context": "9.2 PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 ka Menurut Lapangan Usaha 2010-2011 (Jutaan Rupiah)/ GRDP of Solok Selatan Regency at 2000 Constant Prices by an",
+              "line": 29,
+              "page": 32
+            },
+            {
+              "context": "an Industrial Origin, 2010-2011 (Million Rupiah) …………………………………………..279 t la",
+              "line": 33,
+              "page": 32
+            },
+            {
+              "context": "Harga Berlaku Menurut Lapangan Usaha 2010-2011 / Percentage Distribution of GRDP of Solok Selatan Regency at ok",
+              "line": 45,
+              "page": 32
+            },
+            {
+              "context": "Harga Konstan 2000 Menurut Lapangan Usaha 2010-2011/ s:",
+              "line": 64,
+              "page": 32
+            },
+            {
+              "context": "GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2010-2011 ………………………………………………………………………281 tp .hidt",
+              "line": 71,
+              "page": 32
+            },
+            {
+              "context": "Harga Berlaku Menurut Lapangan Usaha 2010- 2011 (2000 = 100)/ Index of GRDP of Solok Selatan Regency at Current Market Prices by Industrial Origin 2010-2011 (2000=100) ……………………………………..282 9.6 Indeks Perkembangan PDRB Kabupaten Solok Selatan Atas Dasar Harga",
+              "line": 81,
+              "page": 32
+            },
+            {
+              "context": "Konstan 2000 Menurut Lapangan Usaha 2010 – 2011 (2000=100)/ Index of GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2010-2011 (2000 = 100) ……………………………………………..283 9.7 Indeks Berantai PDRB Kabupaten Solok Selatan Atas Dasar Harga",
+              "line": 86,
+              "page": 32
+            },
+            {
+              "context": "Berlaku Menurut Lapangan Usaha 2010 -2011 (Tahun Sebelumnya 100)/ Link Index of GDRP of Solok Selatan Regency at Current Prices by Industrial Origin 2010-2011 (Previous Year=100) ………………………………………284 xxxii",
+              "line": 91,
+              "page": 32
+            },
+            {
+              "context": "Industrial Origin 2010 -2011 (Previous Year = 100) ………………………………… 285 9.9 Laju Pertumbuhan PDRB Kabupaten Solok Selatan Atas Dasar Harga Berlaku Menurut Lapangan Usaha 2010-2011/ Growth Rate of GDRP of",
+              "line": 6,
+              "page": 33
+            },
+            {
+              "context": "go Solok Selatan Regency at Current Prices by Industrial Origin, 2010-2011 286",
+              "line": 12,
+              "page": 33
+            },
+            {
+              "context": "Usaha 2010 – 2011/ Implicit Price Index of GRDP of Solok Selatan Regency by Industrial Origin 2010-2011 ……………………………………………………288 t la",
+              "line": 36,
+              "page": 33
+            }
+          ]
+        },
+        "653.0": {
+          "count": 0,
+          "hits": []
+        },
+        "653.437": {
+          "count": 0,
+          "hits": []
+        },
+        "694.409": {
+          "count": 0,
+          "hits": []
+        },
+        "694.917": {
+          "count": 2,
+          "hits": [
+            {
+              "context": "Services PDRB/GRDP 653.447,14 694.917,80 Catatan / Note : *) Angka Diperbaiki/Revised Figures **) Angka sementara/Preliminary figures",
+              "line": 135,
+              "page": 315
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 653.447,14 694.917,80 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 327
+            }
+          ]
+        },
+        "Produk Domestik Regional Bruto": {
+          "count": 8,
+          "hits": [
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 1.407.883,27 1.623.069,91 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 326
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 653.447,14 694.917,80 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 327
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 284,46 295,23 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 328
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 157,24 159,22 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 329
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 115,34 115,28 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 330
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 106,28 106,35 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 331
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 15,34 15,28 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 332
+            },
+            {
+              "context": "1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp) 6,28 6,35 Gross Regional Domestic Product At Market Price",
+              "line": 17,
+              "page": 333
+            }
+          ]
+        },
+        "harga konstan": {
+          "count": 18,
+          "hits": [
+            {
+              "context": "b b. 9.2 PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 ka Menurut Lapangan Usaha 2010-2011 (Jutaan Rupiah)/",
+              "line": 27,
+              "page": 32
+            },
+            {
+              "context": "Harga Konstan 2000 Menurut Lapangan Usaha 2010-2011/ s:",
+              "line": 64,
+              "page": 32
+            },
+            {
+              "context": "9.8 Indeks Berantai PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha 2010- 2011 ( Tahun Sebelumnya = 100)/ Link Index of GRDP Of Solok Selatan at 2000 Constant Prices by",
+              "line": 1,
+              "page": 33
+            },
+            {
+              "context": "9.14 Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 2010 – 2011/ Trend of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices 2010 – 2011 ……………………………………….. 291",
+              "line": 78,
+              "page": 33
+            },
+            {
+              "context": "9.16 Indeks Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2010 – 2011/ Index of Regional Product Aggregate of Solok Selatan Regency at 2000 Constant Prices 2010 – 2011 ………………………………………. 293",
+              "line": 88,
+              "page": 33
+            },
+            {
+              "context": "go Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 2009 – 2011/ Link Index of Regional Product Agregate of Solok",
+              "line": 12,
+              "page": 34
+            },
+            {
+              "context": "Perkapita Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 se",
+              "line": 42,
+              "page": 34
+            },
+            {
+              "context": "konstan 2000. Untuk penyajian atas dasar harga berlaku semua agregat pendapatan dinilai atas dasar harga berlaku pada tahun penghitungan. Untuk penyajian atas dasar harga konstan, setiap produk barang dan jasa dinilai dengan harga tetap yang terjadi dalam tahun dasar (2000)",
+              "line": 86,
+              "page": 41
+            },
+            {
+              "context": "b b. harga konstan 2000, perekonomian Kabupaten Solok Selatan tumbuh ka sebesar 6,35 persen dari 653,45 milyar rupiah tahun 2010 menjadi 694,92",
+              "line": 28,
+              "page": 313
+            },
+            {
+              "context": "Tabel PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 2010 – 2011 (Jutaan Rupiah) 9.2 Table GRDP of Solok Selatan Regency at 2000 Constant Prices by Industrial Origin, 2010 – 2011 (Million Rupiahs)",
+              "line": 4,
+              "page": 315
+            },
+            {
+              "context": "Tabel Distribusi Persentase PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.4 Table 2010 – 2011",
+              "line": 4,
+              "page": 317
+            },
+            {
+              "context": "Tabel Indeks Perkembangan PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.6 Table 2010 – 2011 (2000 = 100)",
+              "line": 4,
+              "page": 319
+            },
+            {
+              "context": "Tabel Indeks Berantai PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.8 Table 2010 – 2011 (Tahun Sebelumnya = 100)",
+              "line": 4,
+              "page": 321
+            },
+            {
+              "context": "Tabel Laju Pertumbuhan PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000 Menurut Lapangan Usaha, 9.10 Table 2010 – 2011",
+              "line": 4,
+              "page": 323
+            },
+            {
+              "context": "Tabel Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.14 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2010 - 2011 Trend of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2010 - 2011",
+              "line": 6,
+              "page": 327
+            },
+            {
+              "context": "Tabel Indeks Perkembangan Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.16 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2010 - 2011 Index of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2010 - 2011",
+              "line": 6,
+              "page": 329
+            },
+            {
+              "context": "Tabel Indeks Berantai Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.18 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2010 - 2011 Link Index of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2010 - 2011",
+              "line": 6,
+              "page": 331
+            },
+            {
+              "context": "Tabel Laju Pertumbuhan Agregate Pendapatan Regional dan Angka-Angka Perkapita 9.20 Table Kabupaten Solok Selatan Atas Dasar Harga Konstan 2000, 2010 - 2011 Growth Rate of Regional Product Agregate of Solok Selatan Regency At 2000 Constant Prices, 2010 - 2011",
+              "line": 6,
+              "page": 333
+            }
+          ]
+        }
+      },
+      "text_bytes": 826991,
+      "text_path": "data/processed/milestone8/anomaly_crosschecks/solok-selatan-dalam-angka-2012.txt",
+      "text_sha256": "81924ac3710ddb85e9a5bc468a376d74db3daa15d1375b9a35c9a36ac4bc5401",
+      "visible_character_count": 286365
+    }
+  ]
+}

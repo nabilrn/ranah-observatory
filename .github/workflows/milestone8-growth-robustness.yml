@@ -1,0 +1,66 @@
+name: Milestone 8 GRDP Growth Robustness
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/build_milestone8_growth_robustness.py"
+      - "data/analysis/quasi_causal/m8-real-grdp-panel-2005-2013-resolved.csv"
+      - "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2005-2009-pages-35-55.txt"
+      - "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2009-2013-pages-410-415.txt"
+      - ".github/workflows/milestone8-growth-robustness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-grdp-growth-robustness
+  cancel-in-progress: true
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build official/derived growth robustness artifacts
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.build_milestone8_growth_robustness 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 20 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 8 growth robustness failure::$message"
+          exit 1
+
+      - name: Commit deterministic growth robustness artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/quasi_causal/m8-derived-real-grdp-growth-2006-2013.csv \
+            data/analysis/quasi_causal/m8-official-growth-crosscheck-2009-2013.csv \
+            data/manifests/milestone8_growth_robustness.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 growth robustness unchanged."
+            exit 0
+          fi
+          git commit -m "analysis: qualify M8 GRDP growth robustness"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal

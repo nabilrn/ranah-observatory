@@ -1,0 +1,33 @@
+{
+  "all_19_geographies_have_grid_support": true,
+  "area_mean_pga_max": 52.28809523809524,
+  "area_mean_pga_min": 10.72694214876033,
+  "big_expected_edition": "Juni 2026",
+  "big_raw_geojson_path": "data/snapshots/big/milestone8/big-june-2026-sumbar.geojson",
+  "big_raw_geojson_sha256": "36e28aedfd3a773fa85e56f3300512da7e5881b2caadc25d75e648affa9ab08f",
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "design_amended": false,
+  "event_date": "2009-09-30",
+  "event_id": "usp000h237",
+  "geography_count": 19,
+  "historical_boundary_continuity_claimed": false,
+  "interpretation": "physical shaking exposure summarized over a fixed current-boundary spatial frame; not observed housing damage and not a historical-boundary reconstruction",
+  "max_grid_point_count": 1770,
+  "min_grid_point_count": 7,
+  "outcome_model_fit": false,
+  "output_path": "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv",
+  "output_sha256": "c5798a6bfa4036fc563a644770b208aeec93ce60a7b4837eec92ae6b0e485305",
+  "primary_candidate": "area_mean_pga_pct_g",
+  "primary_candidate_selected_before_outcome_model_fit": true,
+  "primary_candidate_unit": "percent_g",
+  "robustness_candidates": [
+    "area_median_pga_pct_g",
+    "area_p90_pga_pct_g",
+    "area_max_pga_pct_g",
+    "area_mean_mmi"
+  ],
+  "schema": "ranah-observatory/milestone8-shakemap-exposure-candidate/v1",
+  "shakemap_grid_sha256": "7dff8b021a65cef1f7b7921ac7479f69bf3bd8b22733b368328bc7ba512a1dae",
+  "spatial_frame": "BIG June 2026 fixed-current-boundary polygons"
+}

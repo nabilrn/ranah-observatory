@@ -1,0 +1,54 @@
+name: Milestone 8 Pre-period GRDP Extraction
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/build_milestone8_preperiod_grdp.py"
+      - "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-096-098.txt"
+      - ".github/workflows/milestone8-preperiod-grdp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-preperiod-grdp
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Parse Table 22
+        run: python -m scripts.build_milestone8_preperiod_grdp
+
+      - name: Commit deterministic pre-period outcome artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/quasi_causal/m8-preperiod-real-grdp-2005-2009.csv \
+            data/manifests/milestone8_preperiod_grdp.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 pre-period outcome artifacts unchanged."
+            exit 0
+          fi
+          git commit -m "data: extract milestone8 pre-period real GRDP"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal

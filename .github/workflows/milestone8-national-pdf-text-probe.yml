@@ -1,0 +1,74 @@
+name: Milestone 8 National BPS PDF Text Probe
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/probe_milestone8_national_pdf_text.py"
+      - ".github/workflows/milestone8-national-pdf-text-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-national-pdf-text-probe
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install alternate PDF decoders
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils mupdf-tools
+
+      - name: Hydrate qualified national BPS source
+        run: python -m scripts.freeze_milestone8_earthquake_sources --skip-dlna
+
+      - name: Restore committed source metadata after hydration
+        run: |
+          git restore -- data/snapshots/bps/milestone8 data/manifests/milestone8_source_freeze.json
+
+      - name: Probe alternate non-OCR text decoders
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.probe_milestone8_national_pdf_text 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 12 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 8 national PDF text probe failure::$message"
+          exit 1
+
+      - name: Commit probe manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/manifests/milestone8_national_pdf_text_probe.json
+          if git diff --cached --quiet; then
+            echo "National BPS PDF text probe unchanged."
+            exit 0
+          fi
+          git commit -m "research: record national BPS PDF text-decoder probe"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal

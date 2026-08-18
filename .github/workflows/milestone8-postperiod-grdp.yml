@@ -1,0 +1,63 @@
+name: Milestone 8 Post-period GRDP Extraction
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/build_milestone8_postperiod_grdp.py"
+      - "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2009-2013-pages-410-415.txt"
+      - ".github/workflows/milestone8-postperiod-grdp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-postperiod-grdp
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Parse Table 13.1.2 and cross-check Table 13.1.3
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.build_milestone8_postperiod_grdp 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 12 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 8 post-period GRDP extraction failure::$message"
+          exit 1
+
+      - name: Commit deterministic post-period outcome artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/quasi_causal/m8-postperiod-real-grdp-2009-2013.csv \
+            data/manifests/milestone8_postperiod_grdp.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 post-period outcome artifacts unchanged."
+            exit 0
+          fi
+          git commit -m "data: extract milestone8 post-period real GRDP"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal

@@ -1,0 +1,36 @@
+{
+  "base_panel_path": "data/analysis/quasi_causal/m8-real-grdp-panel-2005-2013.csv",
+  "base_panel_sha256": "87e93ef2b648a3677718c1c512b12ba1fbbe439712cc6ffccf665585af72d5a6",
+  "bukittinggi_text_sha256": "0d48a04dfc4b2245b58e52dfec3f5bc448c4acfcab006ac9260dadc28d245a94",
+  "causal_effect_estimated": false,
+  "confirmation_count": 1,
+  "criterion": "one focused causal or quasi-causal case study",
+  "decision_count": 5,
+  "local_sources_used": [
+    "m8_bukittinggi_grdp_crosscheck",
+    "m8_solok_selatan_grdp_crosscheck_2012",
+    "m8_solok_selatan_grdp_crosscheck"
+  ],
+  "no_growth_imputed_level_corrections": true,
+  "original_anomaly_key_count": 4,
+  "original_anomaly_keys": [
+    "idn.13.1310:2011",
+    "idn.13.1310:2012",
+    "idn.13.1375:2011",
+    "idn.13.1375:2012"
+  ],
+  "original_central_values_preserved": true,
+  "outcome_model_fit": false,
+  "override_count": 4,
+  "postperiod_source_anomalies_resolved": true,
+  "resolution_path": "data/analysis/quasi_causal/m8-grdp-source-anomaly-resolution.csv",
+  "resolution_sha256": "a4edf63ade6b2ece0b91f7381f2cd3874ef3b3b5c21d5fbd08fb4c66bad07ce3",
+  "resolved_panel_model_ready_on_source_consistency": true,
+  "resolved_panel_observation_count": 171,
+  "resolved_panel_path": "data/analysis/quasi_causal/m8-real-grdp-panel-2005-2013-resolved.csv",
+  "resolved_panel_sha256": "510491d8ecec9b362030a1b3876918fc809a7fb8208aae4eaaf105ce01508e48",
+  "schema": "ranah-observatory/milestone8-grdp-source-anomaly-resolution/v1",
+  "solok_selatan_2011_local_overlap_exact": true,
+  "solok_selatan_2012_text_sha256": "81924ac3710ddb85e9a5bc468a376d74db3daa15d1375b9a35c9a36ac4bc5401",
+  "solok_selatan_2013_text_sha256": "962a283d59e8b956d4d3309f62b377f17d701db9c791be2458cb99a57cef89ac"
+}

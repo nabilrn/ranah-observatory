@@ -1,0 +1,946 @@
+===== PDF PAGE 84 =====
+                                                                                    Tabel / Table 9
+                                                             Laju Pertumbuhan PDRB Sumatera Barat Atas Dasar Harga Berlaku
+                                                                          Menurut Lapangan Usaha 2005 - 2009
+                                                                Growth Rate of GRDP of Sumatera Barat at Current Prices
+                                                                            by Industrial Origin, 2005 - 2009
+
+
+
+   LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                                     2005                   2006         2007       2008 *)    2009 **)
+
+                                         (1)                                              (2)                   (3)          (4)         (5)        (6)
+1. PERTANIAN/AGRICULTURE                                                                   26,10                 17,17        10,14      17,06          4,90
+   a. Tanaman Pangan & Hortikultura/Farm Food Crops                                        33,90                 16,09         7,70      18,30          6,43
+   b. Perkebunan / Farm Non Food Crops                                                     21,81                 17,24        12,68      14,70        -0,30
+   c. Peternakan/Livestock                                                                  9,58                 14,08        11,83      15,07          8,32
+   d. Kehutanan/Forestry                                                                    3,78                 19,62        17,83      17,64          4,08
+   e. Perikanan/Fishery                                                                    28,63                 23,08        11,07      17,34          6,20
+2. PERTAMBANGAN & PENGGALIAN/                                                              15,14                 20,82        12,60      14,15          8,23
+   MINING & QUARRYING
+   a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                     X                     X            X          X          X
+   b. Non Migas / Non Crude Petroleum & Natural Gas                                         7,25                 19,19         9,04        8,02         5,30
+   c. Penggalian / Quarrying                                                               16,59                 21,10        13,19      15,14          8,67
+3. INDUSTRI PENGOLAHAN /                                                                   11,12                 19,11        18,55      19,15          7,50
+   MANUFACTURING INDUSTRIES
+   a. Industri Migas/Oil & Gas Manufacturing Industries                                    X                     X            X          X          X
+   b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                     11,12                 19,11        18,55      19,15          7,50
+
+
+
+
+                                                                                                                       .id
+     Industries
+4. LISTRIK, GAS & AIR BERSIH /                                                             21,37                 13,21         8,93        4,99         4,11
+
+
+
+
+                                                                                                        go
+   ELECTRICITY, GAS & WATER SUPPLY
+   a. Listrik / Electricity                                                                21,98                 13,21         8,79        4,32         3,48
+
+
+
+
+                                                                                                      s.
+   b. G a s/ Gas                                                                                X                      X            X          X          X
+   c. Air Bersih / Water Supply                                                            14,61                 13,18        10,60      12,76       10,85
+5. BANGUNAN / CONSTRUCTION
+                                                                                             p
+                                                                                           23,20                 20,21        10,69      18,68       10,47
+                                                                                          .b
+6. PERDAGANGAN, HOTEL & RESTORAN /                                                         11,07                 15,29        15,30      20,85          9,56
+                                                                                  r
+   TRADE, HOTEL & RESTAURANT
+                                                                               ba
+
+   a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                                10,97                 15,26        15,47      21,10          9,58
+   b. H o t e l / Hotels                                                                    8,28                 18,33        16,53      16,05          8,71
+                                                                     um
+
+
+
+   c. Restoran / Restaurant                                                                15,65                 15,21         8,76      12,70          8,65
+7. PENGANGKUTAN DAN KOMUNIKASI /                                                           34,43                 30,08        12,30      17,69          8,86
+   TRANSPORT & COMMUNICATION
+                                                              //s
+
+
+
+
+   a. Angkutan / Transport                                                                 34,09                 31,55        10,93      17,97          9,01
+     1. Kereta Api /Railway Transport                                                      38,99                 28,90         9,01      10,40          7,05
+                                                    s:
+
+
+
+
+     2. Jalan Raya (Darat) / Road Transport                                                38,27                 37,55         9,96      18,53          9,29
+     3. Angkutan Laut/Sea Transport                                                        19,30                 11,39         5,21        9,04         2,85
+                                                  tp
+
+
+
+
+     4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                      86,68                 43,14        12,68      19,16          7,63
+                                            ht
+
+
+
+
+     5. Angkutan Udara / Air Transport                                                     32,07                 22,79        20,80      24,12       11,79
+     6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                 17,11                 16,19        12,26      13,83          8,51
+        Transport Activities
+   b. Komunikasi / Communication                                                           35,98                 23,43        18,94      16,41          8,18
+8. KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                                   16,46                 17,02        12,59      16,85          9,25
+   FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+   a. Bank / Banking                                                                        3,58                 15,35        16,73      16,69          9,20
+   b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                       23,69                 21,82        10,02      14,25          9,32
+      Keuangan/Non Bank Financial Institution and Supporting Activities
+   c. Sewa Bangunan / Rent of Building                                                     22,99                 15,70        11,33      18,61          9,23
+   d. Jasa Perusahaan / Business Services                                                  22,21                 12,88        10,11      16,24          9,64
+9. JASA-JASA / SERVICES                                                                    15,61                 14,91        11,68      18,41          9,91
+   a. Pemerintahan Umum & Pertahanan /Public Administration                                16,09                 14,42        11,69      19,02          9,20
+     and Deffense
+   b. Swasta / Private Services                                                            14,56                 15,98        11,67      17,07       11,49
+     1. Sosial Kemasyarakatan/Social & Community Services                                  12,52                 18,24        13,60      15,21       12,08
+     2. Hiburan dan Rekreasi/Entertainment & Cultural Services                             11,69                 12,38         7,83      16,17       12,19
+     3. Perorangan dan Rumahtangga/ Personal & Household Services                          16,69                 15,05        10,98      18,65       10,93
+
+
+   P D R B / GRDP                                                                          19,58                 18,70        12,77      18,09          8,05
+
+Catatan/Note :     *) Angka diperbaiki/Revised figures
+                   **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                          81
+
+===== PDF PAGE 85 =====
+                                                                                   Tabel / Table 10
+                                                         Laju Pertumbuhan PDRB Sumatera Barat Atas Dasar Harga Konstan 2000
+                                                                          Menurut Lapangan Usaha 2005 - 2009
+                                                             Growth Rate of GRDP of Sumatera Barat at Constant 2000 Prices
+                                                                            by Industrial Origin, 2005 - 2009
+
+
+
+   LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                                     2005                   2006          2007     2008 *)   2009 **)
+
+                                         (1)                                              (2)                   (3)           (4)       (5)       (6)
+1. PERTANIAN/AGRICULTURE                                                                    5,13                  5,01          4,97      4,96        3,84
+   a. Tanaman Pangan & Hortikultura/Farm Food Crops                                         5,09                  4,22          4,57      4,75        4,96
+   b. Perkebunan / Farm Non Food Crops                                                      9,97                  9,39          8,75      5,86        1,58
+   c. Peternakan/Livestock                                                                  2,73                  2,09          3,13      4,63        4,89
+   d. Kehutanan/Forestry                                                                    -5,58                -1,32         -4,35     -0,40        1,06
+   e. Perikanan/Fishery                                                                     4,74                  5,43          5,18      6,87        4,63
+2. PERTAMBANGAN & PENGGALIAN/                                                               3,09                  3,04          4,89      5,10        4,08
+   MINING & QUARRYING
+   a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                     X                     X             X        X         X
+   b. Non Migas / Non Crude Petroleum & Natural Gas                                         -1,05                 2,95          3,28      1,77        2,53
+   c. Penggalian / Quarrying                                                                4,09                  3,06          5,27      5,85        4,42
+3. INDUSTRI PENGOLAHAN /                                                                    4,93                  4,47          5,79      6,06        2,73
+   MANUFACTURING INDUSTRIES
+   a. Industri Migas/Oil & Gas Manufacturing Industries                                    X                     X             X        X         X
+   b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                      4,93                  4,47          5,79      6,06        2,73
+
+
+
+
+                                                                                                                       .id
+     Industries
+4. LISTRIK, GAS & AIR BERSIH /                                                             12,51                  8,93          6,90      3,33        5,80
+
+
+
+
+                                                                                                       go
+   ELECTRICITY, GAS & WATER SUPPLY
+   a. Listrik / Electricity                                                                12,98                  9,15          6,92      2,99        5,57
+
+
+
+
+                                                                                                     s.
+   b. G a s/ Gas                                                                           X                     X             X        X         X
+   c. Air Bersih / Water Supply                                                             8,25                  6,89          6,70      6,63        7,95
+5. BANGUNAN / CONSTRUCTION
+                                                                                             p
+                                                                                            4,69                  7,26          5,33      6,88        4,30
+                                                                                          .b
+6. PERDAGANGAN, HOTEL & RESTORAN /                                                          5,97                  6,73          6,95      6,70        3,26
+                                                                                  r
+   TRADE, HOTEL & RESTAURANT
+                                                                               ba
+
+   a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                                 6,08                  6,81          6,96      6,69        3,30
+   b. H o t e l / Hotels                                                                    2,27                  5,95          6,37      7,72        1,79
+                                                                     um
+
+
+
+   c. Restoran / Restaurant                                                                 3,31                  3,86          6,84      7,00        2,10
+7. PENGANGKUTAN DAN KOMUNIKASI /                                                            9,81                 10,27          9,33      8,61        5,89
+   TRANSPORT & COMMUNICATION
+                                                              //s
+
+
+
+
+   a. Angkutan / Transport                                                                  6,64                  7,36          6,54      6,02        5,28
+     1. Kereta Api /Railway Transport                                                      16,02                 19,30          5,47      4,82        4,35
+                                                    s:
+
+
+
+
+     2. Jalan Raya (Darat) / Road Transport                                                 4,75                  6,86          5,61      5,88        5,66
+     3. Angkutan Laut/Sea Transport                                                         3,79                  2,84          2,49      2,11        0,35
+                                                  tp
+
+
+
+
+     4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                      36,42                 15,77          9,54      7,53        4,93
+                                            ht
+
+
+
+
+     5. Angkutan Udara / Air Transport                                                     15,46                 11,79         13,65      9,17        7,44
+     6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                  7,25                  6,85          6,58      5,51        3,75
+        Transport Activities
+   b. Komunikasi / Communication                                                           24,42                 21,75         19,01    16,69         7,62
+8. KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                                    6,33                  7,87          7,17      6,99        4,65
+   FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+   a. Bank / Banking                                                                        3,21                  6,94          8,38      7,03        4,49
+   b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                        9,34                  9,17          5,66      6,75        4,98
+      Keuangan/Non Bank Financial Institution and Supporting Activities
+   c. Sewa Bangunan / Rent of Building                                                      7,27                  7,92          7,17      7,18        4,53
+   d. Jasa Perusahaan / Business Services                                                   8,10                  7,58          5,47      5,83        5,35
+9. JASA-JASA / SERVICES                                                                     4,21                  4,85          6,02      6,55        5,00
+   a. Pemerintahan Umum & Pertahanan /Public Administration                                 2,67                  3,23          5,23      6,01        5,05
+     and Deffense
+   b. Swasta / Private Services                                                             7,57                  8,23          7,59      7,60        4,89
+     1. Sosial Kemasyarakatan/Social & Community Services                                   7,35                  8,33          6,75      6,99        6,85
+     2. Hiburan dan Rekreasi/Entertainment & Cultural Services                              6,46                  6,96          7,99      9,54        5,25
+     3. Perorangan dan Rumahtangga/ Personal & Household Services                           7,96                  8,44          8,07      7,60        3,51
+
+
+   P D R B / GRDP                                                                           5,73                  6,14          6,34      6,37        4,16
+
+Catatan/Note :     *) Angka diperbaiki/Revised figures
+                   **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                          82
+
+===== PDF PAGE 86 =====
+                                                                                    Tabel / Table 11
+                                                         Indeks Implisit PDRB Sumatera Barat Menurut Lapangan Usaha 2000 -2004
+                                                                     Implicit Prices Index of GRDP of Sumatera Barat
+                                                                            by Industrial Origin 2005 - 2009
+
+
+
+
+   LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                                     2005                  2006              2007     2008 *)   2009 **)
+
+                                         (1)                                              (2)                  (3)               (4)       (5)       (6)
+1. PERTANIAN/AGRICULTURE                                                                  156,76               174,93            183,54   204,72     206,81
+   a. Tanaman Pangan & Hortikultura/Farm Food Crops                                       161,99               180,44            185,84   209,88     212,82
+   b. Perkebunan / Farm Non Food Crops                                                    149,17               159,88            165,65   179,49     176,16
+   c. Peternakan/Livestock                                                                157,85               176,38            191,27   210,35     217,22
+   d. Kehutanan/Forestry                                                                  133,61               161,96            199,52   235,67     242,72
+   e. Perikanan/Fishery                                                                   162,29               189,47            200,06   219,67     222,95
+2. PERTAMBANGAN & PENGGALIAN/                                                             159,07               186,52            200,22   217,47     226,12
+   MINING & QUARRYING
+   a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                     X                    X                 X        X         X
+   b. Non Migas / Non Crude Petroleum & Natural Gas                                       123,21               142,65            150,60   159,84     164,15
+   c. Penggalian / Quarrying                                                              167,35               196,64            211,45   230,00     239,36
+3. INDUSTRI PENGOLAHAN /                                                                  133,51               152,21            170,57   191,61     200,51
+   MANUFACTURING INDUSTRIES
+   a. Industri Migas/Oil & Gas Manufacturing Industries                                    X                    X                 X        X         X
+   b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                    133,51               152,21            170,57   191,61     200,51
+
+
+
+
+                                                                                                                      .id
+     Industries
+4. LISTRIK, GAS & AIR BERSIH /                                                            196,83               204,56            208,45   211,79     208,40
+
+
+
+
+                                                                                                      go
+   ELECTRICITY, GAS & WATER SUPPLY
+   a. Listrik / Electricity                                                               200,53               208,00            211,64   214,36     210,11
+
+
+
+
+                                                                                                    s.
+   b. G a s/ Gas                                                                           X                    X                 X        X         X
+   c. Air Bersih / Water Supply                                                           161,72               171,23            177,49   187,70     192,73
+5. BANGUNAN / CONSTRUCTION
+                                                                                             p
+                                                                                          171,67               192,40            202,20   224,51     237,80
+                                                                                          .b
+6. PERDAGANGAN, HOTEL & RESTORAN /                                                        147,01               158,79            171,18   193,87     205,70
+                                                                                   r
+   TRADE, HOTEL & RESTAURANT
+                                                                                ba
+
+   a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                               146,88               158,50            171,10   194,22     206,04
+   b. H o t e l / Hotels                                                                  146,99               164,17            179,85   193,78     206,94
+                                                                     um
+
+
+
+   c. Restoran / Restaurant                                                               151,68               168,26            171,28   180,41     191,99
+7. PENGANGKUTAN DAN KOMUNIKASI /                                                          164,25               193,75            199,02   215,66     221,71
+   TRANSPORT & COMMUNICATION
+                                                              //s
+
+
+
+
+   a. Angkutan / Transport                                                                168,67               206,66            215,17   239,44     247,93
+     1. Kereta Api /Railway Transport                                                     152,05               164,29            169,81   178,85     183,48
+                                                    s:
+
+
+
+
+     2. Jalan Raya (Darat) / Road Transport                                               171,08               220,22            229,29   256,69     265,52
+     3. Angkutan Laut/Sea Transport                                                       188,02               203,65            209,05   223,24     228,79
+                                                  tp
+
+
+
+
+     4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                     236,60               292,52            300,92   333,46     342,05
+                                            ht
+
+
+
+
+     5. Angkutan Udara / Air Transport                                                    148,59               163,21            173,48   197,25     205,24
+     6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                152,07               165,37            174,19   187,91     196,53
+        Transport Activities
+   b. Komunikasi / Communication                                                          146,81               148,84            148,74   148,39     149,16
+8. KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                                  153,63               166,66            175,08   191,22     199,65
+   FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+   a. Bank / Banking                                                                      135,01               145,63            156,85   171,00     178,72
+   b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                      156,86               175,03            182,26   195,06     203,13
+      Keuangan/Non Bank Financial Institution and Supporting Activities
+   c. Sewa Bangunan / Rent of Building                                                    168,59               180,75            187,77   207,79     217,13
+   d. Jasa Perusahaan / Business Services                                                 153,20               160,75            167,83   184,35     191,86
+9. JASA-JASA / SERVICES                                                                   151,74               166,29            175,18   194,67     203,79
+   a. Pemerintahan Umum & Pertahanan /Public Administration                               154,63               171,39            181,91   204,23     212,30
+     and Deffense
+   b. Swasta / Private Services                                                           145,73               156,15            162,08   176,33     187,43
+     1. Sosial Kemasyarakatan/Social & Community Services                                 153,27               167,30            178,03   191,71     201,10
+     2. Hiburan dan Rekreasi/Entertainment & Cultural Services                            133,57               140,35            140,15   148,63     158,42
+     3. Perorangan dan Rumahtangga/ Personal & Household Services                         143,22               151,95            156,04   172,05     184,37
+
+
+   P D R B / GRDP                                                                         153,21               171,34            181,69   201,71     209,23
+
+Catatan/Note :     *) Angka diperbaiki/Revised figures
+                   **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                          83
+
+===== PDF PAGE 87 =====
+                                                                                  Tabel / Table 12
+                                                          Laju Inflasi PDRB Sumatera Barat Menurut Lapangan Usaha 2000 -2004
+                                                                       Inflation Rate of GRDP of Sumatera Barat
+                                                                           by Industrial Origin 2005 - 2009
+
+
+
+
+   LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                                    2005                  2006             2007     2008 *)   2009 **)
+
+                                         (1)                                             (2)                  (3)              (4)       (5)       (6)
+1. PERTANIAN/AGRICULTURE                                                                  19,95                11,59             4,93    11,54         1,02
+   a. Tanaman Pangan & Hortikultura/Farm Food Crops                                       27,42                11,39             2,99    12,94         1,40
+   b. Perkebunan / Farm Non Food Crops                                                    10,77                 7,18             3,61      8,35      -1,85
+   c. Peternakan/Livestock                                                                 6,67                11,74             8,44      9,98        3,27
+   d. Kehutanan/Forestry                                                                   9,91                21,22            23,19    18,12         2,99
+   e. Perikanan/Fishery                                                                   22,81                16,74             5,59      9,80        1,50
+2. PERTAMBANGAN & PENGGALIAN/                                                             11,69                17,26             7,34      8,61        3,98
+   MINING & QUARRYING
+   a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                   X                     X                X        X         X
+   b. Non Migas / Non Crude Petroleum & Natural Gas                                        8,39                15,78             5,57      6,13        2,70
+   c. Penggalian / Quarrying                                                              12,01                17,50             7,53      8,77        4,07
+3. INDUSTRI PENGOLAHAN /                                                                   5,90                14,01            12,06    12,34         4,65
+   MANUFACTURING INDUSTRIES
+   a. Industri Migas/Oil & Gas Manufacturing Industries                                  X                     X                X        X         X
+   b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                     5,90                14,01            12,06    12,34         4,65
+
+
+
+
+                                                                                                                     .id
+     Industries
+4. LISTRIK, GAS & AIR BERSIH /                                                             7,88                 3,93             1,90      1,60     -1,60
+
+
+
+
+                                                                                                     go
+   ELECTRICITY, GAS & WATER SUPPLY
+   a. Listrik / Electricity                                                                7,97                 3,73             1,75      1,28      -1,98
+
+
+
+
+                                                                                                   s.
+   b. G a s/ Gas                                                                         X                     X                X        X         X
+   c. Air Bersih / Water Supply                                                            5,87                 5,88             3,65      5,75        2,68
+5. BANGUNAN / CONSTRUCTION
+                                                                                            p
+                                                                                          17,68                12,08             5,09    11,03         5,92
+                                                                                         .b
+6. PERDAGANGAN, HOTEL & RESTORAN /                                                         4,81                 8,02             7,80    13,25         6,10
+                                                                                 r
+   TRADE, HOTEL & RESTAURANT
+                                                                              ba
+
+   a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                                4,61                 7,91             7,95    13,51         6,09
+   b. H o t e l / Hotels                                                                   5,87                11,69             9,55      7,74        6,79
+                                                                     um
+
+
+
+   c. Restoran / Restaurant                                                               11,95                10,93             1,80      5,33        6,42
+7. PENGANGKUTAN DAN KOMUNIKASI /                                                          22,41                17,96             2,72      8,36        2,81
+   TRANSPORT & COMMUNICATION
+                                                              //s
+
+
+
+
+   a. Angkutan / Transport                                                                25,74                22,52             4,12    11,28         3,54
+     1. Kereta Api /Railway Transport                                                     19,80                 8,05             3,36      5,32        2,59
+                                                    s:
+
+
+
+
+     2. Jalan Raya (Darat) / Road Transport                                               31,99                28,72             4,12    11,95         3,44
+     3. Angkutan Laut/Sea Transport                                                       14,95                 8,31             2,65      6,78        2,49
+                                                  tp
+
+
+
+
+     4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                     36,84                23,63             2,87    10,81         2,58
+                                            ht
+
+
+
+
+     5. Angkutan Udara / Air Transport                                                    14,39                 9,84             6,30    13,70         4,05
+     6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                 9,20                 8,74             5,34      7,88        4,58
+        Transport Activities
+   b. Komunikasi / Communication                                                           9,30                 1,38            -0,07     -0,24        0,52
+8. KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                                   9,53                 8,48             5,06      9,22        4,40
+   FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+   a. Bank / Banking                                                                       0,35                 7,86             7,70      9,02        4,51
+   b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                      13,12                11,58             4,13      7,03        4,14
+      Keuangan/Non Bank Financial Institution and Supporting Activities
+   c. Sewa Bangunan / Rent of Building                                                    14,65                 7,21             3,88    10,66         4,49
+   d. Jasa Perusahaan / Business Services                                                 13,05                 4,92             4,41      9,85        4,07
+9. JASA-JASA / SERVICES                                                                   10,94                 9,59             5,34    11,13         4,68
+   a. Pemerintahan Umum & Pertahanan /Public Administration                               13,07                10,84             6,14    12,27         3,95
+     and Deffense
+   b. Swasta / Private Services                                                            6,50                 7,15             3,79      8,79        6,30
+     1. Sosial Kemasyarakatan/Social & Community Services                                  4,81                 9,15             6,42      7,68        4,90
+     2. Hiburan dan Rekreasi/Entertainment & Cultural Services                             4,92                 5,08            -0,14      6,05        6,59
+     3. Perorangan dan Rumahtangga/ Personal & Household Services                          8,09                 6,10             2,69    10,26         7,16
+
+
+   P D R B / GRDP                                                                         13,10                11,84             6,04    11,02         3,73
+
+Catatan/Note :     *) Angka diperbaiki/Revised figures
+                   **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                         84
+
+===== PDF PAGE 88 =====
+                                                                                     Tabel/Table 13
+                                                        Perkembangan Agregate Pendapatan Regional dan Angka-angka Perkapita
+                                                                        Sumatera Barat Atas Dasar Harga Berlaku
+                                                   Trend of Regional Product Agregate Of Sumatera Barat At Current Market Price
+                                                                                      2005 - 2009
+
+
+
+                               R I N C I A N                                             2005                 2006                 2007                2008 *)          2009 **)
+
+                                        (1)                                               (2)                  (3)                  (4)                    (5)            (6)
+
+
+
+
+ 1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp)                              44 674 569,24        53 029 588,10        59 799 045,30       70 614 210,04      76 295 430,26
+   Gross Regional Domestic Product At Market Price
+
+
+
+
+ 2 Penyusutan Barang-barang Modal                                                       3 088 720,99         3 666 929,56         4 329 334,57         5 167 493,74      5 623 640,76
+   Depreciation Of Capital Goods
+   (000.000 Rp)
+
+
+
+
+                                                                                                                     .id
+ 3 Produk Domestik Regional Neto ADH. Pasar (000.000 Rp)                               41 585 848,25        49 362 658,54        55 469 710,73       65 446 716,30      70 671 789,50
+   Net Regional Domestic Product At Market Price
+
+
+
+
+                                                                                                        go
+                                                                                             p        s.
+ 4 Pajak Tidak Langsung Neto                                                              386 876,77
+                                                                                          .b                   459 624,84           555 356,13             671 240,85     772 296,67
+   Net Indirect Taxes (000.000 Rp)
+                                                                                  r
+                                                                               ba
+                                                                    um
+
+
+
+ 5 Produk Domestik Regional Neto Atas Biaya Faktor (000.000 Rp)                        41 198 971,48        48 903 033,70        54 914 354,60       64 775 475,45      69 899 492,83
+   Net Regional Domestic Product At Factor Cost
+                                                             //s
+                                                  s:
+
+
+
+
+ 6 Jumlah Penduduk Pertengahan Tahun                                                         4 566,13             4 632,15            4 697,76               4 763,10        4 827,97
+                                                tp
+
+
+
+
+    Mid Year Population
+                                          ht
+
+
+
+
+   (000 Orang/000 Person)
+
+
+
+
+ 7 PDRB Perkapita                                                                       9 783 910,75        11 448 153,71        12 729 267,84       14 825 262,97      15 802 787,27
+   Percapita Gross Regional Domestic Product
+    ( Rp.)
+
+
+
+
+ 8 Pendapatan Regional Perkapita ***)                                                   9 022 740,83        10 557 303,32        11 689 476,39       13 599 436,39      14 478 020,66
+   Percapita regional Income
+    (Rp)
+
+
+
+
+*) Angka Perbaikan/Revised figures
+**) Angka Sementara /Preliminary figures
+*** Tidak termasuk transfer neto, yaitu selisih antara pendapatan faktor produksi milik penduduk Sumatera Barat di luar wilayah dengan pendapatan faktor
+    produksi yang dimiliki bukan penduduk Sumbar / Excluding net factor income, i.e. differences between income flowing and out.
+
+
+
+
+                                                                                          85
+
+===== PDF PAGE 89 =====
+                                                                                     Tabel/Table 14
+                                                        Perkembangan Agregate Pendapatan Regional dan Angka-angka Perkapita
+                                                                     Sumatera Barat Atas Dasar Harga Konstan 2000
+                                                Trend of Regional Product Agregate Of Sumatera Barat At Constant 2000 Market Price
+                                                                                      2005 - 2009
+
+
+
+                               R I N C I A N                                             2005                 2006                 2007                2008 *)          2009 **)
+
+                                        (1)                                               (2)                  (3)                  (4)                    (5)            (6)
+
+
+
+
+ 1 Produk Domestik Regional Bruto ADH. Pasar (000.000 Rp)                              29 159 480,53        30 949 945,10        32 912 968,59       35 007 921,57      36 464 582,69
+   Gross Regional Domestic Product At Market Price
+
+
+
+
+ 2 Penyusutan Barang-barang Modal
+   Depreciation Of Capital Goods                                                        1 927 939,51         2 101 789,08         2 260 056,57         2 441 539,11      2 592 426,23
+   (000.000 Rp)
+
+
+
+
+                                                                                                                     .id
+ 3 Produk Domestik Regional Neto ADH. Pasar (000.000 Rp)
+   Net Regional Domestic Product At Market Price                                       27 231 541,02        28 848 156,02        30 652 912,02       32 566 382,46      33 872 156,46
+
+
+
+
+                                                                                                        go
+                                                                                             p        s.
+ 4 Pajak Tidak Langsung Neto                                                              .b
+   Net Indirect Taxes (000.000 Rp)                                                        252 517,84           268 253,33           305 664,06             332 776,46     369 110,91
+                                                                                  r
+                                                                               ba
+                                                                    um
+
+
+
+ 5 Produk Domestik Regional Neto Atas Biaya Faktor (000.000 Rp)
+   Net Regional Domestic Product At Factor Cost                                        26 979 023,18        28 579 902,69        30 347 247,96       32 233 606,00      33 503 045,55
+                                                             //s
+                                                  s:
+
+
+
+
+ 6 Jumlah Penduduk Pertengahan Tahun
+                                                tp
+
+
+
+
+    Mid Year Population                                                                      4 566,13             4 632,15            4 697,76               4 763,10        4 827,97
+                                          ht
+
+
+
+
+   (000 Orang/000 Person)
+
+
+
+
+ 7 PDRB Perkapita
+   Percapita Gross Regional Domestic Product                                            6 386 043,78         6 681 547,82         7 006 098,35         7 349 818,73      7 552 772,70
+    ( Rp.)
+
+
+
+
+ 8 Pendapatan Regional Perkapita ***)
+   Percapita regional Income                                                            5 908 514,83         6 169 897,42         6 459 940,05         6 767 358,65      6 939 360,59
+    (Rp)
+
+
+
+
+*) Angka Perbaikan/Revised figures
+**) Angka Sementara /Preliminary figures
+*** Tidak termasuk transfer neto, yaitu selisih antara pendapatan faktor produksi milik penduduk Sumatera Barat di luar wilayah dengan pendapatan faktor
+    produksi yang dimiliki bukan penduduk Sumbar / Excluding net factor income, i.e. differences between income flowing and out.
+
+
+
+
+                                                                                          86
+
+===== PDF PAGE 90 =====
+                                                                                     Tabel/Table 15
+                                                         Indeks Perkembangan Agregate Pendapatan Regional dan Angka-angka
+                                                                   Perkapita Sumatera Barat Atas Dasar Harga Berlaku
+                                                   Index of Regional Product Agregate Of Sumatera Barat At Current Market Price
+                                                                                      2005 - 2009
+
+
+
+                               R I N C I A N                                             2005                 2006                 2007                2008 *)      2009 **)
+
+                                        (1)                                               (2)                  (3)                  (4)                    (5)       (6)
+
+
+
+
+ 1 Produk Domestik Regional Bruto ADH. Pasar                                              195,17              231,68               261,25                  308,50    333,32
+   Gross Regional Domestic Product At Market Price
+
+
+
+
+ 2 Penyusutan Barang-barang Modal                                                         227,03              269,53               318,22                  379,83    413,36
+   Depreciation Of Capital Goods
+
+
+
+
+                                                                                                                     .id
+                                                                                                        go
+ 3 Produk Domestik Regional Neto ADH. Pasar                                               193,16              229,28               257,65                  303,99    328,26
+   Net Regional Domestic Product At Market Price
+
+
+
+
+                                                                                             p        s.
+                                                                                          .b
+ 4 Pajak Tidak Langsung Neto                                                              302,04              358,84               433,58                  524,05    602,95
+                                                                                  r
+   Net Indirect Taxes
+                                                                               ba
+                                                                    um
+
+
+
+
+ 5 Produk Domestik Regional Neto Atas Biaya Faktor                                        192,51              228,51               256,60                  302,67    326,62
+                                                             //s
+
+
+
+
+   Net Regional Domestic Product At Factor Cost
+                                                  s:
+                                                tp
+                                          ht
+
+
+
+
+ 6 Jumlah Penduduk Pertengahan Tahun                                                      107,77              109,33               110,88                  112,42    113,95
+    Mid Year Population
+
+
+
+
+ 7 PDRB Perkapita                                                                         181,10              211,90               235,62                  274,41    292,51
+   Percapita Gross Regional Domestic Product
+
+
+
+
+ 8 Pendapatan Regional Perkapita ***)                                                     178,63              209,01               231,42                  269,23    286,63
+   Percapita regional Income
+
+
+
+
+*) Angka Perbaikan/Revised figures
+**) Angka Sementara /Preliminary figures
+*** Tidak termasuk transfer neto, yaitu selisih antara pendapatan faktor produksi milik penduduk Sumatera Barat di luar wilayah dengan pendapatan faktor
+    produksi yang dimiliki bukan penduduk Sumbar / Excluding net factor income, i.e. differences between income flowing and out.
+
+
+
+
+                                                                                          87
+
+===== PDF PAGE 91 =====
+                                                                                     Tabel/Table 16
+                                                         Indeks Perkembangan Agregate Pendapatan Regional dan Angka-angka
+                                                                Perkapita Sumatera Barat Atas Dasar Harga Konstan 2000
+                                                Index of Regional Product Agregate Of Sumatera Barat At Constant 2000 Market Price
+                                                                                      2005 - 2009
+
+
+
+                               R I N C I A N                                             2005                 2006                 2007                2008 *)      2009 **)
+
+                                        (1)                                               (2)                  (3)                  (4)                    (5)       (6)
+
+
+
+
+ 1 Produk Domestik Regional Bruto ADH. Pasar                                              127,39              135,21               143,79                  152,94    159,31
+   Gross Regional Domestic Product At Market Price
+
+
+
+
+ 2 Penyusutan Barang-barang Modal                                                         141,71              154,49               166,12                  179,46    190,55
+   Depreciation Of Capital Goods
+
+
+
+
+                                                                                                                     .id
+ 3 Produk Domestik Regional Neto ADH. Pasar                                               126,49              134,00               142,38                  151,27    157,33
+
+
+
+
+                                                                                                        go
+   Net Regional Domestic Product At Market Price
+
+
+
+
+                                                                                             p        s.
+ 4 Pajak Tidak Langsung Neto
+                                                                                          .b
+                                                                                          197,15              209,43               238,64                  259,81    288,17
+   Net Indirect Taxes
+                                                                                  r
+                                                                               ba
+                                                                    um
+
+
+
+ 5 Produk Domestik Regional Neto Atas Biaya Faktor                                        126,06              133,54               141,80                  150,62    156,55
+   Net Regional Domestic Product At Factor Cost
+                                                             //s
+                                                  s:
+                                                tp
+
+
+
+
+ 6 Jumlah Penduduk Pertengahan Tahun                                                      107,77              109,33               110,88                  112,42    113,95
+                                          ht
+
+
+
+
+    Mid Year Population
+
+
+
+
+ 7 PDRB Perkapita                                                                         118,20              123,67               129,68                  136,04    139,80
+   Percapita Gross Regional Domestic Product
+
+
+
+
+ 8 Pendapatan Regional Perkapita ***)                                                     116,97              122,15               127,89                  133,98    137,38
+   Percapita regional Income
+
+
+
+
+*) Angka Perbaikan/Revised figures
+**) Angka Sementara /Preliminary figures
+*** Tidak termasuk transfer neto, yaitu selisih antara pendapatan faktor produksi milik penduduk Sumatera Barat di luar wilayah dengan pendapatan faktor
+    produksi yang dimiliki bukan penduduk Sumbar / Excluding net factor income, i.e. differences between income flowing and out.
+
+
+
+
+                                                                                          88
+
+===== PDF PAGE 92 =====
+                                                                                     Tabel/Table 17
+                                                            Indeks Berantai Agregate Pendapatan Regional dan Angka-angka
+                                                                   Perkapita Sumatera Barat Atas Dasar Harga Berlaku
+                                                 Link Index of Regional Product Agregate Of Sumatera Barat At Current Market Price
+                                                                                      2005 - 2009
+
+
+
+                               R I N C I A N                                             2005                 2006                 2007                2008 *)      2009 **)
+
+                                        (1)                                               (2)                  (3)                  (4)                    (5)       (6)
+
+
+
+
+ 1 Produk Domestik Regional Bruto ADH. Pasar                                              119,58              118,70               112,77                  118,09    108,05
+   Gross Regional Domestic Product At Market Price
+
+
+
+
+ 2 Penyusutan Barang-barang Modal                                                         125,91              118,72               118,06                  119,36    108,83
+   Depreciation Of Capital Goods
+
+
+
+
+                                                                                                                     .id
+                                                                                                        go
+ 3 Produk Domestik Regional Neto ADH. Pasar                                               119,14              118,70               112,37                  117,99    107,98
+
+
+
+
+                                                                                                      s.
+   Net Regional Domestic Product At Market Price
+
+
+
+
+                                                                                             p
+                                                                                  r       .b
+                                                                               ba
+
+ 4 Pajak Tidak Langsung Neto                                                              117,59              118,80               120,83                  120,87    115,06
+   Net Indirect Taxes
+                                                                    um
+                                                             //s
+
+
+
+
+ 5 Produk Domestik Regional Neto Atas Biaya Faktor                                        119,15              118,70               112,29                  117,96    107,91
+   Net Regional Domestic Product At Factor Cost
+                                                  s:
+                                                tp
+                                          ht
+
+
+
+
+ 6 Jumlah Penduduk Pertengahan Tahun                                                      100,68              101,45               101,42                  101,39    101,36
+    Mid Year Population
+
+
+
+
+ 7 PDRB Perkapita                                                                         118,78              117,01               111,19                  116,47    106,59
+   Percapita Gross Regional Domestic Product
+
+
+
+
+ 8 Pendapatan Regional Perkapita ***)                                                     118,35              117,01               110,72                  116,34    106,46
+   Percapita regional Income
+
+
+
+
+*) Angka Perbaikan/Revised figures
+**) Angka Sementara /Preliminary figures
+*** Tidak termasuk transfer neto, yaitu selisih antara pendapatan faktor produksi milik penduduk Sumatera Barat di luar wilayah dengan pendapatan faktor
+    produksi yang dimiliki bukan penduduk Sumbar / Excluding net factor income, i.e. differences between income flowing and out.
+
+
+
+
+                                                                                          89

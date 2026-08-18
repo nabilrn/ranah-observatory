@@ -1,0 +1,24 @@
+{
+  "domain": "1373",
+  "final_download_url": "https://webapi.bps.go.id/download.php?f=AoYy7gk1j/BzDuVAd5Xh10crdStZVmkvL2FDbit5aHlFYzVUMTY5YklRSmordDVSVEtsdEJKN0ZZQytGVVUwM1BOWksvcWVkaDRzTTlkVCtveXliN2FLNW9uMzZnVEhQbks5LzMwK0Fib3dyUnRlNEFwa3lXdVdJVUswa0RDMll5STdQaXRtdDExa1hlYzBOaWl5QjAwMURucTVDOTNJNTdMWlhQc1BXQmR4VnN4SFBFQVVVaGRqK09VRTBOeGwvRUtlcWxpZ0o5VExrNWVjc1ZLdFRqWThabkNtUGFHR2g5SkFMN2lML2hGN1FYTXRYaUZkK29ScHYvV3djT2lLNTZ0QkN0Z0hjSG9WRjQyOHg=",
+  "publication": {
+    "abstract": "",
+    "cover": "https://webapi.bps.go.id/cover.php?f=PJGalNPrOpPpowUNpUL1TFBrVS9QVzl6Lzh2NVcveVFxOTJ6U08vVmYzeE1Oa3JhOHo2SUVvOWlRUWlpNlo3dkl1NlRmSDFIVzFTOFdabXF2SVh6emJ2S3k0TXJYaWgwbXRqZXlRMUZmMExVMVpFazErU3prUlhGaDdXWTcrdGhITC9ON0JKZjdaZmlTQ1Fr",
+    "id_subject_csa": null,
+    "issn": "",
+    "pdf": "https://webapi.bps.go.id/download.php?f=AoYy7gk1j/BzDuVAd5Xh10crdStZVmkvL2FDbit5aHlFYzVUMTY5YklRSmordDVSVEtsdEJKN0ZZQytGVVUwM1BOWksvcWVkaDRzTTlkVCtveXliN2FLNW9uMzZnVEhQbks5LzMwK0Fib3dyUnRlNEFwa3lXdVdJVUswa0RDMll5STdQaXRtdDExa1hlYzBOaWl5QjAwMURucTVDOTNJNTdMWlhQc1BXQmR4VnN4SFBFQVVVaGRqK09VRTBOeGwvRUtlcWxpZ0o5VExrNWVjc1ZLdFRqWThabkNtUGFHR2g5SkFMN2lML2hGN1FYTXRYaUZkK29ScHYvV3djT2lLNTZ0QkN0Z0hjSG9WRjQyOHg=",
+    "pub_id": "09a8175fa67d4c80d2183354",
+    "rl_date": "2014-11-11",
+    "sch_date": "2014-11-11",
+    "size": " MB",
+    "subject_csa": null,
+    "title": "SAWAHLUNTO DALAM ANGKA 2014",
+    "updt_date": null
+  },
+  "raw_storage_policy": "PDF bytes live under gitignored data/raw during acquisition and are uploaded as a GitHub Actions artifact; Git stores metadata, SHA-256, and derived text only.",
+  "requested_publication_id": "09a8175fa67d4c80d2183354",
+  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=AoYy7gk1j/BzDuVAd5Xh10crdStZVmkvL2FDbit5aHlFYzVUMTY5YklRSmordDVSVEtsdEJKN0ZZQytGVVUwM1BOWksvcWVkaDRzTTlkVCtveXliN2FLNW9uMzZnVEhQbks5LzMwK0Fib3dyUnRlNEFwa3lXdVdJVUswa0RDMll5STdQaXRtdDExa1hlYzBOaWl5QjAwMURucTVDOTNJNTdMWlhQc1BXQmR4VnN4SFBFQVVVaGRqK09VRTBOeGwvRUtlcWxpZ0o5VExrNWVjc1ZLdFRqWThabkNtUGFHR2g5SkFMN2lML2hGN1FYTXRYaUZkK29ScHYvV3djT2lLNTZ0QkN0Z0hjSG9WRjQyOHg=",
+  "retrieval_method": "BPS WebAPI publication metadata -> official pdf URL",
+  "schema": "ranah-observatory/milestone8-bps-publication-snapshot/v1",
+  "source_plan_id": "m8_grdp_post"
+}

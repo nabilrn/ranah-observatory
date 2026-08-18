@@ -1,0 +1,99 @@
+name: Milestone 8 Source Freeze
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/freeze_milestone8_earthquake_sources.py"
+      - "scripts/freeze_milestone8_dlna.py"
+      - ".github/workflows/milestone8-source-freeze.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-source-freeze
+  cancel-in-progress: true
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
+      - name: Freeze official BPS outcome publications and government DLNA bytes
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if {
+            python -m scripts.freeze_milestone8_earthquake_sources --skip-dlna
+            python -m scripts.freeze_milestone8_dlna
+          } 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 12 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 8 source freeze failure::$message"
+          exit 1
+
+      - name: Verify runtime raw PDFs against committed-style checksum records
+        shell: bash
+        run: |
+          set -euo pipefail
+          verify_one() {
+            checksum_file="$1"
+            raw_pdf="$2"
+            test -s "$raw_pdf"
+            head -c 5 "$raw_pdf" | grep -q '%PDF-'
+            expected="$(awk '{print $1}' "$checksum_file")"
+            actual="$(sha256sum "$raw_pdf" | awk '{print $1}')"
+            test "$expected" = "$actual"
+          }
+          verify_one data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256 data/raw/milestone8/bps/grdp-2005-2009/source.pdf
+          verify_one data/snapshots/bps/milestone8/grdp-kabkota-indonesia-2005-2009/source.pdf.sha256 data/raw/milestone8/bps/grdp-kabkota-indonesia-2005-2009/source.pdf
+          verify_one data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256 data/raw/milestone8/bps/grdp-2009-2013/source.pdf
+          verify_one data/snapshots/disaster/milestone8/dlna-2009/source.pdf.sha256 data/raw/milestone8/disaster/dlna-2009/source.pdf
+
+      - name: Upload raw source PDFs as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone8-raw-source-pdfs-${{ github.run_id }}
+          path: data/raw/milestone8/**/*.pdf
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+      - name: Commit source metadata and hashes only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/snapshots/bps/milestone8 \
+            data/snapshots/disaster/milestone8 \
+            data/manifests/milestone8_source_freeze.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 source metadata unchanged."
+            exit 0
+          fi
+          git commit -m "data: freeze milestone8 source metadata and hashes"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal

@@ -1,0 +1,123 @@
+{
+  "baseline_year": 2008,
+  "case_study": "2009 West Sumatra earthquake differential economic trajectory",
+  "causal_claim_authorized": false,
+  "claim_classification": "quasi_causal_candidate_pending_remaining_required_diagnostics",
+  "core_identification_diagnostics_passed": true,
+  "criterion": "one focused causal or quasi-causal case study",
+  "design_gate_path": "data/manifests/milestone8_design_gate.json",
+  "design_gate_sha256": "170536085bd7785f5d181884888b5afbe64f896b1fc97622625cac11d5784938",
+  "event_times_estimated": [
+    -4,
+    -3,
+    -2,
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "event_year": 2009,
+  "exposure_path": "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv",
+  "exposure_sensitivity": {
+    "all_reported_without_significance_selection": true,
+    "exposures": [
+      "area_median_pga_pct_g",
+      "area_p90_pga_pct_g",
+      "area_max_pga_pct_g",
+      "area_mean_mmi"
+    ],
+    "purpose": "pre-specified point-estimate stability diagnostics",
+    "wild_bootstrap_not_repeated_for_sensitivity_models": true
+  },
+  "exposure_sha256": "c5798a6bfa4036fc563a644770b208aeec93ce60a7b4837eec92ae6b0e485305",
+  "exposure_standardization_ddof": 0,
+  "geography_count": 19,
+  "grdp_growth_robustness_complete": false,
+  "housing_damage_validation_complete": false,
+  "inference_protocol_path": "research/MILESTONE8_INFERENCE_PROTOCOL.md",
+  "inference_protocol_sha256": "541ea472e840920a982bee73c07e4b576a3e190ddcab5c1e08019e851bb86060",
+  "influence": {
+    "failure_count": 0,
+    "failures": [],
+    "max_absolute_change_2010_2013": 0.0022639917184368308,
+    "named_geographies": {
+      "idn.13.1306": "Padang Pariaman",
+      "idn.13.1371": "Kota Padang",
+      "idn.13.1377": "Kota Pariaman"
+    },
+    "passed": true,
+    "threshold_log_points": 0.1
+  },
+  "influence_output_path": "data/analysis/quasi_causal/m8-event-study-influence.csv",
+  "influence_output_sha256": "f222d5f057077ee0a398abfb21a98da970700811b743703b395d2b254cdac42a",
+  "milestone8_complete": false,
+  "model_frame_path": "data/analysis/quasi_causal/m8-event-study-model-frame.csv",
+  "model_frame_sha256": "494369145a7c48efad236e8a9dd029579a8593f3652abd1955c6b5b4aa68afd6",
+  "observation_count": 171,
+  "outcome": "log_real_grdp_constant_2000",
+  "outcome_model_fit": true,
+  "partial_treatment_year": 2009,
+  "placebo": {
+    "coefficient_log_points_per_1sd_pga": 0.00702786028546587,
+    "cr1_cluster_se": 0.007395362614159752,
+    "cr1_t": 0.9503063814625895,
+    "max_absolute_coefficient_gate": 0.1,
+    "passed": true,
+    "pseudo_event_year": 2007,
+    "pvalue_minimum_gate": 0.1,
+    "sample_years": [
+      2005,
+      2006,
+      2007,
+      2008
+    ],
+    "wild_cluster_bootstrap_p_value": 0.4545
+  },
+  "pretrend": {
+    "event_times": [
+      -4,
+      -3,
+      -2
+    ],
+    "joint_observed_wald": 1.8997315947673936,
+    "joint_restriction_count": 3,
+    "joint_wild_cluster_bootstrap_p_value": 0.7245,
+    "max_absolute_coefficient_gate": 0.1,
+    "max_absolute_pre_coefficient_log_points": 0.013294672141391524,
+    "note": "Passing is only a screening condition and does not prove parallel trends.",
+    "passed": true,
+    "pvalue_minimum_gate": 0.1
+  },
+  "primary_design": {
+    "cluster_count": 19,
+    "covariate_search_performed": false,
+    "cr1_finite_sample_correction": 1.3194444444444444,
+    "geography_fixed_effects": true,
+    "matrix_rank": 35,
+    "n": 171,
+    "p": 35,
+    "year_fixed_effects": true
+  },
+  "primary_exposure": "area_mean_pga_pct_g",
+  "primary_exposure_scale": "one population-SD across fixed 19-geography exposure universe",
+  "primary_output_path": "data/analysis/quasi_causal/m8-event-study-primary.csv",
+  "primary_output_sha256": "430301c4c863731d317a766c6aff21f687d792d81dba84a7c08cacaf90882ce8",
+  "quasi_causal_effect_estimated": false,
+  "resolved_panel_path": "data/analysis/quasi_causal/m8-real-grdp-panel-2005-2013-resolved.csv",
+  "resolved_panel_sha256": "510491d8ecec9b362030a1b3876918fc809a7fb8208aae4eaaf105ce01508e48",
+  "schema": "ranah-observatory/milestone8-event-study/v1",
+  "sensitivity_output_path": "data/analysis/quasi_causal/m8-event-study-exposure-sensitivity.csv",
+  "sensitivity_output_sha256": "f09ed4cc7d46c5f4f6320353d301b964aebff4cd5ab2d1f595327791cb660397",
+  "small_cluster_inference_implemented": true,
+  "wild_cluster_bootstrap": {
+    "add_one_pvalue_correction": true,
+    "cluster": "geography",
+    "distribution": "rademacher",
+    "draws": 1999,
+    "null_imposed": true,
+    "seed": 20090930,
+    "test_statistic": "CR1_studentized_t for coefficient tests; CR1 Wald for joint pretrend"
+  },
+  "year_count": 9
+}

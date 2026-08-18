@@ -1,0 +1,96 @@
+geography_id,geography_name,year,real_grdp_constant_2000_million_rupiah,source_value,source_table,source_pdf_page,revision_status
+idn.13.1301,Kepulauan Mentawai,2009,509396.33,"509.396,33",13.1.2,413,unspecified
+idn.13.1301,Kepulauan Mentawai,2010,534232.32,"534.232,32",13.1.2,413,unspecified
+idn.13.1301,Kepulauan Mentawai,2011,560536.49,"560.536,49",13.1.2,413,unspecified
+idn.13.1301,Kepulauan Mentawai,2012,589971.58,"589.971,58",13.1.2,413,revised
+idn.13.1301,Kepulauan Mentawai,2013,622479.09,"622.479,09",13.1.2,413,preliminary
+idn.13.1302,Pesisir Selatan,2009,2002248.56,"2.002.248,56",13.1.2,413,unspecified
+idn.13.1302,Pesisir Selatan,2010,2108066.19,"2.108.066,19",13.1.2,413,unspecified
+idn.13.1302,Pesisir Selatan,2011,2223619.3,"2.223.619,30",13.1.2,413,unspecified
+idn.13.1302,Pesisir Selatan,2012,2349536.32,"2.349.536,32",13.1.2,413,revised
+idn.13.1302,Pesisir Selatan,2013,2487507.61,"2.487.507,61",13.1.2,413,preliminary
+idn.13.1303,Solok,2009,2047056.55,"2.047.056,55",13.1.2,413,unspecified
+idn.13.1303,Solok,2010,2170836.33,"2.170.836,33",13.1.2,413,unspecified
+idn.13.1303,Solok,2011,2303828.56,"2.303.828,56",13.1.2,413,unspecified
+idn.13.1303,Solok,2012,2448011.39,"2.448.011,39",13.1.2,413,revised
+idn.13.1303,Solok,2013,2602065.71,"2.602.065,71",13.1.2,413,preliminary
+idn.13.1304,Sijunjung,2009,1271638.27,"1.271.638,27",13.1.2,413,unspecified
+idn.13.1304,Sijunjung,2010,1343278.0,"1.343.278,00",13.1.2,413,unspecified
+idn.13.1304,Sijunjung,2011,1420360.12,"1.420.360,12",13.1.2,413,unspecified
+idn.13.1304,Sijunjung,2012,1506769.93,"1.506.769,93",13.1.2,413,revised
+idn.13.1304,Sijunjung,2013,1599143.38,"1.599.143,38",13.1.2,413,preliminary
+idn.13.1305,Tanah Datar,2009,2468737.03,"2.468.737,03",13.1.2,413,unspecified
+idn.13.1305,Tanah Datar,2010,2614193.28,"2.614.193,28",13.1.2,413,unspecified
+idn.13.1305,Tanah Datar,2011,2766811.59,"2.766.811,59",13.1.2,413,unspecified
+idn.13.1305,Tanah Datar,2012,2924846.73,"2.924.846,73",13.1.2,413,revised
+idn.13.1305,Tanah Datar,2013,3098429.79,"3.098.429,79",13.1.2,413,preliminary
+idn.13.1306,Padang Pariaman,2009,2749336.74,"2.749.336,74",13.1.2,413,unspecified
+idn.13.1306,Padang Pariaman,2010,2890752.9,"2.890.752,90",13.1.2,413,unspecified
+idn.13.1306,Padang Pariaman,2011,3052077.18,"3.052.077,18",13.1.2,413,unspecified
+idn.13.1306,Padang Pariaman,2012,3238016.01,"3.238.016,01",13.1.2,413,revised
+idn.13.1306,Padang Pariaman,2013,3454099.54,"3.454.099,54",13.1.2,413,preliminary
+idn.13.1307,Agam,2009,2929871.68,"2.929.871,68",13.1.2,413,unspecified
+idn.13.1307,Agam,2010,3096174.72,"3.096.174,72",13.1.2,413,unspecified
+idn.13.1307,Agam,2011,3280044.92,"3.280.044,92",13.1.2,413,unspecified
+idn.13.1307,Agam,2012,3502846.41,"3.502.846,41",13.1.2,413,revised
+idn.13.1307,Agam,2013,3725541.01,"3.725.541,01",13.1.2,413,preliminary
+idn.13.1308,Lima Puluh Kota,2009,2684575.16,"2.684.575,16",13.1.2,413,unspecified
+idn.13.1308,Lima Puluh Kota,2010,2846157.9,"2.846.157,90",13.1.2,413,unspecified
+idn.13.1308,Lima Puluh Kota,2011,3025798.44,"3.025.798,44",13.1.2,413,unspecified
+idn.13.1308,Lima Puluh Kota,2012,3219859.68,"3.219.859,68",13.1.2,413,revised
+idn.13.1308,Lima Puluh Kota,2013,3421606.17,"3.421.606,17",13.1.2,413,preliminary
+idn.13.1309,Pasaman,2009,1289261.25,"1.289.261,25",13.1.2,413,unspecified
+idn.13.1309,Pasaman,2010,1368459.76,"1.368.459,76",13.1.2,413,unspecified
+idn.13.1309,Pasaman,2011,1452571.4,"1.452.571,40",13.1.2,413,unspecified
+idn.13.1309,Pasaman,2012,1541992.76,"1.541.992,76",13.1.2,413,revised
+idn.13.1309,Pasaman,2013,1636516.09,"1.636.516,09",13.1.2,413,preliminary
+idn.13.1310,Solok Selatan,2009,614807.23,"614.807,23",13.1.2,413,unspecified
+idn.13.1310,Solok Selatan,2010,653437.94,"653.437,94",13.1.2,413,unspecified
+idn.13.1310,Solok Selatan,2011,694409.87,"694.409,87",13.1.2,413,unspecified
+idn.13.1310,Solok Selatan,2012,740174.46,"740.174,46",13.1.2,413,revised
+idn.13.1310,Solok Selatan,2013,787260.83,"787.260,83",13.1.2,413,preliminary
+idn.13.1311,Dharmasraya,2009,1087775.99,"1.087.775,99",13.1.2,413,unspecified
+idn.13.1311,Dharmasraya,2010,1158557.51,"1.158.557,51",13.1.2,413,unspecified
+idn.13.1311,Dharmasraya,2011,1234376.14,"1.234.376,14",13.1.2,413,unspecified
+idn.13.1311,Dharmasraya,2012,1316135.71,"1.316.135,71",13.1.2,413,revised
+idn.13.1311,Dharmasraya,2013,1402405.45,"1.402.405,45",13.1.2,413,preliminary
+idn.13.1312,Pasaman Barat,2009,2544771.31,"2.544.771,31",13.1.2,413,unspecified
+idn.13.1312,Pasaman Barat,2010,2707342.74,"2.707.342,74",13.1.2,413,unspecified
+idn.13.1312,Pasaman Barat,2011,2881110.75,"2.881.110,75",13.1.2,413,unspecified
+idn.13.1312,Pasaman Barat,2012,3067381.19,"3.067.381,19",13.1.2,413,revised
+idn.13.1312,Pasaman Barat,2013,3268006.04,"3.268.006,04",13.1.2,413,preliminary
+idn.13.1371,Kota Padang,2009,11345637.06,"11.345.637,06",13.1.2,413,unspecified
+idn.13.1371,Kota Padang,2010,12021599.5,"12.021.599,50",13.1.2,413,unspecified
+idn.13.1371,Kota Padang,2011,12792184.77,"12.792.184,77",13.1.2,413,unspecified
+idn.13.1371,Kota Padang,2012,13637633.14,"13.637.633,14",13.1.2,413,revised
+idn.13.1371,Kota Padang,2013,14516707.54,"14.516.707,54",13.1.2,413,preliminary
+idn.13.1372,Kota Solok,2009,497623.07,"497.623,07",13.1.2,413,unspecified
+idn.13.1372,Kota Solok,2010,527270.61,"527.270,61",13.1.2,413,unspecified
+idn.13.1372,Kota Solok,2011,559279.15,"559.279,15",13.1.2,413,unspecified
+idn.13.1372,Kota Solok,2012,594697.89,"594.697,89",13.1.2,413,revised
+idn.13.1372,Kota Solok,2013,632752.91,"632.752,91",13.1.2,413,preliminary
+idn.13.1373,Kota Sawahlunto,2009,494707.85,"494.707,85",13.1.2,413,unspecified
+idn.13.1373,Kota Sawahlunto,2010,519599.07,"519.599,07",13.1.2,413,unspecified
+idn.13.1373,Kota Sawahlunto,2011,550056.74,"550.056,74",13.1.2,413,unspecified
+idn.13.1373,Kota Sawahlunto,2012,582968.72,"582.968,72",13.1.2,413,revised
+idn.13.1373,Kota Sawahlunto,2013,617979.14,"617.979,14",13.1.2,413,preliminary
+idn.13.1374,Kota Padang Panjang,2009,396828.98,"396.828,98",13.1.2,413,unspecified
+idn.13.1374,Kota Padang Panjang,2010,420842.59,"420.842,59",13.1.2,413,unspecified
+idn.13.1374,Kota Padang Panjang,2011,446700.28,"446.700,28",13.1.2,413,unspecified
+idn.13.1374,Kota Padang Panjang,2012,474561.42,"474.561,42",13.1.2,413,revised
+idn.13.1374,Kota Padang Panjang,2013,503717.7,"503.717,70",13.1.2,413,preliminary
+idn.13.1375,Kota Bukittinggi,2009,969590.89,"969.590,89",13.1.2,413,unspecified
+idn.13.1375,Kota Bukittinggi,2010,1029155.1,"1.029.155,10",13.1.2,413,unspecified
+idn.13.1375,Kota Bukittinggi,2011,1039252.85,"1.039.252,85",13.1.2,413,unspecified
+idn.13.1375,Kota Bukittinggi,2012,1163140.55,"1.163.140,55",13.1.2,413,revised
+idn.13.1375,Kota Bukittinggi,2013,1235499.4,"1.235.499,40",13.1.2,413,preliminary
+idn.13.1376,Kota Payakumbuh,2009,819396.5,"819.396,50",13.1.2,413,unspecified
+idn.13.1376,Kota Payakumbuh,2010,871661.87,"871.661,87",13.1.2,413,unspecified
+idn.13.1376,Kota Payakumbuh,2011,930856.29,"930.856,29",13.1.2,413,unspecified
+idn.13.1376,Kota Payakumbuh,2012,994371.12,"994.371,12",13.1.2,413,revised
+idn.13.1376,Kota Payakumbuh,2013,1061214.88,"1.061.214,88",13.1.2,413,preliminary
+idn.13.1377,Kota Pariaman,2009,685597.67,"685.597,67",13.1.2,413,unspecified
+idn.13.1377,Kota Pariaman,2010,721656.53,"721.656,53",13.1.2,413,unspecified
+idn.13.1377,Kota Pariaman,2011,764821.01,"764.821,01",13.1.2,413,unspecified
+idn.13.1377,Kota Pariaman,2012,810844.44,"810.844,44",13.1.2,413,revised
+idn.13.1377,Kota Pariaman,2013,859889.69,"859.889,69",13.1.2,413,preliminary

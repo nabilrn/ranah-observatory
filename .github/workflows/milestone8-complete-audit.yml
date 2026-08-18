@@ -1,0 +1,136 @@
+name: Milestone 8 Earthquake Case Study Audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "scripts/build_milestone8_preperiod_grdp.py"
+      - "scripts/build_milestone8_postperiod_grdp.py"
+      - "scripts/reconcile_milestone8_grdp_overlap.py"
+      - "scripts/build_milestone8_grdp_panel.py"
+      - "scripts/resolve_milestone8_grdp_source_anomalies.py"
+      - "scripts/build_milestone8_event_study.py"
+      - "scripts/build_milestone8_housing_damage_validation.py"
+      - "scripts/build_milestone8_growth_robustness.py"
+      - "scripts/build_milestone8_case_study.py"
+      - "scripts/audit_milestone8_design.py"
+      - "scripts/audit_milestone8_complete.py"
+      - "research/MILESTONE8_QUASI_CAUSAL_SPEC.md"
+      - "research/MILESTONE8_INFERENCE_PROTOCOL.md"
+      - "data/registries/milestone8_earthquake_source_plan.csv"
+      - "data/registries/milestone8_geography_contract.csv"
+      - "data/analysis/quasi_causal/**"
+      - "data/manifests/milestone8*.json"
+      - "data/processed/milestone8/**"
+      - "data/snapshots/usgs/milestone8/**"
+      - "data/snapshots/big/milestone8/**"
+      - "tests/test_milestone8_design.py"
+      - "tests/test_milestone8_complete.py"
+      - ".github/workflows/milestone8-complete-audit.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/build_milestone8_preperiod_grdp.py"
+      - "scripts/build_milestone8_postperiod_grdp.py"
+      - "scripts/reconcile_milestone8_grdp_overlap.py"
+      - "scripts/build_milestone8_grdp_panel.py"
+      - "scripts/resolve_milestone8_grdp_source_anomalies.py"
+      - "scripts/build_milestone8_event_study.py"
+      - "scripts/build_milestone8_housing_damage_validation.py"
+      - "scripts/build_milestone8_growth_robustness.py"
+      - "scripts/build_milestone8_case_study.py"
+      - "scripts/audit_milestone8_design.py"
+      - "scripts/audit_milestone8_complete.py"
+      - "research/MILESTONE8_QUASI_CAUSAL_SPEC.md"
+      - "research/MILESTONE8_INFERENCE_PROTOCOL.md"
+      - "data/registries/milestone8_earthquake_source_plan.csv"
+      - "data/registries/milestone8_geography_contract.csv"
+      - "data/analysis/quasi_causal/**"
+      - "data/manifests/milestone8*.json"
+      - "data/processed/milestone8/**"
+      - "data/snapshots/usgs/milestone8/**"
+      - "data/snapshots/big/milestone8/**"
+      - "tests/test_milestone8_design.py"
+      - "tests/test_milestone8_complete.py"
+      - ".github/workflows/milestone8-complete-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: milestone8-earthquake-case-study-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pinned audit dependencies
+        run: python -m pip install numpy==2.3.5 pytest==8.4.2
+
+      - name: Revalidate immutable pre-fit design gate
+        run: python -m scripts.audit_milestone8_design --require-preregistered
+
+      - name: Rebuild pre-period GRDP
+        run: python -m scripts.build_milestone8_preperiod_grdp
+
+      - name: Rebuild post-period GRDP
+        run: python -m scripts.build_milestone8_postperiod_grdp
+
+      - name: Reconcile 2009 overlap
+        run: python -m scripts.reconcile_milestone8_grdp_overlap
+
+      - name: Rebuild base GRDP panel
+        run: python -m scripts.build_milestone8_grdp_panel
+
+      - name: Reapply independent local-BPS source resolutions
+        run: python -m scripts.resolve_milestone8_grdp_source_anomalies
+
+      - name: Refit preregistered event study and wild-cluster diagnostics
+        run: python -m scripts.build_milestone8_event_study
+
+      - name: Rebuild housing-damage validation
+        run: python -m scripts.build_milestone8_housing_damage_validation
+
+      - name: Rebuild growth robustness qualification
+        run: python -m scripts.build_milestone8_growth_robustness
+
+      - name: Rebuild final case-study synthesis
+        run: python -m scripts.build_milestone8_case_study
+
+      - name: Require final Milestone 8 completion audit
+        run: python -m scripts.audit_milestone8_complete --require-complete
+
+      - name: Run Milestone 8 unit tests
+        run: PYTHONPATH=. pytest -q tests/test_milestone8_design.py tests/test_milestone8_complete.py
+
+      - name: Require byte-identical committed M8 analytical artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- \
+            data/analysis/quasi_causal \
+            data/manifests/milestone8_preperiod_grdp.json \
+            data/manifests/milestone8_postperiod_grdp.json \
+            data/manifests/milestone8_grdp_overlap.json \
+            data/manifests/milestone8_grdp_panel.json \
+            data/manifests/milestone8_grdp_source_anomaly_resolution.json \
+            data/manifests/milestone8_event_study.json \
+            data/manifests/milestone8_housing_damage_validation.json \
+            data/manifests/milestone8_growth_robustness.json \
+            data/manifests/milestone8_case_study.json \
+            data/manifests/milestone8_complete_audit.json

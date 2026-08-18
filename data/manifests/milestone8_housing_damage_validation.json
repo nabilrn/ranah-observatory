@@ -1,0 +1,51 @@
+{
+  "causal_effect_estimated": false,
+  "correlation_threshold_preregistered": false,
+  "correlation_used_as_identification_gate": false,
+  "correlations": {
+    "area_mean_mmi_vs_any_damage_share": {
+      "pearson": 0.7137511050620039,
+      "spearman": 0.5734265734265735
+    },
+    "area_mean_mmi_vs_heavy_damage_share": {
+      "pearson": 0.7306900032591638,
+      "spearman": 0.5594405594405596
+    },
+    "area_mean_pga_vs_any_damage_share": {
+      "pearson": 0.7333524487006817,
+      "spearman": 0.5174825174825175
+    },
+    "area_mean_pga_vs_heavy_damage_share": {
+      "pearson": 0.7593126599842216,
+      "spearman": 0.5104895104895105
+    }
+  },
+  "criterion": "one focused causal or quasi-causal case study",
+  "full_analysis_geography_count": 19,
+  "housing_damage_used_as_primary_exposure": false,
+  "housing_damage_validation_complete": true,
+  "input_dlna_slice_path": "data/processed/milestone8/source_text/candidate-pages/dlna-2009-pages-96-103.txt",
+  "input_dlna_slice_sha256": "39bf38c3621c0ccbfd16ce4bdd14299a21020f61a369ffb0b079f154a17fec8f",
+  "input_exposure_path": "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv",
+  "input_exposure_sha256": "c5798a6bfa4036fc563a644770b208aeec93ce60a7b4837eec92ae6b0e485305",
+  "interpretation": "Correlation is descriptive validation of physical shaking versus realized housing damage/vulnerability among the 12 explicitly reported DLNA geographies; it does not establish treatment exogeneity or fill the seven unreported geographies.",
+  "outcome_model_fit": true,
+  "output_path": "data/analysis/quasi_causal/m8-housing-damage-validation.csv",
+  "output_sha256": "4d0191b4eee300a2459bb2f0444a807c44446b5be4f02fc0314a4aa4d2769407",
+  "reported_geography_count": 12,
+  "schema": "ranah-observatory/milestone8-housing-damage-validation/v1",
+  "source": "government-led DLNA Table 3.19; source line BNPB",
+  "source_pdf_page": 99,
+  "unreported_geography_count": 7,
+  "unreported_geography_ids": [
+    "idn.13.1304",
+    "idn.13.1308",
+    "idn.13.1310",
+    "idn.13.1311",
+    "idn.13.1373",
+    "idn.13.1375",
+    "idn.13.1376"
+  ],
+  "validation_role": "secondary hazard-vulnerability diagnostic only",
+  "zero_fill_performed": false
+}

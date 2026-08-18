@@ -1,0 +1,26 @@
+{
+  "domain": "1310",
+  "final_download_url": "https://webapi.bps.go.id/download.php?f=DjuzwxOAEquOOH6AwrUahk1CUy9MVG5ieGRFb2NtbitMbDBFaVRRTFRMMnVaM0l0dTJUOHY1cndFcXAzQUtRdU9RQ2gzOE5GWk9CeVRhRDh4c3F0U0tsZDZ1UkZ6OVd1Y0ZLL2lSU0dFN2lXS1JBRlFIM0ZxQlQwSWtnd2ErbUFVd3htYU1Oc0xDMERUNzFydlk4WlNGVG9PWlcrdzNnREdINnkyZlBZN2tLMHpUckhhd295UlhsU282dmJXRmRNS2dBaTNzOHRqVHVINUZhMEZBZVFETkZWMnU0cEJpeUNHVEpKL1lQVG1BRVlWa04xaHdqOHQzWUFYellwVFZhYU9iOU5qWUJvS0pVMUF5MHc=",
+  "keyword": "Solok Selatan Dalam Angka 2013",
+  "publication": {
+    "abstract": "Solok  Selatan  Dalam  Angka  2013 merupakan  publikasi  yang  diterbitkan setiap   tahunnya. \r\nBuku   ini   memuat   data   dari   berbagai bidang,   baik   yang berhubungan dengan kondisi geografis daerah, aspek pemerintahan\r\n, kependudukan maupun yang berkaitan dengan karakteristik sosial ekonomi masyarakat. ",
+    "cover": "https://webapi.bps.go.id/cover.php?f=UUPiBi2ldKclOgCMMPWRpnIzOWZlWmJuVUR3Y3pFa1lzNHQ1RXdQS2J5UDNGbDVvbmxER0VaUXhxdm1KOGNpWmJseEhUNm5INDRCMEJUZitIZG8xRnhFVXJ4YzZyWjBMckxLQVpMdUFKU3BmT1hTMkhVU21URFI0OGdROTUxUWNkZFl1bnk1MHhHWVlYMFlp",
+    "id_subject_csa": null,
+    "issn": "",
+    "pdf": "https://webapi.bps.go.id/download.php?f=DjuzwxOAEquOOH6AwrUahk1CUy9MVG5ieGRFb2NtbitMbDBFaVRRTFRMMnVaM0l0dTJUOHY1cndFcXAzQUtRdU9RQ2gzOE5GWk9CeVRhRDh4c3F0U0tsZDZ1UkZ6OVd1Y0ZLL2lSU0dFN2lXS1JBRlFIM0ZxQlQwSWtnd2ErbUFVd3htYU1Oc0xDMERUNzFydlk4WlNGVG9PWlcrdzNnREdINnkyZlBZN2tLMHpUckhhd295UlhsU282dmJXRmRNS2dBaTNzOHRqVHVINUZhMEZBZVFETkZWMnU0cEJpeUNHVEpKL1lQVG1BRVlWa04xaHdqOHQzWUFYellwVFZhYU9iOU5qWUJvS0pVMUF5MHc=",
+    "pub_id": "b71346df5fc0c753641b0063",
+    "rl_date": "2014-02-04",
+    "sch_date": "2014-02-04",
+    "size": " MB",
+    "subject_csa": null,
+    "title": "Solok Selatan Dalam Angka 2013",
+    "updt_date": null
+  },
+  "raw_storage_policy": "raw PDF is gitignored and uploaded as CI artifact; Git retains metadata, SHA-256 and deterministic derived text",
+  "release_year": 2014,
+  "requested_publication_id": "b71346df5fc0c753641b0063",
+  "resolution_method": "BPS WebAPI constrained publication list; exact historical publication ID + title semantics",
+  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=DjuzwxOAEquOOH6AwrUahk1CUy9MVG5ieGRFb2NtbitMbDBFaVRRTFRMMnVaM0l0dTJUOHY1cndFcXAzQUtRdU9RQ2gzOE5GWk9CeVRhRDh4c3F0U0tsZDZ1UkZ6OVd1Y0ZLL2lSU0dFN2lXS1JBRlFIM0ZxQlQwSWtnd2ErbUFVd3htYU1Oc0xDMERUNzFydlk4WlNGVG9PWlcrdzNnREdINnkyZlBZN2tLMHpUckhhd295UlhsU282dmJXRmRNS2dBaTNzOHRqVHVINUZhMEZBZVFETkZWMnU0cEJpeUNHVEpKL1lQVG1BRVlWa04xaHdqOHQzWUFYellwVFZhYU9iOU5qWUJvS0pVMUF5MHc=",
+  "schema": "ranah-observatory/milestone8-bps-anomaly-crosscheck-source/v1",
+  "source_id": "m8_solok_selatan_grdp_crosscheck"
+}

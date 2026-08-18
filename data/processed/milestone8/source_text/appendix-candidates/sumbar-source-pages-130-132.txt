@@ -1,0 +1,364 @@
+===== PDF PAGE 130 =====
+                                                                                  Tabel/Table 53
+                                                            PDRB Kabupaten Dharmasraya Atas Dasar Harga Konstan (2000)
+                                                                Menurut Lapangan Usaha 2005 - 2009 (Jutaan Rupiah)
+                                                               GRDP of Dharmasraya Regency at Constant 2000 Price
+                                                                 by Industrial Origin, 2005 - 2009 (Million Rupiahs)
+
+
+
+     LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                                2005                 2006            2007           2008 *)         2009 **)
+
+                                        (1)                                            (2)                  (3)            (4)             (5)             (6)
+1.   PERTANIAN/AGRICULTURE                                                             334.655,28          354.245,14      376.206,16     380.541,52      407.725,48
+     a. Tanaman Pangan & Hortikultura/Farm Food Crops                                   60.707,27            63.690,42      66.497,71       69.793,18       73.594,22
+     b. Perkebunan / Farm Non Food Crops                                               201.764,36           213.756,98     229.809,33      228.005,66      244.172,87
+     c. Peternakan/Livestock                                                            26.731,96            28.475,87      29.706,33       30.267,78       32.931,25
+     d. Kehutanan/Forestry                                                              28.026,38            29.261,39      30.182,40       30.891,69       32.080,67
+     e. Perikanan/Fishery                                                               17.425,31            19.060,48      20.010,39       21.583,21       24.946,47
+2.   PERTAMBANGAN & PENGGALIAN/                                                         33.167,34            35.354,11      37.788,56       59.953,21       63.444,49
+     MINING & QUARRYING
+     a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                 X                    X              X               X               X
+     b. Non Migas / Non Crude Petroleum & Natural Gas                                    X                    X              X              19.757,52       21.210,01
+     c. Penggalian / Quarrying                                                          33.167,34            35.354,11      37.788,56       40.195,69       42.234,48
+3.   INDUSTRI PENGOLAHAN /                                                              58.474,53            61.879,81      65.484,92       69.374,72       72.302,46
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas/Oil & Gas Manufacturing Industries                                X                    X              X               X               X
+     b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                58.474,53            61.879,81      65.484,92       69.374,72       72.302,46
+
+
+
+
+                                                                                                                   .id
+       Industries
+4.   LISTRIK, GAS & AIR BERSIH /                                                         8.191,50             9.191,27      10.084,37       10.286,38       10.343,05
+
+
+
+
+                                                                                                        go
+     ELECTRICITY, GAS & WATER SUPPLY
+     a. Listrik / Electricity                                                            8.109,37             9.098,91       9.984,72       10.196,40       10.242,43
+
+
+
+
+                                                                                                      s.
+     b. G a s/ Gas                                                                       X                    X              X               X               X
+     c. Air Bersih / Water Supply                                                             82,13                92,36          99,65           89,98          100,62
+5.   BANGUNAN / CONSTRUCTION
+                                                                                           p
+                                                                                        91.634,11            98.069,10     105.051,62     114.201,62      122.502,72
+                                                                                        .b
+6.   PERDAGANGAN, HOTEL & RESTORAN /                                                    97.685,81          103.463,54      110.260,13     116.304,39      124.619,02
+                                                                                r
+     TRADE, HOTEL & RESTAURANT
+                                                                             ba
+
+     a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                           88.911,35            94.414,63     100.886,90      106.435,68      114.208,22
+     b. H o t e l / Hotels                                                                    51,88                54,24          58,20           61,85           65,89
+                                                                   um
+
+
+
+     c. Restoran / Restaurant                                                            8.722,58             8.994,67       9.315,03        9.806,86       10.344,91
+7.   PENGANGKUTAN DAN KOMUNIKASI /                                                      53.498,65            57.499,17      61.544,70       65.009,48       68.861,33
+     TRANSPORT & COMMUNICATION
+                                                            //s
+
+
+
+
+     a. Angkutan / Transport                                                            50.604,91            54.332,84      57.898,83       60.960,72       64.351,81
+       1. Kereta Api /Railway Transport                                                  X                    X              X               X               X
+                                                    s:
+
+
+
+
+       2. Jalan Raya (Darat) / Road Transport                                           49.975,23            53.676,35      57.217,30       60.244,09       63.599,69
+       3. Angkutan Laut/Sea Transport                                                    X                    X              X               X               X
+                                                  tp
+
+
+
+
+       4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                      376,94               386,03         394,54          413,71          431,54
+                                          ht
+
+
+
+
+       5. Angkutan Udara / Air Transport                                                 X                    X              X               X               X
+       6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                 252,74               270,46         286,99          302,92          320,58
+          Transport Activities
+     b. Komunikasi / Communication                                                       2.893,74             3.166,33       3.645,87        4.048,76        4.509,52
+8.   KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                              32.417,10            35.306,90      38.402,16       41.696,64       45.106,33
+     FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+     a. Bank / Banking                                                                  11.652,25            12.233,33      12.859,68       13.871,74       14.802,72
+     b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                   5.733,53             6.219,24       6.532,32        6.917,07        7.239,05
+        Keuangan/Non Bank Financial Institution and Supporting Activities
+     c. Sewa Bangunan / Rent of Building                                                14.958,09            16.771,01      18.917,70       20.807,58       22.957,00
+     d. Jasa Perusahaan / Business Services                                                   73,23                83,32          92,47          100,25          107,56
+9.   JASA-JASA / SERVICES                                                              136.513,39          144.299,46      152.679,86     162.711,56      173.200,42
+     a. Pemerintahan Umum & Pertahanan /Public Administration                          112.845,97           118.522,12     124.792,68      132.645,11      140.886,87
+       and Deffense
+     b. Swasta / Private Services                                                       23.667,42            25.777,34      27.887,18       30.066,45       32.313,55
+       1. Sosial Kemasyarakatan/Social & Community Services                              7.233,85             8.214,51       8.940,71        9.648,81       10.373,44
+       2. Hiburan dan Rekreasi/Entertainment & Cultural Services                             399,89               430,76         461,70          500,30          530,97
+       3. Perorangan dan Rumahtangga/ Personal & Household Services                     16.033,68            17.132,07      18.484,77       19.917,34       21.409,14
+
+
+     PDRB/GRDP                                                                         846.237,71           899.308,50     957.502,48     1.020.079,52    1.088.105,30
+
+
+Catatan/Note : *) Angka diperbaiki/Revised figures
+                 **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                       125
+
+===== PDF PAGE 131 =====
+                                                                                 Tabel/Table 54
+                                                             PDRB Kabupaten Pasaman Barat Atas Dasar Harga Berlaku
+                                                               Menurut Lapangan Usaha 2005 - 2009 (Jutaan Rupiah)
+                                                           GRDP of Pasaman Barat Regency at Current Price by Industrial
+                                                                      Origin, 2005 - 2009 (Million Rupiahs)
+
+
+
+     LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                             2005               2006                 2007             2008 *)         2009 **)
+
+                                      (1)                                           (2)                (3)                  (4)              (5)              (6)
+1.   PERTANIAN/AGRICULTURE                                                         995.484,22        1.154.168,58         1.341.047,16     1.555.877,36     1.747.596,29
+     a. Tanaman Pangan & Hortikultura/Farm Food Crops                              208.876,09          248.603,58          294.335,27       348.898,19       404.685,11
+     b. Perkebunan / Farm Non Food Crops                                           655.471,56          746.413,10          857.393,29       979.470,49      1.093.330,40
+     c. Peternakan/Livestock                                                         29.562,21          34.749,80           40.446,14        47.163,84        52.883,31
+     d. Kehutanan/Forestry                                                           60.905,55          76.148,85           93.301,88       114.405,85       125.383,38
+     e. Perikanan/Fishery                                                            40.668,81          48.253,25           55.570,58        65.938,99        71.314,09
+2.   PERTAMBANGAN & PENGGALIAN/                                                     29.159,84           35.181,53           41.236,18        48.404,34        55.413,64
+     MINING & QUARRYING
+     a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                              X                  X                    X                X                X
+     b. Non Migas / Non Crude Petroleum & Natural Gas                                 X                  X                    X                X                X
+     c. Penggalian / Quarrying                                                       29.159,84          35.181,53           41.236,18        48.404,34        55.413,64
+3.   INDUSTRI PENGOLAHAN /                                                         662.497,41          797.427,75          958.548,09      1.154.909,78     1.317.853,91
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas/Oil & Gas Manufacturing Industries                             X                  X                    X                X                X
+     b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                           662.497,41          797.427,75          958.548,09      1.154.909,78     1.317.853,91
+
+
+
+
+                                                                                                                 .id
+       Industries
+4.   LISTRIK, GAS & AIR BERSIH /                                                      5.249,64           5.800,69             6.415,71         7.075,48         7.801,05
+
+
+
+
+                                                                                                     go
+     ELECTRICITY, GAS & WATER SUPPLY
+     a. Listrik / Electricity                                                         4.776,76           5.277,36             5.838,29         6.434,39         7.091,25
+
+
+
+
+                                                                                                   s.
+     b. G a s/ Gas                                                                    X                  X                    X                X                X
+     c. Air Bersih / Water Supply                                                         472,88              523,33              577,42           641,09           709,80
+5.   BANGUNAN / CONSTRUCTION                                                        89.103,77
+                                                                                             p         104.390,66          123.650,08       145.515,49       163.871,91
+                                                                                          .b
+6.   PERDAGANGAN, HOTEL & RESTORAN /                                               730.820,74          856.318,02         1.012.424,99     1.221.695,09     1.417.365,74
+                                                                               r
+     TRADE, HOTEL & RESTAURANT
+                                                                            ba
+
+     a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                      722.427,89          846.776,17         1.001.545,57     1.209.266,92     1.403.455,09
+     b. H o t e l / Hotels                                                                539,47              636,74              752,57           891,29       1.019,48
+                                                                  um
+
+
+
+     c. Restoran / Restaurant                                                         7.853,38           8.905,11           10.126,85        11.536,88        12.891,17
+7.   PENGANGKUTAN DAN KOMUNIKASI /                                                 104.803,69          132.486,72          148.886,05       178.700,89       200.617,13
+     TRANSPORT & COMMUNICATION
+                                                           //s
+
+
+
+
+     a. Angkutan / Transport                                                         94.379,14         120.892,04          135.497,42       163.740,70       184.288,46
+       1. Kereta Api /Railway Transport                                               X                  X                    X                X                X
+                                                 s:
+
+
+
+
+       2. Jalan Raya (Darat) / Road Transport                                        89.044,22         114.840,38          128.488,92       155.635,09       175.210,29
+       3. Angkutan Laut/Sea Transport                                                 4.432,50           5.023,13             5.801,40         6.691,55         7.488,74
+                                               tp
+
+
+
+
+       4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport               X                  X                    X                X                X
+                                        ht
+
+
+
+
+       5. Angkutan Udara / Air Transport                                              X                  X                    X                X                X
+       6. Jasa Penunjang Angkutan / Supporting and Auxiliary                              902,42         1.028,53             1.207,10         1.414,06         1.589,43
+          Transport Activities
+     b. Komunikasi / Communication                                                   10.424,55          11.594,68           13.388,63        14.960,19        16.328,67
+8.   KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                          55.425,28           63.009,59           71.629,64        81.806,78        93.680,45
+     FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+     a. Bank / Banking                                                               28.966,16          32.823,12           37.153,55        42.185,99        48.172,95
+     b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                               10.626,33          12.453,10           14.574,97        17.018,81        19.417,54
+        Keuangan/Non Bank Financial Institution and Supporting Activities
+     c. Sewa Bangunan / Rent of Building                                             15.259,75          17.102,88           19.211,56        21.840,45        25.231,62
+     d. Jasa Perusahaan / Business Services                                               573,04              630,49              689,56           761,53           858,34
+9.   JASA-JASA / SERVICES                                                          310.757,56          358.591,41          411.979,00       474.191,40       513.533,13
+     a. Pemerintahan Umum & Pertahanan /Public Administration                      273.000,28          317.050,67          366.429,56       424.253,66       458.742,44
+       and Deffense
+     b. Swasta / Private Services                                                    37.757,28          41.540,74           45.549,44        49.937,74        54.790,69
+       1. Sosial Kemasyarakatan/Social & Community Services                          17.314,78          19.370,83           21.539,51        23.950,39        26.573,00
+       2. Hiburan dan Rekreasi/Entertainment & Cultural Services                          387,08              421,34              458,18           498,28           542,39
+       3. Perorangan dan Rumahtangga/ Personal & Household Services                  20.055,42          21.748,57           23.551,75        25.489,07        27.675,30
+
+
+     PDRB/GRDP                                                                    2.983.302,15        3.507.374,95        4.115.816,90     4.868.176,61     5.517.733,25
+
+
+Catatan/Note : *) Angka diperbaiki/Revised figures
+                 **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                      126
+
+===== PDF PAGE 132 =====
+                                                                                  Tabel/Table 55
+                                                           PDRB Kabupaten Pasaman Barat Atas Dasar Harga Konstan (2000)
+                                                                Menurut Lapangan Usaha 2005 - 2009 (Jutaan Rupiah)
+                                                              GRDP of Pasaman Barat Regency at Constant 2000 Price
+                                                                 by Industrial Origin, 2005 - 2009 (Million Rupiahs)
+
+
+
+     LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                              2005                 2006             2007            2008 *)         2009 **)
+
+                                      (1)                                            (2)                  (3)              (4)             (5)             (6)
+1.   PERTANIAN/AGRICULTURE                                                           626.665,62          672.363,63       722.237,94      774.821,14      830.296,34
+     a. Tanaman Pangan & Hortikultura/Farm Food Crops                                124.907,94          134.855,76        144.727,20      155.451,49      166.937,97
+     b. Perkebunan / Farm Non Food Crops                                             414.336,27          444.528,15        480.179,31      516.913,02      555.480,80
+     c. Peternakan/Livestock                                                          17.884,97            19.122,64        20.292,95       21.511,36       22.914,20
+     d. Kehutanan/Forestry                                                            43.526,00            46.405,38        48.730,28       51.153,73       53.605,08
+     e. Perikanan/Fishery                                                             26.010,44            27.451,70        28.308,19       29.791,54       31.358,29
+2.   PERTAMBANGAN & PENGGALIAN/                                                       19.402,99            20.398,95        21.218,99       22.088,96       22.996,99
+     MINING & QUARRYING
+     a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                               X                    X                X               X               X
+     b. Non Migas / Non Crude Petroleum & Natural Gas                                  X                    X                X               X               X
+     c. Penggalian / Quarrying                                                        19.402,99            20.398,95        21.218,99       22.088,96       22.996,99
+3.   INDUSTRI PENGOLAHAN /                                                           458.000,22          484.259,29       510.796,70      539.145,92      568.548,95
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas/Oil & Gas Manufacturing Industries                              X                    X                X               X               X
+     b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                             458.000,22          484.259,29       510.796,70      539.145,92      568.548,95
+
+
+
+
+                                                                                                                   .id
+       Industries
+4.   LISTRIK, GAS & AIR BERSIH /                                                       2.621,06             2.790,10         2.970,19        3.156,74        3.367,45
+
+
+
+
+                                                                                                      go
+     ELECTRICITY, GAS & WATER SUPPLY
+     a. Listrik / Electricity                                                          2.340,47             2.494,69         2.659,84        2.829,01        3.022,96
+
+
+
+
+                                                                                                    s.
+     b. G a s/ Gas                                                                     X                    X                X               X               X
+     c. Air Bersih / Water Supply                                                          280,59               295,40           310,35          327,73          344,49
+5.   BANGUNAN / CONSTRUCTION
+                                                                                              p
+                                                                                      62.360,90            66.273,32        70.567,83       75.168,86       80.102,50
+                                                                                           .b
+6.   PERDAGANGAN, HOTEL & RESTORAN /                                                 507.748,79          543.974,24       584.707,31      627.925,49      672.147,25
+                                                                                r
+     TRADE, HOTEL & RESTAURANT
+                                                                             ba
+
+     a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                        501.945,88          537.913,45        578.364,55      621.279,20      665.180,38
+     b. H o t e l / Hotels                                                                 362,32               383,78           406,88          432,02          458,69
+                                                                   um
+
+
+
+     c. Restoran / Restaurant                                                          5.440,59             5.677,00         5.935,88        6.214,27        6.508,18
+7.   PENGANGKUTAN DAN KOMUNIKASI /                                                    68.704,78            72.651,04        77.550,74       82.911,56       87.994,16
+     TRANSPORT & COMMUNICATION
+                                                            //s
+
+
+
+
+     a. Angkutan / Transport                                                          62.153,11            65.453,22        69.768,45       74.260,85       78.794,18
+       1. Kereta Api /Railway Transport                                                X                    X                X               X               X
+                                                 s:
+
+
+
+
+       2. Jalan Raya (Darat) / Road Transport                                         58.750,09            61.822,80        65.890,74       70.120,92       74.394,56
+       3. Angkutan Laut/Sea Transport                                                  2.842,53             3.034,95         3.241,93        3.461,74        3.677,20
+                                               tp
+
+
+
+
+       4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                X                    X                X               X               X
+                                        ht
+
+
+
+
+       5. Angkutan Udara / Air Transport                                               X                    X                X               X               X
+       6. Jasa Penunjang Angkutan / Supporting and Auxiliary                               560,49               595,47           635,78          678,19          722,42
+          Transport Activities
+     b. Komunikasi / Communication                                                     6.551,67             7.197,83         7.782,29        8.650,71        9.199,98
+8.   KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                            38.624,43            40.695,91        42.826,48       45.172,77       47.720,37
+     FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+     a. Bank / Banking                                                                22.311,01            23.487,38        24.689,93       25.998,50       27.459,67
+     b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                 7.348,70             7.795,80         8.252,63        8.706,53        9.159,50
+        Keuangan/Non Bank Financial Institution and Supporting Activities
+     c. Sewa Bangunan / Rent of Building                                               8.593,91             9.022,02         9.474,93       10.035,84       10.644,78
+     d. Jasa Perusahaan / Business Services                                                370,81               390,71           409,00          431,90          456,42
+9.   JASA-JASA / SERVICES                                                            204.574,08          211.745,90       217.942,65      224.543,10      231.681,10
+     a. Pemerintahan Umum & Pertahanan /Public Administration                        179.841,48          186.083,47        191.424,07      197.128,50      203.217,30
+       and Deffense
+     b. Swasta / Private Services                                                     24.732,60            25.662,43        26.518,58       27.414,60       28.463,80
+       1. Sosial Kemasyarakatan/Social & Community Services                           10.242,72            10.723,37        11.148,02       11.620,69       12.192,86
+       2. Hiburan dan Rekreasi/Entertainment & Cultural Services                           294,80               307,87           320,92          334,91          349,69
+       3. Perorangan dan Rumahtangga/ Personal & Household Services                   14.195,08            14.631,20        15.049,65       15.459,00       15.921,25
+
+
+     PDRB/GRDP                                                                      1.988.702,87        2.115.152,38      2.250.818,83    2.394.934,54    2.544.855,11
+
+
+Catatan/Note : *) Angka diperbaiki/Revised figures
+                 **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                       127

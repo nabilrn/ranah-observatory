@@ -1,0 +1,89 @@
+{
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "methods": {
+    "mutool_outline": {
+      "bytes": 0,
+      "matched_terms": [],
+      "outline_present": false,
+      "relevant_lines": []
+    },
+    "mutool_text": {
+      "bytes": 381917,
+      "page_separator_count": 1318,
+      "terms": {
+        "atas dasar harga konstan": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "harga konstan 2000": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "kepulauan mentawai": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "kota padang": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "padang pariaman": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "pesisir selatan": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "sumatera barat": {
+          "hit_count_capped": 0,
+          "hits": []
+        }
+      },
+      "visible_character_count": 273587
+    },
+    "poppler_raw": {
+      "bytes": 571368,
+      "page_separator_count": 191,
+      "terms": {
+        "atas dasar harga konstan": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "harga konstan 2000": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "kepulauan mentawai": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "kota padang": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "padang pariaman": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "pesisir selatan": {
+          "hit_count_capped": 0,
+          "hits": []
+        },
+        "sumatera barat": {
+          "hit_count_capped": 0,
+          "hits": []
+        }
+      },
+      "visible_character_count": 273997
+    }
+  },
+  "ocr_performed": false,
+  "outcome_model_fit": false,
+  "outcome_values_extracted": false,
+  "pdf_sha256": "8ecd1a8eb85338161f7db9a826e2b364371de91a41566fca717cf4a47d8178ef",
+  "relevant_text_recovered_without_ocr": false,
+  "schema": "ranah-observatory/milestone8-national-pdf-text-probe/v1",
+  "source_plan_id": "m8_grdp_pre_national"
+}
