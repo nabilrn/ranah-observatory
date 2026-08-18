@@ -1,0 +1,117 @@
+name: Milestone 18 Final Analytical Synthesis Reproducibility
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone18-final-synthesis-repro.yml"
+      - "research/MILESTONE18_FINAL_ANALYTICAL_SYNTHESIS_SPEC.md"
+      - "scripts/build_milestone18_final_analytical_synthesis.py"
+      - "scripts/audit_milestone18_final_analytical_synthesis.py"
+      - "tests/test_milestone18_final_analytical_synthesis.py"
+      - "docs/MILESTONE18_FINAL_ANALYTICAL_SYNTHESIS.md"
+      - "data/manifests/milestone18_final_analytical_synthesis.json"
+      - "data/analysis/engine/final_synthesis_v1/**"
+      - "data/manifests/research_foundation_complete.json"
+      - "data/manifests/milestone6_historical_eda_audit.json"
+      - "data/manifests/milestone8_complete_audit.json"
+      - "data/manifests/milestone9_hydroclimate_case_study.json"
+      - "data/manifests/milestone10_analytical_panel.json"
+      - "data/manifests/milestone11_expected_performance_v2.json"
+      - "data/manifests/milestone12_attainable_frontier.json"
+      - "data/manifests/milestone13_development_gap_decomposition.json"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/manifests/milestone15_causal_evidence_expansion.json"
+      - "data/manifests/milestone16_spatial_climate_risk.json"
+      - "data/manifests/milestone17_scenario_intervention.json"
+      - "data/analysis/engine/scenario_intervention_v1/m17-model-sensitivity-mappings.csv"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone18-final-synthesis-repro.yml"
+      - "research/MILESTONE18_FINAL_ANALYTICAL_SYNTHESIS_SPEC.md"
+      - "scripts/build_milestone18_final_analytical_synthesis.py"
+      - "scripts/audit_milestone18_final_analytical_synthesis.py"
+      - "tests/test_milestone18_final_analytical_synthesis.py"
+      - "docs/MILESTONE18_FINAL_ANALYTICAL_SYNTHESIS.md"
+      - "data/manifests/milestone18_final_analytical_synthesis.json"
+      - "data/analysis/engine/final_synthesis_v1/**"
+      - "data/manifests/research_foundation_complete.json"
+      - "data/manifests/milestone10_analytical_panel.json"
+      - "data/manifests/milestone11_expected_performance_v2.json"
+      - "data/manifests/milestone12_attainable_frontier.json"
+      - "data/manifests/milestone13_development_gap_decomposition.json"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/manifests/milestone15_causal_evidence_expansion.json"
+      - "data/manifests/milestone16_spatial_climate_risk.json"
+      - "data/manifests/milestone17_scenario_intervention.json"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require initial Research Foundation remains complete
+        run: python -m scripts.audit_research_foundation_complete --require-complete
+
+      - name: Require M10 analytical panel remains complete
+        run: python -m scripts.audit_milestone10_analytical_panel --require-complete
+
+      - name: Require M11 expected performance remains complete
+        run: python -m scripts.audit_milestone11_expected_performance_v2 --require-complete
+
+      - name: Require M12 attainable frontier remains complete
+        run: python -m scripts.audit_milestone12_attainable_frontier --require-complete
+
+      - name: Require M13 gap decomposition remains complete
+        run: python -m scripts.audit_milestone13_development_gap_decomposition --require-complete
+
+      - name: Require M14 bottleneck association remains complete
+        run: python -m scripts.audit_milestone14_bottleneck_association --require-complete
+
+      - name: Require M15 causal evidence expansion remains complete
+        run: python -m scripts.audit_milestone15_causal_evidence_expansion --require-complete
+
+      - name: Require M16 spatial/climate engine remains complete
+        run: python -m scripts.audit_milestone16_spatial_climate_risk --require-complete
+
+      - name: Require M17 scenario engine remains complete
+        run: python -m scripts.audit_milestone17_scenario_intervention --require-complete
+
+      - name: Rebuild M18 final analytical synthesis
+        run: python -m scripts.build_milestone18_final_analytical_synthesis
+
+      - name: Require M18 completion audit
+        run: python -m scripts.audit_milestone18_final_analytical_synthesis --require-complete
+
+      - name: Run M18 focused tests
+        run: python -m unittest tests.test_milestone18_final_analytical_synthesis -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py
+
+      - name: Require byte-identical committed M18 outputs
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/final_synthesis_v1 \
+            data/manifests/milestone18_final_analytical_synthesis.json

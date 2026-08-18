@@ -1,0 +1,19 @@
+edge_id,from_node,to_node,edge_type,interpretation,causal_edge
+e01,observed_trajectory_foundation,expected_performance,analytical_dependency,M11 models are built from the qualified analytical panel; historical evidence supplies broader context but is not backfilled into the modern panel,False
+e02,expected_performance,attainable_reference,analytical_dependency,M12 favorable residual references are calibrated relative to M11 cross-fitted expectations,False
+e03,expected_performance,development_gaps,analytical_dependency,M13 expected-performance gaps inherit M11 predictions and uncertainty,False
+e04,attainable_reference,development_gaps,analytical_dependency,M13 favorable-reference gaps inherit M12 empirical frontier objects,False
+e05,development_gaps,associated_bottlenecks,analytical_dependency,M14 screens preregistered lagged candidates against M13 adverse expected-gap objects,False
+e06,associated_bottlenecks,causal_evidence,evidence_extension,M15 tests whether association candidates have identification opportunities; failed identification remains evidence,False
+e07,spatial_climate_constraints,associated_bottlenecks,evidence_extension,qualified climate evidence can enter association screens while retaining model-estimate semantics,False
+e08,causal_evidence,intervention_scenarios,readiness_constraint,intervention mappings cannot exceed the causal identification strength in M8/M15,False
+e09,spatial_climate_constraints,intervention_scenarios,readiness_constraint,disaster intervention scenarios remain blocked while the compatible risk-component chain is incomplete,False
+e10,expected_performance,intervention_scenarios,analytical_dependency,M17 quantitative sensitivities use M11 outer-fold predictive coefficients and remain non-causal,False
+u11,observed_trajectory_foundation,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False
+u12,expected_performance,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False
+u13,attainable_reference,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False
+u14,development_gaps,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False
+u15,associated_bottlenecks,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False
+u16,causal_evidence,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False
+u17,spatial_climate_constraints,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False
+u18,intervention_scenarios,uncertainty_evidence_strength,uncertainty_annotation,"node-specific support, claim boundaries, blocked states, and method disagreement are retained in final synthesis",False

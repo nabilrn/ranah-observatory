@@ -1,0 +1,115 @@
+{
+  "blocked_claim_count": 9,
+  "cost_benefit_analysis_performed": false,
+  "criterion": "coherent evidence graph with explicit uncertainty, method disagreement, research-question readiness, and claim boundaries",
+  "definitive_monetary_wasted_potential_estimated": false,
+  "evidence_edge_count": 18,
+  "evidence_node_count": 9,
+  "fully_resolved_research_question_count": 0,
+  "inputs": {
+    "m10_panel": {
+      "path": "data/manifests/milestone10_analytical_panel.json",
+      "sha256": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433"
+    },
+    "m11_expected": {
+      "path": "data/manifests/milestone11_expected_performance_v2.json",
+      "sha256": "faf3da7549b7d4cca2633d1d407fd682f7e7ad154d9c98839a064bc14c451936"
+    },
+    "m12_frontier": {
+      "path": "data/manifests/milestone12_attainable_frontier.json",
+      "sha256": "645f56dffb6439b2041798223d0437b8120122414150e42a23699b471aaf60a7"
+    },
+    "m13_gaps": {
+      "path": "data/manifests/milestone13_development_gap_decomposition.json",
+      "sha256": "4b2099ab2b50e68dd98b7bee00bd5a4a48eeb2930fb79ce7ea6fdc27ed3dd0c6"
+    },
+    "m14_association": {
+      "path": "data/manifests/milestone14_bottleneck_association.json",
+      "sha256": "ff953fa9a240b1b7abb0f99af1b452799212f645a613ace3cfad8ea8d287df04"
+    },
+    "m15_causal_library": {
+      "path": "data/manifests/milestone15_causal_evidence_expansion.json",
+      "sha256": "0c076d6475308a01c977ec045775372df767a647a7325262cbf837d802c8ec5c"
+    },
+    "m16_spatial_climate": {
+      "path": "data/manifests/milestone16_spatial_climate_risk.json",
+      "sha256": "58bc5020e8cad19a23614da16feed2813a969ad321cd51bedf8bd899510c5800"
+    },
+    "m17_mappings": {
+      "path": "data/analysis/engine/scenario_intervention_v1/m17-model-sensitivity-mappings.csv",
+      "sha256": "d18e176a14c62305a3a51ff172b051c135ef063a8f301a8b1397c7ba4ced8fbc"
+    },
+    "m17_scenarios": {
+      "path": "data/manifests/milestone17_scenario_intervention.json",
+      "sha256": "8babae00f8e2b442a8a908fbe2be9b8e331f2c6e68787105cd5f7df3f2a33bbb"
+    },
+    "m6_historical": {
+      "path": "data/manifests/milestone6_historical_eda_audit.json",
+      "sha256": "04869483df273b16977f1e7402ef40bda6c0c9b2c4334ed9e9d8ca3afa95a87c"
+    },
+    "m8_quasi_causal": {
+      "path": "data/manifests/milestone8_complete_audit.json",
+      "sha256": "6d8cd5dbe796758634028b213007cc4d2dcb51cc226947c77f215c5d05bcf731"
+    },
+    "m9_hydroclimate": {
+      "path": "data/manifests/milestone9_hydroclimate_case_study.json",
+      "sha256": "724247eec7936e02c744265a1ab160779ac24640058b98de93bfb7880dce9b51"
+    },
+    "phase2_roadmap": {
+      "path": "research/PHASE2_ANALYTICAL_ENGINE_ROADMAP.md",
+      "sha256": "790fff5cb4c9c8d620c3b2ca8456a79764a9f5c798a491652f1447ffc3312dda"
+    },
+    "research_charter": {
+      "path": "research/RESEARCH_CHARTER.md",
+      "sha256": "01a4e8072e1d99b6763f3ce228b1d2f11a5002cd94e026c8a7547a4be4617ca5"
+    },
+    "research_foundation": {
+      "path": "data/manifests/research_foundation_complete.json",
+      "sha256": "ce593952fe74ae13ea2ba63059614c4d60380e10d9706cb8ec7144e57419fd34"
+    }
+  },
+  "m13_frontier_gap_sign_disagreement_count": 50,
+  "m15_not_identification_ready_count": 2,
+  "m16_blocked_or_gap_component_count": 8,
+  "m17_min_dominant_sign_retention": 0.5263157894736842,
+  "m17_min_dominant_sign_retention_mapping": {
+    "feature_id": "agriculture_share_grdp",
+    "target_id": "real_grdp_growth"
+  },
+  "method_disagreement_averaged_away": false,
+  "milestone": 18,
+  "milestone18_complete": true,
+  "new_causal_estimate_created": false,
+  "new_statistical_model_fit": false,
+  "outputs": {
+    "claim_boundary_ledger": {
+      "path": "data/analysis/engine/final_synthesis_v1/m18-claim-boundary-ledger.csv",
+      "sha256": "a903436de47d8b36ef3b94c7a7c562b1758d222d6b331a1f489e9ab36125871d"
+    },
+    "evidence_edges": {
+      "path": "data/analysis/engine/final_synthesis_v1/m18-evidence-edges.csv",
+      "sha256": "b21167046f8007f7e424a50d9b4ce6a55e6d2b0883306db1d7c69d29bb2f39dc"
+    },
+    "evidence_nodes": {
+      "path": "data/analysis/engine/final_synthesis_v1/m18-evidence-nodes.csv",
+      "sha256": "46c3ba4d82afb9c9e3aec0ebba1a3907338121b4a28c532b17ef1149d27a0fcd"
+    },
+    "research_question_readiness": {
+      "path": "data/analysis/engine/final_synthesis_v1/m18-research-question-readiness.csv",
+      "sha256": "e3e7198d8f0db2ba587dda80dc16195a181037fd1ff2a790e779d1e606627a76"
+    }
+  },
+  "phase": "final_analytical_research_engine",
+  "phase2_analytical_engine_complete": true,
+  "policy_ranking_performed": false,
+  "public_dashboard_required_for_phase2_completion": false,
+  "public_product_complete": false,
+  "research_question_count": 5,
+  "research_question_readiness_counts": {
+    "bounded_answer": 2,
+    "bounded_partial": 2,
+    "not_action_ready": 1
+  },
+  "schema": "ranah-observatory/milestone18-final-analytical-synthesis/v1",
+  "scientific_research_agenda_complete": false
+}
