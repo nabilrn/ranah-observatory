@@ -1,0 +1,152 @@
+{
+  "completed_criterion_count": 9,
+  "criteria": [
+    {
+      "complete": true,
+      "criterion": "canonical geography registry",
+      "criterion_number": 1,
+      "details": {
+        "current_sumbar_child_count": 19,
+        "registry_row_count": 59
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/registries/geographies.csv",
+          "sha256": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "source catalog",
+      "criterion_number": 2,
+      "details": {
+        "required_source_families_present": true,
+        "source_count": 26
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "catalog/data-catalog.csv",
+          "sha256": "db640b86198b7ab8869b500abb3ad17f426345e14010332f6d02c56c1b570e39"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "indicator framework",
+      "criterion_number": 3,
+      "details": {
+        "domain_count": 12,
+        "indicator_definition_count": 67
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/registries/indicators.csv",
+          "sha256": "8fb0616603fa270859d595039f812b15b95d2f06b6895c3033b038eab199ea70"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "40-60 high-value indicators with provenance",
+      "criterion_number": 4,
+      "details": {
+        "qualified_indicator_count": 40
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/manifests/milestone4_indicator_inventory.json",
+          "sha256": "4313e5cf93d13aac7381a2a73cfa84e2ae1832b8fe4a6568356b375515183c30"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "a comparative Indonesian panel where feasible",
+      "criterion_number": 5,
+      "details": {
+        "schema": "ranah-observatory/milestone5-comparative-panel-audit/v1"
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/manifests/milestone5_comparative_panel_audit.json",
+          "sha256": "3c4c1e52c9b6b129a1ca637ec7b04c9b5da53098750f48f8efa4c6ff2c57b02e"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "exploratory historical analysis",
+      "criterion_number": 6,
+      "details": {
+        "schema": "ranah-observatory/milestone6-historical-eda-audit/v1"
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/manifests/milestone6_historical_eda_audit.json",
+          "sha256": "04869483df273b16977f1e7402ef40bda6c0c9b2c4334ed9e9d8ca3afa95a87c"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "one baseline expected-performance/frontier model",
+      "criterion_number": 7,
+      "details": {
+        "schema": "ranah-observatory/milestone7-expected-performance-audit/v1"
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/manifests/milestone7_expected_performance_audit.json",
+          "sha256": "525f6e2391994bfcf6a3ba1dac01afa1e1c34a683e1672cf36019b9adac3b8dd"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "one focused causal or quasi-causal case study",
+      "criterion_number": 8,
+      "details": {
+        "schema": "ranah-observatory/milestone8-complete-audit/v1"
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/manifests/milestone8_complete_audit.json",
+          "sha256": "6d8cd5dbe796758634028b213007cc4d2dcb51cc226947c77f215c5d05bcf731"
+        }
+      ]
+    },
+    {
+      "complete": true,
+      "criterion": "one climate/disaster case study relevant to West Sumatra",
+      "criterion_number": 9,
+      "details": {
+        "case_study": "2024 West Sumatra hydroclimate disaster spatial alignment",
+        "geography_count": 19
+      },
+      "errors": [],
+      "evidence": [
+        {
+          "path": "data/manifests/milestone9_hydroclimate_case_study.json",
+          "sha256": "724247eec7936e02c744265a1ab160779ac24640058b98de93bfb7880dce9b51"
+        }
+      ]
+    }
+  ],
+  "criterion_count": 9,
+  "dashboard_required_for_foundation": false,
+  "definitive_monetary_wasted_potential_required_for_foundation": false,
+  "errors": [],
+  "final_ranah_observatory_product_complete": false,
+  "initial_research_foundation_complete": true,
+  "schema": "ranah-observatory/research-foundation-complete/v1",
+  "scope": "initial research foundation defined by research/RESEARCH_CHARTER.md"
+}

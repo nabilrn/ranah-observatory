@@ -1,0 +1,79 @@
+name: Milestone 9 Hydroclimate Case Study Audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "scripts/build_milestone9_hydroclimate_case_study.py"
+      - "scripts/audit_milestone9_hydroclimate_case_study.py"
+      - "research/MILESTONE9_HYDROCLIMATE_CASE_STUDY_SPEC.md"
+      - "docs/MILESTONE9_HYDROCLIMATE_CASE_STUDY.md"
+      - "data/manifests/milestone9*.json"
+      - "data/analysis/climate_disaster/m9-*"
+      - "data/processed/climate/rainfall/**"
+      - "data/processed/bnpb/disaster/**"
+      - "tests/test_milestone9_hydroclimate_case_study.py"
+      - ".github/workflows/milestone9-hydroclimate-case-study.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/build_milestone9_hydroclimate_case_study.py"
+      - "scripts/audit_milestone9_hydroclimate_case_study.py"
+      - "research/MILESTONE9_HYDROCLIMATE_CASE_STUDY_SPEC.md"
+      - "docs/MILESTONE9_HYDROCLIMATE_CASE_STUDY.md"
+      - "data/manifests/milestone9*.json"
+      - "data/analysis/climate_disaster/m9-*"
+      - "data/processed/climate/rainfall/**"
+      - "data/processed/bnpb/disaster/**"
+      - "tests/test_milestone9_hydroclimate_case_study.py"
+      - ".github/workflows/milestone9-hydroclimate-case-study.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: milestone9-hydroclimate-case-study-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Validate climate/disaster source contracts
+        run: python scripts/validate_climate_disaster_foundation.py
+
+      - name: Rebuild preregistered Milestone 9 case study
+        run: python -m scripts.build_milestone9_hydroclimate_case_study
+
+      - name: Require complete Milestone 9 audit
+        run: python -m scripts.audit_milestone9_hydroclimate_case_study --require-complete
+
+      - name: Run Milestone 9 tests
+        run: PYTHONPATH=. python -m unittest tests.test_milestone9_hydroclimate_case_study -v
+
+      - name: Require byte-identical committed outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- \
+            data/analysis/climate_disaster/m9-hydroclimate-2024-geography-frame.csv \
+            data/analysis/climate_disaster/m9-hydroclimate-2024-correlations.csv \
+            data/analysis/climate_disaster/m9-hydroclimate-2024-leave-one-out.csv \
+            data/manifests/milestone9_hydroclimate_case_study.json

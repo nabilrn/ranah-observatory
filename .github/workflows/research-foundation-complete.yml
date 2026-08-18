@@ -1,0 +1,117 @@
+name: Research Foundation Complete Audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "research/RESEARCH_CHARTER.md"
+      - "data/registries/**"
+      - "catalog/**"
+      - "data/manifests/**"
+      - "data/analysis/**"
+      - "data/processed/**"
+      - "scripts/build_research_foundation_closure.py"
+      - "scripts/audit_research_foundation_complete.py"
+      - "scripts/build_milestone9_hydroclimate_case_study.py"
+      - "scripts/audit_milestone9_hydroclimate_case_study.py"
+      - "tests/test_research_foundation_complete.py"
+      - "tests/test_milestone9_hydroclimate_case_study.py"
+      - "docs/RESEARCH_FOUNDATION_COMPLETE.md"
+      - "docs/MILESTONE9_HYDROCLIMATE_CASE_STUDY.md"
+      - ".github/workflows/research-foundation-complete.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/RESEARCH_CHARTER.md"
+      - "data/registries/**"
+      - "catalog/**"
+      - "data/manifests/**"
+      - "data/analysis/**"
+      - "data/processed/**"
+      - "scripts/build_research_foundation_closure.py"
+      - "scripts/audit_research_foundation_complete.py"
+      - "scripts/build_milestone9_hydroclimate_case_study.py"
+      - "scripts/audit_milestone9_hydroclimate_case_study.py"
+      - "tests/test_research_foundation_complete.py"
+      - "tests/test_milestone9_hydroclimate_case_study.py"
+      - "docs/RESEARCH_FOUNDATION_COMPLETE.md"
+      - "docs/MILESTONE9_HYDROCLIMATE_CASE_STUDY.md"
+      - ".github/workflows/research-foundation-complete.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: research-foundation-complete-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Validate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Rebuild and require Milestone 4 inventory audit
+        shell: bash
+        run: |
+          python scripts/audit_milestone4_indicators.py --output /tmp/m4.json --require-complete
+          cmp /tmp/m4.json data/manifests/milestone4_indicator_inventory.json
+
+      - name: Rebuild and require Milestone 5 comparative audit
+        shell: bash
+        run: |
+          python scripts/audit_milestone5_comparative_panel.py --output /tmp/m5.json --require-complete
+          cmp /tmp/m5.json data/manifests/milestone5_comparative_panel_audit.json
+
+      - name: Require Milestone 6 historical audit
+        run: python scripts/audit_milestone6_historical_eda.py --require-complete
+
+      - name: Require Milestone 7 expected-performance audit
+        run: python scripts/audit_milestone7_expected_performance.py --require-complete
+
+      - name: Require Milestone 8 quasi-causal completion audit
+        run: python -m scripts.audit_milestone8_complete --require-complete
+
+      - name: Rebuild Milestone 9 climate/disaster case study
+        run: python -m scripts.build_milestone9_hydroclimate_case_study
+
+      - name: Require Milestone 9 completion audit
+        run: python -m scripts.audit_milestone9_hydroclimate_case_study --require-complete
+
+      - name: Rebuild nine-criterion Research Charter closure
+        run: python -m scripts.build_research_foundation_closure
+
+      - name: Require exact 9/9 foundation closure
+        run: python -m scripts.audit_research_foundation_complete --require-complete
+
+      - name: Run closure tests
+        run: PYTHONPATH=. python -m unittest tests.test_milestone9_hydroclimate_case_study tests.test_research_foundation_complete -v
+
+      - name: Require byte-identical Milestone 9 and foundation artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- \
+            data/analysis/climate_disaster/m9-hydroclimate-2024-geography-frame.csv \
+            data/analysis/climate_disaster/m9-hydroclimate-2024-correlations.csv \
+            data/analysis/climate_disaster/m9-hydroclimate-2024-leave-one-out.csv \
+            data/manifests/milestone9_hydroclimate_case_study.json \
+            data/manifests/research_foundation_complete.json
