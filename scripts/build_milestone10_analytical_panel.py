@@ -139,7 +139,7 @@ def load_geographies() -> tuple[list[str], dict[str, str]]:
         row
         for row in rows
         if row.get("parent_geography_id") == "idn.13"
-        and row.get("geography_level") == "regency_city"
+        and row.get("geography_level") in {"regency", "city"}
         and row.get("status") == "current"
     ]
     ids = sorted(row["geography_id"] for row in selected)
