@@ -1,0 +1,95 @@
+{
+  "causal_analysis_performed": false,
+  "clipping_performed": false,
+  "cross_target_ranking_computed": false,
+  "dimension_map": {
+    "poverty_rate": "living_standards_inclusion",
+    "real_grdp_growth": "economic_dynamism",
+    "unemployment_rate": "labor_market"
+  },
+  "district_scope": "current_sumbar_19_kabkota_2019_2024",
+  "expected_interval_classification_counts": {
+    "materially_less_favorable_than_expected": 15,
+    "materially_more_favorable_than_expected": 14,
+    "within_expected_interval": 313
+  },
+  "frontier_gap_sign_agreement_count": 292,
+  "frontier_gap_sign_disagreement_count": 50,
+  "gap_interpretation_authorized_row_count": 243,
+  "gap_interpretation_blocked_row_count": 99,
+  "gap_orientation": "positive_means_less_favorable_than_reference",
+  "gap_panel_row_count": 342,
+  "geography_count": 19,
+  "geography_profile_row_count": 19,
+  "m11_target_crossfit_rmse": {
+    "poverty_rate": 1.9592487017,
+    "real_grdp_growth": 0.995429958163,
+    "unemployment_rate": 1.71435086226
+  },
+  "milestone": 13,
+  "milestone13_complete": true,
+  "minimum_authorized_years_for_persistence_label": 4,
+  "monetary_wasted_potential_claim": false,
+  "mostly_meets_or_exceeds_rate_threshold": 0.3333333333333333,
+  "multi_year_monetary_accumulation_performed": false,
+  "national_anchor_combined_with_district_gaps": false,
+  "outputs": {
+    "gap_panel": {
+      "path": "data/analysis/engine/gap_decomposition_v1/m13-gap-panel.csv",
+      "sha256": "157a79d899d941409eb025343f006088b9d79974419a1de20cc9396988d3f0e8"
+    },
+    "geography_profiles": {
+      "path": "data/analysis/engine/gap_decomposition_v1/m13-geography-profiles.csv",
+      "sha256": "b43f7601aafd5035e86266c94acfc9333a2aa0614d20efaef0bc18add95807e4"
+    },
+    "national_income_anchor": {
+      "path": "data/analysis/engine/gap_decomposition_v1/m13-national-income-anchor.json",
+      "sha256": "51d6b3fec424cc76719f9deef968f63d9abbbfed14c10efb6bb21d6fa347ed40"
+    },
+    "persistence": {
+      "path": "data/analysis/engine/gap_decomposition_v1/m13-persistence-by-geography-target.csv",
+      "sha256": "a6ce90818ed3b59ec051bf13f0015572a770e7820a7edc81426ad39306517646"
+    }
+  },
+  "persistence_label_counts": {
+    "insufficient_supported_years": 15,
+    "mixed_relative_to_favorable_reference": 3,
+    "mostly_meets_or_exceeds_favorable_reference": 2,
+    "persistent_less_favorable_than_favorable_reference": 37
+  },
+  "persistence_row_count": 57,
+  "persistent_positive_gap_rate_threshold": 0.6666666666666666,
+  "phase": "final_analytical_research_engine",
+  "policy_counterfactual_claim": false,
+  "population_aggregation_performed": false,
+  "prefit_thresholds_preserved": true,
+  "schema": "ranah-observatory/milestone13-development-gap-decomposition/v1",
+  "source_inputs": {
+    "data/analysis/engine/expected_performance_v2/m11-crossfit-predictions.csv": "d7026ba5108757a0bb27fbdf47df522770716163b7fcc3f08309620a3fbd45d8",
+    "data/analysis/engine/expected_performance_v2/m11-target-summary.csv": "a2fa4b64e95969e85274e557ef768bf1c629da1d71562b32c1734405466ada6d",
+    "data/analysis/engine/frontier_v1/m12-district-frontier.csv": "43e7eea8e4ac9cc4c46fb4e1da877e25e16739e5a14bf6584ab0525143b64e24",
+    "data/analysis/engine/frontier_v1/m12-national-west-sumatra-frontier.json": "32d23227bbcfc3ebf7b90627724c2e111cafc1eba62cfee041b3fb31c2984c3f",
+    "data/manifests/milestone11_expected_performance_v2.json": "faf3da7549b7d4cca2633d1d407fd682f7e7ad154d9c98839a064bc14c451936",
+    "data/manifests/milestone12_attainable_frontier.json": "645f56dffb6439b2041798223d0437b8120122414150e42a23699b471aaf60a7",
+    "data/manifests/milestone13_design_gate.json": "61c4a545844eca356017bdfc17fc4308701083bf50f8f9a6f190667f0b419751",
+    "research/MILESTONE13_DEVELOPMENT_GAP_DECOMPOSITION_SPEC.md": "ea97d2039d12e57b8870db93c37ba61d1d574a11dead1c8623e65236d5bbde3f"
+  },
+  "standardization_scale": "m11_target_crossfit_rmse",
+  "target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "target_year_count": 6,
+  "target_years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "theoretical_maximum_claim": false,
+  "weighted_composite_score_computed": false,
+  "winsorization_performed": false
+}
