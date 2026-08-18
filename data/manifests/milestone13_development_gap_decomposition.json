@@ -48,7 +48,7 @@
     },
     "persistence": {
       "path": "data/analysis/engine/gap_decomposition_v1/m13-persistence-by-geography-target.csv",
-      "sha256": "5c3f323b6634b9c6c9565de1f9e1f94dcecc2100ec8d0259d612ea62d3185ad2"
+      "sha256": "a6ce90818ed3b59ec051bf13f0015572a770e7820a7edc81426ad39306517646"
     }
   },
   "persistence_label_counts": {
