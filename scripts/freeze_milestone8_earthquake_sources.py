@@ -43,6 +43,16 @@ BPS_TARGETS = (
         raw_pdf_path=ROOT / "data/raw/milestone8/bps/grdp-2005-2009/source.pdf",
     ),
     BPSPublicationTarget(
+        source_id="m8_grdp_pre_national",
+        domain="0000",
+        publication_id="b751409b82e973a1752cb735",
+        keyword="Produk Domestik Regional Bruto Kabupaten Kota di Indonesia 2005 2009",
+        release_year=2010,
+        title_tokens=("produk domestik regional bruto kabupaten kota di indonesia", "2005", "2009"),
+        metadata_dir=ROOT / "data/snapshots/bps/milestone8/grdp-kabkota-indonesia-2005-2009",
+        raw_pdf_path=ROOT / "data/raw/milestone8/bps/grdp-kabkota-indonesia-2005-2009/source.pdf",
+    ),
+    BPSPublicationTarget(
         source_id="m8_grdp_post",
         domain="1373",
         publication_id="09a8175fa67d4c80d2183354",
