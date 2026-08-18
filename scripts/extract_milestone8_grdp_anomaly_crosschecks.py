@@ -22,7 +22,7 @@ SOURCES = {
             "1.039.252",
             "1.093.252",
             "1.163.140",
-            "1.163.126",
+            "1.235.499",
             "Produk Domestik Regional Bruto Kota Bukittinggi Atas Dasar Harga Konstan 2000",
             "Jumlah",
         ],
@@ -33,12 +33,26 @@ SOURCES = {
         "text": OUT / "solok-selatan-dalam-angka-2013.txt",
         "terms": [
             "694.409",
-            "695.409",
             "694.917",
             "740.174",
             "739.663",
             "Produk Domestik Regional Bruto",
             "harga konstan",
+        ],
+    },
+    "m8_solok_selatan_grdp_crosscheck_2012": {
+        "pdf": ROOT / "data/raw/milestone8/crosschecks/solok-selatan-dalam-angka-2012/source.pdf",
+        "checksum": ROOT / "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2012/source.pdf.sha256",
+        "text": OUT / "solok-selatan-dalam-angka-2012.txt",
+        "terms": [
+            "653.437",
+            "653.0",
+            "694.409",
+            "694.917",
+            "Produk Domestik Regional Bruto",
+            "harga konstan",
+            "2010-2011",
+            "2010 – 2011",
         ],
     },
 }
@@ -118,7 +132,7 @@ def extract_one(source_id: str, spec: dict[str, Any]) -> dict[str, Any]:
         raise RuntimeError(f"{source_id}: extracted page count mismatch {extracted_pages} != {total_pages}")
     term_hits = {term: hits(raw_text, term) for term in spec["terms"]}
     candidate_pages = {hit["page"] for term in term_hits.values() for hit in term}
-    slices = write_candidate_pages(source_id, raw_text, candidate_pages, max_pages=30)
+    slices = write_candidate_pages(source_id, raw_text, candidate_pages, max_pages=35)
     return {
         "source_id": source_id,
         "pdf_sha256": sha256(pdf),
