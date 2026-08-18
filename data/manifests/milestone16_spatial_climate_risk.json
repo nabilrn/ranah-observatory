@@ -1,0 +1,66 @@
+{
+  "blocked_or_gap_component_count": 8,
+  "causal_attribution_performed": false,
+  "climate_change_attribution_performed": false,
+  "component_registry_count": 12,
+  "composite_risk_score_created": false,
+  "criterion": "spatial/climate evidence integration with explicit risk-synthesis limits",
+  "cross_event_temporal_aggregation_performed": false,
+  "geography_count": 19,
+  "geography_risk_ranking_created": false,
+  "historical_boundary_continuity_claimed": false,
+  "inarisk_endpoint_count": 4,
+  "inarisk_endpoint_state": "endpoint_verified_version_binding_unresolved",
+  "inarisk_pixels_ingested": false,
+  "inputs": {
+    "catalog": {
+      "path": "catalog/data-catalog.csv",
+      "sha256": "db640b86198b7ab8869b500abb3ad17f426345e14010332f6d02c56c1b570e39"
+    },
+    "m8_frame": {
+      "path": "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv",
+      "sha256": "c5798a6bfa4036fc563a644770b208aeec93ce60a7b4837eec92ae6b0e485305"
+    },
+    "m8_manifest": {
+      "path": "data/manifests/milestone8_shakemap_exposure_candidate.json",
+      "sha256": "d7247f8a4b11a41c18ea2a45454dec9463a77c58f90b4d58bafc3c8ca030515e"
+    },
+    "m9_frame": {
+      "path": "data/analysis/climate_disaster/m9-hydroclimate-2024-geography-frame.csv",
+      "sha256": "2566c18f24f6ce254b72723a36d91ebf684baedb977d695e8b60e819c1e00608"
+    },
+    "m9_manifest": {
+      "path": "data/manifests/milestone9_hydroclimate_case_study.json",
+      "sha256": "724247eec7936e02c744265a1ab160779ac24640058b98de93bfb7880dce9b51"
+    }
+  },
+  "milestone": 16,
+  "milestone16_complete": true,
+  "monetary_wasted_potential_estimated": false,
+  "outputs": {
+    "component_frame": {
+      "path": "data/analysis/engine/spatial_climate_risk_v1/m16-spatial-component-frame.csv",
+      "sha256": "e8fb46ab2baa8d151fb92c3a422735a4e0ea2ac18f236523a685f0ae4e39e1aa"
+    },
+    "component_registry": {
+      "path": "data/analysis/engine/spatial_climate_risk_v1/m16-evidence-component-registry.csv",
+      "sha256": "675d8dbf828eb563b42743e6afacc486b67b2b570e9509d54768e711eca51e07"
+    }
+  },
+  "phase": "final_analytical_research_engine",
+  "required_missing_component_classes": [
+    "exposure",
+    "vulnerability",
+    "capacity",
+    "observed_impact"
+  ],
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone16-spatial-climate-risk/v1",
+  "spatial_frame": "BIG June 2026 fixed-current-boundary polygons",
+  "substantive_component_classes": [
+    "climate_context",
+    "hazard_intensity",
+    "recorded_event_occurrence"
+  ],
+  "substantive_component_count": 4
+}

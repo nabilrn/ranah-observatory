@@ -1,0 +1,20 @@
+geography_id,geography_name,spatial_frame,earthquake_event_date,earthquake_area_mean_pga_pct_g,earthquake_area_mean_mmi,hydroclimate_year,rainfall_z_2024,rainfall_baseline_percentile,flood_events_2024,landslide_events_2024,qualified_exposure_component_present,qualified_vulnerability_component_present,qualified_capacity_component_present,qualified_observed_impact_component_present,cross_event_temporal_aggregation_authorized,risk_synthesis_authorized
+idn.13.1301,Kepulauan Mentawai,BIG_June_2026_fixed_current_boundary,2009-09-30,16.721762721555173,6.3571755288736425,2024,1.590935541193798,100.0,2,0,False,False,False,False,False,False
+idn.13.1302,Pesisir Selatan,BIG_June_2026_fixed_current_boundary,2009-09-30,15.037199999999999,6.229378531073446,2024,1.0281435093187907,88.37209302325581,15,0,False,False,False,False,False,False
+idn.13.1303,Solok,BIG_June_2026_fixed_current_boundary,2009-09-30,21.476024785510013,6.772259294566254,2024,1.2323971539324534,90.69767441860465,2,2,False,False,False,False,False,False
+idn.13.1304,Sijunjung,BIG_June_2026_fixed_current_boundary,2009-09-30,18.601216216216216,6.607675675675676,2024,1.2362819007803298,90.69767441860465,5,0,False,False,False,False,False,False
+idn.13.1305,Tanah Datar,BIG_June_2026_fixed_current_boundary,2009-09-30,32.83947630922693,7.233915211970075,2024,1.1699369681834066,90.69767441860465,3,0,False,False,False,False,False,False
+idn.13.1306,Padang Pariaman,BIG_June_2026_fixed_current_boundary,2009-09-30,48.84687022900764,7.910687022900763,2024,1.494627285319137,97.67441860465117,3,3,False,False,False,False,False,False
+idn.13.1307,Agam,BIG_June_2026_fixed_current_boundary,2009-09-30,38.93730769230769,7.393076923076923,2024,1.5839723284258092,97.67441860465117,4,2,False,False,False,False,False,False
+idn.13.1308,Lima Puluh Kota,BIG_June_2026_fixed_current_boundary,2009-09-30,24.183795620437955,6.8711157455683,2024,1.1509976255253471,86.04651162790698,4,2,False,False,False,False,False,False
+idn.13.1309,Pasaman,BIG_June_2026_fixed_current_boundary,2009-09-30,20.003370078740158,6.630183727034121,2024,1.2027668046638564,90.69767441860465,2,0,False,False,False,False,False,False
+idn.13.1310,Solok Selatan,BIG_June_2026_fixed_current_boundary,2009-09-30,11.380748440748441,5.987733887733888,2024,0.8606470487233641,83.72093023255815,4,0,False,False,False,False,False,False
+idn.13.1311,Dharmasraya,BIG_June_2026_fixed_current_boundary,2009-09-30,10.72694214876033,5.91770956316411,2024,1.019455629631983,88.37209302325581,8,0,False,False,False,False,False,False
+idn.13.1312,Pasaman Barat,BIG_June_2026_fixed_current_boundary,2009-09-30,25.13241592920354,7.014159292035398,2024,1.7075472723916258,100.0,4,0,False,False,False,False,False,False
+idn.13.1371,Padang,BIG_June_2026_fixed_current_boundary,2009-09-30,32.806682926829275,7.310731707317073,2024,1.1912705932732053,93.02325581395348,1,1,False,False,False,False,False,False
+idn.13.1372,Solok,BIG_June_2026_fixed_current_boundary,2009-09-30,28.82470588235294,7.170588235294117,2024,1.285503064705909,90.69767441860465,1,0,False,False,False,False,False,False
+idn.13.1373,Sawahlunto,BIG_June_2026_fixed_current_boundary,2009-09-30,27.45823529411765,7.11029411764706,2024,1.1659399985405343,90.69767441860465,1,0,False,False,False,False,False,False
+idn.13.1374,Padang Panjang,BIG_June_2026_fixed_current_boundary,2009-09-30,40.88428571428572,7.514285714285714,2024,1.2044622803215932,93.02325581395348,1,0,False,False,False,False,False,False
+idn.13.1375,Bukittinggi,BIG_June_2026_fixed_current_boundary,2009-09-30,30.19875,6.4624999999999995,2024,1.1225426973718902,93.02325581395348,2,0,False,False,False,False,False,False
+idn.13.1376,Payakumbuh,BIG_June_2026_fixed_current_boundary,2009-09-30,29.90190476190476,7.104761904761904,2024,1.0382323679338996,88.37209302325581,1,0,False,False,False,False,False,False
+idn.13.1377,Pariaman,BIG_June_2026_fixed_current_boundary,2009-09-30,52.28809523809524,8.014285714285714,2024,1.5744499594060954,97.67441860465117,1,0,False,False,False,False,False,False

@@ -1,0 +1,87 @@
+name: Milestone 16 Spatial Climate Risk Reproducibility
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone16-spatial-climate-risk-repro.yml"
+      - "research/MILESTONE16_SPATIAL_CLIMATE_RISK_SPEC.md"
+      - "scripts/build_milestone16_spatial_climate_risk.py"
+      - "scripts/audit_milestone16_spatial_climate_risk.py"
+      - "tests/test_milestone16_spatial_climate_risk.py"
+      - "docs/MILESTONE16_SPATIAL_CLIMATE_RISK.md"
+      - "data/manifests/milestone16_spatial_climate_risk.json"
+      - "data/analysis/engine/spatial_climate_risk_v1/**"
+      - "data/manifests/milestone8_shakemap_exposure_candidate.json"
+      - "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv"
+      - "data/manifests/milestone9_hydroclimate_case_study.json"
+      - "data/analysis/climate_disaster/m9-hydroclimate-2024-geography-frame.csv"
+      - "catalog/data-catalog.csv"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone16-spatial-climate-risk-repro.yml"
+      - "research/MILESTONE16_SPATIAL_CLIMATE_RISK_SPEC.md"
+      - "scripts/build_milestone16_spatial_climate_risk.py"
+      - "scripts/audit_milestone16_spatial_climate_risk.py"
+      - "tests/test_milestone16_spatial_climate_risk.py"
+      - "docs/MILESTONE16_SPATIAL_CLIMATE_RISK.md"
+      - "data/manifests/milestone16_spatial_climate_risk.json"
+      - "data/analysis/engine/spatial_climate_risk_v1/**"
+      - "data/manifests/milestone8_shakemap_exposure_candidate.json"
+      - "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv"
+      - "data/manifests/milestone9_hydroclimate_case_study.json"
+      - "data/analysis/climate_disaster/m9-hydroclimate-2024-geography-frame.csv"
+      - "catalog/data-catalog.csv"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require Research Foundation remains complete
+        run: python -m scripts.audit_research_foundation_complete --require-complete
+
+      - name: Require M8 completed quasi-causal evidence remains valid
+        run: python -m scripts.audit_milestone8_complete --require-complete
+
+      - name: Require M9 hydroclimate case study remains complete
+        run: python -m scripts.audit_milestone9_hydroclimate_case_study --require-complete
+
+      - name: Rebuild M16 spatial/climate component engine
+        run: python -m scripts.build_milestone16_spatial_climate_risk
+
+      - name: Audit M16 completion
+        run: python -m scripts.audit_milestone16_spatial_climate_risk --require-complete
+
+      - name: Run M16 focused tests
+        run: python -m unittest tests.test_milestone16_spatial_climate_risk -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate climate/disaster source contracts
+        run: python scripts/validate_climate_disaster_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Require byte-identical committed M16 outputs
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/spatial_climate_risk_v1 \
+            data/manifests/milestone16_spatial_climate_risk.json
