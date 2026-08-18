@@ -1,0 +1,57 @@
+name: Milestone 10 Analytical Panel Audit
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone10-analytical-panel-audit.yml"
+      - "research/MILESTONE10_ANALYTICAL_PANEL_SPEC.md"
+      - "scripts/build_milestone10_analytical_panel.py"
+      - "data/registries/geographies.csv"
+      - "data/registries/indicators.csv"
+      - "data/processed/bps/panel/**"
+      - "data/processed/bps/expansion/**"
+      - "data/processed/climate/rainfall/**"
+      - "data/processed/bnpb/disaster/**"
+      - "data/analysis/engine/panel_v1/**"
+      - "data/manifests/milestone10_analytical_panel.json"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build Milestone 10 analytical panel
+        run: python -m scripts.build_milestone10_analytical_panel
+
+      - name: Validate core footprint from generated manifest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = json.loads(Path('data/manifests/milestone10_analytical_panel.json').read_text())
+          assert p['schema'] == 'ranah-observatory/milestone10-analytical-panel/v1', p
+          assert p['geography_count'] == 19, p
+          assert p['year_count'] == 8, p
+          assert p['wide_row_count'] == 152, p
+          assert p['indicator_count'] == 15, p
+          assert p['duplicate_key_count'] == 0, p
+          assert p['imputation_performed'] is False, p
+          assert p['historical_boundary_harmonization_performed'] is False, p
+          assert p['province_aggregate_included'] is False, p
+          assert p['held_source_native_included'] is False, p
+          assert p['milestone10_complete'] is True, p
+          PY
