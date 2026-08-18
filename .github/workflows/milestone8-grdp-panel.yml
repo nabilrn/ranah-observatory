@@ -1,0 +1,57 @@
+name: Milestone 8 GRDP Panel
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/build_milestone8_grdp_panel.py"
+      - "data/analysis/quasi_causal/m8-preperiod-real-grdp-2005-2009.csv"
+      - "data/analysis/quasi_causal/m8-postperiod-real-grdp-2009-2013.csv"
+      - "data/manifests/milestone8_grdp_overlap.json"
+      - "data/manifests/milestone8_postperiod_grdp.json"
+      - ".github/workflows/milestone8-grdp-panel.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-grdp-panel
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build exact 19 x 9 reconciled outcome panel
+        run: python -m scripts.build_milestone8_grdp_panel
+
+      - name: Commit deterministic panel and manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/quasi_causal/m8-real-grdp-panel-2005-2013.csv \
+            data/manifests/milestone8_grdp_panel.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 GRDP panel unchanged."
+            exit 0
+          fi
+          git commit -m "data: build reconciled milestone8 GRDP panel"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal
