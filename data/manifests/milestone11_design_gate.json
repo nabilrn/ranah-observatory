@@ -1,0 +1,43 @@
+{
+  "schema": "ranah-observatory/milestone11-design-gate/v1",
+  "phase": "final_analytical_research_engine",
+  "milestone": 11,
+  "regime_id": "sumbar_current_kabkota_lagged_structural_2019_2024_v1",
+  "input_regime_id": "sumbar_current_kabkota_2018_2025_v1",
+  "geography_count": 19,
+  "target_start_year": 2019,
+  "target_end_year": 2024,
+  "target_year_count": 6,
+  "target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "primary_feature_ids": [
+    "mean_years_schooling",
+    "labor_force_participation",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "rice_yield"
+  ],
+  "sensitivity_added_feature_id": "annual_rainfall",
+  "feature_lag_years": 1,
+  "model_family": "ridge_with_target_year_fixed_effects",
+  "penalty_grid": [0.0, 0.01, 0.1, 1.0, 10.0, 100.0],
+  "outer_validation": "leave_one_geography_out_all_six_years",
+  "inner_model_selection": "leave_one_geography_out_within_outer_training_universe",
+  "naive_benchmark": "same_target_year_mean_among_outer_training_geographies",
+  "benchmark_gate": "model_rmse_lt_naive_rmse_and_model_mae_lt_naive_mae",
+  "target_year_selected_before_model_fit": true,
+  "targets_selected_before_model_fit": true,
+  "features_selected_before_model_fit": true,
+  "sensitivity_selected_before_model_fit": true,
+  "model_fit": false,
+  "residuals_inspected": false,
+  "target_benchmark_results_known": false,
+  "causal_claim_authorized": false,
+  "frontier_claim_authorized": false,
+  "counterfactual_claim_authorized": false,
+  "monetary_wasted_potential_claim_authorized": false,
+  "milestone11_complete": false
+}
