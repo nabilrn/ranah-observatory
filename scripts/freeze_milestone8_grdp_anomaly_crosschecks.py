@@ -24,6 +24,8 @@ class Target:
     source_id: str
     domain: str
     publication_id: str
+    release_year: int
+    keyword: str
     title_tokens: tuple[str, ...]
     metadata_dir: Path
     raw_pdf_path: Path
@@ -34,7 +36,9 @@ TARGETS = (
         source_id="m8_bukittinggi_grdp_crosscheck",
         domain="1375",
         publication_id="44d13f6979435a1a50fc1df9",
-        title_tokens=("produk domestik regional bruto kota bukittinggi", "2011", "2013"),
+        release_year=2014,
+        keyword="Produk Domestik Regional Bruto Kota Bukittinggi",
+        title_tokens=("produk domestik regional bruto", "bukittinggi"),
         metadata_dir=ROOT / "data/snapshots/bps/milestone8/crosschecks/bukittinggi-grdp-2011-2013",
         raw_pdf_path=ROOT / "data/raw/milestone8/crosschecks/bukittinggi-grdp-2011-2013/source.pdf",
     ),
@@ -42,7 +46,9 @@ TARGETS = (
         source_id="m8_solok_selatan_grdp_crosscheck",
         domain="1310",
         publication_id="b71346df5fc0c753641b0063",
-        title_tokens=("solok selatan dalam angka", "2013"),
+        release_year=2014,
+        keyword="Solok Selatan Dalam Angka 2013",
+        title_tokens=("solok selatan", "dalam angka", "2013"),
         metadata_dir=ROOT / "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2013",
         raw_pdf_path=ROOT / "data/raw/milestone8/crosschecks/solok-selatan-dalam-angka-2013/source.pdf",
     ),
@@ -87,10 +93,19 @@ def normalize_detail(payload: Mapping[str, Any]) -> Mapping[str, Any] | None:
 
 def title_matches(row: Mapping[str, Any], target: Target) -> bool:
     title = canonical_text(row.get("title", ""))
-    return all(canonical_text(token) in title for token in target.title_tokens)
+    return bool(title) and all(canonical_text(token) in title for token in target.title_tokens)
 
 
-def resolve(client: BPSClient, target: Target) -> Mapping[str, Any]:
+def publication_identifier(row: Mapping[str, Any]) -> str:
+    for key in ("id", "pub_id", "publication_id"):
+        value = str(row.get(key, "") or "").strip()
+        if value:
+            return value
+    return ""
+
+
+def resolve(client: BPSClient, target: Target) -> tuple[Mapping[str, Any], str]:
+    direct_error = ""
     try:
         payload = client._request(  # noqa: SLF001
             "view",
@@ -98,14 +113,51 @@ def resolve(client: BPSClient, target: Target) -> Mapping[str, Any]:
         )
         detail = normalize_detail(payload)
         if detail is not None and title_matches(detail, target):
-            return detail
-    except BPSApiError:
-        pass
-    raise RuntimeError(f"{target.source_id}: direct BPS publication lookup failed semantic qualification")
+            return detail, "BPS WebAPI publication view by historical publication ID"
+        if detail is None:
+            direct_error = "view returned no available publication detail"
+        else:
+            direct_error = f"view title failed semantics: {detail.get('title')!r}"
+    except BPSApiError as exc:
+        direct_error = f"{type(exc).__name__}: {exc}"
+
+    candidates = list(
+        client.iter_list(
+            "publication",
+            domain=target.domain,
+            lang="ind",
+            year=target.release_year,
+            keyword=target.keyword,
+        )
+    )
+    semantic_matches = [row for row in candidates if title_matches(row, target)]
+    exact_id_matches = [
+        row for row in semantic_matches if publication_identifier(row) == target.publication_id
+    ]
+    if len(exact_id_matches) == 1:
+        return exact_id_matches[0], "BPS WebAPI constrained publication list; exact historical publication ID + title semantics"
+    if len(semantic_matches) == 1:
+        return semantic_matches[0], "BPS WebAPI constrained publication list; unique title-semantic match"
+
+    summary = [
+        {
+            "id": publication_identifier(row),
+            "title": row.get("title"),
+            "release_date": row.get("rl_date"),
+            "updated_date": row.get("updt_date"),
+        }
+        for row in candidates
+    ]
+    raise RuntimeError(
+        f"{target.source_id}: publication resolution failed; direct={direct_error}; "
+        f"list_candidates={summary}; semantic_match_count={len(semantic_matches)}; "
+        f"exact_id_match_count={len(exact_id_matches)}"
+    )
 
 
 def freeze_one(client: BPSClient, target: Target) -> dict[str, Any]:
-    publication = dict(resolve(client, target))
+    resolved, resolution_method = resolve(client, target)
+    publication = dict(resolved)
     pdf_url = str(publication.get("pdf", "")).strip()
     if not pdf_url:
         raise RuntimeError(f"{target.source_id}: publication has no PDF URL")
@@ -123,7 +175,10 @@ def freeze_one(client: BPSClient, target: Target) -> dict[str, Any]:
         "schema": "ranah-observatory/milestone8-bps-anomaly-crosscheck-source/v1",
         "source_id": target.source_id,
         "domain": target.domain,
-        "publication_id": target.publication_id,
+        "requested_publication_id": target.publication_id,
+        "release_year": target.release_year,
+        "keyword": target.keyword,
+        "resolution_method": resolution_method,
         "publication": publication,
         "resolved_pdf_url": pdf_url,
         "final_download_url": final_url,
@@ -141,7 +196,9 @@ def freeze_one(client: BPSClient, target: Target) -> dict[str, Any]:
     return {
         "source_id": target.source_id,
         "domain": target.domain,
-        "publication_id": target.publication_id,
+        "requested_publication_id": target.publication_id,
+        "resolved_publication_id": publication_identifier(publication),
+        "resolution_method": resolution_method,
         "title": publication.get("title"),
         "metadata_path": str(metadata_path.relative_to(ROOT)),
         "metadata_sha256": metadata_hash,
