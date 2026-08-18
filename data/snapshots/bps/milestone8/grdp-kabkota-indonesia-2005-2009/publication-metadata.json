@@ -1,0 +1,28 @@
+{
+  "domain": "0000",
+  "final_download_url": "https://webapi.bps.go.id/download.php?f=Xz24y+mza1YXPkB4wLdRdU5MZ21jbTRWL0NCZGtXRmwzUW9hU2kxZDhtRkorTU44T2VnVkpzNmNXbVRPakFtVmE3Qmt6OFVySHU5U2JWQ05mNWV1U0d3RHpSTk9EYlNZelZMY2xXU0w3VFVweVJ1L2lCYUhHakJMWERDWjg1ZnhUMUNrMUs4UGVUUGU1S3ZlRExJOWRjWWkzcGtwdWFMeHhsS0JGazhyKytvRDBzcytWSFl5ZkkxaDFBOFk1OHhPOExjcmd0MmhhZGR5ME9vRXkwa0gvTzRHRUoyVGNFZVpMenI1b1BBRkIzWVg3a3NVRGUxaVZrbmJsbVRsN1IzUG9UMEJwaENGTmw0aTVYM09XaHFkWVllbS9vNTcxUHZXMDRQUDNEbElXcmxndmtybS9ab2oyN2NkbUFnPQ==",
+  "publication": {
+    "abstract": "Publikasi ini menyajikan angka PDRB sektoral tahun 2005-2009 menurut kabupaten/kota atas dasar harga berlaku dan atas dasar harga konstan 2000.Selain dua jenis tabel pokok diatas, juga disajikan tabel-tabel turunannya yang berisi laju pertumbuhan, PDRB per kapita dan distribusi kabupaten/kota yang lazim digunakan sebagai indikator makro.",
+    "cover": "https://webapi.bps.go.id/cover.php?f=jdeD9AHAVwS5tKbzW1eD00hWaVpvZFljN2pRK0krY0JuTGtDRTBIRnZGRzZLNGJwNHoyRHpyRzRtSnJhUThvK3ZIM2VzOE1Pd3RqYW00RGFGVDlvdmdnY1EzYmp6NEJSTlllb05pTlMrNHViWWRvTTg2NitzOU80YjNwbGRQMml5SGVlMnRaaUh6VXFlTkwy",
+    "id_subject_csa": [
+      531
+    ],
+    "issn": "1907-8242",
+    "pdf": "https://webapi.bps.go.id/download.php?f=Xz24y+mza1YXPkB4wLdRdU5MZ21jbTRWL0NCZGtXRmwzUW9hU2kxZDhtRkorTU44T2VnVkpzNmNXbVRPakFtVmE3Qmt6OFVySHU5U2JWQ05mNWV1U0d3RHpSTk9EYlNZelZMY2xXU0w3VFVweVJ1L2lCYUhHakJMWERDWjg1ZnhUMUNrMUs4UGVUUGU1S3ZlRExJOWRjWWkzcGtwdWFMeHhsS0JGazhyKytvRDBzcytWSFl5ZkkxaDFBOFk1OHhPOExjcmd0MmhhZGR5ME9vRXkwa0gvTzRHRUoyVGNFZVpMenI1b1BBRkIzWVg3a3NVRGUxaVZrbmJsbVRsN1IzUG9UMEJwaENGTmw0aTVYM09XaHFkWVllbS9vNTcxUHZXMDRQUDNEbElXcmxndmtybS9ab2oyN2NkbUFnPQ==",
+    "pub_id": "b751409b82e973a1752cb735",
+    "rl_date": "2010-12-09",
+    "sch_date": null,
+    "size": "4.86 MB",
+    "subject_csa": [
+      "Neraca Ekonomi"
+    ],
+    "title": "Produk Domestik Regional Bruto Kabupaten/Kota di Indonesia 2005-2009",
+    "updt_date": null
+  },
+  "raw_storage_policy": "PDF bytes live under gitignored data/raw during acquisition and are uploaded as a GitHub Actions artifact; Git stores metadata, SHA-256, and derived text only.",
+  "requested_publication_id": "b751409b82e973a1752cb735",
+  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=Xz24y+mza1YXPkB4wLdRdU5MZ21jbTRWL0NCZGtXRmwzUW9hU2kxZDhtRkorTU44T2VnVkpzNmNXbVRPakFtVmE3Qmt6OFVySHU5U2JWQ05mNWV1U0d3RHpSTk9EYlNZelZMY2xXU0w3VFVweVJ1L2lCYUhHakJMWERDWjg1ZnhUMUNrMUs4UGVUUGU1S3ZlRExJOWRjWWkzcGtwdWFMeHhsS0JGazhyKytvRDBzcytWSFl5ZkkxaDFBOFk1OHhPOExjcmd0MmhhZGR5ME9vRXkwa0gvTzRHRUoyVGNFZVpMenI1b1BBRkIzWVg3a3NVRGUxaVZrbmJsbVRsN1IzUG9UMEJwaENGTmw0aTVYM09XaHFkWVllbS9vNTcxUHZXMDRQUDNEbElXcmxndmtybS9ab2oyN2NkbUFnPQ==",
+  "retrieval_method": "BPS WebAPI publication metadata -> official pdf URL",
+  "schema": "ranah-observatory/milestone8-bps-publication-snapshot/v1",
+  "source_plan_id": "m8_grdp_pre_national"
+}

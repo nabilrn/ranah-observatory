@@ -5,7 +5,7 @@
   "outcome_extracted": false,
   "raw_pdf_policy": "gitignored data/raw plus workflow artifact; no raw PDF tracked in Git",
   "schema": "ranah-observatory/milestone8-source-freeze/v1",
-  "snapshot_count": 3,
+  "snapshot_count": 4,
   "snapshots": [
     {
       "checksum_path": "data/snapshots/disaster/milestone8/dlna-2009/source.pdf.sha256",
@@ -21,7 +21,7 @@
     {
       "checksum_path": "data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2009-2013/publication-metadata.json",
-      "metadata_sha256": "35a6ff0b85123a6bc34d8da580060e017061e7f77879b06b49672c4c5c5bd6b1",
+      "metadata_sha256": "500fa7b5803b9948fbb730eba6591d4b29ee41c0cafd4946a91c70971cf6f019",
       "pdf_bytes": 24110985,
       "pdf_sha256": "c066499a4c050296e4ffdd10192ba4c6748da920bf0975fa887e2ed13e998612",
       "raw_pdf_git_tracked": false,
@@ -34,7 +34,7 @@
     {
       "checksum_path": "data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256",
       "metadata_path": "data/snapshots/bps/milestone8/grdp-2005-2009/publication-metadata.json",
-      "metadata_sha256": "9fcc33b9324803173e116294776040091bd3abbf7ac8d4def507f27efd3729cc",
+      "metadata_sha256": "0f7c489cf8cf38837d05098c896b8dc026f83fb57826cadd4f082151b1f61978",
       "pdf_bytes": 4585911,
       "pdf_sha256": "c54ae285a81e01255f354103d271419ba8d4748c4e9f19d58c94d81c8b3d338e",
       "raw_pdf_git_tracked": false,
@@ -43,6 +43,19 @@
       "source_plan_id": "m8_grdp_pre",
       "title": "Perkembangan Ekonomi Sumatera Barat (Tinjauan Pendapatan Domestik Regional Bruto Provinsi Sumatera Barat Dan Kabupaten/Kota Tahun 2005 Ã¢â‚¬â€œ 2009)",
       "updated_date": "2018-01-23"
+    },
+    {
+      "checksum_path": "data/snapshots/bps/milestone8/grdp-kabkota-indonesia-2005-2009/source.pdf.sha256",
+      "metadata_path": "data/snapshots/bps/milestone8/grdp-kabkota-indonesia-2005-2009/publication-metadata.json",
+      "metadata_sha256": "32a754b3e8addb5c1d517ae1fc58a0f2c752f725307d0d83f399528d26b386d0",
+      "pdf_bytes": 5477938,
+      "pdf_sha256": "8ecd1a8eb85338161f7db9a826e2b364371de91a41566fca717cf4a47d8178ef",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/bps/grdp-kabkota-indonesia-2005-2009/source.pdf",
+      "release_date": "2010-12-09",
+      "source_plan_id": "m8_grdp_pre_national",
+      "title": "Produk Domestik Regional Bruto Kabupaten/Kota di Indonesia 2005-2009",
+      "updated_date": null
     }
   ],
   "source_bytes_frozen": true
