@@ -1,0 +1,58 @@
+name: Milestone 8 Housing Damage Validation
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/build_milestone8_housing_damage_validation.py"
+      - "data/processed/milestone8/source_text/candidate-pages/dlna-2009-pages-96-103.txt"
+      - "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv"
+      - ".github/workflows/milestone8-housing-damage-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-housing-damage-validation
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pinned numerical dependency
+        run: python -m pip install numpy==2.3.5
+
+      - name: Build descriptive housing-damage validation
+        run: python -m scripts.build_milestone8_housing_damage_validation
+
+      - name: Commit deterministic validation artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/quasi_causal/m8-housing-damage-validation.csv \
+            data/manifests/milestone8_housing_damage_validation.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 housing validation unchanged."
+            exit 0
+          fi
+          git commit -m "analysis: validate M8 physical exposure against housing damage"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal
