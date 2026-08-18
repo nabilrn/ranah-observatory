@@ -1,0 +1,86 @@
+name: Milestone 14 Bottleneck Association Reproducibility
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone14-bottleneck-association-repro.yml"
+      - "research/MILESTONE14_BOTTLENECK_ASSOCIATION_SPEC.md"
+      - "scripts/build_milestone14_bottleneck_association.py"
+      - "scripts/audit_milestone14_bottleneck_association.py"
+      - "tests/test_milestone14_bottleneck_association.py"
+      - "docs/MILESTONE14_BOTTLENECK_ASSOCIATION.md"
+      - "data/manifests/milestone14_design_gate.json"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/analysis/engine/bottleneck_association_v1/**"
+      - "data/analysis/engine/gap_decomposition_v1/**"
+      - "data/analysis/engine/panel_v1/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone14-bottleneck-association-repro.yml"
+      - "research/MILESTONE14_BOTTLENECK_ASSOCIATION_SPEC.md"
+      - "scripts/build_milestone14_bottleneck_association.py"
+      - "scripts/audit_milestone14_bottleneck_association.py"
+      - "tests/test_milestone14_bottleneck_association.py"
+      - "docs/MILESTONE14_BOTTLENECK_ASSOCIATION.md"
+      - "data/manifests/milestone14_design_gate.json"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/analysis/engine/bottleneck_association_v1/**"
+      - "data/analysis/engine/gap_decomposition_v1/**"
+      - "data/analysis/engine/panel_v1/**"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require Research Foundation 9/9 remains complete
+        run: python -m scripts.audit_research_foundation_complete --require-complete
+
+      - name: Require Milestone 10 remains complete
+        run: python -m scripts.audit_milestone10_analytical_panel --require-complete
+
+      - name: Require Milestone 11 remains complete
+        run: python -m scripts.audit_milestone11_expected_performance_v2 --require-complete
+
+      - name: Require Milestone 12 remains complete
+        run: python -m scripts.audit_milestone12_attainable_frontier --require-complete
+
+      - name: Require Milestone 13 remains complete
+        run: python -m scripts.audit_milestone13_development_gap_decomposition --require-complete
+
+      - name: Rebuild Milestone 14 bottleneck associations
+        run: python -m scripts.build_milestone14_bottleneck_association
+
+      - name: Enforce Milestone 14 completion audit
+        run: python -m scripts.audit_milestone14_bottleneck_association --require-complete
+
+      - name: Run Milestone 14 focused tests
+        run: python -m unittest tests.test_milestone14_bottleneck_association -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Require byte-identical committed M14 outputs
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/bottleneck_association_v1 \
+            data/manifests/milestone14_bottleneck_association.json
