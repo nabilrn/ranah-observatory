@@ -1,0 +1,34 @@
+{
+  "schema": "ranah-observatory/milestone19-design-gate/v1",
+  "milestone": 19,
+  "regime_id": "sumbar_current_kabkota_dynamic_forecast_2019_2026_v1",
+  "geography_count": 19,
+  "target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "structural_feature_ids": [
+    "mean_years_schooling",
+    "labor_force_participation",
+    "rice_yield"
+  ],
+  "include_target_lag": true,
+  "feature_lag_years": 1,
+  "outer_forecast_years": [2021, 2022, 2023, 2024, 2025],
+  "final_forecast_year": 2026,
+  "penalty_grid": [0.01, 0.1, 1.0, 10.0, 100.0],
+  "benchmark": "own_previous_year_persistence",
+  "qualification_requires_rmse_and_mae_improvement": true,
+  "model_family": "pooled_autoregressive_ridge",
+  "model_fit": false,
+  "backtest_results_known": false,
+  "forecast_results_known": false,
+  "targets_selected_before_model_fit": true,
+  "features_selected_before_model_fit": true,
+  "outer_years_selected_before_model_fit": true,
+  "algorithm_selected_before_model_fit": true,
+  "posthoc_algorithm_search_authorized": false,
+  "causal_claim_authorized": false,
+  "policy_counterfactual_authorized": false
+}
