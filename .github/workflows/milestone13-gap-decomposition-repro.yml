@@ -1,6 +1,7 @@
 name: Milestone 13 Gap Decomposition Reproducibility
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - ".github/workflows/milestone13-gap-decomposition-repro.yml"
