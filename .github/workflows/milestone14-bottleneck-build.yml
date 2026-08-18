@@ -1,0 +1,52 @@
+name: Milestone 14 Bottleneck Association Build
+
+on:
+  push:
+    branches:
+      - agent/milestone14-bottleneck-association
+    paths:
+      - "research/MILESTONE14_BOTTLENECK_ASSOCIATION_SPEC.md"
+      - "scripts/build_milestone14_bottleneck_association.py"
+      - ".github/workflows/milestone14-bottleneck-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone14-bottleneck-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out M14 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone14-bottleneck-association
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build preregistered association engine
+        run: python -m scripts.build_milestone14_bottleneck_association
+
+      - name: Commit deterministic outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/analysis/engine/bottleneck_association_v1 data/manifests/milestone14_bottleneck_association.json
+          if git diff --cached --quiet; then
+            echo "Milestone 14 outputs unchanged."
+            exit 0
+          fi
+          git commit -m "analysis: materialize milestone14 bottleneck association outputs"
+          git pull --rebase origin agent/milestone14-bottleneck-association
+          git push origin HEAD:agent/milestone14-bottleneck-association
