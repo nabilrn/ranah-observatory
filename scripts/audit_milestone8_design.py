@@ -169,14 +169,16 @@ def audit() -> dict[str, Any]:
         errors.append("USGS ShakeMap must remain the primary treatment-exposure source")
     if source_by_id.get("m8_damage_dlna", {}).get("role") != "secondary_damage_validation":
         errors.append("DLNA housing damage must remain secondary validation after Amendment 1")
-    if source_by_id.get("m8_grdp_pre_national", {}).get("role") != "outcome_preperiod_primary":
-        errors.append("National BPS 2005-2009 publication must remain the primary pre-period outcome source")
-    if source_by_id.get("m8_grdp_pre_national", {}).get("required_before_fit") != "true":
-        errors.append("National BPS pre-period outcome source must remain required before model fit")
-    if source_by_id.get("m8_grdp_pre", {}).get("role") != "outcome_preperiod_context":
-        errors.append("Sumatera Barat 2005-2009 publication must remain context/cross-check after qualification")
-    if source_by_id.get("m8_grdp_pre", {}).get("required_before_fit") != "false":
-        errors.append("Context-only Sumatera Barat publication must not masquerade as the required primary pre-period level source")
+    if source_by_id.get("m8_grdp_pre", {}).get("role") != "outcome_preperiod_primary":
+        errors.append("Qualified Sumatera Barat Table 22 must remain the primary pre-period outcome source")
+    if source_by_id.get("m8_grdp_pre", {}).get("required_before_fit") != "true":
+        errors.append("Qualified Sumatera Barat Table 22 must remain required before model fit")
+    if "qualified_exact_table22_19x5" not in source_by_id.get("m8_grdp_pre", {}).get("qualification_status", ""):
+        errors.append("Sumatera Barat pre-period source must retain exact Table 22 qualification")
+    if source_by_id.get("m8_grdp_pre_national", {}).get("role") != "outcome_preperiod_crosscheck_scan":
+        errors.append("National BPS 2005-2009 scan must remain a non-primary cross-check source")
+    if source_by_id.get("m8_grdp_pre_national", {}).get("required_before_fit") != "false":
+        errors.append("National scanned BPS source must not remain a blocking pre-fit dependency")
 
     geography_ids = [row.get("geography_id", "") for row in geography_rows]
     if len(geography_rows) != 19:
