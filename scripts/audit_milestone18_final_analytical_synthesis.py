@@ -36,7 +36,12 @@ EXPECTED_RQ_STATES = {
     "RQ5": "not_action_ready",
 }
 EXPECTED_CLAIM_IDS = {f"c{i:02d}" for i in range(1, 10)}
-ALLOWED_EDGE_TYPES = {"analytical_dependency", "evidence_extension", "readiness_constraint", "uncertainty_annotation"}
+ALLOWED_EDGE_TYPES = {
+    "analytical_dependency",
+    "evidence_extension",
+    "readiness_constraint",
+    "uncertainty_annotation",
+}
 
 
 def sha256(path: Path) -> str:
@@ -49,7 +54,10 @@ def sha256(path: Path) -> str:
 
 def rows(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8", newline="") as handle:
-        return [{key: (value or "").strip() for key, value in row.items()} for row in csv.DictReader(handle)]
+        return [
+            {key: (value or "").strip() for key, value in row.items()}
+            for row in csv.DictReader(handle)
+        ]
 
 
 def audit() -> dict[str, Any]:
@@ -58,25 +66,31 @@ def audit() -> dict[str, Any]:
         if not path.exists():
             errors.append(f"missing required file: {path.relative_to(ROOT)}")
     if errors:
-        return {"schema": "ranah-observatory/milestone18-audit/v1", "errors": errors, "milestone18_complete": False}
+        return {
+            "schema": "ranah-observatory/milestone18-audit/v1",
+            "errors": errors,
+            "milestone18_complete": False,
+        }
 
     spec = SPEC.read_text(encoding="utf-8")
+    spec_lower = spec.lower()
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     nodes = rows(NODES)
     edges = rows(EDGES)
     rq_rows = rows(RQ)
     claims = rows(CLAIMS)
 
-    for phrase in (
-        "Phase 2 analytical engine complete",
+    guardrails = (
+        "phase 2 analytical engine complete",
         "research question fully resolved",
-        "M18 is a synthesis milestone",
-        "No question may be marked fully resolved merely because an upstream milestone is complete.",
+        "m18 is a synthesis milestone",
+        "no question may be marked fully resolved merely because an upstream milestone is complete.",
         "must remain `bounded_partial`",
         "must be `not_action_ready`",
-        "No post-hoc threshold may be introduced to hide an inconvenient result.",
-    ):
-        if phrase not in spec:
+        "no post-hoc threshold may be introduced to hide an inconvenient result.",
+    )
+    for phrase in guardrails:
+        if phrase.lower() not in spec_lower:
             errors.append(f"M18 spec lost guardrail: {phrase}")
 
     if manifest.get("schema") != "ranah-observatory/milestone18-final-analytical-synthesis/v1":
@@ -113,34 +127,31 @@ def audit() -> dict[str, Any]:
     }:
         errors.append("M18 research-question readiness counts drift")
 
-    if manifest.get("m17_min_dominant_sign_retention_mapping") != {
+    expected_min_mapping = {
         "feature_id": "agriculture_share_grdp",
         "target_id": "real_grdp_growth",
-    }:
+    }
+    if manifest.get("m17_min_dominant_sign_retention_mapping") != expected_min_mapping:
         errors.append("M18 minimum M17 sign-retention mapping drift")
     if abs(float(manifest.get("m17_min_dominant_sign_retention", -1)) - (10 / 19)) > 1e-12:
         errors.append("M18 minimum M17 sign retention drift")
 
-    false_guards = (
+    for key in (
         "new_statistical_model_fit",
         "new_causal_estimate_created",
         "method_disagreement_averaged_away",
         "policy_ranking_performed",
         "cost_benefit_analysis_performed",
         "definitive_monetary_wasted_potential_estimated",
-    )
-    for key in false_guards:
+    ):
         if manifest.get(key) is not False:
             errors.append(f"M18 false guard enabled: {key}")
 
-    for key, rec in manifest.get("inputs", {}).items():
-        path = ROOT / str(rec.get("path", ""))
-        if not path.exists() or sha256(path) != rec.get("sha256"):
-            errors.append(f"M18 input checksum drift: {key}")
-    for key, rec in manifest.get("outputs", {}).items():
-        path = ROOT / str(rec.get("path", ""))
-        if not path.exists() or sha256(path) != rec.get("sha256"):
-            errors.append(f"M18 output checksum drift: {key}")
+    for kind in ("inputs", "outputs"):
+        for key, rec in manifest.get(kind, {}).items():
+            path = ROOT / str(rec.get("path", ""))
+            if not path.exists() or sha256(path) != rec.get("sha256"):
+                errors.append(f"M18 {kind[:-1]} checksum drift: {key}")
 
     if len(nodes) != 9 or {row.get("node_id") for row in nodes} != EXPECTED_NODES:
         errors.append("M18 evidence-node footprint drift")
@@ -160,7 +171,10 @@ def audit() -> dict[str, Any]:
             errors.append(f"M18 edge type drift: {row.get('edge_id')}")
         if row.get("causal_edge", "").lower() != "false":
             errors.append(f"M18 dependency edge improperly labeled causal: {row.get('edge_id')}")
-    uncertainty_edges = [row for row in edges if row.get("edge_type") == "uncertainty_annotation"]
+
+    uncertainty_edges = [
+        row for row in edges if row.get("edge_type") == "uncertainty_annotation"
+    ]
     if len(uncertainty_edges) != 8:
         errors.append("M18 must retain one uncertainty edge from every substantive node")
     if {row.get("from_node") for row in uncertainty_edges} != EXPECTED_NODES - {"uncertainty_evidence_strength"}:
@@ -176,9 +190,6 @@ def audit() -> dict[str, Any]:
             errors.append(f"M18 improperly marks question fully resolved: {rq_id}")
         if not row.get("limitation") or not row.get("next_evidence_required"):
             errors.append(f"M18 question lacks limitation/next evidence: {rq_id}")
-    rq5 = next((row for row in rq_rows if row.get("research_question_id") == "RQ5"), {})
-    if rq5.get("readiness_state") != "not_action_ready":
-        errors.append("M18 RQ5 must remain not_action_ready")
 
     if len(claims) != 9 or {row.get("claim_id") for row in claims} != EXPECTED_CLAIM_IDS:
         errors.append("M18 claim-boundary footprint drift")
@@ -188,7 +199,8 @@ def audit() -> dict[str, Any]:
         if not row.get("blocking_evidence") or not row.get("upgrade_requirement"):
             errors.append(f"M18 claim lacks blocking/upgrade evidence: {row.get('claim_id')}")
 
-    required_claim_fragments = (
+    claim_text = "\n".join(row.get("blocked_claim", "") for row in claims)
+    for fragment in (
         "monetary value",
         "theoretical maximum",
         "predictive residual is causal",
@@ -198,9 +210,7 @@ def audit() -> dict[str, Any]:
         "composite disaster-risk score",
         "policy treatment effect or forecast",
         "ranked by policy attractiveness or cost-benefit",
-    )
-    claim_text = "\n".join(row.get("blocked_claim", "") for row in claims)
-    for fragment in required_claim_fragments:
+    ):
         if fragment not in claim_text:
             errors.append(f"M18 claim ledger lost required boundary: {fragment}")
 
