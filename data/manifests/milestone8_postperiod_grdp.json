@@ -3,11 +3,48 @@
   "criterion": "one focused causal or quasi-causal case study",
   "geography_count": 19,
   "growth_crosscheck": {
-    "available": false,
-    "check_count": 0,
-    "failure_count": null,
-    "failures": [],
-    "parse_error": "RuntimeError: missing expected row label 'Kota Sawah Lunto'",
+    "available": true,
+    "check_count": 76,
+    "failure_count": 4,
+    "failures": [
+      {
+        "calculated_growth_percent": 6.270209838137042,
+        "difference_percentage_points": -0.14979016186295802,
+        "geography_id": "idn.13.1310",
+        "geography_name": "Solok Selatan",
+        "reported_growth_percent": 6.42,
+        "within_0_10_pp": false,
+        "year": 2011
+      },
+      {
+        "calculated_growth_percent": 6.59042907901064,
+        "difference_percentage_points": 0.15042907901063973,
+        "geography_id": "idn.13.1310",
+        "geography_name": "Solok Selatan",
+        "reported_growth_percent": 6.44,
+        "within_0_10_pp": false,
+        "year": 2012
+      },
+      {
+        "calculated_growth_percent": 0.9811689219632713,
+        "difference_percentage_points": -5.248831078036729,
+        "geography_id": "idn.13.1375",
+        "geography_name": "Kota Bukittinggi",
+        "reported_growth_percent": 6.23,
+        "within_0_10_pp": false,
+        "year": 2011
+      },
+      {
+        "calculated_growth_percent": 11.920842940194976,
+        "difference_percentage_points": 5.530842940194977,
+        "geography_id": "idn.13.1375",
+        "geography_name": "Kota Bukittinggi",
+        "reported_growth_percent": 6.39,
+        "within_0_10_pp": false,
+        "year": 2012
+      }
+    ],
+    "parse_error": null,
     "passed": false,
     "tolerance_percentage_points": 0.1
   },
