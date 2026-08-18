@@ -1,0 +1,21 @@
+{
+  "case_study": "2009 West Sumatra earthquake differential economic trajectory",
+  "causal_claim_authorized": false,
+  "claim_classification": "quasi_causal_estimate_no_statistically_robust_differential_effect_detected",
+  "core_identification_diagnostics_passed": true,
+  "criterion": "one focused causal or quasi-causal case study",
+  "directional_nonzero_effect_claim_authorized": false,
+  "errors": [],
+  "finding_count": 13,
+  "geography_count": 19,
+  "grdp_growth_robustness_complete": true,
+  "housing_damage_validation_complete": true,
+  "milestone8_complete": true,
+  "observation_count": 171,
+  "overlap_2009_reconciled": true,
+  "quasi_causal_effect_estimated": true,
+  "quasi_causal_estimate_authorized": true,
+  "schema": "ranah-observatory/milestone8-complete-audit/v1",
+  "small_cluster_inference_implemented": true,
+  "source_anomalies_resolved": true
+}
