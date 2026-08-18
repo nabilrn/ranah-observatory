@@ -1,0 +1,30 @@
+{
+  "schema": "ranah-observatory/milestone9-design-gate/v1",
+  "criterion": "one climate/disaster case study relevant to West Sumatra",
+  "case_study": "2024 West Sumatra hydroclimate disaster spatial alignment",
+  "study_year": 2024,
+  "study_year_selection_rule": "the first/only currently qualified exact 19-geography BNPB disaster-type year with independent official cross-check; selected before CHIRPS association inspection",
+  "geography_count": 19,
+  "climate_source": "chirps_v3_final_monthly_materialized_annual_rainfall",
+  "climate_claim_type": "model_estimate",
+  "baseline_start_year": 1981,
+  "baseline_end_year": 2023,
+  "baseline_year_count": 43,
+  "primary_climate_metric": "rainfall_z_2024",
+  "primary_disaster_outcomes": [
+    "flood_events",
+    "landslide_events"
+  ],
+  "derived_disaster_summary": "hydroclimate_event_count",
+  "primary_association_statistic": "spearman",
+  "secondary_association_statistic": "pearson",
+  "raw_rainfall_sensitivity": true,
+  "leave_one_geography_out_sensitivity": true,
+  "zero_event_geographies_must_be_retained": true,
+  "daily_rainfall_claim_authorized": false,
+  "station_observation_equivalence_authorized": false,
+  "causal_attribution_authorized": false,
+  "climate_change_attribution_authorized": false,
+  "association_computed": false,
+  "milestone9_complete": false
+}
