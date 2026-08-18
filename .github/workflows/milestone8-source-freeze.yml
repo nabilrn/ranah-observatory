@@ -20,7 +20,7 @@ concurrency:
 jobs:
   freeze:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 24
     env:
       BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
     steps:
@@ -67,6 +67,7 @@ jobs:
             test "$expected" = "$actual"
           }
           verify_one data/snapshots/bps/milestone8/grdp-2005-2009/source.pdf.sha256 data/raw/milestone8/bps/grdp-2005-2009/source.pdf
+          verify_one data/snapshots/bps/milestone8/grdp-kabkota-indonesia-2005-2009/source.pdf.sha256 data/raw/milestone8/bps/grdp-kabkota-indonesia-2005-2009/source.pdf
           verify_one data/snapshots/bps/milestone8/grdp-2009-2013/source.pdf.sha256 data/raw/milestone8/bps/grdp-2009-2013/source.pdf
           verify_one data/snapshots/disaster/milestone8/dlna-2009/source.pdf.sha256 data/raw/milestone8/disaster/dlna-2009/source.pdf
 
