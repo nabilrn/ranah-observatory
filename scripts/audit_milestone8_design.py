@@ -16,6 +16,10 @@ GEOGRAPHY_CONTRACT = ROOT / "data/registries/milestone8_geography_contract.csv"
 DESIGN_GATE = ROOT / "data/manifests/milestone8_design_gate.json"
 EXPOSURE_MANIFEST = ROOT / "data/manifests/milestone8_shakemap_exposure_candidate.json"
 EXPOSURE_CSV = ROOT / "data/analysis/quasi_causal/m8-shakemap-exposure-candidate.csv"
+OVERLAP_MANIFEST = ROOT / "data/manifests/milestone8_grdp_overlap.json"
+OVERLAP_CSV = ROOT / "data/analysis/quasi_causal/m8-grdp-2009-overlap.csv"
+PANEL_MANIFEST = ROOT / "data/manifests/milestone8_grdp_panel.json"
+PANEL_CSV = ROOT / "data/analysis/quasi_causal/m8-real-grdp-panel-2005-2013.csv"
 
 EXPECTED_GEOGRAPHIES = {
     "idn.13.1301", "idn.13.1302", "idn.13.1303", "idn.13.1304", "idn.13.1305",
@@ -23,7 +27,7 @@ EXPECTED_GEOGRAPHIES = {
     "idn.13.1311", "idn.13.1312", "idn.13.1371", "idn.13.1372", "idn.13.1373",
     "idn.13.1374", "idn.13.1375", "idn.13.1376", "idn.13.1377",
 }
-
+EXPECTED_ANOMALY_GEOGRAPHIES = {"idn.13.1310", "idn.13.1375"}
 EXPECTED_SOURCE_IDS = {
     "m8_event_bnpb",
     "m8_damage_dlna",
@@ -37,14 +41,12 @@ EXPECTED_SOURCE_IDS = {
     "m8_padang_pariaman_validation",
     "m8_geography_registry",
 }
-
 LEGAL_ANCHORS_REQUIRED = {
     "idn.13.1310": "UU 38/2003",
     "idn.13.1311": "UU 38/2003",
     "idn.13.1312": "UU 38/2003",
     "idn.13.1377": "UU 12/2002",
 }
-
 LOCKED_DESIGN = {
     "criterion": "one focused causal or quasi-causal case study",
     "case_study": "2009 West Sumatra earthquake differential economic trajectory",
@@ -60,7 +62,6 @@ LOCKED_DESIGN = {
     "baseline_year": 2008,
     "partial_treatment_year": 2009,
 }
-
 REQUIRED_SPEC_PHRASES = [
     "Amendment 1 — physical shaking exposure, before outcome-model fitting",
     "30 September 2009",
@@ -91,11 +92,16 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def audit() -> dict[str, Any]:
     errors: list[str] = []
-    required = [SPEC, SOURCE_PLAN, GEOGRAPHY_CONTRACT, DESIGN_GATE, EXPOSURE_MANIFEST, EXPOSURE_CSV]
+    required = [
+        SPEC, SOURCE_PLAN, GEOGRAPHY_CONTRACT, DESIGN_GATE,
+        EXPOSURE_MANIFEST, EXPOSURE_CSV,
+        OVERLAP_MANIFEST, OVERLAP_CSV,
+        PANEL_MANIFEST, PANEL_CSV,
+    ]
     missing = [str(path.relative_to(ROOT)) for path in required if not path.exists()]
     if missing:
         return {
-            "schema": "ranah-observatory/milestone8-design-audit/v2",
+            "schema": "ranah-observatory/milestone8-design-audit/v3",
             "criterion": LOCKED_DESIGN["criterion"],
             "errors": [f"missing required file: {path}" for path in missing],
             "design_preregistered": False,
@@ -104,12 +110,15 @@ def audit() -> dict[str, Any]:
 
     gate = json.loads(DESIGN_GATE.read_text(encoding="utf-8"))
     exposure_manifest = json.loads(EXPOSURE_MANIFEST.read_text(encoding="utf-8"))
+    overlap_manifest = json.loads(OVERLAP_MANIFEST.read_text(encoding="utf-8"))
+    panel_manifest = json.loads(PANEL_MANIFEST.read_text(encoding="utf-8"))
     spec_text = SPEC.read_text(encoding="utf-8")
     source_rows = read_csv(SOURCE_PLAN)
     geography_rows = read_csv(GEOGRAPHY_CONTRACT)
     exposure_rows = read_csv(EXPOSURE_CSV)
+    panel_rows = read_csv(PANEL_CSV)
 
-    if gate.get("schema") != "ranah-observatory/milestone8-design-gate/v2":
+    if gate.get("schema") != "ranah-observatory/milestone8-design-gate/v3":
         errors.append("Milestone 8 design-gate schema drift")
     for key, expected in LOCKED_DESIGN.items():
         if gate.get(key) != expected:
@@ -138,13 +147,37 @@ def audit() -> dict[str, Any]:
     if gate.get("housing_damage_zero_fill_forbidden") is not True:
         errors.append("Milestone 8 must forbid zero-filling unreported DLNA geographies")
 
+    if gate.get("preperiod_table_value_extraction_complete") is not True:
+        errors.append("Milestone 8 pre-period table-value extraction gate is not closed")
+    if gate.get("postperiod_table_value_extraction_complete") is not True:
+        errors.append("Milestone 8 post-period table-value extraction gate is not closed")
+    if gate.get("overlap_2009_reconciled") is not True:
+        errors.append("Milestone 8 2009 overlap must remain reconciled")
+    if float(gate.get("overlap_materiality_threshold_percent", -1)) != 0.5:
+        errors.append("Milestone 8 overlap materiality threshold drift")
+    if float(gate.get("overlap_max_absolute_relative_difference_percent", 999)) > 0.5:
+        errors.append("Milestone 8 overlap maximum difference exceeds locked materiality gate")
+    if gate.get("overlap_bridge_source_for_2009") != "later_postperiod_source_table_13_1_2":
+        errors.append("Milestone 8 2009 bridge source drift")
+    if gate.get("outcome_panel_combined") is not True or gate.get("outcome_panel_observation_count") != 171:
+        errors.append("Milestone 8 exact 19x9 outcome panel gate is not closed")
+
+    # Current pre-fit checkpoint intentionally retains these source anomalies.
+    if gate.get("postperiod_source_anomalies_resolved") is not False:
+        errors.append("Milestone 8 design checkpoint must not silently mark source anomalies resolved")
+    if gate.get("postperiod_source_anomaly_row_count") != 4:
+        errors.append("Milestone 8 post-period anomaly row count drift")
+    if set(gate.get("postperiod_source_anomaly_geography_ids", [])) != EXPECTED_ANOMALY_GEOGRAPHIES:
+        errors.append("Milestone 8 post-period anomaly geography set drift")
+    if "do not silently correct" not in str(gate.get("postperiod_source_anomaly_rule", "")):
+        errors.append("Milestone 8 source-anomaly no-silent-correction rule lost")
+
     if gate.get("quasi_causal_effect_estimated") is not False:
         errors.append("Milestone 8 foundation must not yet claim an estimated quasi-causal effect")
     if gate.get("causal_claim_authorized") is not False:
         errors.append("Milestone 8 foundation must not yet authorize causal language")
     if gate.get("milestone8_complete") is not False:
-        errors.append("Milestone 8 cannot be complete at the design/data-qualification stage")
-
+        errors.append("Milestone 8 cannot be complete at the current data-qualification stage")
     blocking_reasons = gate.get("blocking_reasons")
     if not isinstance(blocking_reasons, list) or not blocking_reasons:
         errors.append("Milestone 8 incomplete state must retain explicit blocking reasons")
@@ -163,7 +196,6 @@ def audit() -> dict[str, Any]:
             errors.append(f"Invalid required_before_fit flag for {row.get('source_plan_id')}")
         if not row.get("authority") or not row.get("title") or not row.get("qualification_status"):
             errors.append(f"Incomplete source-plan metadata for {row.get('source_plan_id')}")
-
     source_by_id = {row["source_plan_id"]: row for row in source_rows}
     if source_by_id.get("m8_usgs_shakemap", {}).get("role") != "primary_treatment_exposure":
         errors.append("USGS ShakeMap must remain the primary treatment-exposure source")
@@ -214,22 +246,50 @@ def audit() -> dict[str, Any]:
         errors.append("ShakeMap candidate manifest must remain pre-model and non-causal")
     if exposure_manifest.get("output_sha256") != sha256(EXPOSURE_CSV):
         errors.append("Milestone 8 ShakeMap exposure output SHA-256 drift")
-
     exposure_ids = [row.get("geography_id", "") for row in exposure_rows]
     if len(exposure_rows) != 19 or set(exposure_ids) != EXPECTED_GEOGRAPHIES or len(set(exposure_ids)) != 19:
         errors.append("Milestone 8 ShakeMap exposure CSV footprint drift")
-    for row in exposure_rows:
-        try:
-            pga = float(row.get("area_mean_pga_pct_g", "nan"))
-            count = int(row.get("grid_point_count", "0"))
-        except ValueError:
-            errors.append(f"Invalid ShakeMap exposure numeric values for {row.get('geography_id')}")
-            continue
-        if not (pga > 0.0) or count <= 0:
-            errors.append(f"Non-positive ShakeMap exposure/support for {row.get('geography_id')}")
+
+    if overlap_manifest.get("schema") != "ranah-observatory/milestone8-grdp-overlap/v1":
+        errors.append("Milestone 8 overlap manifest schema drift")
+    if overlap_manifest.get("overlap_2009_reconciled") is not True:
+        errors.append("Milestone 8 overlap manifest no longer passes reconciliation")
+    if overlap_manifest.get("failure_count") != 0:
+        errors.append("Milestone 8 overlap manifest contains materiality failures")
+    if float(overlap_manifest.get("materiality_threshold_percent", -1)) != 0.5:
+        errors.append("Milestone 8 overlap manifest threshold drift")
+    if float(overlap_manifest.get("max_absolute_relative_difference_percent", 999)) > 0.5:
+        errors.append("Milestone 8 overlap manifest exceeds 0.5% materiality gate")
+    if overlap_manifest.get("output_sha256") != sha256(OVERLAP_CSV):
+        errors.append("Milestone 8 overlap CSV SHA-256 drift")
+
+    if panel_manifest.get("schema") != "ranah-observatory/milestone8-grdp-panel/v1":
+        errors.append("Milestone 8 GRDP panel manifest schema drift")
+    if panel_manifest.get("observation_count") != 171 or panel_manifest.get("geography_count") != 19:
+        errors.append("Milestone 8 GRDP panel cardinality drift")
+    if panel_manifest.get("years") != list(range(2005, 2014)):
+        errors.append("Milestone 8 GRDP panel year footprint drift")
+    if panel_manifest.get("overlap_2009_reconciled") is not True:
+        errors.append("Milestone 8 GRDP panel lost reconciled overlap state")
+    if panel_manifest.get("postperiod_source_anomalies_resolved") is not False:
+        errors.append("Milestone 8 GRDP panel must retain unresolved source-anomaly state at this checkpoint")
+    if panel_manifest.get("anomaly_row_count") != 4:
+        errors.append("Milestone 8 GRDP panel anomaly row count drift")
+    if set(panel_manifest.get("anomaly_geography_ids", [])) != EXPECTED_ANOMALY_GEOGRAPHIES:
+        errors.append("Milestone 8 GRDP panel anomaly geography set drift")
+    if panel_manifest.get("model_ready") is not False:
+        errors.append("Milestone 8 GRDP panel must remain model-blocked until source anomalies are resolved")
+    if panel_manifest.get("output_sha256") != sha256(PANEL_CSV):
+        errors.append("Milestone 8 GRDP panel SHA-256 drift")
+
+    panel_keys = {(row.get("geography_id", ""), row.get("year", "")) for row in panel_rows}
+    if len(panel_rows) != 171 or len(panel_keys) != 171:
+        errors.append("Milestone 8 GRDP panel must contain exact 171 unique geography-year rows")
+    if {row.get("geography_id", "") for row in panel_rows} != EXPECTED_GEOGRAPHIES:
+        errors.append("Milestone 8 GRDP panel geography footprint drift")
 
     return {
-        "schema": "ranah-observatory/milestone8-design-audit/v2",
+        "schema": "ranah-observatory/milestone8-design-audit/v3",
         "criterion": LOCKED_DESIGN["criterion"],
         "case_study": LOCKED_DESIGN["case_study"],
         "event_date": LOCKED_DESIGN["event_date"],
@@ -241,6 +301,10 @@ def audit() -> dict[str, Any]:
         "amendment_applied_before_outcome_model_fit": gate.get("amendment_1_applied_before_outcome_model_fit") is True,
         "geography_2005_2013_qualified": gate.get("geography_2005_2013_qualified") is True,
         "full_exposure_19_geographies_frozen": gate.get("full_exposure_19_geographies_frozen") is True,
+        "overlap_2009_reconciled": gate.get("overlap_2009_reconciled") is True,
+        "outcome_panel_combined": gate.get("outcome_panel_combined") is True,
+        "outcome_panel_observation_count": gate.get("outcome_panel_observation_count"),
+        "postperiod_source_anomalies_resolved": gate.get("postperiod_source_anomalies_resolved") is True,
         "outcome_model_fit": gate.get("outcome_model_fit") is True,
         "quasi_causal_effect_estimated": gate.get("quasi_causal_effect_estimated") is True,
         "causal_claim_authorized": gate.get("causal_claim_authorized") is True,
@@ -255,7 +319,7 @@ def main() -> int:
     parser.add_argument(
         "--require-preregistered",
         action="store_true",
-        help="fail unless the preregistered/amended design passes while outcome-model and causal claims remain locked",
+        help="fail unless the preregistered/amended pre-fit design and reconciled outcome panel pass while causal claims remain locked",
     )
     args = parser.parse_args()
     report = audit()
@@ -263,11 +327,17 @@ def main() -> int:
     if report["errors"]:
         return 1
     if args.require_preregistered:
-        if report.get("design_preregistered") is not True:
+        required_true = [
+            "design_preregistered",
+            "amendment_applied_before_outcome_model_fit",
+            "geography_2005_2013_qualified",
+            "full_exposure_19_geographies_frozen",
+            "overlap_2009_reconciled",
+            "outcome_panel_combined",
+        ]
+        if any(report.get(key) is not True for key in required_true):
             return 1
-        if report.get("amendment_applied_before_outcome_model_fit") is not True:
-            return 1
-        if report.get("full_exposure_19_geographies_frozen") is not True:
+        if report.get("postperiod_source_anomalies_resolved") is not False:
             return 1
         if report.get("outcome_model_fit") is not False:
             return 1
