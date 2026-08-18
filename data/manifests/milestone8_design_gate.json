@@ -1,5 +1,5 @@
 {
-  "schema": "ranah-observatory/milestone8-design-gate/v2",
+  "schema": "ranah-observatory/milestone8-design-gate/v3",
   "criterion": "one focused causal or quasi-causal case study",
   "case_study": "2009 West Sumatra earthquake differential economic trajectory",
   "event_date": "2009-09-30",
@@ -28,7 +28,21 @@
   "historical_boundary_continuity_claimed_for_exposure": false,
   "preperiod_outcome_frozen": true,
   "postperiod_outcome_frozen": true,
-  "overlap_2009_reconciled": false,
+  "preperiod_table_value_extraction_complete": true,
+  "postperiod_table_value_extraction_complete": true,
+  "overlap_2009_reconciled": true,
+  "overlap_materiality_threshold_percent": 0.5,
+  "overlap_max_absolute_relative_difference_percent": 0.16190873768722672,
+  "overlap_bridge_source_for_2009": "later_postperiod_source_table_13_1_2",
+  "outcome_panel_combined": true,
+  "outcome_panel_observation_count": 171,
+  "postperiod_source_anomalies_resolved": false,
+  "postperiod_source_anomaly_row_count": 4,
+  "postperiod_source_anomaly_geography_ids": [
+    "idn.13.1310",
+    "idn.13.1375"
+  ],
+  "postperiod_source_anomaly_rule": "do not silently correct level values from reported growth; require independent official-source crosscheck or retain explicit anomaly plus sensitivity/exclusion",
   "full_exposure_19_geographies_frozen": true,
   "housing_damage_reporting_geography_count": 12,
   "housing_damage_zero_fill_forbidden": true,
@@ -40,7 +54,7 @@
   "causal_claim_authorized": false,
   "milestone8_complete": false,
   "blocking_reasons": [
-    "frozen BPS pre/post publications still require deterministic table-value extraction and 2009 overlap reconciliation",
+    "four post-period geography-year level observations have unresolved internal level-versus-growth inconsistencies and require independent official-source crosschecks before model fitting",
     "identification diagnostics and falsification tests have not yet been run",
     "small-cluster-aware inference has not yet been implemented"
   ]
