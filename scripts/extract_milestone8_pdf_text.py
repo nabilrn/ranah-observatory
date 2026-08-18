@@ -19,9 +19,21 @@ SOURCES = {
         "text": OUT_DIR / "bps-grdp-2005-2009.txt",
         "slices": [
             (OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-35-55.txt", 35, 55),
+            (OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-56-75.txt", 56, 75),
+            (OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-76-83.txt", 76, 83),
             (OUT_DIR / "candidate-pages/bps-grdp-2005-2009-pages-84-92.txt", 84, 92),
         ],
-        "patterns": ["harga konstan", "kabupaten/kota", "2005", "2009", "produk domestik regional bruto", "pertumbuhan ekonomi"],
+        "patterns": [
+            "harga konstan",
+            "kabupaten/kota",
+            "2005",
+            "2009",
+            "produk domestik regional bruto",
+            "pertumbuhan ekonomi",
+            "pdrb perkapita",
+            "pdrb per kapita",
+            "atas dasar harga konstan 2000",
+        ],
     },
     "m8_grdp_post": {
         "pdf": ROOT / "data/raw/milestone8/bps/grdp-2009-2013/source.pdf",
@@ -64,7 +76,7 @@ def normalize_line(value: str) -> str:
     return " ".join(value.split())
 
 
-def pattern_hits(text: str, patterns: list[str], max_hits_per_pattern: int = 12) -> dict[str, Any]:
+def pattern_hits(text: str, patterns: list[str], max_hits_per_pattern: int = 20) -> dict[str, Any]:
     pages = text.split("\f")
     result: dict[str, Any] = {}
     for pattern in patterns:
