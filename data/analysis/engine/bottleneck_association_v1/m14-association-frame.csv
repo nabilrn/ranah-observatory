@@ -1,0 +1,229 @@
+target_id,dimension_id,geography_id,geography_name,target_year,feature_year,expected_gap_rmse_units,favorable_peer_gap_rmse_units,m11_support_warning,gap_interpretation_authorized,expected_interval_classification,lag1_expected_years_schooling,lag1_life_expectancy,lag1_underemployment_rate,lag1_annual_rainfall
+poverty_rate,living_standards_inclusion,idn.13.1301,Kepulauan Mentawai,2021,2020,3.44090433926,4.29630427057,true,false,materially_less_favorable_than_expected,12.82,70.73,20.72,3626.960488
+poverty_rate,living_standards_inclusion,idn.13.1301,Kepulauan Mentawai,2022,2021,3.29580756217,4.15120749349,true,false,materially_less_favorable_than_expected,12.89,70.73,21.96,3704.889656
+poverty_rate,living_standards_inclusion,idn.13.1301,Kepulauan Mentawai,2023,2022,3.14899784562,4.00439777693,true,false,materially_less_favorable_than_expected,12.89,70.91,21.67,3782.009938
+poverty_rate,living_standards_inclusion,idn.13.1301,Kepulauan Mentawai,2024,2023,3.27241205958,4.12781199089,true,false,materially_less_favorable_than_expected,12.9,71.06,19.5,2625.301919
+poverty_rate,living_standards_inclusion,idn.13.1302,Pesisir Selatan,2021,2020,0.641072979194,1.49647291051,false,true,within_expected_interval,13.32,73.02,14.28,3086.659964
+poverty_rate,living_standards_inclusion,idn.13.1302,Pesisir Selatan,2022,2021,0.359036540578,1.2144364719,false,true,within_expected_interval,13.33,73.12,10.02,3436.715819
+poverty_rate,living_standards_inclusion,idn.13.1302,Pesisir Selatan,2023,2022,0.716605985637,1.57200591696,false,true,within_expected_interval,13.35,73.2,11.58,3619.80713
+poverty_rate,living_standards_inclusion,idn.13.1302,Pesisir Selatan,2024,2023,0.813596221443,1.66899615276,true,false,within_expected_interval,13.36,73.27,14.04,2705.082515
+poverty_rate,living_standards_inclusion,idn.13.1303,Solok,2021,2020,0.123927956165,0.979327887483,false,true,within_expected_interval,13.04,71.51,12.76,2824.854401
+poverty_rate,living_standards_inclusion,idn.13.1303,Solok,2022,2021,0.217416630804,1.07281656212,false,true,within_expected_interval,13.05,71.72,8.19,3100.123998
+poverty_rate,living_standards_inclusion,idn.13.1303,Solok,2023,2022,0.122862674076,0.978262605394,false,true,within_expected_interval,13.3,72.12,8.16,3648.037132
+poverty_rate,living_standards_inclusion,idn.13.1303,Solok,2024,2023,0.0967336236464,0.952133554965,false,true,within_expected_interval,13.55,72.31,8.31,2818.463029
+poverty_rate,living_standards_inclusion,idn.13.1304,Sijunjung,2021,2020,-0.578778851402,0.268163555863,false,true,within_expected_interval,12.37,71.78,13.42,2803.058049
+poverty_rate,living_standards_inclusion,idn.13.1304,Sijunjung,2022,2021,-0.842341034529,0.00460137273496,false,true,within_expected_interval,12.38,71.93,13.09,3087.590832
+poverty_rate,living_standards_inclusion,idn.13.1304,Sijunjung,2023,2022,-0.787732347293,0.0592100599716,false,true,within_expected_interval,12.64,72.27,12.67,3743.084717
+poverty_rate,living_standards_inclusion,idn.13.1304,Sijunjung,2024,2023,-0.852916806121,-0.00597439885648,false,true,within_expected_interval,12.72,72.59,11.69,2940.515772
+poverty_rate,living_standards_inclusion,idn.13.1305,Tanah Datar,2021,2020,-0.977099400754,-0.164526031691,false,true,within_expected_interval,14.33,73.5,11.47,2639.181013
+poverty_rate,living_standards_inclusion,idn.13.1305,Tanah Datar,2022,2021,-0.679409859976,0.133163509088,false,true,within_expected_interval,14.34,73.69,7.86,2757.306452
+poverty_rate,living_standards_inclusion,idn.13.1305,Tanah Datar,2023,2022,-0.931347287129,-0.118773918066,false,true,within_expected_interval,14.59,73.84,5.54,3501.612179
+poverty_rate,living_standards_inclusion,idn.13.1305,Tanah Datar,2024,2023,-0.76778425953,0.0447891095336,false,true,within_expected_interval,14.78,74.19,8.47,2729.635347
+poverty_rate,living_standards_inclusion,idn.13.1306,Padang Pariaman,2021,2020,0.5252269641,1.38062689542,false,true,within_expected_interval,13.67,73.48,12.39,4146.372331
+poverty_rate,living_standards_inclusion,idn.13.1306,Padang Pariaman,2022,2021,0.319612246499,1.17501217782,false,true,within_expected_interval,13.68,73.58,11.73,4501.844729
+poverty_rate,living_standards_inclusion,idn.13.1306,Padang Pariaman,2023,2022,0.211387740311,1.06678767163,false,true,within_expected_interval,13.93,73.67,8.45,5260.041094
+poverty_rate,living_standards_inclusion,idn.13.1306,Padang Pariaman,2024,2023,0.468365985423,1.32376591674,false,true,within_expected_interval,14.19,73.77,9.38,3949.497823
+poverty_rate,living_standards_inclusion,idn.13.1307,Agam,2021,2020,0.273699684412,1.12909961573,false,true,within_expected_interval,13.87,73.79,17.42,2943.171289
+poverty_rate,living_standards_inclusion,idn.13.1307,Agam,2022,2021,0.300298219184,1.1556981505,false,true,within_expected_interval,13.88,73.91,10.92,3054.359145
+poverty_rate,living_standards_inclusion,idn.13.1307,Agam,2023,2022,0.157463889659,1.01286382098,false,true,within_expected_interval,13.88,74.07,8.73,3760.57359
+poverty_rate,living_standards_inclusion,idn.13.1307,Agam,2024,2023,0.501299683265,1.35669961458,false,true,within_expected_interval,13.89,74.22,11.25,2907.477107
+poverty_rate,living_standards_inclusion,idn.13.1308,Lima Puluh Kota,2021,2020,-0.176403314255,0.678996617063,false,true,within_expected_interval,13.29,72.74,12.84,2625.799332
+poverty_rate,living_standards_inclusion,idn.13.1308,Lima Puluh Kota,2022,2021,-0.231548977828,0.62385095349,false,true,within_expected_interval,13.3,72.79,10.23,2740.063992
+poverty_rate,living_standards_inclusion,idn.13.1308,Lima Puluh Kota,2023,2022,-0.202536063587,0.652863867732,false,true,within_expected_interval,13.4,73.03,8.46,3506.769514
+poverty_rate,living_standards_inclusion,idn.13.1308,Lima Puluh Kota,2024,2023,0.0399211773024,0.895321108621,false,true,within_expected_interval,13.41,73.25,7.11,2875.883297
+poverty_rate,living_standards_inclusion,idn.13.1309,Pasaman,2021,2020,-0.458370679813,0.397029251505,false,true,within_expected_interval,12.8,71.15,16.52,3188.559896
+poverty_rate,living_standards_inclusion,idn.13.1309,Pasaman,2022,2021,-0.37392651093,0.481473420388,false,true,within_expected_interval,12.81,71.34,15.45,3303.601986
+poverty_rate,living_standards_inclusion,idn.13.1309,Pasaman,2023,2022,-0.570219715359,0.285180215959,false,true,within_expected_interval,13.05,71.71,15.06,3965.730773
+poverty_rate,living_standards_inclusion,idn.13.1309,Pasaman,2024,2023,-0.553486766386,0.301913164931,false,true,within_expected_interval,13.25,72.04,13.25,3431.683071
+poverty_rate,living_standards_inclusion,idn.13.1310,Solok Selatan,2021,2020,-0.269112537588,0.586287393731,false,true,within_expected_interval,12.71,71.32,15.06,2839.225367
+poverty_rate,living_standards_inclusion,idn.13.1310,Solok Selatan,2022,2021,-0.419832801995,0.435567129322,false,true,within_expected_interval,12.72,71.52,14.69,3128.814974
+poverty_rate,living_standards_inclusion,idn.13.1310,Solok Selatan,2023,2022,-0.700113040351,0.155286890967,false,true,within_expected_interval,12.73,71.89,8.67,3535.487002
+poverty_rate,living_standards_inclusion,idn.13.1310,Solok Selatan,2024,2023,-0.503585214937,0.351814716381,false,true,within_expected_interval,12.8,72.22,10.4,2800.576874
+poverty_rate,living_standards_inclusion,idn.13.1311,Dharmasraya,2021,2020,-0.361176159349,0.494223771968,false,true,within_expected_interval,12.43,73.04,9.79,3039.796046
+poverty_rate,living_standards_inclusion,idn.13.1311,Dharmasraya,2022,2021,-0.61115522178,0.244244709537,false,true,within_expected_interval,12.44,73.47,9.97,3360.740287
+poverty_rate,living_standards_inclusion,idn.13.1311,Dharmasraya,2023,2022,-0.603601053217,0.251798878101,false,true,within_expected_interval,12.51,73.84,6.6,3815.293034
+poverty_rate,living_standards_inclusion,idn.13.1311,Dharmasraya,2024,2023,-0.832995817654,0.0224041136635,false,true,within_expected_interval,12.68,74.04,7.79,3199.790741
+poverty_rate,living_standards_inclusion,idn.13.1312,Pasaman Barat,2021,2020,0.549774326284,1.4051742576,true,false,within_expected_interval,13.61,71.71,15.6,3748.958598
+poverty_rate,living_standards_inclusion,idn.13.1312,Pasaman Barat,2022,2021,0.523046443915,1.37844637523,true,false,within_expected_interval,13.68,71.83,10.28,3718.636822
+poverty_rate,living_standards_inclusion,idn.13.1312,Pasaman Barat,2023,2022,0.753903934686,1.609303866,true,false,within_expected_interval,13.69,72.14,9.91,4331.760164
+poverty_rate,living_standards_inclusion,idn.13.1312,Pasaman Barat,2024,2023,0.688251804204,1.54365173552,true,false,within_expected_interval,13.7,72.44,10.88,3782.060938
+poverty_rate,living_standards_inclusion,idn.13.1371,Padang,2021,2020,0.211677272222,1.06707720354,false,true,within_expected_interval,16.52,74.43,9.9,3833.450096
+poverty_rate,living_standards_inclusion,idn.13.1371,Padang,2022,2021,0.225332868092,1.08073279941,false,true,within_expected_interval,16.53,74.47,7.67,4272.073887
+poverty_rate,living_standards_inclusion,idn.13.1371,Padang,2023,2022,0.199401303107,1.05480123443,true,false,within_expected_interval,16.54,74.71,6.29,4965.282037
+poverty_rate,living_standards_inclusion,idn.13.1371,Padang,2024,2023,0.0122433531022,0.867643284421,false,true,within_expected_interval,16.56,74.94,7.99,3578.425027
+poverty_rate,living_standards_inclusion,idn.13.1372,Solok,2021,2020,-0.803820891096,0.0374656594935,true,false,within_expected_interval,14.32,73.86,6.96,3004.073527
+poverty_rate,living_standards_inclusion,idn.13.1372,Solok,2022,2021,-0.782871197852,0.0584153527379,false,true,within_expected_interval,14.33,73.98,6.29,3274.03972
+poverty_rate,living_standards_inclusion,idn.13.1372,Solok,2023,2022,-0.706409755846,0.134876794744,false,true,within_expected_interval,14.34,74.31,5.04,3916.840246
+poverty_rate,living_standards_inclusion,idn.13.1372,Solok,2024,2023,-0.741901213873,0.0993853367171,false,true,within_expected_interval,14.36,74.56,7.02,2938.237223
+poverty_rate,living_standards_inclusion,idn.13.1373,Sawahlunto,2021,2020,-2.00548173345,-1.22115219077,false,true,materially_more_favorable_than_expected,13.17,72.81,12.71,2803.900303
+poverty_rate,living_standards_inclusion,idn.13.1373,Sawahlunto,2022,2021,-1.34565108535,-0.561321542669,false,true,materially_more_favorable_than_expected,13.18,73.2,11.56,3005.110378
+poverty_rate,living_standards_inclusion,idn.13.1373,Sawahlunto,2023,2022,-1.24569596536,-0.461366422679,false,true,materially_more_favorable_than_expected,13.42,73.5,7.75,3756.138973
+poverty_rate,living_standards_inclusion,idn.13.1373,Sawahlunto,2024,2023,-1.10187921904,-0.317549676354,false,true,materially_more_favorable_than_expected,13.69,73.79,8.26,2942.35941
+poverty_rate,living_standards_inclusion,idn.13.1374,Padang Panjang,2021,2020,0.80678381772,1.66218374904,true,false,within_expected_interval,15.06,73.83,6.44,2811.671422
+poverty_rate,living_standards_inclusion,idn.13.1374,Padang Panjang,2022,2021,0.939504772555,1.79490470387,true,false,within_expected_interval,15.07,73.93,6.58,3026.15477
+poverty_rate,living_standards_inclusion,idn.13.1374,Padang Panjang,2023,2022,1.30650237056,2.16190230188,true,false,within_expected_interval,15.07,74.03,2.04,3651.476589
+poverty_rate,living_standards_inclusion,idn.13.1374,Padang Panjang,2024,2023,1.09109626246,1.94649619378,true,false,within_expected_interval,15.29,74.24,5.75,2824.530171
+poverty_rate,living_standards_inclusion,idn.13.1375,Bukittinggi,2021,2020,0.390272772914,1.24567270423,true,false,within_expected_interval,14.97,74.58,8.89,2266.408824
+poverty_rate,living_standards_inclusion,idn.13.1375,Bukittinggi,2022,2021,0.622244210657,1.47764414198,true,false,within_expected_interval,14.98,74.7,7.9,2376.071718
+poverty_rate,living_standards_inclusion,idn.13.1375,Bukittinggi,2023,2022,0.432099262746,1.28749919406,true,false,within_expected_interval,14.99,75.02,4.25,3069.58042
+poverty_rate,living_standards_inclusion,idn.13.1375,Bukittinggi,2024,2023,0.11685964738,0.972259578698,true,false,within_expected_interval,15.01,75.33,7.07,2354.011592
+poverty_rate,living_standards_inclusion,idn.13.1376,Payakumbuh,2021,2020,0.369035979349,1.22443591067,false,true,within_expected_interval,14.26,74.08,7.25,2261.885902
+poverty_rate,living_standards_inclusion,idn.13.1376,Payakumbuh,2022,2021,0.239790800266,1.09519073158,false,true,within_expected_interval,14.27,74.18,8.24,2362.419395
+poverty_rate,living_standards_inclusion,idn.13.1376,Payakumbuh,2023,2022,0.306031817385,1.1614317487,false,true,within_expected_interval,14.29,74.48,5.37,3156.634559
+poverty_rate,living_standards_inclusion,idn.13.1376,Payakumbuh,2024,2023,0.0525520161686,0.907951947487,false,true,within_expected_interval,14.3,74.77,6.66,2473.81129
+poverty_rate,living_standards_inclusion,idn.13.1377,Pariaman,2021,2020,-0.604985467859,0.250414463459,true,false,within_expected_interval,14.54,73.59,13.36,4428.394673
+poverty_rate,living_standards_inclusion,idn.13.1377,Pariaman,2022,2021,-0.495751311534,0.359648619783,true,false,within_expected_interval,14.55,73.69,11.43,4955.780563
+poverty_rate,living_standards_inclusion,idn.13.1377,Pariaman,2023,2022,-0.541690264079,0.313709667239,false,true,within_expected_interval,14.61,73.98,6.97,5719.996265
+poverty_rate,living_standards_inclusion,idn.13.1377,Pariaman,2024,2023,-0.714973409784,0.140426521533,false,true,within_expected_interval,14.79,74.2,8.81,4147.905615
+unemployment_rate,labor_market,idn.13.1301,Kepulauan Mentawai,2021,2020,-0.418539941908,0.627933679201,true,false,within_expected_interval,12.82,70.73,20.72,3626.960488
+unemployment_rate,labor_market,idn.13.1301,Kepulauan Mentawai,2022,2021,-0.968965209782,0.0775084113283,true,false,within_expected_interval,12.89,70.73,21.96,3704.889656
+unemployment_rate,labor_market,idn.13.1301,Kepulauan Mentawai,2023,2022,-1.37776515501,-0.331291533898,true,false,materially_more_favorable_than_expected,12.89,70.91,21.67,3782.009938
+unemployment_rate,labor_market,idn.13.1301,Kepulauan Mentawai,2024,2023,-1.13129425923,-0.0848206381191,true,false,within_expected_interval,12.9,71.06,19.5,2625.301919
+unemployment_rate,labor_market,idn.13.1302,Pesisir Selatan,2021,2020,0.200923565912,1.32228909986,false,true,within_expected_interval,13.32,73.02,14.28,3086.659964
+unemployment_rate,labor_market,idn.13.1302,Pesisir Selatan,2022,2021,-0.296938735073,0.82442679888,false,true,within_expected_interval,13.33,73.12,10.02,3436.715819
+unemployment_rate,labor_market,idn.13.1302,Pesisir Selatan,2023,2022,-0.177664520306,0.943701013646,false,true,within_expected_interval,13.35,73.2,11.58,3619.80713
+unemployment_rate,labor_market,idn.13.1302,Pesisir Selatan,2024,2023,-0.0813741008863,1.03999143307,true,false,within_expected_interval,13.36,73.27,14.04,2705.082515
+unemployment_rate,labor_market,idn.13.1303,Solok,2021,2020,0.145744648759,1.26711018271,false,true,within_expected_interval,13.04,71.51,12.76,2824.854401
+unemployment_rate,labor_market,idn.13.1303,Solok,2022,2021,0.947308552748,2.0686740867,false,true,within_expected_interval,13.05,71.72,8.19,3100.123998
+unemployment_rate,labor_market,idn.13.1303,Solok,2023,2022,0.611332101562,1.73269763551,false,true,within_expected_interval,13.3,72.12,8.16,3648.037132
+unemployment_rate,labor_market,idn.13.1303,Solok,2024,2023,0.753742520768,1.87510805472,false,true,within_expected_interval,13.55,72.31,8.31,2818.463029
+unemployment_rate,labor_market,idn.13.1304,Sijunjung,2021,2020,-0.776481032439,0.344884501513,false,true,within_expected_interval,12.37,71.78,13.42,2803.058049
+unemployment_rate,labor_market,idn.13.1304,Sijunjung,2022,2021,0.236125533245,1.3574910672,false,true,within_expected_interval,12.38,71.93,13.09,3087.590832
+unemployment_rate,labor_market,idn.13.1304,Sijunjung,2023,2022,0.010207988531,1.13157352248,false,true,within_expected_interval,12.64,72.27,12.67,3743.084717
+unemployment_rate,labor_market,idn.13.1304,Sijunjung,2024,2023,0.0612996777809,1.18266521173,false,true,within_expected_interval,12.72,72.59,11.69,2940.515772
+unemployment_rate,labor_market,idn.13.1305,Tanah Datar,2021,2020,-0.761639838842,0.296839358923,false,true,within_expected_interval,14.33,73.5,11.47,2639.181013
+unemployment_rate,labor_market,idn.13.1305,Tanah Datar,2022,2021,0.11350056929,1.17197976705,false,true,within_expected_interval,14.34,73.69,7.86,2757.306452
+unemployment_rate,labor_market,idn.13.1305,Tanah Datar,2023,2022,0.00468279825719,1.06316199602,false,true,within_expected_interval,14.59,73.84,5.54,3501.612179
+unemployment_rate,labor_market,idn.13.1305,Tanah Datar,2024,2023,-0.0716250547325,0.986854143031,false,true,within_expected_interval,14.78,74.19,8.47,2729.635347
+unemployment_rate,labor_market,idn.13.1306,Padang Pariaman,2021,2020,1.47243575668,2.59380129063,false,true,within_expected_interval,13.67,73.48,12.39,4146.372331
+unemployment_rate,labor_market,idn.13.1306,Padang Pariaman,2022,2021,0.425772990873,1.54713852483,false,true,within_expected_interval,13.68,73.58,11.73,4501.844729
+unemployment_rate,labor_market,idn.13.1306,Padang Pariaman,2023,2022,0.872280520067,1.99364605402,false,true,within_expected_interval,13.93,73.67,8.45,5260.041094
+unemployment_rate,labor_market,idn.13.1306,Padang Pariaman,2024,2023,0.533317565848,1.6546830998,false,true,within_expected_interval,14.19,73.77,9.38,3949.497823
+unemployment_rate,labor_market,idn.13.1307,Agam,2021,2020,-0.404205740671,0.68489161311,false,true,within_expected_interval,13.87,73.79,17.42,2943.171289
+unemployment_rate,labor_market,idn.13.1307,Agam,2022,2021,-0.467062341739,0.622035012042,false,true,within_expected_interval,13.88,73.91,10.92,3054.359145
+unemployment_rate,labor_market,idn.13.1307,Agam,2023,2022,-0.0425467334288,1.04655062035,false,true,within_expected_interval,13.88,74.07,8.73,3760.57359
+unemployment_rate,labor_market,idn.13.1307,Agam,2024,2023,-0.428203789417,0.660893564364,false,true,within_expected_interval,13.89,74.22,11.25,2907.477107
+unemployment_rate,labor_market,idn.13.1308,Lima Puluh Kota,2021,2020,-1.65983843069,-0.635287326927,false,true,materially_more_favorable_than_expected,13.29,72.74,12.84,2625.799332
+unemployment_rate,labor_market,idn.13.1308,Lima Puluh Kota,2022,2021,-0.596083577905,0.428467525853,false,true,within_expected_interval,13.3,72.79,10.23,2740.063992
+unemployment_rate,labor_market,idn.13.1308,Lima Puluh Kota,2023,2022,-0.249843867851,0.774707235909,false,true,within_expected_interval,13.4,73.03,8.46,3506.769514
+unemployment_rate,labor_market,idn.13.1308,Lima Puluh Kota,2024,2023,-0.49195838889,0.532592714868,false,true,within_expected_interval,13.41,73.25,7.11,2875.883297
+unemployment_rate,labor_market,idn.13.1309,Pasaman,2021,2020,0.990659194303,2.11202472826,false,true,within_expected_interval,12.8,71.15,16.52,3188.559896
+unemployment_rate,labor_market,idn.13.1309,Pasaman,2022,2021,1.14669392093,2.26805945488,false,true,within_expected_interval,12.81,71.34,15.45,3303.601986
+unemployment_rate,labor_market,idn.13.1309,Pasaman,2023,2022,1.53449948359,2.65586501754,false,true,within_expected_interval,13.05,71.71,15.06,3965.730773
+unemployment_rate,labor_market,idn.13.1309,Pasaman,2024,2023,1.40838525776,2.52975079172,false,true,within_expected_interval,13.25,72.04,13.25,3431.683071
+unemployment_rate,labor_market,idn.13.1310,Solok Selatan,2021,2020,-0.0058348626353,1.11553067132,false,true,within_expected_interval,12.71,71.32,15.06,2839.225367
+unemployment_rate,labor_market,idn.13.1310,Solok Selatan,2022,2021,-0.471156896212,0.650208637741,false,true,within_expected_interval,12.72,71.52,14.69,3128.814974
+unemployment_rate,labor_market,idn.13.1310,Solok Selatan,2023,2022,-0.793897891541,0.327467642411,false,true,within_expected_interval,12.73,71.89,8.67,3535.487002
+unemployment_rate,labor_market,idn.13.1310,Solok Selatan,2024,2023,-1.03335155425,0.0880139797055,false,true,within_expected_interval,12.8,72.22,10.4,2800.576874
+unemployment_rate,labor_market,idn.13.1311,Dharmasraya,2021,2020,0.0567684514719,1.17813398542,false,true,within_expected_interval,12.43,73.04,9.79,3039.796046
+unemployment_rate,labor_market,idn.13.1311,Dharmasraya,2022,2021,1.08524038593,2.20660591988,false,true,within_expected_interval,12.44,73.47,9.97,3360.740287
+unemployment_rate,labor_market,idn.13.1311,Dharmasraya,2023,2022,0.996556373371,2.11792190732,false,true,within_expected_interval,12.51,73.84,6.6,3815.293034
+unemployment_rate,labor_market,idn.13.1311,Dharmasraya,2024,2023,1.04826439241,2.16962992636,false,true,within_expected_interval,12.68,74.04,7.79,3199.790741
+unemployment_rate,labor_market,idn.13.1312,Pasaman Barat,2021,2020,-0.781689053117,0.307408300664,true,false,within_expected_interval,13.61,71.71,15.6,3748.958598
+unemployment_rate,labor_market,idn.13.1312,Pasaman Barat,2022,2021,0.218411547935,1.30750890172,true,false,within_expected_interval,13.68,71.83,10.28,3718.636822
+unemployment_rate,labor_market,idn.13.1312,Pasaman Barat,2023,2022,-0.179811489769,0.909285864012,true,false,within_expected_interval,13.69,72.14,9.91,4331.760164
+unemployment_rate,labor_market,idn.13.1312,Pasaman Barat,2024,2023,0.232671487926,1.32176884171,true,false,within_expected_interval,13.7,72.44,10.88,3782.060938
+unemployment_rate,labor_market,idn.13.1371,Padang,2021,2020,4.10527602903,5.22664156299,false,true,materially_less_favorable_than_expected,16.52,74.43,9.9,3833.450096
+unemployment_rate,labor_market,idn.13.1371,Padang,2022,2021,3.29216964319,4.41353517714,false,true,materially_less_favorable_than_expected,16.53,74.47,7.67,4272.073887
+unemployment_rate,labor_market,idn.13.1371,Padang,2023,2022,2.70823653382,3.82960206777,true,false,materially_less_favorable_than_expected,16.54,74.71,6.29,4965.282037
+unemployment_rate,labor_market,idn.13.1371,Padang,2024,2023,2.44858422496,3.56994975891,false,true,materially_less_favorable_than_expected,16.56,74.94,7.99,3578.425027
+unemployment_rate,labor_market,idn.13.1372,Solok,2021,2020,-0.68106889413,0.343482209628,true,false,within_expected_interval,14.32,73.86,6.96,3004.073527
+unemployment_rate,labor_market,idn.13.1372,Solok,2022,2021,-1.20376924143,-0.179218137668,false,true,within_expected_interval,14.33,73.98,6.29,3274.03972
+unemployment_rate,labor_market,idn.13.1372,Solok,2023,2022,-1.14248067478,-0.117929571025,false,true,within_expected_interval,14.34,74.31,5.04,3916.840246
+unemployment_rate,labor_market,idn.13.1372,Solok,2024,2023,-1.11711036598,-0.0925592622177,false,true,within_expected_interval,14.36,74.56,7.02,2938.237223
+unemployment_rate,labor_market,idn.13.1373,Sawahlunto,2021,2020,0.0400114676698,1.16137700162,false,true,within_expected_interval,13.17,72.81,12.71,2803.900303
+unemployment_rate,labor_market,idn.13.1373,Sawahlunto,2022,2021,-0.728611079312,0.39275445464,false,true,within_expected_interval,13.18,73.2,11.56,3005.110378
+unemployment_rate,labor_market,idn.13.1373,Sawahlunto,2023,2022,-0.528377598519,0.592987935433,false,true,within_expected_interval,13.42,73.5,7.75,3756.138973
+unemployment_rate,labor_market,idn.13.1373,Sawahlunto,2024,2023,-0.202382928389,0.918982605564,false,true,within_expected_interval,13.69,73.79,8.26,2942.35941
+unemployment_rate,labor_market,idn.13.1374,Padang Panjang,2021,2020,-1.01130938757,0.0777879662068,true,false,within_expected_interval,15.06,73.83,6.44,2811.671422
+unemployment_rate,labor_market,idn.13.1374,Padang Panjang,2022,2021,-1.02077948212,0.0683178716611,true,false,within_expected_interval,15.07,73.93,6.58,3026.15477
+unemployment_rate,labor_market,idn.13.1374,Padang Panjang,2023,2022,-0.74341504263,0.345682311151,true,false,within_expected_interval,15.07,74.03,2.04,3651.476589
+unemployment_rate,labor_market,idn.13.1374,Padang Panjang,2024,2023,-0.915378446727,0.173718907055,true,false,within_expected_interval,15.29,74.24,5.75,2824.530171
+unemployment_rate,labor_market,idn.13.1375,Bukittinggi,2021,2020,-0.0245931412981,1.09677239265,true,false,within_expected_interval,14.97,74.58,8.89,2266.408824
+unemployment_rate,labor_market,idn.13.1375,Bukittinggi,2022,2021,-0.628554806587,0.492810727365,true,false,within_expected_interval,14.98,74.7,7.9,2376.071718
+unemployment_rate,labor_market,idn.13.1375,Bukittinggi,2023,2022,-0.765824404369,0.355541129583,true,false,within_expected_interval,14.99,75.02,4.25,3069.58042
+unemployment_rate,labor_market,idn.13.1375,Bukittinggi,2024,2023,-0.527046724221,0.594318809731,true,false,within_expected_interval,15.01,75.33,7.07,2354.011592
+unemployment_rate,labor_market,idn.13.1376,Payakumbuh,2021,2020,0.27976860414,1.40113413809,false,true,within_expected_interval,14.26,74.08,7.25,2261.885902
+unemployment_rate,labor_market,idn.13.1376,Payakumbuh,2022,2021,-0.092475735446,1.02888979851,false,true,within_expected_interval,14.27,74.18,8.24,2362.419395
+unemployment_rate,labor_market,idn.13.1376,Payakumbuh,2023,2022,-0.363332311706,0.758033222246,false,true,within_expected_interval,14.29,74.48,5.37,3156.634559
+unemployment_rate,labor_market,idn.13.1376,Payakumbuh,2024,2023,-0.195438222289,0.925927311663,false,true,within_expected_interval,14.3,74.77,6.66,2473.81129
+unemployment_rate,labor_market,idn.13.1377,Pariaman,2021,2020,-0.242308748101,0.879056785851,true,false,within_expected_interval,14.54,73.59,13.36,4428.394673
+unemployment_rate,labor_market,idn.13.1377,Pariaman,2022,2021,-0.643639039126,0.477726494826,true,false,within_expected_interval,14.55,73.69,11.43,4955.780563
+unemployment_rate,labor_market,idn.13.1377,Pariaman,2023,2022,-0.000792773597237,1.12057276036,false,true,within_expected_interval,14.61,73.98,6.97,5719.996265
+unemployment_rate,labor_market,idn.13.1377,Pariaman,2024,2023,0.0469239348029,1.16828946876,false,true,within_expected_interval,14.79,74.2,8.81,4147.905615
+real_grdp_growth,economic_dynamism,idn.13.1301,Kepulauan Mentawai,2021,2020,0.964560938925,1.65505296017,true,false,within_expected_interval,12.82,70.73,20.72,3626.960488
+real_grdp_growth,economic_dynamism,idn.13.1301,Kepulauan Mentawai,2022,2021,0.134005839091,0.824497860334,true,false,within_expected_interval,12.89,70.73,21.96,3704.889656
+real_grdp_growth,economic_dynamism,idn.13.1301,Kepulauan Mentawai,2023,2022,0.904637175519,1.59512919676,true,false,within_expected_interval,12.89,70.91,21.67,3782.009938
+real_grdp_growth,economic_dynamism,idn.13.1301,Kepulauan Mentawai,2024,2023,0.750785842732,1.44127786398,true,false,within_expected_interval,12.9,71.06,19.5,2625.301919
+real_grdp_growth,economic_dynamism,idn.13.1302,Pesisir Selatan,2021,2020,-0.221855239165,0.441866781005,false,true,within_expected_interval,13.32,73.02,14.28,3086.659964
+real_grdp_growth,economic_dynamism,idn.13.1302,Pesisir Selatan,2022,2021,0.298544454136,0.962266474305,false,true,within_expected_interval,13.33,73.12,10.02,3436.715819
+real_grdp_growth,economic_dynamism,idn.13.1302,Pesisir Selatan,2023,2022,0.250366511452,0.914088531621,false,true,within_expected_interval,13.35,73.2,11.58,3619.80713
+real_grdp_growth,economic_dynamism,idn.13.1302,Pesisir Selatan,2024,2023,0.184424385397,0.848146405566,true,false,within_expected_interval,13.36,73.27,14.04,2705.082515
+real_grdp_growth,economic_dynamism,idn.13.1303,Solok,2021,2020,-0.000571152008574,0.663150868161,false,true,within_expected_interval,13.04,71.51,12.76,2824.854401
+real_grdp_growth,economic_dynamism,idn.13.1303,Solok,2022,2021,0.088936479904,0.752658500073,false,true,within_expected_interval,13.05,71.72,8.19,3100.123998
+real_grdp_growth,economic_dynamism,idn.13.1303,Solok,2023,2022,0.168070134587,0.831792154756,false,true,within_expected_interval,13.3,72.12,8.16,3648.037132
+real_grdp_growth,economic_dynamism,idn.13.1303,Solok,2024,2023,0.281532085107,0.945254105277,false,true,within_expected_interval,13.55,72.31,8.31,2818.463029
+real_grdp_growth,economic_dynamism,idn.13.1304,Sijunjung,2021,2020,-0.208449261797,0.455272758372,false,true,within_expected_interval,12.37,71.78,13.42,2803.058049
+real_grdp_growth,economic_dynamism,idn.13.1304,Sijunjung,2022,2021,0.115453036748,0.779175056917,false,true,within_expected_interval,12.38,71.93,13.09,3087.590832
+real_grdp_growth,economic_dynamism,idn.13.1304,Sijunjung,2023,2022,-0.279548352999,0.384173667171,false,true,within_expected_interval,12.64,72.27,12.67,3743.084717
+real_grdp_growth,economic_dynamism,idn.13.1304,Sijunjung,2024,2023,-0.23048683305,0.433235187119,false,true,within_expected_interval,12.72,72.59,11.69,2940.515772
+real_grdp_growth,economic_dynamism,idn.13.1305,Tanah Datar,2021,2020,-0.0416074831789,0.62211453699,false,true,within_expected_interval,14.33,73.5,11.47,2639.181013
+real_grdp_growth,economic_dynamism,idn.13.1305,Tanah Datar,2022,2021,0.17181792156,0.835539941729,false,true,within_expected_interval,14.34,73.69,7.86,2757.306452
+real_grdp_growth,economic_dynamism,idn.13.1305,Tanah Datar,2023,2022,0.0621740213789,0.725896041548,false,true,within_expected_interval,14.59,73.84,5.54,3501.612179
+real_grdp_growth,economic_dynamism,idn.13.1305,Tanah Datar,2024,2023,0.271248174697,0.934970194866,false,true,within_expected_interval,14.78,74.19,8.47,2729.635347
+real_grdp_growth,economic_dynamism,idn.13.1306,Padang Pariaman,2021,2020,1.0230839686,1.67691989286,false,true,materially_less_favorable_than_expected,13.67,73.48,12.39,4146.372331
+real_grdp_growth,economic_dynamism,idn.13.1306,Padang Pariaman,2022,2021,-2.7986037312,-2.14476780694,false,true,materially_more_favorable_than_expected,13.68,73.58,11.73,4501.844729
+real_grdp_growth,economic_dynamism,idn.13.1306,Padang Pariaman,2023,2022,-1.1304536367,-0.476617712447,false,true,materially_more_favorable_than_expected,13.93,73.67,8.45,5260.041094
+real_grdp_growth,economic_dynamism,idn.13.1306,Padang Pariaman,2024,2023,-0.609017140421,0.0448187838366,false,true,within_expected_interval,14.19,73.77,9.38,3949.497823
+real_grdp_growth,economic_dynamism,idn.13.1307,Agam,2021,2020,-0.447567059416,0.242924961827,false,true,within_expected_interval,13.87,73.79,17.42,2943.171289
+real_grdp_growth,economic_dynamism,idn.13.1307,Agam,2022,2021,0.133934898048,0.824426919292,false,true,within_expected_interval,13.88,73.91,10.92,3054.359145
+real_grdp_growth,economic_dynamism,idn.13.1307,Agam,2023,2022,0.0114690688143,0.701961090059,false,true,within_expected_interval,13.88,74.07,8.73,3760.57359
+real_grdp_growth,economic_dynamism,idn.13.1307,Agam,2024,2023,-0.0192773156189,0.671214705625,false,true,within_expected_interval,13.89,74.22,11.25,2907.477107
+real_grdp_growth,economic_dynamism,idn.13.1308,Lima Puluh Kota,2021,2020,-0.171412887849,0.49230913232,false,true,within_expected_interval,13.29,72.74,12.84,2625.799332
+real_grdp_growth,economic_dynamism,idn.13.1308,Lima Puluh Kota,2022,2021,0.262714061392,0.926436081561,false,true,within_expected_interval,13.3,72.79,10.23,2740.063992
+real_grdp_growth,economic_dynamism,idn.13.1308,Lima Puluh Kota,2023,2022,-0.117731666652,0.545990353517,false,true,within_expected_interval,13.4,73.03,8.46,3506.769514
+real_grdp_growth,economic_dynamism,idn.13.1308,Lima Puluh Kota,2024,2023,-0.0789002320916,0.584821788078,false,true,within_expected_interval,13.41,73.25,7.11,2875.883297
+real_grdp_growth,economic_dynamism,idn.13.1309,Pasaman,2021,2020,-0.0930798810405,0.570642139129,false,true,within_expected_interval,12.8,71.15,16.52,3188.559896
+real_grdp_growth,economic_dynamism,idn.13.1309,Pasaman,2022,2021,0.262907733532,0.926629753701,false,true,within_expected_interval,12.81,71.34,15.45,3303.601986
+real_grdp_growth,economic_dynamism,idn.13.1309,Pasaman,2023,2022,0.1225526133,0.786274633469,false,true,within_expected_interval,13.05,71.71,15.06,3965.730773
+real_grdp_growth,economic_dynamism,idn.13.1309,Pasaman,2024,2023,0.167111946618,0.830833966787,false,true,within_expected_interval,13.25,72.04,13.25,3431.683071
+real_grdp_growth,economic_dynamism,idn.13.1310,Solok Selatan,2021,2020,-0.0749899641636,0.615502057081,false,true,within_expected_interval,12.71,71.32,15.06,2839.225367
+real_grdp_growth,economic_dynamism,idn.13.1310,Solok Selatan,2022,2021,0.395824650593,1.08631667184,false,true,within_expected_interval,12.72,71.52,14.69,3128.814974
+real_grdp_growth,economic_dynamism,idn.13.1310,Solok Selatan,2023,2022,0.0219634634468,0.712455484691,false,true,within_expected_interval,12.73,71.89,8.67,3535.487002
+real_grdp_growth,economic_dynamism,idn.13.1310,Solok Selatan,2024,2023,0.124573410789,0.815065432033,false,true,within_expected_interval,12.8,72.22,10.4,2800.576874
+real_grdp_growth,economic_dynamism,idn.13.1311,Dharmasraya,2021,2020,-0.115622691739,0.574869329506,false,true,within_expected_interval,12.43,73.04,9.79,3039.796046
+real_grdp_growth,economic_dynamism,idn.13.1311,Dharmasraya,2022,2021,0.180656773915,0.871148795158,false,true,within_expected_interval,12.44,73.47,9.97,3360.740287
+real_grdp_growth,economic_dynamism,idn.13.1311,Dharmasraya,2023,2022,0.161932693022,0.852424714266,false,true,within_expected_interval,12.51,73.84,6.6,3815.293034
+real_grdp_growth,economic_dynamism,idn.13.1311,Dharmasraya,2024,2023,0.329134388013,1.01962640926,false,true,within_expected_interval,12.68,74.04,7.79,3199.790741
+real_grdp_growth,economic_dynamism,idn.13.1312,Pasaman Barat,2021,2020,-0.727579469355,-0.0737435450969,true,false,within_expected_interval,13.61,71.71,15.6,3748.958598
+real_grdp_growth,economic_dynamism,idn.13.1312,Pasaman Barat,2022,2021,0.0483749141616,0.702210838419,true,false,within_expected_interval,13.68,71.83,10.28,3718.636822
+real_grdp_growth,economic_dynamism,idn.13.1312,Pasaman Barat,2023,2022,-0.218714918799,0.435121005458,true,false,within_expected_interval,13.69,72.14,9.91,4331.760164
+real_grdp_growth,economic_dynamism,idn.13.1312,Pasaman Barat,2024,2023,-0.178706308476,0.475129615781,true,false,within_expected_interval,13.7,72.44,10.88,3782.060938
+real_grdp_growth,economic_dynamism,idn.13.1371,Padang,2021,2020,-0.340205799587,0.339410841202,false,true,within_expected_interval,16.52,74.43,9.9,3833.450096
+real_grdp_growth,economic_dynamism,idn.13.1371,Padang,2022,2021,0.16686128859,0.846477929379,false,true,within_expected_interval,16.53,74.47,7.67,4272.073887
+real_grdp_growth,economic_dynamism,idn.13.1371,Padang,2023,2022,0.000792036439666,0.680408677229,true,false,within_expected_interval,16.54,74.71,6.29,4965.282037
+real_grdp_growth,economic_dynamism,idn.13.1371,Padang,2024,2023,-0.420383252029,0.25923338876,false,true,within_expected_interval,16.56,74.94,7.99,3578.425027
+real_grdp_growth,economic_dynamism,idn.13.1372,Solok,2021,2020,-0.106910986742,0.583581034501,true,false,within_expected_interval,14.32,73.86,6.96,3004.073527
+real_grdp_growth,economic_dynamism,idn.13.1372,Solok,2022,2021,-0.0485623692391,0.641929652005,false,true,within_expected_interval,14.33,73.98,6.29,3274.03972
+real_grdp_growth,economic_dynamism,idn.13.1372,Solok,2023,2022,-0.0723967137808,0.618095307463,false,true,within_expected_interval,14.34,74.31,5.04,3916.840246
+real_grdp_growth,economic_dynamism,idn.13.1372,Solok,2024,2023,-0.190823196311,0.499668824934,false,true,within_expected_interval,14.36,74.56,7.02,2938.237223
+real_grdp_growth,economic_dynamism,idn.13.1373,Sawahlunto,2021,2020,0.936679272925,1.62717129417,false,true,within_expected_interval,13.17,72.81,12.71,2803.900303
+real_grdp_growth,economic_dynamism,idn.13.1373,Sawahlunto,2022,2021,0.564005573035,1.25449759428,false,true,within_expected_interval,13.18,73.2,11.56,3005.110378
+real_grdp_growth,economic_dynamism,idn.13.1373,Sawahlunto,2023,2022,0.221574162955,0.912066184198,false,true,within_expected_interval,13.42,73.5,7.75,3756.138973
+real_grdp_growth,economic_dynamism,idn.13.1373,Sawahlunto,2024,2023,0.270992844939,0.961484866183,false,true,within_expected_interval,13.69,73.79,8.26,2942.35941
+real_grdp_growth,economic_dynamism,idn.13.1374,Padang Panjang,2021,2020,0.386805038238,1.07729705948,true,false,within_expected_interval,15.06,73.83,6.44,2811.671422
+real_grdp_growth,economic_dynamism,idn.13.1374,Padang Panjang,2022,2021,0.460392206907,1.15088422815,true,false,within_expected_interval,15.07,73.93,6.58,3026.15477
+real_grdp_growth,economic_dynamism,idn.13.1374,Padang Panjang,2023,2022,0.0425761067993,0.733068128043,true,false,within_expected_interval,15.07,74.03,2.04,3651.476589
+real_grdp_growth,economic_dynamism,idn.13.1374,Padang Panjang,2024,2023,0.0140227164508,0.704514737695,true,false,within_expected_interval,15.29,74.24,5.75,2824.530171
+real_grdp_growth,economic_dynamism,idn.13.1375,Bukittinggi,2021,2020,-0.101382427837,0.589109593406,true,false,within_expected_interval,14.97,74.58,8.89,2266.408824
+real_grdp_growth,economic_dynamism,idn.13.1375,Bukittinggi,2022,2021,-0.0486458822169,0.641846139026,true,false,within_expected_interval,14.98,74.7,7.9,2376.071718
+real_grdp_growth,economic_dynamism,idn.13.1375,Bukittinggi,2023,2022,-0.11586599181,0.574626029433,true,false,within_expected_interval,14.99,75.02,4.25,3069.58042
+real_grdp_growth,economic_dynamism,idn.13.1375,Bukittinggi,2024,2023,-0.135078526839,0.555413494405,true,false,within_expected_interval,15.01,75.33,7.07,2354.011592
+real_grdp_growth,economic_dynamism,idn.13.1376,Payakumbuh,2021,2020,-0.178084079755,0.485637940414,false,true,within_expected_interval,14.26,74.08,7.25,2261.885902
+real_grdp_growth,economic_dynamism,idn.13.1376,Payakumbuh,2022,2021,0.0901881658411,0.75391018601,false,true,within_expected_interval,14.27,74.18,8.24,2362.419395
+real_grdp_growth,economic_dynamism,idn.13.1376,Payakumbuh,2023,2022,-0.0252824793986,0.638439540771,false,true,within_expected_interval,14.29,74.48,5.37,3156.634559
+real_grdp_growth,economic_dynamism,idn.13.1376,Payakumbuh,2024,2023,-0.218733271391,0.444988748778,false,true,within_expected_interval,14.3,74.77,6.66,2473.81129
+real_grdp_growth,economic_dynamism,idn.13.1377,Pariaman,2021,2020,-0.209841145816,0.480650875429,true,false,within_expected_interval,14.54,73.59,13.36,4428.394673
+real_grdp_growth,economic_dynamism,idn.13.1377,Pariaman,2022,2021,-0.125704605185,0.564787416058,true,false,within_expected_interval,14.55,73.69,11.43,4955.780563
+real_grdp_growth,economic_dynamism,idn.13.1377,Pariaman,2023,2022,-0.184256380538,0.506235640705,false,true,within_expected_interval,14.61,73.98,6.97,5719.996265
+real_grdp_growth,economic_dynamism,idn.13.1377,Pariaman,2024,2023,-0.232142459603,0.458349561641,false,true,within_expected_interval,14.79,74.2,8.81,4147.905615

@@ -1,0 +1,96 @@
+{
+  "annual_correlation_row_count": 48,
+  "annual_rainfall_claim_type": "model_estimate",
+  "annual_rainfall_climate_change_attribution_claim": false,
+  "annual_rainfall_station_equivalence_claim": false,
+  "association_frame_row_count": 228,
+  "bottleneck_causal_claim": false,
+  "candidate_ids": [
+    "expected_years_schooling",
+    "life_expectancy",
+    "underemployment_rate",
+    "annual_rainfall"
+  ],
+  "candidate_selection_after_results_performed": false,
+  "causal_analysis_performed": false,
+  "feature_association_row_count": 12,
+  "feature_lag_years": 1,
+  "feature_years": [
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "geography_count": 19,
+  "loo_correlation_row_count": 228,
+  "m11_primary_feature_reuse_in_candidate_set": false,
+  "milestone": 14,
+  "milestone14_complete": true,
+  "monetary_wasted_potential_claim": false,
+  "no_imputation": true,
+  "outputs": {
+    "association_frame": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-association-frame.csv",
+      "sha256": "478928248aa8058a599f0039e89b8e78ef8d287b1d84d16b59099bac33cf874f"
+    },
+    "feature_associations": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-feature-associations.csv",
+      "sha256": "d8dca9ca337ca87a3dc53cac6e2d91e7ab26bce00b63b029e02353c4b0021d24"
+    },
+    "leave_one_geography_out": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-leave-one-geography-out.csv",
+      "sha256": "975261b7a6414bf57614d8d7d6f61d466964d326f7ce9611c5850d39b7ba9447"
+    },
+    "stable_association_candidates": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-stable-association-candidates.csv",
+      "sha256": "ff416cf6f1ac914568dc6acfbf17a4a1a8b31fd9bb45c26c308cc5875cd19239"
+    },
+    "year_specific_correlations": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-year-specific-correlations.csv",
+      "sha256": "f77342bf59003e92d35f1569dfe32e349ffbe2c43bc6cace936d974cff7b8607"
+    }
+  },
+  "p_value_selection_used": false,
+  "phase": "final_analytical_research_engine",
+  "policy_effect_claim": false,
+  "prefit_gate_preserved": true,
+  "primary_gap_field": "expected_gap_rmse_units",
+  "primary_statistic": "pooled_year_demeaned_spearman",
+  "schema": "ranah-observatory/milestone14-bottleneck-association/v1",
+  "secondary_statistic": "pooled_year_demeaned_pearson",
+  "sensitivity_gap_field": "favorable_peer_gap_rmse_units",
+  "source_inputs": {
+    "data/analysis/engine/gap_decomposition_v1/m13-gap-panel.csv": "157a79d899d941409eb025343f006088b9d79974419a1de20cc9396988d3f0e8",
+    "data/analysis/engine/panel_v1/m10-panel-wide.csv": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde",
+    "data/manifests/milestone10_analytical_panel.json": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433",
+    "data/manifests/milestone13_development_gap_decomposition.json": "4b2099ab2b50e68dd98b7bee00bd5a4a48eeb2930fb79ce7ea6fdc27ed3dd0c6",
+    "data/manifests/milestone14_design_gate.json": "ababaa31e4ece2f51ea3a8cbd66c517a022891bfe166305c1fc02afebcc2b367",
+    "research/MILESTONE14_BOTTLENECK_ASSOCIATION_SPEC.md": "8ef7e02fd4fc4b3c0ec8d42c7ec0a455b2f7614b250ea1a5e27bd720f8c34431"
+  },
+  "stable_abs_spearman_threshold": 0.25,
+  "stable_association_candidate_count": 3,
+  "stable_association_counts_by_candidate": {
+    "annual_rainfall": 1,
+    "expected_years_schooling": 1,
+    "life_expectancy": 1
+  },
+  "stable_association_counts_by_target": {
+    "real_grdp_growth": 2,
+    "unemployment_rate": 1
+  },
+  "stable_min_same_sign_annual_count": 3,
+  "stable_min_support_safe_rows": 40,
+  "stable_require_all_loo_same_sign": true,
+  "stable_require_support_safe_same_sign": true,
+  "target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "target_years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ]
+}
