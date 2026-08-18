@@ -1,0 +1,172 @@
+geography_id,geography_name,year,event_time,real_grdp_constant_2000_million_rupiah,log_real_grdp,price_basis,unit,source_block,source_table,source_pdf_page,revision_status,source_internal_consistency_status
+idn.13.1301,Kepulauan Mentawai,2005,-4,428727.81,12.968577521020904,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1301,Kepulauan Mentawai,2006,-3,446108.41,13.00831727321393,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1301,Kepulauan Mentawai,2007,-2,465786.51,13.051482675085566,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1301,Kepulauan Mentawai,2008,-1,486658.71,13.09531835556769,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1301,Kepulauan Mentawai,2009,0,509396.33,13.140981636947163,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1301,Kepulauan Mentawai,2010,1,534232.32,13.188586079512607,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1301,Kepulauan Mentawai,2011,2,560536.49,13.236649621962247,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1301,Kepulauan Mentawai,2012,3,589971.58,13.28782964523019,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1301,Kepulauan Mentawai,2013,4,622479.09,13.341465316395386,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1302,Pesisir Selatan,2005,-4,1625743.4,14.301475746058388,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1302,Pesisir Selatan,2006,-3,1710569.67,14.352337013350795,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1302,Pesisir Selatan,2007,-2,1801336.27,14.404039319666659,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1302,Pesisir Selatan,2008,-1,1899032.79,14.456855256627973,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1302,Pesisir Selatan,2009,0,2002248.56,14.50978138699476,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1302,Pesisir Selatan,2010,1,2108066.19,14.561281587581178,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1302,Pesisir Selatan,2011,2,2223619.3,14.61464674164242,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1302,Pesisir Selatan,2012,3,2349536.32,14.66972855601374,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1302,Pesisir Selatan,2013,4,2487507.61,14.726791807306688,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1303,Solok,2005,-4,1608661.41,14.29091296877713,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1303,Solok,2006,-3,1705496.5,14.349366828654622,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1303,Solok,2007,-2,1811861.0,14.409865051825859,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1303,Solok,2008,-1,1926826.54,14.471384927776619,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1303,Solok,2009,0,2047056.55,14.531913490055686,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1303,Solok,2010,1,2170836.33,14.590623056796963,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1303,Solok,2011,2,2303828.56,14.650082888307155,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1303,Solok,2012,3,2448011.39,14.710786575381308,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1303,Solok,2013,4,2602065.71,14.771816191386757,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1304,Sijunjung,2005,-4,1023241.24,13.838485833360272,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1304,Sijunjung,2006,-3,1084134.39,13.896292429312098,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1304,Sijunjung,2007,-2,1145007.18,13.950921465693174,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1304,Sijunjung,2008,-1,1205702.94,14.002573307519945,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1304,Sijunjung,2009,0,1271638.27,14.055816603508031,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1304,Sijunjung,2010,1,1343278.0,14.110623453339382,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1304,Sijunjung,2011,2,1420360.12,14.166421003058774,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1304,Sijunjung,2012,3,1506769.93,14.225478798402328,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1304,Sijunjung,2013,4,1599143.38,14.284978656338946,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1305,Tanah Datar,2005,-4,1961820.26,14.489383304309511,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1305,Tanah Datar,2006,-3,2076125.42,14.546013935701238,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1305,Tanah Datar,2007,-2,2201714.59,14.604746973876859,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1305,Tanah Datar,2008,-1,2331745.79,14.662127811076598,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1305,Tanah Datar,2009,0,2468737.03,14.719217253946882,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1305,Tanah Datar,2010,1,2614193.28,14.7764661107542,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1305,Tanah Datar,2011,2,2766811.59,14.833206164654543,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1305,Tanah Datar,2012,3,2924846.73,14.888752637275166,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1305,Tanah Datar,2013,4,3098429.79,14.946406021776273,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1306,Padang Pariaman,2005,-4,1971582.46,14.494347057445932,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1306,Padang Pariaman,2006,-3,2346365.52,14.66837810168572,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1306,Padang Pariaman,2007,-2,2489684.42,14.727666521453006,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1306,Padang Pariaman,2008,-1,2645119.06,14.788226635493986,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1306,Padang Pariaman,2009,0,2749336.74,14.826870255098319,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1306,Padang Pariaman,2010,1,2890752.9,14.877027545190566,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1306,Padang Pariaman,2011,2,3052077.18,14.931332959402258,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1306,Padang Pariaman,2012,3,3238016.01,14.990471357617624,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1306,Padang Pariaman,2013,4,3454099.54,15.055072356034366,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1307,Agam,2005,-4,2325161.69,14.659300138671538,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1307,Agam,2006,-3,2468761.81,14.719227291417596,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1307,Agam,2007,-2,2626066.58,14.780997687674267,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1307,Agam,2008,-1,2792967.48,14.842615201465328,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1307,Agam,2009,0,2929871.68,14.890469184812368,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1307,Agam,2010,1,3096174.72,14.945677946207937,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1307,Agam,2011,2,3280044.92,15.0033676753885,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1307,Agam,2012,3,3502846.41,15.069086455942914,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1307,Agam,2013,4,3725541.01,15.130722636833733,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1308,Lima Puluh Kota,2005,-4,2125656.73,14.569591362006486,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1308,Lima Puluh Kota,2006,-3,2255102.49,14.628705979996955,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1308,Lima Puluh Kota,2007,-2,2398597.58,14.690394782857378,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1308,Lima Puluh Kota,2008,-1,2545801.72,14.749956176040838,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1308,Lima Puluh Kota,2009,0,2684575.16,14.803033046217777,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1308,Lima Puluh Kota,2010,1,2846157.9,14.861480537470271,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1308,Lima Puluh Kota,2011,2,3025798.44,14.922685561726608,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1308,Lima Puluh Kota,2012,3,3219859.68,14.984848338931307,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1308,Lima Puluh Kota,2013,4,3421606.17,15.045620639143152,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1309,Pasaman,2005,-4,1022262.67,13.837529032378498,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1309,Pasaman,2006,-3,1081242.18,13.89362110483213,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1309,Pasaman,2007,-2,1145234.55,13.951120021153734,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1309,Pasaman,2008,-1,1214884.21,14.01015932980389,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1309,Pasaman,2009,0,1289261.25,14.069579937878624,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1309,Pasaman,2010,1,1368459.76,14.129196402573116,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1309,Pasaman,2011,2,1452571.4,14.188845923126562,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1309,Pasaman,2012,3,1541992.76,14.248586137893351,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1309,Pasaman,2013,4,1636516.09,14.308080204833487,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1310,Solok Selatan,2005,-4,486320.39,13.09462292436339,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1310,Solok Selatan,2006,-3,514759.93,13.15145591562189,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1310,Solok Selatan,2007,-2,546074.75,13.210511150118345,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1310,Solok Selatan,2008,-1,579478.58,13.269883978179747,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1310,Solok Selatan,2009,0,614807.23,13.329064050499356,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1310,Solok Selatan,2010,1,653437.94,13.39000284196689,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1310,Solok Selatan,2011,2,694409.87,13.450817655936941,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_internal_mismatch_unresolved
+idn.13.1310,Solok Selatan,2012,3,740174.46,13.514641194150853,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_internal_mismatch_unresolved
+idn.13.1310,Solok Selatan,2013,4,787260.83,13.576314895616822,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1311,Dharmasraya,2005,-4,846237.71,13.648555580208038,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1311,Dharmasraya,2006,-3,899308.5,13.70938141365378,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1311,Dharmasraya,2007,-2,957502.48,13.772083590111913,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1311,Dharmasraya,2008,-1,1020079.52,13.835391143005983,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1311,Dharmasraya,2009,0,1087775.99,13.899645793655333,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1311,Dharmasraya,2010,1,1158557.51,13.962686263400617,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1311,Dharmasraya,2011,2,1234376.14,14.026076250615501,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1311,Dharmasraya,2012,3,1316135.71,14.090210508650882,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1311,Dharmasraya,2013,4,1402405.45,14.153699498776705,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1312,Pasaman Barat,2005,-4,1988702.87,14.502993160050371,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1312,Pasaman Barat,2006,-3,2115152.38,14.564637415148558,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1312,Pasaman Barat,2007,-2,2250818.83,14.626804632420608,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1312,Pasaman Barat,2008,-1,2394934.54,14.688866456512084,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1312,Pasaman Barat,2009,0,2544771.31,14.74955134538307,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1312,Pasaman Barat,2010,1,2707342.74,14.8114781730679,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1312,Pasaman Barat,2011,2,2881110.75,14.873686454841174,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1312,Pasaman Barat,2012,3,3067381.19,14.936334722950765,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1312,Pasaman Barat,2013,4,3268006.04,14.999690583185536,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1371,Kota Padang,2005,-4,9110697.44,16.024959823934733,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1371,Kota Padang,2006,-3,9577495.51,16.07492668674973,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1371,Kota Padang,2007,-2,10165760.8,16.1345358473004,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1371,Kota Padang,2008,-1,10797259.04,16.194802867291067,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1371,Kota Padang,2009,0,11345637.06,16.244343827991067,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1371,Kota Padang,2010,1,12021599.5,16.302215548101852,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1371,Kota Padang,2011,2,12792184.77,16.364344977575477,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1371,Kota Padang,2012,3,13637633.14,16.42834367186224,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1371,Kota Padang,2013,4,14516707.54,16.49081078820495,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1372,Kota Solok,2005,-4,394216.63,12.884655859518178,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1372,Kota Solok,2006,-3,418554.23,12.94456174235657,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1372,Kota Solok,2007,-2,445151.83,13.006170693967196,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1372,Kota Solok,2008,-1,473694.17,13.068317181468574,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1372,Kota Solok,2009,0,497623.07,13.11759818187259,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1372,Kota Solok,2010,1,527270.61,13.175469187192974,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1372,Kota Solok,2011,2,559279.15,13.234404001373527,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1372,Kota Solok,2012,3,594697.89,13.295808807680991,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1372,Kota Solok,2013,4,632752.91,13.357835277369533,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1373,Kota Sawahlunto,2005,-4,444671.74,13.005091626019864,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1373,Kota Sawahlunto,2006,-3,449255.32,13.01534664653451,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1373,Kota Sawahlunto,2007,-2,458646.42,13.03603486539115,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1373,Kota Sawahlunto,2008,-1,474379.28,13.069762449489222,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1373,Kota Sawahlunto,2009,0,494707.85,13.111722665292852,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1373,Kota Sawahlunto,2010,1,519599.07,13.160812773938643,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1373,Kota Sawahlunto,2011,2,550056.74,13.217776715524016,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1373,Kota Sawahlunto,2012,3,582968.72,13.275888810376934,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1373,Kota Sawahlunto,2013,4,617979.14,13.33420998182484,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1374,Kota Padang Panjang,2005,-4,311166.4,12.648083096305614,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1374,Kota Padang Panjang,2006,-3,330172.93,12.707371826489762,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1374,Kota Padang Panjang,2007,-2,351227.59,12.769189696882997,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1374,Kota Padang Panjang,2008,-1,373245.04,12.829990426632632,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1374,Kota Padang Panjang,2009,0,396828.98,12.891260686000175,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1374,Kota Padang Panjang,2010,1,420842.59,12.950014147261237,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1374,Kota Padang Panjang,2011,2,446700.28,13.009643134158908,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1374,Kota Padang Panjang,2012,3,474561.42,13.070146330172676,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1374,Kota Padang Panjang,2013,4,503717.7,13.129771271080612,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1375,Kota Bukittinggi,2005,-4,762433.07,13.544270006561893,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1375,Kota Bukittinggi,2006,-3,809613.62,13.60431240049636,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1375,Kota Bukittinggi,2007,-2,862157.54,13.667193293967951,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1375,Kota Bukittinggi,2008,-1,918914.69,13.730948567866799,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1375,Kota Bukittinggi,2009,0,969590.89,13.784629498625986,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1375,Kota Bukittinggi,2010,1,1029155.1,13.844248732320708,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1375,Kota Bukittinggi,2011,2,1039252.85,13.854012599473403,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_internal_mismatch_unresolved
+idn.13.1375,Kota Bukittinggi,2012,3,1163140.55,13.966634275445653,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_internal_mismatch_unresolved
+idn.13.1375,Kota Bukittinggi,2013,4,1235499.4,14.026985818777337,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1376,Kota Payakumbuh,2005,-4,644369.03,13.376026868918979,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1376,Kota Payakumbuh,2006,-3,684222.31,13.43603815841876,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1376,Kota Payakumbuh,2007,-2,727773.48,13.497745124914267,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1376,Kota Payakumbuh,2008,-1,774485.72,13.55995450096734,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1376,Kota Payakumbuh,2009,0,819396.5,13.616323372667674,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1376,Kota Payakumbuh,2010,1,871661.87,13.678156863929841,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1376,Kota Payakumbuh,2011,2,930856.29,13.743860183442079,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1376,Kota Payakumbuh,2012,3,994371.12,13.809865776118116,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1376,Kota Payakumbuh,2013,4,1061214.88,13.87492492300946,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed
+idn.13.1377,Kota Pariaman,2005,-4,561912.44,13.239101316025893,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1377,Kota Pariaman,2006,-3,589877.48,13.287670133300418,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1377,Kota Pariaman,2007,-2,621504.32,13.339898140833926,constant_2000,million_rupiah,preperiod_table22,22,97,unspecified,preperiod_level_source_qualified
+idn.13.1377,Kota Pariaman,2008,-1,656273.02,13.394332170367987,constant_2000,million_rupiah,preperiod_table22,22,97,revised,preperiod_level_source_qualified
+idn.13.1377,Kota Pariaman,2009,0,685597.67,13.438046247776851,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,overlap_reconciled_growth_crosscheck_not_applied
+idn.13.1377,Kota Pariaman,2010,1,721656.53,13.489304584462593,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1377,Kota Pariaman,2011,2,764821.01,13.547397111576311,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,unspecified,postperiod_level_growth_crosscheck_passed
+idn.13.1377,Kota Pariaman,2012,3,810844.44,13.605831502122099,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,revised,postperiod_level_growth_crosscheck_passed
+idn.13.1377,Kota Pariaman,2013,4,859889.69,13.664559392560857,constant_2000,million_rupiah,postperiod_table13_1_2,13.1.2,413,preliminary,postperiod_level_growth_crosscheck_passed

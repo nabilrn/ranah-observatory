@@ -1,0 +1,75 @@
+{
+  "anomaly_geography_count": 2,
+  "anomaly_geography_ids": [
+    "idn.13.1310",
+    "idn.13.1375"
+  ],
+  "anomaly_row_count": 4,
+  "anomaly_rows": [
+    {
+      "geography_id": "idn.13.1310",
+      "geography_name": "Solok Selatan",
+      "year": 2011
+    },
+    {
+      "geography_id": "idn.13.1310",
+      "geography_name": "Solok Selatan",
+      "year": 2012
+    },
+    {
+      "geography_id": "idn.13.1375",
+      "geography_name": "Kota Bukittinggi",
+      "year": 2011
+    },
+    {
+      "geography_id": "idn.13.1375",
+      "geography_name": "Kota Bukittinggi",
+      "year": 2012
+    }
+  ],
+  "bridge_rule": "if every 2009 absolute relative difference <=0.5%, retain pre source for 2005-2008 and use the later post-period source for 2009-2013; preserve all overlap differences",
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "geography_count": 19,
+  "model_ready": false,
+  "observation_count": 171,
+  "outcome_model_fit": false,
+  "outcome_panel_combined": true,
+  "output_path": "data/analysis/quasi_causal/m8-real-grdp-panel-2005-2013.csv",
+  "output_sha256": "87e93ef2b648a3677718c1c512b12ba1fbbe439712cc6ffccf665585af72d5a6",
+  "overlap_2009_reconciled": true,
+  "overlap_manifest_path": "data/manifests/milestone8_grdp_overlap.json",
+  "overlap_manifest_sha256": "142571ca683ba7ef9cbe6178620ad500d50568d4e02e626466076d6d12fd98ab",
+  "post_input_path": "data/analysis/quasi_causal/m8-postperiod-real-grdp-2009-2013.csv",
+  "post_input_sha256": "661f33384d231d1a7f640dd487b5fff6855d1230150716abba8d0e743d111b90",
+  "postperiod_source_anomalies_resolved": false,
+  "postperiod_years_from_table13_1_2": [
+    2009,
+    2010,
+    2011,
+    2012,
+    2013
+  ],
+  "pre_input_path": "data/analysis/quasi_causal/m8-preperiod-real-grdp-2005-2009.csv",
+  "pre_input_sha256": "f9e6b81cfd88b050185754b33ca3b5cb0c0c654a3d88a21a7a697569dd4b0db1",
+  "preperiod_years_from_table22": [
+    2005,
+    2006,
+    2007,
+    2008
+  ],
+  "price_basis": "constant_2000",
+  "schema": "ranah-observatory/milestone8-grdp-panel/v1",
+  "unit": "million_rupiah",
+  "years": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013
+  ]
+}
