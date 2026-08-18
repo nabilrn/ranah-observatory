@@ -1,0 +1,127 @@
+{
+  "backward_fill_performed": false,
+  "causal_analysis_performed": false,
+  "claim_types_preserved": true,
+  "complete_2018_2025_indicator_ids": [
+    "expected_years_schooling",
+    "mean_years_schooling",
+    "labor_force_participation",
+    "unemployment_rate",
+    "poverty_rate",
+    "real_grdp_growth",
+    "rice_yield",
+    "annual_rainfall"
+  ],
+  "duplicate_key_count": 0,
+  "end_year": 2025,
+  "expected_performance_model_performed": false,
+  "forward_fill_performed": false,
+  "frontier_model_performed": false,
+  "geography_count": 19,
+  "geography_ids": [
+    "idn.13.1301",
+    "idn.13.1302",
+    "idn.13.1303",
+    "idn.13.1304",
+    "idn.13.1305",
+    "idn.13.1306",
+    "idn.13.1307",
+    "idn.13.1308",
+    "idn.13.1309",
+    "idn.13.1310",
+    "idn.13.1311",
+    "idn.13.1312",
+    "idn.13.1371",
+    "idn.13.1372",
+    "idn.13.1373",
+    "idn.13.1374",
+    "idn.13.1375",
+    "idn.13.1376",
+    "idn.13.1377"
+  ],
+  "held_source_native_included": false,
+  "historical_boundary_harmonization_performed": false,
+  "historical_continuity_claimed": false,
+  "imputation_performed": false,
+  "indicator_count": 15,
+  "indicator_ids": [
+    "expected_years_schooling",
+    "mean_years_schooling",
+    "life_expectancy",
+    "labor_force_participation",
+    "unemployment_rate",
+    "poverty_rate",
+    "real_grdp_growth",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "rice_yield",
+    "underemployment_rate",
+    "population_total",
+    "annual_rainfall",
+    "flood_events",
+    "landslide_events"
+  ],
+  "long_observation_count": 1748,
+  "milestone": 10,
+  "milestone10_complete": true,
+  "missing_indicator_cells": 532,
+  "monetary_wasted_potential_estimated": false,
+  "outputs": {
+    "coverage": {
+      "path": "data/analysis/engine/panel_v1/m10-indicator-coverage.csv",
+      "sha256": "d83f5dc64941c3d791bc5206007aa35c0abbf15af9bf6968832bd241bfa07e35"
+    },
+    "long": {
+      "path": "data/analysis/engine/panel_v1/m10-panel-long.csv",
+      "sha256": "36bb81140c238ac96c171e83065c40fd8c849ac0c9711e9db950b208f711f11b"
+    },
+    "metadata": {
+      "path": "data/analysis/engine/panel_v1/m10-indicator-metadata.csv",
+      "sha256": "3a0b444e37563c82a44d9936c9fae3ce318095c340d75d2bc8696a97af83842c"
+    },
+    "wide": {
+      "path": "data/analysis/engine/panel_v1/m10-panel-wide.csv",
+      "sha256": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde"
+    }
+  },
+  "phase": "final_analytical_research_engine",
+  "province_aggregate_included": false,
+  "reference_periods_preserved": true,
+  "regime_id": "sumbar_current_kabkota_2018_2025_v1",
+  "registry_files": {
+    "data/registries/geographies.csv": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de",
+    "data/registries/indicators.csv": "8fb0616603fa270859d595039f812b15b95d2f06b6895c3033b038eab199ea70"
+  },
+  "schema": "ranah-observatory/milestone10-analytical-panel/v1",
+  "source_files": {
+    "data/processed/bnpb/disaster/bnpb-disaster-canonical-observations.csv": "5c987ddb0dfa2b93a41ced661c898abd5d57fe903447f8ad39bd006c8d6e52e8",
+    "data/processed/bps/expansion/bps-expansion-canonical-observations.csv": "5488af9fe6391dcbdcce241f80e2c9f3992a71708aa2b7b28b82c92186df3176",
+    "data/processed/bps/panel/bps-canonical-observations.csv": "78a6879baaacc7c17ca211f7dbd2fd1140ed13493a7e8e44aef2953aa04cde9e",
+    "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv": "566d1da1faa383c71764dd877f772b1965ed12dbce2d2cf7c42b4f7c04d9dcbf"
+  },
+  "sparse_indicator_ids": [
+    "life_expectancy",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "underemployment_rate",
+    "population_total",
+    "flood_events",
+    "landslide_events"
+  ],
+  "start_year": 2018,
+  "suppressed_source_rows_skipped": 0,
+  "total_possible_indicator_cells": 2280,
+  "wide_row_count": 152,
+  "year_count": 8,
+  "years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "zero_fill_missing_years_performed": false
+}
