@@ -1,0 +1,20 @@
+geography_id,geography_name,pre_source_2009_million_rupiah,pre_source_revision_status,post_source_2009_million_rupiah,post_source_revision_status,absolute_difference_million_rupiah,relative_difference_percent_of_pre,absolute_relative_difference_percent,within_0_5_percent_materiality_gate,bridge_value_selected_million_rupiah,bridge_source
+idn.13.1301,Kepulauan Mentawai,509396.33,preliminary,509396.33,unspecified,0.0,0.0,0.0,True,509396.33,later_postperiod_source_table_13_1_2
+idn.13.1302,Pesisir Selatan,2002248.56,preliminary,2002248.56,unspecified,0.0,0.0,0.0,True,2002248.56,later_postperiod_source_table_13_1_2
+idn.13.1303,Solok,2047621.51,preliminary,2047056.55,unspecified,-564.9599999999627,-0.027591036587614415,0.027591036587614415,True,2047056.55,later_postperiod_source_table_13_1_2
+idn.13.1304,Sijunjung,1273140.01,preliminary,1271638.27,unspecified,-1501.7399999999907,-0.11795560489847386,0.11795560489847386,True,1271638.27,later_postperiod_source_table_13_1_2
+idn.13.1305,Tanah Datar,2468737.03,preliminary,2468737.03,unspecified,0.0,0.0,0.0,True,2468737.03,later_postperiod_source_table_13_1_2
+idn.13.1306,Padang Pariaman,2749336.74,preliminary,2749336.74,unspecified,0.0,0.0,0.0,True,2749336.74,later_postperiod_source_table_13_1_2
+idn.13.1307,Agam,2929871.69,preliminary,2929871.68,unspecified,-0.009999999776482582,-3.413118673631261e-07,3.413118673631261e-07,True,2929871.68,later_postperiod_source_table_13_1_2
+idn.13.1308,Lima Puluh Kota,2684575.15,preliminary,2684575.16,unspecified,0.01000000024214387,3.7249842836934067e-07,3.7249842836934067e-07,True,2684575.16,later_postperiod_source_table_13_1_2
+idn.13.1309,Pasaman,1289261.24,preliminary,1289261.25,unspecified,0.010000000009313226,7.75637993221081e-07,7.75637993221081e-07,True,1289261.25,later_postperiod_source_table_13_1_2
+idn.13.1310,Solok Selatan,614813.74,preliminary,614807.23,unspecified,-6.510000000009313,-0.0010588572727748917,0.0010588572727748917,True,614807.23,later_postperiod_source_table_13_1_2
+idn.13.1311,Dharmasraya,1088105.3,preliminary,1087775.99,unspecified,-329.3100000000559,-0.03026453414022116,0.03026453414022116,True,1087775.99,later_postperiod_source_table_13_1_2
+idn.13.1312,Pasaman Barat,2544855.11,preliminary,2544771.31,unspecified,-83.79999999981374,-0.003292918314701765,0.003292918314701765,True,2544771.31,later_postperiod_source_table_13_1_2
+idn.13.1371,Kota Padang,11345637.06,preliminary,11345637.06,unspecified,0.0,0.0,0.0,True,11345637.06,later_postperiod_source_table_13_1_2
+idn.13.1372,Kota Solok,497623.06,preliminary,497623.07,unspecified,0.010000000009313226,2.009553176517428e-06,2.009553176517428e-06,True,497623.07,later_postperiod_source_table_13_1_2
+idn.13.1373,Kota Sawahlunto,494392.38,preliminary,494707.85,unspecified,315.46999999997206,0.06380964043175019,0.06380964043175019,True,494707.85,later_postperiod_source_table_13_1_2
+idn.13.1374,Kota Padang Panjang,396823.88,preliminary,396828.98,unspecified,5.099999999976717,0.0012852049125613905,0.0012852049125613905,True,396828.98,later_postperiod_source_table_13_1_2
+idn.13.1375,Kota Bukittinggi,969590.89,preliminary,969590.89,unspecified,0.0,0.0,0.0,True,969590.89,later_postperiod_source_table_13_1_2
+idn.13.1376,Kota Payakumbuh,818071.97,preliminary,819396.5,unspecified,1324.530000000028,0.16190873768722672,0.16190873768722672,True,819396.5,later_postperiod_source_table_13_1_2
+idn.13.1377,Kota Pariaman,685632.24,preliminary,685597.67,unspecified,-34.56999999994878,-0.005042061615998217,0.005042061615998217,True,685597.67,later_postperiod_source_table_13_1_2
