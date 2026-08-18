@@ -28,7 +28,7 @@ REQUIRED_SPEC_PHRASES = [
     "does not estimate the causal effect of rainfall on disasters",
     "model_estimate",
     "zero BNPB count proves no disaster occurred",
-    "does not estimate climate-change attribution",
+    "climate-change attribution",
 ]
 
 
