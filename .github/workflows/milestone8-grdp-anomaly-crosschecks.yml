@@ -1,0 +1,75 @@
+name: Milestone 8 GRDP Anomaly Crosschecks
+
+on:
+  push:
+    branches:
+      - agent/milestone8-earthquake-quasi-causal
+    paths:
+      - "scripts/freeze_milestone8_grdp_anomaly_crosschecks.py"
+      - "scripts/extract_milestone8_grdp_anomaly_crosschecks.py"
+      - ".github/workflows/milestone8-grdp-anomaly-crosschecks.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone8-grdp-anomaly-crosschecks
+  cancel-in-progress: true
+
+jobs:
+  crosscheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - name: Check out Milestone 8 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone8-earthquake-quasi-causal
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poppler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Freeze local BPS crosscheck sources
+        run: python -m scripts.freeze_milestone8_grdp_anomaly_crosschecks
+
+      - name: Upload raw crosscheck PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone8-grdp-anomaly-crosscheck-pdfs-${{ github.run_id }}
+          path: data/raw/milestone8/crosschecks/**/*.pdf
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+      - name: Extract deterministic crosscheck text
+        run: python -m scripts.extract_milestone8_grdp_anomaly_crosschecks
+
+      - name: Commit metadata, hashes, text and crosscheck manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/snapshots/bps/milestone8/crosschecks \
+            data/processed/milestone8/anomaly_crosschecks \
+            data/manifests/milestone8_grdp_anomaly_source_freeze.json \
+            data/manifests/milestone8_grdp_anomaly_text.json
+          if git diff --cached --quiet; then
+            echo "Milestone 8 anomaly crosschecks unchanged."
+            exit 0
+          fi
+          git commit -m "data: freeze M8 local GRDP anomaly crosschecks"
+          git pull --rebase origin agent/milestone8-earthquake-quasi-causal
+          git push origin HEAD:agent/milestone8-earthquake-quasi-causal
