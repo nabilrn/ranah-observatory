@@ -1,0 +1,2385 @@
+===== PDF PAGE 2 =====
+ht
+   tp
+     ://
+        bu
+          ki
+            tti
+               ng
+                 gi
+                    k   ot
+                           a   .b
+                                  ps
+                                     .   go
+                                            .id
+
+===== PDF PAGE 3 =====
+PRODUK DOMESTIK REGIONAL BRUTO
+KOTA BUKITTINGGI
+Gross Regional Domestic Product
+Of Bukittinggi City
+
+
+
+
+                                                         .id
+2011-2013
+
+
+
+
+                                                      go
+                                                      .
+                                                   ps
+                                                .b
+Katalog BPS / BPS Catalogue                   a   : 9302008.1375
+                                           ot
+Nomor Publikasi / Publication Number              : 13755.14.02
+                                            k
+
+Ukuran Buku / Book Size                           : 21 cm X 29,7 cm
+                                         gi
+
+
+Jumlah Halaman / Total Page                       : iv + 34 Halaman
+                                  ng
+
+
+
+
+                                                            Pages
+                               tti
+                           ki
+
+
+
+
+Naskah / Editor                                   :
+                         bu
+
+
+
+
+Seksi Neraca Wilayah dan Analisis Statistik
+                      ://
+
+
+
+
+Regional Account and Analysis Division
+                    tp
+                 ht
+
+
+
+
+Gambar Kulit / Cover                              :
+Seksi Neraca Wilayah dan Analisis Statistik
+Regional Account and Analysis Division
+
+
+Diterbitkan oleh / Published by                   :
+Badan Pusat Statistik Kota Bukittinggi
+BPS – Statistics of Bukittinggi City
+
+
+Boleh dikutip dengan menyebut sumbernya           :
+May be cited with reference to the source
+
+===== PDF PAGE 4 =====
+                                                              PDRB Kota Bukittinggi   2011-2013
+
+
+
+
+                                          KATA PENGANTAR
+
+
+
+       Publikasi “Produk Domestik Regional Bruto (PDRB) Kota Bukittinggi tahun 2011-2013,”
+merupakan publikasi ke-sembilan belas kalinya yang diterbitkan oleh Badan Pusat Statistik Kota
+Bukittinggi. Publikasi ini menggunakan metode penghitungan PDRB secara langsung
+       Publikasi ini menyajikan angka – angka PDRB menurut sektor ekonomi, baik atas dasar harga
+
+
+
+
+                                                               .id
+                                                            go
+berlaku maupun atas dasar harga konstan 2000. Disamping itu, disajikan juga indikator ekonomi
+makro seperti distribusi persentase, indeks berantai, indeks implisit dan PDRB Perkapita, dan
+
+
+
+
+                                                          .
+                                                       ps
+ditampilkan pula analisis PDRB Kota Bukittinggi dalam rentang waktu 2011-2013.
+                                                 a  .b
+       Kami menyadari, meskipun publikasi ini telah disiapkan dengan sebaik-baiknya, kesalahan
+                                              ot
+dan kekurangan masih mungkin terjadi. Untuk itu saran dan kritikan yang bersifat konstruktif sangat
+                                            k
+                                         gi
+
+
+diharapkan guna penyempurnaan di masa yang akan datang.
+                                    ng
+
+
+
+
+       Akhirnya, kepada semua pihak yang telah membantu memberikan data maupun sumbang
+                                 tti
+
+
+
+
+saran hingga publikasi ini dapat terwujud, kami sampaikan terima kasih.
+                            ki
+                          bu
+                       ://
+                   tp
+
+
+
+
+                                                             Bukittinggi, Agustus 2014
+                ht
+
+
+
+
+                                                             BPS Kota Bukittinggi
+                                                                   Kepala,
+
+
+
+
+                                                              FAIZAL.A, SE.M.Si
+                                                          NIP.19650210 199203 1 007
+
+
+
+
+                                                                                              i
+
+===== PDF PAGE 5 =====
+                                                                  PDRB Kota Bukittinggi      2011-2013
+
+
+
+
+                                                   PREFACE
+
+
+
+       This publication on Gross Regional Domestic Product (GRDP) of Bukittinggi 2011-2013 is
+the nineteen publications issued by the Statistical of Bukittinggi City. This publication was calculated
+by estimation.
+       The nominal value added of each industrial origin are presented in this publication. Both in
+
+
+
+
+                                                                   .id
+                                                                go
+current prices and constant 2000 market prices based year. It also present some derived tables, such
+as, percentage distribution, link index, implicit price index and GRDP percapita.This publication also
+
+
+
+
+                                                             .
+                                                          ps
+shows GRDP analysis of Bukittinggi during 2011-2013.
+                                                    a  .b
+       Even thought this publication has been prepared seriously, there are some weaknesses due to
+                                                 ot
+the limitation of available data in order to obtain better result, serious effort must will be done in this
+                                               k
+                                            gi
+
+
+regard, comments and suggestion are always welcome as an valuable means for the future
+                                       ng
+
+
+
+
+publication.
+                                    tti
+
+
+
+
+       To all who have been assisted in the preparation of this publication we would like to our
+                              ki
+                            bu
+
+
+
+
+sincere thanks.
+                         ://
+                     tp
+
+
+
+
+                                                                   Bukittinggi, Agustus 2014
+                  ht
+
+
+
+
+                                                              Statistical Office of Bukittinggi
+                                                                           Chief,
+
+
+
+
+                                                                  FAIZAL.A, SE.M.Si
+                                                              NIP.19650210 199203 1 007
+
+
+
+
+                                                                                                      ii
+
+===== PDF PAGE 6 =====
+                                                                                             PDRB Kota Bukittinggi                2011-2013
+
+
+
+
+                                                   DAFTAR ISI / CONTENTS
+
+
+
+
+KATA PENGANTAR/PREFACE .......................................................................................................... i
+DAFTAR ISI/CONTENTS ....................................................................................................................... iii
+PDRB Kota Bukittinggi
+       - Penjelasan Umum .................................................................................................................. 1
+
+
+
+
+                                                                                            .id
+       - Tinjauan Perekonomian ......................................................................................................... 8
+
+
+
+
+                                                                                   .     go
+LAMPIRAN / APPENDIXES
+
+
+
+
+                                                                                ps
+                                                                             .b
+Tabel 1                                                                 a
+                                                                     ot
+Table        Produk Domestik Regional Bruto Kota Bukittinggi Atas dasar Harga Berlaku
+             Menurut Lapangan Usaha (Jutaan Rupiah), 2011-2013
+                                                                k
+                                                             gi
+
+
+             Gross Regional Domestic Product of Bukittinggi City at Current Market Prices
+             by Industrial Origin (Million Rupiahs,) 2011-2013 ................................................................... 22
+                                                     ng
+
+
+
+
+Tabel 2
+                                                  tti
+
+
+
+
+Table        Produk Domestik Regional Bruto Kota Bukittinggi Atas dasar Harga Konstan 2000
+             Menurut Lapangan Usaha (Jutaan Rupiah), 2011-2013
+                                       ki
+
+
+
+
+             Gross Regional Domestic Product of Bukittinggi City at Constant Market Prices(2000)
+                                     bu
+
+
+
+
+             by Industrial Origin (Million Rupiahs), 2011-2013 ................................................................... 23
+                                  ://
+
+
+
+
+Tabel 3
+Table        Distribusi Persentase Produk Domestik Regional Bruto Kota Bukittinggi
+                           tp
+
+
+
+
+             Atas Dasar Harga Berlaku Menurut Lapangan Usaha, 2011-2013
+                        ht
+
+
+
+
+             Percentage Distribution of Gross Regional Domestic Product of Bukittinggi City
+             at Current Market Prices by Industrial Origin, 2011-2013 ....................................................... 24
+Tabel 4
+Table        Distribusi Persentase Produk Domestik Regional Bruto Kota Bukittinggi
+             Atas Dasar Harga Konstan (2000) Menurut Lapangan Usaha, 2011-2013
+             Percentage Distribution of Gross Regional Domestic Product of Bukittinggi City
+             at Constant Market Prices (2000) by Industrial Origin, 2011-2013 .......................................... 25
+Tabel 5
+Table        Indeks Perkembangan Produk Domestik Regional Bruto Kota Bukittinggi
+             Atas Dasar Harga Berlaku Menurut Lapangan Usaha, 2011-2013
+             Index of Gross Regional Domestic Product of Bukittinggi City
+             at Current Market Prices by Industrial Origin, 2011-2013 ....................................................... 26
+Tabel 6
+Table        Indeks Perkembangan Produk Domestik Regional Bruto Kota Bukittinggi
+             Atas Dasar Harga Konstan (2000) Menurut Lapangan Usaha, 2011-2013
+             Index of Gross Regional Domestic Product of Bukittinggi City
+             at Constant Market Prices (2000) by Industrial Origin, 2011-2013 .......................................... 27
+
+
+
+
+                                                                                                                                             iii
+
+===== PDF PAGE 7 =====
+                                                                                           PDRB Kota Bukittinggi                 2011-2013
+
+
+
+
+Tabel 7
+Table       Indeks Berantai Produk Domestik Regional Bruto Kota Bukittinggi
+            Atas Dasar Harga Berlaku Menurut Lapangan Usaha, 2011-2013
+            Link Index Of Gross Regional Domestic Product of Bukittinggi City
+            at Current Market Prices by Industrial Origin, 2011-2013 ....................................................... 28
+Tabel 8
+Table       Indeks Berantai Produk Domestik Regional Bruto Kota Bukittinggi
+            Atas Dasar Harga Konstan (2000) Menurut Lapangan Usaha, 2011-2013
+            Link Index Of Gross Regional Domestic Product of Bukittinggi City
+            at Constant Market Prices (2000) by Industrial Origin, 2011-2013 .......................................... 29
+Tabel 9
+
+
+
+
+                                                                                           .id
+Table       Indeks Implisit Produk Domestik Regional Bruto Kota Bukittinggi
+            Menurut Lapangan Usaha, 2011-2013
+
+
+
+
+                                                                                        go
+            Implicit Prices Index of Gross Regional Domestic Product of Bukittinggi City
+
+
+
+
+                                                                                 .
+            by Industrial Origin, 2011-2013 ............................................................................................... 30
+
+
+
+
+                                                                              ps
+Tabel 10
+
+
+                                                                           .b
+Table    Perkembangan Beberapa Agregat Pendapatan dan Pendapatan per Kapita
+         Atas Dasar Harga Berlaku, 2011-2013                          a
+                                                                   ot
+         Trend of Several Income Agregates and Per Capita Incomes
+                                                               k
+
+         at Current Market Prices, 2011-2013 ....................................................................................... 31
+                                                            gi
+
+
+Tabel 11
+                                                   ng
+
+
+
+Table    Perkembangan Beberapa Agregat Pendapatan dan Pendapatan per Kapita
+         Atas Dasar Harga Konstan, 2011-2013
+                                                tti
+
+
+
+
+         Trend of Several Income Agregates and Per Capita Incomes
+                                      ki
+
+
+
+
+         at Constant Market Prices, 2011-2013 ..................................................................................... 32
+Tabel 12
+                                    bu
+
+
+
+
+Table    Indeks Perkembangan Beberapa Agregat Pendapatan dan Pendapatan Perkapita
+                                 ://
+
+
+
+
+         Kota Bukittinggi Atas Dasar Harga Berlaku, 2011-2013
+         Index of Trend of Several Income Agregates and Per Capita Incomes
+                          tp
+
+
+
+
+         Of Bukittinggi City at Current Market Prices, 2011-2013 ......................................................... 33
+                       ht
+
+
+
+
+Tabel 13
+Table    Indeks Perkembangan Beberapa Agregat Pendapatan dan Pendapatan Perkapita
+         Kota Bukittinggi Atas Dasar Harga Konstan (2000), 2011-2013
+         Index of Trend of Several Income Agregates and Per Capita Incomes
+         Of Bukittinggi City at Constant Market Prices (2000), 2011-2013 ............................................ 34
+Tabel 14
+Table    Indeks Berantai Perkembangan Beberapa Agregat Pendapatan dan Pendapatan
+         Per Kapita Kota Bukittinggi Atas Dasar Harga Berlaku, 2011-2013
+         Link Index of Trend of Several Income Agregates and Per Capita Incomes
+         Of Bukittinggi City at Current Market Prices, 2011-2013 ......................................................... 35
+Tabel 15
+Table    Indeks Berantai Perkembangan Beberapa Agregat Pendapatan dan Pendapatan
+         Per Kapita Kota Bukittinggi Atas Dasar Harga Konstan (2000), 2011-2013
+         Link Index of Trend of Several Income Agregates and Per Capita Incomes
+         Of Bukittinggi City at Constant Market Prices (2000), 2011-2013 ............................................ 36
+
+
+
+
+                                                                                                                                            iv
+
+===== PDF PAGE 9 =====
+                                                              PDRB Kota Bukittinggi   2011-2013
+
+
+
+
+   semakin jauh dari tahun 1993 dimana struktur perekonomian kita atau Indonesia secara umum
+   mulai bergeser kepada sektor yang tingkat pertumbuhannya relatif tinggi.
+
+d. Berdasarkan rekomendasi Perserikatan Bangsa-Bangsa (PBB) sebaiknya estimasi Produk
+   Domestik Bruto (PDB) atas dasar harga konstan dimutakhirkan secara periodik dengan
+   menggunakan tahun refrensi yang berakhiran 0 dan 5 dan hal ini juga didukung oleh komitmen
+   pimpinan Badan Statistik negara-negara Asean untuk memakai tahun dasar 2000. Hal ini
+
+
+
+
+                                                               .id
+   dimaksudkan agar besaran angka- angka PDB dapat saling diperbandingkan antar negara dan antar
+
+
+
+
+                                                            go
+   waktu guna keperluan analisis kinerja perekonomian antar negara-negara Asean.
+
+
+
+
+                                                          .
+                                                       ps
+                                                    .b
+       Sedangkan alasan dari segi non teknis menggeser tahun dasar 1993 menjadi tahun dasar 2000
+adalah sebagai berikut :                         a
+                                            k ot
+                                         gi
+
+
+a. Karena cakupan terus disempunakan, dalam jangka waktu tujuh tahun juga telah terjadi perubahan
+                                    ng
+
+
+
+   struktur dan bentuk komoditas serta kombinasi harga yang sangat signifikan.
+                                 tti
+                                ki
+
+
+
+
+b. Perkembangan ekonomi dunia dalam kurun waktu 1993-2000 yang diwarnai oleh globalisasi tentu
+                              bu
+
+
+
+
+   juga akan berpengaruh kepada perekonomian domestik dan perekonomian regional.
+                           ://
+                    tp
+
+
+
+
+c. Masih pada tahun 1997, hadirnya krisis ekonomi juga berdampak pada perubahan struktur
+                 ht
+
+
+
+
+   perekonomian Indonesia secara umum termasuk Kota Bukittinggi.
+
+d. Ketersediaan data (raw data) baik harga maupun volume (kuantum) tahun 2000 secara rinci relatif
+   lebih lengkap dibandingkan tahun 1993
+
+   Data yang disajikan dalam publikasi ini, telah direkonsilidasi dengan hasil penghitungan PDRB
+Propinsi Sumatera Barat.
+
+
+
+1.2.   KONSEP DAN DEFINISI
+
+   Guna memudahkan konsumen dalam memanfaatkan data PDRB, beberapa konsep dan definisi
+yang melatarbelakangi penghitungan PDRB yang perlu diketahui.
+
+
+                                                                                             2
+
+===== PDF PAGE 10 =====
+                                                             PDRB Kota Bukittinggi   2011-2013
+
+
+
+
+1.2.1. Produk Domestik Regional Bruto (PDRB)
+
+
+      Pengertian PDRB dapat ditinjau dari beberapa segi :
+
+
+   a. Dari segi Produksi
+
+      Produk Domestik Regional Bruto merupakan jumlah nilai tambah barang dan jasa akhir yang
+
+
+
+
+                                                               .id
+      dihasilkan oleh unit -unit kegiatan dalam suatu daerah (Kota) dalam jangka waktu tertentu
+
+
+
+
+                                                            go
+      (biasanya satu tahun).
+
+
+
+
+                                                        .
+                                                     ps
+                                                  .b
+   b. Dari segi Pendapatan
+                                                 a
+                                            k ot
+      Produk Domestik Regional Bruto adalah jumlah balas jasa yang diterima oleh faktor-faktor
+                                         gi
+
+
+      produksi yaitu tenaga kerja, tanah, kapital, dan kewirausahaan yang ikut serta dalam proses
+                                    ng
+
+
+
+
+      produksi disuatu daerah dalam waktu tertentu (biasanya satu tahun). Dengan demikian, PDRB
+                                 tti
+                           ki
+
+
+
+
+      adalah jumlah upah/gaji, sewa tanah, keuntungan, bunga modal, penyusutan dan pajak tak
+                         bu
+
+
+
+
+      langsung netto (pajak dikurangi subsidi).
+                      ://
+                  tp
+
+
+
+
+   c. Dari segi Pengeluaran
+               ht
+
+
+
+
+      Produk Domestik Regional Bruto adalah jumlah pengeluaran yang dilakukan untuk konsumsi
+      rumah tangga dan lembaga swasta yang tidak mencari untung, konsumsi pemerintah,
+      pembentukan modal tetap, perubahan stock dan ekspor netto (Barang keluar dikurangi
+      barang yang masuk suatu daerah/kota), di dalam suatu daerah/kota dalam jangka waktu
+      tertentu (biasanya satu tahun).
+
+
+1.2.2. PDRB Atas Dasar Harga Berlaku
+
+      Adalah jumlah nilai tambah atau pendapatan atau pengeluaran yang dinilai atas dasar harga
+      pada tahun berjalan.
+
+
+
+
+                                                                                            3
+
+===== PDF PAGE 11 =====
+                                                             PDRB Kota Bukittinggi    2011-2013
+
+
+
+
+1.2.3. PDRB Atas Dasar Harga Konstan
+
+      Adalah jumlah nilai tambah atau pengeluaran yang dinilai atas dasar harga tetap tahun
+      tertentu. Harga yang digunakan adalah harga yang terjadi pada tahun 2000.
+
+1.2.4. PDRB Atas Dasar Harga Pasar.
+
+      Merupakan penjumlahan nilai tambah bruto dari seluruh hasil usaha, yang meliputi balas jasa
+
+
+
+
+                                                              .id
+      faktor produksi tenaga kerja (upah dan gaji), surplus usaha, penyusutan barang modal dan
+
+
+
+
+                                                           go
+      pajak tak langsung netto.
+
+
+
+
+                                                         .
+                                                      ps
+                                                   .b
+1.2.5. Produk Domestik Regional Netto atas Dasar Harga Pasar
+                                                 a
+                                              ot
+      Adalah PDRB dikurangi dengan penyusutan barang – barang modal.
+                                               k
+                                            gi
+                                     ng
+
+
+
+1.2.6. Produk Domestik Regional Netto atas Dasar Biaya Faktor.
+                                  tti
+                           ki
+
+
+
+
+      Adalah PDRB atas Dasar Harga pasar. Dikurangi dengan Pajak Tak langsung Netto.
+                         bu
+                      ://
+
+
+
+
+1.2.7. PDRB Perkapita
+                  tp
+               ht
+
+
+
+
+      Adalah Produk Domestik Regional Bruto Atas Dasar harga Pasar dibagi dengan jumlah
+      penduduk pertengahan tahun.
+
+1.2.8. Pajak Tak Langsung Netto
+
+      Adalah pajak tak langsung dikurangi dengan subsidi yang diberikan pemerintah kepada
+      produsen.
+
+1.2.9. Indeks Harga Implisit
+       Adalah angka indeks yang diperoleh sebagai hasil bagi antara nilai atas dasar harga konstan.
+      Angka ini menunjukkan Indeks harga konstan dan indeks harga secara menyeluruh, bila
+      ditinjau di tingkat harga produsen.
+
+
+
+                                                                                              4
+
+===== PDF PAGE 12 =====
+                                                              PDRB Kota Bukittinggi    2011-2013
+
+
+
+
+1.3. METODE PENGHITUNGAN
+
+       Dalam penyajian Statistik PDRB, ada dua metode yang dapat digunakan, yaitu metode
+langsung dan metode tidak langsung.
+
+1.3.1. Metode Langsung
+       Adalah metode penghitungan dengan       menggunakan     data     yang langsung menerangkan
+
+
+
+
+                                                              .id
+data daerah yang bersangkutan, sehingga hasil penghitungannya menunjukkan seluruh produk barang
+
+
+
+
+                                                           go
+dan jasa yang dihasilkan oleh suatu daerah.
+
+
+
+
+                                                         .
+                                                      ps
+       Pada prinsipnya metode langsung ini menggunakan tiga macam pendekatan yaitu :
+
+       a.     Pendekatan Produksi                a .b
+                                             kot
+                                          gi
+
+
+              Cara ini dilakukan bila tersedia data produksi dari masing-masing sektor. Nilai tambah
+                                     ng
+
+
+
+              barang dan jasa yang diproduksi dihitung dengan cara mencari selisih nilai produksi
+                                  tti
+
+
+
+
+              (output) dengan nilai biaya antara. Nilai tambah tersebut akan sama dengan balas jasa
+                            ki
+
+
+
+
+              faktor–faktor produksi yang ikut dalam proses produksi.
+                          bu
+                       ://
+
+
+
+
+       b.     Pendekatan Pendapatan
+                   tp
+                ht
+
+
+
+
+              Perkiraan nilai tambah dengan pendekatan pendapatan adalah dengan cara
+              penjumlahan semua balas jasa faktor– faktor produksi (upah dan gaji, surplus usaha)
+              termasuk juga penyusutan dan pajak tak langsung netto. Di dalam surplus usaha
+              termasuk bunga modal netto (selisih bunga yang diterima dengan yang dibayar), sewa
+              tanah dan keuntungan.
+
+
+       c.     Pendekatan Pengeluaran
+
+              Perkiraan nilai tambah berdasarkan pendekatan ini dengan cara menghitung
+              penggunaan akhir dari barang–barang dan jasa yang diproduksi . Komponen-
+              komponen penggunaan akhir dari barang dan jasa tersebut adalah :
+
+
+
+
+                                                                                               5
+
+===== PDF PAGE 13 =====
+                                                                   PDRB Kota Bukittinggi   2011-2013
+
+
+
+
+                    -   Pengeluaran konsumsi rumah tangga
+                    -   Pengeluaran konsumsi lembaga swasta yang tidak mencari untung (nirlaba)
+                    -   Pengeluaran konsumsi pemerintah
+                    -   Pembentukan modal tetap bruto
+                    -   Perubahan Stock
+                    -   Ekspor netto (ekspor dikurangi impor)
+
+
+
+
+                                                                   .id
+                                                                go
+1.3.2. Metode Tak Langsung ( Alokasi)
+
+
+
+
+                                                              .
+                                                           ps
+       Metode tak langsung merupakan penghitungan nilai tambah suatu kegiatan ekonomi dengan
+
+                                                        .b
+mengalokasikan nilai tambah nasional kedalam masing - masing kelompok kegiatan ekonomi pada
+                                                    a
+                                                 ot
+tingkat regional.
+                                               k
+                                            gi
+
+
+       Sebagai alokator digunakan indikator yang paling besar pengaruhnya atau erat kaitannya
+                                        ng
+
+
+
+dengan produktivitas/nilai tambah kegiatan ekonomi tersebut.
+                                     tti
+
+
+
+
+       Pemilihan metode, sangat ditentukan oleh data yang tersedia. Pada kenyataannya, penggunaan
+                               ki
+
+
+
+
+kedua metode tersebut akan saling menunjang satu sama lain. Metode langsung, akan mendorong
+                             bu
+
+
+
+
+peningkatan mutu maupun kualitas data daerah, sedangkan metode tidak langsung merupakan
+                          ://
+                       tp
+
+
+
+
+perangkat koreksi bagi data daerah.
+                    ht
+
+
+
+
+1.3.3. Penghitungan PDRB Atas Dasar harga                Konstan
+
+       PDRB selain dihitung atas dasar harga berlaku , juga dihitung dengan harga konstan.
+Tujuannya adalah untuk melihat perkembangan PDRB secara riil, yang terlepas dari pengaruh
+kenaikan harga. Dalam penghitungannya terdapat empat cara, yaitu :
+
+       a.      Revaluasi
+
+               Metode ini dilakukan dengan cara menilai produksi dan biaya antara masing– masing
+               tahun dengan harga pada tahun 2000. Hasilnya merupakan output dan biaya antara,
+               atas dasar harga konstan 2000. Selanjutnya NTB atas dasar harga konstan diperoleh
+
+
+
+
+                                                                                                  6
+
+===== PDF PAGE 14 =====
+                                                             PDRB Kota Bukittinggi     2011-2013
+
+
+
+
+              sebagai selisih nilai output dengan biaya antara yang masing–masing sudah direvaluasi
+              dengan harga- harga pada tahun 2000.
+
+       b.     Ekstrapolasi
+
+              Nilai tambah masing- masing tahun atas dasar harga konstan tahun 2000 diperoleh
+              dengan cara mengalikan nilai tambah pada tahun dasar 2000 dengan indeks produksi
+              dari masing–masing produk yang dihasilkan ataupun indeks dari berbagai macam
+
+
+
+
+                                                              .id
+              indikator produksi seperti tenaga kerja, jumlah perusahaan dan lainnya, yang dianggap
+
+
+
+
+                                                           go
+              cocok dengan jenis kegiatan yang dihitung.
+
+
+
+
+                                                           .
+                                                        ps
+                                                     .b
+       c.     Deflasi
+                                                a
+                                           k ot
+              Nilai tambah atas dasar harga konstan tahun 2000 diperoleh dengan cara membagi
+                                        gi
+
+
+              nilai tambah atas dasar harga berlaku masing–masing tahun dengan indeks harga.
+                                    ng
+
+
+
+
+              Indeks harga yang digunakan sebagai deflator biasanya merupakan indeks harga
+                                 tti
+                             ki
+
+
+
+
+              konsumen, indeks harga produsen, indeks harga pedagang besar dan sebagainya.
+                           bu
+                        ://
+
+
+
+
+       d.     Deflasi Berganda
+                   tp
+                ht
+
+
+
+
+              Deflasi berganda ini dilakukan terhadap dua variabel yaitu terhadap output dan biaya
+              antaranya, sedangkan nilai tambah diperoleh dari selisih antara output dengan biaya
+              antara hasil deflasi tersebut. Indeks harga yang digunakan sebagai deflator untuk
+              penghitungannya biasanya merupakan indeks harga produsen atau indeks harga
+              pedagang besar sesuai dengan cakupan komoditinya.
+
+
+       Penghitungan nilai tambah dilakukan dengan menggunakan cara-cara di atas, tetapi
+pemakaiannya tergantung dari data–data yang tersedia.
+
+
+
+
+                                                                                              7
+
+===== PDF PAGE 15 =====
+                                                            PDRB Kota Bukittinggi    2011-2013
+
+
+
+
+                             II.    TINJAUAN PEREKONOMIAN
+
+       Kota Bukittinggi mempunyai karakteristik perekonomian      sedikit berbeda dengan daerah
+Kabupaten/ Kota lainnya di Sumatera Barat. Walaupun luas daerahnya relatif kecil, namun Kota
+Bukittinggi cukup dikenal dan diminati tidak saja oleh wisatawan domestik tetapi juga wisatawan
+mancanegara.
+
+
+
+
+                                                             .id
+       Pembangunan Kota Bukittinggi di masa datang disesuaikan dengan Visi Kota Bukittinggi
+
+
+
+
+                                                          go
+yang telah ditetapkan      yaitu: “TERWUJUDNYA KESEJAHTERAAN MASYARAKAT
+
+
+
+
+                                                        .
+                                                     ps
+MELALUI PEMANFAATAN POTENSI UNGGULAN DAERAH, YANG DIJIWAI OLEH
+
+
+                                                  .b
+AGAMA DAN ADAT, SYARAK MANGATO ADAIK MAMAKAI.” Potensi unggulan daerah
+dimaksud adalah:                                a
+                                           k ot
+                                        gi
+
+
+               Sektor Kepariwisataan
+                                      ng
+
+
+
+               Sektor Jasa dan Perdagangan
+                                   tti
+
+
+
+
+               Sektor Pendidikan
+                            ki
+
+
+
+
+               Sektor Pelayanan Kesehatan
+                          bu
+                       ://
+
+
+
+
+Setiap keputusan atau kebijaksanaan yang diambil pemerintah di bidang ekonomi harus mengacu
+                   tp
+                ht
+
+
+
+
+kepada Potensi Daerah tersebut.
+       Salah satu indikator untuk mengetahui kondisi ekonomi di suatu wilayah dalam suatu periode
+tertentu dapat ditunjukkan dengan data Produk Domestik Regional Bruto (PDRB), baik atas dasar
+harga berlaku maupun atas dasar harga konstan.
+       PDRB atas dasar harga berlaku dapat menunjukkan pergeseran serta struktur ekonomi suatu
+daerah, sedangkan PDRB Atas Dasar Harga Konstan digunakan untuk mengetahui pertumbuhan
+ekonomi dari waktu ke waktu.
+       Dalam publikasi ini, dapat dilihat perkembangan serta pergeseran struktur ekonomi Kota
+Bukittinggi dari waktu ke waktu.
+
+
+
+
+                                                                                            8
+
+===== PDF PAGE 16 =====
+                                                              PDRB Kota Bukittinggi   2011-2013
+
+
+
+
+2.1.    PERKEMBANGAN PDRB 2013
+
+       Perkembangan PDRB dapat dilihat dari PDRB atas dasar harga berlaku dan PDRB atas dasar
+harga konstan. PDRB yang dihasilkan dari PDRB atas dasar harga berlaku disebut PDRB Nominal,
+sedangkan PDRB yang dihasilkan atas dasar harga konstan disebut PDRB Riil.
+       Untuk menggambarkan perkembangan yang disebabkan oleh adanya perubahan dalam volume
+produksi barang dan jasa yang dihasilkan dan perubahan dam tingkat harga dapat dilihat dari PDRB
+
+
+
+
+                                                               .id
+atas dasar berlaku. Perkembangan PDRB atas dasar berlaku Kota Bukittinggi dari tahun ke tahun
+
+
+
+
+                                                            go
+mengalami peningkatan. Pada tahun 2013 secara nominal PDRB atas dasar harga berlaku Kota
+
+
+
+
+                                                          .
+                                                       ps
+Bukittinggi sebesar 2.711.158,97 juta rupiah. Jika dibandingkan dengan tahun 2012, nominalnya
+
+
+                                                    .b
+mengalami pertambahan sebesar 391.521,28 juta rupiah. Walaupun secara riil naik cukup besar,
+                                                 a
+namun kenaikan tersebut belum bisa dikatakan terjadinya peningkatan produktivitas, karena di
+                                            k ot
+dalamnya masih terdapat pengaruh inflasi.
+                                         gi
+
+
+        Produktivitas ekonomi secara riil akan dapat dilihat dari perkembangan nilai PDRB yang
+                                    ng
+
+
+
+
+dihitung atas dasar harga konstan. Dalam publikasi ini penghitungan PDRB atas dasar harga konstan
+                                 tti
+                            ki
+
+
+
+
+masih menggunakan tahun dasar 2000. Jika ditinjau PDRB atas dasar harga konstan Kota Bukittinggi,
+                          bu
+
+
+
+
+nilai tambah yang dihasilkan pada tahun 2013 adalah sebesar 1.235.499,39 juta rupiah. Dibandingkan
+                       ://
+
+
+
+
+dengan tahun 2012, terjadi peningkatan nilai tambah sebesar 72.358,84 juta rupiah, dimana pada
+                   tp
+
+
+
+
+tahun 2012 nilai tambah yang dihasilkan sebesar 1.163.140,55 juta rupiah.
+                ht
+
+
+
+
+2.2.    PERTUMBUHAN EKONOMI SEKTORAL
+
+
+        Pertumbuhan ekonomi yang terjadi selama suatu periode tertentu tidak terlepas dari
+sumbangan masing-masing sektor ekonomi atau subsektor ekonomi yang ikut berperanan dalam
+membentuk nilai tambah perekonomian suatu wilayah secara keseluruhan. Disamping itu tingkat
+pertumbuhan ekonomi yang terjadi pada suatu daerah, juga sangat tergantung pada kemampuan
+daerah tersebut dalam meningkatkan produksi sektoralnya.
+        Untuk melihat fluktuasi pertumbuhan ekonomi secara riil dari tahun ke tahun tergambar
+melalui penyajian PDRB atas dasar harga konstan secara berkala. Pertumbuhan yang positif
+
+
+
+
+                                                                                             9
+
+===== PDF PAGE 17 =====
+                                                                PDRB Kota Bukittinggi     2011-2013
+
+
+
+
+menunjukkan adanya peningkatan perekonomian, sebaliknya apabila negatif menunjukkan terjadinya
+penurunan.
+
+
+
+                  Tabel 1. Pertumbuhan Ekonomi Kota Bukittinggi Tahun 2011-2013
+
+
+                                                          Perkembangan (Persen)
+                             Lapangan Usaha
+
+
+
+
+                                                              .id
+        No.
+                                                        2011           2012*      2013**
+
+
+
+
+                                                           go
+        (1)                        (2)                   (3)             (4)        (5)
+
+
+
+
+                                                           .
+         1    Pertanian                                 -2,94           1,61       -1,37
+
+
+
+
+                                                        ps
+                                                     .b
+         2    Pertambangan & Penggalian                 -1,39          -2,26       -1,07
+
+         3    Industri Pengolahan
+                                                    a   3,37            3,72        3,34
+                                                 ot
+                                                 k
+
+         4    Listrik, Gas dan Air Bersih               5,45            7,94        4,46
+                                              gi
+                                            ng
+
+
+
+         5    Bangunan                                  2,41            9,31        1,76
+                                         tti
+
+
+
+
+         6    Perdagangan, Hotel dan Restoran           7,23            8,22        8,67
+                                  ki
+
+
+
+
+         7    Angkutan dan Komunikasi                   5,80            6,04        5,84
+                                bu
+
+
+
+
+              Keuangan, Persewaan dan
+                             ://
+
+
+
+
+         8                                              5,58            6,32        8,55
+              Jasa Perusahaan
+                      tp
+
+
+
+
+         9    Jasa-Jasa                                 8,39            6,08        5,86
+                   ht
+
+
+
+
+                                 PDRB                   6,23            6,39       6,22
+       *) Angka Diperbaiki
+   **) Angka Sementara
+
+
+
+         Pada tahun 2013 secara umum pertumbuhan ekonomi Kota Bukittinggi adalah sebesar 6,22
+persen. Jika dilihat masing-masing sektor, tidak semua sektor mengalami pertumbuhan yang positif.
+Sektor Pertambangan dan Penggalian dan sektor pertanian mengalami pertumbuhan       yang     negatif.
+
+
+2.3.     PERANAN SEKTOR EKONOMI DALAM PDRB
+
+
+
+
+                                                                                                10
+
+===== PDF PAGE 21 =====
+                                                                  PDRB Kota Bukittinggi   2011-2013
+
+
+
+
+           PDRB Kota Bukittinggi digolongkan menjadi tiga kelompok sektor. Pembagian kelompok ini
+didasarkan atas dasar input dan output serta asal terjadinya proses produksi untuk masing-masing
+produsen. Kelompok sektor dimaksud adalah :
+1.         Kelompok Sektoral Primer
+
+           Meliputi kegiatan yang outputnya masih merupakan proses tingkat dasar atau pengambilan
+           langsung dari alam. Yang termasuk kelompok ini adalah sektor Pertanian dan sektor
+
+
+
+
+                                                                    .id
+           Pertambangan atau Penggalian.
+
+
+
+
+                                                                 go
+                         Tabel 3. Distribusi dan Pertumbuhan Kelompok Sektoral
+
+
+
+
+                                                             .
+                                                 2011 - 2013
+
+
+
+
+                                                          ps
+                                                      a.b
+                                                   ot
+                                     Distribusi Sektoral (%)        Pertumbuhan Sektoral (%)
+           Kelompok Sektoral
+                                               k
+                                            gi
+
+
+                                    2011      2012*     2013**       2011       2012*     2013**
+                                        ng
+                                     tti
+
+
+
+
+           1. Primer                 2.39       2,30      2,21      -2.93       1,02       -0.37
+                                ki
+                              bu
+                           ://
+
+
+
+
+           2. Sekunder             15.94      15,65      14,98       3.43       5.53       3,12
+                       tp
+                    ht
+
+
+
+
+           3. Tersier              81.67      82,05      82,81       6.98       6,67       6,92
+
+
+                  PDRB            100.00     100.00     100.00       6.23       6.39       6.22
+
+      *)    Angka Diperbaiki
+     **)    Angka Sementara
+
+
+2.         Kelompok Sektoral Sekunder
+
+           Yaitu sektor yang sebahagian atau seluruh inputnya berasal dari sektor primer. Yang termasuk
+           kelompok sektor Sekunder ini adalah meliputi sektor Industri Pengolahan, Sektor Listrik, Gas
+           dan Air Bersih serta sektor Bangunan.
+
+
+
+
+                                                                                                   14
+
+===== PDF PAGE 22 =====
+                                                               PDRB Kota Bukittinggi    2011-2013
+
+
+
+
+3.     Kelompok Sektoral Tersier
+
+
+       Yang termasuk sektor Tersier adalah sektor lain yang tidak tercakup dalam kelompok di atas,
+       seperti sektor Perdagangan, Hotel dan Restoran, sektor Angkutan dan Komunikasi, sektor
+       Keuangan, Persewaan dan Jasa Perusahaan, serta sektor Jasa-Jasa.
+
+
+       Pada tabel 4, terlihat bahwa pada tahun 2013 sektor tersier merupakan sektor yang paling
+
+
+
+
+                                                               .id
+dominan dalam pembentukan PDRB Kota Bukittingi, yaitu mencapai 82,81 persen dari total PDRB
+
+
+
+
+                                                            go
+Kota Bukittinggi. Kontribusi sektor ini setiap tahun mengalami peningkatan.
+
+
+
+
+                                                         .
+                                                      ps
+       Dengan meningkatnya sumbangan sektor tersier, maka sumbangan dua sektor lainnya juga
+
+
+                                                   .b
+mengalami perubahan. Sektor Tersier yang merupakan sektor dominan kedua pembentuk PDRB
+                                                  a
+                                               ot
+Bukittinggi, menyumbangkan 14,98 persen dari total PDRB Bukittinggi. Kontribusi sektor ini terus
+                                            k
+
+megalami penurunan setiap tahun.
+                                         gi
+                                      ng
+
+
+
+       Sektor   Primer    merupakan   sektor   yang   paling   kecil   kontribusinya   yaitu   hanya
+                                   tti
+
+
+
+
+menyumbangkan 2,21 persen dari total PDRB Bukittinggi. Perubahan kontribusi sektor ini tidak
+                              ki
+
+
+
+
+begitu berpengaruh karena kontribusinya yang sangat kecil bagi PDRB Kota Bukittinggi.
+                            bu
+
+
+
+
+       Pada tabel 4 juga dapat dilihat pertumbuhan masing-masing kelompok sektor perekonomian
+                         ://
+
+
+
+
+pada tahun 2013. Dua kelompok sektor mengalami pertumbuhan yang positif, dengan pertumbuhan
+                   tp
+                ht
+
+
+
+
+tertinggi ada di sektor tersier yang mengalami pertumbuhan sebesar 6,92 persen, sedangkan satu
+kelompok sektor primer mengalami pertumbuhan yang negatif sebesar 0,37 persen.
+
+2.5.   PDRB PERKAPITA
+
+       Secara konsepsional PDRB Perkapita merupakan hasil bagi antara nilai Nominal PDRB
+dengan jumlah penduduk pertengahan tahun pada tahun yang sama. PDRB perkapita menggambarkan
+rata-rata pembentukan nilai tambah yang dinikmati oleh masing-masing penduduk. Namun PDRB
+perkapita masih mengandung penyusutan, pajak tak langsung neto. Untuk menggambarkan nilai
+tambah neto, diperlukan indikator lain yaitu pendapatan regional perkapita, dimana pendapatan
+regional perkapita diperoleh setelah PDRB dikurangi dengan penyusutan dan pajak tak langsung neto,
+kemudian dibagi dengan jumlah penduduk pertengahan tahun.
+
+
+
+
+                                                                                               15
+
+===== PDF PAGE 23 =====
+                                                              PDRB Kota Bukittinggi      2011-2013
+
+
+
+
+       Secara umum PDRB perkapita maupun pendapatan perkapita penduduk Kota Bukittinggi
+selalu mengalami peningkatan dari tahun ke tahun. Hal ini disebabkan lebih tingginya peningkatan
+PDRB yang beberapa tahun terakhir tumbuh di atas lima persen, dibandingkan dengan jumlah
+penduduk Kota Bukittinggi yang tumbuh tidak sampai dua persen setiap tahunnya.
+
+
+         Tabel 4. Pendapatan Perkapita Atas Dasar Harga Berlaku Tahun 2011-2013
+
+
+
+
+                                                               .id
+                                                     Nilai Nominal            Kenaikan
+
+
+
+
+                                                            go
+                 Uraian             Tahun              (Rupiah)               (Persen)
+
+
+
+
+                                                         .
+                                                      ps
+      PDRB Perkapita                  2011*           21.476.305,54              10,77
+
+
+
+                                                   .b
+                                    2012**            23.356.958,60              8,75
+                                                 a
+                                              ot
+                                    2013**            26.236.092,09              12,32
+                                            k
+                                         gi
+
+
+      PDRN Perkapita                  2011*           20.199.303,22              10,77
+                                    ng
+
+
+
+                                    2012**            21.968.130,80              8,75
+                                 tti
+
+
+
+
+                                    2013**            24.676.068,16              12,32
+                                 ki
+                               bu
+
+
+
+
+      Pendapatan Perkapita            2011*           19.964.832,43              10,77
+                            ://
+
+
+
+
+                                    2012**            21.713.127,70              8,75
+                    tp
+                 ht
+
+
+
+
+                                    2013**            24.389.631,69              12,32
+
+     *) Angka Diperbaiki.
+    **) Angka Sementara
+
+
+       Peningkatan PDRB dan pendapatan regional perkapita belum mampu menunjukkan
+pendapatan yang benar-benar dinikmati oleh penduduk karena peningkatan PDRB dan pendapatan
+regional perkapita ini masih dipengaruhi oleh tingkat inflasi yang terjadi secara regional di suatu
+daerah. Selain itu perlu dipertimbangkan nilai tambah yang tercipta di Kota Bukittinggi juga
+disebabkan oleh faktor-faktor produksi yang dimiliki oleh penduduk yang tinggal di luar Kota
+Bukittinggi.
+       Pada tabel 4 terlihat bahwa PDRB Perkapita Kota Bukittinggi tahun 2013 mencapai 26,23
+juta rupiah atau naik sebesar 8,75 persen dari tahun sebelumnya yaitu setara dengan nominal 2,87
+
+
+
+                                                                                               16
+
+===== PDF PAGE 24 =====
+                                                               PDRB Kota Bukittinggi   2011-2013
+
+
+
+
+juta rupiah. Akan tetapi setelah dikeluarkan Penyusutan dan Pajak Tak Langsung dari total PDRB,
+maka diperoleh Pendapatan Perkapita sebesar 24,38 juta rupiah pada tahun 2013.
+       Cukup tingginya nilai PDRB Perkapita dan Pendapatan Regional Perkapita pada beberapa
+tahun terakhir belum bisa membuat kita berbesar hati, kalau tidak diikuti dengan peningkatan daya
+beli masyarakat, karena peningkatan yang cukup tinggi tersebut masih dipengaruhi oleh inflasi.
+
+
+2.6.   PERBANDINGAN TERHADAP PDRB PROPINSI
+
+
+
+
+                                                                .id
+                                                             go
+                   Grafik.2. Perbandingan PDRB Perkapita Kota Bukittinggi
+
+
+
+
+                                                            .
+                             & PDRB Propinsi Sumatera Barat
+
+
+
+
+                                                         ps
+                                                      .b
+              30000000
+                                                                  26236092,09
+                                                 a
+                                              ot
+                                              23356958,6
+              25000000
+                             21476305,54
+                                              k
+
+                                                                  25086459,64
+                                           gi
+
+
+              20000000                         22035119,79
+                                    ng
+
+
+
+                              20061776,74
+                                 tti
+
+
+
+
+              15000000
+                              ki
+                            bu
+
+
+
+
+              10000000
+                         ://
+
+
+
+
+               5000000
+                   tp
+                ht
+
+
+
+
+                     0
+                               2011            2012*             2013**
+                               Prop. Sumatera Barat          Kota Bukitinggi
+
+
+
+       Jika kita perhatikan, total PDRB Kota Bukittinggi Atas Dasar Harga Berlaku keadaan tahun
+2013 adalah sebesar 3.102.680,25 juta rupiah, atau sama dengan 2,44 persen dari total PDRB Propinsi
+Sumatera Barat sebesar 127.099.945,69 juta rupiah. Ditinjau dari segi pertumbuhan ekonomi, Kota
+Bukittinggi menduduki posisi kesebelas bila dibandingkan dengan Kabupaten/Kota          lainnya di
+Propinsi Sumatera Barat. Kota Bukittinggi untuk tahun 2013 ini pertumbuhannya di atas
+pertumbuhan Propinsi Sumatera Barat.
+
+
+
+
+                                                                                                 17
+
+===== PDF PAGE 27 =====
+                                                                                  PDRB Kota Bukittinggi         2011-2013
+
+
+
+     TABEL / TABLE 1            : Produk Domestik Regional Bruto Kota Bukittinggi Atas Dasar Harga Berlaku
+                                  Menurut Lapangan Usaha (Jutaan Rupiah) 2010 – 2012
+                                  Gross Regional Domestic Product of Bukittinggi City at Current Market Price
+                                  By Industrial Origin (Million Rupiahs) 2010-2012
+                   Lapangan Usaha / Industrial Origin                            2011              2012*)          2013**)
+                                       (1)                                        (2)                (3)              (4)
+
+1.   PERTANIAN / AGRICULTURE                                                     58.412,71         62.383,09       68.506,20
+     a.   Tanaman Bahan Makanan / Farm Food Crops                                25.125,05         27.309,34       29.844,94
+     b.   Tanaman Perkebunan / Non Food Crops                                       725,21            719,79          804,44
+     c.   Peternakan dan Hasil-hasilnya / Livestock & Its Product                25.317,90         26.776,04       29.732,49
+     d.   Perikanan / Fishery                                                     7.244,55          7.577,92        8.124,33
+2.   PERTAMBANGAN DAN PENGGALIAN                                                        69,34          72,01            76,82
+     MINING & QUARRYING
+     a. Penggalian / Quarrying                                                          69,34          72,01            76,82
+
+
+
+
+                                                                               .id
+3.   INDUSTRI PENGOLAHAN                                                        232.525,59        246.069,55      268.803,30
+
+
+
+
+                                                                            go
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas / Oil & Gas Manufacturing                                      0,00              0,00            0,00
+
+
+
+
+                                                                            .
+     b. Industri Non Migas / Non Oil & Gas Manufacturing                        232.525,59        246.069,55      268.803,30
+
+
+
+
+                                                                         ps
+4.   LISTRIK, GAS DAN AIR BERSIH                                                 49.314,84         53.478,89       59.991,29
+
+
+                                                                      .b
+     ELECTRICITY, GAS AND WATER SUPPLY
+     a. Listrik / Electricity                                          a         42.479,06         46.481,19       52.495,31
+                                                                    ot
+     b. Air Bersih / Water Supply                                                 6.835,77          6.997,70        7.495,98
+                                                             k
+
+5.   BANGUNAN / CONSTRUCTION                                                    107.857,80        124.699,02      136.156,44
+                                                          gi
+
+
+6.   PERDAGANGAN, HOTEL DAN RESTORAN                                            559.262,44        631.980,14      756.067,86
+                                                  ng
+
+
+
+     TRADE, HOTEL, AND RESTAURANT
+     a. Perdagangan Besar dan Eceran                                            461.390,53        514.414,40      610.043,41
+                                               tti
+
+
+
+
+        Wholesale & Retail Trade
+                                     ki
+
+
+
+
+     b. Hotel / Hotel                                                            56.645,04         72.205,78       92.288,97
+                                   bu
+
+
+
+
+     c. Restoran / Restaurant                                                    41.226,87         45.359,96       53.735,48
+
+7.   PENGANGKUTAN DAN KOMUNIKASI                                                517.359,97        560.284.54      639.037,36
+                                ://
+
+
+
+
+     TRANSPORT AND COMMUNICATION
+                         tp
+
+
+
+
+     a. Angkutan Jalan Raya / Road Transport                                    292.088,02        313.499,92      367.437,08
+                      ht
+
+
+
+
+     b. Jasa Penunjang Angkutan                                                  26.512,92         28.182,54       31.156,51
+        Services Allied to Transport
+     c. Komunikasi / Comunnication                                              198.759,03        218.602,08      240.443,77
+8.   KEUANGAN, PERSEWAAN DAN JASA PERUSAHAAN                                    288.273,02        322.380,48      373.873,18
+     FINANCE, RENT OF BUILDING & BUSSINESS
+     a. Bank / Bank                                                             114.869,68        126.037,52      151.940,97
+     b. Lembaga Keuangan Bukan Bank & Jasa Penunjang                             56.374,46         67.252,86       76.165,67
+        Non Bank Financial Institutions & Services Allied to Financial
+     c. Sewa Bangunan / Rent of Building                                        109.564,67        120.764.85      136.652,66
+     d. Jasa Perusahaan / Bussiness Services                                      7.464,21          8.325,24        9.113,88
+
+9.   JASA-JASA / SERVICES                                                       633.139,92        709.811,25      800.167,80
+     a. Pemerintahan Umum / General Government                                  348.730,58        399.099,49      450.320,59
+     b. Swasta / Private                                                        284.409,34        310.711,77      349.847,21
+        1. Sosial dan Kemasyarakatan                                            115.514,48        129.318,46      148.982,50
+           Social & Community Services
+        2. Hiburan dan Rekreasi                                                  24.655,06         26.558,55       30.655,95
+           Entertaintment and Recreation Services
+        3. Perorangan dan Rumah Tangga                                          144.239,80        154.834,76      170.208,76
+           Personal & Household Services
+
+                                      PDRB                                    2.446.215,63      2.711.158,97    3.102.680,25
+
+
+*    Angka Diperbaiki / Revised Figures
+**   Angka Sementara / Preliminary Figures
+
+
+                                                                                                                            20
+
+===== PDF PAGE 28 =====
+                                                                                PDRB Kota Bukittinggi        2011-2013
+
+
+
+     TABEL / TABLE 2            : Produk Domestik Regional Bruto Kota Bukittinggi Atas Dasar Harga Konstan 2000
+                                  Menurut Lapangan Usaha (Jutaan Rupiah) 2010 – 2012
+                                  Gross Regional Domestic Product of Bukittinggi City at Constant Market Price
+                                 By Industrial Origin (Million Rupiahs) 2010-2012
+
+                   Lapangan Usaha / Industrial Origin                          2010           2011*)         2012**)
+                                      (1)                                       (2)             (3)               (4)
+
+1.   PERTANIAN / AGRICULTURE                                                 19.093,54       19.400,75       19.329,03
+     a.   Tanaman Bahan Makanan / Farm Food Crops                             8.169,16        8.404,53        8.167,52
+     b.   Tanaman Perkebunan / Non Food Crops                                   245,88          235,34          243,62
+     c.   Peternakan dan Hasil-hasilnya / Livestock & Its Product             8.972,03        9.015,67        9.144,59
+     d.   Perikanan / Fishery                                                 1.706,47        1.745,21        1.773,30
+
+2.   PERTAMBANGAN DAN PENGGALIAN                                                 22,73           22,22             21,98
+     MINING & QUARRYING
+     a. Penggalian / Quarrying                                                   22,73           22,22             21,98
+
+
+
+
+                                                                              .id
+3.   INDUSTRI PENGOLAHAN                                                    108.697,49      112.740,18      116.505,70
+
+
+
+
+                                                                           go
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas / Oil & Gas Manufacturing                                  0,00            0,00            0,00
+
+
+
+
+                                                                            .
+                                                                         ps
+     b. Industri Non Migas / Non Oil & Gas Manufacturing                    108.697,49      112.740,18      116.505,70
+
+4.   LISTRIK, GAS DAN AIR BERSIH                                             22.667,76       24.467,26       25.557,28
+
+
+                                                                      .b
+     ELECTRICITY, GAS AND WATER SUPPLY
+     a. Listrik / Electricity                                          a     19.850,66       21.606,36       22.604,43
+                                                                    ot
+     b. Air Bersih / Water Supply                                             2.817,10        2.860,90        2.952,85
+                                                             k
+                                                          gi
+
+
+5.   BANGUNAN / CONSTRUCTION                                                 37.584,35       41.082,99       41.806,05
+                                                  ng
+
+
+
+6.   PERDAGANGAN, HOTEL DAN RESTORAN                                        235.785,32      255.165,22      277.289,82
+     TRADE, HOTEL, AND RESTAURANT
+                                               tti
+
+
+
+
+     a. Perdagangan Besar dan Eceran                                        190.464,53      203.851,61      219.670,49
+        Wholesale & Retail Trade
+                                     ki
+
+
+
+
+     b. Hotel / Hotel                                                        27.920,42       32.969,41       37.348,99
+                                   bu
+
+
+
+
+     c. Restoran / Restaurant                                                17.400,37       18.344,20       20.270,34
+                                ://
+
+
+
+
+7.   PENGANGKUTAN DAN KOMUNIKASI                                            262.782,32      278.665,13      294.943,28
+                         tp
+
+
+
+
+     TRANSPORT AND COMMUNICATION
+     a. Angkutan Jalan Raya / Road Transport                                140.749,30      147.991,49      155.775,84
+                      ht
+
+
+
+
+     b. Jasa Penunjang Angkutan                                              14.088,61       14.803,04       15.467,70
+         Services Allied to Transport
+     c. Komunikasi / Comunnication                                          107.944,41      115.870,60      123.699,74
+
+8.   KEUANGAN,    PERSEWAAN    DAN    JASA                                  110.518,31      117.506,56      127.552,56
+     FINANCE, RENT OF BUILDING & BUSSINESS
+     a. Bank / Bank                                                          38.929,53       41.864,48       47.479,34
+     b. Lembaga Keuangan Bukan Bank & Jasa Penunjang                         20.818,39       22.759,94       23.976,40
+        Non Bank Financial Institutions & Services Allied to Financial
+     c. Sewa Bangunan / Rent of Building                                     48.286,17       50.304,53       53.409,53
+     d. Jasa Perusahaan / Bussiness Services                                  2.484,22        2.577,61        2.687,29
+9.   JASA-JASA / SERVICES                                                   296.101,02      314.090,24      332.493,69
+     a. Pemerintahan Umum / General Government                              150.786,44      160.362,30      168.237,73
+     b. Swasta / Private                                                    145.314,59      153.727,94      164.255,96
+        1. Sosial dan Kemasyarakatan                                         53.425,04       57.061,30       61.825,92
+           Social & Community Services
+        2. Hiburan dan Rekreasi                                              10.931,44       11.481,79       12.457,80
+           Entertaintment and Recreation Services
+        3. Perorangan dan Rumah Tangga                                       80.958,11       85.184,85       89.972,24
+           Personal & Household Services
+
+                                      PDRB                                 1.093.252,85   1.163.140,55    1.235.499,39
+
+*    Angka Diperbaiki / Revised Figures
+**   Angka Sementara / Preliminary Figures
+
+
+                                                                                                                        21
+
+===== PDF PAGE 29 =====
+                                                                                    PDRB Kota Bukittinggi          2011-2013
+
+
+
+TABEL / TABLE 3                 : Distribusi Persentase Produk Domestik Regional Bruto Kota Bukittinggi
+                                  Atas Dasar Harga Berlaku Menurut Lapangan Usaha, 2010 – 2012
+                                  Percentage Distribution of Gross Regional Domestic Product of Bukittinggi City
+                                  at Current Market Prices by Industrial Origin, 2010-2012
+
+                    Lapangan Usaha / Industrial Origin                             2011             2012*)         2013**)
+                                       (1)                                          (2)               (3)            (4)
+1.   PERTANIAN / AGRICULTURE                                                          2,39             2,30           2,21
+     a.   Tanaman Bahan Makanan / Farm Food Crops                                     1,03             1,01           0,96
+     b.   Tanaman Perkebunan / Non Food Crops                                         0,03             0,03           0,03
+     c.   Peternakan dan Hasil-hasilnya / Livestock & Its Product                     1,03             0,99           0,96
+     d.   Perikanan / Fishery                                                         0,30             0,28           0,26
+2.   PERTAMBANGAN DAN PENGGALIAN                                                      0,00             0,00           0,00
+     MINING & QUARRYING
+     a. Penggalian / Quarrying                                                        0,00             0,00           0,00
+
+
+
+
+                                                                                 .id
+3.   INDUSTRI PENGOLAHAN                                                              9,51             9,08           8,66
+
+
+
+
+                                                                              go
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas / Oil & Gas Manufacturing                                      0,00             0,00           0,00
+
+
+
+
+                                                                            .
+     b. Industri Non Migas / Non Oil & Gas Manufacturing                              9,51             9,08           8,66
+
+
+
+
+                                                                         ps
+4.   LISTRIK, GAS DAN AIR BERSIH                                                      2,02             1,97           1,93
+
+
+                                                                      .b
+     ELECTRICITY, GAS AND WATER SUPPLY
+     a. Listrik / Electricity                                          a              1,74             1,71           1,69
+                                                                    ot
+     b. Air Bersih / Water Supply                                                     0,28             0,26           0,24
+                                                             k
+
+5.   BANGUNAN / CONSTRUCTION                                                          4,41             4,60           4,39
+                                                          gi
+
+
+6.   PERDAGANGAN, HOTEL DAN RESTORAN                                                 22,86            23,31          24,37
+                                                  ng
+
+
+
+     TRADE, HOTEL, AND RESTAURANT
+     a. Perdagangan Besar dan Eceran                                                 18,86            18,97          19,66
+                                               tti
+
+
+
+
+        Wholesale & Retail Trade
+                                     ki
+
+
+
+
+     b. Hotel / Hotel                                                                 2,32             2,66           2,97
+     c. Restoran / Restaurant                                                         1,69             1,67           1,73
+                                   bu
+
+
+
+
+7.   PENGANGKUTAN DAN KOMUNIKASI                                                     21,15            20,67          20,60
+                                ://
+
+
+
+
+     TRANSPORT AND COMMUNICATION
+                         tp
+
+
+
+
+     a. Angkutan Jalan Raya / Road Transport                                         11,94            11,56          11,84
+     b. Jasa Penunjang Angkutan                                                       1,08             1,04           1,00
+                      ht
+
+
+
+
+         Services Allied to Transport
+     c. Komunikasi / Comunnication                                                    8,13             8,06           7,75
+8.   KEUANGAN, PERSEWAAN DAN JASA PERUSAHAAN                                         11,78            11,89          12,05
+     FINANCE, RENT OF BUILDING & BUSSINESS
+     a. Bank / Bank                                                                   4,70             4,65           4,90
+     b. Lembaga Keuangan Bukan Bank & Jasa Penunjang                                  2,30             2,48           2,45
+        Non Bank Financial Institutions & Services Allied to Financial
+     c. Sewa Bangunan / Rent of Building                                              4,48             4,45           4,40
+     d. Jasa Perusahaan / Bussiness Services                                          0,31             0,31           0,29
+9.   JASA-JASA / SERVICES                                                            25,88            26,18          25,79
+     a. Pemerintahan Umum / General Government                                       14,26            14,72          14,51
+     b. Swasta / Private                                                             11,63            11,46          11,28
+        1. Sosial dan Kemasyarakatan                                                  4,72             4,77           4,80
+            Social & Community Services
+         2. Hiburan dan Rekreasi                                                      1,01             0,98           0,99
+            Entertaintment and Recreation Services
+         3. Perorangan dan Rumah Tangga                                               5,90             5,71           5,49
+            Personal & Household Services
+
+                                      PDRB                                          100,00           100,00         100,00
+
+*    Angka Diperbaiki / Revised Figures
+**   Angka Sementara / Preliminary Figures
+
+
+
+
+                                                                                                                             22
+
+===== PDF PAGE 36 =====
+                                                                      PDRB Kota Bukittinggi       2011-2013
+
+
+
+     TABEL / TABLE 10 : Perkembangan Beberapa Agregat Pendapatan dan Pendapatan per Kapita
+                        Kota Bukittinggi Atas Dasar Harga Berlaku, 2011 – 2013
+                        Trend of Several Income Agregates and Per Capita Incomes
+                        Of Bukittinggi City at Current Market Prices, 2011-2013
+
+                   Perincian / Explanation                     2011            2012*)            2013**)
+                             (1)                                (2)              (3)               (4)
+
+
+
+
+     Produk Domestik Regional Bruto                        2.446.215,63     2.711.158,97      3.102.680,25
+     Atas Dasar Harga Pasar
+     GRDP at Market Prices
+     (Jutaan Rupiah / Million Rupiahs)
+
+
+
+
+                                                                   .id
+     Penyusutan Barang-barang Modal                          145.454,40      161.208,19        184.488,43
+
+
+
+
+                                                                go
+     Depreciating of Capital Goods
+     (Jutaan Rupiah / Million Rupiahs)
+
+
+
+
+                                                              .
+                                                           ps
+                                                        .b
+     Produk Domestik Regional Bruto                        2.300.761,23     2.549.950,78      2.918.191,82
+     Atas Dasar Harga Pasar                           a
+                                                   ot
+     GRDN at Current Market Price
+     (Jutaan Rupah / Million Rupiahs)
+                                                    k
+                                                 gi
+                                            ng
+
+
+
+     Pajak Tak Langsung Netto                                26.706,92        29.599,48         33.873,97
+     Net Indirect Tax
+                                         tti
+
+
+
+
+     (Jutaan Rupiah / Million Rupiahs)
+                                ki
+                              bu
+
+
+
+
+     Produk Domestik Regional Netto                       2.274.054,31      2.520.351,30      2.884.317,84
+                           ://
+
+
+
+
+     Atas Dasar Biaya Faktor
+     GRDN at Factor Prices
+                      tp
+
+
+
+
+     (Jutaan Rupiah / Million Rupiahs)
+                   ht
+
+
+
+
+     Penduduk Pertengahan Tahun                                113.903          116.075           118.260
+     Mid Year Populations
+     (Orang / People)
+
+
+     Perkapita Produk Domestik Regional Bruto             21.476.305,54    23.356.958,60     26.236.092,09
+     Percapita Gross Regional Domestic
+     (Rupiah / Rupiahs)
+
+
+     Perkapita Produk Domestik Regional Netto             20.199.303,22    21.968.130,80     24.676.068,16
+     Percapita Netto Regional Domestic Product
+     (Rupiah / Rupiahs)
+
+
+     Perkapita Pendapatan Regional                        19.964.832,43    21.713.127,70     24.389.631,69
+     Percapita Regional Income
+     (Rupiah / Rupiahs)
+
+
+
+
+*    Angka Diperbaiki / Revised Figures
+**   Angka Sementara / Preliminary Figures
+
+
+                                                                                                             29
+
+===== PDF PAGE 37 =====
+                                                                      PDRB Kota Bukittinggi       2011-2013
+
+
+
+     TABEL / TABLE 11 : Perkembangan Beberapa Agregat Pendapatan dan Pendapatan per Kapita
+                        Kota Bukittinggi Atas Dasar Harga Konstan (2000), 2011 – 2013
+                        Trend of Several Income Agregates and Per Capita Incomes
+                        Of Bukittinggi City at Constant Market Prices (2000), 2011-2013
+
+                    Perincian / Explanation                    2011            2012*)            2013**)
+                              (1)                               (2)              (3)               (4)
+
+
+
+
+     Produk Domestik Regional Bruto                        1.093.252,85     1.163.140,55      1.235.499,39
+     Atas Dasar Harga Pasar
+     GRDP at Market Prices
+     (Jutaan Rupiah / Million Rupiahs)
+
+
+
+
+                                                                   .id
+     Penyusutan Barang-barang Modal                           37.609,86       40.014,13         42.503,40
+
+
+
+
+                                                                go
+     Depreciating of Capital Goods
+     (Jutaan Rupiah / Million Rupiahs)
+
+
+
+
+                                                              .
+                                                           ps
+                                                        .b
+     Produk Domestik Regional Bruto                        1.055.642,99     1.123.126,42      1.192.995,99
+     Atas Dasar Harga Pasar                           a
+                                                   ot
+     GRDN at Current Market Price
+     (Jutaan Rupah / Million Rupiahs)
+                                                    k
+                                                 gi
+                                            ng
+
+
+
+     Pajak Tak Langsung Netto                                 18.898,31       20.110,01         21.361,05
+     Net Indirect Tax
+                                         tti
+
+
+
+
+     (Jutaan Rupiah / Million Rupiahs)
+                                ki
+                              bu
+
+
+
+
+     Produk Domestik Regional Netto                        1.036.744,67    1.103.016,41       1.171.634,93
+                           ://
+
+
+
+
+     Atas Dasar Biaya Faktor
+     GRDN at Factor Prices
+                      tp
+
+
+
+
+     (Jutaan Rupiah / Million Rupiahs)
+                   ht
+
+
+
+
+     Penduduk Pertengahan Tahun                                113.903          116.075           118.260
+     Mid Year Populations
+     (Orang / People)
+
+
+     Perkapita Produk Domestik Regional Bruto              9.598.104,09    10.020.594,87     10.447.314,31
+     Percapita Gross Regional Domestic
+     (Rupiah / Rupiahs)
+
+
+     Perkapita Produk Domestik Regional Netto              9.267.912,05     9.675.868,39     10.087.907,91
+     Percapita Netto Regional Domestic Product
+     (Rupiah / Rupiahs)
+
+
+     Perkapita Pendapatan Regional                         9.101.996,15     9.502.618,22      9.907.280,01
+     Percapita Regional Income
+     (Rupiah / Rupiahs)
+
+
+
+
+*    Angka Diperbaiki / Revised Figures
+**   Angka Sementara / Preliminary Figures
+
+
+                                                                                                             30
+
+===== PDF PAGE 38 =====
+                                                                     PDRB Kota Bukittinggi          2011-2013
+
+
+
+     TABEL / TABLE 12 : Indeks Perkembangan Beberapa Agregat Pendapatan dan Pendapatan per Kapita
+                        Kota Bukittinggi Atas Dasar Harga Berlaku, 2011 – 2013
+                        Index of Trend of Several Income Agregates and Per Capita Incomes
+                        Of Bukittinggi City at Current Market Prices, 2011-2013
+
+
+                      Perincian / Explanation                       2011          2012*)        2013**)
+                                (1)                                  (2)            (3)              (4)
+
+
+
+
+     Produk Domestik Regional Bruto                                 414,20         459,06           525,36
+     Atas Dasar Harga Pasar
+     GRDP at Market Prices
+     (Jutaan Rupiah / Million Rupiahs)
+
+
+
+
+                                                                   .id
+     Penyusutan Barang-barang Modal                                 418,92         464,30           531,34
+
+
+
+
+                                                                go
+     Depreciating of Capital Goods
+     (Jutaan Rupiah / Million Rupiahs)
+
+
+
+
+                                                              .
+                                                           ps
+                                                        .b
+     Produk Domestik Regional Bruto                                 413,92         458,75           524,99
+     Atas Dasar Harga Pasar                           a
+                                                   ot
+     GRDN at Current Market Price
+     (Jutaan Rupah / Million Rupiahs)
+                                                    k
+                                                 gi
+                                            ng
+
+
+
+     Pajak Tak Langsung Netto                                       329,03         364,67           417,33
+     Net Indirect Tax
+                                         tti
+
+
+
+
+     (Jutaan Rupiah / Million Rupiahs)
+                                ki
+                              bu
+
+
+
+
+     Produk Domestik Regional Netto                                 415,16         460,13           526,57
+                           ://
+
+
+
+
+     Atas Dasar Biaya Faktor
+                      tp
+
+
+
+
+     GRDN at Factor Prices
+     (Jutaan Rupiah / Million Rupiahs)
+                   ht
+
+
+
+
+     Penduduk Pertengahan Tahun                                     130,33         132,81           135,31
+     Mid Year Populations
+     (Orang / People)
+
+
+     Perkapita Produk Domestik Regional Bruto                       317,83         345,66           388,27
+     Percapita Gross Regional Domestic
+     (Rupiah / Rupiahs)
+
+
+     Perkapita Produk Domestik Regional Netto                       317,60         345,42           388,00
+     Percapita Netto Regional Domestic Product
+     (Rupiah / Rupiahs)
+
+
+     Perkapita Pendapatan Regional                                  318,56         346,46           389,16
+     Percapita Regional Income
+     (Rupiah / Rupiahs)
+
+
+
+
+*    Angka Diperbaiki / Revised Figures
+**   Angka Sementara / Preliminary Figures
+
+
+                                                                                                             31

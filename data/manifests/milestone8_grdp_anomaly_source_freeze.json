@@ -1,0 +1,41 @@
+{
+  "all_source_bytes_frozen": true,
+  "anomalies_resolved": false,
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "outcome_model_fit": false,
+  "schema": "ranah-observatory/milestone8-grdp-anomaly-source-freeze/v1",
+  "source_count": 2,
+  "sources": [
+    {
+      "checksum_path": "data/snapshots/bps/milestone8/crosschecks/bukittinggi-grdp-2011-2013/source.pdf.sha256",
+      "domain": "1375",
+      "metadata_path": "data/snapshots/bps/milestone8/crosschecks/bukittinggi-grdp-2011-2013/publication-metadata.json",
+      "metadata_sha256": "1fcefbb313eed8a6c8a9b85aad7aba5963046c075dc3607d8404c39ee0b66e10",
+      "pdf_bytes": 1325462,
+      "pdf_sha256": "83a0d6faa78e2ec21f08fbd517dec18591fd85e4dfec21d9ea5edd793cca45ec",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/crosschecks/bukittinggi-grdp-2011-2013/source.pdf",
+      "requested_publication_id": "44d13f6979435a1a50fc1df9",
+      "resolution_method": "BPS WebAPI constrained publication list; exact historical publication ID + title semantics",
+      "resolved_publication_id": "44d13f6979435a1a50fc1df9",
+      "source_id": "m8_bukittinggi_grdp_crosscheck",
+      "title": "Produk Domestik Regional Bruto Kota Bukittinggi 2011-2013"
+    },
+    {
+      "checksum_path": "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2013/source.pdf.sha256",
+      "domain": "1310",
+      "metadata_path": "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2013/publication-metadata.json",
+      "metadata_sha256": "eafeeafc7f39d0c69549210248bb01d44bc68cbe7792742765a061164c410523",
+      "pdf_bytes": 5268117,
+      "pdf_sha256": "9de52317c9939b4ac4a7c5df8e8f7c1b5d3c81d1c0814279a4ebe8f54d77e11c",
+      "raw_pdf_git_tracked": false,
+      "raw_pdf_runtime_path": "data/raw/milestone8/crosschecks/solok-selatan-dalam-angka-2013/source.pdf",
+      "requested_publication_id": "b71346df5fc0c753641b0063",
+      "resolution_method": "BPS WebAPI constrained publication list; exact historical publication ID + title semantics",
+      "resolved_publication_id": "b71346df5fc0c753641b0063",
+      "source_id": "m8_solok_selatan_grdp_crosscheck",
+      "title": "Solok Selatan Dalam Angka 2013"
+    }
+  ]
+}
