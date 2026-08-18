@@ -1,0 +1,96 @@
+{
+  "all_primary_post_wild_cluster_bootstrap_p_values_above_0_10": true,
+  "analysis_years": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013
+  ],
+  "case_study": "2009 West Sumatra earthquake differential economic trajectory",
+  "case_study_complete": true,
+  "causal_claim_authorized": false,
+  "claim_classification": "quasi_causal_estimate_no_statistically_robust_differential_effect_detected",
+  "core_identification_diagnostics_passed": true,
+  "criterion": "one focused causal or quasi-causal case study",
+  "directional_nonzero_effect_claim_authorized": false,
+  "exposure_sensitivity_complete": true,
+  "finding_count": 13,
+  "findings_path": "data/analysis/quasi_causal/m8-earthquake-case-study-findings.csv",
+  "findings_sha256": "94907d07b619a96aa1a12c5cdbbd4b7c55b0133a7ab71ae7094f8c02bd992680",
+  "geography_count": 19,
+  "grdp_growth_robustness_complete": true,
+  "headline_conclusion": "The preregistered design passes its identification screens, but it does not detect a statistically robust differential real-GRDP effect by local earthquake shaking intensity over 2009-2013.",
+  "housing_damage_validation_complete": true,
+  "influence_passed": true,
+  "inputs": {
+    "event_study_manifest": {
+      "path": "data/manifests/milestone8_event_study.json",
+      "sha256": "8a492d819111c9b6956e5c5b2f941378d9d7a9e0c4251ba3f8e41dcef77cb05c"
+    },
+    "exposure_manifest": {
+      "path": "data/manifests/milestone8_shakemap_exposure_candidate.json",
+      "sha256": "d7247f8a4b11a41c18ea2a45454dec9463a77c58f90b4d58bafc3c8ca030515e"
+    },
+    "exposure_sensitivity": {
+      "path": "data/analysis/quasi_causal/m8-event-study-exposure-sensitivity.csv",
+      "sha256": "f09ed4cc7d46c5f4f6320353d301b964aebff4cd5ab2d1f595327791cb660397"
+    },
+    "growth_robustness": {
+      "path": "data/manifests/milestone8_growth_robustness.json",
+      "sha256": "9eaf55c73c0f3ef13ddb1c1674f845a59233a2db08eb7959e5f9e8e3a8240ec7"
+    },
+    "housing_validation": {
+      "path": "data/manifests/milestone8_housing_damage_validation.json",
+      "sha256": "64ec50ac2a7c813120bb11c00ce4d72380589b0170141fa473e912242d4340f4"
+    },
+    "inference_protocol": {
+      "path": "research/MILESTONE8_INFERENCE_PROTOCOL.md",
+      "sha256": "541ea472e840920a982bee73c07e4b576a3e190ddcab5c1e08019e851bb86060"
+    },
+    "overlap_reconciliation": {
+      "path": "data/manifests/milestone8_grdp_overlap.json",
+      "sha256": "142571ca683ba7ef9cbe6178620ad500d50568d4e02e626466076d6d12fd98ab"
+    },
+    "primary_coefficients": {
+      "path": "data/analysis/quasi_causal/m8-event-study-primary.csv",
+      "sha256": "430301c4c863731d317a766c6aff21f687d792d81dba84a7c08cacaf90882ce8"
+    },
+    "source_resolution": {
+      "path": "data/manifests/milestone8_grdp_source_anomaly_resolution.json",
+      "sha256": "b3e9497937b01b793b49a433fe57be2318929aa360a0721cc26bc3d45957c597"
+    }
+  },
+  "milestone8_complete": true,
+  "minimum_primary_post_wild_cluster_bootstrap_p_value": 0.103,
+  "observation_count": 171,
+  "overlap_2009_reconciled": true,
+  "placebo_passed": true,
+  "pretrend_passed": true,
+  "primary_design": "continuous_intensity_two_way_fixed_effects_event_study",
+  "primary_exposure": "area_mean_pga_pct_g",
+  "primary_exposure_unit": "percent_g before one-SD standardization",
+  "primary_post_coefficients_all_negative": true,
+  "prohibited_interpretations": [
+    "The earthquake had no economic impact.",
+    "The coefficient is the total economic loss from the earthquake.",
+    "The coefficient measures welfare loss or wasted potential.",
+    "A later positive or recovered trajectory would imply the earthquake was beneficial.",
+    "DLNA-unreported geographies had zero housing damage."
+  ],
+  "quasi_causal_effect_estimated": true,
+  "quasi_causal_estimate_authorized": true,
+  "schema": "ranah-observatory/milestone8-case-study/v1",
+  "sensitivity_post_all_negative": true,
+  "sensitivity_post_coefficient_range": [
+    -0.006472129811987637,
+    -0.002898820118667226
+  ],
+  "small_cluster_inference": "Rademacher wild-cluster-bootstrap-t, B=1999, seed=20090930, geography clusters",
+  "small_cluster_inference_implemented": true,
+  "source_anomalies_resolved": true
+}
