@@ -52,6 +52,16 @@ TARGETS = (
         metadata_dir=ROOT / "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2013",
         raw_pdf_path=ROOT / "data/raw/milestone8/crosschecks/solok-selatan-dalam-angka-2013/source.pdf",
     ),
+    Target(
+        source_id="m8_solok_selatan_grdp_crosscheck_2012",
+        domain="1310",
+        publication_id="70d4c08198648cf11a27982c",
+        release_year=2013,
+        keyword="Solok Selatan Dalam Angka 2012",
+        title_tokens=("solok selatan", "dalam angka", "2012"),
+        metadata_dir=ROOT / "data/snapshots/bps/milestone8/crosschecks/solok-selatan-dalam-angka-2012",
+        raw_pdf_path=ROOT / "data/raw/milestone8/crosschecks/solok-selatan-dalam-angka-2012/source.pdf",
+    ),
 )
 
 
@@ -221,7 +231,7 @@ def main() -> int:
         "criterion": "one focused causal or quasi-causal case study",
         "source_count": len(snapshots),
         "sources": snapshots,
-        "all_source_bytes_frozen": len(snapshots) == 2,
+        "all_source_bytes_frozen": len(snapshots) == 3,
         "anomalies_resolved": False,
         "outcome_model_fit": False,
         "causal_effect_estimated": False,
