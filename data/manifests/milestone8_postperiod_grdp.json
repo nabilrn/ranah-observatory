@@ -1,0 +1,35 @@
+{
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "geography_count": 19,
+  "growth_crosscheck": {
+    "available": false,
+    "check_count": 0,
+    "failure_count": null,
+    "failures": [],
+    "parse_error": "RuntimeError: missing expected row label 'Kota Sawah Lunto'",
+    "passed": false,
+    "tolerance_percentage_points": 0.1
+  },
+  "level_extraction_qualified": true,
+  "observation_count": 95,
+  "outcome_model_fit": false,
+  "outcome_panel_combined": false,
+  "output_path": "data/analysis/quasi_causal/m8-postperiod-real-grdp-2009-2013.csv",
+  "output_sha256": "661f33384d231d1a7f640dd487b5fff6855d1230150716abba8d0e743d111b90",
+  "price_basis": "constant_2000",
+  "schema": "ranah-observatory/milestone8-postperiod-grdp/v2",
+  "source_growth_table": "13.1.3",
+  "source_level_table": "13.1.2",
+  "source_plan_id": "m8_grdp_post",
+  "source_text_path": "data/processed/milestone8/source_text/candidate-pages/bps-grdp-2009-2013-pages-410-415.txt",
+  "source_text_sha256": "1070c319fb4504ef4a275c52ec676a4545b1405a86a7529d19be4e4e8de2bc3e",
+  "unit": "million_rupiah",
+  "years": [
+    2009,
+    2010,
+    2011,
+    2012,
+    2013
+  ]
+}
