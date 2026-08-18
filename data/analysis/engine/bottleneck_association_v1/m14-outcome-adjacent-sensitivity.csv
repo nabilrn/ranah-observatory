@@ -1,0 +1,2 @@
+target_id,candidate_id,row_count,within_year_rank_association,geography_block_permutation_p_two_sided,outcome_adjacent,stable_association_signal_authorized,reason,causal_claim
+unemployment_rate,underemployment_rate,81,0.05129249037656798,0.7768,True,False,underemployment is a closely related labor-market outcome and excluded from the primary unemployment-gap screen,False
