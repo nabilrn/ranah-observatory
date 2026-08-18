@@ -36,6 +36,30 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Normalize inherited boolean flags in source builder
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('scripts/build_milestone13_development_gap_decomposition.py')
+          text = path.read_text(encoding='utf-8')
+          replacements = {
+              '"m11_benchmark_qualified": m12["m11_benchmark_qualified"],': '"m11_benchmark_qualified": m12["m11_benchmark_qualified"] == "true",',
+              '"m11_support_warning": m12["m11_support_warning"],': '"m11_support_warning": m12["m11_support_warning"] == "true",',
+              '"m12_primary_frontier_calibrated": m12["primary_frontier_calibrated"],': '"m12_primary_frontier_calibrated": m12["primary_frontier_calibrated"] == "true",',
+          }
+          changed = False
+          for old, new in replacements.items():
+              if old in text:
+                  text = text.replace(old, new)
+                  changed = True
+              elif new not in text:
+                  raise SystemExit(f'expected source fragment missing: {old}')
+          if changed:
+              path.write_text(text, encoding='utf-8')
+          PY
+
       - name: Build preregistered decomposition
         shell: bash
         run: |
@@ -48,19 +72,20 @@ jobs:
           echo "::error title=Milestone 13 build failure::$message"
           exit 1
 
-      - name: Commit deterministic M13 artifacts
+      - name: Commit source fix and deterministic M13 artifacts
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
+            scripts/build_milestone13_development_gap_decomposition.py \
             data/analysis/engine/gap_decomposition_v1 \
             data/manifests/milestone13_development_gap_decomposition.json
           if git diff --cached --quiet; then
-            echo "Milestone 13 artifacts unchanged."
+            echo "Milestone 13 source/artifacts unchanged."
             exit 0
           fi
-          git commit -m "analysis: materialize milestone13 gap decomposition"
+          git commit -m "fix: preserve milestone13 inherited boolean semantics"
           git pull --rebase origin agent/phase2-m13-development-gap-decomposition
           git push origin HEAD:agent/phase2-m13-development-gap-decomposition
