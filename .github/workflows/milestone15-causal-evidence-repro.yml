@@ -1,0 +1,67 @@
+name: Milestone 15 Causal Evidence Reproducibility
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone15-causal-evidence-repro.yml"
+      - "research/MILESTONE15_CAUSAL_EVIDENCE_EXPANSION_SPEC.md"
+      - "scripts/build_milestone15_causal_evidence_expansion.py"
+      - "scripts/audit_milestone15_causal_evidence_expansion.py"
+      - "tests/test_milestone15_causal_evidence_expansion.py"
+      - "docs/MILESTONE15_CAUSAL_EVIDENCE_EXPANSION.md"
+      - "data/manifests/milestone15_causal_evidence_expansion.json"
+      - "data/analysis/engine/causal_evidence_v1/**"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/manifests/milestone8_complete_audit.json"
+      - "data/analysis/engine/panel_v1/**"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/milestone15-causal-evidence-repro.yml"
+      - "research/MILESTONE15_CAUSAL_EVIDENCE_EXPANSION_SPEC.md"
+      - "scripts/build_milestone15_causal_evidence_expansion.py"
+      - "scripts/audit_milestone15_causal_evidence_expansion.py"
+      - "tests/test_milestone15_causal_evidence_expansion.py"
+      - "docs/MILESTONE15_CAUSAL_EVIDENCE_EXPANSION.md"
+      - "data/manifests/milestone15_causal_evidence_expansion.json"
+      - "data/analysis/engine/causal_evidence_v1/**"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/manifests/milestone8_complete_audit.json"
+      - "data/analysis/engine/panel_v1/**"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Require Research Foundation remains complete
+        run: python -m scripts.audit_research_foundation_complete --require-complete
+      - name: Require M10 remains complete
+        run: python -m scripts.audit_milestone10_analytical_panel --require-complete
+      - name: Require M14 remains complete
+        run: python -m scripts.audit_milestone14_bottleneck_association --require-complete
+      - name: Require M8 completed quasi-causal evidence remains valid
+        run: python -m scripts.audit_milestone8_complete --require-complete
+      - name: Rebuild M15 causal evidence library
+        run: python -m scripts.build_milestone15_causal_evidence_expansion
+      - name: Audit M15 completion
+        run: python -m scripts.audit_milestone15_causal_evidence_expansion --require-complete
+      - name: Run M15 focused tests
+        run: python -m unittest tests.test_milestone15_causal_evidence_expansion -v
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+      - name: Require byte-identical M15 outputs
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/causal_evidence_v1 \
+            data/manifests/milestone15_causal_evidence_expansion.json
