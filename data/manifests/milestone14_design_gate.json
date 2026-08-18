@@ -1,0 +1,37 @@
+{
+  "schema": "ranah-observatory/milestone14-design-gate/v1",
+  "phase": "final_analytical_research_engine",
+  "milestone": 14,
+  "target_years": [2021, 2022, 2023, 2024],
+  "feature_years": [2020, 2021, 2022, 2023],
+  "feature_lag_years": 1,
+  "target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "primary_gap_field": "expected_gap_rmse_units",
+  "sensitivity_gap_field": "favorable_peer_gap_rmse_units",
+  "candidate_ids": [
+    "expected_years_schooling",
+    "life_expectancy",
+    "underemployment_rate",
+    "annual_rainfall"
+  ],
+  "primary_statistic": "pooled_year_demeaned_spearman",
+  "secondary_statistic": "pooled_year_demeaned_pearson",
+  "stable_abs_spearman_threshold": 0.25,
+  "stable_min_same_sign_annual_count": 3,
+  "stable_require_all_loo_same_sign": true,
+  "stable_min_support_safe_rows": 40,
+  "stable_require_support_safe_same_sign": true,
+  "p_value_selection_authorized": false,
+  "candidate_selection_after_results_authorized": false,
+  "association_results_computed": false,
+  "association_results_inspected": false,
+  "causal_claim_authorized": false,
+  "bottleneck_causal_claim_authorized": false,
+  "policy_effect_claim_authorized": false,
+  "monetary_wasted_potential_claim_authorized": false,
+  "milestone14_complete": false
+}
