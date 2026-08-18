@@ -1,0 +1,2221 @@
+{
+  "candidate_slice_paths": [
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-096-098.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-098-100.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-100-102.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-102-104.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-104-106.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-107-109.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-109-111.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-110-112.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-111-113.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-113-115.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-115-117.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-117-119.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-118-120.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-119-121.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-121-123.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-122-124.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-123-125.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-124-126.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-125-127.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-126-128.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-127-129.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-129-131.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-130-132.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-131-133.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-132-134.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-133-135.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-134-136.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-135-137.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-136-138.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-137-139.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-138-140.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-139-141.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-141-143.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-143-145.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-144-146.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-145-147.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-149-151.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-151-153.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-153-155.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-155-157.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-157-159.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-158-160.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-159-161.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-161-163.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-162-164.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-163-165.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-165-167.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-167-169.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-168-170.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-169-171.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-170-172.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-171-173.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-172-174.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-173-175.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-174-176.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-175-177.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-176-178.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-177-179.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-179-181.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-181-183.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-182-184.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-183-185.txt",
+    "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-205-207.txt"
+  ],
+  "causal_effect_estimated": false,
+  "complete_19x5_level_table_confirmed": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "geographies": [
+    {
+      "geography_id": "idn.13.1301",
+      "geography_name": "Kepulauan Mentawai",
+      "strong_candidate_count": 64,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Kepulauan Mentawai Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 428.727,81 446.108,41 465.786,51 486.658,71 509.396,33"
+          ],
+          "page": 108,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota Padang Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 9.110.697,44 9.577.495,51 10.165.760,80 10.797.259,04 11.345.637,06"
+          ],
+          "page": 134,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kepulauan mentawai",
+            "mentawai"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota Solok Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 394.216,63 418.554,23 445.151,83 473.694,17 497.623,06"
+          ],
+          "page": 136,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1302",
+      "geography_name": "Pesisir Selatan",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Pesisir Selatan Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.625.743,40 1.710.569,67 1.801.336,27 1.899.032,79 2.002.248,56"
+          ],
+          "page": 110,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 150,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pesisir selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1303",
+      "geography_name": "Solok",
+      "strong_candidate_count": 10,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Solok Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.608.661,41 1.705.496,50 1.811.861,00 1.926.826,54 2.047.621,51"
+          ],
+          "page": 112,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 486.320,39 514.759,93 546.074,75 579.478,58 614.813,74"
+          ],
+          "page": 126,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 486.320,39 514.759,93 546.074,75 579.478,58 614.813,74"
+          ],
+          "page": 128,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 152,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 166,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 2.439.083,76 2.888.476,62 3.420.700,80 4.042.808,21 4.639.066,33"
+          ],
+          "page": 111,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 710.052,31 817.874,15 921.298,67 1.066.504,09 1.220.622,65"
+          ],
+          "page": 125,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kabupaten solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 710.052,31 817.874,15 921.298,67 1.066.504,09 1.220.622,65"
+          ],
+          "page": 127,
+          "score": 8
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1304",
+      "geography_name": "Sijunjung",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Sijunjung Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.023.241,24 1.084.134,39 1.145.007,18 1.205.702,94 1.273.140,01"
+          ],
+          "page": 114,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 154,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "sijunjung"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1305",
+      "geography_name": "Tanah Datar",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Tanah Datar Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.961.820,26 2.076.125,42 2.201.714,59 2.331.745,79 2.468.737,03"
+          ],
+          "page": 116,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 156,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "tanah datar"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1306",
+      "geography_name": "Padang Pariaman",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Padang Pariaman Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.971.582,46 2.346.365,52 2.489.684,42 2.645.119,06 2.749.336,74"
+          ],
+          "page": 118,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 158,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1307",
+      "geography_name": "Agam",
+      "strong_candidate_count": 4,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kabupaten agam"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Agam Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 2.325.161,69 2.468.761,81 2.626.066,58 2.792.967,48 2.929.871,69"
+          ],
+          "page": 120,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten agam"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 160,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten agam"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 3.377.957,22 3.924.766,90 4.462.636,40 5.205.936,31 5.821.983,04"
+          ],
+          "page": 119,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kabupaten agam"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 159,
+          "score": 8
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1308",
+      "geography_name": "Lima Puluh Kota",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "50 kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "50 kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "50 kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "50 kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "50 kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "lima puluh kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Lima Puluh Kota Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 2.125.656,73 2.255.102,49 2.398.597,58 2.545.801,72 2.684.575,15"
+          ],
+          "page": 122,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "lima puluh kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 162,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "50 kota"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1309",
+      "geography_name": "Pasaman",
+      "strong_candidate_count": 8,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Pasaman Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.022.262,67 1.081.242,18 1.145.234,55 1.214.884,21 1.289.261,24"
+          ],
+          "page": 124,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Pasaman Barat Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.988.702,87 2.115.152,38 2.250.818,83 2.394.934,54 2.544.855,11"
+          ],
+          "page": 132,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 164,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 170,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 1.592.115,34 1.909.420,09 2.234.173,79 2.577.904,88 2.889.122,78"
+          ],
+          "page": 123,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 2.983.302,15 3.507.374,95 4.115.816,90 4.868.176,61 5.517.733,25"
+          ],
+          "page": 131,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 163,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kabupaten pasaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 169,
+          "score": 8
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1310",
+      "geography_name": "Solok Selatan",
+      "strong_candidate_count": 54,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 486.320,39 514.759,93 546.074,75 579.478,58 614.813,74"
+          ],
+          "page": 126,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Solok Selatan Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 486.320,39 514.759,93 546.074,75 579.478,58 614.813,74"
+          ],
+          "page": 128,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "solok selatan"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 166,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1311",
+      "geography_name": "Dharmasraya",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Dharmasraya Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 846.237,71 899.308,50 957.502,48 1.020.079,52 1.088.105,30"
+          ],
+          "page": 130,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 168,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "dharmasraya"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1312",
+      "geography_name": "Pasaman Barat",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kabupaten Pasaman Barat Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 1.988.702,87 2.115.152,38 2.250.818,83 2.394.934,54 2.544.855,11"
+          ],
+          "page": 132,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 170,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "pasaman barat"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1371",
+      "geography_name": "Kota Padang",
+      "strong_candidate_count": 8,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota Padang Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 9.110.697,44 9.577.495,51 10.165.760,80 10.797.259,04 11.345.637,06"
+          ],
+          "page": 134,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota Padang Panjang Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 311.166,40 330.172,93 351.227,59 373.245,04 396.823,88"
+          ],
+          "page": 140,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 172,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 178,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 13.266.059,83 15.294.258,13 17.369.183,93 20.142.222,98 21.837.054,01"
+          ],
+          "page": 133,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 468.223,65 549.189,83 622.635,17 730.320,31 852.202,50"
+          ],
+          "page": 139,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 171,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kota padang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 177,
+          "score": 8
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1372",
+      "geography_name": "Kota Solok",
+      "strong_candidate_count": 4,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kota solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota Solok Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 394.216,63 418.554,23 445.151,83 473.694,17 497.623,06"
+          ],
+          "page": 136,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 174,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 574.524,42 675.828,39 756.806,44 891.425,23 981.609,60"
+          ],
+          "page": 135,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kota solok"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 173,
+          "score": 8
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1373",
+      "geography_name": "Kota Sawahlunto",
+      "strong_candidate_count": 4,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kota sawahlunto"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota Sawahlunto Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 444.671,74 449.255,32 458.646,42 474.379,28 494.392,38"
+          ],
+          "page": 138,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota sawahlunto"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 176,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota sawahlunto"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 619.543,77 677.506,70 756.253,69 861.957,23 976.280,96"
+          ],
+          "page": 137,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kota sawahlunto"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 175,
+          "score": 8
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1374",
+      "geography_name": "Kota Padang Panjang",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota padang panjang",
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota Padang Panjang Atas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 311.166,40 330.172,93 351.227,59 373.245,04 396.823,88"
+          ],
+          "page": 140,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota padang panjang",
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 178,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "padang panjang"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1375",
+      "geography_name": "Kota Bukittinggi",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota bukittinggi",
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota BukittinggiAtas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 762.433,07 809.613,62 862.157,54 918.914,69 969.590,89"
+          ],
+          "page": 142,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota bukittinggi",
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 180,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "bukittinggi"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1376",
+      "geography_name": "Kota Payakumbuh",
+      "strong_candidate_count": 52,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 97,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Perkapita Atas Dasar Harga Konstan 2000 Menurut Kabupaten/Kota, 2005 - 2009"
+          ],
+          "page": 99,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Distribusi Persentase PDRB Terhadap Jumlah 19 Kab/Kota Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 101,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 103,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Perkapita Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 105,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota payakumbuh",
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota PayakumbuhAtas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 644.369,03 684.222,31 727.773,48 774.485,72 818.071,97"
+          ],
+          "page": 144,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota payakumbuh",
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 182,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "payakumbuh"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "Indeks Berantai PDRB Sektor Pertanian Atas Dasar Harga Konstan 2000"
+          ],
+          "page": 206,
+          "score": 10
+        }
+      ]
+    },
+    {
+      "geography_id": "idn.13.1377",
+      "geography_name": "Kota Pariaman",
+      "strong_candidate_count": 4,
+      "top_hits": [
+        {
+          "alias_hits": [
+            "kota pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB Kota PariamanAtas Dasar Harga Konstan (2000)",
+            "PDRB/GRDP 561.912,44 589.877,48 621.504,32 656.273,02 685.632,24"
+          ],
+          "page": 146,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": true,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 184,
+          "score": 10
+        },
+        {
+          "alias_hits": [
+            "kota pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 865.650,68 1.019.916,99 1.126.041,32 1.318.387,02 1.488.216,45"
+          ],
+          "page": 145,
+          "score": 8
+        },
+        {
+          "alias_hits": [
+            "kota pariaman"
+          ],
+          "has_2005": true,
+          "has_2009": true,
+          "has_constant_signal": false,
+          "has_pdrb": true,
+          "numeric_pdrb_lines": [
+            "PDRB/GRDP 100,00 100,00 100,00 100,00 100,00"
+          ],
+          "page": 183,
+          "score": 8
+        }
+      ]
+    }
+  ],
+  "geography_count": 19,
+  "ocr_performed": false,
+  "outcome_model_fit": false,
+  "schema": "ranah-observatory/milestone8-sumbar-appendix-probe/v1",
+  "searched_page_min": 90,
+  "source_page_count": 236,
+  "source_plan_id": "m8_grdp_pre",
+  "strong_candidate_pages": [
+    97,
+    99,
+    101,
+    103,
+    105,
+    108,
+    110,
+    111,
+    112,
+    114,
+    116,
+    118,
+    119,
+    120,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    142,
+    144,
+    145,
+    146,
+    150,
+    152,
+    154,
+    156,
+    158,
+    159,
+    160,
+    162,
+    163,
+    164,
+    166,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    180,
+    182,
+    183,
+    184,
+    206
+  ]
+}

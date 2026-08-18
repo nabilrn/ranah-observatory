@@ -1,0 +1,363 @@
+===== PDF PAGE 155 =====
+                                                                                      Tabel / Table 78
+                                                       Distribusi Persentase PDRB Kabupaten Tanah Datar Atas Dasar Harga Berlaku
+                                                                             Menurut Lapangan Usaha 2005 - 2009
+                                                           Percentage Distribution of GRDP of Tanah Datar Regency at Current Prices
+                                                                               by Industrial Origin, 2005 - 2009
+
+
+
+     LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                                     2005                2006               2007             2008 *)       2009 **)
+
+                                        (1)                                                 (2)                    (3)                (4)           (5)           (6)
+1.   PERTANIAN/AGRICULTURE                                                                    38,64                  38,48              37,83         38,40         37,77
+     a. Tanaman Pangan & Hortikultura/Farm Food Crops                                         31,89                  31,67              30,87         31,39         30,79
+     b. Perkebunan / Farm Non Food Crops                                                          2,81                   2,78               2,93          2,97          2,98
+     c. Peternakan/Livestock                                                                      2,40                   2,33               2,30          2,27          2,25
+     d. Kehutanan/Forestry                                                                        0,77                   0,81               0,77          0,80          0,77
+     e. Perikanan/Fishery                                                                         0,77                   0,89               0,96          0,97          0,98
+2.   PERTAMBANGAN & PENGGALIAN/                                                                   2,01                   1,94               1,84          1,81          1,84
+     MINING & QUARRYING
+     a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                     X                      X                  X             X              X
+     b. Non Migas / Non Crude Petroleum & Natural Gas                                        X                      X                  X             X              X
+     c. Penggalian / Quarrying                                                                    2,01                   1,94               1,84          1,81          1,84
+3.   INDUSTRI PENGOLAHAN /                                                                    11,29                  11,27              11,90         11,67         11,75
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas/Oil & Gas Manufacturing Industries                                    X                      X                  X             X              X
+     b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                      11,29                  11,27              11,90         11,67         11,75
+
+
+
+
+                                                                                                                           .id
+       Industries
+4.   LISTRIK, GAS & AIR BERSIH /                                                                  1,07                   1,01               1,09          1,02          1,00
+
+
+
+
+                                                                                                           go
+     ELECTRICITY, GAS & WATER SUPPLY
+     a. Listrik / Electricity                                                                     0,93                   0,88               0,95          0,89          0,86
+
+
+
+
+                                                                                                         s.
+     b. G a s/ Gas                                                                           X                      X                  X             X              X
+     c. Air Bersih / Water Supply                                                                 0,14                   0,13               0,14          0,13          0,13
+5.   BANGUNAN / CONSTRUCTION
+                                                                                                p 7,40                   7,59               7,79          7,68          7,90
+                                                                                             .b
+6.   PERDAGANGAN, HOTEL & RESTORAN /                                                          12,47                  12,10              11,87         12,26         12,57
+                                                                                     r
+     TRADE, HOTEL & RESTAURANT
+                                                                                  ba
+
+     a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                                 11,89                  11,53              11,32         11,72         12,02
+     b. H o t e l / Hotels                                                                        0,04                   0,04               0,04          0,04          0,04
+                                                                        um
+
+
+
+     c. Restoran / Restaurant                                                                     0,54                   0,53               0,52          0,50          0,51
+7.   PENGANGKUTAN DAN KOMUNIKASI /                                                                5,58                   6,40               6,52          6,57          6,62
+     TRANSPORT & COMMUNICATION
+                                                                 //s
+
+
+
+
+     a. Angkutan / Transport                                                                      5,32                   6,15               6,24          6,28          6,31
+       1. Kereta Api /Railway Transport                                                      X                      X                  X             X              X
+                                                   s:
+
+
+
+
+       2. Jalan Raya (Darat) / Road Transport                                                     5,25                   6,08               6,18          6,22          6,24
+       3. Angkutan Laut/Sea Transport                                                        X                      #VALUE!            #VALUE!       #VALUE!       #VALUE!
+                                                 tp
+
+
+
+
+       4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                      X                      #VALUE!            #VALUE!       #VALUE!       #VALUE!
+                                          ht
+
+
+
+
+       5. Angkutan Udara / Air Transport                                                     X                      X                  X             X              X
+       6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                      0,07                   0,07               0,07          0,06          0,06
+          Transport Activities
+     b. Komunikasi / Communication                                                                0,25                   0,26               0,28          0,29          0,31
+8.   KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                                        3,40                   3,34               3,39          3,40          3,45
+     FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+     a. Bank / Banking                                                                            0,99                   0,95               0,98          1,01          1,03
+     b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                            1,08                   1,10               1,11          1,08          1,10
+        Keuangan/Non Bank Financial Institution and Supporting Activities
+     c. Sewa Bangunan / Rent of Building                                                          1,32                   1,28               1,29          1,30          1,32
+     d. Jasa Perusahaan / Business Services                                                       0,01                   0,01               0,01          0,01          0,01
+9.   JASA-JASA / SERVICES                                                                     18,16                  17,87              17,76         17,18         17,13
+     a. Pemerintahan Umum & Pertahanan /Public Administration                                 12,91                  12,76              12,70         12,16         12,02
+       and Deffense
+     b. Swasta / Private Services                                                                 5,25                   5,11               5,07          5,01          5,11
+       1. Sosial Kemasyarakatan/Social & Community Services                                       1,29                   1,24               1,21          1,18          1,20
+       2. Hiburan dan Rekreasi/Entertainment & Cultural Services                                  0,41                   0,41               0,42          0,41          0,43
+       3. Perorangan dan Rumahtangga/ Personal & Household Services                               3,55                   3,46               3,44          3,42          3,49
+
+
+     PDRB/GRDP                                                                              100,00                 100,00             100,00        100,00         100,00
+
+
+Catatan/Note : *) Angka diperbaiki/Revised figures
+                 **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                            150
+
+===== PDF PAGE 156 =====
+                                                                                    Tabel / Table 79
+                                                       Distribusi Persentase PDRB Kabupaten Tanah Datar Atas Dasar Harga Konstan
+                                                                          Menurut Lapangan Usaha 2005 - 2009
+                                                     Percentage Distribution of GRDP of Tanah Datar Regency at Constant 2000 Prices
+                                                                            by Industrial Origin, 2005 - 2009
+
+
+
+     LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                                  2005                2006               2007          2008 *)       2009 **)
+
+                                        (1)                                              (2)                    (3)             (4)           (5)           (6)
+1.   PERTANIAN/AGRICULTURE                                                                 37,63                  37,68            37,72        37,60         37,42
+     a. Tanaman Pangan & Hortikultura/Farm Food Crops                                      30,79                  30,75            30,66        30,52         30,38
+     b. Perkebunan / Farm Non Food Crops                                                       2,91                   2,97            3,15          3,20          3,20
+     c. Peternakan/Livestock                                                                   2,42                   2,38            2,33          2,30          2,28
+     d. Kehutanan/Forestry                                                                     0,75                   0,72            0,70          0,67          0,65
+     e. Perikanan/Fishery                                                                      0,76                   0,86            0,89          0,91          0,91
+2.   PERTAMBANGAN & PENGGALIAN/                                                                1,84                   1,82            1,77          1,77          1,77
+     MINING & QUARRYING
+     a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                  X                      X                 X           X              X
+     b. Non Migas / Non Crude Petroleum & Natural Gas                                     X                      X                 X           X              X
+     c. Penggalian / Quarrying                                                                 1,84                   1,82            1,77          1,77          1,77
+3.   INDUSTRI PENGOLAHAN /                                                                 12,10                  12,18            12,15        12,16         12,18
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas/Oil & Gas Manufacturing Industries                                 X                      X                 X           X              X
+     b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                   12,10                  12,18            12,15        12,16         12,18
+
+
+
+
+                                                                                                                        .id
+       Industries
+4.   LISTRIK, GAS & AIR BERSIH /                                                               0,85                   0,88            0,90          0,90          0,91
+
+
+
+
+                                                                                                        go
+     ELECTRICITY, GAS & WATER SUPPLY
+     a. Listrik / Electricity                                                                  0,71                   0,74            0,76          0,76          0,76
+
+
+
+
+                                                                                                      s.
+     b. G a s/ Gas                                                                        X                      X                 X           X              X
+     c. Air Bersih / Water Supply                                                              0,14                   0,14            0,14          0,14          0,15
+5.   BANGUNAN / CONSTRUCTION
+                                                                                             p 7,33                   7,30            7,16          7,19          7,22
+                                                                                          .b
+6.   PERDAGANGAN, HOTEL & RESTORAN /                                                       13,19                  13,26            13,20        13,20         13,21
+                                                                                   r
+     TRADE, HOTEL & RESTAURANT
+                                                                                ba
+
+     a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                              12,62                  12,69            12,65        12,65         12,66
+     b. H o t e l / Hotels                                                                     0,04                   0,04            0,04          0,04          0,04
+                                                                      um
+
+
+
+     c. Restoran / Restaurant                                                                  0,54                   0,53            0,51          0,51          0,51
+7.   PENGANGKUTAN DAN KOMUNIKASI /                                                             5,43                   5,45            5,41          5,43          5,49
+     TRANSPORT & COMMUNICATION
+                                                              //s
+
+
+
+
+     a. Angkutan / Transport                                                                   5,21                   5,20            5,15          5,14          5,18
+       1. Kereta Api /Railway Transport                                                   X                      X                 X           X              X
+                                                   s:
+
+
+
+
+       2. Jalan Raya (Darat) / Road Transport                                                  5,14                   5,13            5,08          5,07          5,11
+       3. Angkutan Laut/Sea Transport                                                     X                      X                 X           X              X
+                                                 tp
+
+
+
+
+       4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                   X                      X                 X           X              X
+                                          ht
+
+
+
+
+       5. Angkutan Udara / Air Transport                                                  X                      X                 X           X              X
+       6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                   0,07                   0,07            0,07          0,07          0,07
+          Transport Activities
+     b. Komunikasi / Communication                                                             0,22                   0,25            0,26          0,29          0,31
+8.   KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                                     3,38                   3,41            3,44          3,48          3,51
+     FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+     a. Bank / Banking                                                                         1,13                   1,12            1,17          1,18          1,18
+     b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                         1,06                   1,10            1,09          1,12          1,15
+        Keuangan/Non Bank Financial Institution and Supporting Activities
+     c. Sewa Bangunan / Rent of Building                                                       1,18                   1,19            1,16          1,17          1,17
+     d. Jasa Perusahaan / Business Services                                                    0,01                   0,01            0,01          0,01          0,01
+9.   JASA-JASA / SERVICES                                                                  18,24                  18,03            18,25        18,27         18,28
+     a. Pemerintahan Umum & Pertahanan /Public Administration                              13,04                  12,77            13,03        13,03         13,02
+       and Deffense
+     b. Swasta / Private Services                                                              5,20                   5,26            5,22          5,24          5,27
+       1. Sosial Kemasyarakatan/Social & Community Services                                    1,24                   1,23            1,23          1,23          1,25
+       2. Hiburan dan Rekreasi/Entertainment & Cultural Services                               0,44                   0,47            0,47          0,48          0,50
+       3. Perorangan dan Rumahtangga/ Personal & Household Services                            3,52                   3,56            3,52          3,52          3,52
+
+
+     PDRB/GRDP                                                                           100,00                 100,00           100,00       100,00         100,00
+
+
+Catatan/Note : *) Angka diperbaiki/Revised figures
+                 **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                         151
+
+===== PDF PAGE 157 =====
+                                                                                   Tabel / Table 80
+                                                     Distribusi Persentase PDRB Kabupaten Padang Pariaman Atas Dasar Harga Berlaku
+                                                                         Menurut Lapangan Usaha 2005 - 2009
+                                                     Percentage Distribution of GRDP of Padang Pariaman Regency at Current Prices
+                                                                           by Industrial Origin, 2005 - 2009
+
+
+
+     LAPANGAN USAHA/ INDUSTRIAL ORIGIN                                               2005                 2006              2007          2008 *)       2009 **)
+
+                                      (1)                                             (2)                  (3)               (4)           (5)           (6)
+1.   PERTANIAN/AGRICULTURE                                                              30,69                   26,39          25,27         24,75         24,30
+     a. Tanaman Pangan & Hortikultura/Farm Food Crops                                   21,33                   18,12          16,98         16,65         16,37
+     b. Perkebunan / Farm Non Food Crops                                                    3,21                 2,84              2,89          2,90          2,86
+     c. Peternakan/Livestock                                                                2,15                 1,86              1,80          1,69          1,67
+     d. Kehutanan/Forestry                                                                  0,36                 0,33              0,35          0,35          0,34
+     e. Perikanan/Fishery                                                                   3,63                 3,23              3,24          3,17          3,05
+2.   PERTAMBANGAN & PENGGALIAN/                                                             4,24                 3,79              3,84          3,81          3,55
+     MINING & QUARRYING
+     a. Migas dan Gas Bumi/Crude Petroleum & Natural Gas                                X                      X               X            X              X
+     b. Non Migas / Non Crude Petroleum & Natural Gas                                   X                      X               X            X              X
+     c. Penggalian / Quarrying                                                              4,24                 3,79              3,84          3,81          3,55
+3.   INDUSTRI PENGOLAHAN /                                                              12,14                   10,33          11,05         11,38         11,17
+     MANUFACTURING INDUSTRIES
+     a. Industri Migas/Oil & Gas Manufacturing Industries                               X                      X               X            X              X
+     b. Industri Tanpa Migas/Non Oil & Gas Manufacturing                                12,14                   10,33          11,05         11,38         11,17
+
+
+
+
+                                                                                                                    .id
+       Industries
+4.   LISTRIK, GAS & AIR BERSIH /                                                            1,81                 1,58              1,56          1,45          1,40
+
+
+
+
+                                                                                                      go
+     ELECTRICITY, GAS & WATER SUPPLY
+     a. Listrik / Electricity                                                               1,76                 1,53              1,51          1,40          1,35
+
+
+
+
+                                                                                                    s.
+     b. G a s/ Gas                                                                      X                      X               X            X              X
+     c. Air Bersih / Water Supply                                                           0,06                 0,05              0,05          0,05          0,05
+5.   BANGUNAN / CONSTRUCTION
+                                                                                            p
+                                                                                            5,55                 5,01              4,88          4,67          4,52
+                                                                                         .b
+6.   PERDAGANGAN, HOTEL & RESTORAN /                                                    12,86                   11,13          11,02         10,95         10,94
+                                                                                  r
+     TRADE, HOTEL & RESTAURANT
+                                                                               ba
+
+     a. Perdagangan Besar dan Eceran/Wholesale & Retail Trade                           12,54                   10,84          10,75         10,70         10,68
+     b. H o t e l / Hotels                                                                  0,00                 0,00              0,00          0,00          0,00
+                                                                     um
+
+
+
+     c. Restoran / Restaurant                                                               0,32                 0,28              0,26          0,25          0,26
+7.   PENGANGKUTAN DAN KOMUNIKASI /                                                      10,84                   22,51          23,46         24,56         25,92
+     TRANSPORT & COMMUNICATION
+                                                             //s
+
+
+
+
+     a. Angkutan / Transport                                                            10,41                   22,11          23,04         24,14         25,44
+       1. Kereta Api /Railway Transport                                                     0,02               X               X            X              X
+                                                  s:
+
+
+
+
+       2. Jalan Raya (Darat) / Road Transport                                               4,71                 4,78              4,50          4,53          4,51
+       3. Angkutan Laut/Sea Transport                                                   X                      X               X            X              X
+                                                tp
+
+
+
+
+       4. Angkutan Sungai, Danau & Penyebrangan /Inland Water Transport                 X                      X               X            X              X
+                                         ht
+
+
+
+
+       5. Angkutan Udara / Air Transport                                                    5,09               X               X            X              X
+       6. Jasa Penunjang Angkutan / Supporting and Auxiliary                                0,59                 0,66              0,67          0,66          0,62
+          Transport Activities
+     b. Komunikasi / Communication                                                          0,44                 0,40              0,42          0,42          0,48
+8.   KEUANGAN, PERSEWAAN & JASA PERUSAHAAN                                                  2,56                 2,34              2,32          2,27          2,22
+     FINANCE, RENT OF BUILDING & BUSINESS SERVICES
+     a. Bank / Banking                                                                      0,60                 0,49              0,54          0,54          0,53
+     b. Lembaga Keuangan Tanpa Bank & Jasa Penunjang /                                      0,62                 0,58              0,56          0,54          0,53
+        Keuangan/Non Bank Financial Institution and Supporting Activities
+     c. Sewa Bangunan / Rent of Building                                                    1,33                 1,26              1,21          1,17          1,15
+     d. Jasa Perusahaan / Business Services                                                 0,02                 0,02              0,02          0,02          0,02
+9.   JASA-JASA / SERVICES                                                               19,30                   16,93          16,61         16,17         15,99
+     a. Pemerintahan Umum & Pertahanan /Public Administration                           16,22                   14,23          13,94         13,58         13,49
+       and Deffense
+     b. Swasta / Private Services                                                           3,08                 2,70              2,67          2,59          2,50
+       1. Sosial Kemasyarakatan/Social & Community Services                                 1,20                 1,09              1,05          0,99          0,98
+       2. Hiburan dan Rekreasi/Entertainment & Cultural Services                            0,06                 0,05              0,05          0,04          0,04
+       3. Perorangan dan Rumahtangga/ Personal & Household Services                         1,82                 1,56              1,58          1,57          1,48
+
+
+     PDRB/GRDP                                                                         100,00                  100,00         100,00       100,00         100,00
+
+
+Catatan/Note : *) Angka diperbaiki/Revised figures
+                 **) Angka sementara/Preliminary figures
+
+
+
+
+                                                                                        152
