@@ -1,0 +1,59 @@
+{
+  "available_unemployment_years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "causal_claim_created_from_m14_association": false,
+  "completed_quasi_causal_study_count": 1,
+  "covid_complete_pre_event_years": [
+    2018,
+    2019
+  ],
+  "criterion": "causal evidence library containing completed designs and fail-closed identification attempts",
+  "entry_count": 3,
+  "failed_identification_attempts_retained": true,
+  "genuinely_new_post_m14_unemployment_years": [
+    2025
+  ],
+  "inputs": {
+    "m10_panel": {
+      "path": "data/analysis/engine/panel_v1/m10-panel-wide.csv",
+      "sha256": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde"
+    },
+    "m14_manifest": {
+      "path": "data/manifests/milestone14_bottleneck_association.json",
+      "sha256": "ff953fa9a240b1b7abb0f99af1b452799212f645a613ace3cfad8ea8d287df04"
+    },
+    "m8_complete_audit": {
+      "path": "data/manifests/milestone8_complete_audit.json",
+      "sha256": "6d8cd5dbe796758634028b213007cc4d2dcb51cc226947c77f215c5d05bcf731"
+    }
+  },
+  "milestone": 15,
+  "milestone15_complete": true,
+  "minimum_covid_pre_event_years_required": 3,
+  "monetary_wasted_potential_estimated": false,
+  "new_causal_model_fit_count": 0,
+  "not_identification_ready_count": 2,
+  "output": {
+    "path": "data/analysis/engine/causal_evidence_v1/m15-causal-evidence-library.csv",
+    "sha256": "673b6d31fe90ddeae4aa3769ab423857ed013f789704f383b46a655960b14f13"
+  },
+  "phase": "final_analytical_research_engine",
+  "rainfall_unemployment_discovery_years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "same_data_m14_signal_upgraded_to_causal_model": false,
+  "schema": "ranah-observatory/milestone15-causal-evidence-expansion/v1"
+}
