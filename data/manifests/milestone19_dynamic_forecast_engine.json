@@ -1,0 +1,159 @@
+{
+  "backtest_prediction_count": 285,
+  "backtest_prediction_count_per_target": 95,
+  "causal_analysis_performed": false,
+  "causal_claim_authorized": false,
+  "coefficient_diagnostic_row_count": 72,
+  "criterion": "strict one-year-ahead temporal forecasting benchmarked against own-lag persistence",
+  "final_forecast_year": 2026,
+  "forecast_2026_row_count": 57,
+  "forecast_blocked_target_count": 3,
+  "forecast_blocked_target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "forecast_intervals_from_out_of_time_residuals": true,
+  "forecast_is_guaranteed_future": false,
+  "forecast_qualified_target_count": 0,
+  "forecast_qualified_target_ids": [],
+  "geography_count": 19,
+  "include_target_lag": true,
+  "inputs": {
+    "design_gate": {
+      "path": "data/manifests/milestone19_design_gate.json",
+      "schema": "ranah-observatory/milestone19-design-gate/v1",
+      "sha256": "d07b57fe51194c1dfcdc692f8483d052b9eaff5eecb33ed2c4468da361500c51"
+    },
+    "m10_panel_manifest": {
+      "path": "data/manifests/milestone10_analytical_panel.json",
+      "schema": "ranah-observatory/milestone10-analytical-panel/v1",
+      "sha256": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433"
+    },
+    "m10_wide_panel": {
+      "path": "data/analysis/engine/panel_v1/m10-panel-wide.csv",
+      "sha256": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde"
+    },
+    "spec": {
+      "path": "research/MILESTONE19_DYNAMIC_FORECAST_ENGINE_SPEC.md",
+      "sha256": "1e3de528e291a03c73c53cc7c4f82e3e38a0dcc8b8b98fde3c2d69165c8dc9d4"
+    }
+  },
+  "milestone": 19,
+  "milestone19_complete": true,
+  "model_family": "pooled_autoregressive_ridge",
+  "model_frame_row_count": 133,
+  "model_target_years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "outer_forecast_years": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "outputs": {
+    "backtest_predictions": {
+      "path": "data/analysis/engine/dynamic_forecast_v1/m19-backtest-predictions.csv",
+      "sha256": "da94cedfd512c9cdfd13ae113de6d6f0eb878710766b2f393493fdaeb9e6a12a"
+    },
+    "coefficients": {
+      "path": "data/analysis/engine/dynamic_forecast_v1/m19-outer-fold-coefficients.csv",
+      "sha256": "fb96228bd4a74d7b9594509f50faae1606baa2487e2af6f417f68740db9dbd25"
+    },
+    "forecast_2026": {
+      "path": "data/analysis/engine/dynamic_forecast_v1/m19-forecast-2026.csv",
+      "sha256": "7605160c6caa1a3aacb42d28d8721149a891676c3f11574ffe7b73e428787e82"
+    },
+    "model_frame": {
+      "path": "data/analysis/engine/dynamic_forecast_v1/m19-model-frame.csv",
+      "sha256": "9fb0eb34441b6e028b1bb1e3bcd8df941edda2e412d946b3553ddb5ef5ae3cbe"
+    },
+    "target_summary": {
+      "path": "data/analysis/engine/dynamic_forecast_v1/m19-target-summary.csv",
+      "sha256": "0002a7c3b87552cc8fa660fea30d77af730d8a4bd56d7f3b60f760ebd8d12c88"
+    }
+  },
+  "penalty_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "persistence_benchmark_used": true,
+  "phase": "post_phase2_predictive_evidence_expansion",
+  "policy_counterfactual_authorized": false,
+  "posthoc_algorithm_search_performed": false,
+  "qualification_requires_rmse_and_mae_improvement": true,
+  "regime_id": "sumbar_current_kabkota_dynamic_forecast_2019_2026_v1",
+  "schema": "ranah-observatory/milestone19-dynamic-forecast-engine/v1",
+  "strictly_out_of_time_backtest": true,
+  "structural_feature_ids": [
+    "mean_years_schooling",
+    "labor_force_participation",
+    "rice_yield"
+  ],
+  "target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "target_results": [
+    {
+      "backtest_prediction_count": 95,
+      "dynamic_ridge_mae": 0.4051223309048517,
+      "dynamic_ridge_rmse": 0.49454931822760406,
+      "forecast_qualified": false,
+      "mae_improvement_vs_persistence": -0.04154338353643078,
+      "outer_forecast_end_year": 2025,
+      "outer_forecast_start_year": 2021,
+      "persistence_mae": 0.36357894736842095,
+      "persistence_rmse": 0.46490746108061226,
+      "qualification_rule": "dynamic_ridge_rmse_and_mae_both_strictly_lower_than_persistence",
+      "regime_id": "sumbar_current_kabkota_dynamic_forecast_2019_2026_v1",
+      "rmse_improvement_vs_persistence": -0.0296418571469918,
+      "target_direction": "lower_is_favorable",
+      "target_id": "poverty_rate"
+    },
+    {
+      "backtest_prediction_count": 95,
+      "dynamic_ridge_mae": 0.6599297270441198,
+      "dynamic_ridge_rmse": 0.9015834918084266,
+      "forecast_qualified": false,
+      "mae_improvement_vs_persistence": -0.09108762178096186,
+      "outer_forecast_end_year": 2025,
+      "outer_forecast_start_year": 2021,
+      "persistence_mae": 0.5688421052631579,
+      "persistence_rmse": 0.8307941666673045,
+      "qualification_rule": "dynamic_ridge_rmse_and_mae_both_strictly_lower_than_persistence",
+      "regime_id": "sumbar_current_kabkota_dynamic_forecast_2019_2026_v1",
+      "rmse_improvement_vs_persistence": -0.07078932514112202,
+      "target_direction": "lower_is_favorable",
+      "target_id": "unemployment_rate"
+    },
+    {
+      "backtest_prediction_count": 95,
+      "dynamic_ridge_mae": 6.596795503368171,
+      "dynamic_ridge_rmse": 12.762259443451685,
+      "forecast_qualified": false,
+      "mae_improvement_vs_persistence": -5.025532345473435,
+      "outer_forecast_end_year": 2025,
+      "outer_forecast_start_year": 2021,
+      "persistence_mae": 1.571263157894737,
+      "persistence_rmse": 2.576326434040695,
+      "qualification_rule": "dynamic_ridge_rmse_and_mae_both_strictly_lower_than_persistence",
+      "regime_id": "sumbar_current_kabkota_dynamic_forecast_2019_2026_v1",
+      "rmse_improvement_vs_persistence": -10.18593300941099,
+      "target_direction": "higher_is_favorable",
+      "target_id": "real_grdp_growth"
+    }
+  ]
+}
