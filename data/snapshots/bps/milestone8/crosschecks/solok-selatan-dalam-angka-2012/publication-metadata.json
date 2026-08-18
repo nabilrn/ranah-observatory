@@ -1,0 +1,26 @@
+{
+  "domain": "1310",
+  "final_download_url": "https://webapi.bps.go.id/download.php?f=F5lZaMUdQQ4ki+jYoo6SOFowSVhza2oyVWc1QWJqblFxbjM1Z2wxNFFVenVYQ3JmblduMXNnV0tQTWlIanJjY2txK0tQQUgrUGo2MUMxNjNXcVBucVZpQ28yS3lVQW05dzNBOG5ma1dTUy9XdS9MVjlRekQ3WjlneWN0dEV4bUt1VWlrNjYveGNIakUwTlZ6aG5jL1BNRk5tZkV1MXhyWTZmWlg1bDRHQ1ZCS0VNSHU4V0hEN0VKbW9nT3VwWTlVRGFyakhsNEV3NTV5TmNmVXNCZXBvMGNXM1RaNXJENnNmZENDNFYzZGpZSUJHSlMvU2pmTjZSZ1B3RHhrYmxkOTg1RXZvdzVuVE1Ra2Y0WHc=",
+  "keyword": "Solok Selatan Dalam Angka 2012",
+  "publication": {
+    "abstract": "",
+    "cover": "https://webapi.bps.go.id/cover.php?f=1Hmb7sT6y9oWOIICWWGnXkp2SmtIdmRQSE1lZEkza1QyZldxQ3doQlYxNjFtUGh1dDRKYmRBQmZDdllOSjZQaGNCNVpZdjY1ekJjNk1hV3M2LzJkVW9YOTgyVHdRSWVqZ1lSK0Q5QTdWdFVUbFRWL2JyeEVFblhPU0hvT2ZMRUkxeDM5TGYxTTVONG54K2l5",
+    "id_subject_csa": null,
+    "issn": "",
+    "pdf": "https://webapi.bps.go.id/download.php?f=F5lZaMUdQQ4ki+jYoo6SOFowSVhza2oyVWc1QWJqblFxbjM1Z2wxNFFVenVYQ3JmblduMXNnV0tQTWlIanJjY2txK0tQQUgrUGo2MUMxNjNXcVBucVZpQ28yS3lVQW05dzNBOG5ma1dTUy9XdS9MVjlRekQ3WjlneWN0dEV4bUt1VWlrNjYveGNIakUwTlZ6aG5jL1BNRk5tZkV1MXhyWTZmWlg1bDRHQ1ZCS0VNSHU4V0hEN0VKbW9nT3VwWTlVRGFyakhsNEV3NTV5TmNmVXNCZXBvMGNXM1RaNXJENnNmZENDNFYzZGpZSUJHSlMvU2pmTjZSZ1B3RHhrYmxkOTg1RXZvdzVuVE1Ra2Y0WHc=",
+    "pub_id": "70d4c08198648cf11a27982c",
+    "rl_date": "2013-01-23",
+    "sch_date": "2013-01-23",
+    "size": " MB",
+    "subject_csa": null,
+    "title": "Solok Selatan Dalam Angka 2012",
+    "updt_date": null
+  },
+  "raw_storage_policy": "raw PDF is gitignored and uploaded as CI artifact; Git retains metadata, SHA-256 and deterministic derived text",
+  "release_year": 2013,
+  "requested_publication_id": "70d4c08198648cf11a27982c",
+  "resolution_method": "BPS WebAPI constrained publication list; exact historical publication ID + title semantics",
+  "resolved_pdf_url": "https://webapi.bps.go.id/download.php?f=F5lZaMUdQQ4ki+jYoo6SOFowSVhza2oyVWc1QWJqblFxbjM1Z2wxNFFVenVYQ3JmblduMXNnV0tQTWlIanJjY2txK0tQQUgrUGo2MUMxNjNXcVBucVZpQ28yS3lVQW05dzNBOG5ma1dTUy9XdS9MVjlRekQ3WjlneWN0dEV4bUt1VWlrNjYveGNIakUwTlZ6aG5jL1BNRk5tZkV1MXhyWTZmWlg1bDRHQ1ZCS0VNSHU4V0hEN0VKbW9nT3VwWTlVRGFyakhsNEV3NTV5TmNmVXNCZXBvMGNXM1RaNXJENnNmZENDNFYzZGpZSUJHSlMvU2pmTjZSZ1B3RHhrYmxkOTg1RXZvdzVuVE1Ra2Y0WHc=",
+  "schema": "ranah-observatory/milestone8-bps-anomaly-crosscheck-source/v1",
+  "source_id": "m8_solok_selatan_grdp_crosscheck_2012"
+}
