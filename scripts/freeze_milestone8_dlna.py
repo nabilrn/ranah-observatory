@@ -22,6 +22,7 @@ GFDRR_CONTEXT_URL = "https://www.gfdrr.org/en/indonesia-2009-pdna-undertaken-aft
 GFDRR_LEGACY_PDF_URL = "https://www.gfdrr.org/sites/gfdrr/files/documents/GFDRR_Indonesia_DLNA.2009.EN_.pdf"
 BNPB_CATALOG_URL = "https://perpustakaan.bnpb.go.id/inlislite/opac/detail-opac?id=1663"
 USER_AGENT = "ranah-observatory/0.1 (+https://github.com/nabilrn/ranah-observatory)"
+EXPECTED_SNAPSHOT_COUNT = 4
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -136,7 +137,7 @@ def update_manifest(snapshot: dict[str, Any]) -> None:
     snapshots.sort(key=lambda row: str(row.get("source_plan_id", "")))
     manifest["snapshots"] = snapshots
     manifest["snapshot_count"] = len(snapshots)
-    manifest["source_bytes_frozen"] = len(snapshots) == 3
+    manifest["source_bytes_frozen"] = len(snapshots) == EXPECTED_SNAPSHOT_COUNT
     manifest["outcome_extracted"] = False
     manifest["exposure_extracted"] = False
     manifest["causal_effect_estimated"] = False
