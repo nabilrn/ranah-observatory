@@ -116,7 +116,7 @@ jobs:
         run: python -m scripts.audit_milestone8_complete --require-complete
 
       - name: Run Milestone 8 unit tests
-        run: pytest -q tests/test_milestone8_design.py tests/test_milestone8_complete.py
+        run: PYTHONPATH=. pytest -q tests/test_milestone8_design.py tests/test_milestone8_complete.py
 
       - name: Require byte-identical committed M8 analytical artifacts
         shell: bash
