@@ -1,0 +1,4 @@
+target_id,target_direction,crossfit_prediction_count,outer_geography_count,target_year_count,model_rmse,model_mae,naive_same_year_peer_mean_rmse,naive_same_year_peer_mean_mae,rmse_improvement_vs_naive_percent,mae_improvement_vs_naive_percent,benchmark_qualified,substantive_expected_performance_interpretation_authorized,support_warning_prediction_count,outer_selected_penalty_counts_json
+poverty_rate,lower_is_favorable,114,19,6,1.9592487017,1.36445121726,2.54973136647,1.72840155945,23.1586226116,21.0570477796,true,true,33,"{""100"":19}"
+unemployment_rate,lower_is_favorable,114,19,6,1.71435086226,1.21813636511,2.03870293834,1.35492202729,15.9097272084,10.0954637554,true,true,33,"{""10"":2,""100"":17}"
+real_grdp_growth,higher_is_favorable,114,19,6,0.995429958163,0.422501931298,1.00651412261,0.442231968811,1.10124281398,4.46146794092,true,true,33,"{""10"":6,""100"":13}"
