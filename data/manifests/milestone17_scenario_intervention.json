@@ -1,0 +1,59 @@
+{
+  "all_preregistered_feature_target_mappings_retained": true,
+  "blocked_intervention_scenario_count": 2,
+  "causal_policy_counterfactual_estimated": false,
+  "cost_benefit_analysis_performed": false,
+  "criterion": "transparent scenario semantics and predictive sensitivity with fail-closed intervention claims",
+  "desired_direction_selected_after_coefficient_inspection": false,
+  "feature_count": 5,
+  "forecast_authorized": false,
+  "implementation_horizon_estimated": false,
+  "inputs": {
+    "m11_manifest": {
+      "path": "data/manifests/milestone11_expected_performance_v2.json",
+      "sha256": "faf3da7549b7d4cca2633d1d407fd682f7e7ad154d9c98839a064bc14c451936"
+    },
+    "m11_outer_fold_coefficients": {
+      "path": "data/analysis/engine/expected_performance_v2/m11-outer-fold-coefficients.csv",
+      "sha256": "928481c6e09858f2dae7b3c7700addf3f70aa1466da8d21d1c39ee2dffba69d8"
+    },
+    "m14_manifest": {
+      "path": "data/manifests/milestone14_bottleneck_association.json",
+      "sha256": "ff953fa9a240b1b7abb0f99af1b452799212f645a613ace3cfad8ea8d287df04"
+    },
+    "m15_manifest": {
+      "path": "data/manifests/milestone15_causal_evidence_expansion.json",
+      "sha256": "0c076d6475308a01c977ec045775372df767a647a7325262cbf837d802c8ec5c"
+    },
+    "m16_manifest": {
+      "path": "data/manifests/milestone16_spatial_climate_risk.json",
+      "sha256": "58bc5020e8cad19a23614da16feed2813a969ad321cd51bedf8bd899510c5800"
+    }
+  },
+  "m14_rainfall_association_promoted_to_policy_effect": false,
+  "m15_identification_blocks_overridden": false,
+  "m16_risk_synthesis_block_overridden": false,
+  "milestone": 17,
+  "milestone17_complete": true,
+  "model_sensitivity_mapping_count": 15,
+  "monetary_wasted_potential_estimated": false,
+  "outer_fold_count_per_mapping": 19,
+  "outputs": {
+    "model_sensitivity_mappings": {
+      "path": "data/analysis/engine/scenario_intervention_v1/m17-model-sensitivity-mappings.csv",
+      "sha256": "d18e176a14c62305a3a51ff172b051c135ef063a8f301a8b1397c7ba4ced8fbc"
+    },
+    "scenario_library": {
+      "path": "data/analysis/engine/scenario_intervention_v1/m17-scenario-library.csv",
+      "sha256": "003ce7db9c87c611d30af7342b38c552b4448f362aca966b1aeeba70016cf141"
+    }
+  },
+  "perturbation_standardized_units": 0.5,
+  "phase": "final_analytical_research_engine",
+  "policy_recommendation_authorized": false,
+  "quantitative_model_sensitivity_scenario_count": 5,
+  "scenario_count": 7,
+  "schema": "ranah-observatory/milestone17-scenario-intervention/v1",
+  "symmetric_perturbation": true,
+  "target_count": 3
+}

@@ -1,0 +1,90 @@
+name: Milestone 17 Scenario Intervention Reproducibility
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone17-scenario-intervention-repro.yml"
+      - "research/MILESTONE17_SCENARIO_INTERVENTION_SPEC.md"
+      - "scripts/build_milestone17_scenario_intervention.py"
+      - "scripts/audit_milestone17_scenario_intervention.py"
+      - "tests/test_milestone17_scenario_intervention.py"
+      - "docs/MILESTONE17_SCENARIO_INTERVENTION.md"
+      - "data/manifests/milestone17_scenario_intervention.json"
+      - "data/analysis/engine/scenario_intervention_v1/**"
+      - "data/manifests/milestone11_expected_performance_v2.json"
+      - "data/analysis/engine/expected_performance_v2/m11-outer-fold-coefficients.csv"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/manifests/milestone15_causal_evidence_expansion.json"
+      - "data/manifests/milestone16_spatial_climate_risk.json"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone17-scenario-intervention-repro.yml"
+      - "research/MILESTONE17_SCENARIO_INTERVENTION_SPEC.md"
+      - "scripts/build_milestone17_scenario_intervention.py"
+      - "scripts/audit_milestone17_scenario_intervention.py"
+      - "tests/test_milestone17_scenario_intervention.py"
+      - "docs/MILESTONE17_SCENARIO_INTERVENTION.md"
+      - "data/manifests/milestone17_scenario_intervention.json"
+      - "data/analysis/engine/scenario_intervention_v1/**"
+      - "data/manifests/milestone11_expected_performance_v2.json"
+      - "data/analysis/engine/expected_performance_v2/m11-outer-fold-coefficients.csv"
+      - "data/manifests/milestone14_bottleneck_association.json"
+      - "data/manifests/milestone15_causal_evidence_expansion.json"
+      - "data/manifests/milestone16_spatial_climate_risk.json"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require Research Foundation remains complete
+        run: python -m scripts.audit_research_foundation_complete --require-complete
+
+      - name: Require M11 expected-performance engine remains complete
+        run: python -m scripts.audit_milestone11_expected_performance_v2 --require-complete
+
+      - name: Require M14 association engine remains complete
+        run: python -m scripts.audit_milestone14_bottleneck_association --require-complete
+
+      - name: Require M15 causal evidence library remains complete
+        run: python -m scripts.audit_milestone15_causal_evidence_expansion --require-complete
+
+      - name: Require M16 spatial/climate engine remains complete
+        run: python -m scripts.audit_milestone16_spatial_climate_risk --require-complete
+
+      - name: Rebuild M17 scenario engine
+        run: python -m scripts.build_milestone17_scenario_intervention
+
+      - name: Audit M17 completion
+        run: python -m scripts.audit_milestone17_scenario_intervention --require-complete
+
+      - name: Run M17 focused tests
+        run: python -m unittest tests.test_milestone17_scenario_intervention -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Require byte-identical committed M17 outputs
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/scenario_intervention_v1 \
+            data/manifests/milestone17_scenario_intervention.json
