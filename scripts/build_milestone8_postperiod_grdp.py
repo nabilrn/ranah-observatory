@@ -109,6 +109,10 @@ def try_growth_crosscheck(text: str, levels: list[dict[str, Any]]) -> dict[str, 
         block = page(text, 414)
         if "13.1.3" not in block or "Pertumbuhan" not in block:
             raise RuntimeError("Table 13.1.3 marker/title missing")
+        # Table 13.1.2 prints the city as "Kota Sawah Lunto", while
+        # Table 13.1.3 uses the standard spelling "Kota Sawahlunto".
+        # Normalize only this label before region slicing; numeric content is untouched.
+        block = block.replace("Kota Sawahlunto", "Kota Sawah Lunto")
         reported: dict[tuple[str, int], float] = {}
         for (geography_id, _geography_name, source_label), region in ordered_regions(block, "Sumber:"):
             values = GROWTH_PATTERN.findall(region)
