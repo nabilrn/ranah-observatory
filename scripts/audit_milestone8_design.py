@@ -31,6 +31,7 @@ EXPECTED_SOURCE_IDS = {
     "m8_usgs_shakemap",
     "m8_big_fixed_boundary",
     "m8_grdp_pre",
+    "m8_grdp_pre_national",
     "m8_grdp_post",
     "m8_padang_validation",
     "m8_padang_pariaman_validation",
@@ -137,7 +138,6 @@ def audit() -> dict[str, Any]:
     if gate.get("housing_damage_zero_fill_forbidden") is not True:
         errors.append("Milestone 8 must forbid zero-filling unreported DLNA geographies")
 
-    # Claim strength stays locked until a later model/audit revision closes identification gates.
     if gate.get("quasi_causal_effect_estimated") is not False:
         errors.append("Milestone 8 foundation must not yet claim an estimated quasi-causal effect")
     if gate.get("causal_claim_authorized") is not False:
@@ -169,6 +169,14 @@ def audit() -> dict[str, Any]:
         errors.append("USGS ShakeMap must remain the primary treatment-exposure source")
     if source_by_id.get("m8_damage_dlna", {}).get("role") != "secondary_damage_validation":
         errors.append("DLNA housing damage must remain secondary validation after Amendment 1")
+    if source_by_id.get("m8_grdp_pre_national", {}).get("role") != "outcome_preperiod_primary":
+        errors.append("National BPS 2005-2009 publication must remain the primary pre-period outcome source")
+    if source_by_id.get("m8_grdp_pre_national", {}).get("required_before_fit") != "true":
+        errors.append("National BPS pre-period outcome source must remain required before model fit")
+    if source_by_id.get("m8_grdp_pre", {}).get("role") != "outcome_preperiod_context":
+        errors.append("Sumatera Barat 2005-2009 publication must remain context/cross-check after qualification")
+    if source_by_id.get("m8_grdp_pre", {}).get("required_before_fit") != "false":
+        errors.append("Context-only Sumatera Barat publication must not masquerade as the required primary pre-period level source")
 
     geography_ids = [row.get("geography_id", "") for row in geography_rows]
     if len(geography_rows) != 19:
