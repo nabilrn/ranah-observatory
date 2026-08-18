@@ -1,0 +1,99 @@
+{
+  "calibration_band_selected_before_frontier_results": true,
+  "calibration_rate_band": [
+    0.04,
+    0.2
+  ],
+  "causal_claim": false,
+  "classic_dea_computed": false,
+  "classic_halfnormal_sfa_computed": false,
+  "district_alternative_method": "structural_neighbor_favorable_envelope",
+  "district_method_summary_row_count": 3,
+  "district_primary_method": "conditional_favorable_residual_quantile",
+  "district_row_count": 342,
+  "district_scope": "current_sumbar_19_kabkota_2019_2024",
+  "district_target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "focal_geography_excluded_from_primary_frontier_calibration": true,
+  "frontier_distance_truncated_at_zero": false,
+  "higher_is_favorable_quantile": 0.9,
+  "linear_quantile_regression_computed": false,
+  "lower_is_favorable_quantile": 0.1,
+  "m11_benchmark_qualified_target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "m11_required": true,
+  "m7_national_anchor_required": true,
+  "method_qualification_status": {
+    "classic_dea": "rejected",
+    "classic_halfnormal_sfa": "deferred",
+    "conditional_favorable_residual_quantile": "qualified",
+    "linear_quantile_regression": "deferred",
+    "national_m7_favorable_residual_quantile": "qualified",
+    "structural_neighbor_favorable_envelope": "qualified"
+  },
+  "methods_selected_before_frontier_results": true,
+  "milestone": 12,
+  "milestone12_complete": true,
+  "monetary_wasted_potential_claim": false,
+  "national_multi_year_loss_accumulation_performed": false,
+  "national_population_aggregation_performed": false,
+  "national_scope": "current_38_province_2024_m7_conditional_anchor",
+  "neighbor_favorable_count": 2,
+  "neighbor_k": 6,
+  "neighbor_k_sensitivity": [
+    5,
+    7
+  ],
+  "neighbor_parameters_selected_before_frontier_results": true,
+  "neighbor_sensitivity_row_count": 684,
+  "outputs": {
+    "district_frontier": {
+      "path": "data/analysis/engine/frontier_v1/m12-district-frontier.csv",
+      "sha256": "43e7eea8e4ac9cc4c46fb4e1da877e25e16739e5a14bf6584ab0525143b64e24"
+    },
+    "district_method_summary": {
+      "path": "data/analysis/engine/frontier_v1/m12-district-method-summary.csv",
+      "sha256": "714987816ef8832523a28cf6e96de601907718e31fe9584291ec1716fc4784eb"
+    },
+    "national_west_sumatra_frontier": {
+      "path": "data/analysis/engine/frontier_v1/m12-national-west-sumatra-frontier.json",
+      "sha256": "32d23227bbcfc3ebf7b90627724c2e111cafc1eba62cfee041b3fb31c2984c3f"
+    },
+    "neighbor_sensitivity": {
+      "path": "data/analysis/engine/frontier_v1/m12-neighbor-sensitivity.csv",
+      "sha256": "c2b6c75321331bb383c1a53fbb6a0c0fdd3959815ec9078bf03371bb503098e3"
+    }
+  },
+  "phase": "final_analytical_research_engine",
+  "policy_counterfactual_claim": false,
+  "posthoc_neighbor_parameter_replacement_performed": false,
+  "posthoc_quantile_retuning_performed": false,
+  "primary_frontier_calibrated_target_count": 3,
+  "primary_frontier_calibrated_target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "primary_frontier_uncalibrated_target_ids": [],
+  "quantiles_selected_before_frontier_results": true,
+  "same_year_nonfocal_peers_only_for_neighbor_method": true,
+  "schema": "ranah-observatory/milestone12-attainable-frontier/v1",
+  "source_inputs": {
+    "data/analysis/engine/expected_performance_v2/m11-crossfit-predictions.csv": "d7026ba5108757a0bb27fbdf47df522770716163b7fcc3f08309620a3fbd45d8",
+    "data/analysis/engine/expected_performance_v2/m11-model-frame.csv": "e53b3162a6ee732cc5f70a88c2ac6f3603ba7007ced81d1f7759da2aa7e5df0a",
+    "data/analysis/expected_performance/m7-ridge-selected-loocv-predictions.csv": "7848d476f59b3bf0e23e13fcbf26dc0533760699dafff40387a655d3e058b431",
+    "data/analysis/expected_performance/m7-west-sumatra-expected-performance.json": "1e3c39fbed0725809844696fd95518fd5455de15c1cfdfdece945514c4927c6f",
+    "data/manifests/milestone11_expected_performance_v2.json": "faf3da7549b7d4cca2633d1d407fd682f7e7ad154d9c98839a064bc14c451936",
+    "data/manifests/milestone12_design_gate.json": "ea94b5686f8cae36fa14c4bccc35882fe36b1e2905db3db85a5cbd4980d5f6c9",
+    "data/manifests/milestone7_expected_performance_audit.json": "525f6e2391994bfcf6a3ba1dac01afa1e1c34a683e1672cf36019b9adac3b8dd",
+    "data/registries/milestone12_frontier_method_qualification.csv": "0423b7146c35e1054edef418e96d0c1d5cad5220bd2c475becf1a4464cc5485e",
+    "research/MILESTONE12_ATTAINABLE_FRONTIER_SPEC.md": "2520c175cec6299d7b44d40a2e36293b1962ef99117ccff4d56022c4d8df55d3"
+  },
+  "theoretical_maximum_claim": false
+}

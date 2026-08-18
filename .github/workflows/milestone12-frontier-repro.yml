@@ -1,0 +1,85 @@
+name: Milestone 12 Frontier Reproducibility
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/milestone12-frontier-repro.yml"
+      - "research/MILESTONE12_ATTAINABLE_FRONTIER_SPEC.md"
+      - "scripts/build_milestone12_attainable_frontier.py"
+      - "scripts/audit_milestone12_attainable_frontier.py"
+      - "tests/test_milestone12_attainable_frontier.py"
+      - "docs/MILESTONE12_ATTAINABLE_FRONTIER.md"
+      - "data/registries/milestone12_frontier_method_qualification.csv"
+      - "data/manifests/milestone12_design_gate.json"
+      - "data/manifests/milestone12_attainable_frontier.json"
+      - "data/analysis/engine/frontier_v1/**"
+      - "data/analysis/engine/expected_performance_v2/**"
+      - "data/manifests/milestone11_expected_performance_v2.json"
+      - "data/analysis/expected_performance/**"
+      - "data/manifests/milestone7_expected_performance_audit.json"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone12-frontier-repro.yml"
+      - "research/MILESTONE12_ATTAINABLE_FRONTIER_SPEC.md"
+      - "scripts/build_milestone12_attainable_frontier.py"
+      - "scripts/audit_milestone12_attainable_frontier.py"
+      - "tests/test_milestone12_attainable_frontier.py"
+      - "docs/MILESTONE12_ATTAINABLE_FRONTIER.md"
+      - "data/registries/milestone12_frontier_method_qualification.csv"
+      - "data/manifests/milestone12_design_gate.json"
+      - "data/manifests/milestone12_attainable_frontier.json"
+      - "data/analysis/engine/frontier_v1/**"
+      - "data/analysis/engine/expected_performance_v2/**"
+      - "data/manifests/milestone11_expected_performance_v2.json"
+      - "data/analysis/expected_performance/**"
+      - "data/manifests/milestone7_expected_performance_audit.json"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require Research Foundation 9/9 remains complete
+        run: python -m scripts.audit_research_foundation_complete --require-complete
+
+      - name: Require Milestone 10 analytical substrate remains complete
+        run: python -m scripts.audit_milestone10_analytical_panel --require-complete
+
+      - name: Require Milestone 11 expected-performance engine remains complete
+        run: python -m scripts.audit_milestone11_expected_performance_v2 --require-complete
+
+      - name: Rebuild Milestone 12 empirical favorable frontier
+        run: python -m scripts.build_milestone12_attainable_frontier
+
+      - name: Enforce Milestone 12 completion audit
+        run: python -m scripts.audit_milestone12_attainable_frontier --require-complete
+
+      - name: Run Milestone 12 focused tests
+        run: python -m unittest tests.test_milestone12_attainable_frontier -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Require byte-identical committed M12 outputs
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/frontier_v1 \
+            data/manifests/milestone12_attainable_frontier.json
