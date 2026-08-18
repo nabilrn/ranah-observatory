@@ -1,0 +1,56 @@
+name: Milestone 19 dynamic forecast reproducibility
+
+on:
+  pull_request:
+    paths:
+      - research/MILESTONE19_DYNAMIC_FORECAST_ENGINE_SPEC.md
+      - docs/MILESTONE19_DYNAMIC_FORECAST_ENGINE.md
+      - data/manifests/milestone19_design_gate.json
+      - data/manifests/milestone19_dynamic_forecast_engine.json
+      - data/analysis/engine/dynamic_forecast_v1/**
+      - scripts/build_milestone19_dynamic_forecast_engine.py
+      - scripts/audit_milestone19_dynamic_forecast_engine.py
+      - tests/test_milestone19_dynamic_forecast_engine.py
+      - .github/workflows/milestone19-dynamic-forecast-repro.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Preserve committed M19 artifacts
+        run: |
+          mkdir -p /tmp/m19-committed
+          cp -a data/analysis/engine/dynamic_forecast_v1 /tmp/m19-committed/dynamic_forecast_v1
+          cp data/manifests/milestone19_dynamic_forecast_engine.json /tmp/m19-committed/milestone19_dynamic_forecast_engine.json
+
+      - name: Rebuild M19 artifacts
+        run: python scripts/build_milestone19_dynamic_forecast_engine.py
+
+      - name: Audit M19 outputs
+        run: python scripts/audit_milestone19_dynamic_forecast_engine.py
+
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Run focused M19 tests
+        run: python -m pytest -q tests/test_milestone19_dynamic_forecast_engine.py
+
+      - name: Verify byte-identical outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          diff -r /tmp/m19-committed/dynamic_forecast_v1 data/analysis/engine/dynamic_forecast_v1
+          cmp /tmp/m19-committed/milestone19_dynamic_forecast_engine.json data/manifests/milestone19_dynamic_forecast_engine.json
+          git diff --exit-code -- \
+            data/analysis/engine/dynamic_forecast_v1 \
+            data/manifests/milestone19_dynamic_forecast_engine.json
