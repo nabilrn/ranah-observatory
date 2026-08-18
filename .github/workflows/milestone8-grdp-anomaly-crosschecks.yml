@@ -8,13 +8,20 @@ on:
       - "scripts/freeze_milestone8_grdp_anomaly_crosschecks.py"
       - "scripts/extract_milestone8_grdp_anomaly_crosschecks.py"
       - ".github/workflows/milestone8-grdp-anomaly-crosschecks.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "scripts/freeze_milestone8_grdp_anomaly_crosschecks.py"
+      - "scripts/extract_milestone8_grdp_anomaly_crosschecks.py"
+      - ".github/workflows/milestone8-grdp-anomaly-crosschecks.yml"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: milestone8-grdp-anomaly-crosschecks
+  group: milestone8-grdp-anomaly-crosschecks-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
@@ -35,13 +42,25 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Require BPS API key
+        run: test -n "$BPS_API_KEY"
+
       - name: Install Poppler
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
 
       - name: Freeze local BPS crosscheck sources
-        run: python -m scripts.freeze_milestone8_grdp_anomaly_crosschecks
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.freeze_milestone8_grdp_anomaly_crosschecks 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 16 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 8 anomaly source freeze failure::$message"
+          exit 1
 
       - name: Upload raw crosscheck PDFs
         uses: actions/upload-artifact@v4
@@ -53,9 +72,19 @@ jobs:
           compression-level: 0
 
       - name: Extract deterministic crosscheck text
-        run: python -m scripts.extract_milestone8_grdp_anomaly_crosschecks
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.extract_milestone8_grdp_anomaly_crosschecks 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 16 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 8 anomaly text extraction failure::$message"
+          exit 1
 
       - name: Commit metadata, hashes, text and crosscheck manifest
+        if: github.event_name == 'push'
         shell: bash
         run: |
           set -euo pipefail
