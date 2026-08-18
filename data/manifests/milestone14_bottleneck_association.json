@@ -1,0 +1,71 @@
+{
+  "causal_analysis_performed": false,
+  "classification_thresholds": {
+    "abs_rank_association_min": 0.2,
+    "geo_loo_sign_retention_min": 0.9,
+    "permutation_p_max": 0.1,
+    "row_count_min": 60,
+    "target_year_count_min": 4,
+    "year_loo_sign_retention_min": 0.8
+  },
+  "core_pair_count": 8,
+  "criterion": "stable association screening between lagged non-M11-primary candidates and M13 adverse expected-gap signals",
+  "gap_object_primary": "m13_expected_gap_rmse_units",
+  "health_extension_pair_count": 3,
+  "inputs": {
+    "m10_panel": {
+      "path": "data/analysis/engine/panel_v1/m10-panel-wide.csv",
+      "sha256": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde"
+    },
+    "m13_gap_panel": {
+      "path": "data/analysis/engine/gap_decomposition_v1/m13-gap-panel.csv",
+      "sha256": "157a79d899d941409eb025343f006088b9d79974419a1de20cc9396988d3f0e8"
+    }
+  },
+  "m11_primary_feature_reuse_in_primary_screen": false,
+  "milestone": 14,
+  "milestone14_complete": true,
+  "monetary_wasted_potential_estimated": false,
+  "outcome_adjacent_underemployment_unemployment_primary_authorized": false,
+  "outputs": {
+    "association_screen": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-association-screen.csv",
+      "sha256": "375a78a8f11738212cf463658bb057d0c7c36073d9d69b7272ac3354f8a1a30f"
+    },
+    "favorable_peer_sensitivity": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-favorable-peer-sensitivity.csv",
+      "sha256": "8002b86f051b69ab32adf21276047089f0a1f62ec0694f29f64922c302427c70"
+    },
+    "geography_loo": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-geography-loo.csv",
+      "sha256": "3ed2192d2682c4740e7a82c5a677924e4e8f86143fffefde52c0661deeec4f3f"
+    },
+    "outcome_adjacent_sensitivity": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-outcome-adjacent-sensitivity.csv",
+      "sha256": "95722ea8c903348607b9a8922ea24b271e13268d64e5eb0901f2fd432aa9b8bd"
+    },
+    "year_loo": {
+      "path": "data/analysis/engine/bottleneck_association_v1/m14-year-loo.csv",
+      "sha256": "7fd33dd907104df39a851b3cb537f1bc3790035a1b3ea1bbec99ec552d9996a3"
+    }
+  },
+  "permutation_count": 4999,
+  "permutation_seed": 140014,
+  "phase": "final_analytical_research_engine",
+  "policy_priority_claim_authorized": false,
+  "positive_gap_semantics": "observed performance less favorable than M11 conditional expectation",
+  "primary_pair_count": 11,
+  "schema": "ranah-observatory/milestone14-bottleneck-association/v1",
+  "shap_or_black_box_feature_importance_performed": false,
+  "stable_association_signal_count": 1,
+  "stable_association_signals": [
+    {
+      "association_direction": "higher_candidate_larger_adverse_gap",
+      "candidate_id": "annual_rainfall",
+      "geography_block_permutation_p_two_sided": 0.0056,
+      "target_id": "unemployment_rate",
+      "within_year_rank_association": 0.45787545787545786
+    }
+  ],
+  "technical_efficiency_claim_authorized": false
+}
