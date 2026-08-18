@@ -1,0 +1,66 @@
+name: Milestone 13 Gap Decomposition Build
+
+on:
+  push:
+    branches:
+      - agent/phase2-m13-development-gap-decomposition
+    paths:
+      - "scripts/build_milestone13_development_gap_decomposition.py"
+      - "research/MILESTONE13_DEVELOPMENT_GAP_DECOMPOSITION_SPEC.md"
+      - "data/manifests/milestone13_design_gate.json"
+      - "data/analysis/engine/expected_performance_v2/**"
+      - "data/analysis/engine/frontier_v1/**"
+      - ".github/workflows/milestone13-gap-decomposition-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone13-gap-decomposition-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 13 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/phase2-m13-development-gap-decomposition
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build preregistered decomposition
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.build_milestone13_development_gap_decomposition 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 14 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 13 build failure::$message"
+          exit 1
+
+      - name: Commit deterministic M13 artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/engine/gap_decomposition_v1 \
+            data/manifests/milestone13_development_gap_decomposition.json
+          if git diff --cached --quiet; then
+            echo "Milestone 13 artifacts unchanged."
+            exit 0
+          fi
+          git commit -m "analysis: materialize milestone13 gap decomposition"
+          git pull --rebase origin agent/phase2-m13-development-gap-decomposition
+          git push origin HEAD:agent/phase2-m13-development-gap-decomposition
