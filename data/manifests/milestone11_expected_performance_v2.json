@@ -1,0 +1,140 @@
+{
+  "benchmark_failed_target_ids": [],
+  "benchmark_gate": "model_rmse_lt_naive_rmse_and_model_mae_lt_naive_mae",
+  "benchmark_qualified_target_count": 3,
+  "benchmark_qualified_target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "causal_analysis_performed": false,
+  "coefficient_causal_interpretation_authorized": false,
+  "counterfactual_policy_effect_estimated": false,
+  "crossfit_prediction_count": 342,
+  "expected_crossfit_prediction_count": 342,
+  "feature_lag_years": 1,
+  "features_selected_before_model_fit": true,
+  "focal_geography_excluded_from_own_model_fit": true,
+  "focal_geography_excluded_from_own_uncertainty_calibration": true,
+  "frontier_model_performed": false,
+  "geography_count": 19,
+  "imputation_performed": false,
+  "inner_model_selection": "leave_one_geography_out_within_outer_training_universe",
+  "input_regime_id": "sumbar_current_kabkota_2018_2025_v1",
+  "milestone": 11,
+  "milestone11_complete": true,
+  "model_frame_row_count": 114,
+  "monetary_wasted_potential_estimated": false,
+  "nested_inner_cv_used": true,
+  "outer_fold_coefficient_row_count": 684,
+  "outer_validation": "leave_one_geography_out_all_six_years",
+  "outputs": {
+    "crossfit_predictions": {
+      "path": "data/analysis/engine/expected_performance_v2/m11-crossfit-predictions.csv",
+      "sha256": "d7026ba5108757a0bb27fbdf47df522770716163b7fcc3f08309620a3fbd45d8"
+    },
+    "model_frame": {
+      "path": "data/analysis/engine/expected_performance_v2/m11-model-frame.csv",
+      "sha256": "e53b3162a6ee732cc5f70a88c2ac6f3603ba7007ced81d1f7759da2aa7e5df0a"
+    },
+    "outer_fold_coefficients": {
+      "path": "data/analysis/engine/expected_performance_v2/m11-outer-fold-coefficients.csv",
+      "sha256": "928481c6e09858f2dae7b3c7700addf3f70aa1466da8d21d1c39ee2dffba69d8"
+    },
+    "sensitivity_summary": {
+      "path": "data/analysis/engine/expected_performance_v2/m11-sensitivity-summary.csv",
+      "sha256": "9c3c02fbe356d6f5c138dcb61e5b262650be12725bb78494211f1b28f420dd99"
+    },
+    "support_diagnostics": {
+      "path": "data/analysis/engine/expected_performance_v2/m11-support-diagnostics.csv",
+      "sha256": "4ebea7a91812cecd81986b765cc789fbe8513713593750f7e3c183c2155afd81"
+    },
+    "target_summary": {
+      "path": "data/analysis/engine/expected_performance_v2/m11-target-summary.csv",
+      "sha256": "a2fa4b64e95969e85274e557ef768bf1c629da1d71562b32c1734405466ada6d"
+    }
+  },
+  "penalty_grid": [
+    0.0,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "phase": "final_analytical_research_engine",
+  "posthoc_model_replacement_performed": false,
+  "primary_feature_ids": [
+    "mean_years_schooling",
+    "labor_force_participation",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "rice_yield"
+  ],
+  "primary_predictions_cross_fitted_by_geography": true,
+  "regime_id": "sumbar_current_kabkota_lagged_structural_2019_2024_v1",
+  "same_year_marginal_support_reported": true,
+  "schema": "ranah-observatory/milestone11-expected-performance-v2/v1",
+  "sensitivity_feature_ids": [
+    "mean_years_schooling",
+    "labor_force_participation",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "rice_yield",
+    "annual_rainfall"
+  ],
+  "sensitivity_selected_before_model_fit": true,
+  "source_inputs": {
+    "data/analysis/engine/panel_v1/m10-panel-wide.csv": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde",
+    "data/manifests/milestone10_analytical_panel.json": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433",
+    "data/manifests/milestone11_design_gate.json": "b45394319444ca86661446b19335894f80ac457527a9b3ea317388cd79f13ac3",
+    "research/MILESTONE11_EXPECTED_PERFORMANCE_V2_SPEC.md": "8a583c09fc63b99ad84196481f266f8edea9b835a2754828ba17599ead8e953b"
+  },
+  "support_diagnostic_row_count": 1710,
+  "target_ids": [
+    "poverty_rate",
+    "unemployment_rate",
+    "real_grdp_growth"
+  ],
+  "target_metrics": {
+    "poverty_rate": {
+      "benchmark_qualified": true,
+      "model_mae": 1.364451217256519,
+      "model_rmse": 1.95924870169923,
+      "naive_mae": 1.7284015594541908,
+      "naive_rmse": 2.5497313664682917,
+      "sensitivity_mae": 1.3892077046551758,
+      "sensitivity_rmse": 1.9762990107352993
+    },
+    "real_grdp_growth": {
+      "benchmark_qualified": true,
+      "model_mae": 0.42250193129792046,
+      "model_rmse": 0.995429958162548,
+      "naive_mae": 0.44223196881091614,
+      "naive_rmse": 1.0065141226094871,
+      "sensitivity_mae": 0.42705820816261286,
+      "sensitivity_rmse": 0.9995866784081644
+    },
+    "unemployment_rate": {
+      "benchmark_qualified": true,
+      "model_mae": 1.2181363651118833,
+      "model_rmse": 1.7143508622569976,
+      "naive_mae": 1.3549220272904483,
+      "naive_rmse": 2.0387029383365034,
+      "sensitivity_mae": 1.1879164043195927,
+      "sensitivity_rmse": 1.6543809976281543
+    }
+  },
+  "target_specific_feature_search_performed": false,
+  "target_year_count": 6,
+  "target_year_selected_before_model_fit": true,
+  "target_years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "targets_selected_before_model_fit": true
+}

@@ -1,0 +1,4 @@
+target_id,primary_rmse,primary_mae,primary_plus_lagged_rainfall_rmse,primary_plus_lagged_rainfall_mae,sensitivity_minus_primary_rmse,sensitivity_minus_primary_mae,sensitivity_better_rmse,sensitivity_better_mae,sensitivity_outer_selected_penalty_counts_json,sensitivity_can_replace_primary,rainfall_claim_type,causal_rainfall_interpretation_authorized
+poverty_rate,1.9592487017,1.36445121726,1.97629901074,1.38920770466,0.0170503090361,0.0247564873987,false,false,"{""100"":19}",false,model_estimate,false
+unemployment_rate,1.71435086226,1.21813636511,1.65438099763,1.18791640432,-0.0599698646288,-0.0302199607923,true,true,"{""10"":1,""100"":18}",false,model_estimate,false
+real_grdp_growth,0.995429958163,0.422501931298,0.999586678408,0.427058208163,0.00415672024562,0.00455627686469,false,false,"{""10"":4,""100"":15}",false,model_estimate,false
