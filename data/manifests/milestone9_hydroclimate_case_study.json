@@ -1,0 +1,120 @@
+{
+  "annual_rainfall_temporal_resolution_limitation": true,
+  "baseline_year_count": 43,
+  "baseline_years": [
+    1981,
+    2023
+  ],
+  "bnpb_official_crosscheck": "passed",
+  "case_study": "2024 West Sumatra hydroclimate disaster spatial alignment",
+  "causal_attribution_performed": false,
+  "claim_classification": "descriptive_climate_disaster_spatial_case_study",
+  "climate_change_attribution_performed": false,
+  "climate_claim_type": "model_estimate",
+  "climate_spatial_frame": "fixed_current_boundary_june_2026",
+  "correlation_row_count": 6,
+  "criterion": "one climate/disaster case study relevant to West Sumatra",
+  "daily_rainfall_claim_performed": false,
+  "disaster_claim_type": "observed_recorded_event_count",
+  "driest_relative_geography": {
+    "geography_id": "idn.13.1310",
+    "geography_name": "Solok Selatan",
+    "rainfall_z_2024": 0.8606470487233641
+  },
+  "frame_row_count": 19,
+  "geography_count": 19,
+  "independent_station_validation": "pending",
+  "inputs": {
+    "bnpb_manifest": {
+      "path": "data/processed/bnpb/disaster/bnpb-disaster-panel.manifest.json",
+      "sha256": "1a3bba53bf2efb21ba140ce5bbfc268a32451df665caf751a6c2d646cc694016"
+    },
+    "bnpb_observations": {
+      "path": "data/processed/bnpb/disaster/bnpb-disaster-canonical-observations.csv",
+      "sha256": "5c987ddb0dfa2b93a41ced661c898abd5d57fe903447f8ad39bd006c8d6e52e8"
+    },
+    "chirps_manifest": {
+      "path": "data/processed/climate/rainfall/chirps-rainfall-materialization.manifest.json",
+      "sha256": "f0eb67a7d2d1957ff6cc2ab789351f6dd339ef022be87bc84fb5287b3ec60854"
+    },
+    "chirps_observations": {
+      "path": "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv",
+      "sha256": "566d1da1faa383c71764dd877f772b1965ed12dbce2d2cf7c42b4f7c04d9dcbf"
+    },
+    "design_gate": {
+      "path": "data/manifests/milestone9_design_gate.json",
+      "sha256": "95726ce86f43bfdb39fc2e48394698b63a7cb9cfa9bb6a1a11e39370644bb0e7"
+    }
+  },
+  "leave_one_out_primary_spearman_ranges": {
+    "flood_events": {
+      "spearman_max": -0.04677948100223909,
+      "spearman_min": -0.2797591389700147
+    },
+    "hydroclimate_event_count": {
+      "spearman_max": -0.009475579515979013,
+      "spearman_min": -0.23861103830646846
+    },
+    "landslide_events": {
+      "spearman_max": 0.3063607895195785,
+      "spearman_min": 0.12765032896649103
+    }
+  },
+  "leave_one_out_row_count": 57,
+  "max_recorded_flood_events": 15.0,
+  "max_recorded_landslide_events": 3.0,
+  "milestone9_complete": true,
+  "outputs": {
+    "correlations": {
+      "path": "data/analysis/climate_disaster/m9-hydroclimate-2024-correlations.csv",
+      "sha256": "f2524cea50309fe0d930c1863c855566bc2a03ab3762c8b0d62e88bacdd73a46"
+    },
+    "geography_frame": {
+      "path": "data/analysis/climate_disaster/m9-hydroclimate-2024-geography-frame.csv",
+      "sha256": "2566c18f24f6ce254b72723a36d91ebf684baedb977d695e8b60e819c1e00608"
+    },
+    "leave_one_out": {
+      "path": "data/analysis/climate_disaster/m9-hydroclimate-2024-leave-one-out.csv",
+      "sha256": "a3517bab0f3b7130899d15026b0c4cf2f2a95e4fd3e8d8731c2553cbf42f13db"
+    }
+  },
+  "positive_rainfall_anomaly_geography_count": 19,
+  "primary_correlations": {
+    "flood_events": {
+      "pearson": -0.26315755090432685,
+      "spearman": -0.18351142206298268
+    },
+    "hydroclimate_event_count": {
+      "pearson": -0.1830888516857002,
+      "spearman": -0.14631896657080645
+    },
+    "landslide_events": {
+      "pearson": 0.26388645864578847,
+      "spearman": 0.22131386857964816
+    }
+  },
+  "raw_rainfall_sensitivity_correlations": {
+    "flood_events": {
+      "pearson": -0.13853641934025987,
+      "spearman": -0.07376439514296362
+    },
+    "hydroclimate_event_count": {
+      "pearson": -0.07373143255535654,
+      "spearman": 0.03479536400159421
+    },
+    "landslide_events": {
+      "pearson": 0.21950519160516024,
+      "spearman": 0.1986150102637868
+    }
+  },
+  "schema": "ranah-observatory/milestone9-hydroclimate-case-study/v1",
+  "station_observation_equivalence": false,
+  "study_year": 2024,
+  "study_year_selected_before_association_inspection": true,
+  "wettest_relative_geography": {
+    "geography_id": "idn.13.1312",
+    "geography_name": "Pasaman Barat",
+    "rainfall_z_2024": 1.7075472723916258
+  },
+  "zero_event_geographies_retained": true
+}
