@@ -1,0 +1,31 @@
+{
+  "causal_effect_estimated": false,
+  "criterion": "one focused causal or quasi-causal case study",
+  "geography_count": 19,
+  "national_scanned_source_required_for_primary_panel": false,
+  "observation_count": 95,
+  "ocr_performed": false,
+  "outcome_model_fit": false,
+  "output_path": "data/analysis/quasi_causal/m8-preperiod-real-grdp-2005-2009.csv",
+  "output_sha256": "f9e6b81cfd88b050185754b33ca3b5cb0c0c654a3d88a21a7a697569dd4b0db1",
+  "overlap_2009_reconciled": false,
+  "price_basis": "constant_2000",
+  "revision_status": {
+    "2008": "revised",
+    "2009": "preliminary"
+  },
+  "schema": "ranah-observatory/milestone8-preperiod-grdp/v1",
+  "source_pdf_page": 97,
+  "source_plan_id": "m8_grdp_pre",
+  "source_table": "22",
+  "source_text_path": "data/processed/milestone8/source_text/appendix-candidates/sumbar-source-pages-096-098.txt",
+  "source_text_sha256": "254b0e3d769e5d4ca333d0d71ec232beaeaea09edb632db5dc180623e1e797fb",
+  "unit": "million_rupiah",
+  "years": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009
+  ]
+}
