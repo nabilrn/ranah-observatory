@@ -1,0 +1,66 @@
+name: Milestone 14 Bottleneck Association Build
+
+on:
+  push:
+    branches:
+      - agent/phase2-m14-bottleneck-association
+    paths:
+      - "scripts/build_milestone14_bottleneck_association.py"
+      - "research/MILESTONE14_BOTTLENECK_ASSOCIATION_SPEC.md"
+      - "data/manifests/milestone14_design_gate.json"
+      - "data/analysis/engine/panel_v1/**"
+      - "data/analysis/engine/gap_decomposition_v1/**"
+      - ".github/workflows/milestone14-bottleneck-association-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone14-bottleneck-association-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Milestone 14 branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/phase2-m14-bottleneck-association
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build preregistered association diagnostics
+        shell: bash
+        run: |
+          set -o pipefail
+          log="$(mktemp)"
+          if python -m scripts.build_milestone14_bottleneck_association 2>&1 | tee "$log"; then
+            exit 0
+          fi
+          message="$(tail -n 14 "$log" | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+          echo "::error title=Milestone 14 build failure::$message"
+          exit 1
+
+      - name: Commit deterministic M14 artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/engine/bottleneck_association_v1 \
+            data/manifests/milestone14_bottleneck_association.json
+          if git diff --cached --quiet; then
+            echo "Milestone 14 artifacts unchanged."
+            exit 0
+          fi
+          git commit -m "analysis: materialize milestone14 bottleneck associations"
+          git pull --rebase origin agent/phase2-m14-bottleneck-association
+          git push origin HEAD:agent/phase2-m14-bottleneck-association
