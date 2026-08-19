@@ -31,6 +31,8 @@ jobs:
           tests/test_milestone25_djpk_taxonomy.py
           tests/test_milestone25_djpk_stage1.py
           tests/test_milestone25_djpk_materializer.py
+      - name: Diagnose current DJPK HTML structure
+        run: python scripts/diagnose_milestone25_djpk_html.py
       - name: Stage 0 — freeze reference taxonomy first
         run: python scripts/probe_milestone25_djpk_taxonomy.py
       - name: Lock exact-label Stage 1 contracts before cross-geography inspection
