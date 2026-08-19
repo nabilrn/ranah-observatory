@@ -1,0 +1,78 @@
+{
+  "bps_repository_secret_expected": true,
+  "criterion": "explicit dependency-based evidence acquisition priorities before additional model complexity",
+  "data_priority_family_count": 7,
+  "first_next_action": "national_comparator_bps_discovery_and_harvest",
+  "inputs": {
+    "m10": {
+      "path": "data/manifests/milestone10_analytical_panel.json",
+      "sha256": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433"
+    },
+    "m16": {
+      "path": "data/manifests/milestone16_spatial_climate_risk.json",
+      "sha256": "58bc5020e8cad19a23614da16feed2813a969ad321cd51bedf8bd899510c5800"
+    },
+    "m18": {
+      "path": "data/manifests/milestone18_final_analytical_synthesis.json",
+      "sha256": "62dccf04b2ef8d41cc6064a9f88cebb802c6524a311567286df673b42dc84c29"
+    },
+    "m18_rq_readiness": {
+      "path": "data/analysis/engine/final_synthesis_v1/m18-research-question-readiness.csv",
+      "sha256": "e3e7198d8f0db2ba587dda80dc16195a181037fd1ff2a790e779d1e606627a76"
+    },
+    "m19": {
+      "path": "data/manifests/milestone19_dynamic_forecast_engine.json",
+      "sha256": "7a99053251c32b6aff4fcf0507a4e07a1b31ad589b21344dde2dda5c0e6bd46f"
+    },
+    "m20": {
+      "path": "data/manifests/milestone20_historical_climate_trend.json",
+      "sha256": "0d034cd314c838478a0af37c5cc3153fd807e4e2325973d1aad46367ef6b1e18"
+    },
+    "m21": {
+      "path": "data/manifests/milestone21_climate_regime_shift.json",
+      "sha256": "bf7ccead75a0855c87638b629bca5c14204a4a2069e0a4c8d4b207dc0ea7c849"
+    },
+    "m22": {
+      "path": "data/manifests/milestone22_hierarchical_socioeconomic_trajectory.json",
+      "sha256": "08fd3a0328b38f30c82013a81b978664c9a642d57ad4c24375319d83fac1efae"
+    },
+    "source_registry": {
+      "path": "data/registries/m23-official-source-candidates.csv",
+      "sha256": "5be7a232908014c743bd65cf4ce66cb7971fa84a4effa168699c89fe7d41a23d"
+    },
+    "spec": {
+      "path": "research/MILESTONE23_DATA_VALUE_MODEL_READINESS_SPEC.md",
+      "sha256": "043eb6555bfe5f711449b771530f6017137829d683f390a855490182c8b9fb7a"
+    }
+  },
+  "milestone": 23,
+  "milestone23_complete": true,
+  "model_readiness_task_count": 8,
+  "next_action_count": 5,
+  "numeric_priority_score_created": false,
+  "official_source_candidate_count": 5,
+  "outputs": {
+    "data_priorities": {
+      "path": "data/analysis/engine/data_value_readiness_v1/m23-data-priorities.csv",
+      "sha256": "136e21f4edd0792ccb919fd11446c098fa306eb91297a27e5b12414f26dea48f"
+    },
+    "model_readiness": {
+      "path": "data/analysis/engine/data_value_readiness_v1/m23-model-readiness.csv",
+      "sha256": "4a5ffc96d7f241d1404874d58f55427338cb0b49d7bf8a070390f74eb7d0b87e"
+    },
+    "next_actions": {
+      "path": "data/analysis/engine/data_value_readiness_v1/m23-next-actions.csv",
+      "sha256": "9995c45bd8422aff287b4a52733e3b655b0121a9d25d0b79ad41de7ec1904d54"
+    }
+  },
+  "phase": "post_phase2_evidence_expansion_planning",
+  "posthoc_algorithm_search_authorized": false,
+  "priority_tier_counts": {
+    "A": 3,
+    "B": 3,
+    "C": 1
+  },
+  "schema": "ranah-observatory/milestone23-data-value-model-readiness/v1",
+  "statistical_model_fit": false,
+  "user_contribution_required_for_first_action": false
+}

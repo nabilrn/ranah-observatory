@@ -1,0 +1,6 @@
+sequence,work_package,action_type,dependency,stop_condition,model_fit_authorized_in_same_package
+1,national_comparator_bps_discovery_and_harvest,data_acquisition,BPS_API_KEY repository secret,core variable/domain semantics cannot be mapped comparably,False
+2,djpk_public_finance_panel_probe,data_acquisition,public SIKD surface,regional code/download contract or account taxonomy cannot be versioned,False
+3,inarisk_risk_component_version_resolution,evidence_qualification,official BNPB/InaRISK metadata,raster/component vintage remains unbound,False
+4,bkpm_investment_history_inventory,data_discovery,public BKPM Satu Data,kabupaten-kota historical continuity cannot be established,False
+5,rebuild_analytical_readiness_after_new_data,model_gate_review,at least one Tier A dataset materially qualified,new evidence does not change sample/component/identification regime,True
