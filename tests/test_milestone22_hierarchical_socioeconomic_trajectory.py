@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+# This test module is also the non-analytical trigger for the temporary artifact freezer.
 import csv
 import json
 from pathlib import Path
