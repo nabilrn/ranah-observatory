@@ -1,6 +1,6 @@
 name: Milestone 24 materialize stable32 comparator
 
-# Temporary writer: freeze validated public BPS payloads, then remove before merge.
+# Temporary writer: freeze validated public BPS payloads exactly once, then remove before merge.
 on:
   push:
     branches:
