@@ -1,0 +1,132 @@
+name: Milestone 25 Stage1 full fiscal extraction
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone25-stage1-full-extraction.yml
+      - scripts/apply_milestone25_transport_recovery.py
+      - scripts/probe_milestone25_djpk_stage1_export.py
+      - data/manifests/milestone25_stage1_contracts.json
+      - data/registries/djpk_m25_stage1_account_contracts.csv
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage1:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Apply locked transport-only recovery amendment
+        run: python scripts/apply_milestone25_transport_recovery.py
+
+      - name: Compile Stage1 extraction code
+        run: >-
+          python -m py_compile
+          scripts/probe_milestone25_djpk_stage1_export.py
+          scripts/apply_milestone25_transport_recovery.py
+
+      - name: Verify recovered Stage0 contracts remain locked
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          t = json.loads(Path('data/manifests/milestone25_transport_amendment.json').read_text())
+          c = json.loads(Path('data/manifests/milestone25_stage1_contracts.json').read_text())
+          assert t['scientific_design_changed'] is False
+          assert t['amendment_revision'] == 2
+          assert c['contracts_locked'] is True
+          assert c['cross_geography_values_inspected_before_lock'] is False
+          assert c['promoted_exact_label_family_count'] == 4
+          assert set(c['promoted_exact_label_families']) == {
+              'total_revenue', 'own_source_revenue_pad', 'total_expenditure', 'capital_expenditure'
+          }
+          assert c['held_families'] == ['central_transfer_revenue']
+          assert c['explicit_bridge_promoted'] is False
+          assert c['derived_ratio_authorized'] is False
+          assert c['posthoc_account_family_search_performed'] is False
+          assert c['statistical_model_fit'] is False
+          PY
+
+      - name: Run focused Stage1 tests
+        run: >-
+          python -m pytest -q
+          tests/test_milestone25_djpk_stage1.py
+          tests/test_milestone25_djpk_export.py
+          tests/test_milestone25_djpk_html_compat.py
+          tests/test_milestone25_djpk_identity_aliases.py
+
+      - name: Extract 19 pemda × 2018-2025 exact fiscal evidence
+        run: >-
+          python scripts/probe_milestone25_djpk_stage1_export.py
+          --years 2018 2019 2020 2021 2022 2023 2024 2025
+          --coverage data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv
+          --values data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv
+          --manifest data/manifests/milestone25_stage1_full_export.json
+          --raw-dir data/processed/djpk/public_finance/source
+
+      - name: Assert Stage1-only footprint
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone25_stage1_full_export.json').read_text())
+          with Path('data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv').open(newline='', encoding='utf-8') as h:
+              coverage = list(csv.DictReader(h))
+          with Path('data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv').open(newline='', encoding='utf-8') as h:
+              values = list(csv.DictReader(h))
+          assert m['jurisdiction_year_page_count'] == 152
+          assert m['value_row_count'] == 608
+          assert m['promoted_exact_label_family_count'] == 4
+          assert m['all_pages_pass'] is True
+          assert m['spreadsheetml_is_primary_numeric_evidence'] is True
+          assert m['html_table_value_crosscheck_is_diagnostic'] is True
+          assert len(coverage) == 152
+          assert len(values) == 608
+          assert all(r['page_pass'] == 'True' for r in coverage)
+          critical = (
+              'jurisdiction_match', 'fiscal_year_match', 'december_realization_semantics_match',
+              'same_selector_export_link_match', 'export_valid_spreadsheetml'
+          )
+          assert all(all(r[k] == 'True' for k in critical) for r in coverage)
+          assert all(not r['missing_contracts'] and not r['parse_failures'] for r in coverage)
+          assert all(r['matched_contract_count'] == r['locked_contract_count'] for r in coverage)
+          assert not Path('data/manifests/milestone25_djpk_public_finance_complete.json').exists()
+          PY
+
+      - name: Commit Stage1 frozen evidence only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/manifests/milestone25_transport_amendment.json \
+            data/manifests/milestone25_stage1_full_export.json \
+            data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv \
+            data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv \
+            data/processed/djpk/public_finance/source \
+            scripts/probe_milestone25_djpk_stage1_export.py \
+            scripts/materialize_milestone25_djpk_exact_panel.py \
+            scripts/apply_milestone25_transport_recovery.py \
+            .github/workflows/milestone25-stage1-full-extraction.yml
+          if git diff --cached --quiet; then
+            echo 'No Stage1 extraction changes'
+            exit 0
+          fi
+          git commit -m "Freeze Milestone 25 Stage1 exact fiscal evidence"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
