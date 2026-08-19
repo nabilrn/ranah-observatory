@@ -1,5 +1,6 @@
 name: Milestone 25 transport-recovery freeze v2
 
+# Triggered once after the transport-only recovery decision was frozen.
 on:
   pull_request:
     paths:
