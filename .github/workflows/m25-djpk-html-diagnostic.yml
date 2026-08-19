@@ -1,0 +1,32 @@
+name: M25 DJPK HTML diagnostic
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/m25-djpk-html-diagnostic.yml
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch one locked reference page
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 2 \
+            -A 'Mozilla/5.0 (compatible; RanahObservatory/1.0; research source qualification)' \
+            'https://djpk.kemenkeu.go.id/portal/data/apbd?pemda=12&period=12&periode=12&provinsi=03&tahun=2024' \
+            -o /tmp/djpk-2024.html
+          wc -c /tmp/djpk-2024.html
+          grep -n -E 'Akun|Realisasi|Pendapatan Daerah|PAD|datatable|ajax|api|postur' /tmp/djpk-2024.html | head -n 200 > /tmp/djpk-signals.txt || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: m25-djpk-html-diagnostic
+          path: |
+            /tmp/djpk-2024.html
+            /tmp/djpk-signals.txt
+          retention-days: 2
