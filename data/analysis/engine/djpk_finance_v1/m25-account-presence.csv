@@ -1,0 +1,43 @@
+account_label_normalized,source_labels,year_count,years_present,present_all_2018_2025,present_2018,present_2019,present_2020,present_2021,present_2022,present_2023,present_2024,present_2025
+belanja bagi hasil,Belanja Bagi Hasil,2,2020|2021,False,False,False,True,True,False,False,False,False
+belanja bantuan keuangan,Belanja Bantuan Keuangan,5,2018|2019|2020|2021|2023,False,True,True,True,True,False,True,False,False
+belanja bantuan sosial,Belanja Bantuan Sosial,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+belanja barang dan jasa,Belanja Barang dan Jasa,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+belanja barang jasa,Belanja Barang Jasa,5,2018|2019|2020|2021|2022,False,True,True,True,True,True,False,False,False
+belanja bunga,Belanja Bunga,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+belanja daerah,Belanja Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+belanja hibah,Belanja Hibah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+belanja lainnya,Belanja Lainnya,7,2018|2019|2021|2022|2023|2024|2025,False,True,True,False,True,True,True,True,True
+belanja lainnya [hierarchy-conflict-1],Belanja Lainnya,1,2020,False,False,False,True,False,False,False,False,False
+belanja lainnya [hierarchy-conflict-2],Belanja Lainnya,1,2020,False,False,False,True,False,False,False,False,False
+belanja modal,Belanja Modal,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+belanja pegawai,Belanja Pegawai,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+belanja subsidi,Belanja Subsidi,6,2020|2021|2022|2023|2024|2025,False,False,False,True,True,True,True,True,True
+belanja tidak terduga,Belanja Tidak Terduga,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+dana darurat,Dana Darurat,3,2020|2021|2025,False,False,False,True,True,False,False,False,True
+hasil pengelolaan kekayaan daerah yang dipisahkan,Hasil Pengelolaan Kekayaan Daerah yang Dipisahkan,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+lain-lain pad yang sah,Lain-Lain PAD yang Sah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+lain-lain pendapatan sesuai dengan ketentuan peraturan perundang-undangan,Lain-lain Pendapatan Sesuai dengan Ketentuan Peraturan Perundang-Undangan,3,2020|2021|2022,False,False,False,True,True,True,False,False,False
+pad,PAD,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pajak daerah,Pajak Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pembayaran cicilan pokok utang yang jatuh tempo,Pembayaran Cicilan Pokok Utang yang Jatuh Tempo,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pembentukan dana cadangan,Pembentukan Dana Cadangan,2,2020|2021,False,False,False,True,True,False,False,False,False
+pemberian pinjaman daerah,Pemberian Pinjaman Daerah,2,2020|2021,False,False,False,True,True,False,False,False,False
+pembiayaan daerah,Pembiayaan Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pencairan dana cadangan,Pencairan Dana Cadangan,2,2020|2021,False,False,False,True,True,False,False,False,False
+pendapatan daerah,Pendapatan Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pendapatan hibah,Pendapatan Hibah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pendapatan lainnya,Pendapatan Lainnya,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pendapatan transfer antar daerah,Pendapatan Transfer Antar Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pendapatan transfer pemerintah pusat,Pendapatan Transfer Pemerintah Pusat,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+penerimaan kembali pemberian pinjaman daerah,Penerimaan Kembali Pemberian Pinjaman Daerah,2,2020|2021,False,False,False,True,True,False,False,False,False
+penerimaan pembiayaan daerah,Penerimaan Pembiayaan Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+penerimaan pembiayaan lainnya sesuai dengan ketentuan peraturan perundang-undangan,Penerimaan Pembiayaan Lainnya Sesuai dengan Ketentuan Peraturan Perundang-Undangan,2,2020|2021,False,False,False,True,True,False,False,False,False
+penerimaan pinjaman daerah,Penerimaan Pinjaman Daerah,4,2018|2020|2021|2022,False,True,False,True,True,True,False,False,False
+pengeluaran pembiayaan daerah,Pengeluaran Pembiayaan Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+pengeluaran pembiayaan lainnya sesuai dengan ketentuan peraturan perundang-undangan,Pengeluaran Pembiayaan Lainnya Sesuai dengan Ketentuan Peraturan Perundang-Undangan,2,2020|2021,False,False,False,True,True,False,False,False,False
+penjualan kekayaan daerah yang dipisahkan,Penjualan Kekayaan Daerah yang Dipisahkan,2,2020|2021,False,False,False,True,True,False,False,False,False
+penyertaan modal daerah,Penyertaan Modal Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+retribusi daerah,Retribusi Daerah,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+sisa lebih perhitungan anggaran tahun sebelumnya,Sisa Lebih Perhitungan Anggaran Tahun Sebelumnya,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
+tkdd,TKDD,8,2018|2019|2020|2021|2022|2023|2024|2025,True,True,True,True,True,True,True,True,True
