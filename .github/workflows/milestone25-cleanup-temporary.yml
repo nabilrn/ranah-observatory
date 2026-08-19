@@ -1,0 +1,83 @@
+name: Milestone 25 retire temporary acquisition workflows
+
+# Temporary self-cleaning writer. It deletes itself and all M25 live/write workflows only after a full offline rebuild passes.
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone25_djpk_public_finance_complete.json
+      - docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
+      - .github/workflows/milestone25-cleanup-temporary.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require completed frozen M25 evidence
+        run: |
+          test -f data/manifests/milestone25_djpk_public_finance_complete.json
+          test -f docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
+      - name: Rebuild deterministic M25 outputs offline
+        run: |
+          python scripts/lock_milestone25_stage1_contracts.py
+          python scripts/materialize_milestone25_djpk_exact_panel.py
+          python scripts/finalize_milestone25_djpk_public_finance.py
+          python scripts/build_milestone25_documentation.py
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run all focused tests and audit before deleting acquisition workflows
+        run: |
+          python -m pytest -q \
+            tests/test_milestone25_djpk_taxonomy.py \
+            tests/test_milestone25_djpk_stage1.py \
+            tests/test_milestone25_djpk_materializer.py \
+            tests/test_milestone25_djpk_materialized.py
+          python scripts/audit_milestone25_djpk_public_finance.py
+      - name: Verify rebuild did not alter committed deterministic outputs
+        run: |
+          git diff --exit-code -- \
+            data/registries/djpk_m25_stage1_account_contracts.csv \
+            data/manifests/milestone25_stage1_contracts.json \
+            data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv \
+            data/processed/djpk/public_finance/djpk-fiscal-provenance.csv \
+            data/processed/djpk/public_finance/djpk-fiscal-panel.manifest.json \
+            data/manifests/milestone25_djpk_public_finance_complete.json \
+            docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
+      - name: Remove every temporary M25 live/write workflow including this one
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm -f --ignore-unmatch \
+            .github/workflows/milestone25-djpk-taxonomy-probe.yml \
+            .github/workflows/milestone25-taxonomy-freeze.yml \
+            .github/workflows/milestone25-stage1-contract-freeze.yml \
+            .github/workflows/milestone25-stage1-pilot.yml \
+            .github/workflows/milestone25-stage1-full-probe.yml \
+            .github/workflows/milestone25-final-freeze.yml \
+            .github/workflows/milestone25-postfreeze-docs.yml \
+            .github/workflows/milestone25-final-freeze-v2.yml \
+            .github/workflows/milestone25-cleanup-temporary.yml
+      - name: Commit cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            echo 'No temporary workflows remain'
+            exit 0
+          fi
+          git commit -m "Retire Milestone 25 live and write-enabled workflows"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
