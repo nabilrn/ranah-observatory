@@ -4,25 +4,34 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import re
+import sys
 from decimal import Decimal
 from pathlib import Path
 from typing import Any, Iterable
 
-from probe_milestone25_djpk_stage1 import (
-    HTMLTableParser,
-    M25Stage1Error,
-    find_postur_table,
-    normalize_label,
-    parse_djpk_money_to_idr_billion,
-    table_to_accounts,
+from milestone25_djpk_html_compat import install_djpk_html_compat
+
+install_djpk_html_compat()
+
+import probe_milestone25_djpk_stage1 as stage1
+from milestone25_djpk_export import (
+    M25DJPKExportError,
+    exact_account_map,
+    find_same_selector_export_url,
+    html_display_matches_exact,
+    parse_exact_rupiah,
+    rupiah_to_idr_billion,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
 CROSSWALK = ROOT / "data/registries/djpk_sumbar_pemda.csv"
 CONTRACTS = ROOT / "data/registries/djpk_m25_stage1_account_contracts.csv"
 CONTRACT_MANIFEST = ROOT / "data/manifests/milestone25_stage1_contracts.json"
+TRANSPORT = ROOT / "data/manifests/milestone25_transport_amendment.json"
 COVERAGE = ROOT / "data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv"
 PROBE_VALUES = ROOT / "data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv"
+STAGE1_MANIFEST = ROOT / "data/manifests/milestone25_stage1_full_export.json"
 RAW_ROOT = ROOT / "data/processed/djpk/public_finance/source"
 OUT_DIR = ROOT / "data/processed/djpk/public_finance"
 OBS_OUT = OUT_DIR / "djpk-fiscal-canonical-observations.csv"
@@ -30,7 +39,7 @@ PROV_OUT = OUT_DIR / "djpk-fiscal-provenance.csv"
 MANIFEST_OUT = OUT_DIR / "djpk-fiscal-panel.manifest.json"
 
 YEARS = list(range(2018, 2026))
-REGIME_ID = "sumbar_current_kabkota_djpk_realization_2018_2025_v1"
+REGIME_ID = "sumbar_current_kabkota_djpk_realization_2018_2025_v2"
 
 
 class M25MaterializationError(RuntimeError):
@@ -93,16 +102,64 @@ def validate_crosswalk() -> list[dict[str, str]]:
     return sorted(rows, key=lambda row: int(row["djpk_pemda_selector"]))
 
 
+def optional_html_accounts(body: bytes) -> tuple[bool, dict[str, dict[str, str]]]:
+    parser = stage1.HTMLTableParser()
+    parser.feed(body.decode("utf-8", errors="replace"))
+    try:
+        header, source_rows = stage1.find_postur_table(parser.tables)
+        accounts = stage1.table_to_accounts(header, source_rows)
+    except ValueError:
+        return False, {}
+    by_label = {row["account_label_normalized"]: row for row in accounts}
+    if len(by_label) != len(accounts):
+        raise M25MaterializationError("ambiguous HTML account keys after duplicate resolution")
+    return True, by_label
+
+
+def verify_html_semantics(
+    *, body: bytes, geography: dict[str, str], year: int, pemda: str
+) -> tuple[str, bool, dict[str, dict[str, str]]]:
+    parser = stage1.HTMLTableParser()
+    parser.feed(body.decode("utf-8", errors="replace"))
+    page_text = parser.all_text
+    if not stage1.jurisdiction_matches(page_text, geography["djpk_source_name"]):
+        raise M25MaterializationError(f"frozen HTML jurisdiction identity failed {pemda}/{year}")
+    if str(year) not in page_text:
+        raise M25MaterializationError(f"frozen HTML year identity failed {pemda}/{year}")
+    if not re.search(r"realisasi\s+apbd\s+s\.?\s*d\.?\s+desember", page_text, flags=re.IGNORECASE):
+        raise M25MaterializationError(f"frozen HTML December semantics failed {pemda}/{year}")
+    try:
+        linked_export = find_same_selector_export_url(body, pemda, year)
+    except M25DJPKExportError as exc:
+        raise M25MaterializationError(f"frozen HTML same-selector export link failed {pemda}/{year}") from exc
+    parseable, html_accounts = optional_html_accounts(body)
+    return linked_export, parseable, html_accounts
+
+
 def materialize() -> dict[str, Any]:
+    required = [CROSSWALK, CONTRACTS, CONTRACT_MANIFEST, TRANSPORT, COVERAGE, PROBE_VALUES, STAGE1_MANIFEST]
+    for path in required:
+        if not path.exists():
+            raise M25MaterializationError(f"missing M25 materialization input {path}")
+
+    transport = json.loads(TRANSPORT.read_text(encoding="utf-8"))
+    if transport.get("schema") != "ranah-observatory/milestone25-transport-amendment/v1":
+        raise M25MaterializationError("transport amendment schema drift")
+    if transport.get("scientific_design_changed") is not False:
+        raise M25MaterializationError("transport amendment changed scientific design")
+    stage1_manifest = json.loads(STAGE1_MANIFEST.read_text(encoding="utf-8"))
+    if stage1_manifest.get("schema") != "ranah-observatory/milestone25-stage1-dual-representation/v1":
+        raise M25MaterializationError("unexpected dual-representation Stage1 manifest")
+    if stage1_manifest.get("all_pages_pass") is not True:
+        raise M25MaterializationError("dual-representation Stage1 did not pass all pages")
+
     contracts = load_contracts()
     crosswalk = validate_crosswalk()
     coverage = read_csv(COVERAGE)
     probe_values = read_csv(PROBE_VALUES)
 
-    if len(coverage) != 19 * 8:
-        raise M25MaterializationError(f"expected 152 full-probe pages, got {len(coverage)}")
-    if any(row["page_pass"] != "True" for row in coverage):
-        raise M25MaterializationError("full probe contains a failed jurisdiction-year")
+    if len(coverage) != 152 or any(row["page_pass"] != "True" for row in coverage):
+        raise M25MaterializationError("full dual-representation coverage is not 152/152 passing")
     coverage_by_key = {(row["geography_id"], int(row["year"])): row for row in coverage}
     if len(coverage_by_key) != 152:
         raise M25MaterializationError("duplicate full-probe coverage keys")
@@ -121,6 +178,8 @@ def materialize() -> dict[str, Any]:
 
     observations: list[dict[str, Any]] = []
     provenance: list[dict[str, Any]] = []
+    html_parseable_count = 0
+    html_unparseable_count = 0
 
     for geography in crosswalk:
         geography_id = geography["geography_id"]
@@ -129,21 +188,37 @@ def materialize() -> dict[str, Any]:
             coverage_row = coverage_by_key.get((geography_id, year))
             if coverage_row is None:
                 raise M25MaterializationError(f"missing coverage {geography_id}/{year}")
-            raw_path = RAW_ROOT / f"pemda-{pemda}-{year}-desember.html"
-            if not raw_path.exists():
-                raise M25MaterializationError(f"missing frozen DJPK page {raw_path}")
-            actual_sha = sha256(raw_path)
-            if actual_sha != coverage_row["response_sha256"]:
-                raise M25MaterializationError(f"DJPK page hash drift {geography_id}/{year}")
+            html_path = RAW_ROOT / f"pemda-{pemda}-{year}-desember.html"
+            export_path = RAW_ROOT / f"pemda-{pemda}-{year}-desember.xml"
+            for path in (html_path, export_path):
+                if not path.exists():
+                    raise M25MaterializationError(f"missing frozen DJPK source snapshot {path}")
 
-            body = raw_path.read_bytes()
-            parser = HTMLTableParser()
-            parser.feed(body.decode("utf-8", errors="replace"))
-            header, source_rows = find_postur_table(parser.tables)
-            accounts = table_to_accounts(header, source_rows)
-            by_label = {row["account_label_normalized"]: row for row in accounts}
+            html_sha = sha256(html_path)
+            export_sha = sha256(export_path)
+            if html_sha != coverage_row["html_response_sha256"]:
+                raise M25MaterializationError(f"DJPK HTML hash drift {geography_id}/{year}")
+            if export_sha != coverage_row["export_response_sha256"]:
+                raise M25MaterializationError(f"DJPK export hash drift {geography_id}/{year}")
 
-            provenance_id = stable_id("m25prov_", geography_id, year, actual_sha)
+            html_body = html_path.read_bytes()
+            export_body = export_path.read_bytes()
+            linked_export, html_parseable, html_accounts = verify_html_semantics(
+                body=html_body, geography=geography, year=year, pemda=pemda
+            )
+            if linked_export != coverage_row["export_url"]:
+                raise M25MaterializationError(f"export-link provenance drift {geography_id}/{year}")
+            if html_parseable:
+                html_parseable_count += 1
+            else:
+                html_unparseable_count += 1
+
+            try:
+                export_accounts = exact_account_map(export_body)
+            except M25DJPKExportError as exc:
+                raise M25MaterializationError(f"frozen SpreadsheetML invalid {geography_id}/{year}") from exc
+
+            provenance_id = stable_id("m25prov_", geography_id, year, html_sha, export_sha)
             provenance.append(
                 {
                     "fiscal_provenance_id": provenance_id,
@@ -154,9 +229,14 @@ def materialize() -> dict[str, Any]:
                     "year": year,
                     "period_selector": "12",
                     "reference_period": "realisasi_s.d._desember",
-                    "source_snapshot": raw_path.relative_to(ROOT).as_posix(),
-                    "source_snapshot_sha256": actual_sha,
-                    "source_url": coverage_row["final_url"],
+                    "html_snapshot": html_path.relative_to(ROOT).as_posix(),
+                    "html_snapshot_sha256": html_sha,
+                    "html_source_url": coverage_row["final_html_url"],
+                    "export_snapshot": export_path.relative_to(ROOT).as_posix(),
+                    "export_snapshot_sha256": export_sha,
+                    "export_source_url": coverage_row["export_url"],
+                    "html_table_parseable": html_parseable,
+                    "same_selector_export_link_verified": True,
                     "claim_type": "observed_recorded_fiscal_realization",
                     "comparability_regime": REGIME_ID,
                 }
@@ -165,20 +245,35 @@ def materialize() -> dict[str, Any]:
             for contract in contracts:
                 family = contract["conceptual_family"]
                 label = contract["locked_source_label_normalized"]
-                source = by_label.get(label)
+                source = export_accounts.get(label)
                 if source is None:
-                    raise M25MaterializationError(f"locked source label missing {family} {geography_id}/{year}")
-                amount = parse_djpk_money_to_idr_billion(source["realization_raw"])
+                    raise M25MaterializationError(f"locked export label missing {family} {geography_id}/{year}")
+                budget_rupiah = parse_exact_rupiah(source["budget_rupiah_raw"])
+                realization_rupiah = parse_exact_rupiah(source["realization_rupiah_raw"])
+                amount = rupiah_to_idr_billion(realization_rupiah)
+
                 probe_row = probe_value_by_key.get((geography_id, year, family))
                 if probe_row is None:
                     raise M25MaterializationError(f"probe value missing {family} {geography_id}/{year}")
-                probe_amount = Decimal(probe_row["realization_idr_billion"])
-                if amount != probe_amount:
-                    raise M25MaterializationError(
-                        f"raw/probe realization mismatch {family} {geography_id}/{year}: {amount} != {probe_amount}"
-                    )
-                if normalize_label(source["account_label"]) != label:
-                    raise M25MaterializationError("source-label normalization drift")
+                if Decimal(probe_row["realization_rupiah_raw"]) != realization_rupiah:
+                    raise M25MaterializationError(f"exact probe/export realization drift {family} {geography_id}/{year}")
+                if Decimal(probe_row["budget_rupiah_raw"]) != budget_rupiah:
+                    raise M25MaterializationError(f"exact probe/export budget drift {family} {geography_id}/{year}")
+                if Decimal(probe_row["realization_idr_billion"]) != amount:
+                    raise M25MaterializationError(f"canonical conversion drift {family} {geography_id}/{year}")
+
+                html_crosscheck_status = "not_available_html_table_unparseable"
+                if html_parseable:
+                    html_row = html_accounts.get(label)
+                    if html_row is None:
+                        raise M25MaterializationError(f"HTML locked label missing on parseable page {family} {geography_id}/{year}")
+                    display_amount = stage1.parse_djpk_money_to_idr_billion(html_row["realization_raw"])
+                    if not html_display_matches_exact(display_amount, realization_rupiah):
+                        raise M25MaterializationError(f"HTML/export rounded-value mismatch {family} {geography_id}/{year}")
+                    html_crosscheck_status = "passed_display_rounding_crosscheck"
+                if probe_row["html_crosscheck_status"] != html_crosscheck_status:
+                    raise M25MaterializationError(f"HTML crosscheck status drift {family} {geography_id}/{year}")
+
                 observations.append(
                     {
                         "observation_id": stable_id("m25obs_", family, geography_id, year),
@@ -190,11 +285,15 @@ def materialize() -> dict[str, Any]:
                         "year": year,
                         "reference_period": "realisasi_s.d._desember",
                         "source_account_label": source["account_label"],
+                        "budget_rupiah_exact": format(budget_rupiah, "f"),
+                        "realization_rupiah_exact": format(realization_rupiah, "f"),
                         "realization_idr_billion": format(amount, "f"),
                         "unit": "IDR_billion",
                         "claim_type": "observed_recorded_fiscal_realization",
                         "taxonomy_contract_type": "exact_label",
                         "taxonomy_contract_status": contract["stage1_promotion_status"],
+                        "numeric_evidence_representation": "djpk_csv_apbd_spreadsheetml_exact_rupiah",
+                        "html_crosscheck_status": html_crosscheck_status,
                         "fiscal_provenance_id": provenance_id,
                         "comparability_regime": REGIME_ID,
                         "imputation_performed": False,
@@ -209,6 +308,8 @@ def materialize() -> dict[str, Any]:
         raise M25MaterializationError("canonical fiscal observation count drift")
     if len(provenance) != 152:
         raise M25MaterializationError("fiscal provenance count drift")
+    if html_parseable_count + html_unparseable_count != 152:
+        raise M25MaterializationError("HTML representation accounting drift")
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     write_csv(OBS_OUT, list(observations[0].keys()), observations)
@@ -216,7 +317,7 @@ def materialize() -> dict[str, Any]:
 
     held_rows = [row for row in read_csv(CONTRACTS) if row["stage1_promotion_status"] != "promoted_exact_label"]
     manifest = {
-        "schema": "ranah-observatory/djpk-fiscal-panel/v1",
+        "schema": "ranah-observatory/djpk-fiscal-panel/v2",
         "milestone": 25,
         "source_id": "djpk_sikd_apbd_portal",
         "comparability_regime": REGIME_ID,
@@ -232,17 +333,26 @@ def materialize() -> dict[str, Any]:
         "held_families": [row["conceptual_family"] for row in held_rows],
         "observation_count": len(observations),
         "provenance_count": len(provenance),
+        "html_snapshot_count": 152,
+        "spreadsheetml_snapshot_count": 152,
+        "html_table_parseable_page_count": html_parseable_count,
+        "html_table_unparseable_page_count": html_unparseable_count,
+        "primary_numeric_evidence": "djpk_csv_apbd_spreadsheetml_exact_rupiah",
+        "html_semantic_evidence": "identity_year_december_same_selector_export_link",
         "derived_ratio_count": 0,
         "explicit_bridge_used": False,
         "imputation_performed": False,
         "historical_boundary_reconstruction_performed": False,
+        "posthoc_account_family_search_performed": False,
         "statistical_model_fit": False,
         "inputs": {
             "crosswalk": {"path": CROSSWALK.relative_to(ROOT).as_posix(), "sha256": sha256(CROSSWALK)},
             "account_contracts": {"path": CONTRACTS.relative_to(ROOT).as_posix(), "sha256": sha256(CONTRACTS)},
             "account_contract_manifest": {"path": CONTRACT_MANIFEST.relative_to(ROOT).as_posix(), "sha256": sha256(CONTRACT_MANIFEST)},
+            "transport_amendment": {"path": TRANSPORT.relative_to(ROOT).as_posix(), "sha256": sha256(TRANSPORT)},
             "full_probe_coverage": {"path": COVERAGE.relative_to(ROOT).as_posix(), "sha256": sha256(COVERAGE)},
             "full_probe_values": {"path": PROBE_VALUES.relative_to(ROOT).as_posix(), "sha256": sha256(PROBE_VALUES)},
+            "stage1_manifest": {"path": STAGE1_MANIFEST.relative_to(ROOT).as_posix(), "sha256": sha256(STAGE1_MANIFEST)},
         },
         "outputs": {
             "canonical_observations": {"path": OBS_OUT.relative_to(ROOT).as_posix(), "sha256": sha256(OBS_OUT)},
@@ -256,12 +366,14 @@ def materialize() -> dict[str, Any]:
 def main() -> int:
     try:
         manifest = materialize()
-    except (OSError, json.JSONDecodeError, ValueError, M25MaterializationError, M25Stage1Error) as exc:
-        print(f"error: {exc}")
+    except (OSError, json.JSONDecodeError, ValueError, M25MaterializationError, stage1.M25Stage1Error, M25DJPKExportError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
         return 2
     print(json.dumps({
         "promoted_exact_label_families": manifest["promoted_exact_label_families"],
         "observation_count": manifest["observation_count"],
+        "html_table_parseable_page_count": manifest["html_table_parseable_page_count"],
+        "html_table_unparseable_page_count": manifest["html_table_unparseable_page_count"],
         "held_families": manifest["held_families"],
     }, sort_keys=True))
     return 0
