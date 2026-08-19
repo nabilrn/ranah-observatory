@@ -1,0 +1,75 @@
+{
+  "analysis_row_count": 19,
+  "causal_analysis_performed": false,
+  "classical_mann_kendall_primary_for_claims": false,
+  "climate_change_attribution_performed": false,
+  "criterion": "robust long-run monotonic rainfall trend evidence with serial-dependence and multiplicity guardrails",
+  "design_gate_schema": "ranah-observatory/milestone20-design-gate/v1",
+  "first_year": 1981,
+  "geography_count": 19,
+  "historical_boundary_continuity_claimed": false,
+  "inputs": {
+    "design_gate": {
+      "path": "data/manifests/milestone20_design_gate.json",
+      "sha256": "603f1c6cf847be6b176064d744d6c8bff6d38c56f30e149f0626e3f709e12dfc"
+    },
+    "observations": {
+      "path": "data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv",
+      "sha256": "566d1da1faa383c71764dd877f772b1965ed12dbce2d2cf7c42b4f7c04d9dcbf"
+    },
+    "source_manifest": {
+      "path": "data/processed/climate/rainfall/chirps-rainfall-materialization.manifest.json",
+      "sha256": "f0eb67a7d2d1957ff6cc2ab789351f6dd339ef022be87bc84fb5287b3ec60854"
+    },
+    "spec": {
+      "path": "research/MILESTONE20_HISTORICAL_CLIMATE_TREND_SPEC.md",
+      "sha256": "90c045a227198abb2777cf54b0518effb76c3065cff8114f59723c6ec31d73bd"
+    }
+  },
+  "last_year": 2025,
+  "leave_one_year_out_direction_retention_threshold": 0.9,
+  "leave_one_year_out_row_count": 855,
+  "milestone": 20,
+  "milestone20_complete": true,
+  "multiple_testing_alpha": 0.05,
+  "multiple_testing_method": "holm_familywise",
+  "outputs": {
+    "geography_trends": {
+      "path": "data/analysis/engine/historical_climate_trend_v1/m20-geography-trends.csv",
+      "sha256": "ce12c282c20b9a0794de528e286d83518e37b53684e4113b328e1fb418cec325"
+    },
+    "leave_one_year_out": {
+      "path": "data/analysis/engine/historical_climate_trend_v1/m20-leave-one-year-out.csv",
+      "sha256": "7b2bd2d4270c2f0fd378a9fd496a72e88f0dfa5c973c3aab99fd39324bd342d1"
+    },
+    "regional_annual_mean": {
+      "path": "data/analysis/engine/historical_climate_trend_v1/m20-regional-annual-mean.csv",
+      "sha256": "718d929b2da66b3e6a856500f852ae2114e8906fa5bcbcfd68fcc8f4e1612a8e"
+    },
+    "regional_trend": {
+      "path": "data/analysis/engine/historical_climate_trend_v1/m20-regional-trend.csv",
+      "sha256": "1a5676424d2aa81d9f8e52e41d060fb2e920a592cbc2535216d0379fed5df935"
+    }
+  },
+  "phase": "post_phase2_historical_climate_evidence_expansion",
+  "posthoc_method_search_performed": false,
+  "primary_slope_estimator": "theil_sen_median_pairwise_slope",
+  "primary_trend_test": "hamed_rao_adjusted_mann_kendall",
+  "regional_public_claim_authorized": false,
+  "regional_robust_monotonic_classification": "no_robust_monotonic_trend",
+  "robust_monotonic_decrease_count": 0,
+  "robust_monotonic_geography_count": 0,
+  "robust_monotonic_geography_ids": [],
+  "robust_monotonic_increase_count": 0,
+  "schema": "ranah-observatory/milestone20-historical-climate-trend/v1",
+  "source_contract": {
+    "claim_type": "model_estimate",
+    "independent_station_validation": "pending",
+    "methodology_version": "chirps_v3_final_monthly_big_june_2026_fixed_boundary_v1",
+    "source_id": "chirps_v3",
+    "spatial_frame": "fixed_current_boundary_june_2026"
+  },
+  "source_observation_count": 855,
+  "station_observation_equivalence": false,
+  "year_count": 45
+}
