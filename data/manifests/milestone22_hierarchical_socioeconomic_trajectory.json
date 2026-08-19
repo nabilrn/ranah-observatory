@@ -1,0 +1,236 @@
+{
+  "benchmark_model": "independent_geography_ols_linear_trend",
+  "causal_analysis_performed": false,
+  "criterion": "partial-pooled modern socioeconomic trajectories validated out of calendar year against independent geography trends",
+  "design_gate_schema": "ranah-observatory/milestone22-design-gate/v1",
+  "end_year": 2025,
+  "geography_count": 19,
+  "geography_trajectory_row_count": 133,
+  "guaranteed_future_trajectory_authorized": false,
+  "hierarchical_trajectory_qualified_indicator_count": 4,
+  "hierarchical_trajectory_qualified_indicator_ids": [
+    "labor_force_participation",
+    "unemployment_rate",
+    "real_grdp_growth",
+    "rice_yield"
+  ],
+  "historical_boundary_continuity_claimed": false,
+  "indicator_count": 7,
+  "indicator_ids": [
+    "expected_years_schooling",
+    "mean_years_schooling",
+    "labor_force_participation",
+    "unemployment_rate",
+    "poverty_rate",
+    "real_grdp_growth",
+    "rice_yield"
+  ],
+  "indicator_results": [
+    {
+      "favorable_direction_semantics": "higher_is_generally_favorable",
+      "final_penalty_loo_mae": 0.09009715655301444,
+      "final_penalty_loo_rmse": 0.11792746665751899,
+      "hierarchical_mae": 0.09009715655301444,
+      "hierarchical_rmse": 0.11792746665751899,
+      "hierarchical_trajectory_qualified": false,
+      "independent_ols_mae": 0.09009499070859339,
+      "independent_ols_rmse": 0.1179880011289278,
+      "indicator_id": "expected_years_schooling",
+      "mae_improvement_vs_independent_ols": -2.165844421045393e-06,
+      "outer_prediction_count": 152,
+      "persistent_decrease_count": 0,
+      "persistent_increase_count": 0,
+      "rmse_improvement_vs_independent_ols": 6.053447140880186e-05,
+      "robust_trajectory_count": 0,
+      "selected_final_penalty": 0.01,
+      "shared_slope_per_year": 0.07424812030075079
+    },
+    {
+      "favorable_direction_semantics": "higher_is_generally_favorable",
+      "final_penalty_loo_mae": 0.0954289258593418,
+      "final_penalty_loo_rmse": 0.11896430507017358,
+      "hierarchical_mae": 0.09525732108350114,
+      "hierarchical_rmse": 0.11939307072058693,
+      "hierarchical_trajectory_qualified": false,
+      "independent_ols_mae": 0.09406925421424157,
+      "independent_ols_rmse": 0.11973065712357217,
+      "indicator_id": "mean_years_schooling",
+      "mae_improvement_vs_independent_ols": -0.0011880668692595686,
+      "outer_prediction_count": 152,
+      "persistent_decrease_count": 0,
+      "persistent_increase_count": 0,
+      "rmse_improvement_vs_independent_ols": 0.00033758640298524323,
+      "robust_trajectory_count": 0,
+      "selected_final_penalty": 0.1,
+      "shared_slope_per_year": 0.10877192982456105
+    },
+    {
+      "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
+      "final_penalty_loo_mae": 1.7343664717944478,
+      "final_penalty_loo_rmse": 2.1745798988849803,
+      "hierarchical_mae": 1.7343664717944478,
+      "hierarchical_rmse": 2.1745798988849803,
+      "hierarchical_trajectory_qualified": true,
+      "independent_ols_mae": 1.7639868067022633,
+      "independent_ols_rmse": 2.2224517695260113,
+      "indicator_id": "labor_force_participation",
+      "mae_improvement_vs_independent_ols": 0.02962033490781546,
+      "outer_prediction_count": 152,
+      "persistent_decrease_count": 0,
+      "persistent_increase_count": 17,
+      "rmse_improvement_vs_independent_ols": 0.047871870641031045,
+      "robust_trajectory_count": 17,
+      "selected_final_penalty": 1.0,
+      "shared_slope_per_year": 0.4891979949874689
+    },
+    {
+      "favorable_direction_semantics": "lower_is_generally_favorable",
+      "final_penalty_loo_mae": 0.6540336746867008,
+      "final_penalty_loo_rmse": 0.9277690666705021,
+      "hierarchical_mae": 0.6517089787030113,
+      "hierarchical_rmse": 0.9133821761823658,
+      "hierarchical_trajectory_qualified": true,
+      "independent_ols_mae": 0.6693881825703891,
+      "independent_ols_rmse": 0.9433569396392535,
+      "indicator_id": "unemployment_rate",
+      "mae_improvement_vs_independent_ols": 0.01767920386737787,
+      "outer_prediction_count": 152,
+      "persistent_decrease_count": 11,
+      "persistent_increase_count": 5,
+      "rmse_improvement_vs_independent_ols": 0.029974763456887654,
+      "robust_trajectory_count": 16,
+      "selected_final_penalty": 1.0,
+      "shared_slope_per_year": -0.07718045112781956
+    },
+    {
+      "favorable_direction_semantics": "lower_is_generally_favorable",
+      "final_penalty_loo_mae": 0.25763523259453225,
+      "final_penalty_loo_rmse": 0.3268687576509073,
+      "hierarchical_mae": 0.2608348820175277,
+      "hierarchical_rmse": 0.329988547376552,
+      "hierarchical_trajectory_qualified": false,
+      "independent_ols_mae": 0.2595944398239665,
+      "independent_ols_rmse": 0.3281090310069135,
+      "indicator_id": "poverty_rate",
+      "mae_improvement_vs_independent_ols": -0.0012404421935611754,
+      "outer_prediction_count": 152,
+      "persistent_decrease_count": 0,
+      "persistent_increase_count": 0,
+      "rmse_improvement_vs_independent_ols": -0.0018795163696384565,
+      "robust_trajectory_count": 0,
+      "selected_final_penalty": 0.1,
+      "shared_slope_per_year": -0.14476817042606485
+    },
+    {
+      "favorable_direction_semantics": "higher_rate_is_generally_favorable_but_slope_is_not_structural_acceleration",
+      "final_penalty_loo_mae": 1.9629518988998178,
+      "final_penalty_loo_rmse": 2.883721791784631,
+      "hierarchical_mae": 1.9637148880982833,
+      "hierarchical_rmse": 2.891504710331939,
+      "hierarchical_trajectory_qualified": true,
+      "independent_ols_mae": 1.9662150019597369,
+      "independent_ols_rmse": 2.918693053225795,
+      "indicator_id": "real_grdp_growth",
+      "mae_improvement_vs_independent_ols": 0.0025001138614535456,
+      "outer_prediction_count": 152,
+      "persistent_decrease_count": 0,
+      "persistent_increase_count": 0,
+      "rmse_improvement_vs_independent_ols": 0.027188342893856188,
+      "robust_trajectory_count": 0,
+      "selected_final_penalty": 100.0,
+      "shared_slope_per_year": 0.021942355889724322
+    },
+    {
+      "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
+      "final_penalty_loo_mae": 0.268677290623033,
+      "final_penalty_loo_rmse": 0.35015333123111053,
+      "hierarchical_mae": 0.26651451318784514,
+      "hierarchical_rmse": 0.34336922905243245,
+      "hierarchical_trajectory_qualified": true,
+      "independent_ols_mae": 0.27071631985430356,
+      "independent_ols_rmse": 0.3529738419809365,
+      "indicator_id": "rice_yield",
+      "mae_improvement_vs_independent_ols": 0.004201806666458419,
+      "outer_prediction_count": 152,
+      "persistent_decrease_count": 3,
+      "persistent_increase_count": 10,
+      "rmse_improvement_vs_independent_ols": 0.009604612928504064,
+      "robust_trajectory_count": 13,
+      "selected_final_penalty": 0.1,
+      "shared_slope_per_year": 0.03405451127819542
+    }
+  ],
+  "inner_validation": "leave_one_calendar_year_out_within_outer_training",
+  "inputs": {
+    "design_gate": {
+      "path": "data/manifests/milestone22_design_gate.json",
+      "sha256": "b965f50a75f008beface2bab52aea2e375e8749c0798a77991e58cd7ffac4b33"
+    },
+    "m10_manifest": {
+      "path": "data/manifests/milestone10_analytical_panel.json",
+      "sha256": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433"
+    },
+    "m10_wide_panel": {
+      "path": "data/analysis/engine/panel_v1/m10-panel-wide.csv",
+      "sha256": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde"
+    },
+    "spec": {
+      "path": "research/MILESTONE22_HIERARCHICAL_SOCIOECONOMIC_TRAJECTORY_SPEC.md",
+      "sha256": "b751a179fd9fb62373d3cbcb856645e2d2b88698067e1e24f21ff70f2fc08bf7"
+    }
+  },
+  "loo_direction_retention_threshold": 0.875,
+  "loo_slope_row_count": 1064,
+  "milestone": 22,
+  "milestone22_complete": true,
+  "model_family": "hierarchical_random_intercept_random_slope_penalized_least_squares",
+  "model_frame_row_count": 1064,
+  "outer_prediction_count": 1064,
+  "outer_validation": "leave_one_calendar_year_out",
+  "outputs": {
+    "geography_trajectories": {
+      "path": "data/analysis/engine/hierarchical_trajectory_v1/m22-geography-trajectories.csv",
+      "sha256": "7d31b6887ca79c32b2f69013bfeef3d7d33970bde8706857f65b41017eba3e6f"
+    },
+    "indicator_summary": {
+      "path": "data/analysis/engine/hierarchical_trajectory_v1/m22-indicator-summary.csv",
+      "sha256": "771b9157d306a8691128b4308a0b332e0655defa8095f7bb14b26aa09c38153f"
+    },
+    "loo_slopes": {
+      "path": "data/analysis/engine/hierarchical_trajectory_v1/m22-loo-slopes.csv",
+      "sha256": "59988cec6be0c7720860fbf0409f95ae419a9cf2359712e74f0691cb11c83889"
+    },
+    "model_frame": {
+      "path": "data/analysis/engine/hierarchical_trajectory_v1/m22-model-frame.csv",
+      "sha256": "a9b490edd3656de280300b3d545f8e53abc8808ac5dfcd38344a6e94e3645482"
+    },
+    "outer_predictions": {
+      "path": "data/analysis/engine/hierarchical_trajectory_v1/m22-outer-predictions.csv",
+      "sha256": "8479f0a4d705efc359bc575734175e3eaa655cae3bbed91eb3c347b7d43f3336"
+    }
+  },
+  "phase": "post_phase2_socioeconomic_trajectory_expansion",
+  "policy_effect_estimated": false,
+  "posthoc_indicator_selection_performed": false,
+  "posthoc_model_search_performed": false,
+  "qualification_requires_rmse_and_mae_improvement": true,
+  "random_effect_penalty_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "regime_id": "sumbar_current_kabkota_hierarchical_trajectory_2018_2025_v1",
+  "schema": "ranah-observatory/milestone22-hierarchical-socioeconomic-trajectory/v1",
+  "source_regime_id": "sumbar_current_kabkota_2018_2025_v1",
+  "stability_envelope_is_confidence_interval": false,
+  "start_year": 2018,
+  "trajectory_classification_counts": {
+    "persistent_decrease": 14,
+    "persistent_increase": 32,
+    "trajectory_not_robust": 87
+  },
+  "upstream_m10_complete": true,
+  "year_count": 8
+}
