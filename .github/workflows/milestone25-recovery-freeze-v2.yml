@@ -1,10 +1,11 @@
-name: Milestone 25 transport-recovery freeze v2
+name: Milestone 25 Stage0 taxonomy transport recovery
 
-# Triggered once after the transport-only recovery decision was frozen.
+# Micro-stage recovery: qualify only the 8-page Kota Padang taxonomy reference.
 on:
   pull_request:
     paths:
       - .github/workflows/milestone25-recovery-freeze-v2.yml
+      - scripts/probe_milestone25_djpk_taxonomy_export.py
       - scripts/apply_milestone25_transport_recovery.py
       - data/manifests/milestone25_transport_recovery_decision.json
   workflow_dispatch:
@@ -13,10 +14,10 @@ permissions:
   contents: write
 
 jobs:
-  recover:
+  stage0:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,104 +30,56 @@ jobs:
       - name: Install focused test runner
         run: python -m pip install --disable-pip-version-check pytest
 
-      - name: Apply deterministic transport-only recovery amendment
+      - name: Apply transport-only recovery amendment
         run: python scripts/apply_milestone25_transport_recovery.py
 
-      - name: Compile patched acquisition and materialization code
+      - name: Compile Stage0 transport code
         run: >-
           python -m py_compile
-          scripts/probe_milestone25_djpk_stage1_export.py
-          scripts/materialize_milestone25_djpk_exact_panel.py
+          scripts/probe_milestone25_djpk_taxonomy_export.py
           scripts/apply_milestone25_transport_recovery.py
 
-      - name: Run pre-freeze contract tests
+      - name: Run Stage0 contract tests
         run: >-
           python -m pytest -q
           tests/test_milestone25_djpk_taxonomy.py
-          tests/test_milestone25_djpk_stage1.py
-          tests/test_milestone25_djpk_materializer.py
+          tests/test_milestone25_djpk_export.py
           tests/test_milestone25_djpk_html_compat.py
           tests/test_milestone25_djpk_identity_aliases.py
-          tests/test_milestone25_djpk_export.py
 
-      - name: Stage 0 — freeze reference taxonomy
-        run: python scripts/run_milestone25_djpk_compat.py probe_milestone25_djpk_taxonomy
+      - name: Stage0 — freeze taxonomy from same-selector SpreadsheetML
+        run: python scripts/probe_milestone25_djpk_taxonomy_export.py
 
-      - name: Lock exact-label Stage 1 contracts
+      - name: Lock Stage1 exact-label contracts from recovered taxonomy
         run: python scripts/lock_milestone25_stage1_contracts.py
 
-      - name: Full Stage 1 — recover 19 × 2018-2025 exact fiscal evidence
-        run: >-
-          python scripts/probe_milestone25_djpk_stage1_export.py
-          --years 2018 2019 2020 2021 2022 2023 2024 2025
-          --coverage data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv
-          --values data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv
-          --manifest data/manifests/milestone25_stage1_full_export.json
-          --raw-dir data/processed/djpk/public_finance/source
-
-      - name: Assert recovered Stage 1 footprint and immutable scientific design
-        run: |
-          python - <<'PY'
-          import csv, json
-          from pathlib import Path
-          t = json.loads(Path('data/manifests/milestone25_transport_amendment.json').read_text())
-          m = json.loads(Path('data/manifests/milestone25_stage1_full_export.json').read_text())
-          with Path('data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv').open(newline='', encoding='utf-8') as h:
-              coverage = list(csv.DictReader(h))
-          assert t['amendment_revision'] == 2
-          assert t['scientific_design_changed'] is False
-          assert t['html_table_value_crosscheck_required_when_parseable'] is False
-          assert t['html_table_value_crosscheck_is_diagnostic'] is True
-          assert m['jurisdiction_year_page_count'] == 152
-          assert m['value_row_count'] == 608
-          assert m['all_pages_pass'] is True
-          assert m['html_table_value_crosscheck_is_diagnostic'] is True
-          assert len(coverage) == 152
-          assert all(r['page_pass'] == 'True' for r in coverage)
-          critical = (
-              'jurisdiction_match', 'fiscal_year_match', 'december_realization_semantics_match',
-              'same_selector_export_link_match', 'export_valid_spreadsheetml'
-          )
-          assert all(all(r[k] == 'True' for k in critical) for r in coverage)
-          assert all(not r['missing_contracts'] and not r['parse_failures'] for r in coverage)
-          assert all(r['matched_contract_count'] == r['locked_contract_count'] for r in coverage)
-          PY
-
-      - name: Materialize canonical exact-label fiscal panel
-        run: python scripts/materialize_milestone25_djpk_exact_panel.py
-
-      - name: Finalize strict M25 completion manifest
-        run: python scripts/finalize_milestone25_djpk_public_finance.py
-
-      - name: Build M25 documentation
-        run: python scripts/build_milestone25_documentation.py
-
-      - name: Run materialized tests and analytical audit
-        run: |
-          python -m pytest -q tests/test_milestone25_djpk_materialized.py
-          python scripts/audit_milestone25_djpk_public_finance.py
-
-      - name: Assert completion artifact exists and is bounded
+      - name: Assert Stage0 recovery footprint only
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path('data/manifests/milestone25_djpk_public_finance_complete.json')
-          assert p.exists()
-          m = json.loads(p.read_text())
-          assert m['milestone25_complete'] is True
-          assert m['geography_count'] == 19
-          assert m['year_count'] == 8
-          assert m['jurisdiction_year_count'] == 152
-          assert m['observation_count'] == 608
-          assert m['provenance_count'] == 152
-          assert m['explicit_bridge_used'] is False
-          assert m['derived_ratio_created'] is False
-          assert m['imputation_performed'] is False
-          assert m['statistical_model_fit'] is False
+          t = json.loads(Path('data/manifests/milestone25_transport_amendment.json').read_text())
+          m = json.loads(Path('data/manifests/milestone25_taxonomy_discovery.json').read_text())
+          c = json.loads(Path('data/manifests/milestone25_stage1_contracts.json').read_text())
+          assert t['scientific_design_changed'] is False
+          assert t['amendment_revision'] == 2
+          assert m['stage0_complete'] is True
+          assert m['all_pages_pass'] is True
+          assert m['page_count'] == 8
+          assert m['taxonomy_primary_representation'] == 'djpk_csv_apbd_spreadsheetml_exact_rupiah'
+          assert m['html_body_table_required'] is False
+          assert m['spreadsheetml_account_table_required'] is True
+          assert m['cross_geography_values_inspected_before_taxonomy_lock'] is False
+          assert c['contracts_locked'] is True
+          assert c['promoted_exact_label_family_count'] == 4
+          assert set(c['promoted_exact_label_families']) == {
+              'total_revenue', 'own_source_revenue_pad', 'total_expenditure', 'capital_expenditure'
+          }
+          assert c['held_families'] == ['central_transfer_revenue']
+          assert not Path('data/manifests/milestone25_djpk_public_finance_complete.json').exists()
           PY
 
-      - name: Commit recovered credential-free M25 evidence
+      - name: Commit recovered Stage0 evidence only
         shell: bash
         run: |
           set -euo pipefail
@@ -137,17 +90,17 @@ jobs:
             data/manifests/milestone25_transport_recovery_decision.json \
             data/manifests/milestone25_taxonomy_discovery.json \
             data/manifests/milestone25_stage1_contracts.json \
-            data/manifests/milestone25_stage1_full_export.json \
-            data/manifests/milestone25_djpk_public_finance_complete.json \
             data/registries/djpk_m25_stage1_account_contracts.csv \
-            data/analysis/engine/djpk_finance_v1 \
+            data/analysis/engine/djpk_finance_v1/m25-taxonomy-discovery.csv \
+            data/analysis/engine/djpk_finance_v1/m25-account-presence.csv \
             data/processed/djpk/taxonomy_probe \
-            data/processed/djpk/public_finance \
-            docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md \
-            scripts/probe_milestone25_djpk_stage1_export.py \
-            scripts/materialize_milestone25_djpk_exact_panel.py \
+            scripts/probe_milestone25_djpk_taxonomy_export.py \
             scripts/apply_milestone25_transport_recovery.py \
             .github/workflows/milestone25-recovery-freeze-v2.yml
-          git commit -m "Recover Milestone 25 DJPK fiscal evidence" || exit 0
+          if git diff --cached --quiet; then
+            echo 'No Stage0 recovery changes'
+            exit 0
+          fi
+          git commit -m "Recover Milestone 25 Stage0 taxonomy transport"
           target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
           git push origin "HEAD:${target_branch}"
