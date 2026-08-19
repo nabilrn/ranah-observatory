@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -9,6 +10,7 @@ SCRIPT = ROOT / "scripts/probe_milestone24_bps_stable32.py"
 GATE = ROOT / "data/manifests/milestone24_design_gate.json"
 SERIES = ROOT / "data/registries/bps_comparative_panel_series.csv"
 GEOS = ROOT / "data/registries/geographies.csv"
+sys.path.insert(0, str(ROOT / "scripts"))
 
 spec = importlib.util.spec_from_file_location("m24_probe", SCRIPT)
 assert spec and spec.loader
