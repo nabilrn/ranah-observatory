@@ -1,0 +1,71 @@
+name: Milestone 26 InaRISK metadata probe
+
+on:
+  pull_request:
+    paths:
+      - research/MILESTONE26_INARISK_VERSION_BINDING_SPEC.md
+      - scripts/probe_milestone26_inarisk_binding.py
+      - tests/test_milestone26_inarisk_binding.py
+      - data/manifests/milestone16_spatial_climate_risk.json
+      - data/analysis/engine/spatial_climate_risk_v1/m16-evidence-component-registry.csv
+      - docs/MILESTONE16_SPATIAL_CLIMATE_RISK.md
+      - .github/workflows/milestone26-inarisk-metadata-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run M26 offline tests
+        run: python -m pytest -q tests/test_milestone26_inarisk_binding.py
+
+  live-metadata-probe:
+    needs: offline-contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Crawl M16-locked official InaRISK ArcGIS metadata surfaces
+        run: >-
+          python scripts/probe_milestone26_inarisk_binding.py
+          --raw-dir /tmp/m26/raw
+          --discovery /tmp/m26/m26-service-discovery.csv
+          --endpoints /tmp/m26/m26-metadata-endpoints.csv
+          --assessment /tmp/m26/m26-binding-assessment.csv
+          --manifest /tmp/m26/milestone26_inarisk_version_binding.json
+      - name: Assert audit boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('/tmp/m26/milestone26_inarisk_version_binding.json').read_text())
+          assert m['milestone26_complete'] is True
+          assert m['service_count'] >= 1
+          assert m['successful_metadata_endpoint_count'] >= m['service_count']
+          assert m['pixel_ingestion_performed'] is False
+          assert m['composite_risk_score_created'] is False
+          assert m['exposure_component_created'] is False
+          assert m['capacity_component_created'] is False
+          assert m['observed_impact_component_created'] is False
+          assert m['risk_synthesis_authorized'] is False
+          assert m['service_modified_timestamp_used_as_dataset_vintage'] is False
+          PY
+      - name: Upload credential-free metadata audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone26-inarisk-metadata
+          path: /tmp/m26
+          if-no-files-found: error
+          retention-days: 14
