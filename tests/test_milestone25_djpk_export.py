@@ -86,3 +86,6 @@ def test_export_year_and_selector_contracts_are_locked() -> None:
             pass
         else:
             raise AssertionError((selector, year))
+
+
+# This test module is also part of the authoritative pre-freeze gate.
