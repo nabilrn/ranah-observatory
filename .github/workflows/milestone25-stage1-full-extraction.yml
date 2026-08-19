@@ -1,5 +1,6 @@
 name: Milestone 25 Stage1 full fiscal extraction
 
+# Focused Stage1-only run after Stage0 taxonomy recovery passed.
 on:
   pull_request:
     paths:
