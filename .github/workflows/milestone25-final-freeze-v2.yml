@@ -5,6 +5,9 @@ on:
   pull_request:
     paths:
       - .github/workflows/milestone25-final-freeze-v2.yml
+      - scripts/milestone25_djpk_html_compat.py
+      - scripts/run_milestone25_djpk_compat.py
+      - tests/test_milestone25_djpk_html_compat.py
   workflow_dispatch:
 
 permissions:
