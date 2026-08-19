@@ -1,0 +1,59 @@
+name: Milestone 24 BPS stable32 probe
+
+on:
+  pull_request:
+    paths:
+      - research/MILESTONE24_BPS_STABLE32_COMPARATOR_SPEC.md
+      - data/manifests/milestone24_design_gate.json
+      - scripts/probe_milestone24_bps_stable32.py
+      - tests/test_milestone24_bps_stable32.py
+      - data/registries/bps_comparative_panel_series.csv
+      - data/registries/geographies.csv
+      - scripts/bps_client.py
+      - scripts/normalize_bps_dynamic.py
+      - .github/workflows/milestone24-bps-stable32-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run M24 offline contract tests
+        run: python -m pytest -q tests/test_milestone24_bps_stable32.py
+
+  credentialed-probe:
+    needs: offline-contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require BPS API key without exposing it
+        run: test -n "$BPS_API_KEY"
+      - name: Probe six locked BPS series across 2018-2025
+        run: >-
+          python scripts/probe_milestone24_bps_stable32.py
+          --output /tmp/m24/milestone24_bps_stable32_probe.json
+          --coverage /tmp/m24/m24-probe-coverage.csv
+      - name: Upload credential-free M24 probe evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone24-bps-stable32-probe
+          path: |
+            /tmp/m24/milestone24_bps_stable32_probe.json
+            /tmp/m24/m24-probe-coverage.csv
+          if-no-files-found: error
+          retention-days: 14
