@@ -1,6 +1,7 @@
 name: Milestone 25 authoritative DJPK fiscal freeze
 
 # Temporary authoritative writer. Remove before merge.
+# Completion rerun: 2026-08-19
 on:
   pull_request:
     paths:
