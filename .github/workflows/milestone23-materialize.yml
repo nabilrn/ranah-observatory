@@ -1,5 +1,6 @@
 name: Milestone 23 materialize
 
+# Temporary writer used only to freeze validated deterministic outputs.
 on:
   push:
     branches:
