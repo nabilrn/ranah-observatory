@@ -1,10 +1,8 @@
 name: Milestone 24 materialize stable32 comparator
 
-# Temporary writer: freeze validated public BPS payloads, finalize M24, then remove before merge.
+# Temporary same-repo PR writer: freeze validated public BPS payloads, finalize M24, then remove before merge.
 on:
-  push:
-    branches:
-      - agent/milestone24-bps-stable32-comparator
+  pull_request:
     paths:
       - .github/workflows/milestone24-materialize.yml
       - scripts/verify_milestone24_probe_freeze.py
@@ -24,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -105,4 +103,5 @@ jobs:
             exit 0
           fi
           git commit -m "Materialize Milestone 24 BPS stable32 comparator"
-          git push origin HEAD:${GITHUB_REF_NAME}
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
