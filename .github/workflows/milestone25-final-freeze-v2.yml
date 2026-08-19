@@ -1,6 +1,6 @@
 name: Milestone 25 authoritative DJPK fiscal freeze
 
-# Temporary authoritative writer. Remove before merge.
+# Temporary authoritative recovery writer. Remove before merge.
 on:
   pull_request:
     paths:
