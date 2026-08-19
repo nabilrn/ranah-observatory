@@ -1,0 +1,301 @@
+{
+  "command": "dynamic",
+  "domain": "0000",
+  "filters": {
+    "resolved_period_label": "2025",
+    "th": "125",
+    "var": 543
+  },
+  "language": "ind",
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "11005430125189": 5.5,
+      "11005430125190": 5.64,
+      "12005430125189": 5.05,
+      "12005430125190": 5.32,
+      "13005430125189": 5.69,
+      "13005430125190": 5.62,
+      "14005430125189": 4.12,
+      "14005430125190": 4.16,
+      "15005430125189": 4.48,
+      "15005430125190": 4.26,
+      "16005430125189": 3.89,
+      "16005430125190": 3.69,
+      "17005430125189": 3.24,
+      "17005430125190": 3.41,
+      "18005430125189": 4.07,
+      "18005430125190": 4.21,
+      "19005430125189": 4.17,
+      "19005430125190": 4.45,
+      "21005430125189": 6.89,
+      "21005430125190": 6.45,
+      "31005430125189": 6.18,
+      "31005430125190": 6.05,
+      "32005430125189": 6.74,
+      "32005430125190": 6.77,
+      "33005430125189": 4.33,
+      "33005430125190": 4.66,
+      "34005430125189": 3.18,
+      "34005430125190": 3.46,
+      "35005430125189": 3.61,
+      "35005430125190": 3.88,
+      "36005430125189": 6.64,
+      "36005430125190": 6.69,
+      "51005430125189": 1.58,
+      "51005430125190": 1.49,
+      "52005430125189": 3.22,
+      "52005430125190": 3.06,
+      "53005430125189": 3.23,
+      "53005430125190": 3.31,
+      "61005430125189": 4.23,
+      "61005430125190": 4.82,
+      "62005430125189": 3.47,
+      "62005430125190": 3.97,
+      "63005430125189": 3.94,
+      "63005430125190": 4.16,
+      "64005430125189": 5.33,
+      "64005430125190": 5.18,
+      "65005430125189": 3.9,
+      "65005430125190": 3.85,
+      "71005430125189": 6.03,
+      "71005430125190": 5.99,
+      "72005430125189": 3.02,
+      "72005430125190": 2.92,
+      "73005430125189": 4.96,
+      "73005430125190": 4.21,
+      "74005430125189": 3.27,
+      "74005430125190": 3.31,
+      "75005430125189": 3.12,
+      "75005430125190": 3.42,
+      "76005430125189": 3.17,
+      "76005430125190": 2.86,
+      "81005430125189": 5.95,
+      "81005430125190": 6.27,
+      "82005430125189": 4.26,
+      "82005430125190": 4.55,
+      "91005430125189": 4.21,
+      "91005430125190": 4.55,
+      "92005430125189": 6.61,
+      "92005430125190": 6.85,
+      "94005430125189": 6.92,
+      "94005430125190": 6.96,
+      "95005430125189": 4.9,
+      "95005430125190": 4.04,
+      "96005430125189": 3.55,
+      "96005430125190": 3.62,
+      "97005430125189": 1.68,
+      "97005430125190": 1.68,
+      "99995430125189": 4.76,
+      "99995430125190": 4.85
+    },
+    "labelvervar": "38 Provinsi",
+    "last_update": "2026-05-06 15:41:30",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Tenaga Kerja",
+        "val": 520
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2025",
+        "val": 125
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Februari",
+        "val": 189
+      },
+      {
+        "label": "Agustus",
+        "val": 190
+      },
+      {
+        "label": "Tahunan",
+        "val": 191
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "",
+        "label": "Tingkat Pengangguran Terbuka Menurut Provinsi",
+        "note": "<p>Data 2011-2013 menggunakan Backcast dari Penimbang Proyeksi Komponen                    <br />Data 2018-2020 menggunakan Backcast dari Penimbang berbasis SUPAS 2015                    <br />1986-1998, penghitungan tanpa data Provinsi Timor Timor                    <br />Pada tahun 1995, Sakernas tidak dilaksanakan                    <br />Pada tahun 2000, tanpa Maluku                    <br />Sumber: Survei Angkatan Kerja Nasional (Sakernas)                    <br /><br /><br /></p><p><br /></p><p><br /></p>",
+        "subj": "Tenaga Kerja",
+        "unit": "Persen",
+        "val": 543
+      }
+    ],
+    "vervar": [
+      {
+        "label": "ACEH",
+        "val": 1100
+      },
+      {
+        "label": "SUMATERA UTARA",
+        "val": 1200
+      },
+      {
+        "label": "SUMATERA BARAT",
+        "val": 1300
+      },
+      {
+        "label": "RIAU",
+        "val": 1400
+      },
+      {
+        "label": "JAMBI",
+        "val": 1500
+      },
+      {
+        "label": "SUMATERA SELATAN",
+        "val": 1600
+      },
+      {
+        "label": "BENGKULU",
+        "val": 1700
+      },
+      {
+        "label": "LAMPUNG",
+        "val": 1800
+      },
+      {
+        "label": "KEP. BANGKA BELITUNG",
+        "val": 1900
+      },
+      {
+        "label": "KEP. RIAU",
+        "val": 2100
+      },
+      {
+        "label": "DKI JAKARTA",
+        "val": 3100
+      },
+      {
+        "label": "JAWA BARAT",
+        "val": 3200
+      },
+      {
+        "label": "JAWA TENGAH",
+        "val": 3300
+      },
+      {
+        "label": "DI YOGYAKARTA",
+        "val": 3400
+      },
+      {
+        "label": "JAWA TIMUR",
+        "val": 3500
+      },
+      {
+        "label": "BANTEN",
+        "val": 3600
+      },
+      {
+        "label": "BALI",
+        "val": 5100
+      },
+      {
+        "label": "NUSA TENGGARA BARAT",
+        "val": 5200
+      },
+      {
+        "label": "NUSA TENGGARA TIMUR",
+        "val": 5300
+      },
+      {
+        "label": "KALIMANTAN BARAT",
+        "val": 6100
+      },
+      {
+        "label": "KALIMANTAN TENGAH",
+        "val": 6200
+      },
+      {
+        "label": "KALIMANTAN SELATAN",
+        "val": 6300
+      },
+      {
+        "label": "KALIMANTAN TIMUR",
+        "val": 6400
+      },
+      {
+        "label": "KALIMANTAN UTARA",
+        "val": 6500
+      },
+      {
+        "label": "SULAWESI UTARA",
+        "val": 7100
+      },
+      {
+        "label": "SULAWESI TENGAH",
+        "val": 7200
+      },
+      {
+        "label": "SULAWESI SELATAN",
+        "val": 7300
+      },
+      {
+        "label": "SULAWESI TENGGARA",
+        "val": 7400
+      },
+      {
+        "label": "GORONTALO",
+        "val": 7500
+      },
+      {
+        "label": "SULAWESI BARAT",
+        "val": 7600
+      },
+      {
+        "label": "MALUKU",
+        "val": 8100
+      },
+      {
+        "label": "MALUKU UTARA",
+        "val": 8200
+      },
+      {
+        "label": "PAPUA BARAT",
+        "val": 9100
+      },
+      {
+        "label": "PAPUA BARAT DAYA",
+        "val": 9200
+      },
+      {
+        "label": "PAPUA",
+        "val": 9400
+      },
+      {
+        "label": "PAPUA SELATAN",
+        "val": 9500
+      },
+      {
+        "label": "PAPUA TENGAH",
+        "val": 9600
+      },
+      {
+        "label": "PAPUA PEGUNUNGAN",
+        "val": 9700
+      },
+      {
+        "label": "INDONESIA",
+        "val": 9999
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-19T02:01:31+00:00",
+  "snapshot_schema": "ranah-observatory/bps-webapi-snapshot/v1",
+  "source_id": "bps_webapi"
+}
