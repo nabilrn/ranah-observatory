@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+import csv
 from collections import defaultdict
 from html.parser import HTMLParser
+from pathlib import Path
 from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+CROSSWALK = ROOT / "data/registries/djpk_sumbar_pemda.csv"
 
 
 def _install_row_close_compat(taxonomy: Any) -> None:
@@ -27,17 +32,9 @@ def _install_row_close_compat(taxonomy: Any) -> None:
 def _install_duplicate_label_compat(taxonomy: Any) -> None:
     """Make duplicate visible account labels explicit and fail-closed.
 
-    The DJPK portal can repeat the same visible label at two hierarchy levels.
-    Reference-year diagnostics established that ``Belanja Modal`` and
-    ``Belanja Pegawai`` use two levels with byte-equivalent displayed values in
-    every 2018-2025 Kota Padang reference page. Such duplicates are safe to
-    collapse because either occurrence represents the exact same displayed
-    quantity.
-
-    Non-identical duplicates are *never* collapsed. Their normalized labels are
-    disambiguated so the unsuffixed label disappears from the qualification
-    universe. This prevents an ambiguous hierarchy row from becoming an exact
-    label contract accidentally. The raw HTML remains frozen as provenance.
+    Identical duplicate display rows can be collapsed. Non-identical duplicate
+    hierarchy rows are retained only under disambiguated normalized labels, so
+    their ambiguous base label cannot qualify as an exact-label contract.
     """
     if getattr(taxonomy, "_m25_djpk_duplicate_label_compat", False):
         return
@@ -100,9 +97,6 @@ def _install_duplicate_label_compat(taxonomy: Any) -> None:
                 resolved.append(kept)
                 continue
 
-            # Conflicting hierarchy rows remain separately represented, but the
-            # ambiguous base label is deliberately unavailable for exact-label
-            # qualification or Stage 1 lookup.
             for occurrence, item in enumerate(group, start=1):
                 disambiguated = dict(item)
                 disambiguated["account_label_normalized"] = f"{label} [hierarchy-conflict-{occurrence}]"
@@ -116,16 +110,63 @@ def _install_duplicate_label_compat(taxonomy: Any) -> None:
     taxonomy._m25_djpk_duplicate_label_compat = True
 
 
-def install_djpk_html_compat() -> None:
-    """Install source-specific compatibility rules for frozen DJPK APBD HTML.
+def _load_explicit_identity_aliases(stage1: Any) -> dict[str, tuple[str, ...]]:
+    """Return source-verified aliases keyed by the locked primary source name.
 
-    Two source quirks are handled conservatively:
-    1. malformed ``<tr/>`` body-row closers are interpreted as row closes;
-    2. duplicate visible labels collapse only when all displayed values are
-       identical, while non-identical duplicates are disambiguated and cannot
-       qualify under their base label.
+    Aliases are data, not fuzzy rules. Only non-empty aliases explicitly stored
+    in the reviewed DJPK crosswalk can expand an identity match.
+    """
+    aliases: dict[str, tuple[str, ...]] = {}
+    with CROSSWALK.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if len(rows) != 19:
+        raise ValueError(f"DJPK identity alias crosswalk must have 19 rows, got {len(rows)}")
+    for row in rows:
+        primary = (row.get("djpk_source_name") or "").strip()
+        raw_alias = (row.get("djpk_identity_alias") or "").strip()
+        if not primary:
+            raise ValueError("DJPK identity alias crosswalk contains empty primary name")
+        if not raw_alias:
+            aliases[primary] = ()
+            continue
+        values = tuple(part.strip() for part in raw_alias.split("|") if part.strip())
+        if not values:
+            raise ValueError(f"DJPK identity alias field is malformed for {primary}")
+        aliases[primary] = values
+    return aliases
+
+
+def _install_identity_alias_compat() -> None:
+    import probe_milestone25_djpk_stage1 as stage1
+
+    if getattr(stage1, "_m25_djpk_explicit_identity_alias_compat", False):
+        return
+    alias_map = _load_explicit_identity_aliases(stage1)
+    original = stage1.jurisdiction_matches
+
+    def jurisdiction_matches(page_text: str, expected_source_name: str) -> bool:
+        if original(page_text, expected_source_name):
+            return True
+        for alias in alias_map.get(expected_source_name, ()):  # exact reviewed aliases only
+            if original(page_text, alias):
+                return True
+        return False
+
+    stage1.jurisdiction_matches = jurisdiction_matches
+    stage1._m25_djpk_explicit_identity_alias_compat = True
+
+
+def install_djpk_html_compat() -> None:
+    """Install fail-closed compatibility rules for frozen DJPK APBD HTML.
+
+    The compatibility layer handles only source-observed quirks:
+    1. malformed ``<tr/>`` body-row closers;
+    2. duplicate visible hierarchy labels, collapsing only identical values;
+    3. explicit source-name aliases stored in the reviewed jurisdiction
+       crosswalk. No fuzzy geography matching is introduced.
     """
     import probe_milestone25_djpk_taxonomy as taxonomy
 
     _install_row_close_compat(taxonomy)
     _install_duplicate_label_compat(taxonomy)
+    _install_identity_alias_compat()
