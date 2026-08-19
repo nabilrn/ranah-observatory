@@ -1,0 +1,72 @@
+{
+  "breakpoint_selection_loss": "training_mae",
+  "causal_analysis_performed": false,
+  "classification": "regime_shift_not_qualified",
+  "climate_change_attribution_performed": false,
+  "criterion": "single-break robust trend regime evaluated by strict rolling-origin out-of-time performance and breakpoint stability",
+  "design_gate_schema": "ranah-observatory/milestone21-design-gate/v1",
+  "full_break_within_3y_of_rolling_median": true,
+  "full_post_slope_mm_per_year": 9.953079730650135,
+  "full_pre_slope_mm_per_year": -43.69866423684211,
+  "full_series_selected_break_year": 1998,
+  "historical_boundary_continuity_claimed": false,
+  "input_year_count": 45,
+  "inputs": {
+    "design_gate": {
+      "path": "data/manifests/milestone21_design_gate.json",
+      "sha256": "77f1cdfe60e5b6b6f396706f4fe4e481070a16a482e0aa1aacb8d66c60055e08"
+    },
+    "m20_manifest": {
+      "path": "data/manifests/milestone20_historical_climate_trend.json",
+      "sha256": "0d034cd314c838478a0af37c5cc3153fd807e4e2325973d1aad46367ef6b1e18"
+    },
+    "m20_regional_annual_mean": {
+      "path": "data/analysis/engine/historical_climate_trend_v1/m20-regional-annual-mean.csv",
+      "sha256": "718d929b2da66b3e6a856500f852ae2114e8906fa5bcbcfd68fcc8f4e1612a8e"
+    },
+    "spec": {
+      "path": "research/MILESTONE21_CLIMATE_REGIME_SHIFT_SPEC.md",
+      "sha256": "0b30a9fc8d3e1fff89f6c25b09542a4d1e821be47dae43ee8dc32dc4fc4a11e0"
+    }
+  },
+  "milestone": 21,
+  "milestone21_complete": true,
+  "minimum_segment_years": 10,
+  "outer_forecast_count": 20,
+  "outputs": {
+    "breakpoint_candidates": {
+      "path": "data/analysis/engine/climate_regime_shift_v1/m21-breakpoint-candidates.csv",
+      "sha256": "74d805f9c00d2f0946263bde085051a8a39f01ba74369dd0dc903bb1112160bc"
+    },
+    "full_series_regime": {
+      "path": "data/analysis/engine/climate_regime_shift_v1/m21-full-series-regime.csv",
+      "sha256": "f32a1e875dae824378349a2f7bb3bd0b020c58b9eb8fb8694670adb84de65eaf"
+    },
+    "rolling_backtest": {
+      "path": "data/analysis/engine/climate_regime_shift_v1/m21-rolling-backtest.csv",
+      "sha256": "7edbaa6584769f9f9864867a4f491e26d8fa6213f719b8b06353bfdf00138ef7"
+    }
+  },
+  "pettitt_approx_p": 0.08363061874097305,
+  "pettitt_break_year": 1998,
+  "pettitt_role": "secondary_diagnostic_only",
+  "phase": "post_phase2_historical_climate_evidence_expansion",
+  "posthoc_algorithm_search_performed": false,
+  "pre_post_slopes_opposite_nonzero": true,
+  "predictive_qualification_pass": false,
+  "public_claim_authorized": false,
+  "rolling_break_q25_year": 1992.0,
+  "rolling_break_q75_year": 1998.0,
+  "rolling_break_stability_pass": false,
+  "rolling_break_within_3y_fraction": 0.55,
+  "rolling_median_break_year": 1998.0,
+  "schema": "ranah-observatory/milestone21-climate-regime-shift/v1",
+  "segmented_backtest_mae_mm": 333.38058141393884,
+  "segmented_backtest_rmse_mm": 420.1431113538848,
+  "segmented_model": "single_break_two_theil_sen_lines",
+  "single_backtest_mae_mm": 343.1222863257704,
+  "single_backtest_rmse_mm": 402.6548582336686,
+  "single_trend_model": "theil_sen",
+  "station_observation_equivalence": false,
+  "upstream_m20_regional_public_claim_authorized": false
+}
