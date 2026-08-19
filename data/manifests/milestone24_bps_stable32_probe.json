@@ -1,0 +1,315 @@
+{
+  "candidate_count": 6,
+  "candidate_year_probe_count": 48,
+  "candidates": [
+    {
+      "bps_var_id": 192,
+      "indicator_id": "poverty_rate",
+      "passed_year_count": 8,
+      "passed_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "qualification_status": "stable32_2018_2025_probe_qualified",
+      "requested_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "semantic_sha256_by_year": {
+        "2018": "3f799366bff8490e041ca3696f4f55df149bddb8e2b83ae5b37523ff537fbd54",
+        "2019": "30376f3cd61e335c1701068bacbab6242c0630a85a39a6e61a440a4e232d8ae0",
+        "2020": "a773b9176e5c7580bf250fb227a1573653ac1f699250bcd410beba52dd3bb725",
+        "2021": "f900251b089e9a5ea36b9275d055bfdd1f176625c8c1bc2cc28ab5639d57cb82",
+        "2022": "0ae9b46e80ad6bf8ecc4c58de367df4b67b0b66c1345f17163de03f36ac0a4df",
+        "2023": "8d3e30a1f77c976e52d1d56f10d78da43f395bdd65680d4232749ccb104eb5b8",
+        "2024": "78a9d5b18c46165f3ab91b2a82ff087eee6c57f4be164549ef698b24cdb77e08",
+        "2025": "68ffbfcd56dd7c28f0404caaff4334b95096d74d8a4fcbd79100cd34c161ada9"
+      },
+      "series_id": "m5_poverty_march"
+    },
+    {
+      "bps_var_id": 98,
+      "indicator_id": "gini_ratio",
+      "passed_year_count": 8,
+      "passed_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "qualification_status": "stable32_2018_2025_probe_qualified",
+      "requested_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "semantic_sha256_by_year": {
+        "2018": "39a9c2836b28bd93a78c33bc54a4972c9b9c36572c64226b36df95e630cfa673",
+        "2019": "db3077118f5d5454f9812de7a6f78006e4c7fac87e86d2583ee57f3b5e716748",
+        "2020": "a803d21e8777e81ed3ae7505294eb89af1e64f186d0b7fbaa0e9a0854891bc80",
+        "2021": "3633bce51c1a233679c64cb84bd6f41f279cc6d3b279d68ff7c882bd7daa865a",
+        "2022": "dd688016df3585087a633b66c190ad782a2ac114f30198fd3c6d04a3c0cdcf05",
+        "2023": "eefc7f359987f293ddde3c3c5e1b1c39b7bd8f5dbdfc34bfeb2c12be15e68722",
+        "2024": "3012c1c18a8515fe878a975a9a47a2f98efaae86ecc98a4660613969e96c2547",
+        "2025": "85aa46df38716912ab3d67ec0d2c6f71e8de0ac1520c3a8e39e9886c5ebb385a"
+      },
+      "series_id": "m5_gini_march"
+    },
+    {
+      "bps_var_id": 543,
+      "indicator_id": "unemployment_rate",
+      "passed_year_count": 8,
+      "passed_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "qualification_status": "stable32_2018_2025_probe_qualified",
+      "requested_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "semantic_sha256_by_year": {
+        "2018": "698790c3b714846f174d3f576a0f9d5155989907f23d2fae92a889c62acf0e5d",
+        "2019": "8f9dd20a88dcf87fa7258152c8e30274f9246a3c53383c38d20a8c74fbcacb50",
+        "2020": "d58362cdd5dc28fa393e194d033fcf76045e53093a81bf23e66f645d8b2fa408",
+        "2021": "8cbf01e27cd7802044b46af3dc0a4cd3ba8099eefe23b3007fd0309e85b598e0",
+        "2022": "932c2dcacd3d2a9e96701bc3007a89ef0dbec8454902c6ed5112be36817f3f23",
+        "2023": "138ae3565231c4ab200df90d22f1cf2f39d9e70e42323540c8b30f536b38b31c",
+        "2024": "60844cb34027da8f520068c88b20e9181c82e6f801c55acb7feea6a70bddc7be",
+        "2025": "3f08dbc77d27ad2d1804964cbe8378c4d6f52b5712dffb40ce10692823cc748c"
+      },
+      "series_id": "m5_unemployment_august"
+    },
+    {
+      "bps_var_id": 1181,
+      "indicator_id": "underemployment_rate",
+      "passed_year_count": 8,
+      "passed_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "qualification_status": "stable32_2018_2025_probe_qualified",
+      "requested_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "semantic_sha256_by_year": {
+        "2018": "710e6456612ab5624baf65341dc17487e9e43b6dfb7a6cfd3f996bead79f8d3e",
+        "2019": "5bfd168dfb5b7323232fbfc885c3c10c9e55e35f96f56b472fbb9e5df7f44a38",
+        "2020": "209159dea9cafb11e9aa98d584ca6fe2409fe2012c5c574a53ab6257b54be431",
+        "2021": "7d4b057ce9fb5b14379ea5b8edbdb66491c4b6951ed26a32246f311860d2025b",
+        "2022": "212d8462c0b18470f1c653cf3ecd8e8470aa0dcc6de8d54f5e4b1d4f75b4daf6",
+        "2023": "34fdf6d8ce4185f35797c41afb1a8719c4c727340e89555d682b63522a4be0e2",
+        "2024": "59305e326a1c6de37104b1c3852d6c4842f20b84cd1a4e8d2dacf364de064f01",
+        "2025": "95c4258d1249fbbb6c598198b47705f906ce63e90137ac12b39da4720622d4d4"
+      },
+      "series_id": "m5_underemployment_source_period"
+    },
+    {
+      "bps_var_id": 288,
+      "indicator_id": "real_grdp_per_capita",
+      "passed_year_count": 8,
+      "passed_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "qualification_status": "stable32_2018_2025_probe_qualified",
+      "requested_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "semantic_sha256_by_year": {
+        "2018": "02d9a52ced4abfa28eaad5c8436d2d1b726ab7def21873f67f8fb3e429b3dee8",
+        "2019": "be6e219c05906e7235657931c42cc714d8f0398b7804ee29f348abb530dac14d",
+        "2020": "a4f5ad4d3d0d7c0c8f8a1dfda2b08a0e98d3177950968c258e1a8f25029df8a0",
+        "2021": "d123a87bf06ad0aa74ffbb253f22da24e23877fa683922b7207de573b9f20964",
+        "2022": "23db17c6cb968146880d639773ccdbe9627c331969f6cdd87b07a0d458a6a9d6",
+        "2023": "8b3124f1cb1c1ac67131511bf8395c8d6145550df778686835c0825a03401cc2",
+        "2024": "2c26aed4f878076d94a95b2a0963836cad866b27465accdcdd022506bc273375",
+        "2025": "69025b7866a4b435cef9bcc2ef81374258eb81db8a0ae89eb8a062dd5ea1565b"
+      },
+      "series_id": "m5_real_grdp_pc_adhk2010"
+    },
+    {
+      "bps_var_id": 1186,
+      "indicator_id": "neet_rate",
+      "passed_year_count": 8,
+      "passed_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "qualification_status": "stable32_2018_2025_probe_qualified",
+      "requested_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "semantic_sha256_by_year": {
+        "2018": "5e815f0de10a35273a704d90b423b2c42f82e04fe5c97f6b0a9f2e7e9bc394c7",
+        "2019": "23970815d7161f9bfca5b3b5ab36492a9faee6c5c3efea250b6ee78b934a95da",
+        "2020": "7fa0eab4c16c3a2299fa04f16779e24df546dbbaf5a7694e9b82e40b8e2048a5",
+        "2021": "dcb8ec5c39ff1fb8b5e5038e849bd02f7a913b8681ce2845b2dc6c27c5d8ad0a",
+        "2022": "8ad0ffaaac91593333b76d5fd4eed93fd20fe58810dc11ebccc5f38374965aab",
+        "2023": "7b7a8715eed541662574ae7ca4119f696f2955f7917a6f4a36d48ad56c413e85",
+        "2024": "68de653010cc9fbe7b90884512820c530d7b7f9da422fd938a547010bb2d0b6b",
+        "2025": "8d676d28533e079008f8003a33c38d972dd13960e66e5f5e0d4be2fed1c8e1e9"
+      },
+      "series_id": "m5_neet_source_period"
+    }
+  ],
+  "credential_persisted": false,
+  "domain": "0000",
+  "exact_selector_reuse_required": true,
+  "excluded_current_papua_source_codes": [
+    "9100",
+    "9200",
+    "9400",
+    "9500",
+    "9600",
+    "9700"
+  ],
+  "geographic_backcasting_performed": false,
+  "imputation_performed": false,
+  "inputs": {
+    "design_gate": {
+      "path": "data/manifests/milestone24_design_gate.json",
+      "sha256": "dc1f7f397e3efe495d09252def9f286d15818a18d7e898b17daf80385a04e71b"
+    },
+    "geography_registry": {
+      "path": "data/registries/geographies.csv",
+      "sha256": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de"
+    },
+    "series_registry": {
+      "path": "data/registries/bps_comparative_panel_series.csv",
+      "sha256": "694a18227612d4e1a32c2b20fa88dbd417a5690c88e87e6f412aa8cb288f0265"
+    }
+  },
+  "milestone": 24,
+  "phase": "post_phase2_national_comparator_expansion",
+  "province_district_model_pooling_performed": false,
+  "qualified_candidate_count": 6,
+  "qualified_series_ids": [
+    "m5_poverty_march",
+    "m5_gini_march",
+    "m5_unemployment_august",
+    "m5_underemployment_source_period",
+    "m5_real_grdp_pc_adhk2010",
+    "m5_neet_source_period"
+  ],
+  "schema": "ranah-observatory/milestone24-bps-stable32-probe/v1",
+  "selector_search_after_probe_performed": false,
+  "source_id": "bps_webapi",
+  "stable_geography_count": 32,
+  "stable_source_codes": [
+    "1100",
+    "1200",
+    "1300",
+    "1400",
+    "1500",
+    "1600",
+    "1700",
+    "1800",
+    "1900",
+    "2100",
+    "3100",
+    "3200",
+    "3300",
+    "3400",
+    "3500",
+    "3600",
+    "5100",
+    "5200",
+    "5300",
+    "6100",
+    "6200",
+    "6300",
+    "6400",
+    "6500",
+    "7100",
+    "7200",
+    "7300",
+    "7400",
+    "7500",
+    "7600",
+    "8100",
+    "8200"
+  ],
+  "target_years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ]
+}

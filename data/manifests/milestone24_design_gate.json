@@ -1,0 +1,31 @@
+{
+  "schema": "ranah-observatory/milestone24-design-gate/v1",
+  "milestone": 24,
+  "phase": "post_phase2_national_comparator_expansion",
+  "design_locked_before_probe": true,
+  "source_id": "bps_webapi",
+  "domain": "0000",
+  "target_start_year": 2018,
+  "target_end_year": 2025,
+  "target_year_count": 8,
+  "geography_level": "province",
+  "stable_geography_count": 32,
+  "excluded_current_papua_bps_codes": ["91", "92", "94", "95", "96", "97"],
+  "candidate_series_ids": [
+    "m5_poverty_march",
+    "m5_gini_march",
+    "m5_unemployment_august",
+    "m5_underemployment_source_period",
+    "m5_real_grdp_pc_adhk2010",
+    "m5_neet_source_period"
+  ],
+  "candidate_count": 6,
+  "probe_candidate_year_count": 48,
+  "exact_selector_reuse_required": true,
+  "selector_search_after_probe_authorized": false,
+  "imputation_authorized": false,
+  "geographic_backcasting_authorized": false,
+  "province_district_model_pooling_authorized": false,
+  "credential_source": "github_actions_secret_BPS_API_KEY",
+  "credential_persistence_authorized": false
+}

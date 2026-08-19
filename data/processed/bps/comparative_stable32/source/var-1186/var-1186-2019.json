@@ -1,0 +1,250 @@
+{
+  "command": "dynamic",
+  "domain": "0000",
+  "filters": {
+    "resolved_period_label": "2019",
+    "th": "119",
+    "var": 1186
+  },
+  "language": "ind",
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "1100118601190": 23.61,
+      "1200118601190": 18.71,
+      "1300118601190": 19.93,
+      "1400118601190": 22.66,
+      "1500118601190": 22.81,
+      "1600118601190": 22.78,
+      "1700118601190": 20.51,
+      "1800118601190": 22.84,
+      "1900118601190": 22.65,
+      "2100118601190": 16.55,
+      "3100118601190": 15.41,
+      "3200118601190": 25.52,
+      "3300118601190": 21.8,
+      "3400118601190": 9.78,
+      "3500118601190": 21.14,
+      "3600118601190": 23.11,
+      "5100118601190": 9.4,
+      "5200118601190": 21.98,
+      "5300118601190": 19.25,
+      "6100118601190": 23.2,
+      "6200118601190": 22.31,
+      "6300118601190": 22.18,
+      "6400118601190": 19.65,
+      "6500118601190": 21.42,
+      "7100118601190": 28.1,
+      "7200118601190": 21.85,
+      "7300118601190": 21.91,
+      "7400118601190": 21.32,
+      "7500118601190": 26.41,
+      "7600118601190": 23.07,
+      "8100118601190": 26.59,
+      "8200118601190": 24.94,
+      "9100118601190": 20.77,
+      "9400118601190": 17.57,
+      "9999118601190": 21.77
+    },
+    "labelvervar": "38 Provinsi",
+    "last_update": "2026-02-24 13:59:30",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Tenaga Kerja",
+        "val": 520
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2019",
+        "val": 119
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "",
+        "label": "Persentase Usia Muda (15-24 Tahun) Yang Sedang Tidak Sekolah, Bekerja Atau Mengikuti Pelatihan",
+        "note": "<p>Sumber: Sakernas, BPS</p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p>",
+        "subj": "Tenaga Kerja",
+        "unit": "Persen",
+        "val": 1186
+      }
+    ],
+    "vervar": [
+      {
+        "label": "ACEH",
+        "val": 1100
+      },
+      {
+        "label": "SUMATERA UTARA",
+        "val": 1200
+      },
+      {
+        "label": "SUMATERA BARAT",
+        "val": 1300
+      },
+      {
+        "label": "RIAU",
+        "val": 1400
+      },
+      {
+        "label": "JAMBI",
+        "val": 1500
+      },
+      {
+        "label": "SUMATERA SELATAN",
+        "val": 1600
+      },
+      {
+        "label": "BENGKULU",
+        "val": 1700
+      },
+      {
+        "label": "LAMPUNG",
+        "val": 1800
+      },
+      {
+        "label": "KEP. BANGKA BELITUNG",
+        "val": 1900
+      },
+      {
+        "label": "KEP. RIAU",
+        "val": 2100
+      },
+      {
+        "label": "DKI JAKARTA",
+        "val": 3100
+      },
+      {
+        "label": "JAWA BARAT",
+        "val": 3200
+      },
+      {
+        "label": "JAWA TENGAH",
+        "val": 3300
+      },
+      {
+        "label": "DI YOGYAKARTA",
+        "val": 3400
+      },
+      {
+        "label": "JAWA TIMUR",
+        "val": 3500
+      },
+      {
+        "label": "BANTEN",
+        "val": 3600
+      },
+      {
+        "label": "BALI",
+        "val": 5100
+      },
+      {
+        "label": "NUSA TENGGARA BARAT",
+        "val": 5200
+      },
+      {
+        "label": "NUSA TENGGARA TIMUR",
+        "val": 5300
+      },
+      {
+        "label": "KALIMANTAN BARAT",
+        "val": 6100
+      },
+      {
+        "label": "KALIMANTAN TENGAH",
+        "val": 6200
+      },
+      {
+        "label": "KALIMANTAN SELATAN",
+        "val": 6300
+      },
+      {
+        "label": "KALIMANTAN TIMUR",
+        "val": 6400
+      },
+      {
+        "label": "KALIMANTAN UTARA",
+        "val": 6500
+      },
+      {
+        "label": "SULAWESI UTARA",
+        "val": 7100
+      },
+      {
+        "label": "SULAWESI TENGAH",
+        "val": 7200
+      },
+      {
+        "label": "SULAWESI SELATAN",
+        "val": 7300
+      },
+      {
+        "label": "SULAWESI TENGGARA",
+        "val": 7400
+      },
+      {
+        "label": "GORONTALO",
+        "val": 7500
+      },
+      {
+        "label": "SULAWESI BARAT",
+        "val": 7600
+      },
+      {
+        "label": "MALUKU",
+        "val": 8100
+      },
+      {
+        "label": "MALUKU UTARA",
+        "val": 8200
+      },
+      {
+        "label": "PAPUA BARAT",
+        "val": 9100
+      },
+      {
+        "label": "PAPUA BARAT DAYA",
+        "val": 9200
+      },
+      {
+        "label": "PAPUA",
+        "val": 9400
+      },
+      {
+        "label": "PAPUA SELATAN",
+        "val": 9500
+      },
+      {
+        "label": "PAPUA TENGAH",
+        "val": 9600
+      },
+      {
+        "label": "PAPUA PEGUNUNGAN",
+        "val": 9700
+      },
+      {
+        "label": "INDONESIA",
+        "val": 9999
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-19T02:02:02+00:00",
+  "snapshot_schema": "ranah-observatory/bps-webapi-snapshot/v1",
+  "source_id": "bps_webapi"
+}

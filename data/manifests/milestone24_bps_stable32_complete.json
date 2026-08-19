@@ -1,0 +1,81 @@
+{
+  "candidate_count": 6,
+  "comparison_universe_materially_expanded": true,
+  "credential_persisted": false,
+  "criterion": "six exact-selector BPS series with complete stable-boundary 32-province coverage for 2018-2025",
+  "district_city_training_sample_directly_expanded": false,
+  "end_year": 2025,
+  "excluded_current_papua_geography_count": 6,
+  "frozen_dynamic_snapshot_count": 48,
+  "geographic_backcasting_performed": false,
+  "geography_count": 32,
+  "geography_level": "province",
+  "imputation_performed": false,
+  "indicator_ids": [
+    "poverty_rate",
+    "gini_ratio",
+    "unemployment_rate",
+    "underemployment_rate",
+    "real_grdp_per_capita",
+    "neet_rate"
+  ],
+  "inputs": {
+    "coverage": {
+      "path": "data/analysis/engine/bps_stable32_v1/m24-probe-coverage.csv",
+      "sha256": "16dc4c29c97d79b4f7c3b9d0f1cdd54c344c679178ff2d41f72a559d3c99fe96"
+    },
+    "design_gate": {
+      "path": "data/manifests/milestone24_design_gate.json",
+      "sha256": "dc1f7f397e3efe495d09252def9f286d15818a18d7e898b17daf80385a04e71b"
+    },
+    "panel_manifest": {
+      "path": "data/processed/bps/comparative_stable32/bps-stable32.manifest.json",
+      "sha256": "4f94bd52ebc1ec52a891af7a24383f26a73cade2bcecf5fd589006b8e150ae75"
+    },
+    "probe": {
+      "path": "data/manifests/milestone24_bps_stable32_probe.json",
+      "sha256": "9d86066139b0e72d11b78a35975b8d883b37f18ce9413b21ce59f45bb0133910"
+    },
+    "probe_freeze_verification": {
+      "path": "data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json",
+      "sha256": "c8b17c98771a1c9f7a9b0d92a520552cb8848a279a3bdfd38e0d7a7aa1434908"
+    },
+    "spec": {
+      "path": "research/MILESTONE24_BPS_STABLE32_COMPARATOR_SPEC.md",
+      "sha256": "2cc1ad5981bb21575fb9ecf5957bbde1010ad480392316091859f359187a23f2"
+    }
+  },
+  "milestone": 24,
+  "milestone24_complete": true,
+  "observation_count": 1536,
+  "outputs": {
+    "canonical_observations": {
+      "path": "data/processed/bps/comparative_stable32/bps-stable32-canonical-observations.csv",
+      "sha256": "5fe5dc4f68cb57365f94f680a6145a6908c1c5a07f84c44a8accc97188db8b3a"
+    },
+    "provenance": {
+      "path": "data/processed/bps/comparative_stable32/bps-stable32-provenance.csv",
+      "sha256": "3edf2517abe78c07e32ab20d892896f3027e0fa63baca506c5a39b1970d1da2e"
+    }
+  },
+  "panel_materialization_complete": true,
+  "phase": "post_phase2_national_comparator_expansion",
+  "probe_complete": true,
+  "probe_freeze_semantic_match": true,
+  "provenance_count": 48,
+  "province_district_model_pooling_performed": false,
+  "qualified_candidate_count": 6,
+  "qualified_series_ids": [
+    "m5_poverty_march",
+    "m5_gini_march",
+    "m5_unemployment_august",
+    "m5_underemployment_source_period",
+    "m5_real_grdp_pc_adhk2010",
+    "m5_neet_source_period"
+  ],
+  "schema": "ranah-observatory/milestone24-bps-stable32-complete/v1",
+  "selector_search_after_probe_performed": false,
+  "start_year": 2018,
+  "statistical_model_fit": false,
+  "year_count": 8
+}

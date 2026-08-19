@@ -1,0 +1,85 @@
+{
+  "domain": "0000",
+  "language": "ind",
+  "normalized_rows": 1608,
+  "requested_period_labels": [
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "retrieved_at_utc": "2026-08-19T02:01:08+00:00",
+  "schema": "ranah-observatory/bps-source-series/v1",
+  "snapshots": [
+    {
+      "checksum": "var-192-2018.json.sha256",
+      "missing_combinations": 143,
+      "observed_values": 208,
+      "period_id": "118",
+      "period_label": "2018",
+      "snapshot": "var-192-2018.json"
+    },
+    {
+      "checksum": "var-192-2019.json.sha256",
+      "missing_combinations": 143,
+      "observed_values": 208,
+      "period_id": "119",
+      "period_label": "2019",
+      "snapshot": "var-192-2019.json"
+    },
+    {
+      "checksum": "var-192-2020.json.sha256",
+      "missing_combinations": 143,
+      "observed_values": 208,
+      "period_id": "120",
+      "period_label": "2020",
+      "snapshot": "var-192-2020.json"
+    },
+    {
+      "checksum": "var-192-2021.json.sha256",
+      "missing_combinations": 143,
+      "observed_values": 208,
+      "period_id": "121",
+      "period_label": "2021",
+      "snapshot": "var-192-2021.json"
+    },
+    {
+      "checksum": "var-192-2022.json.sha256",
+      "missing_combinations": 143,
+      "observed_values": 208,
+      "period_id": "122",
+      "period_label": "2022",
+      "snapshot": "var-192-2022.json"
+    },
+    {
+      "checksum": "var-192-2023.json.sha256",
+      "missing_combinations": 247,
+      "observed_values": 104,
+      "period_id": "123",
+      "period_label": "2023",
+      "snapshot": "var-192-2023.json"
+    },
+    {
+      "checksum": "var-192-2024.json.sha256",
+      "missing_combinations": 119,
+      "observed_values": 232,
+      "period_id": "124",
+      "period_label": "2024",
+      "snapshot": "var-192-2024.json"
+    },
+    {
+      "checksum": "var-192-2025.json.sha256",
+      "missing_combinations": 119,
+      "observed_values": 232,
+      "period_id": "125",
+      "period_label": "2025",
+      "snapshot": "var-192-2025.json"
+    }
+  ],
+  "source_id": "bps_webapi",
+  "var_id": 192
+}

@@ -1,0 +1,250 @@
+{
+  "command": "dynamic",
+  "domain": "0000",
+  "filters": {
+    "resolved_period_label": "2019",
+    "th": "119",
+    "var": 1181
+  },
+  "language": "ind",
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "1100118101190": 12.38,
+      "1200118101190": 7.68,
+      "1300118101190": 9.2,
+      "1400118101190": 8.29,
+      "1500118101190": 8.57,
+      "1600118101190": 9.22,
+      "1700118101190": 10.12,
+      "1800118101190": 8.66,
+      "1900118101190": 6.25,
+      "2100118101190": 2.84,
+      "3100118101190": 1.89,
+      "3200118101190": 5.52,
+      "3300118101190": 5.36,
+      "3400118101190": 3.94,
+      "3500118101190": 5.23,
+      "3600118101190": 4.52,
+      "5100118101190": 1.93,
+      "5200118101190": 13.97,
+      "5300118101190": 11.79,
+      "6100118101190": 7.93,
+      "6200118101190": 6.05,
+      "6300118101190": 6.67,
+      "6400118101190": 4.74,
+      "6500118101190": 6.44,
+      "7100118101190": 6.38,
+      "7200118101190": 9.1,
+      "7300118101190": 7.34,
+      "7400118101190": 8.46,
+      "7500118101190": 6.16,
+      "7600118101190": 9.91,
+      "8100118101190": 10.76,
+      "8200118101190": 8.15,
+      "9100118101190": 8.9,
+      "9400118101190": 7.03,
+      "9999118101190": 6.42
+    },
+    "labelvervar": "38 Provinsi",
+    "last_update": "2026-02-24 13:56:37",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Tenaga Kerja",
+        "val": 520
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2019",
+        "val": 119
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "",
+        "label": "Tingkat Setengah Pengangguran Menurut Provinsi",
+        "note": "<p>Sumber: Sakernas, BPS</p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p>",
+        "subj": "Tenaga Kerja",
+        "unit": "Persen",
+        "val": 1181
+      }
+    ],
+    "vervar": [
+      {
+        "label": "ACEH",
+        "val": 1100
+      },
+      {
+        "label": "SUMATERA UTARA",
+        "val": 1200
+      },
+      {
+        "label": "SUMATERA BARAT",
+        "val": 1300
+      },
+      {
+        "label": "RIAU",
+        "val": 1400
+      },
+      {
+        "label": "JAMBI",
+        "val": 1500
+      },
+      {
+        "label": "SUMATERA SELATAN",
+        "val": 1600
+      },
+      {
+        "label": "BENGKULU",
+        "val": 1700
+      },
+      {
+        "label": "LAMPUNG",
+        "val": 1800
+      },
+      {
+        "label": "KEP. BANGKA BELITUNG",
+        "val": 1900
+      },
+      {
+        "label": "KEP. RIAU",
+        "val": 2100
+      },
+      {
+        "label": "DKI JAKARTA",
+        "val": 3100
+      },
+      {
+        "label": "JAWA BARAT",
+        "val": 3200
+      },
+      {
+        "label": "JAWA TENGAH",
+        "val": 3300
+      },
+      {
+        "label": "DI YOGYAKARTA",
+        "val": 3400
+      },
+      {
+        "label": "JAWA TIMUR",
+        "val": 3500
+      },
+      {
+        "label": "BANTEN",
+        "val": 3600
+      },
+      {
+        "label": "BALI",
+        "val": 5100
+      },
+      {
+        "label": "NUSA TENGGARA BARAT",
+        "val": 5200
+      },
+      {
+        "label": "NUSA TENGGARA TIMUR",
+        "val": 5300
+      },
+      {
+        "label": "KALIMANTAN BARAT",
+        "val": 6100
+      },
+      {
+        "label": "KALIMANTAN TENGAH",
+        "val": 6200
+      },
+      {
+        "label": "KALIMANTAN SELATAN",
+        "val": 6300
+      },
+      {
+        "label": "KALIMANTAN TIMUR",
+        "val": 6400
+      },
+      {
+        "label": "KALIMANTAN UTARA",
+        "val": 6500
+      },
+      {
+        "label": "SULAWESI UTARA",
+        "val": 7100
+      },
+      {
+        "label": "SULAWESI TENGAH",
+        "val": 7200
+      },
+      {
+        "label": "SULAWESI SELATAN",
+        "val": 7300
+      },
+      {
+        "label": "SULAWESI TENGGARA",
+        "val": 7400
+      },
+      {
+        "label": "GORONTALO",
+        "val": 7500
+      },
+      {
+        "label": "SULAWESI BARAT",
+        "val": 7600
+      },
+      {
+        "label": "MALUKU",
+        "val": 8100
+      },
+      {
+        "label": "MALUKU UTARA",
+        "val": 8200
+      },
+      {
+        "label": "PAPUA BARAT",
+        "val": 9100
+      },
+      {
+        "label": "PAPUA BARAT DAYA",
+        "val": 9200
+      },
+      {
+        "label": "PAPUA",
+        "val": 9400
+      },
+      {
+        "label": "PAPUA SELATAN",
+        "val": 9500
+      },
+      {
+        "label": "PAPUA TENGAH",
+        "val": 9600
+      },
+      {
+        "label": "PAPUA PEGUNUNGAN",
+        "val": 9700
+      },
+      {
+        "label": "INDONESIA",
+        "val": 9999
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-19T02:01:43+00:00",
+  "snapshot_schema": "ranah-observatory/bps-webapi-snapshot/v1",
+  "source_id": "bps_webapi"
+}

@@ -1,0 +1,68 @@
+{
+  "comparability_regime": "bps_stable32_province_2018_2025_v1",
+  "credential_persisted": false,
+  "domain": "0000",
+  "end_year": 2025,
+  "excluded_current_papua_bps_codes": [
+    "91",
+    "92",
+    "94",
+    "95",
+    "96",
+    "97"
+  ],
+  "geographic_backcasting_performed": false,
+  "geography_count": 32,
+  "geography_level": "province",
+  "imputation_performed": false,
+  "indicator_ids": [
+    "poverty_rate",
+    "gini_ratio",
+    "unemployment_rate",
+    "underemployment_rate",
+    "real_grdp_per_capita",
+    "neet_rate"
+  ],
+  "inputs": {
+    "geography_registry": {
+      "path": "data/registries/geographies.csv",
+      "sha256": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de"
+    },
+    "probe": {
+      "path": "data/manifests/milestone24_bps_stable32_probe.json",
+      "sha256": "9d86066139b0e72d11b78a35975b8d883b37f18ce9413b21ce59f45bb0133910"
+    },
+    "series_registry": {
+      "path": "data/registries/bps_comparative_panel_series.csv",
+      "sha256": "694a18227612d4e1a32c2b20fa88dbd417a5690c88e87e6f412aa8cb288f0265"
+    }
+  },
+  "milestone": 24,
+  "observation_count": 1536,
+  "outputs": {
+    "canonical_observations": {
+      "path": "data/processed/bps/comparative_stable32/bps-stable32-canonical-observations.csv",
+      "sha256": "5fe5dc4f68cb57365f94f680a6145a6908c1c5a07f84c44a8accc97188db8b3a"
+    },
+    "provenance": {
+      "path": "data/processed/bps/comparative_stable32/bps-stable32-provenance.csv",
+      "sha256": "3edf2517abe78c07e32ab20d892896f3027e0fa63baca506c5a39b1970d1da2e"
+    }
+  },
+  "probe_qualified_candidate_count": 6,
+  "provenance_count": 48,
+  "province_district_model_pooling_performed": false,
+  "qualified_series_count": 6,
+  "qualified_series_ids": [
+    "m5_poverty_march",
+    "m5_gini_march",
+    "m5_unemployment_august",
+    "m5_underemployment_source_period",
+    "m5_real_grdp_pc_adhk2010",
+    "m5_neet_source_period"
+  ],
+  "schema": "ranah-observatory/bps-stable32-comparator/v1",
+  "source_id": "bps_webapi",
+  "start_year": 2018,
+  "year_count": 8
+}

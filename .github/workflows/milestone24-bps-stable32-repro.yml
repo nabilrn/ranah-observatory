@@ -1,0 +1,102 @@
+name: Milestone 24 BPS stable32 reproducibility
+
+# Permanent read-only gate over frozen credential-free source evidence.
+on:
+  pull_request:
+    paths:
+      - research/MILESTONE24_BPS_STABLE32_COMPARATOR_SPEC.md
+      - docs/MILESTONE24_BPS_STABLE32_COMPARATOR.md
+      - data/manifests/milestone24_design_gate.json
+      - data/manifests/milestone24_bps_stable32_probe.json
+      - data/manifests/milestone24_bps_stable32_complete.json
+      - data/analysis/engine/bps_stable32_v1/**
+      - data/processed/bps/comparative_stable32/**
+      - scripts/materialize_milestone24_bps_stable32.py
+      - scripts/verify_milestone24_probe_freeze.py
+      - scripts/finalize_milestone24_bps_stable32.py
+      - tests/test_milestone24_bps_stable32.py
+      - tests/test_milestone24_bps_stable32_materialized.py
+      - .github/workflows/milestone24-bps-stable32-repro.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Preserve committed derived M24 artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/m24-committed
+          cp data/processed/bps/comparative_stable32/bps-stable32-canonical-observations.csv /tmp/m24-committed/
+          cp data/processed/bps/comparative_stable32/bps-stable32-provenance.csv /tmp/m24-committed/
+          cp data/processed/bps/comparative_stable32/bps-stable32.manifest.json /tmp/m24-committed/
+          cp data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json /tmp/m24-committed/
+          cp data/manifests/milestone24_bps_stable32_complete.json /tmp/m24-committed/
+
+      - name: Verify all frozen dynamic snapshot checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          found=0
+          while IFS= read -r checksum; do
+            case "$checksum" in
+              *periods*) continue ;;
+            esac
+            found=$((found + 1))
+            (cd "$(dirname "$checksum")" && sha256sum -c "$(basename "$checksum")")
+          done < <(find data/processed/bps/comparative_stable32/source -name '*.json.sha256' -type f | sort)
+          test "$found" -eq 48
+
+      - name: Rebuild probe-to-freeze semantic verification
+        run: >-
+          python scripts/verify_milestone24_probe_freeze.py
+          --output data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json
+
+      - name: Rebuild canonical stable32 comparator
+        run: python scripts/materialize_milestone24_bps_stable32.py
+
+      - name: Rebuild M24 completion manifest
+        run: python scripts/finalize_milestone24_bps_stable32.py
+
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Run M24 offline and materialized tests
+        run: >-
+          python -m pytest -q
+          tests/test_milestone24_bps_stable32.py
+          tests/test_milestone24_bps_stable32_materialized.py
+
+      - name: Verify byte-identical derived outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp /tmp/m24-committed/bps-stable32-canonical-observations.csv data/processed/bps/comparative_stable32/bps-stable32-canonical-observations.csv
+          cmp /tmp/m24-committed/bps-stable32-provenance.csv data/processed/bps/comparative_stable32/bps-stable32-provenance.csv
+          cmp /tmp/m24-committed/bps-stable32.manifest.json data/processed/bps/comparative_stable32/bps-stable32.manifest.json
+          cmp /tmp/m24-committed/m24-probe-freeze-verification.json data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json
+          cmp /tmp/m24-committed/milestone24_bps_stable32_complete.json data/manifests/milestone24_bps_stable32_complete.json
+          git diff --exit-code -- \
+            data/processed/bps/comparative_stable32/bps-stable32-canonical-observations.csv \
+            data/processed/bps/comparative_stable32/bps-stable32-provenance.csv \
+            data/processed/bps/comparative_stable32/bps-stable32.manifest.json \
+            data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json \
+            data/manifests/milestone24_bps_stable32_complete.json
+
+      - name: Verify no credential marker leaked into frozen data
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R -n -F 'BPS_API_KEY' data/processed/bps/comparative_stable32 data/manifests/milestone24_bps_stable32_probe.json; then
+            echo 'Credential marker leaked into M24 data artifacts' >&2
+            exit 1
+          fi
