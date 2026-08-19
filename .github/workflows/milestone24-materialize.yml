@@ -1,0 +1,98 @@
+name: Milestone 24 materialize stable32 comparator
+
+# Temporary writer: freeze validated public BPS payloads, then remove before merge.
+on:
+  push:
+    branches:
+      - agent/milestone24-bps-stable32-comparator
+    paths:
+      - .github/workflows/milestone24-materialize.yml
+      - scripts/verify_milestone24_probe_freeze.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require BPS API key without exposing it
+        run: test -n "$BPS_API_KEY"
+      - name: Re-run locked M24 probe into repository evidence paths
+        run: >-
+          python scripts/probe_milestone24_bps_stable32.py
+          --output data/manifests/milestone24_bps_stable32_probe.json
+          --coverage data/analysis/engine/bps_stable32_v1/m24-probe-coverage.csv
+      - name: Harvest only probe-qualified BPS variables
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' > /tmp/m24-vars.txt
+          import json
+          from pathlib import Path
+          report = json.loads(Path('data/manifests/milestone24_bps_stable32_probe.json').read_text())
+          for item in report['candidates']:
+              if item['qualification_status'] == 'stable32_2018_2025_probe_qualified':
+                  print(item['bps_var_id'])
+          PY
+          while read -r var_id; do
+            test -n "$var_id"
+            python scripts/harvest_bps_series.py \
+              --domain 0000 \
+              --var "$var_id" \
+              --year-range 2018 2025 \
+              --output-dir "data/processed/bps/comparative_stable32/source/var-$var_id"
+          done < /tmp/m24-vars.txt
+      - name: Verify probe and frozen payloads are semantically identical
+        run: >-
+          python scripts/verify_milestone24_probe_freeze.py
+          --output data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json
+      - name: Materialize canonical stable32 comparator
+        run: python scripts/materialize_milestone24_bps_stable32.py
+      - name: Assert expected qualified footprint
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          probe = json.loads(Path('data/manifests/milestone24_bps_stable32_probe.json').read_text())
+          manifest = json.loads(Path('data/processed/bps/comparative_stable32/bps-stable32.manifest.json').read_text())
+          assert probe['qualified_candidate_count'] == 6, probe
+          assert manifest['qualified_series_count'] == 6, manifest
+          assert manifest['observation_count'] == 1536, manifest
+          assert manifest['provenance_count'] == 48, manifest
+          with Path('data/processed/bps/comparative_stable32/bps-stable32-canonical-observations.csv').open(newline='', encoding='utf-8') as handle:
+              rows = list(csv.DictReader(handle))
+          assert len(rows) == 1536
+          assert len({(r['indicator_id'], r['geography_id'], r['year']) for r in rows}) == 1536
+          assert {r['comparability_regime'] for r in rows} == {'bps_stable32_province_2018_2025_v1'}
+          assert {r['geographic_backcasting_performed'] for r in rows} == {'False'}
+          assert {r['imputation_performed'] for r in rows} == {'False'}
+          PY
+      - name: Commit credential-free frozen evidence and panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/manifests/milestone24_bps_stable32_probe.json \
+            data/analysis/engine/bps_stable32_v1/m24-probe-coverage.csv \
+            data/processed/bps/comparative_stable32
+          if git diff --cached --quiet; then
+            echo "No M24 materialization changes"
+            exit 0
+          fi
+          git commit -m "Materialize Milestone 24 BPS stable32 comparator"
+          git push origin HEAD:${GITHUB_REF_NAME}
