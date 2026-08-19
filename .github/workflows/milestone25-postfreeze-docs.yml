@@ -1,0 +1,53 @@
+name: Milestone 25 post-freeze docs and audit
+
+# Temporary writer. Builds documentation from the frozen final manifest, then remove before merge.
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone25_djpk_public_finance_complete.json
+      - data/processed/djpk/public_finance/djpk-fiscal-panel.manifest.json
+      - scripts/build_milestone25_documentation.py
+      - scripts/audit_milestone25_djpk_public_finance.py
+      - tests/test_milestone25_djpk_materialized.py
+      - .github/workflows/milestone25-postfreeze-docs.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  document-and-audit:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require completed frozen M25 panel
+        run: test -f data/manifests/milestone25_djpk_public_finance_complete.json
+      - name: Build M25 documentation from final evidence
+        run: python scripts/build_milestone25_documentation.py
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run materialized tests
+        run: python -m pytest -q tests/test_milestone25_djpk_materialized.py
+      - name: Run analytical audit
+        run: python scripts/audit_milestone25_djpk_public_finance.py
+      - name: Commit generated documentation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
+          if git diff --cached --quiet; then
+            echo 'No documentation changes'
+            exit 0
+          fi
+          git commit -m "Document Milestone 25 DJPK public-finance panel"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
