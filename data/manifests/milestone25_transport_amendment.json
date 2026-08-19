@@ -1,0 +1,57 @@
+{
+  "schema": "ranah-observatory/milestone25-transport-amendment/v1",
+  "milestone": 25,
+  "phase": "post_phase2_fiscal_evidence_expansion",
+  "amendment_reason": "DJPK APBD HTML body-table rendering is not structurally stable across all locked 2018-2025 jurisdiction-year requests, while the same official APBD page exposes a same-selector csv_apbd SpreadsheetML export with exact account values.",
+  "representation_amendment_after_transport_failure": true,
+  "scientific_design_changed": false,
+  "account_family_set_changed": false,
+  "target_years_changed": false,
+  "geography_set_changed": false,
+  "period_selector_changed": false,
+  "province_selector_changed": false,
+  "posthoc_account_family_search_performed": false,
+  "explicit_taxonomy_bridge_promoted": false,
+  "derived_ratio_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "target_start_year": 2018,
+  "target_end_year": 2025,
+  "geography_count": 19,
+  "djpk_province_selector": "03",
+  "annual_realization_period_selector": "12",
+  "locked_promoted_exact_label_families": [
+    "total_revenue",
+    "own_source_revenue_pad",
+    "total_expenditure",
+    "capital_expenditure"
+  ],
+  "held_families": [
+    "central_transfer_revenue"
+  ],
+  "html_role": [
+    "jurisdiction_identity",
+    "fiscal_year_identity",
+    "december_realization_semantics",
+    "same_selector_export_link_evidence",
+    "optional_rounded_display_crosscheck"
+  ],
+  "spreadsheetml_export_role": [
+    "primary_exact_account_value_evidence",
+    "budget_value_evidence",
+    "realization_value_evidence",
+    "percentage_value_evidence"
+  ],
+  "export_endpoint_path": "/portal/csv_apbd",
+  "export_type_selector": "apbd",
+  "html_export_selector_match_required": true,
+  "html_table_value_crosscheck_required_when_parseable": true,
+  "html_table_absence_blocks_numeric_evidence": false,
+  "html_table_absence_requires_valid_same_selector_export_link": true,
+  "export_account_contract_type": "same_locked_exact_label_contracts",
+  "numeric_unit_source": "exact_rupiah_from_official_spreadsheetml",
+  "canonical_numeric_unit": "IDR_billion",
+  "imputation_performed": false,
+  "historical_boundary_reconstruction_performed": false,
+  "user_contribution_required": false
+}
