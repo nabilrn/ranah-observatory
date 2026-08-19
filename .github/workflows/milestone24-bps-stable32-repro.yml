@@ -1,5 +1,6 @@
 name: Milestone 24 BPS stable32 reproducibility
 
+# Permanent read-only gate over frozen credential-free source evidence.
 on:
   pull_request:
     paths:
