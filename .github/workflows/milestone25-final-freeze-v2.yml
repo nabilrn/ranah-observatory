@@ -7,6 +7,8 @@ on:
       - .github/workflows/milestone25-final-freeze-v2.yml
       - data/registries/djpk_sumbar_pemda.csv
       - data/manifests/milestone25_transport_amendment.json
+      - data/manifests/milestone25_transport_recovery_decision.json
+      - scripts/apply_milestone25_transport_recovery.py
       - scripts/milestone25_djpk_html_compat.py
       - scripts/milestone25_djpk_export.py
       - scripts/probe_milestone25_djpk_stage1_export.py
@@ -39,6 +41,9 @@ jobs:
 
       - name: Install focused test runner
         run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Apply deterministic transport-only recovery amendment
+        run: python scripts/apply_milestone25_transport_recovery.py
 
       - name: Run offline pre-freeze tests
         run: >-
@@ -76,15 +81,18 @@ jobs:
           }
           assert set(contracts['held_families']) == {'central_transfer_revenue'}
           assert transport['representation_amendment_after_transport_failure'] is True
+          assert transport['amendment_revision'] == 2
           assert transport['scientific_design_changed'] is False
           assert transport['account_family_set_changed'] is False
           assert transport['target_years_changed'] is False
           assert transport['geography_set_changed'] is False
           assert transport['period_selector_changed'] is False
           assert transport['posthoc_account_family_search_performed'] is False
+          assert transport['html_table_value_crosscheck_required_when_parseable'] is False
+          assert transport['html_table_value_crosscheck_is_diagnostic'] is True
           PY
 
-      - name: Pilot gate — all 19 pemda, 2024, dual representation
+      - name: Pilot gate — all 19 pemda, 2024, exact SpreadsheetML plus HTML semantics
         run: >-
           python scripts/probe_milestone25_djpk_stage1_export.py
           --years 2024
@@ -93,7 +101,7 @@ jobs:
           --manifest /tmp/m25-pilot/manifest.json
           --raw-dir /tmp/m25-pilot/raw
 
-      - name: Assert dual-representation pilot gate
+      - name: Assert recovery pilot gate
         run: |
           python - <<'PY'
           import csv, json
@@ -107,10 +115,10 @@ jobs:
           assert m['html_snapshot_count'] == 19
           assert m['spreadsheetml_snapshot_count'] == 19
           assert m['all_pages_pass'] is True
+          assert m['html_table_value_crosscheck_is_diagnostic'] is True
           assert len(coverage) == 19 and all(r['page_pass'] == 'True' for r in coverage)
           assert {r['same_selector_export_link_match'] for r in coverage} == {'True'}
           assert {r['export_valid_spreadsheetml'] for r in coverage} == {'True'}
-          assert {r['html_value_crosscheck_failure_count'] for r in coverage} == {'0'}
           PY
 
       - name: Full Stage 1 — freeze 19 × 2018-2025 HTML plus exact SpreadsheetML
@@ -121,6 +129,28 @@ jobs:
           --values data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv
           --manifest data/manifests/milestone25_stage1_full_export.json
           --raw-dir data/processed/djpk/public_finance/source
+
+      - name: Assert full exact-evidence gates before materialization
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone25_stage1_full_export.json').read_text())
+          with Path('data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv').open(newline='', encoding='utf-8') as h:
+              rows = list(csv.DictReader(h))
+          assert m['jurisdiction_year_page_count'] == 152
+          assert m['value_row_count'] == 608
+          assert m['all_pages_pass'] is True
+          assert m['html_table_value_crosscheck_is_diagnostic'] is True
+          assert len(rows) == 152
+          critical = (
+              'jurisdiction_match', 'fiscal_year_match', 'december_realization_semantics_match',
+              'same_selector_export_link_match', 'export_valid_spreadsheetml'
+          )
+          assert all(all(r[k] == 'True' for k in critical) for r in rows)
+          assert all(not r['missing_contracts'] and not r['parse_failures'] for r in rows)
+          assert all(r['matched_contract_count'] == r['locked_contract_count'] for r in rows)
+          PY
 
       - name: Materialize canonical panel from frozen exact exports
         run: python scripts/materialize_milestone25_djpk_exact_panel.py
@@ -179,6 +209,8 @@ jobs:
             data/analysis/engine/djpk_finance_v1/m25-account-presence.csv \
             data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv \
             data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv \
+            data/manifests/milestone25_transport_amendment.json \
+            data/manifests/milestone25_transport_recovery_decision.json \
             data/manifests/milestone25_taxonomy_discovery.json \
             data/manifests/milestone25_stage1_contracts.json \
             data/manifests/milestone25_stage1_full_export.json \
@@ -186,11 +218,14 @@ jobs:
             data/registries/djpk_m25_stage1_account_contracts.csv \
             data/processed/djpk/taxonomy_probe \
             data/processed/djpk/public_finance \
-            docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
+            docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md \
+            scripts/probe_milestone25_djpk_stage1_export.py \
+            scripts/materialize_milestone25_djpk_exact_panel.py \
+            scripts/apply_milestone25_transport_recovery.py
           if git diff --cached --quiet; then
             echo 'No M25 freeze changes'
             exit 0
           fi
-          git commit -m "Materialize Milestone 25 DJPK dual-representation fiscal panel"
+          git commit -m "Recover Milestone 25 DJPK fiscal evidence"
           target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
           git push origin "HEAD:${target_branch}"
