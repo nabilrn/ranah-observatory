@@ -1,6 +1,6 @@
 name: Milestone 24 materialize stable32 comparator
 
-# Temporary writer: freeze validated public BPS payloads exactly once, then remove before merge.
+# Temporary writer: freeze validated public BPS payloads, finalize M24, then remove before merge.
 on:
   push:
     branches:
@@ -8,6 +8,7 @@ on:
     paths:
       - .github/workflows/milestone24-materialize.yml
       - scripts/verify_milestone24_probe_freeze.py
+      - scripts/finalize_milestone24_bps_stable32.py
   workflow_dispatch:
 
 permissions:
@@ -61,17 +62,25 @@ jobs:
           --output data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json
       - name: Materialize canonical stable32 comparator
         run: python scripts/materialize_milestone24_bps_stable32.py
+      - name: Finalize M24 completion manifest
+        run: python scripts/finalize_milestone24_bps_stable32.py
       - name: Assert expected qualified footprint
         run: |
           python - <<'PY'
           import csv, json
           from pathlib import Path
           probe = json.loads(Path('data/manifests/milestone24_bps_stable32_probe.json').read_text())
-          manifest = json.loads(Path('data/processed/bps/comparative_stable32/bps-stable32.manifest.json').read_text())
+          panel = json.loads(Path('data/processed/bps/comparative_stable32/bps-stable32.manifest.json').read_text())
+          final = json.loads(Path('data/manifests/milestone24_bps_stable32_complete.json').read_text())
+          verify = json.loads(Path('data/processed/bps/comparative_stable32/m24-probe-freeze-verification.json').read_text())
           assert probe['qualified_candidate_count'] == 6, probe
-          assert manifest['qualified_series_count'] == 6, manifest
-          assert manifest['observation_count'] == 1536, manifest
-          assert manifest['provenance_count'] == 48, manifest
+          assert panel['qualified_series_count'] == 6, panel
+          assert panel['observation_count'] == 1536, panel
+          assert panel['provenance_count'] == 48, panel
+          assert final['milestone24_complete'] is True, final
+          assert final['observation_count'] == 1536, final
+          assert verify['verified_snapshot_count'] == 48, verify
+          assert verify['semantic_probe_freeze_match'] is True, verify
           with Path('data/processed/bps/comparative_stable32/bps-stable32-canonical-observations.csv').open(newline='', encoding='utf-8') as handle:
               rows = list(csv.DictReader(handle))
           assert len(rows) == 1536
@@ -88,6 +97,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             data/manifests/milestone24_bps_stable32_probe.json \
+            data/manifests/milestone24_bps_stable32_complete.json \
             data/analysis/engine/bps_stable32_v1/m24-probe-coverage.csv \
             data/processed/bps/comparative_stable32
           if git diff --cached --quiet; then
