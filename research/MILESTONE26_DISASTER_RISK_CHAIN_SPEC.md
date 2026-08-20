@@ -66,15 +66,16 @@ M26 records the current official InaRISK methodology page as framework evidence 
 
 ## Promotion states
 
-Every source must resolve to exactly one of:
+Every preregistered source resolves to exactly one of:
 
 - `qualified_explicit_vintage_metadata`;
 - `qualified_explicit_coverage_metadata`;
 - `field_surface_verified_retrieval_contract_pending`;
 - `endpoint_verified_version_binding_unresolved`;
+- `framework_verified_current_surface`;
 - `unavailable_or_unparseable`.
 
-Only the first two states can authorize downstream numeric extraction, and only for the component class explicitly stated in the source contract.
+Only `qualified_explicit_vintage_metadata` and `qualified_explicit_coverage_metadata` can authorize later numeric extraction, and only for the component class explicitly stated in the source contract. `framework_verified_current_surface` is methodology evidence only and can never authorize raster or event values.
 
 ## Stage 1 — component extraction (not authorized by Stage 0 alone)
 
