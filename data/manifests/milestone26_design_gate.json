@@ -28,7 +28,12 @@
     "qualified_explicit_coverage_metadata",
     "field_surface_verified_retrieval_contract_pending",
     "endpoint_verified_version_binding_unresolved",
+    "framework_verified_current_surface",
     "unavailable_or_unparseable"
+  ],
+  "numeric_extraction_authorized_states": [
+    "qualified_explicit_vintage_metadata",
+    "qualified_explicit_coverage_metadata"
   ],
   "preregistered_source_ids": [
     "inarisk_capacity_2021",
