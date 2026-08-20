@@ -1,0 +1,144 @@
+name: Milestone 25 Stage1 targeted failure diagnostic
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone25-stage1-targeted-failure-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply recovery-v2 runtime contract
+        run: python scripts/apply_milestone25_transport_recovery.py
+      - name: Probe only previously failing jurisdiction-year keys
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path('scripts').resolve()))
+          import probe_milestone25_djpk_stage1 as stage1
+          import probe_milestone25_djpk_stage1_export as export_probe
+          from milestone25_djpk_export import (
+              M25DJPKExportError,
+              build_export_url,
+              exact_account_map,
+              find_same_selector_export_url,
+              parse_exact_rupiah,
+          )
+
+          failures = {
+              ('01', 2021), ('02', 2021), ('04', 2021), ('06', 2021),
+              ('07', 2021), ('07', 2022), ('08', 2021), ('08', 2022),
+              ('08', 2024), ('10', 2021), ('11', 2021), ('13', 2021),
+              ('14', 2021), ('15', 2021), ('16', 2021),
+          }
+          crosswalk = stage1.validate_crosswalk(Path('data/registries/djpk_sumbar_pemda.csv'))
+          contracts = stage1.load_promoted_contracts(
+              Path('data/registries/djpk_m25_stage1_account_contracts.csv'),
+              Path('data/manifests/milestone25_stage1_contracts.json'),
+          )
+          out = []
+          for geography in crosswalk:
+              pemda = geography['djpk_pemda_selector']
+              for year in sorted(y for p, y in failures if p == pemda):
+                  requested = stage1.build_url(pemda, year)
+                  html_status, html_body, final_html = stage1.fetch_url(requested)
+                  parser = stage1.HTMLTableParser()
+                  parser.feed(html_body.decode('utf-8', errors='replace'))
+                  page_text = parser.all_text
+                  jurisdiction_ok = stage1.jurisdiction_matches(page_text, geography['djpk_source_name'])
+                  year_ok = str(year) in page_text
+                  december_ok = bool(re.search(r'realisasi\s+apbd\s+s\.?\s*d\.?\s+desember', page_text, flags=re.I))
+
+                  linked = ''
+                  expected = build_export_url(pemda, year)
+                  export_link_ok = False
+                  try:
+                      linked = find_same_selector_export_url(html_body, pemda, year)
+                      export_link_ok = linked == expected
+                  except M25DJPKExportError:
+                      pass
+
+                  export_status = 0
+                  export_valid = False
+                  missing = []
+                  parse_failures = []
+                  matched = 0
+                  account_labels = []
+                  if export_link_ok:
+                      export_status, final_export, ctype, export_body = export_probe.fetch_export(linked)
+                      try:
+                          accounts = exact_account_map(export_body)
+                          export_valid = export_status == 200
+                          account_labels = sorted(accounts)
+                      except M25DJPKExportError as exc:
+                          accounts = {}
+                          parse_failures.append('spreadsheetml:' + str(exc))
+                      for contract in contracts:
+                          family = contract['conceptual_family']
+                          label = contract['locked_source_label_normalized']
+                          row = accounts.get(label)
+                          if row is None:
+                              missing.append(family + ':' + label)
+                              continue
+                          try:
+                              parse_exact_rupiah(row['budget_rupiah_raw'])
+                              parse_exact_rupiah(row['realization_rupiah_raw'])
+                              matched += 1
+                          except M25DJPKExportError as exc:
+                              parse_failures.append(family + ':' + str(exc))
+
+                  record = {
+                      'pemda': pemda,
+                      'source_name': geography['djpk_source_name'],
+                      'year': year,
+                      'html_status': html_status,
+                      'jurisdiction_match': jurisdiction_ok,
+                      'fiscal_year_match': year_ok,
+                      'december_semantics_match': december_ok,
+                      'same_selector_export_link_match': export_link_ok,
+                      'linked_export_url': linked,
+                      'expected_export_url': expected,
+                      'export_status': export_status,
+                      'export_valid_spreadsheetml': export_valid,
+                      'matched_contract_count': matched,
+                      'locked_contract_count': len(contracts),
+                      'missing_contracts': missing,
+                      'parse_failures': parse_failures,
+                      'page_pass_without_html_value_gate': (
+                          html_status == 200 and jurisdiction_ok and year_ok and december_ok
+                          and export_link_ok and export_valid and not missing and not parse_failures
+                          and matched == len(contracts)
+                      ),
+                  }
+                  print('M25_TARGET ' + json.dumps(record, sort_keys=True))
+                  out.append(record)
+
+          Path('/tmp/m25-targeted-failures.json').write_text(
+              json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8'
+          )
+          assert len(out) == 15, len(out)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m25-stage1-targeted-failure-diagnostic
+          path: /tmp/m25-targeted-failures.json
+          retention-days: 2
