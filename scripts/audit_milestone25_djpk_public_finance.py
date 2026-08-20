@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+from collections import Counter
 import json
 import sys
 from pathlib import Path
@@ -79,6 +80,12 @@ def main() -> int:
             assert final[key] is False
 
         assert transport["representation_amendment_after_transport_failure"] is True
+        assert transport["amendment_revision"] == 3
+        assert transport["annual_final_realization_semantics_required"] is True
+        assert set(transport["accepted_annual_final_realization_semantics"]) == {"calendar_year_end_december", "final_accountability_audited", "final_accountability_perda"}
+        assert transport["intermediate_month_or_unaudited_semantics_rejected"] is True
+        assert transport["html_table_value_crosscheck_required_when_parseable"] is False
+        assert transport["html_table_value_crosscheck_is_diagnostic"] is True
         assert transport["scientific_design_changed"] is False
         assert transport["account_family_set_changed"] is False
         assert transport["target_years_changed"] is False
@@ -110,13 +117,20 @@ def main() -> int:
         assert stage1["spreadsheetml_snapshot_count"] == 152
         assert stage1["all_pages_pass"] is True
         assert stage1["spreadsheetml_is_primary_numeric_evidence"] is True
+        assert stage1["annual_final_realization_semantics_required"] is True
+        assert sum(stage1["annual_final_realization_semantics_counts"].values()) == 152
+        assert set(stage1["annual_final_realization_semantics_counts"]) == {"calendar_year_end_december", "final_accountability_audited", "final_accountability_perda"}
+        assert stage1["html_table_value_crosscheck_is_diagnostic"] is True
         assert stage1["html_table_parseable_page_count"] + stage1["html_table_unparseable_page_count"] == 152
 
         assert len(coverage) == 152
         assert all(row["page_pass"] == "True" for row in coverage)
         assert {row["same_selector_export_link_match"] for row in coverage} == {"True"}
         assert {row["export_valid_spreadsheetml"] for row in coverage} == {"True"}
-        assert {row["html_value_crosscheck_failure_count"] for row in coverage} == {"0"}
+        assert {row["annual_final_realization_semantics_match"] for row in coverage} == {"True"}
+        semantic_counts = Counter(row["annual_final_realization_semantics_class"] for row in coverage)
+        assert dict(semantic_counts) == {key: int(value) for key, value in stage1["annual_final_realization_semantics_counts"].items()}
+        assert sum(int(row["html_value_crosscheck_failure_count"]) > 0 for row in coverage) == stage1["html_value_crosscheck_failure_page_count"]
         assert len(values) == 608
         assert {row["conceptual_family"] for row in values} == PROMOTED
         assert {row["taxonomy_contract_type"] for row in values} == {"exact_label"}
@@ -142,6 +156,8 @@ def main() -> int:
         assert set(panel["promoted_exact_label_families"]) == PROMOTED
         assert set(panel["held_families"]) == HELD
         assert panel["primary_numeric_evidence"] == "djpk_csv_apbd_spreadsheetml_exact_rupiah"
+        assert panel["annual_final_realization_semantics_required"] is True
+        assert panel["html_rounded_value_crosscheck_is_diagnostic"] is True
         assert panel["derived_ratio_count"] == 0
         assert panel["explicit_bridge_used"] is False
         assert panel["imputation_performed"] is False
@@ -154,7 +170,9 @@ def main() -> int:
         assert len({(row["fiscal_account_id"], row["geography_id"], row["year"]) for row in observations}) == 608
         assert len({(row["geography_id"], row["year"]) for row in provenance}) == 152
         assert {row["unit"] for row in observations} == {"IDR_billion"}
-        assert {row["reference_period"] for row in observations} == {"realisasi_s.d._desember"}
+        assert {row["reference_period"] for row in observations} == {"annual_final_realization"}
+        assert {row["reference_period"] for row in provenance} == {"annual_final_realization"}
+        assert Counter(row["source_realization_semantics_class"] for row in provenance) == semantic_counts
         assert {row["taxonomy_contract_type"] for row in observations} == {"exact_label"}
         assert {row["numeric_evidence_representation"] for row in observations} == {"djpk_csv_apbd_spreadsheetml_exact_rupiah"}
         assert {row["imputation_performed"] for row in observations} == {"False"}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,9 +50,12 @@ def test_full_probe_has_exact_19_by_8_dual_representation_pages() -> None:
     assert all(r["page_pass"] == "True" for r in coverage)
     assert {r["same_selector_export_link_match"] for r in coverage} == {"True"}
     assert {r["export_valid_spreadsheetml"] for r in coverage} == {"True"}
+    assert {r["annual_final_realization_semantics_match"] for r in coverage} == {"True"}
+    semantic_counts = Counter(r["annual_final_realization_semantics_class"] for r in coverage)
+    assert dict(semantic_counts) == {key: int(value) for key, value in stage1["annual_final_realization_semantics_counts"].items()}
     assert {r["missing_contracts"] for r in coverage} == {""}
     assert {r["parse_failures"] for r in coverage} == {""}
-    assert {r["html_value_crosscheck_failure_count"] for r in coverage} == {"0"}
+    assert sum(int(r["html_value_crosscheck_failure_count"]) > 0 for r in coverage) == stage1["html_value_crosscheck_failure_page_count"]
 
 
 def test_probe_values_and_canonical_observations_share_exact_keys_and_amounts() -> None:
@@ -93,7 +97,8 @@ def test_provenance_binds_both_official_representations() -> None:
     assert len(provenance) == 152
     assert len({(r["geography_id"], r["year"]) for r in provenance}) == 152
     assert {r["claim_type"] for r in provenance} == {"observed_recorded_fiscal_realization"}
-    assert {r["reference_period"] for r in provenance} == {"realisasi_s.d._desember"}
+    assert {r["reference_period"] for r in provenance} == {"annual_final_realization"}
+    assert Counter(r["source_realization_semantics_class"] for r in provenance) == Counter({"calendar_year_end_december": 139, "final_accountability_perda": 11, "final_accountability_audited": 2})
     assert {r["same_selector_export_link_verified"] for r in provenance} == {"True"}
     assert all(r["html_snapshot"].endswith(".html") for r in provenance)
     assert all(r["export_snapshot"].endswith(".xml") for r in provenance)

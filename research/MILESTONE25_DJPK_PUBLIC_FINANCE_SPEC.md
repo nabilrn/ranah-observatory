@@ -15,11 +15,13 @@ Official DJPK/SIKD APBD portal:
 Locked query semantics for the annual realization discovery regime:
 
 - `provinsi=03` — Sumatera Barat in the DJPK portal;
-- `periode=12` — realization through December;
+- `periode=12` — locked annual-final selector. Historical source pages may report final status as `s.d Desember`, `s.d Audited <year>`, or `s.d Perda <year>`; intermediate-month and unaudited states are not accepted;
 - `tahun=YYYY` — fiscal year;
 - `pemda=01..19` — DJPK local-government selector within Sumatera Barat.
 
 M25 does not assume that the DJPK selector is a BPS geography code. An explicit crosswalk is stored in `data/registries/djpk_sumbar_pemda.csv`.
+
+The annual-final semantic compatibility is a representation amendment only. It does not change the locked `periode=12` selector, target years, geographies, account-family set, or statistical design. The HTML page remains blocking evidence for jurisdiction, fiscal year, accepted annual-final status, and the same-selector export link; exact numeric account values come from the official SpreadsheetML export. Rounded HTML table values are diagnostic only.
 
 ## Geography crosswalk
 
@@ -89,7 +91,7 @@ Only Stage-0-qualified account contracts may proceed.
 For each of 19 kabupaten/kota × 8 years (`152` jurisdiction-years), M25 must verify:
 
 - requested page corresponds to the expected local government and fiscal year;
-- December realization semantics are present;
+- accepted annual-final realization semantics are present (`Desember`, `Audited`, or `Perda` for the same fiscal year);
 - each locked account contract appears exactly once;
 - realization values are parseable using the documented Indonesian-number format;
 - source page response and retrieval metadata are frozen or checksum-bound;

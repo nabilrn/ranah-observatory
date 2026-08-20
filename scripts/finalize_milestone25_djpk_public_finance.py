@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+from collections import Counter
 import json
 import sys
 from pathlib import Path
@@ -41,6 +42,11 @@ PROMOTED = {
     "capital_expenditure",
 }
 HELD = {"central_transfer_revenue"}
+ANNUAL_FINAL_CLASSES = {
+    "calendar_year_end_december",
+    "final_accountability_audited",
+    "final_accountability_perda",
+}
 REGIME_ID = "sumbar_current_kabkota_djpk_realization_2018_2025_v2"
 
 
@@ -111,7 +117,12 @@ def finalize() -> dict[str, Any]:
     require(set(transport.get("locked_promoted_exact_label_families", [])) == PROMOTED, "transport promoted-family drift")
     require(set(transport.get("held_families", [])) == HELD, "transport held-family drift")
     require(transport.get("html_export_selector_match_required") is True, "transport does not require same-selector export")
-    require(transport.get("html_table_value_crosscheck_required_when_parseable") is True, "transport does not require HTML crosscheck")
+    require(transport.get("amendment_revision") == 3, "transport recovery revision drift")
+    require(transport.get("annual_final_realization_semantics_required") is True, "annual-final semantics gate missing")
+    require(set(transport.get("accepted_annual_final_realization_semantics", [])) == ANNUAL_FINAL_CLASSES, "accepted annual-final semantics drift")
+    require(transport.get("intermediate_month_or_unaudited_semantics_rejected") is True, "non-final realization semantics are not rejected")
+    require(transport.get("html_table_value_crosscheck_required_when_parseable") is False, "rounded HTML display crosscheck became blocking")
+    require(transport.get("html_table_value_crosscheck_is_diagnostic") is True, "rounded HTML display diagnostic flag missing")
 
     require(len(crosswalk) == 19, "DJPK crosswalk must contain 19 current Sumbar geographies")
     require(len({row["geography_id"] for row in crosswalk}) == 19, "DJPK crosswalk geography IDs not unique")
@@ -130,14 +141,19 @@ def finalize() -> dict[str, Any]:
     require(isinstance(taxonomy_results, list) and len(taxonomy_results) == 5, "Stage 0 did not classify exact five conceptual families")
     require({str(row["conceptual_family"]) for row in taxonomy_results} == CONCEPTUAL_FAMILIES, "Stage 0 conceptual family identity drift")
 
-    stage0_pages = sorted(RAW_STAGE0.glob("kota-padang-apbd-*-desember.html"))
-    require(len(stage0_pages) == 8, f"expected 8 frozen Stage 0 Padang pages, found {len(stage0_pages)}")
-    require({int(path.stem.split("-")[-2]) for path in stage0_pages} == YEARS, "Stage 0 frozen page years drift")
     raw_by_year = {int(item["year"]): item for item in taxonomy.get("raw_responses", [])}
     require(set(raw_by_year) == YEARS, "Stage 0 raw-response manifest years drift")
-    for path in stage0_pages:
-        year = int(path.stem.split("-")[-2])
-        require(sha256(path) == str(raw_by_year[year]["sha256"]), f"Stage 0 raw page checksum drift {year}")
+    require(taxonomy.get("spreadsheetml_account_table_required") is True, "Stage 0 exact SpreadsheetML taxonomy evidence not required")
+    require(taxonomy.get("taxonomy_primary_representation") == "djpk_csv_apbd_spreadsheetml_exact_rupiah", "Stage 0 taxonomy representation drift")
+    stage0_html_pages = sorted(RAW_STAGE0.glob("kota-padang-apbd-*-desember.html"))
+    stage0_xml_pages = sorted(RAW_STAGE0.glob("kota-padang-apbd-*-desember.xml"))
+    require(len(stage0_html_pages) == 8 and len(stage0_xml_pages) == 8, "Stage 0 frozen dual-representation footprint drift")
+    for year, item in raw_by_year.items():
+        html_path = ROOT / str(item["html_path"])
+        export_path = ROOT / str(item["export_path"])
+        require(html_path.exists() and export_path.exists(), f"Stage 0 frozen source missing {year}")
+        require(sha256(html_path) == str(item["html_sha256"]), f"Stage 0 HTML checksum drift {year}")
+        require(sha256(export_path) == str(item["export_sha256"]), f"Stage 0 SpreadsheetML checksum drift {year}")
 
     require(contract_manifest.get("schema") == "ranah-observatory/milestone25-stage1-account-contracts/v1", "Stage 1 contract schema drift")
     require(contract_manifest.get("contracts_locked") is True, "Stage 1 contracts not locked")
@@ -163,6 +179,11 @@ def finalize() -> dict[str, Any]:
     require(stage1.get("html_snapshot_count") == 152 and stage1.get("spreadsheetml_snapshot_count") == 152, "Stage 1 source snapshot count drift")
     require(stage1.get("same_selector_export_link_required") is True, "Stage 1 same-selector export link not required")
     require(stage1.get("spreadsheetml_is_primary_numeric_evidence") is True, "Stage 1 primary numeric representation drift")
+    require(stage1.get("annual_final_realization_semantics_required") is True, "Stage 1 annual-final semantics gate missing")
+    manifest_semantics = stage1.get("annual_final_realization_semantics_counts", {})
+    require(set(manifest_semantics) == ANNUAL_FINAL_CLASSES, "Stage 1 annual-final semantic class drift")
+    require(sum(int(value) for value in manifest_semantics.values()) == 152, "Stage 1 annual-final semantic count drift")
+    require(stage1.get("html_table_value_crosscheck_is_diagnostic") is True, "Stage 1 HTML display crosscheck became blocking")
     require(stage1.get("cross_geography_probe_completed_after_contract_lock") is True, "Stage 1 contract-order drift")
     for key in ("explicit_bridge_used", "derived_ratio_created", "imputation_performed", "posthoc_account_family_search_performed", "statistical_model_fit"):
         require(stage1.get(key) is False, f"Stage 1 boundary violated: {key}")
@@ -178,7 +199,12 @@ def finalize() -> dict[str, Any]:
     require({row["parse_failures"] for row in coverage} == {""}, "Stage 1 exact-value parse failures")
     require({row["same_selector_export_link_match"] for row in coverage} == {"True"}, "Stage 1 export-selector mismatch")
     require({row["export_valid_spreadsheetml"] for row in coverage} == {"True"}, "Stage 1 invalid SpreadsheetML export")
-    require({row["html_value_crosscheck_failure_count"] for row in coverage} == {"0"}, "Stage 1 HTML/export crosscheck failure")
+    require({row["annual_final_realization_semantics_match"] for row in coverage} == {"True"}, "Stage 1 annual-final semantics mismatch")
+    semantic_counts = Counter(row["annual_final_realization_semantics_class"] for row in coverage)
+    require(set(semantic_counts) == ANNUAL_FINAL_CLASSES, "Stage 1 coverage annual-final class drift")
+    require(dict(semantic_counts) == {key: int(value) for key, value in manifest_semantics.items()}, "Stage 1 coverage/manifest semantic-count drift")
+    diagnostic_failure_pages = sum(int(row["html_value_crosscheck_failure_count"]) > 0 for row in coverage)
+    require(diagnostic_failure_pages == int(stage1.get("html_value_crosscheck_failure_page_count", -1)), "Stage 1 HTML diagnostic accounting drift")
 
     require(len(probe_values) == 608, f"expected 608 full-probe values, got {len(probe_values)}")
     require(len({(row["geography_id"], int(row["year"]), row["conceptual_family"]) for row in probe_values}) == 608, "duplicate Stage 1 exact value keys")
@@ -209,6 +235,8 @@ def finalize() -> dict[str, Any]:
     require(panel.get("html_snapshot_count") == 152 and panel.get("spreadsheetml_snapshot_count") == 152, "panel source-count drift")
     require(panel.get("html_table_parseable_page_count", 0) + panel.get("html_table_unparseable_page_count", 0) == 152, "panel HTML accounting drift")
     require(panel.get("primary_numeric_evidence") == "djpk_csv_apbd_spreadsheetml_exact_rupiah", "panel numeric source drift")
+    require(panel.get("annual_final_realization_semantics_required") is True, "panel annual-final semantics gate missing")
+    require(panel.get("html_rounded_value_crosscheck_is_diagnostic") is True, "panel HTML rounded display crosscheck became blocking")
     for key, expected in (
         ("derived_ratio_count", 0), ("explicit_bridge_used", False), ("imputation_performed", False),
         ("historical_boundary_reconstruction_performed", False), ("posthoc_account_family_search_performed", False),
@@ -220,7 +248,7 @@ def finalize() -> dict[str, Any]:
     require(len({(row["fiscal_account_id"], row["geography_id"], int(row["year"])) for row in observations}) == 608, "duplicate canonical fiscal observation keys")
     require({row["fiscal_account_id"] for row in observations} == PROMOTED, "canonical fiscal family set drift")
     require(len({row["geography_id"] for row in observations}) == 19 and {int(row["year"]) for row in observations} == YEARS, "canonical fiscal panel footprint drift")
-    require({row["reference_period"] for row in observations} == {"realisasi_s.d._desember"}, "canonical fiscal reference-period drift")
+    require({row["reference_period"] for row in observations} == {"annual_final_realization"}, "canonical fiscal reference-period drift")
     require({row["unit"] for row in observations} == {"IDR_billion"}, "canonical fiscal unit drift")
     require({row["taxonomy_contract_type"] for row in observations} == {"exact_label"}, "canonical non-exact taxonomy detected")
     require({row["claim_type"] for row in observations} == {"observed_recorded_fiscal_realization"}, "canonical fiscal claim-type drift")
@@ -232,13 +260,16 @@ def finalize() -> dict[str, Any]:
     require(len(provenance) == 152, "canonical fiscal provenance count drift")
     require(len({row["fiscal_provenance_id"] for row in provenance}) == 152, "duplicate fiscal provenance IDs")
     require({row["same_selector_export_link_verified"] for row in provenance} == {"True"}, "provenance export-link verification drift")
+    require({row["reference_period"] for row in provenance} == {"annual_final_realization"}, "provenance reference-period drift")
+    provenance_semantics = Counter(row["source_realization_semantics_class"] for row in provenance)
+    require(provenance_semantics == semantic_counts, "provenance annual-final semantic-count drift")
     require({row["comparability_regime"] for row in provenance} == {REGIME_ID}, "provenance regime drift")
 
     result = {
         "schema": "ranah-observatory/milestone25-djpk-public-finance-complete/v2",
         "milestone": 25,
         "phase": "post_phase2_fiscal_evidence_expansion",
-        "criterion": "four preregistered exact-label fiscal account families with complete 19-kabupaten/kota x 2018-2025 December-realization evidence using official same-selector DJPK HTML semantics and SpreadsheetML exact values",
+        "criterion": "four preregistered exact-label fiscal account families with complete 19-kabupaten/kota x 2018-2025 annual-final realization evidence using official same-selector DJPK HTML semantics and SpreadsheetML exact values",
         "milestone25_complete": True,
         "geography_count": 19,
         "year_count": 8,
@@ -258,7 +289,10 @@ def finalize() -> dict[str, Any]:
         "html_table_parseable_page_count": panel["html_table_parseable_page_count"],
         "html_table_unparseable_page_count": panel["html_table_unparseable_page_count"],
         "primary_numeric_evidence": "djpk_csv_apbd_spreadsheetml_exact_rupiah",
-        "html_semantic_evidence": "identity_year_december_same_selector_export_link",
+        "html_semantic_evidence": "identity_year_annual_final_status_same_selector_export_link",
+        "annual_final_realization_semantics_counts": dict(sorted(semantic_counts.items())),
+        "annual_final_realization_semantics_required": True,
+        "html_rounded_value_crosscheck_is_diagnostic": True,
         "transport_representation_amended_after_failure": True,
         "scientific_design_changed_by_transport_amendment": False,
         "explicit_bridge_used": False,

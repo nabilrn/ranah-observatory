@@ -33,7 +33,7 @@
   "html_role": [
     "jurisdiction_identity",
     "fiscal_year_identity",
-    "december_realization_semantics",
+    "annual_final_realization_semantics",
     "same_selector_export_link_evidence",
     "optional_rounded_display_crosscheck"
   ],
