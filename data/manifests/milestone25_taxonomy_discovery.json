@@ -63,7 +63,7 @@
     },
     "taxonomy_discovery": {
       "path": "data/analysis/engine/djpk_finance_v1/m25-taxonomy-discovery.csv",
-      "sha256": "14efdadd3746ad546d7b879c6131181e81c3967bb2518ed7ab4fc4da48c3afe0"
+      "sha256": "c980fb9df2dd6b300903def1a1ba5623acf413f23147514387d0e2507f37ab33"
     }
   },
   "page_count": 8,
@@ -75,56 +75,56 @@
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2018-desember.xml",
       "export_sha256": "10eaf0aecea49a130f92ea3921a3b25db05497b14af7175af3e0c6ac86b811c0",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2018-desember.html",
-      "html_sha256": "f562bcf4d1c61c020db1a3914bfe2f94cd788c4c74d62de5fc5c334c7af2291e",
+      "html_sha256": "2a290e2fabb9b25ad7514d81b195410576c845dc61c87897354449bc5aebad76",
       "year": 2018
     },
     {
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2019-desember.xml",
       "export_sha256": "0eb039b819802b998ee3974849555520eb3c64a23aed1b5a7443d527ec006729",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2019-desember.html",
-      "html_sha256": "7dd64100b72b16cc07915e5f44ec1f2e3c3cd852f5e050f3b35f6394b3e9b330",
+      "html_sha256": "0f5f64730a63c1cde72655d113488214874ca14b46c599edecc82fb37be75795",
       "year": 2019
     },
     {
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2020-desember.xml",
       "export_sha256": "2d56a24d0ca1065e9f244eb15842d1add3b8ff3452c52b05ef5a3f03e8f79cd2",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2020-desember.html",
-      "html_sha256": "b575771cc8d8de825ef47a5db38254e7b593589c611629d6d4e9adb289306ac5",
+      "html_sha256": "f41a4a7c0d705d7cfc7993987b5d13d55bf698054720c38cf7b6c0204d8749ed",
       "year": 2020
     },
     {
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2021-desember.xml",
       "export_sha256": "084f0af0f1fb3d0fe76f91175cfbeda5fc5c0773c8dbf2ed896e42ee2c87e8f3",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2021-desember.html",
-      "html_sha256": "60403daf1c3e44964fd60e16bf2304c945ee9cdc9701e5b3d7e6c705b275fecf",
+      "html_sha256": "441af2e057c6f41d4c5778622c9278bc42fcfbcc2b92d4196df26fac56198bf5",
       "year": 2021
     },
     {
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2022-desember.xml",
       "export_sha256": "aa31801a5f710ee46b87df7fe571be213a1a3454546917b7c7a620d0268d6256",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2022-desember.html",
-      "html_sha256": "06600a88e92798cd69b947344c1118190a5619732f76d751192ae569f0b67913",
+      "html_sha256": "bf96505bfef35d0151298fa77221b702735cb8a3518ac9388650c8fc0f19bfca",
       "year": 2022
     },
     {
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2023-desember.xml",
       "export_sha256": "3b12e9215527e6d44443c0e58c7f16b90dad6f8c83e994b896b2ed8e02d1d08a",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2023-desember.html",
-      "html_sha256": "b764753996fda123bd56321999bee52c8783b67f8e3961441c1cc49ae19f7522",
+      "html_sha256": "688dbc60feee19bdcc896b21ff434dfce42832dfe89694f60470e53315517c48",
       "year": 2023
     },
     {
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2024-desember.xml",
       "export_sha256": "a217eaf4a6e94ca89960ad924e06bfa72cc667ed7d03f968f5c46c6991418e8f",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2024-desember.html",
-      "html_sha256": "dcc3e5095e2814a3da14ffe51d0800cd4f17f9761bd5bcdf2c0d2af6d5601fb0",
+      "html_sha256": "191db486521b1e9022cf39103e3f065d160191c19832824a30e032c6546c95a7",
       "year": 2024
     },
     {
       "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2025-desember.xml",
       "export_sha256": "fb1bdf042fc9dfbc9e0939a70275bf6d2e1b73d97e5f1919649be3ff9260b7d2",
       "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2025-desember.html",
-      "html_sha256": "c90996e6af0a46ab02878b482974995b496e603f205de11afe07107bbb5c6bc0",
+      "html_sha256": "50afa5244eaed56a970a5e6966c07ac7cb291d9ab53737a79a7ca6760bb87285",
       "year": 2025
     }
   ],
