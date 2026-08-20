@@ -1,0 +1,37 @@
+{
+  "schema": "ranah-observatory/milestone25-transport-recovery-decision/v1",
+  "milestone": 25,
+  "decision": "make rounded HTML value cross-check diagnostic-only when all locked identity and exact SpreadsheetML gates pass",
+  "evidence": {
+    "pilot_2024": "19/19 jurisdiction-year pages passed dual representation",
+    "full_run_failure_pattern": "13 jurisdiction-year pages in 2021 plus pemda 07/2022 failed the dual-representation gate",
+    "spreadsheetml_status": "same-selector official SpreadsheetML export remained the preregistered primary exact numeric evidence"
+  },
+  "unchanged_scientific_boundaries": {
+    "geography_count": 19,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "period_selector": "12",
+    "promoted_exact_label_families": [
+      "total_revenue",
+      "own_source_revenue_pad",
+      "total_expenditure",
+      "capital_expenditure"
+    ],
+    "held_families": ["central_transfer_revenue"],
+    "imputation_performed": false,
+    "taxonomy_bridge_promoted": false,
+    "posthoc_account_search_performed": false,
+    "statistical_model_fit": false
+  },
+  "mandatory_page_gates_after_recovery": [
+    "jurisdiction_identity",
+    "fiscal_year_identity",
+    "december_realization_semantics",
+    "same_selector_export_link",
+    "valid_spreadsheetml",
+    "all_locked_exact_labels_present",
+    "all_exact_numeric_values_parseable"
+  ],
+  "nonblocking_diagnostic": "rounded HTML table value cross-check",
+  "reason": "The existing transport amendment already defines HTML rounded display as an optional cross-check and SpreadsheetML as primary exact numeric evidence; the implementation incorrectly made the optional display check blocking."
+}

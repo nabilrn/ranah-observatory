@@ -1,0 +1,79 @@
+{
+  "annual_final_realization_semantics_required": true,
+  "comparability_regime": "sumbar_current_kabkota_djpk_realization_2018_2025_v2",
+  "derived_ratio_count": 0,
+  "end_year": 2025,
+  "explicit_bridge_used": false,
+  "geography_count": 19,
+  "geography_level": "kabupaten_kota",
+  "held_families": [
+    "central_transfer_revenue"
+  ],
+  "held_family_count": 1,
+  "historical_boundary_reconstruction_performed": false,
+  "html_rounded_value_crosscheck_is_diagnostic": true,
+  "html_semantic_evidence": "identity_year_annual_final_status_same_selector_export_link",
+  "html_snapshot_count": 152,
+  "html_table_parseable_page_count": 150,
+  "html_table_unparseable_page_count": 2,
+  "imputation_performed": false,
+  "inputs": {
+    "account_contract_manifest": {
+      "path": "data/manifests/milestone25_stage1_contracts.json",
+      "sha256": "088da4446d48eecdd7f6ee75a462826718f2832f99ff9d4b0cd3a52f01c3be7f"
+    },
+    "account_contracts": {
+      "path": "data/registries/djpk_m25_stage1_account_contracts.csv",
+      "sha256": "9d4621a1d92d7587e14d95845e3dc7efe8020dbae4fd48974b9922ca663b7820"
+    },
+    "crosswalk": {
+      "path": "data/registries/djpk_sumbar_pemda.csv",
+      "sha256": "eab4c210a2543d14ddc53213441b287931c8e847fa82f25fe0ab124b3931fcf3"
+    },
+    "full_probe_coverage": {
+      "path": "data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv",
+      "sha256": "872ae709702df0f57a3bbfcebf639eb0907f16a10990b64ad1831844ee064b1b"
+    },
+    "full_probe_values": {
+      "path": "data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv",
+      "sha256": "9af7ed7c3829c00b74f8f4e8102f29315bf3221e59bd22b6eec903f5af2caca6"
+    },
+    "stage1_manifest": {
+      "path": "data/manifests/milestone25_stage1_full_export.json",
+      "sha256": "a8c328598ee47c3749138f159d3f560d667d69ca91b454896a4d91f14b6b564c"
+    },
+    "transport_amendment": {
+      "path": "data/manifests/milestone25_transport_amendment.json",
+      "sha256": "da5a1c6aff1221d17b17a487b248325c69f86759adc0e49d408ccb01333148ba"
+    }
+  },
+  "jurisdiction_year_count": 152,
+  "milestone": 25,
+  "observation_count": 608,
+  "outputs": {
+    "canonical_observations": {
+      "path": "data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv",
+      "sha256": "ec8c0a6b426a43e691049ddea7b6b854c25a36639eb3181fad6c29d539279121"
+    },
+    "provenance": {
+      "path": "data/processed/djpk/public_finance/djpk-fiscal-provenance.csv",
+      "sha256": "73cca1bd8ebfa9082d05aaddff3afa864f41c873e4097af2dd506142437429bc"
+    }
+  },
+  "posthoc_account_family_search_performed": false,
+  "primary_numeric_evidence": "djpk_csv_apbd_spreadsheetml_exact_rupiah",
+  "promoted_exact_label_families": [
+    "total_revenue",
+    "own_source_revenue_pad",
+    "total_expenditure",
+    "capital_expenditure"
+  ],
+  "promoted_exact_label_family_count": 4,
+  "provenance_count": 152,
+  "schema": "ranah-observatory/djpk-fiscal-panel/v2",
+  "source_id": "djpk_sikd_apbd_portal",
+  "spreadsheetml_snapshot_count": 152,
+  "start_year": 2018,
+  "statistical_model_fit": false,
+  "year_count": 8
+}

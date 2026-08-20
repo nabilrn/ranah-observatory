@@ -1,0 +1,153 @@
+{
+  "all_pages_pass": true,
+  "conceptual_account_family_results": [
+    {
+      "bridge_review_required": false,
+      "conceptual_family": "capital_expenditure",
+      "source_labels": "Belanja Modal",
+      "status": "exact_label_qualified",
+      "years_covered": "2018|2019|2020|2021|2022|2023|2024|2025"
+    },
+    {
+      "bridge_review_required": true,
+      "conceptual_family": "central_transfer_revenue",
+      "source_labels": "TKDD|Pendapatan Transfer Pemerintah Pusat",
+      "status": "held_semantic_bridge_review",
+      "years_covered": "2018|2019|2020|2021|2022|2023|2024|2025"
+    },
+    {
+      "bridge_review_required": false,
+      "conceptual_family": "own_source_revenue_pad",
+      "source_labels": "PAD",
+      "status": "exact_label_qualified",
+      "years_covered": "2018|2019|2020|2021|2022|2023|2024|2025"
+    },
+    {
+      "bridge_review_required": false,
+      "conceptual_family": "total_expenditure",
+      "source_labels": "Belanja Daerah",
+      "status": "exact_label_qualified",
+      "years_covered": "2018|2019|2020|2021|2022|2023|2024|2025"
+    },
+    {
+      "bridge_review_required": false,
+      "conceptual_family": "total_revenue",
+      "source_labels": "Pendapatan Daerah",
+      "status": "exact_label_qualified",
+      "years_covered": "2018|2019|2020|2021|2022|2023|2024|2025"
+    }
+  ],
+  "criterion": "eight-year reference-jurisdiction taxonomy discovery before cross-geography fiscal extraction",
+  "cross_geography_values_inspected_before_taxonomy_lock": false,
+  "derived_ratio_created": false,
+  "design_gate_schema": "ranah-observatory/milestone25-design-gate/v1",
+  "historical_boundary_reconstruction_performed": false,
+  "html_body_table_required": false,
+  "html_semantic_role": "identity_year_december_same_selector_export_link",
+  "imputation_performed": false,
+  "inputs": {
+    "crosswalk": {
+      "path": "data/registries/djpk_sumbar_pemda.csv",
+      "sha256": "eab4c210a2543d14ddc53213441b287931c8e847fa82f25fe0ab124b3931fcf3"
+    },
+    "design_gate": {
+      "path": "data/manifests/milestone25_design_gate.json",
+      "sha256": "ac317141bdb58d820226550df6a0fcf53ee36b072350ba852f1514277478ef11"
+    }
+  },
+  "milestone": 25,
+  "outputs": {
+    "account_presence": {
+      "path": "data/analysis/engine/djpk_finance_v1/m25-account-presence.csv",
+      "sha256": "7370cfa372648f0c6c2e5c4933ea5dba9c0adb09a4ef000ca207b32998bf7c14"
+    },
+    "taxonomy_discovery": {
+      "path": "data/analysis/engine/djpk_finance_v1/m25-taxonomy-discovery.csv",
+      "sha256": "c980fb9df2dd6b300903def1a1ba5623acf413f23147514387d0e2507f37ab33"
+    }
+  },
+  "page_count": 8,
+  "period_selector": "12",
+  "phase": "post_phase2_fiscal_evidence_expansion",
+  "posthoc_account_family_search_performed": false,
+  "raw_responses": [
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2018-desember.xml",
+      "export_sha256": "10eaf0aecea49a130f92ea3921a3b25db05497b14af7175af3e0c6ac86b811c0",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2018-desember.html",
+      "html_sha256": "2a290e2fabb9b25ad7514d81b195410576c845dc61c87897354449bc5aebad76",
+      "year": 2018
+    },
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2019-desember.xml",
+      "export_sha256": "0eb039b819802b998ee3974849555520eb3c64a23aed1b5a7443d527ec006729",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2019-desember.html",
+      "html_sha256": "0f5f64730a63c1cde72655d113488214874ca14b46c599edecc82fb37be75795",
+      "year": 2019
+    },
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2020-desember.xml",
+      "export_sha256": "2d56a24d0ca1065e9f244eb15842d1add3b8ff3452c52b05ef5a3f03e8f79cd2",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2020-desember.html",
+      "html_sha256": "f41a4a7c0d705d7cfc7993987b5d13d55bf698054720c38cf7b6c0204d8749ed",
+      "year": 2020
+    },
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2021-desember.xml",
+      "export_sha256": "084f0af0f1fb3d0fe76f91175cfbeda5fc5c0773c8dbf2ed896e42ee2c87e8f3",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2021-desember.html",
+      "html_sha256": "441af2e057c6f41d4c5778622c9278bc42fcfbcc2b92d4196df26fac56198bf5",
+      "year": 2021
+    },
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2022-desember.xml",
+      "export_sha256": "aa31801a5f710ee46b87df7fe571be213a1a3454546917b7c7a620d0268d6256",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2022-desember.html",
+      "html_sha256": "bf96505bfef35d0151298fa77221b702735cb8a3518ac9388650c8fc0f19bfca",
+      "year": 2022
+    },
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2023-desember.xml",
+      "export_sha256": "3b12e9215527e6d44443c0e58c7f16b90dad6f8c83e994b896b2ed8e02d1d08a",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2023-desember.html",
+      "html_sha256": "688dbc60feee19bdcc896b21ff434dfce42832dfe89694f60470e53315517c48",
+      "year": 2023
+    },
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2024-desember.xml",
+      "export_sha256": "a217eaf4a6e94ca89960ad924e06bfa72cc667ed7d03f968f5c46c6991418e8f",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2024-desember.html",
+      "html_sha256": "191db486521b1e9022cf39103e3f065d160191c19832824a30e032c6546c95a7",
+      "year": 2024
+    },
+    {
+      "export_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2025-desember.xml",
+      "export_sha256": "fb1bdf042fc9dfbc9e0939a70275bf6d2e1b73d97e5f1919649be3ff9260b7d2",
+      "html_path": "data/processed/djpk/taxonomy_probe/kota-padang-apbd-2025-desember.html",
+      "html_sha256": "50afa5244eaed56a970a5e6966c07ac7cb291d9ab53737a79a7ca6760bb87285",
+      "year": 2025
+    }
+  ],
+  "reference_djpk_pemda_selector": "12",
+  "reference_djpk_province_selector": "03",
+  "reference_geography_id": "idn.13.1371",
+  "reference_name": "Padang",
+  "schema": "ranah-observatory/milestone25-taxonomy-discovery/v1",
+  "source_id": "djpk_sikd_apbd_portal",
+  "spreadsheetml_account_table_required": true,
+  "stage": 0,
+  "stage0_complete": true,
+  "statistical_model_fit": false,
+  "taxonomy_primary_representation": "djpk_csv_apbd_spreadsheetml_exact_rupiah",
+  "unique_normalized_account_label_count": 42,
+  "years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ]
+}

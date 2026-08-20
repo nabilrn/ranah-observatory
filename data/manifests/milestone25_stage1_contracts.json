@@ -1,0 +1,24 @@
+{
+  "contract_family_count": 5,
+  "contract_registry": "data/registries/djpk_m25_stage1_account_contracts.csv",
+  "contracts_locked": true,
+  "cross_geography_values_inspected_before_lock": false,
+  "derived_ratio_authorized": false,
+  "explicit_bridge_promoted": false,
+  "held_families": [
+    "central_transfer_revenue"
+  ],
+  "held_family_count": 1,
+  "milestone": 25,
+  "posthoc_account_family_search_performed": false,
+  "promoted_exact_label_families": [
+    "total_revenue",
+    "own_source_revenue_pad",
+    "total_expenditure",
+    "capital_expenditure"
+  ],
+  "promoted_exact_label_family_count": 4,
+  "schema": "ranah-observatory/milestone25-stage1-account-contracts/v1",
+  "stage": 1,
+  "statistical_model_fit": false
+}

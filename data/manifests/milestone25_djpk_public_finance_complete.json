@@ -1,0 +1,107 @@
+{
+  "annual_final_realization_semantics_counts": {
+    "calendar_year_end_december": 139,
+    "final_accountability_audited": 2,
+    "final_accountability_perda": 11
+  },
+  "annual_final_realization_semantics_required": true,
+  "causal_claim_created": false,
+  "criterion": "four preregistered exact-label fiscal account families with complete 19-kabupaten/kota x 2018-2025 annual-final realization evidence using official same-selector DJPK HTML semantics and SpreadsheetML exact values",
+  "derived_ratio_created": false,
+  "end_year": 2025,
+  "explicit_bridge_used": false,
+  "frozen_stage0_page_count": 8,
+  "frozen_stage1_html_page_count": 152,
+  "frozen_stage1_page_count": 152,
+  "frozen_stage1_spreadsheetml_count": 152,
+  "geography_count": 19,
+  "held_families": [
+    "central_transfer_revenue"
+  ],
+  "held_family_count": 1,
+  "historical_boundary_reconstruction_performed": false,
+  "html_rounded_value_crosscheck_is_diagnostic": true,
+  "html_semantic_evidence": "identity_year_annual_final_status_same_selector_export_link",
+  "html_table_parseable_page_count": 150,
+  "html_table_unparseable_page_count": 2,
+  "imputation_performed": false,
+  "inputs": {
+    "contract_manifest": {
+      "path": "data/manifests/milestone25_stage1_contracts.json",
+      "sha256": "088da4446d48eecdd7f6ee75a462826718f2832f99ff9d4b0cd3a52f01c3be7f"
+    },
+    "contracts": {
+      "path": "data/registries/djpk_m25_stage1_account_contracts.csv",
+      "sha256": "9d4621a1d92d7587e14d95845e3dc7efe8020dbae4fd48974b9922ca663b7820"
+    },
+    "coverage": {
+      "path": "data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv",
+      "sha256": "872ae709702df0f57a3bbfcebf639eb0907f16a10990b64ad1831844ee064b1b"
+    },
+    "crosswalk": {
+      "path": "data/registries/djpk_sumbar_pemda.csv",
+      "sha256": "eab4c210a2543d14ddc53213441b287931c8e847fa82f25fe0ab124b3931fcf3"
+    },
+    "design_gate": {
+      "path": "data/manifests/milestone25_design_gate.json",
+      "sha256": "ac317141bdb58d820226550df6a0fcf53ee36b072350ba852f1514277478ef11"
+    },
+    "panel_manifest": {
+      "path": "data/processed/djpk/public_finance/djpk-fiscal-panel.manifest.json",
+      "sha256": "4dc66f8ac75e60c7ea9ea8f2bb7674b1dd595e7593b29e26f0bc4580802d7f0e"
+    },
+    "probe_values": {
+      "path": "data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv",
+      "sha256": "9af7ed7c3829c00b74f8f4e8102f29315bf3221e59bd22b6eec903f5af2caca6"
+    },
+    "spec": {
+      "path": "research/MILESTONE25_DJPK_PUBLIC_FINANCE_SPEC.md",
+      "sha256": "d2203a0aa4bcb264e0828543c3c1527a06d0e88157c583de6a40f16d93a85336"
+    },
+    "stage1_manifest": {
+      "path": "data/manifests/milestone25_stage1_full_export.json",
+      "sha256": "a8c328598ee47c3749138f159d3f560d667d69ca91b454896a4d91f14b6b564c"
+    },
+    "taxonomy": {
+      "path": "data/manifests/milestone25_taxonomy_discovery.json",
+      "sha256": "5381ef61029951a3accd6be13946b243f6d89842d990d70bbf10c93c60a6c432"
+    },
+    "transport_amendment": {
+      "path": "data/manifests/milestone25_transport_amendment.json",
+      "sha256": "da5a1c6aff1221d17b17a487b248325c69f86759adc0e49d408ccb01333148ba"
+    }
+  },
+  "jurisdiction_year_count": 152,
+  "milestone": 25,
+  "milestone25_complete": true,
+  "monetary_wasted_potential_estimated": false,
+  "observation_count": 608,
+  "outputs": {
+    "canonical_observations": {
+      "path": "data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv",
+      "sha256": "ec8c0a6b426a43e691049ddea7b6b854c25a36639eb3181fad6c29d539279121"
+    },
+    "provenance": {
+      "path": "data/processed/djpk/public_finance/djpk-fiscal-provenance.csv",
+      "sha256": "73cca1bd8ebfa9082d05aaddff3afa864f41c873e4097af2dd506142437429bc"
+    }
+  },
+  "phase": "post_phase2_fiscal_evidence_expansion",
+  "posthoc_account_family_search_performed": false,
+  "primary_numeric_evidence": "djpk_csv_apbd_spreadsheetml_exact_rupiah",
+  "promoted_exact_label_families": [
+    "capital_expenditure",
+    "own_source_revenue_pad",
+    "total_expenditure",
+    "total_revenue"
+  ],
+  "promoted_exact_label_family_count": 4,
+  "provenance_count": 152,
+  "schema": "ranah-observatory/milestone25-djpk-public-finance-complete/v2",
+  "scientific_design_changed_by_transport_amendment": false,
+  "start_year": 2018,
+  "statistical_model_fit": false,
+  "transport_representation_amended_after_failure": true,
+  "user_contribution_required": false,
+  "year_count": 8
+}

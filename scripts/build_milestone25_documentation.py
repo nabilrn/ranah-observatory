@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,10 +24,12 @@ def build() -> str:
     final = json.loads(FINAL.read_text(encoding="utf-8"))
     taxonomy = json.loads(TAXONOMY.read_text(encoding="utf-8"))
     panel = json.loads(PANEL.read_text(encoding="utf-8"))
-    if final.get("schema") != "ranah-observatory/milestone25-djpk-public-finance-complete/v1":
+    if final.get("schema") != "ranah-observatory/milestone25-djpk-public-finance-complete/v2":
         raise ValueError("unexpected M25 completion schema")
     if final.get("milestone25_complete") is not True:
         raise ValueError("M25 is not complete")
+    if panel.get("schema") != "ranah-observatory/djpk-fiscal-panel/v2":
+        raise ValueError("unexpected M25 panel schema")
     results = {row["conceptual_family"]: row for row in taxonomy["conceptual_account_family_results"]}
     promoted = list(final["promoted_exact_label_families"])
     held = list(final["held_families"])
@@ -34,77 +37,70 @@ def build() -> str:
     lines: list[str] = [
         "# Milestone 25 — DJPK/SIKD Public-Finance Panel",
         "",
-        "Status: **complete for the exact-label fiscal subset; taxonomy-ambiguous families remain held**.",
+        "Status: **complete for the preregistered exact-label fiscal subset; taxonomy-ambiguous transfer evidence remains held**.",
         "",
-        "M25 adds a district/city fiscal evidence layer for all 19 current West Sumatra kabupaten/kota over 2018–2025 using official DJPK/SIKD APBD realization pages. The taxonomy was locked on Kota Padang before fiscal values from the other 18 local governments were inspected.",
+        "M25 adds a district/city fiscal evidence layer for all 19 current West Sumatra kabupaten/kota over 2018–2025. The fiscal account taxonomy was locked on Kota Padang before values from the other 18 local governments were inspected.",
         "",
         "## Frozen evidence footprint",
         "",
         f"- **{final['geography_count']}** kabupaten/kota;",
         f"- **{final['year_count']}** fiscal years ({final['start_year']}–{final['end_year']});",
-        f"- **{final['jurisdiction_year_count']}** jurisdiction-year source pages;",
+        f"- **{final['jurisdiction_year_count']}** jurisdiction-year records;",
         f"- **{final['promoted_exact_label_family_count']}** exact-label fiscal account families promoted;",
         f"- **{final['observation_count']}** canonical fiscal observations;",
         f"- **{final['provenance_count']}** jurisdiction-year provenance records;",
-        f"- **{final['frozen_stage0_page_count']}** frozen taxonomy-reference pages;",
-        f"- **{final['frozen_stage1_page_count']}** frozen full-panel source pages.",
+        f"- **{final['frozen_stage0_page_count']}** frozen Stage 0 taxonomy-reference HTML pages;",
+        f"- **{final['frozen_stage1_html_page_count']}** frozen Stage 1 HTML semantic snapshots;",
+        f"- **{final['frozen_stage1_spreadsheetml_count']}** frozen official DJPK SpreadsheetML exports;",
+        f"- HTML postur tables were parseable for **{final['html_table_parseable_page_count']}** of 152 jurisdiction-years and structurally unavailable for **{final['html_table_unparseable_page_count']}**; unparseable HTML tables do not substitute or fabricate values.",
         "",
-        "All canonical values are December fiscal realizations normalized to **IDR billion**. No imputation, historical-boundary reconstruction, explicit taxonomy bridge, derived fiscal ratio, or statistical model is part of M25.",
+        "All canonical values are annual-final fiscal realizations normalized to **IDR billion** from exact rupiah values in the official same-selector `csv_apbd` SpreadsheetML export. The locked selector remains `periode=12`; source-reported final semantics across the frozen panel are **139 Desember**, **11 Perda**, and **2 Audited** records. No imputation, historical-boundary reconstruction, explicit taxonomy bridge, derived fiscal ratio, or statistical model is part of M25.",
+        "",
+        "## Why two official representations are retained",
+        "",
+        "The DJPK APBD HTML page carries jurisdiction identity, fiscal year, annual-final realization semantics, and the link to the corresponding export. Historical pages requested with the locked `periode=12` selector report final status as `s.d Desember`, `s.d Audited <year>`, or `s.d Perda <year>`; intermediate-month and unaudited states remain rejected. During qualification, the body-table markup proved structurally inconsistent across the full historical footprint. M25 therefore records a representation-only transport amendment: the scientific scope and account contracts stay unchanged, while exact numeric evidence is taken from the official SpreadsheetML export exposed by that same HTML page and selector set.",
+        "",
+        "For pages where the HTML postur table is parseable, each promoted account receives a diagnostic rounded-display cross-check against the exact export value. That display comparison is non-blocking and cannot override exact SpreadsheetML evidence. A page qualifies only when jurisdiction, fiscal year, accepted annual-final semantics, the exact same-selector export link, valid SpreadsheetML, and all locked exact labels remain verifiable.",
         "",
         "## Exact-label families promoted",
         "",
     ]
-    if promoted:
-        for family in promoted:
-            tax = results[family]
-            lines.append(
-                f"- `{family}` — {DISPLAY.get(family, family)}; Stage 0 status `{tax['status']}`; source label(s): `{tax.get('source_labels', '')}`."
-            )
-    else:
-        lines.append("- None. This state should not occur for a completed M25 exact panel.")
+    for family in promoted:
+        tax = results[family]
+        lines.append(
+            f"- `{family}` — {DISPLAY.get(family, family)}; Stage 0 status `{tax['status']}`; source label(s): `{tax.get('source_labels', '')}`."
+        )
 
     lines += ["", "## Families held from the exact panel", ""]
-    if held:
-        for family in held:
-            tax = results[family]
-            lines.append(
-                f"- `{family}` — {DISPLAY.get(family, family)}; Stage 0 status `{tax['status']}`; observed label(s): `{tax.get('source_labels', '')}`. It remains held until a separate semantic bridge is justified."
-            )
-    else:
-        lines.append("- None; all five predeclared families qualified under the exact-label contract.")
+    for family in held:
+        tax = results[family]
+        lines.append(
+            f"- `{family}` — {DISPLAY.get(family, family)}; Stage 0 status `{tax['status']}`; observed label(s): `{tax.get('source_labels', '')}`. It remains held until a separate semantic bridge is justified."
+        )
 
     lines += [
         "",
-        "## Why the bridge families are not silently merged",
+        "## Accounting and claim boundary",
         "",
-        "M25 treats fiscal-account continuity as an accounting-semantics problem, not a string-matching problem. A renamed or reorganized account can only be bridged in a separate design when the concept and hierarchy are demonstrably equivalent. In particular, older transfer-account structures are not automatically equated with newer central-transfer terminology.",
+        "M25 treats fiscal-account continuity as an accounting-semantics problem, not a string-matching problem. The central-transfer family is not silently bridged across `TKDD` and newer terminology. Budget appropriations are not treated as realized spending, no fiscal ratios are generated, and no causal or policy-effect interpretation is authorized.",
         "",
-        "This restriction means the exact panel can contain fewer than the five conceptual families originally targeted. That is intentional: incomplete but defensible evidence is preferable to a longer panel created by silently mixing fiscal taxonomies.",
-        "",
-        "## What M25 unlocks",
-        "",
-        "The exact-label panel supplies a new institutional/fiscal mechanism layer for future analysis of West Sumatra. Because it uses the same current 19 kabupaten/kota and 2018–2025 window as the modern analytical regime, it can later be joined at geography-year level to qualified modern outcomes **after** a separate model design checks scale, timing, multicollinearity, and causal boundaries.",
-        "",
-        "M25 itself does not claim that fiscal realization caused poverty, unemployment, growth, or any other development outcome. It also does not rank local governments by fiscal quality or estimate a fiscal multiplier.",
+        "The panel can support a later preregistered geography-year design that asks whether fiscal capacity or expenditure composition adds explanatory or predictive value to modern development outcomes. M25 itself does not claim that revenue or expenditure caused poverty, unemployment, growth, or any other outcome.",
         "",
         "## Reproducibility and provenance",
         "",
-        "The repository retains the official DJPK HTML pages for the taxonomy reference series and every jurisdiction-year in the exact panel. Source-page SHA-256 values are bound to the probe coverage and canonical provenance. The canonical materializer re-parses each frozen page, recomputes the locked account realization, and verifies that it exactly matches the value captured during the live Stage 1 probe.",
-        "",
-        "Permanent CI is designed to run without live DJPK access: it verifies frozen source hashes, rebuilds the Stage 1 contract registry from the frozen taxonomy result, rebuilds the canonical fiscal panel from frozen HTML, reruns the completion audit/tests, and checks derived outputs byte-for-byte.",
-        "",
-        "## Claim boundary",
-        "",
-        "M25 is evidence acquisition and harmonization. It does not estimate fiscal causality, policy effectiveness, cost-benefit rankings, fiscal multipliers, or monetary wasted potential. Budget appropriations are not treated as realized spending, missing observations are not interpolated, and held taxonomy families remain unavailable to downstream models until separately qualified.",
+        "Each jurisdiction-year provenance record binds both the official HTML snapshot and its same-selector SpreadsheetML export by SHA-256. Permanent CI works from frozen evidence: it verifies both source hashes, revalidates HTML identity/year/annual-final/export-link semantics, re-parses exact SpreadsheetML account values, records rounded HTML checks only as diagnostics, rebuilds the canonical panel, reruns completion/audit tests, and compares deterministic outputs byte-for-byte.",
         "",
         "## Core outputs",
         "",
+        "- `data/manifests/milestone25_transport_amendment.json`",
         "- `data/registries/djpk_sumbar_pemda.csv`",
         "- `data/manifests/milestone25_taxonomy_discovery.json`",
         "- `data/registries/djpk_m25_stage1_account_contracts.csv`",
         "- `data/manifests/milestone25_stage1_contracts.json`",
+        "- `data/manifests/milestone25_stage1_full_export.json`",
         "- `data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv`",
         "- `data/analysis/engine/djpk_finance_v1/m25-stage1-full-values.csv`",
+        "- `data/processed/djpk/public_finance/source/` (152 HTML + 152 SpreadsheetML snapshots)",
         "- `data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv`",
         "- `data/processed/djpk/public_finance/djpk-fiscal-provenance.csv`",
         "- `data/processed/djpk/public_finance/djpk-fiscal-panel.manifest.json`",
@@ -120,7 +116,7 @@ def main() -> int:
     try:
         text = build()
     except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
-        print(f"error: {exc}")
+        print(f"error: {exc}", file=sys.stderr)
         return 2
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(text, encoding="utf-8")

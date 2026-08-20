@@ -25,13 +25,14 @@ def test_stable_id_is_deterministic_and_domain_separated() -> None:
     assert a != c
 
 
-def test_materializer_reuses_stage1_money_parser_exactly() -> None:
-    assert m25.parse_djpk_money_to_idr_billion("450 M") == Decimal("450")
-    assert m25.parse_djpk_money_to_idr_billion("1,25 T") == Decimal("1250.00")
+def test_materializer_uses_exact_rupiah_conversion_not_rounded_html_display() -> None:
+    exact = m25.parse_exact_rupiah("662552174238.82")
+    assert exact == Decimal("662552174238.82")
+    assert m25.rupiah_to_idr_billion(exact) == Decimal("662.55217423882")
 
 
-def test_exact_panel_regime_is_current_sumbar_2018_2025() -> None:
-    assert m25.REGIME_ID == "sumbar_current_kabkota_djpk_realization_2018_2025_v1"
+def test_exact_panel_regime_is_dual_representation_current_sumbar_2018_2025() -> None:
+    assert m25.REGIME_ID == "sumbar_current_kabkota_djpk_realization_2018_2025_v2"
     assert m25.YEARS == list(range(2018, 2026))
 
 
