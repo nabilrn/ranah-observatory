@@ -121,11 +121,13 @@ jobs:
               assert final[key] is False
           PY
 
-      - name: Commit completed M25 evidence and permanent repro gate
+      - name: Commit completed M25 evidence
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Permanent workflow files are managed by the GitHub connector, not GITHUB_TOKEN.
+          git restore --source=HEAD -- .github/workflows/milestone25-djpk-fiscal-repro.yml
           git add \
             research/MILESTONE25_DJPK_PUBLIC_FINANCE_SPEC.md \
             data/manifests/milestone25_transport_amendment.json \
@@ -138,9 +140,7 @@ jobs:
             scripts/build_milestone25_documentation.py \
             scripts/audit_milestone25_djpk_public_finance.py \
             tests/test_milestone25_djpk_materialized.py \
-            .github/workflows/milestone25-djpk-fiscal-repro.yml \
-            scripts/apply_milestone25_completion_recovery.py \
-            .github/workflows/milestone25-completion-recovery.yml
+            scripts/apply_milestone25_completion_recovery.py
           if git diff --cached --quiet; then
             echo 'No M25 completion changes'
             exit 0
