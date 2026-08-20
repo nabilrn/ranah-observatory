@@ -15,6 +15,7 @@ from milestone25_djpk_html_compat import install_djpk_html_compat
 install_djpk_html_compat()
 
 import probe_milestone25_djpk_stage1 as stage1
+from milestone25_djpk_period_semantics import classify_annual_final_realization
 from milestone25_djpk_export import (
     M25DJPKExportError,
     exact_account_map,
@@ -118,7 +119,7 @@ def optional_html_accounts(body: bytes) -> tuple[bool, dict[str, dict[str, str]]
 
 def verify_html_semantics(
     *, body: bytes, geography: dict[str, str], year: int, pemda: str
-) -> tuple[str, bool, dict[str, dict[str, str]]]:
+) -> tuple[str, str, bool, dict[str, dict[str, str]]]:
     parser = stage1.HTMLTableParser()
     parser.feed(body.decode("utf-8", errors="replace"))
     page_text = parser.all_text
@@ -126,14 +127,15 @@ def verify_html_semantics(
         raise M25MaterializationError(f"frozen HTML jurisdiction identity failed {pemda}/{year}")
     if str(year) not in page_text:
         raise M25MaterializationError(f"frozen HTML year identity failed {pemda}/{year}")
-    if not re.search(r"realisasi\s+apbd\s+s\.?\s*d\.?\s+desember", page_text, flags=re.IGNORECASE):
-        raise M25MaterializationError(f"frozen HTML December semantics failed {pemda}/{year}")
+    annual_semantics_class = classify_annual_final_realization(page_text, year)
+    if annual_semantics_class is None:
+        raise M25MaterializationError(f"frozen HTML annual-final semantics failed {pemda}/{year}")
     try:
         linked_export = find_same_selector_export_url(body, pemda, year)
     except M25DJPKExportError as exc:
         raise M25MaterializationError(f"frozen HTML same-selector export link failed {pemda}/{year}") from exc
     parseable, html_accounts = optional_html_accounts(body)
-    return linked_export, parseable, html_accounts
+    return linked_export, annual_semantics_class, parseable, html_accounts
 
 
 def materialize() -> dict[str, Any]:
@@ -203,7 +205,7 @@ def materialize() -> dict[str, Any]:
 
             html_body = html_path.read_bytes()
             export_body = export_path.read_bytes()
-            linked_export, html_parseable, html_accounts = verify_html_semantics(
+            linked_export, annual_semantics_class, html_parseable, html_accounts = verify_html_semantics(
                 body=html_body, geography=geography, year=year, pemda=pemda
             )
             if linked_export != coverage_row["export_url"]:
@@ -228,7 +230,8 @@ def materialize() -> dict[str, Any]:
                     "djpk_pemda_selector": pemda,
                     "year": year,
                     "period_selector": "12",
-                    "reference_period": "realisasi_s.d._desember",
+                    "reference_period": "annual_final_realization",
+                    "source_realization_semantics_class": annual_semantics_class,
                     "html_snapshot": html_path.relative_to(ROOT).as_posix(),
                     "html_snapshot_sha256": html_sha,
                     "html_source_url": coverage_row["final_html_url"],
@@ -266,13 +269,25 @@ def materialize() -> dict[str, Any]:
                 if html_parseable:
                     html_row = html_accounts.get(label)
                     if html_row is None:
-                        raise M25MaterializationError(f"HTML locked label missing on parseable page {family} {geography_id}/{year}")
-                    display_amount = stage1.parse_djpk_money_to_idr_billion(html_row["realization_raw"])
-                    if not html_display_matches_exact(display_amount, realization_rupiah):
-                        raise M25MaterializationError(f"HTML/export rounded-value mismatch {family} {geography_id}/{year}")
-                    html_crosscheck_status = "passed_display_rounding_crosscheck"
-                if probe_row["html_crosscheck_status"] != html_crosscheck_status:
-                    raise M25MaterializationError(f"HTML crosscheck status drift {family} {geography_id}/{year}")
+                        html_crosscheck_status = "diagnostic_locked_label_missing_in_html_table"
+                    else:
+                        try:
+                            display_amount = stage1.parse_djpk_money_to_idr_billion(html_row["realization_raw"])
+                            if html_display_matches_exact(display_amount, realization_rupiah):
+                                html_crosscheck_status = "passed_display_rounding_crosscheck"
+                            else:
+                                html_crosscheck_status = "diagnostic_display_rounding_mismatch"
+                        except stage1.M25Stage1Error:
+                            html_crosscheck_status = "diagnostic_html_display_parse_failure"
+
+                probe_status_map = {
+                    "failed_locked_label_missing_in_html_table": "diagnostic_locked_label_missing_in_html_table",
+                    "failed_display_rounding_crosscheck": "diagnostic_display_rounding_mismatch",
+                    "failed_html_display_parse": "diagnostic_html_display_parse_failure",
+                }
+                expected_probe_status = probe_status_map.get(probe_row["html_crosscheck_status"], probe_row["html_crosscheck_status"])
+                if expected_probe_status != html_crosscheck_status:
+                    raise M25MaterializationError(f"HTML diagnostic status drift {family} {geography_id}/{year}")
 
                 observations.append(
                     {
@@ -283,7 +298,7 @@ def materialize() -> dict[str, Any]:
                         "djpk_province_selector": geography["djpk_province_selector"],
                         "djpk_pemda_selector": pemda,
                         "year": year,
-                        "reference_period": "realisasi_s.d._desember",
+                        "reference_period": "annual_final_realization",
                         "source_account_label": source["account_label"],
                         "budget_rupiah_exact": format(budget_rupiah, "f"),
                         "realization_rupiah_exact": format(realization_rupiah, "f"),
@@ -338,7 +353,9 @@ def materialize() -> dict[str, Any]:
         "html_table_parseable_page_count": html_parseable_count,
         "html_table_unparseable_page_count": html_unparseable_count,
         "primary_numeric_evidence": "djpk_csv_apbd_spreadsheetml_exact_rupiah",
-        "html_semantic_evidence": "identity_year_december_same_selector_export_link",
+        "html_semantic_evidence": "identity_year_annual_final_status_same_selector_export_link",
+        "annual_final_realization_semantics_required": True,
+        "html_rounded_value_crosscheck_is_diagnostic": True,
         "derived_ratio_count": 0,
         "explicit_bridge_used": False,
         "imputation_performed": False,

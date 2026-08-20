@@ -19,6 +19,7 @@ from milestone25_djpk_html_compat import install_djpk_html_compat
 install_djpk_html_compat()
 
 import probe_milestone25_djpk_stage1 as stage1
+from milestone25_djpk_period_semantics import classify_annual_final_realization
 from milestone25_djpk_export import (
     M25DJPKExportError,
     build_export_url,
@@ -110,8 +111,16 @@ def load_transport(path: Path) -> dict[str, Any]:
         raise M25Stage1ExportError("M25 transport amendment is not explicitly representation-only")
     if payload.get("html_export_selector_match_required") is not True:
         raise M25Stage1ExportError("same-selector HTML export link is not required")
-    if payload.get("html_table_value_crosscheck_required_when_parseable") is not True:
-        raise M25Stage1ExportError("HTML value cross-check is not required when parseable")
+    if payload.get("html_table_value_crosscheck_required_when_parseable") is not False:
+        raise M25Stage1ExportError("HTML rounded-value cross-check must be diagnostic-only in recovery revision 3")
+    if payload.get("html_table_value_crosscheck_is_diagnostic") is not True:
+        raise M25Stage1ExportError("HTML rounded-value diagnostic flag is missing")
+    if payload.get("annual_final_realization_semantics_required") is not True:
+        raise M25Stage1ExportError("annual-final realization semantics gate is missing")
+    if payload.get("requested_period_selector") != "12":
+        raise M25Stage1ExportError("locked annual period selector drift")
+    if payload.get("intermediate_month_or_unaudited_semantics_rejected") is not True:
+        raise M25Stage1ExportError("non-final period semantics are not fail-closed")
     return payload
 
 
@@ -171,9 +180,8 @@ def run_probe(
             page_text = parser.all_text
             jurisdiction_ok = stage1.jurisdiction_matches(page_text, geography["djpk_source_name"])
             year_ok = str(year) in page_text
-            december_ok = bool(
-                re.search(r"realisasi\s+apbd\s+s\.?\s*d\.?\s+desember", page_text, flags=re.IGNORECASE)
-            )
+            annual_semantics_class = classify_annual_final_realization(page_text, year)
+            annual_semantics_ok = annual_semantics_class is not None
 
             try:
                 linked_export_url = find_same_selector_export_url(html_body, pemda, year)
@@ -284,12 +292,11 @@ def run_probe(
             page_pass = (
                 jurisdiction_ok
                 and year_ok
-                and december_ok
+                and annual_semantics_ok
                 and export_link_ok
                 and export_valid
                 and not missing_contracts
                 and not parse_failures
-                and not html_crosscheck_failures
                 and matched_contracts == len(contracts)
             )
 
@@ -304,7 +311,8 @@ def run_probe(
                     "html_http_status": html_status,
                     "jurisdiction_match": jurisdiction_ok,
                     "fiscal_year_match": year_ok,
-                    "december_realization_semantics_match": december_ok,
+                    "annual_final_realization_semantics_match": annual_semantics_ok,
+                    "annual_final_realization_semantics_class": annual_semantics_class or "unqualified",
                     "same_selector_export_link_match": export_link_ok,
                     "export_url": linked_export_url,
                     "expected_export_url": expected_export_url,
@@ -352,6 +360,9 @@ def run_probe(
         write_csv(coverage_path, list(coverage_rows[0].keys()), coverage_rows)
         if value_rows:
             write_csv(values_path, list(value_rows[0].keys()), value_rows)
+        for row in coverage_rows:
+            if not bool(row["page_pass"]):
+                print("M25_FAIL " + json.dumps(row, sort_keys=True), file=sys.stderr)
         raise M25Stage1ExportError(f"M25 dual-representation page qualification failures: {failures}")
 
     expected_values = expected_pages * len(contracts)
@@ -376,6 +387,17 @@ def run_probe(
         "spreadsheetml_snapshot_count": expected_pages,
         "html_table_parseable_page_count": sum(bool(row["html_table_parseable"]) for row in coverage_rows),
         "html_table_unparseable_page_count": sum(not bool(row["html_table_parseable"]) for row in coverage_rows),
+        "html_value_crosscheck_failure_page_count": sum(int(row["html_value_crosscheck_failure_count"]) > 0 for row in coverage_rows),
+        "html_table_value_crosscheck_is_diagnostic": True,
+        "annual_final_realization_semantics_required": True,
+        "annual_final_realization_semantics_counts": {
+            semantic_class: sum(row["annual_final_realization_semantics_class"] == semantic_class for row in coverage_rows)
+            for semantic_class in (
+                "calendar_year_end_december",
+                "final_accountability_audited",
+                "final_accountability_perda",
+            )
+        },
         "same_selector_export_link_required": True,
         "spreadsheetml_is_primary_numeric_evidence": True,
         "html_is_identity_period_and_optional_crosscheck_evidence": True,

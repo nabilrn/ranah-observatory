@@ -1,7 +1,19 @@
 {
+  "accepted_annual_final_realization_semantics": [
+    "calendar_year_end_december",
+    "final_accountability_audited",
+    "final_accountability_perda"
+  ],
   "account_family_set_changed": false,
   "amendment_reason": "DJPK APBD HTML body-table rendering is not structurally stable across all locked 2018-2025 jurisdiction-year requests, while the same official APBD page exposes a same-selector csv_apbd SpreadsheetML export with exact account values.",
-  "amendment_revision": 2,
+  "amendment_revision": 3,
+  "annual_final_realization_semantics_required": true,
+  "annual_final_semantic_compatibility_basis": [
+    "DJPK SIKD distinguishes annual APBD/LRA-Akhir-Tahun reporting from monthly LRA reporting",
+    "DJPK historical accountability records use LKPD Audited/Perda final-status representations",
+    "live historical SIKD pages requested with periode=12 report realization status as Desember, Audited <year>, or Perda <year>"
+  ],
+  "annual_final_semantic_compatibility_is_source_reported": true,
   "annual_realization_period_selector": "12",
   "canonical_numeric_unit": "IDR_billion",
   "causal_claim_authorized": false,
@@ -30,6 +42,7 @@
   "html_table_value_crosscheck_is_diagnostic": true,
   "html_table_value_crosscheck_required_when_parseable": false,
   "imputation_performed": false,
+  "intermediate_month_or_unaudited_semantics_rejected": true,
   "locked_promoted_exact_label_families": [
     "total_revenue",
     "own_source_revenue_pad",
@@ -44,8 +57,9 @@
   "province_selector_changed": false,
   "recovery_decision_path": "data/manifests/milestone25_transport_recovery_decision.json",
   "recovery_only_transport_change": true,
-  "recovery_reason": "Live full-panel diagnostics showed legacy rounded HTML display mismatches on a bounded set of 2021/2022 pages. All jurisdiction/year/December/same-selector SpreadsheetML gates remain blocking; only the rounded HTML value comparison is diagnostic.",
+  "recovery_reason": "Live full-panel diagnostics established two representation differences without changing the locked scientific target. First, legacy rounded HTML display values can diverge from exact same-selector SpreadsheetML and are therefore diagnostic only. Second, historical SIKD pages requested with the locked annual selector periode=12 encode final annual realization semantics as s.d Desember, s.d Audited <year>, or s.d Perda <year>. The recovery accepts only those explicit final annual classes and continues to reject intermediate-month or unaudited semantics. Jurisdiction, fiscal year, annual-final semantics, exact same-selector export link, valid SpreadsheetML, and all locked exact-label contracts remain blocking gates.",
   "representation_amendment_after_transport_failure": true,
+  "requested_period_selector": "12",
   "schema": "ranah-observatory/milestone25-transport-amendment/v1",
   "scientific_design_changed": false,
   "spreadsheetml_export_role": [

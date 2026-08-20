@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portal Data SIKD
+    </title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://djpk.kemenkeu.go.id/portal/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://djpk.kemenkeu.go.id/portal/assets/font_awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://djpk.kemenkeu.go.id/portal/assets/adminlte/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://djpk.kemenkeu.go.id/portal/assets/adminlte/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="https://djpk.kemenkeu.go.id/portal/assets/select2/css/select2.min.css">
+    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style type="text/css">
+        .lvl1{
+            background-color:#d9edf7
+        }
+        .lvl2{
+            background-color: #faf2cc
+        }
+        .miring-kanan{
+            font-style: italic
+        }
+
+    </style>
+</head>
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper">
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand"></a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <!-- Full Width Column -->
+    <div class="content-wrapper">
+        <div class="container">
+            &nbsp;
+            <section class="content">
+                <div class="col-md-12">
+                    <div class="box box-solid">
+                        <div class="box-body">
+                            <div class="box-group" id="accordion">
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border">
+                                        <h4 class="box-judul">
+                                            <i class="fa fa-filter text-light-blue"></i>
+                                            <a>
+                                                Filter data APBD
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div >
+                                        <div class="box-body">
+                                            <form action="https://djpk.kemenkeu.go.id/portal/data/apbd" id="filter"  method="GET">
+                                            <div class="row">
+
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Periode</label>
+                                                        <select name="periode" class="form-control select2" id="sel_periode" style="width: 100%;">
+                                                            <option
+                                                                    
+                                                                    value="12">
+                                                                    Desember
+                                                                </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Tahun</label>
+                                                        <select name="tahun" id="sel_tahun" class="form-control select2" style="width: 100%;">
+                                                            <option  value="2027">2027</option>
+<option  value="2026">2026</option>
+<option  value="2025">2025</option>
+<option  value="2024">2024</option>
+<option  value="2023">2023</option>
+<option  value="2022">2022</option>
+<option selected=&quot;selected&quot; value="2021">2021</option>
+<option  value="2020">2020</option>
+<option  value="2019">2019</option>
+<option  value="2018">2018</option>
+<option  value="2017">2017</option>
+<option  value="2016">2016</option>
+<option  value="2015">2015</option>
+<option  value="2014">2014</option>
+<option  value="2013">2013</option>
+<option  value="2012">2012</option>
+<option  value="2011">2011</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Wilayah</label>
+                                                        <select name="provinsi" id="sel_provinsi" class="form-control select2" style="width: 100%;">
+                                                            <option value="--">Semua Provinsi</option>
+                                                            <option value="01">Prov. Aceh</option>
+<option value="02">Prov. Sumatera Utara</option>
+<option value="03">Prov. Sumatera Barat</option>
+<option value="04">Prov. Riau</option>
+<option value="05">Prov. Jambi</option>
+<option value="06">Prov. Sumatera Selatan</option>
+<option value="07">Prov. Bengkulu</option>
+<option value="08">Prov. Lampung</option>
+<option value="09">Prov. DKI Jakarta</option>
+<option value="10">Prov. Jawa Barat</option>
+<option value="11">Prov. Jawa Tengah</option>
+<option value="12">Prov. DI Yogyakarta</option>
+<option value="13">Prov. Jawa Timur</option>
+<option value="14">Prov. Kalimantan Barat</option>
+<option value="15">Prov. Kalimantan Tengah</option>
+<option value="16">Prov. Kalimantan Selatan</option>
+<option value="17">Prov. Kalimantan Timur</option>
+<option value="18">Prov. Sulawesi Utara</option>
+<option value="19">Prov. Sulawesi Tengah</option>
+<option value="20">Prov. Sulawesi Selatan</option>
+<option value="21">Prov. Sulawesi Tenggara</option>
+<option value="22">Prov. Bali</option>
+<option value="23">Prov. Nusa Tenggara Barat</option>
+<option value="24">Prov. Nusa Tenggara Timur</option>
+<option value="25">Prov. Maluku</option>
+<option value="26">Prov. Papua</option>
+<option value="27">Prov. Maluku Utara</option>
+<option value="28">Prov. Banten</option>
+<option value="29">Prov. Bangka Belitung</option>
+<option value="30">Prov. Gorontalo</option>
+<option value="31">Prov. Kepulauan Riau</option>
+<option value="32">Prov. Papua Barat</option>
+<option value="33">Prov. Sulawesi Barat</option>
+<option value="34">Prov. Kalimantan Utara</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Sub-wilayah</label>
+                                                        <select name="pemda" id="sel_pemda" class="form-control select2" style="width: 100%;">
+                                                            <option value="00">Prov. Sumatera Barat</option>
+<option value="01">Kab. Limapuluh Kota</option>
+<option value="02">Kab. Agam</option>
+<option value="03">Kab. Kepulauan Mentawai</option>
+<option value="04">Kab. Padang Pariaman</option>
+<option value="05">Kab. Pasaman</option>
+<option value="06">Kab. Pesisir Selatan</option>
+<option value="07">Kab. Sijunjung</option>
+<option value="08">Kab. Solok</option>
+<option value="09">Kab. Tanah Datar</option>
+<option value="10">Kota Bukit Tinggi</option>
+<option value="11">Kota Padang Panjang</option>
+<option value="12">Kota Padang</option>
+<option value="13">Kota Payakumbuh</option>
+<option value="14">Kota Sawahlunto</option>
+<option value="15">Kota Solok</option>
+<option value="16">Kota Pariaman</option>
+<option value="17">Kab. Pasaman Barat</option>
+<option value="18">Kab. Dharmasraya</option>
+<option value="19">Kab. Solok Selatan</option>
+<option value="--">Semua pemda</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>&nbsp;</label>
+                                                        <button class="form-control btn btn-primary text-uppercase" type="submit" onclick="setLoading()">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="loading"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="box box-default">
+                        <div id="content" class="box-body">
+                            <h3 id="judul" class="text-bold">POSTUR APBD</h3>
+                            <h4><label class="" id="wilayah">Kab. Dharmasraya</label></h4>
+                            <p><label id="disclaimer">Tahun 2021</label>
+                            </p>
+				<p><label></label></p>
+                            <p><label id="keterangan" class="miring-kanan">Keterangan: Data APBD Murni, realisasi APBD   s.d Desember 2021, - data diterima SIKD per 19 Agustus 2026</label>
+                                <a id=link_csv href="https://djpk.kemenkeu.go.id/portal/csv_apbd?type=apbd&amp;periode=12&amp;tahun=2021&amp;provinsi=03&amp;pemda=18" class="btn btn-sm btn-default pull-right fa fa-file-excel-o"></a>
+                            </p>
+                            <div class="notif col-md-12">
+                                                            </div>
+                                                        <div id="tbl_data">
+                                <table class="table tab-primary table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Akun</th>
+                                        <th>Anggaran/Pagu</th>
+                                        <th>Realisasi</th>
+                                        <th>%</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color:#d9edf7; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                         "> Pendapatan Daerah</td>
+                                        <td class="text-right" >950,96 M</td>
+                                        <td class="text-right">978,92 M</td>
+                                        <td class="text-right">102.94</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> PAD</td>
+                                        <td class="text-right" >84,12 M</td>
+                                        <td class="text-right">82,83 M</td>
+                                        <td class="text-right">98.47</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pajak Daerah</td>
+                                        <td class="text-right" >18,71 M</td>
+                                        <td class="text-right">20,50 M</td>
+                                        <td class="text-right">109.52</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Retribusi Daerah</td>
+                                        <td class="text-right" >3,07 M</td>
+                                        <td class="text-right">2,41 M</td>
+                                        <td class="text-right">78.46</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Hasil Pengelolaan Kekayaan Daerah yang Dipisahkan</td>
+                                        <td class="text-right" >4,06 M</td>
+                                        <td class="text-right">3,52 M</td>
+                                        <td class="text-right">86.73</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Lain-Lain PAD yang Sah</td>
+                                        <td class="text-right" >58,27 M</td>
+                                        <td class="text-right">56,40 M</td>
+                                        <td class="text-right">96.80</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> TKDD</td>
+                                        <td class="text-right" >795,32 M</td>
+                                        <td class="text-right">787,38 M</td>
+                                        <td class="text-right">99.00</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pendapatan Transfer Pemerintah Pusat</td>
+                                        <td class="text-right" >795,32 M</td>
+                                        <td class="text-right">787,38 M</td>
+                                        <td class="text-right">99.00</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pendapatan Transfer Antar Daerah</td>
+                                        <td class="text-right" >40,07 M</td>
+                                        <td class="text-right">51,27 M</td>
+                                        <td class="text-right">127.94</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> Pendapatan Lainnya</td>
+                                        <td class="text-right" >71,53 M</td>
+                                        <td class="text-right">108,71 M</td>
+                                        <td class="text-right">151.98</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pendapatan Hibah</td>
+                                        <td class="text-right" >0,50 M</td>
+                                        <td class="text-right">26,55 M</td>
+                                        <td class="text-right">5,309.66</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Dana Darurat</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Lain-lain Pendapatan Sesuai dengan Ketentuan Peraturan Perundang-Undangan</td>
+                                        <td class="text-right" >30,95 M</td>
+                                        <td class="text-right">30,89 M</td>
+                                        <td class="text-right">99.79</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color:#d9edf7; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                         "> Belanja Daerah</td>
+                                        <td class="text-right" >1.038,48 M</td>
+                                        <td class="text-right">917,05 M</td>
+                                        <td class="text-right">88.31</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> Belanja Pegawai</td>
+                                        <td class="text-right" >465,35 M</td>
+                                        <td class="text-right">380,29 M</td>
+                                        <td class="text-right">81.72</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Pegawai</td>
+                                        <td class="text-right" >465,35 M</td>
+                                        <td class="text-right">380,29 M</td>
+                                        <td class="text-right">81.72</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> Belanja Barang Jasa</td>
+                                        <td class="text-right" >221,77 M</td>
+                                        <td class="text-right">246,61 M</td>
+                                        <td class="text-right">111.20</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Barang dan Jasa</td>
+                                        <td class="text-right" >221,77 M</td>
+                                        <td class="text-right">246,61 M</td>
+                                        <td class="text-right">111.20</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> Belanja Modal</td>
+                                        <td class="text-right" >191,97 M</td>
+                                        <td class="text-right">166,25 M</td>
+                                        <td class="text-right">86.60</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Modal</td>
+                                        <td class="text-right" >191,97 M</td>
+                                        <td class="text-right">166,25 M</td>
+                                        <td class="text-right">86.60</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> Belanja Lainnya</td>
+                                        <td class="text-right" >159,39 M</td>
+                                        <td class="text-right">123,89 M</td>
+                                        <td class="text-right">77.73</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Bagi Hasil</td>
+                                        <td class="text-right" >2,18 M</td>
+                                        <td class="text-right">111,92 M</td>
+                                        <td class="text-right">5,137.05</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Bantuan Keuangan</td>
+                                        <td class="text-right" >108,04 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0.00</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Bunga</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Subsidi</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Hibah</td>
+                                        <td class="text-right" >44,18 M</td>
+                                        <td class="text-right">11,80 M</td>
+                                        <td class="text-right">26.72</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Bantuan Sosial</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Belanja Tidak Terduga</td>
+                                        <td class="text-right" >5,00 M</td>
+                                        <td class="text-right">0,16 M</td>
+                                        <td class="text-right">3.29</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color:#d9edf7; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                         "> Pembiayaan Daerah</td>
+                                        <td class="text-right" >87,52 M</td>
+                                        <td class="text-right">8,33 M</td>
+                                        <td class="text-right">9.52</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> Penerimaan Pembiayaan Daerah</td>
+                                        <td class="text-right" >87,52 M</td>
+                                        <td class="text-right">8,33 M</td>
+                                        <td class="text-right">9.52</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Sisa Lebih Perhitungan Anggaran Tahun Sebelumnya</td>
+                                        <td class="text-right" >87,52 M</td>
+                                        <td class="text-right">8,33 M</td>
+                                        <td class="text-right">9.52</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pencairan Dana Cadangan</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Penjualan Kekayaan Daerah yang Dipisahkan</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Penerimaan Pinjaman Daerah</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Penerimaan Kembali Pemberian Pinjaman Daerah</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Penerimaan Pembiayaan Lainnya Sesuai dengan Ketentuan Peraturan Perundang-Undangan</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                                                                    background-color: #faf2cc; font-weight: bold;
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 2em;
+                                         "> Pengeluaran Pembiayaan Daerah</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pembentukan Dana Cadangan</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Penyertaan Modal Daerah</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pembayaran Cicilan Pokok Utang yang Jatuh Tempo</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pemberian Pinjaman Daerah</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    <tr class="text-left" style="
+                                        
+                                         ">
+                                        <td></td>
+                                        <td style="
+                                                                                    text-indent: 4em;
+                                         "> Pengeluaran Pembiayaan Lainnya Sesuai dengan Ketentuan Peraturan Perundang-Undangan</td>
+                                        <td class="text-right" >0,00 M</td>
+                                        <td class="text-right">0,00 M</td>
+                                        <td class="text-right">0</td>
+                                    <tr/>
+                                                                    </tbody>
+                                </table>
+                                                            </div>
+
+                        </div>
+                    </div>
+                                    </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="text-center hidden-xs">
+                <label style="font-size: 20px;font-style:italic"><b>Komitmen,  inovasi, dan layanan terbaik wujud  integritas kami</b></label></label>
+            </div>
+            <strong>&nbsp;</strong>
+        </div>
+    </footer>
+</div>
+<script src="https://djpk.kemenkeu.go.id/portal/assets/jquery/jquery.min.js"></script>
+<script src="https://djpk.kemenkeu.go.id/portal/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://djpk.kemenkeu.go.id/portal/assets/adminlte/js/adminlte.js"></script>
+<script src="https://djpk.kemenkeu.go.id/portal/assets/select2/js/select2.full.min.js"></script>
+<script src="https://djpk.kemenkeu.go.id/portal/assets/numeral/numeral.js"></script>
+<script type="text/javascript">
+    let prov_sel = "03"
+    let pemda_sel = "18"
+    $(document).ready(function() {
+        $(".hover_tkdd").tooltip();
+        numeral.register('locale', 'id', {
+            delimiters: {
+                thousands: '.',
+                decimal: ','
+            },
+            abbreviations: {
+                thousand: 'r',
+                million: 'j',
+                billion: 'm',
+                trillion: 't'
+            },
+            ordinal: function(number) {
+                return number === 1 ? 'er' : 'ème';
+            },
+            currency: {
+                symbol: 'Rp'
+            }
+        });
+
+        numeral.locale('id');
+
+        function setLoading() {
+            $("#loading").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+        }
+
+        $("#sel_tahun").on('change', function() {
+            console.log('ok')
+            $.ajax({
+                type: 'GET',
+                url: "https://djpk.kemenkeu.go.id/portal/provinsi/" + $(this).val(),
+                success: function(a) {
+                    $("#sel_provinsi").empty();
+                    $("#sel_pemda").empty();
+                    let sel = '<option value="--">Semua provinsi</option>';
+                    $.each(a, function(x, y) {
+                        sel += '<option value="' + x + '">' + y + '</option>';
+                    });
+
+                    $("#sel_provinsi").append(sel);
+                    $("#sel_pemda").append('<option value="--">Semua pemda</option>')
+                }
+            })
+        })
+        $("#sel_periode").val(12);
+        $('#sel_provinsi').val(prov_sel.toString().padStart(2, '0'));
+        $('#sel_provinsi').trigger('change');
+        $('#sel_pemda').val(pemda_sel.toString().padStart(2, '0'));
+        $('#sel_pemda').trigger('change');
+        $(".select2").select2();
+        $("#sel_provinsi").on('change', function() {
+            $.ajax({
+                type: 'GET',
+                url: "https://djpk.kemenkeu.go.id/portal/pemda/" + $(this).val() + '/' + $("#sel_tahun").val(),
+                success: function(a) {
+                    $("#sel_pemda").empty();
+                    let sel = '';
+                    $.each(a, function(x, y) {
+                        sel += '<option value="' + x + '">' + y + '</option>';
+                    });
+                    $("#sel_pemda").append(sel);
+                }
+            })
+        })
+    })
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66447358-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-66447358-1');
+</script>
+</body>
+</html>
