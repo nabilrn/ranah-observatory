@@ -1,0 +1,150 @@
+name: Milestone 25 offline completion recovery
+
+# Temporary offline writer. Uses only already-frozen DJPK source snapshots.
+on:
+  pull_request:
+    paths:
+      - scripts/apply_milestone25_completion_recovery.py
+      - .github/workflows/milestone25-completion-recovery.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  complete:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Apply annual-final completion contract
+        run: python scripts/apply_milestone25_completion_recovery.py
+
+      - name: Compile recovered completion code
+        run: >-
+          python -m py_compile
+          scripts/apply_milestone25_completion_recovery.py
+          scripts/milestone25_djpk_period_semantics.py
+          scripts/materialize_milestone25_djpk_exact_panel.py
+          scripts/finalize_milestone25_djpk_public_finance.py
+          scripts/build_milestone25_documentation.py
+          scripts/audit_milestone25_djpk_public_finance.py
+
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Validate frozen-source contracts before materialization
+        run: >-
+          python -m pytest -q
+          tests/test_milestone25_djpk_period_semantics.py
+          tests/test_milestone25_djpk_export.py
+          tests/test_milestone25_djpk_materializer.py
+          tests/test_milestone25_djpk_stage1.py
+
+      - name: Assert frozen Stage 1 evidence footprint
+        run: |
+          python - <<'PY'
+          import csv, json
+          from collections import Counter
+          from pathlib import Path
+          manifest = json.loads(Path('data/manifests/milestone25_stage1_full_export.json').read_text())
+          with Path('data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv').open(newline='', encoding='utf-8') as h:
+              rows = list(csv.DictReader(h))
+          assert manifest['all_pages_pass'] is True
+          assert manifest['jurisdiction_year_page_count'] == 152
+          assert manifest['value_row_count'] == 608
+          assert manifest['html_snapshot_count'] == 152
+          assert manifest['spreadsheetml_snapshot_count'] == 152
+          assert len(rows) == 152 and all(r['page_pass'] == 'True' for r in rows)
+          assert all(r['annual_final_realization_semantics_match'] == 'True' for r in rows)
+          counts = Counter(r['annual_final_realization_semantics_class'] for r in rows)
+          assert counts == Counter({'calendar_year_end_december': 139, 'final_accountability_perda': 11, 'final_accountability_audited': 2})
+          assert dict(counts) == {k: int(v) for k, v in manifest['annual_final_realization_semantics_counts'].items()}
+          assert manifest['html_table_parseable_page_count'] == 150
+          assert manifest['html_table_unparseable_page_count'] == 2
+          assert manifest['html_value_crosscheck_failure_page_count'] == 0
+          PY
+
+      - name: Materialize canonical panel from frozen sources
+        run: python scripts/materialize_milestone25_djpk_exact_panel.py
+
+      - name: Finalize completion manifest
+        run: python scripts/finalize_milestone25_djpk_public_finance.py
+
+      - name: Build documentation
+        run: python scripts/build_milestone25_documentation.py
+
+      - name: Run materialized tests and analytical audit
+        run: |
+          python -m pytest -q \
+            tests/test_milestone25_djpk_period_semantics.py \
+            tests/test_milestone25_djpk_export.py \
+            tests/test_milestone25_djpk_materializer.py \
+            tests/test_milestone25_djpk_materialized.py
+          python scripts/audit_milestone25_djpk_public_finance.py
+
+      - name: Assert strict final footprint
+        run: |
+          python - <<'PY'
+          import csv, json
+          from collections import Counter
+          from pathlib import Path
+          final = json.loads(Path('data/manifests/milestone25_djpk_public_finance_complete.json').read_text())
+          with Path('data/processed/djpk/public_finance/djpk-fiscal-provenance.csv').open(newline='', encoding='utf-8') as h:
+              provenance = list(csv.DictReader(h))
+          with Path('data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv').open(newline='', encoding='utf-8') as h:
+              observations = list(csv.DictReader(h))
+          assert final['milestone25_complete'] is True
+          assert final['geography_count'] == 19 and final['year_count'] == 8
+          assert final['jurisdiction_year_count'] == 152
+          assert final['observation_count'] == 608 and len(observations) == 608
+          assert final['provenance_count'] == 152 and len(provenance) == 152
+          assert final['annual_final_realization_semantics_required'] is True
+          assert final['annual_final_realization_semantics_counts'] == {
+              'calendar_year_end_december': 139,
+              'final_accountability_audited': 2,
+              'final_accountability_perda': 11,
+          }
+          assert {r['reference_period'] for r in observations} == {'annual_final_realization'}
+          assert {r['reference_period'] for r in provenance} == {'annual_final_realization'}
+          assert Counter(r['source_realization_semantics_class'] for r in provenance) == Counter(final['annual_final_realization_semantics_counts'])
+          assert final['primary_numeric_evidence'] == 'djpk_csv_apbd_spreadsheetml_exact_rupiah'
+          assert final['html_rounded_value_crosscheck_is_diagnostic'] is True
+          for key in ('explicit_bridge_used', 'derived_ratio_created', 'imputation_performed', 'historical_boundary_reconstruction_performed', 'posthoc_account_family_search_performed', 'statistical_model_fit', 'causal_claim_created', 'monetary_wasted_potential_estimated', 'user_contribution_required'):
+              assert final[key] is False
+          PY
+
+      - name: Commit completed M25 evidence and permanent repro gate
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            research/MILESTONE25_DJPK_PUBLIC_FINANCE_SPEC.md \
+            data/manifests/milestone25_transport_amendment.json \
+            data/manifests/milestone25_djpk_public_finance_complete.json \
+            data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv \
+            data/processed/djpk/public_finance/djpk-fiscal-provenance.csv \
+            data/processed/djpk/public_finance/djpk-fiscal-panel.manifest.json \
+            docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md \
+            scripts/finalize_milestone25_djpk_public_finance.py \
+            scripts/build_milestone25_documentation.py \
+            scripts/audit_milestone25_djpk_public_finance.py \
+            tests/test_milestone25_djpk_materialized.py \
+            .github/workflows/milestone25-djpk-fiscal-repro.yml \
+            scripts/apply_milestone25_completion_recovery.py \
+            .github/workflows/milestone25-completion-recovery.yml
+          if git diff --cached --quiet; then
+            echo 'No M25 completion changes'
+            exit 0
+          fi
+          git commit -m "Complete Milestone 25 fiscal evidence recovery"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
