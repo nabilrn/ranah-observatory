@@ -1,29 +1,31 @@
 name: Milestone 25 DJPK fiscal reproducibility
 
-# Permanent offline/read-only gate over frozen public DJPK source evidence.
+# Permanent read-only gate over frozen DJPK evidence. No live DJPK acquisition occurs here.
 on:
   pull_request:
     paths:
       - research/MILESTONE25_DJPK_PUBLIC_FINANCE_SPEC.md
       - docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
       - data/manifests/milestone25_design_gate.json
+      - data/manifests/milestone25_transport_amendment.json
       - data/manifests/milestone25_taxonomy_discovery.json
       - data/manifests/milestone25_stage1_contracts.json
+      - data/manifests/milestone25_stage1_full_export.json
       - data/manifests/milestone25_djpk_public_finance_complete.json
       - data/registries/djpk_sumbar_pemda.csv
       - data/registries/djpk_m25_stage1_account_contracts.csv
       - data/analysis/engine/djpk_finance_v1/**
       - data/processed/djpk/taxonomy_probe/**
       - data/processed/djpk/public_finance/**
-      - scripts/probe_milestone25_djpk_taxonomy.py
-      - scripts/probe_milestone25_djpk_stage1.py
+      - scripts/milestone25_djpk_period_semantics.py
+      - scripts/milestone25_djpk_export.py
       - scripts/lock_milestone25_stage1_contracts.py
       - scripts/materialize_milestone25_djpk_exact_panel.py
       - scripts/finalize_milestone25_djpk_public_finance.py
       - scripts/build_milestone25_documentation.py
       - scripts/audit_milestone25_djpk_public_finance.py
-      - tests/test_milestone25_djpk_taxonomy.py
-      - tests/test_milestone25_djpk_stage1.py
+      - tests/test_milestone25_djpk_period_semantics.py
+      - tests/test_milestone25_djpk_export.py
       - tests/test_milestone25_djpk_materializer.py
       - tests/test_milestone25_djpk_materialized.py
       - .github/workflows/milestone25-djpk-fiscal-repro.yml
@@ -47,9 +49,7 @@ jobs:
           test -f docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
 
       - name: Preserve committed deterministic M25 outputs
-        shell: bash
         run: |
-          set -euo pipefail
           mkdir -p /tmp/m25-committed
           cp data/registries/djpk_m25_stage1_account_contracts.csv /tmp/m25-committed/
           cp data/manifests/milestone25_stage1_contracts.json /tmp/m25-committed/
@@ -59,94 +59,89 @@ jobs:
           cp data/manifests/milestone25_djpk_public_finance_complete.json /tmp/m25-committed/
           cp docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md /tmp/m25-committed/
 
-      - name: Verify Stage 0 frozen taxonomy pages and classification offline
+      - name: Verify Stage 0 frozen dual representation and taxonomy offline
+        run: |
+          python - <<'PY'
+          import hashlib, json, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from milestone25_djpk_export import exact_account_map
+          from probe_milestone25_djpk_taxonomy import classify_conceptual_families
+
+          manifest = json.loads(Path('data/manifests/milestone25_taxonomy_discovery.json').read_text())
+          assert manifest['stage0_complete'] is True
+          assert manifest['spreadsheetml_account_table_required'] is True
+          assert manifest['taxonomy_primary_representation'] == 'djpk_csv_apbd_spreadsheetml_exact_rupiah'
+          labels_by_year = {}
+          for item in manifest['raw_responses']:
+              year = int(item['year'])
+              html_path = Path(item['html_path'])
+              xml_path = Path(item['export_path'])
+              assert hashlib.sha256(html_path.read_bytes()).hexdigest() == item['html_sha256']
+              xml = xml_path.read_bytes()
+              assert hashlib.sha256(xml).hexdigest() == item['export_sha256']
+              labels_by_year[year] = set(exact_account_map(xml))
+          assert set(labels_by_year) == set(range(2018, 2026))
+          assert classify_conceptual_families(labels_by_year) == manifest['conceptual_account_family_results']
+          PY
+
+      - name: Verify all 152 Stage 1 source pairs and annual-final semantics offline
         run: |
           python - <<'PY'
           import csv, hashlib, json, sys
+          from collections import Counter
           from pathlib import Path
           sys.path.insert(0, 'scripts')
-          from probe_milestone25_djpk_taxonomy import HTMLTableParser, classify_conceptual_families, find_postur_table, table_to_accounts
+          import probe_milestone25_djpk_stage1 as stage1
+          from milestone25_djpk_period_semantics import classify_annual_final_realization
 
-          root = Path('.')
-          manifest = json.loads(Path('data/manifests/milestone25_taxonomy_discovery.json').read_text())
-          labels_by_year = {}
-          assert manifest['stage0_complete'] is True and manifest['page_count'] == 8
-          for item in manifest['raw_responses']:
-              year = int(item['year'])
-              path = Path(item['path'])
-              if not path.is_absolute():
-                  path = root / path
-              data = path.read_bytes()
-              assert hashlib.sha256(data).hexdigest() == item['sha256']
-              parser = HTMLTableParser()
-              parser.feed(data.decode('utf-8', errors='replace'))
-              header, table_rows = find_postur_table(parser.tables)
-              accounts = table_to_accounts(header, table_rows)
-              labels_by_year[year] = {row['account_label_normalized'] for row in accounts}
-          assert set(labels_by_year) == set(range(2018, 2026))
-          rebuilt = classify_conceptual_families(labels_by_year)
-          assert rebuilt == manifest['conceptual_account_family_results']
-
-          with Path('data/analysis/engine/djpk_finance_v1/m25-account-presence.csv').open(newline='', encoding='utf-8') as handle:
-              presence = list(csv.DictReader(handle))
-          for row in presence:
-              label = row['account_label_normalized']
-              years = {year for year in range(2018, 2026) if label in labels_by_year[year]}
-              assert int(row['year_count']) == len(years)
-              assert row['years_present'] == '|'.join(str(year) for year in sorted(years))
-              assert row['present_all_2018_2025'] == str(years == set(range(2018, 2026)))
-          PY
-
-      - name: Verify all 152 Stage 1 frozen page hashes offline
-        run: |
-          python - <<'PY'
-          import csv, hashlib
-          from pathlib import Path
-          with Path('data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv').open(newline='', encoding='utf-8') as handle:
-              rows = list(csv.DictReader(handle))
-          assert len(rows) == 152
-          seen = set()
+          manifest = json.loads(Path('data/manifests/milestone25_stage1_full_export.json').read_text())
+          with Path('data/analysis/engine/djpk_finance_v1/m25-stage1-full-coverage.csv').open(newline='', encoding='utf-8') as h:
+              rows = list(csv.DictReader(h))
+          assert len(rows) == 152 and all(r['page_pass'] == 'True' for r in rows)
+          counts = Counter()
           for row in rows:
-              key = (row['djpk_pemda_selector'], int(row['year']))
-              assert key not in seen
-              seen.add(key)
-              path = Path(f"data/processed/djpk/public_finance/source/pemda-{row['djpk_pemda_selector']}-{row['year']}-desember.html")
-              data = path.read_bytes()
-              assert hashlib.sha256(data).hexdigest() == row['response_sha256']
-              assert row['page_pass'] == 'True'
-          assert len(seen) == 152
+              pemda, year = row['djpk_pemda_selector'], int(row['year'])
+              html_path = Path(f'data/processed/djpk/public_finance/source/pemda-{pemda}-{year}-desember.html')
+              xml_path = Path(f'data/processed/djpk/public_finance/source/pemda-{pemda}-{year}-desember.xml')
+              html = html_path.read_bytes()
+              xml = xml_path.read_bytes()
+              assert hashlib.sha256(html).hexdigest() == row['html_response_sha256']
+              assert hashlib.sha256(xml).hexdigest() == row['export_response_sha256']
+              parser = stage1.HTMLTableParser(); parser.feed(html.decode('utf-8', errors='replace'))
+              cls = classify_annual_final_realization(parser.all_text, year)
+              assert cls == row['annual_final_realization_semantics_class']
+              assert row['annual_final_realization_semantics_match'] == 'True'
+              counts[cls] += 1
+          assert dict(counts) == {key: int(value) for key, value in manifest['annual_final_realization_semantics_counts'].items()}
+          assert sum(counts.values()) == 152
           PY
 
-      - name: Rebuild Stage 1 exact-label contracts from frozen Stage 0 result
+      - name: Rebuild exact-label contracts from frozen taxonomy
         run: python scripts/lock_milestone25_stage1_contracts.py
 
-      - name: Rebuild canonical fiscal panel from frozen Stage 1 HTML
+      - name: Rebuild canonical fiscal panel from frozen Stage 1 sources
         run: python scripts/materialize_milestone25_djpk_exact_panel.py
 
-      - name: Rebuild strict completion manifest
-        run: python scripts/finalize_milestone25_djpk_public_finance.py
-
-      - name: Rebuild documentation from final evidence
-        run: python scripts/build_milestone25_documentation.py
+      - name: Rebuild completion manifest and documentation
+        run: |
+          python scripts/finalize_milestone25_djpk_public_finance.py
+          python scripts/build_milestone25_documentation.py
 
       - name: Install focused test runner
         run: python -m pip install --disable-pip-version-check pytest
 
-      - name: Run all focused M25 tests
-        run: >-
-          python -m pytest -q
-          tests/test_milestone25_djpk_taxonomy.py
-          tests/test_milestone25_djpk_stage1.py
-          tests/test_milestone25_djpk_materializer.py
-          tests/test_milestone25_djpk_materialized.py
-
-      - name: Run M25 analytical audit
-        run: python scripts/audit_milestone25_djpk_public_finance.py
+      - name: Run focused M25 tests and audit
+        run: |
+          python -m pytest -q \
+            tests/test_milestone25_djpk_period_semantics.py \
+            tests/test_milestone25_djpk_export.py \
+            tests/test_milestone25_djpk_materializer.py \
+            tests/test_milestone25_djpk_materialized.py
+          python scripts/audit_milestone25_djpk_public_finance.py
 
       - name: Verify byte-identical deterministic outputs
-        shell: bash
         run: |
-          set -euo pipefail
           cmp /tmp/m25-committed/djpk_m25_stage1_account_contracts.csv data/registries/djpk_m25_stage1_account_contracts.csv
           cmp /tmp/m25-committed/milestone25_stage1_contracts.json data/manifests/milestone25_stage1_contracts.json
           cmp /tmp/m25-committed/djpk-fiscal-canonical-observations.csv data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv
@@ -154,11 +149,4 @@ jobs:
           cmp /tmp/m25-committed/djpk-fiscal-panel.manifest.json data/processed/djpk/public_finance/djpk-fiscal-panel.manifest.json
           cmp /tmp/m25-committed/milestone25_djpk_public_finance_complete.json data/manifests/milestone25_djpk_public_finance_complete.json
           cmp /tmp/m25-committed/MILESTONE25_DJPK_PUBLIC_FINANCE.md docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
-          git diff --exit-code -- \
-            data/registries/djpk_m25_stage1_account_contracts.csv \
-            data/manifests/milestone25_stage1_contracts.json \
-            data/processed/djpk/public_finance/djpk-fiscal-canonical-observations.csv \
-            data/processed/djpk/public_finance/djpk-fiscal-provenance.csv \
-            data/processed/djpk/public_finance/djpk-fiscal-panel.manifest.json \
-            data/manifests/milestone25_djpk_public_finance_complete.json \
-            docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md
+          git diff --exit-code
