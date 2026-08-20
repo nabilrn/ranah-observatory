@@ -1,7 +1,7 @@
 name: Milestone 25 DJPK fiscal reproducibility
 
 # Permanent read-only gate over frozen DJPK evidence. No live DJPK acquisition occurs here.
-# This gate is intentionally triggered after the completion artifacts are committed.
+# Final certification gate for the cleaned Milestone 25 branch.
 on:
   pull_request:
     paths:
