@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import hashlib
 from collections import Counter
+from collections import Counter
 import json
 import sys
 from pathlib import Path
@@ -156,6 +157,8 @@ def main() -> int:
         assert set(panel["promoted_exact_label_families"]) == PROMOTED
         assert set(panel["held_families"]) == HELD
         assert panel["primary_numeric_evidence"] == "djpk_csv_apbd_spreadsheetml_exact_rupiah"
+        assert panel["annual_final_realization_semantics_required"] is True
+        assert panel["html_rounded_value_crosscheck_is_diagnostic"] is True
         assert panel["annual_final_realization_semantics_required"] is True
         assert panel["html_rounded_value_crosscheck_is_diagnostic"] is True
         assert panel["derived_ratio_count"] == 0

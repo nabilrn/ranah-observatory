@@ -56,7 +56,7 @@
     },
     "spec": {
       "path": "research/MILESTONE25_DJPK_PUBLIC_FINANCE_SPEC.md",
-      "sha256": "9b749e318250f3e00b84e40fa5e791d5bbaffa7528f4c3b62fac28e276bc83ae"
+      "sha256": "d2203a0aa4bcb264e0828543c3c1527a06d0e88157c583de6a40f16d93a85336"
     },
     "stage1_manifest": {
       "path": "data/manifests/milestone25_stage1_full_export.json",

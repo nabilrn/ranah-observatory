@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import hashlib
 from collections import Counter
+from collections import Counter
 import json
 import sys
 from pathlib import Path
@@ -184,6 +185,11 @@ def finalize() -> dict[str, Any]:
     require(set(manifest_semantics) == ANNUAL_FINAL_CLASSES, "Stage 1 annual-final semantic class drift")
     require(sum(int(value) for value in manifest_semantics.values()) == 152, "Stage 1 annual-final semantic count drift")
     require(stage1.get("html_table_value_crosscheck_is_diagnostic") is True, "Stage 1 HTML display crosscheck became blocking")
+    require(stage1.get("annual_final_realization_semantics_required") is True, "Stage 1 annual-final semantics gate missing")
+    manifest_semantics = stage1.get("annual_final_realization_semantics_counts", {})
+    require(set(manifest_semantics) == ANNUAL_FINAL_CLASSES, "Stage 1 annual-final semantic class drift")
+    require(sum(int(value) for value in manifest_semantics.values()) == 152, "Stage 1 annual-final semantic count drift")
+    require(stage1.get("html_table_value_crosscheck_is_diagnostic") is True, "Stage 1 HTML display crosscheck became blocking")
     require(stage1.get("cross_geography_probe_completed_after_contract_lock") is True, "Stage 1 contract-order drift")
     for key in ("explicit_bridge_used", "derived_ratio_created", "imputation_performed", "posthoc_account_family_search_performed", "statistical_model_fit"):
         require(stage1.get(key) is False, f"Stage 1 boundary violated: {key}")
@@ -235,6 +241,8 @@ def finalize() -> dict[str, Any]:
     require(panel.get("html_snapshot_count") == 152 and panel.get("spreadsheetml_snapshot_count") == 152, "panel source-count drift")
     require(panel.get("html_table_parseable_page_count", 0) + panel.get("html_table_unparseable_page_count", 0) == 152, "panel HTML accounting drift")
     require(panel.get("primary_numeric_evidence") == "djpk_csv_apbd_spreadsheetml_exact_rupiah", "panel numeric source drift")
+    require(panel.get("annual_final_realization_semantics_required") is True, "panel annual-final semantics gate missing")
+    require(panel.get("html_rounded_value_crosscheck_is_diagnostic") is True, "panel HTML rounded display crosscheck became blocking")
     require(panel.get("annual_final_realization_semantics_required") is True, "panel annual-final semantics gate missing")
     require(panel.get("html_rounded_value_crosscheck_is_diagnostic") is True, "panel HTML rounded display crosscheck became blocking")
     for key, expected in (
