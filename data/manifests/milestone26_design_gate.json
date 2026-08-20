@@ -1,0 +1,47 @@
+{
+  "schema": "ranah-observatory/milestone26-design-gate/v1",
+  "milestone": 26,
+  "phase": "tier_a_disaster_risk_chain_qualification",
+  "design_locked_before_live_source_probe": true,
+  "geography_regime": "BIG_June_2026_fixed_current_boundary",
+  "geography_count": 19,
+  "component_taxonomy": [
+    "hazard_intensity",
+    "climate_context",
+    "exposure",
+    "vulnerability",
+    "capacity",
+    "recorded_event_occurrence",
+    "observed_impact",
+    "modeled_risk"
+  ],
+  "stage0_numeric_spatial_aggregation_authorized": false,
+  "stage0_event_panel_materialization_authorized": false,
+  "risk_synthesis_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "posthoc_source_family_search_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "qualification_states": [
+    "qualified_explicit_vintage_metadata",
+    "qualified_explicit_coverage_metadata",
+    "field_surface_verified_retrieval_contract_pending",
+    "endpoint_verified_version_binding_unresolved",
+    "unavailable_or_unparseable"
+  ],
+  "preregistered_source_ids": [
+    "inarisk_capacity_2021",
+    "inarisk_population_2020",
+    "dibi_kabupaten_hidromet_2015_2024",
+    "bnpb_event_impact_table",
+    "inarisk_flood_hazard",
+    "inarisk_landslide_hazard",
+    "inarisk_flood_vulnerability",
+    "inarisk_landslide_vulnerability",
+    "inarisk_current_methodology"
+  ],
+  "version_binding_rule": "service_name_or_metadata_must_explicitly_bind_a_date_or_release; current_web_presentation_alone_is_insufficient",
+  "event_impact_promotion_rule": "field_presence_is_not_a_retrieval_contract; event_identity_missingness_duplicates_and_geography_mapping_must_be_frozen_before_values",
+  "completion_claim": "source_and_vintage_qualification_only"
+}
