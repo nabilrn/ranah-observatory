@@ -60,6 +60,12 @@ def patch_probe() -> None:
         '        "html_table_unparseable_page_count": sum(not bool(row["html_table_parseable"]) for row in coverage_rows),\n        "html_value_crosscheck_failure_page_count": sum(int(row["html_value_crosscheck_failure_count"]) > 0 for row in coverage_rows),\n        "html_table_value_crosscheck_is_diagnostic": True,\n        "same_selector_export_link_required": True,\n',
         "probe manifest diagnostics",
     )
+    text = replace_once(
+        text,
+        '        if value_rows:\n            write_csv(values_path, list(value_rows[0].keys()), value_rows)\n        raise M25Stage1ExportError(f"M25 dual-representation page qualification failures: {failures}")\n',
+        '        if value_rows:\n            write_csv(values_path, list(value_rows[0].keys()), value_rows)\n        for row in coverage_rows:\n            if not bool(row["page_pass"]):\n                print("M25_FAIL " + json.dumps(row, sort_keys=True), file=sys.stderr)\n        raise M25Stage1ExportError(f"M25 dual-representation page qualification failures: {failures}")\n',
+        "probe failure diagnostics",
+    )
     PROBE.write_text(text, encoding="utf-8")
 
 
