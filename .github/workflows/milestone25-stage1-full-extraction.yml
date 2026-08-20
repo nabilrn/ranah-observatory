@@ -7,6 +7,8 @@ on:
       - .github/workflows/milestone25-stage1-full-extraction.yml
       - scripts/apply_milestone25_transport_recovery.py
       - scripts/probe_milestone25_djpk_stage1_export.py
+      - scripts/milestone25_djpk_period_semantics.py
+      - tests/test_milestone25_djpk_period_semantics.py
       - data/manifests/milestone25_stage1_contracts.json
       - data/registries/djpk_m25_stage1_account_contracts.csv
   workflow_dispatch:
@@ -38,6 +40,7 @@ jobs:
         run: >-
           python -m py_compile
           scripts/probe_milestone25_djpk_stage1_export.py
+          scripts/milestone25_djpk_period_semantics.py
           scripts/apply_milestone25_transport_recovery.py
 
       - name: Verify recovered Stage0 contracts remain locked
@@ -48,7 +51,15 @@ jobs:
           t = json.loads(Path('data/manifests/milestone25_transport_amendment.json').read_text())
           c = json.loads(Path('data/manifests/milestone25_stage1_contracts.json').read_text())
           assert t['scientific_design_changed'] is False
-          assert t['amendment_revision'] == 2
+          assert t['amendment_revision'] == 3
+          assert t['annual_final_realization_semantics_required'] is True
+          assert t['requested_period_selector'] == '12'
+          assert t['intermediate_month_or_unaudited_semantics_rejected'] is True
+          assert set(t['accepted_annual_final_realization_semantics']) == {
+              'calendar_year_end_december',
+              'final_accountability_audited',
+              'final_accountability_perda',
+          }
           assert c['contracts_locked'] is True
           assert c['cross_geography_values_inspected_before_lock'] is False
           assert c['promoted_exact_label_family_count'] == 4
@@ -69,6 +80,7 @@ jobs:
           tests/test_milestone25_djpk_export.py
           tests/test_milestone25_djpk_html_compat.py
           tests/test_milestone25_djpk_identity_aliases.py
+          tests/test_milestone25_djpk_period_semantics.py
 
       - name: Extract 19 pemda × 2018-2025 exact fiscal evidence
         run: >-
@@ -95,14 +107,23 @@ jobs:
           assert m['all_pages_pass'] is True
           assert m['spreadsheetml_is_primary_numeric_evidence'] is True
           assert m['html_table_value_crosscheck_is_diagnostic'] is True
+          assert m['annual_final_realization_semantics_required'] is True
+          semantics = m['annual_final_realization_semantics_counts']
+          assert sum(semantics.values()) == 152
+          assert set(semantics) == {
+              'calendar_year_end_december',
+              'final_accountability_audited',
+              'final_accountability_perda',
+          }
           assert len(coverage) == 152
           assert len(values) == 608
           assert all(r['page_pass'] == 'True' for r in coverage)
           critical = (
-              'jurisdiction_match', 'fiscal_year_match', 'december_realization_semantics_match',
+              'jurisdiction_match', 'fiscal_year_match', 'annual_final_realization_semantics_match',
               'same_selector_export_link_match', 'export_valid_spreadsheetml'
           )
           assert all(all(r[k] == 'True' for k in critical) for r in coverage)
+          assert all(r['annual_final_realization_semantics_class'] in semantics for r in coverage)
           assert all(not r['missing_contracts'] and not r['parse_failures'] for r in coverage)
           assert all(r['matched_contract_count'] == r['locked_contract_count'] for r in coverage)
           assert not Path('data/manifests/milestone25_djpk_public_finance_complete.json').exists()
@@ -122,7 +143,9 @@ jobs:
             data/processed/djpk/public_finance/source \
             scripts/probe_milestone25_djpk_stage1_export.py \
             scripts/materialize_milestone25_djpk_exact_panel.py \
+            scripts/milestone25_djpk_period_semantics.py \
             scripts/apply_milestone25_transport_recovery.py \
+            tests/test_milestone25_djpk_period_semantics.py \
             .github/workflows/milestone25-stage1-full-extraction.yml
           if git diff --cached --quiet; then
             echo 'No Stage1 extraction changes'
