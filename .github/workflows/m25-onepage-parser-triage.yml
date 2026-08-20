@@ -1,0 +1,102 @@
+name: M25 one-page parser triage
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/m25-onepage-parser-triage.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect two representative failed exports
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+          import urllib.request
+          from decimal import Decimal, InvalidOperation
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+
+          sys.path.insert(0, str(Path('scripts').resolve()))
+          import milestone25_djpk_export as ex
+          import probe_milestone25_djpk_stage1 as stage1
+
+          NS = 'urn:schemas-microsoft-com:office:spreadsheet'
+          cases = [('08', 2024), ('01', 2021)]
+          locked = {'pendapatan daerah', 'pad', 'belanja daerah', 'belanja modal'}
+          for pemda, year in cases:
+              url = ex.build_export_url(pemda, year)
+              req = urllib.request.Request(url, headers={
+                  'User-Agent': 'ranah-observatory/0.1 (+https://github.com/nabilrn/ranah-observatory)',
+                  'Accept': 'application/vnd.ms-excel,application/xml,text/xml,*/*',
+              })
+              with urllib.request.urlopen(req, timeout=45) as resp:
+                  body = resp.read()
+                  status = int(resp.status)
+              root = ET.fromstring(body)
+              rows = root.findall(f'.//{{{NS}}}Row')
+              details = []
+              malformed = []
+              locked_rows = []
+              for idx, row in enumerate(rows[1:], start=1):
+                  cells = row.findall(f'{{{NS}}}Cell')
+                  vals = []
+                  for cell in cells:
+                      data = cell.find(f'{{{NS}}}Data')
+                      vals.append('' if data is None or data.text is None else data.text.strip())
+                  if len(vals) < 4 or not vals[0].strip():
+                      continue
+                  label = stage1.normalize_label(vals[0])
+                  numeric_ok = True
+                  numeric_error = ''
+                  try:
+                      Decimal(vals[1].strip())
+                      Decimal(vals[2].strip())
+                  except (InvalidOperation, IndexError) as exc:
+                      numeric_ok = False
+                      numeric_error = repr(exc)
+                  item = {
+                      'row': idx,
+                      'label': label,
+                      'budget_raw': vals[1] if len(vals) > 1 else None,
+                      'realization_raw': vals[2] if len(vals) > 2 else None,
+                      'numeric_ok': numeric_ok,
+                      'numeric_error': numeric_error,
+                  }
+                  if not numeric_ok:
+                      malformed.append(item)
+                  if label in locked:
+                      locked_rows.append(item)
+              strict_error = None
+              try:
+                  ex.exact_account_map(body)
+              except Exception as exc:
+                  strict_error = f'{type(exc).__name__}: {exc}'
+              result = {
+                  'pemda': pemda,
+                  'year': year,
+                  'http_status': status,
+                  'bytes': len(body),
+                  'strict_parser_error': strict_error,
+                  'malformed_row_count': len(malformed),
+                  'malformed_rows': malformed,
+                  'locked_rows': locked_rows,
+                  'all_four_locked_present': {r['label'] for r in locked_rows} == locked,
+                  'all_four_locked_numeric': len(locked_rows) == 4 and all(r['numeric_ok'] for r in locked_rows),
+              }
+              print('M25_TRIAGE ' + json.dumps(result, ensure_ascii=False, sort_keys=True))
+          PY
