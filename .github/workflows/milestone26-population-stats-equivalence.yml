@@ -51,7 +51,7 @@ jobs:
           assert manifest['reference_mapserver']['input_cell_count'] == 2354
           assert manifest['reference_mapserver']['batch_count'] == 37
           assert manifest['mapserver_response_count'] == 37
-          assert manifest['candidate_statistics']['partition_count'] == 2
+          assert manifest['candidate_image_server_statistics']['partition_count'] == 2
           assert manifest['stats_response_count'] == 2
           assert manifest['reference_mapserver']['valid_fraction'] >= 0.99
           assert manifest['statistics_transport_equivalent_on_complete_pilot'] is True
