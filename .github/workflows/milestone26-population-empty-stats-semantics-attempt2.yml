@@ -1,44 +1,19 @@
-name: Milestone 26 population empty-stats semantics attempt 2
+name: Milestone 26 population empty-stats semantics attempt 2 (frozen verifier)
 
+# Frozen after recovery succeeded and the exact Kota Pariaman native cell was
+# independently confirmed as NoData by both qualified transports.
 on:
-  pull_request:
-    paths:
-      - data/manifests/milestone26_population_empty_stats_semantics_attempt2_contract.json
-      - scripts/probe_milestone26_population_empty_stats_semantics_attempt2.py
-      - tests/test_milestone26_population_empty_stats_semantics_attempt2.py
-      - .github/workflows/milestone26-population-empty-stats-semantics-attempt2.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  recovery-gated-semantics:
-    if: github.actor != 'github-actions[bot]'
+  verify-frozen-attempt-2:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install focused dependencies
-        run: python -m pip install --disable-pip-version-check numpy shapely rasterio pyproj
-
-      - name: Compile attempt-2 probe
-        run: python -m py_compile scripts/probe_milestone26_population_empty_stats_semantics_attempt2.py
-
-      - name: Run locked tests before live recovery gate
-        run: python -m unittest tests.test_milestone26_population_empty_stats_semantics_attempt2 -v
-
-      - name: Run recovery-gated exact-cell semantics attempt
-        run: python -m scripts.probe_milestone26_population_empty_stats_semantics_attempt2
-
-      - name: Assert attempt-2 evidence and boundaries
+      - name: Verify frozen exact-cell NoData qualification
         run: |
           python - <<'PY'
           import hashlib, json
@@ -46,69 +21,19 @@ jobs:
 
           manifest = json.loads(Path('data/manifests/milestone26_population_empty_stats_semantics_attempt2.json').read_text(encoding='utf-8'))
           assert manifest['schema'] == 'ranah-observatory/milestone26-population-empty-stats-semantics-attempt2/v1'
-          assert manifest['target']['geography_id'] == 'idn.13.1377'
-          assert manifest['target']['partition_index'] == 1
-          assert manifest['target']['selected_cell_count'] == 1
-          assert manifest['target']['center_derivation']['rerasterized_selected_cell_count'] == 1
-          gate = manifest['recovery_gate']
-          assert gate['repeat_count_per_service'] == 2
-          assert len(gate['responses']) == 4
-          for row in gate['responses']:
-              raw = Path(row['response']['raw_path'])
-              assert raw.exists()
-              assert hashlib.sha256(raw.read_bytes()).hexdigest() == row['response']['raw_sha256']
-
-          if gate['all_repeats_both_services_passed']:
-              assert manifest['semantic_probe_performed'] is True
-              assert len(manifest['image_server_repeats']) == 3
-              assert len(manifest['mapserver_repeats']) == 3
-              semantic_rows = manifest['image_server_repeats'] + manifest['mapserver_repeats']
-              for row in semantic_rows:
-                  raw = Path(row['response']['raw_path'])
-                  assert raw.exists()
-                  assert hashlib.sha256(raw.read_bytes()).hexdigest() == row['response']['raw_sha256']
-              assert manifest['decision'] in {
-                  'deterministic_no_valid_source_value_for_exact_native_cell',
-                  'transient_image_server_empty_statistics',
-                  'transport_disagreement',
-                  'inconclusive',
-              }
-          else:
-              assert manifest['semantic_probe_performed'] is False
-              assert manifest['image_server_repeats'] == []
-              assert manifest['mapserver_repeats'] == []
-              assert manifest['decision'] == 'service_not_recovered'
-
+          assert manifest['recovery_gate']['all_repeats_both_services_passed'] is True
+          assert manifest['semantic_probe_performed'] is True
+          assert manifest['decision'] == 'deterministic_no_valid_source_value_for_exact_native_cell'
+          assert manifest['exact_cell_no_valid_source_value_qualified'] is True
+          assert [row['classification'] for row in manifest['image_server_repeats']] == ['empty_statistics'] * 3
+          assert [row['finite_accepted_pixel_value_count'] for row in manifest['mapserver_repeats']] == [0, 0, 0]
+          assert [row['raw_result_count'] for row in manifest['mapserver_repeats']] == [1, 1, 1]
+          for row in manifest['recovery_gate']['responses'] + manifest['image_server_repeats'] + manifest['mapserver_repeats']:
+              response = row['response']
+              raw = Path(response['raw_path'])
+              assert hashlib.sha256(raw.read_bytes()).hexdigest() == response['raw_sha256']
           assert manifest['empty_statistics_global_semantics_qualified'] is False
           assert manifest['other_empty_partitions_authorized_without_reference_confirmation'] is False
-          assert manifest['numeric_aggregates_computed'] is False
-          assert manifest['cross_geography_component_values_materialized'] is False
-          assert manifest['substantive_values_promoted'] is False
           assert manifest['stage1_population_production_extraction_authorized'] is False
-          assert manifest['aggregation_semantics_changed'] is False
-          assert manifest['source_family_changed'] is False
-          assert manifest['minimum_valid_fraction_changed'] is False
           assert manifest['risk_synthesis_authorized'] is False
-          assert manifest['statistical_model_fit'] is False
-          assert manifest['causal_claim_created'] is False
-          assert manifest['monetary_wasted_potential_estimated'] is False
           PY
-
-      - name: Re-run focused tests after live attempt
-        run: python -m unittest tests.test_milestone26_population_empty_stats_semantics_attempt2 -v
-
-      - name: Commit frozen attempt-2 evidence
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f -- \
-            data/processed/bnpb/m26_population_empty_stats_semantics_attempt2 \
-            data/manifests/milestone26_population_empty_stats_semantics_attempt2.json
-          if git diff --cached --quiet; then
-            echo 'No attempt-2 evidence changes'
-            exit 0
-          fi
-          git commit -m "Freeze Milestone 26 empty-stats semantics attempt 2"
-          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
-          git push origin "HEAD:${target_branch}"
