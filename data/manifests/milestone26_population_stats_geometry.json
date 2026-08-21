@@ -1,0 +1,2788 @@
+{
+  "aggregation_semantics_changed": false,
+  "all_geographies_uri_safe_mask_equivalent": false,
+  "big_expected_edition": "Juni 2026",
+  "causal_claim_created": false,
+  "contract": {
+    "path": "data/manifests/milestone26_population_stats_geometry_contract.json",
+    "sha256": "28731c7588c2abb8e703a8f2b3b669bd0556e5a32de80c4798fb5ee5b0bd55f0"
+  },
+  "geographies": [
+    {
+      "aligned_window_bbox": [
+        10975628.845372679,
+        -395345.162247455,
+        11219428.845372679,
+        -100145.16224745498
+      ],
+      "aligned_window_height": 2952,
+      "aligned_window_width": 2438,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 3466068,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 99612
+        },
+        {
+          "encoded_url_length": 3011204,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 86533
+        },
+        {
+          "encoded_url_length": 2480763,
+          "pixel_mask_equal": false,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 71281
+        },
+        {
+          "encoded_url_length": 2080861,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 59781
+        },
+        {
+          "encoded_url_length": 1569597,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 45080
+        },
+        {
+          "encoded_url_length": 928093,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 26634
+        },
+        {
+          "encoded_url_length": 577243,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 16546
+        },
+        {
+          "encoded_url_length": 346407,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 9908
+        },
+        {
+          "encoded_url_length": 259093,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 7399
+        },
+        {
+          "encoded_url_length": 210433,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 6001
+        },
+        {
+          "encoded_url_length": 177645,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 5058
+        },
+        {
+          "encoded_url_length": 134985,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 3831
+        },
+        {
+          "encoded_url_length": 112770,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 3192
+        },
+        {
+          "encoded_url_length": 86340,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 2432
+        },
+        {
+          "encoded_url_length": 75210,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 2112
+        },
+        {
+          "encoded_url_length": 62588,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 1749
+        },
+        {
+          "encoded_url_length": 51659,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 1435
+        }
+      ],
+      "geography_id": "idn.13.1301",
+      "geography_name": "Kepulauan Mentawai",
+      "inside_boundary_native_cell_count": 598124,
+      "original_pixel_mask_sha256": "4ae5bdbc4fa1cc592edd8733cfba9e0192710d37eb48f24ecd84a990a7249ec4",
+      "original_vertex_count": 99612,
+      "selected_candidate": null,
+      "source_permendagri_code": "1309"
+    },
+    {
+      "aligned_window_bbox": [
+        11164828.845372679,
+        -274145.162247455,
+        11275928.845372679,
+        -105945.16224745498
+      ],
+      "aligned_window_height": 1682,
+      "aligned_window_width": 1111,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 2583948,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 74275
+        },
+        {
+          "encoded_url_length": 1640382,
+          "pixel_mask_equal": false,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 47147
+        },
+        {
+          "encoded_url_length": 922504,
+          "pixel_mask_equal": false,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 26507
+        },
+        {
+          "encoded_url_length": 646060,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 18556
+        },
+        {
+          "encoded_url_length": 436516,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 12532
+        },
+        {
+          "encoded_url_length": 238654,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 6845
+        },
+        {
+          "encoded_url_length": 144468,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 4137
+        },
+        {
+          "encoded_url_length": 90607,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 2589
+        },
+        {
+          "encoded_url_length": 69011,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 1968
+        },
+        {
+          "encoded_url_length": 55291,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 1574
+        },
+        {
+          "encoded_url_length": 46424,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 1319
+        },
+        {
+          "encoded_url_length": 35862,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 1015
+        },
+        {
+          "encoded_url_length": 29077,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 820
+        },
+        {
+          "encoded_url_length": 23000,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 645
+        },
+        {
+          "encoded_url_length": 19626,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 548
+        },
+        {
+          "encoded_url_length": 15735,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 436
+        },
+        {
+          "encoded_url_length": 12264,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 336
+        }
+      ],
+      "geography_id": "idn.13.1302",
+      "geography_name": "Pesisir Selatan",
+      "inside_boundary_native_cell_count": 604885,
+      "original_pixel_mask_sha256": "4232fb5b21a40ea942dd3f1d9e011ce24e3d50434c068b15bb65d39c55618685",
+      "original_vertex_count": 74275,
+      "selected_candidate": null,
+      "source_permendagri_code": "1301"
+    },
+    {
+      "aligned_window_bbox": [
+        11179328.845372679,
+        -147045.16224745498,
+        11272528.845372679,
+        -58745.16224745498
+      ],
+      "aligned_window_height": 883,
+      "aligned_window_width": 932,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 129596,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 3787
+        },
+        {
+          "encoded_url_length": 103744,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 3030
+        },
+        {
+          "encoded_url_length": 97088,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 2834
+        },
+        {
+          "encoded_url_length": 90761,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 2647
+        },
+        {
+          "encoded_url_length": 83485,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 2433
+        },
+        {
+          "encoded_url_length": 69552,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 2024
+        },
+        {
+          "encoded_url_length": 57600,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1674
+        },
+        {
+          "encoded_url_length": 45299,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1314
+        },
+        {
+          "encoded_url_length": 37114,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 1075
+        },
+        {
+          "encoded_url_length": 31337,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 907
+        },
+        {
+          "encoded_url_length": 27877,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 806
+        },
+        {
+          "encoded_url_length": 21411,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 617
+        },
+        {
+          "encoded_url_length": 17922,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 515
+        },
+        {
+          "encoded_url_length": 14073,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 403
+        },
+        {
+          "encoded_url_length": 11603,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 331
+        },
+        {
+          "encoded_url_length": 8481,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 240
+        },
+        {
+          "encoded_url_length": 5736,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 160
+        }
+      ],
+      "geography_id": "idn.13.1303",
+      "geography_name": "Solok",
+      "inside_boundary_native_cell_count": 359183,
+      "original_pixel_mask_sha256": "8a7f8d7af5fd519975d77a70982fdb562d2552276028ab3cde8efcac8943cdd8",
+      "original_vertex_count": 3787,
+      "selected_candidate": null,
+      "source_permendagri_code": "1302"
+    },
+    {
+      "aligned_window_bbox": [
+        11219728.845372679,
+        -109545.16224745498,
+        11304328.845372679,
+        -34445.16224745498
+      ],
+      "aligned_window_height": 751,
+      "aligned_window_width": 846,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 148173,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 4359
+        },
+        {
+          "encoded_url_length": 108152,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 3181
+        },
+        {
+          "encoded_url_length": 98250,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 2888
+        },
+        {
+          "encoded_url_length": 88986,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 2614
+        },
+        {
+          "encoded_url_length": 78247,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 2297
+        },
+        {
+          "encoded_url_length": 63119,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 1850
+        },
+        {
+          "encoded_url_length": 50663,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1483
+        },
+        {
+          "encoded_url_length": 36973,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1080
+        },
+        {
+          "encoded_url_length": 29334,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 855
+        },
+        {
+          "encoded_url_length": 24873,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 724
+        },
+        {
+          "encoded_url_length": 21986,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 639
+        },
+        {
+          "encoded_url_length": 16898,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 489
+        },
+        {
+          "encoded_url_length": 13933,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 402
+        },
+        {
+          "encoded_url_length": 10527,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 302
+        },
+        {
+          "encoded_url_length": 8451,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 241
+        },
+        {
+          "encoded_url_length": 6109,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 172
+        },
+        {
+          "encoded_url_length": 4030,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 111
+        }
+      ],
+      "geography_id": "idn.13.1304",
+      "geography_name": "Sijunjung",
+      "inside_boundary_native_cell_count": 315110,
+      "original_pixel_mask_sha256": "4fd8828936f912094883a5c5f09d3583085ce0907741965488e19de6ff43cfc3",
+      "original_vertex_count": 4359,
+      "selected_candidate": null,
+      "source_permendagri_code": "1303"
+    },
+    {
+      "aligned_window_bbox": [
+        11166728.845372679,
+        -72945.16224745498,
+        11226528.845372679,
+        -30745.16224745498
+      ],
+      "aligned_window_height": 422,
+      "aligned_window_width": 598,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 399340,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 11814
+        },
+        {
+          "encoded_url_length": 206494,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 6105
+        },
+        {
+          "encoded_url_length": 164444,
+          "pixel_mask_equal": false,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 4860
+        },
+        {
+          "encoded_url_length": 138511,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 4093
+        },
+        {
+          "encoded_url_length": 110318,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 3258
+        },
+        {
+          "encoded_url_length": 75395,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 2224
+        },
+        {
+          "encoded_url_length": 52181,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1537
+        },
+        {
+          "encoded_url_length": 35703,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1049
+        },
+        {
+          "encoded_url_length": 27327,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 801
+        },
+        {
+          "encoded_url_length": 22254,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 651
+        },
+        {
+          "encoded_url_length": 19281,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 563
+        },
+        {
+          "encoded_url_length": 14798,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 430
+        },
+        {
+          "encoded_url_length": 12397,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 359
+        },
+        {
+          "encoded_url_length": 8909,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 256
+        },
+        {
+          "encoded_url_length": 6946,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 198
+        },
+        {
+          "encoded_url_length": 4818,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 135
+        },
+        {
+          "encoded_url_length": 2960,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 80
+        }
+      ],
+      "geography_id": "idn.13.1305",
+      "geography_name": "Tanah Datar",
+      "inside_boundary_native_cell_count": 137719,
+      "original_pixel_mask_sha256": "9451afd181e3cc052f97061a19dd19967a64bb76c08448586565af704d692cc5",
+      "original_vertex_count": 11814,
+      "selected_candidate": null,
+      "source_permendagri_code": "1304"
+    },
+    {
+      "aligned_window_bbox": [
+        11127728.845372679,
+        -96845.16224745498,
+        11183028.845372679,
+        -35445.16224745498
+      ],
+      "aligned_window_height": 614,
+      "aligned_window_width": 553,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 242443,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 7168
+        },
+        {
+          "encoded_url_length": 159746,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 4720
+        },
+        {
+          "encoded_url_length": 128587,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 3798
+        },
+        {
+          "encoded_url_length": 108142,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 3193
+        },
+        {
+          "encoded_url_length": 86820,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 2562
+        },
+        {
+          "encoded_url_length": 58855,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 1734
+        },
+        {
+          "encoded_url_length": 40683,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1196
+        },
+        {
+          "encoded_url_length": 28082,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 823
+        },
+        {
+          "encoded_url_length": 21154,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 618
+        },
+        {
+          "encoded_url_length": 17502,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 510
+        },
+        {
+          "encoded_url_length": 14526,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 422
+        },
+        {
+          "encoded_url_length": 10982,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 317
+        },
+        {
+          "encoded_url_length": 8785,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 252
+        },
+        {
+          "encoded_url_length": 6656,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 189
+        },
+        {
+          "encoded_url_length": 5474,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 154
+        },
+        {
+          "encoded_url_length": 3715,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 102
+        },
+        {
+          "encoded_url_length": 2732,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 73
+        }
+      ],
+      "geography_id": "idn.13.1306",
+      "geography_name": "Padang Pariaman",
+      "inside_boundary_native_cell_count": 134206,
+      "original_pixel_mask_sha256": "5b4aa78b16d12ad51d23d0c1abef1fd74d44d138b524fafb26c354d108942e23",
+      "original_vertex_count": 7168,
+      "selected_candidate": null,
+      "source_permendagri_code": "1305"
+    },
+    {
+      "aligned_window_bbox": [
+        11106428.845372679,
+        -53045.16224745498,
+        11192528.845372679,
+        -3345.1622474549804
+      ],
+      "aligned_window_height": 497,
+      "aligned_window_width": 861,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 330465,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 9795
+        },
+        {
+          "encoded_url_length": 233375,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 6914
+        },
+        {
+          "encoded_url_length": 189357,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 5610
+        },
+        {
+          "encoded_url_length": 158195,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 4687
+        },
+        {
+          "encoded_url_length": 123119,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 3646
+        },
+        {
+          "encoded_url_length": 81783,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 2418
+        },
+        {
+          "encoded_url_length": 56603,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1671
+        },
+        {
+          "encoded_url_length": 39074,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1151
+        },
+        {
+          "encoded_url_length": 29529,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 868
+        },
+        {
+          "encoded_url_length": 23735,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 696
+        },
+        {
+          "encoded_url_length": 19522,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 571
+        },
+        {
+          "encoded_url_length": 15114,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 440
+        },
+        {
+          "encoded_url_length": 12172,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 353
+        },
+        {
+          "encoded_url_length": 8836,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 254
+        },
+        {
+          "encoded_url_length": 6648,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 189
+        },
+        {
+          "encoded_url_length": 4826,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 135
+        },
+        {
+          "encoded_url_length": 3648,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 100
+        }
+      ],
+      "geography_id": "idn.13.1307",
+      "geography_name": "Agam",
+      "inside_boundary_native_cell_count": 222512,
+      "original_pixel_mask_sha256": "2ab5487723316a7b511979d1e04704e89cb527288b5a601c5d081b03aea03804",
+      "original_vertex_count": 9795,
+      "selected_candidate": null,
+      "source_permendagri_code": "1306"
+    },
+    {
+      "aligned_window_bbox": [
+        11161428.845372679,
+        -41045.16224745498,
+        11228228.845372679,
+        46954.83775254502
+      ],
+      "aligned_window_height": 880,
+      "aligned_window_width": 668,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 165734,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 4958
+        },
+        {
+          "encoded_url_length": 94473,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 2824
+        },
+        {
+          "encoded_url_length": 89194,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 2667
+        },
+        {
+          "encoded_url_length": 83969,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 2512
+        },
+        {
+          "encoded_url_length": 76837,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 2300
+        },
+        {
+          "encoded_url_length": 64710,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 1939
+        },
+        {
+          "encoded_url_length": 52867,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1584
+        },
+        {
+          "encoded_url_length": 40463,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1211
+        },
+        {
+          "encoded_url_length": 33410,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 999
+        },
+        {
+          "encoded_url_length": 28884,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 863
+        },
+        {
+          "encoded_url_length": 25709,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 767
+        },
+        {
+          "encoded_url_length": 19599,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 583
+        },
+        {
+          "encoded_url_length": 16374,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 486
+        },
+        {
+          "encoded_url_length": 12512,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 369
+        },
+        {
+          "encoded_url_length": 10444,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 307
+        },
+        {
+          "encoded_url_length": 7653,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 223
+        },
+        {
+          "encoded_url_length": 5388,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 155
+        }
+      ],
+      "geography_id": "idn.13.1308",
+      "geography_name": "Lima Puluh Kota",
+      "inside_boundary_native_cell_count": 327375,
+      "original_pixel_mask_sha256": "ab3438553bf72419562641758a9893633e68c17718e30ce48cbe93aed517eb2c",
+      "original_vertex_count": 4958,
+      "selected_candidate": null,
+      "source_permendagri_code": "1307"
+    },
+    {
+      "aligned_window_bbox": [
+        11103328.845372679,
+        -12445.16224745498,
+        11171328.845372679,
+        100354.83775254502
+      ],
+      "aligned_window_height": 1128,
+      "aligned_window_width": 680,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 169230,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 5132
+        },
+        {
+          "encoded_url_length": 108885,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 3299
+        },
+        {
+          "encoded_url_length": 98979,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 2998
+        },
+        {
+          "encoded_url_length": 90629,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 2745
+        },
+        {
+          "encoded_url_length": 78598,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 2380
+        },
+        {
+          "encoded_url_length": 59802,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 1810
+        },
+        {
+          "encoded_url_length": 46442,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1405
+        },
+        {
+          "encoded_url_length": 35202,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1064
+        },
+        {
+          "encoded_url_length": 29714,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 897
+        },
+        {
+          "encoded_url_length": 26502,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 799
+        },
+        {
+          "encoded_url_length": 23063,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 694
+        },
+        {
+          "encoded_url_length": 17715,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 531
+        },
+        {
+          "encoded_url_length": 14816,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 443
+        },
+        {
+          "encoded_url_length": 11330,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 337
+        },
+        {
+          "encoded_url_length": 9815,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 291
+        },
+        {
+          "encoded_url_length": 6793,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 199
+        },
+        {
+          "encoded_url_length": 5020,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 145
+        }
+      ],
+      "geography_id": "idn.13.1309",
+      "geography_name": "Pasaman",
+      "inside_boundary_native_cell_count": 390270,
+      "original_pixel_mask_sha256": "8abb994c03f575954b1865d5a5f3a80513628deb2659d513b6849ed27563607d",
+      "original_vertex_count": 5132,
+      "selected_candidate": null,
+      "source_permendagri_code": "1308"
+    },
+    {
+      "aligned_window_bbox": [
+        11230728.845372679,
+        -190845.16224745498,
+        11318128.845372679,
+        -111045.16224745498
+      ],
+      "aligned_window_height": 798,
+      "aligned_window_width": 874,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 87398,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 2507
+        },
+        {
+          "encoded_url_length": 53919,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 1544
+        },
+        {
+          "encoded_url_length": 53537,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 1533
+        },
+        {
+          "encoded_url_length": 52917,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 1515
+        },
+        {
+          "encoded_url_length": 51769,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 1482
+        },
+        {
+          "encoded_url_length": 47878,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 1370
+        },
+        {
+          "encoded_url_length": 42461,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1214
+        },
+        {
+          "encoded_url_length": 34395,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 982
+        },
+        {
+          "encoded_url_length": 28944,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 825
+        },
+        {
+          "encoded_url_length": 24107,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 686
+        },
+        {
+          "encoded_url_length": 21707,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 617
+        },
+        {
+          "encoded_url_length": 17089,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 484
+        },
+        {
+          "encoded_url_length": 14441,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 408
+        },
+        {
+          "encoded_url_length": 10477,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 294
+        },
+        {
+          "encoded_url_length": 8848,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 247
+        },
+        {
+          "encoded_url_length": 6413,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 177
+        },
+        {
+          "encoded_url_length": 4262,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 115
+        }
+      ],
+      "geography_id": "idn.13.1310",
+      "geography_name": "Solok Selatan",
+      "inside_boundary_native_cell_count": 328401,
+      "original_pixel_mask_sha256": "7479f1a5d78a053977a5459c3356e4da7c70b2e38564cd477321dd165cd60387",
+      "original_vertex_count": 2507,
+      "selected_candidate": null,
+      "source_permendagri_code": "1311"
+    },
+    {
+      "aligned_window_bbox": [
+        11259028.845372679,
+        -187645.16224745498,
+        11342728.845372679,
+        -90745.16224745498
+      ],
+      "aligned_window_height": 969,
+      "aligned_window_width": 837,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 325052,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 9348
+        },
+        {
+          "encoded_url_length": 174916,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 5030
+        },
+        {
+          "encoded_url_length": 141907,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 4080
+        },
+        {
+          "encoded_url_length": 128475,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 3693
+        },
+        {
+          "encoded_url_length": 112184,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 3224
+        },
+        {
+          "encoded_url_length": 87573,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 2516
+        },
+        {
+          "encoded_url_length": 67802,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1947
+        },
+        {
+          "encoded_url_length": 50692,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1454
+        },
+        {
+          "encoded_url_length": 41370,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 1185
+        },
+        {
+          "encoded_url_length": 34985,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 1001
+        },
+        {
+          "encoded_url_length": 30620,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 875
+        },
+        {
+          "encoded_url_length": 24136,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 688
+        },
+        {
+          "encoded_url_length": 19378,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 551
+        },
+        {
+          "encoded_url_length": 13893,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 393
+        },
+        {
+          "encoded_url_length": 10734,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 302
+        },
+        {
+          "encoded_url_length": 7923,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 221
+        },
+        {
+          "encoded_url_length": 5703,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 157
+        }
+      ],
+      "geography_id": "idn.13.1311",
+      "geography_name": "Dharmasraya",
+      "inside_boundary_native_cell_count": 292173,
+      "original_pixel_mask_sha256": "41695238ccd9bf16dc2e17f5ca505209b1cebc8a2f23f91f7819daab23b42c3b",
+      "original_vertex_count": 9348,
+      "selected_candidate": null,
+      "source_permendagri_code": "1310"
+    },
+    {
+      "aligned_window_bbox": [
+        11039228.845372679,
+        -20145.16224745498,
+        11139228.845372679,
+        61054.83775254502
+      ],
+      "aligned_window_height": 812,
+      "aligned_window_width": 1000,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 649724,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 19848
+        },
+        {
+          "encoded_url_length": 506169,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 15462
+        },
+        {
+          "encoded_url_length": 333861,
+          "pixel_mask_equal": false,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 10193
+        },
+        {
+          "encoded_url_length": 252689,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 7710
+        },
+        {
+          "encoded_url_length": 181875,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 5545
+        },
+        {
+          "encoded_url_length": 107676,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 3278
+        },
+        {
+          "encoded_url_length": 70032,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 2128
+        },
+        {
+          "encoded_url_length": 44772,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1357
+        },
+        {
+          "encoded_url_length": 34254,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 1036
+        },
+        {
+          "encoded_url_length": 28110,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 848
+        },
+        {
+          "encoded_url_length": 24425,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 735
+        },
+        {
+          "encoded_url_length": 18903,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 566
+        },
+        {
+          "encoded_url_length": 15420,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 460
+        },
+        {
+          "encoded_url_length": 12006,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 356
+        },
+        {
+          "encoded_url_length": 10076,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 297
+        },
+        {
+          "encoded_url_length": 7543,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 220
+        },
+        {
+          "encoded_url_length": 5733,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 165
+        }
+      ],
+      "geography_id": "idn.13.1312",
+      "geography_name": "Pasaman Barat",
+      "inside_boundary_native_cell_count": 385149,
+      "original_pixel_mask_sha256": "cdaacfc82ddf4068b5787a482cd45cba8681298b054f615503b88e264a6be2e9",
+      "original_vertex_count": 19848,
+      "selected_candidate": null,
+      "source_permendagri_code": "1312"
+    },
+    {
+      "aligned_window_bbox": [
+        11147228.845372679,
+        -125745.16224745498,
+        11194928.845372679,
+        -80245.16224745498
+      ],
+      "aligned_window_height": 455,
+      "aligned_window_width": 477,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 948961,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 27338
+        },
+        {
+          "encoded_url_length": 466367,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 13452
+        },
+        {
+          "encoded_url_length": 267884,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 7734
+        },
+        {
+          "encoded_url_length": 200696,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 5794
+        },
+        {
+          "encoded_url_length": 144457,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 4169
+        },
+        {
+          "encoded_url_length": 90082,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 2597
+        },
+        {
+          "encoded_url_length": 61872,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 1781
+        },
+        {
+          "encoded_url_length": 43120,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 1239
+        },
+        {
+          "encoded_url_length": 32894,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 942
+        },
+        {
+          "encoded_url_length": 25090,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 715
+        },
+        {
+          "encoded_url_length": 19795,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 561
+        },
+        {
+          "encoded_url_length": 15053,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 424
+        },
+        {
+          "encoded_url_length": 12089,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 338
+        },
+        {
+          "encoded_url_length": 10051,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 279
+        },
+        {
+          "encoded_url_length": 8736,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 241
+        },
+        {
+          "encoded_url_length": 6703,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 182
+        },
+        {
+          "encoded_url_length": 5664,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 152
+        }
+      ],
+      "geography_id": "idn.13.1371",
+      "geography_name": "Kota Padang",
+      "inside_boundary_native_cell_count": 69460,
+      "original_pixel_mask_sha256": "79ed7899e6bfb6c4aeb42d0f67640119a28a1a33be6a059ad9e49a85e02db2f2",
+      "original_vertex_count": 27338,
+      "selected_candidate": null,
+      "source_permendagri_code": "1371"
+    },
+    {
+      "aligned_window_bbox": [
+        11192128.845372679,
+        -90645.16224745498,
+        11208328.845372679,
+        -81945.16224745498
+      ],
+      "aligned_window_height": 87,
+      "aligned_window_width": 162,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 11262,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 326
+        },
+        {
+          "encoded_url_length": 10183,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 294
+        },
+        {
+          "encoded_url_length": 9878,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 285
+        },
+        {
+          "encoded_url_length": 9743,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 281
+        },
+        {
+          "encoded_url_length": 9472,
+          "pixel_mask_equal": true,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 273
+        },
+        {
+          "encoded_url_length": 8188,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 235
+        },
+        {
+          "encoded_url_length": 7143,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 204
+        },
+        {
+          "encoded_url_length": 5555,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 157
+        },
+        {
+          "encoded_url_length": 4275,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 119
+        },
+        {
+          "encoded_url_length": 3835,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 106
+        },
+        {
+          "encoded_url_length": 3464,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 95
+        },
+        {
+          "encoded_url_length": 2656,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 71
+        },
+        {
+          "encoded_url_length": 2252,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 59
+        },
+        {
+          "encoded_url_length": 1881,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 48
+        },
+        {
+          "encoded_url_length": 1541,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 38
+        },
+        {
+          "encoded_url_length": 1240,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 29
+        },
+        {
+          "encoded_url_length": 1004,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 22
+        }
+      ],
+      "geography_id": "idn.13.1372",
+      "geography_name": "Kota Solok",
+      "inside_boundary_native_cell_count": 5879,
+      "original_pixel_mask_sha256": "204a6ca8dbd98b2988f794e424d71a181d9bdf258e10c424ff978a9ddc360865",
+      "original_vertex_count": 326,
+      "selected_candidate": null,
+      "source_permendagri_code": "1372"
+    },
+    {
+      "aligned_window_bbox": [
+        11208428.845372679,
+        -85545.16224745498,
+        11222528.845372679,
+        -60545.16224745498
+      ],
+      "aligned_window_height": 250,
+      "aligned_window_width": 141,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 41946,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 1235
+        },
+        {
+          "encoded_url_length": 30430,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 894
+        },
+        {
+          "encoded_url_length": 27832,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 817
+        },
+        {
+          "encoded_url_length": 25372,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 744
+        },
+        {
+          "encoded_url_length": 22266,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 652
+        },
+        {
+          "encoded_url_length": 17584,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 513
+        },
+        {
+          "encoded_url_length": 13633,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 396
+        },
+        {
+          "encoded_url_length": 9518,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 274
+        },
+        {
+          "encoded_url_length": 7965,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 228
+        },
+        {
+          "encoded_url_length": 6271,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 178
+        },
+        {
+          "encoded_url_length": 5729,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 162
+        },
+        {
+          "encoded_url_length": 4277,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 119
+        },
+        {
+          "encoded_url_length": 3706,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 102
+        },
+        {
+          "encoded_url_length": 2862,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 77
+        },
+        {
+          "encoded_url_length": 2319,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 61
+        },
+        {
+          "encoded_url_length": 1609,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 40
+        },
+        {
+          "encoded_url_length": 1138,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 26
+        }
+      ],
+      "geography_id": "idn.13.1373",
+      "geography_name": "Kota Sawahlunto",
+      "inside_boundary_native_cell_count": 23191,
+      "original_pixel_mask_sha256": "f18630e2ea1b332e6ec6f324ad992eaea651de4b4bca623dffa064ba8817e06a",
+      "original_vertex_count": 1235,
+      "selected_candidate": null,
+      "source_permendagri_code": "1373"
+    },
+    {
+      "aligned_window_bbox": [
+        11172528.845372679,
+        -54345.16224745498,
+        11180728.845372679,
+        -49645.16224745498
+      ],
+      "aligned_window_height": 47,
+      "aligned_window_width": 82,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 220590,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 6524
+        },
+        {
+          "encoded_url_length": 88617,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 2616
+        },
+        {
+          "encoded_url_length": 60683,
+          "pixel_mask_equal": false,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 1789
+        },
+        {
+          "encoded_url_length": 47491,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 1399
+        },
+        {
+          "encoded_url_length": 33084,
+          "pixel_mask_equal": true,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 972
+        },
+        {
+          "encoded_url_length": 19898,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 582
+        },
+        {
+          "encoded_url_length": 12333,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 358
+        },
+        {
+          "encoded_url_length": 7416,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 212
+        },
+        {
+          "encoded_url_length": 5529,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 156
+        },
+        {
+          "encoded_url_length": 4245,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 118
+        },
+        {
+          "encoded_url_length": 3638,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 100
+        },
+        {
+          "encoded_url_length": 2656,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 71
+        },
+        {
+          "encoded_url_length": 2081,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 54
+        },
+        {
+          "encoded_url_length": 1203,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 28
+        },
+        {
+          "encoded_url_length": 1033,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 23
+        },
+        {
+          "encoded_url_length": 800,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 16
+        },
+        {
+          "encoded_url_length": 664,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 12
+        }
+      ],
+      "geography_id": "idn.13.1374",
+      "geography_name": "Kota Padang Panjang",
+      "inside_boundary_native_cell_count": 2354,
+      "original_pixel_mask_sha256": "4347e1afd07ff37e4f554e99c625a493adc2470b78a8cd87acf8653aa7d4df65",
+      "original_vertex_count": 6524,
+      "selected_candidate": null,
+      "source_permendagri_code": "1374"
+    },
+    {
+      "aligned_window_bbox": [
+        11168928.845372679,
+        -36045.16224745498,
+        11177428.845372679,
+        -29945.16224745498
+      ],
+      "aligned_window_height": 61,
+      "aligned_window_width": 85,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 98228,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 2901
+        },
+        {
+          "encoded_url_length": 67943,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 2004
+        },
+        {
+          "encoded_url_length": 51120,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 1506
+        },
+        {
+          "encoded_url_length": 41451,
+          "pixel_mask_equal": true,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 1220
+        },
+        {
+          "encoded_url_length": 31024,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 911
+        },
+        {
+          "encoded_url_length": 18876,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 551
+        },
+        {
+          "encoded_url_length": 11645,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 337
+        },
+        {
+          "encoded_url_length": 7189,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 205
+        },
+        {
+          "encoded_url_length": 5399,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 152
+        },
+        {
+          "encoded_url_length": 4181,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 116
+        },
+        {
+          "encoded_url_length": 3100,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 84
+        },
+        {
+          "encoded_url_length": 2390,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 63
+        },
+        {
+          "encoded_url_length": 1949,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 50
+        },
+        {
+          "encoded_url_length": 1372,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 33
+        },
+        {
+          "encoded_url_length": 899,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 19
+        },
+        {
+          "encoded_url_length": 697,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 13
+        },
+        {
+          "encoded_url_length": 458,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 6
+        }
+      ],
+      "geography_id": "idn.13.1375",
+      "geography_name": "Kota Bukittinggi",
+      "inside_boundary_native_cell_count": 2421,
+      "original_pixel_mask_sha256": "05b29011326d1c083a0d0cb2acac1045361625d24c95a7f14db39410724be066",
+      "original_vertex_count": 2901,
+      "selected_candidate": null,
+      "source_permendagri_code": "1375"
+    },
+    {
+      "aligned_window_bbox": [
+        11196728.845372679,
+        -30645.16224745498,
+        11208328.845372679,
+        -20345.16224745498
+      ],
+      "aligned_window_height": 103,
+      "aligned_window_width": 116,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 61683,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 1818
+        },
+        {
+          "encoded_url_length": 35494,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 1043
+        },
+        {
+          "encoded_url_length": 31886,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 936
+        },
+        {
+          "encoded_url_length": 28169,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 826
+        },
+        {
+          "encoded_url_length": 23639,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 692
+        },
+        {
+          "encoded_url_length": 16977,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 495
+        },
+        {
+          "encoded_url_length": 12387,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 359
+        },
+        {
+          "encoded_url_length": 8368,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 240
+        },
+        {
+          "encoded_url_length": 6675,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 190
+        },
+        {
+          "encoded_url_length": 5491,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 155
+        },
+        {
+          "encoded_url_length": 4982,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 140
+        },
+        {
+          "encoded_url_length": 3696,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 102
+        },
+        {
+          "encoded_url_length": 2888,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 78
+        },
+        {
+          "encoded_url_length": 2215,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 58
+        },
+        {
+          "encoded_url_length": 1946,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 50
+        },
+        {
+          "encoded_url_length": 1236,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 29
+        },
+        {
+          "encoded_url_length": 763,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 15
+        }
+      ],
+      "geography_id": "idn.13.1376",
+      "geography_name": "Kota Payakumbuh",
+      "inside_boundary_native_cell_count": 7446,
+      "original_pixel_mask_sha256": "cd3c81ce1754b1e5210db26af665bddd7c164671242371b1c93c84672902bbc5",
+      "original_vertex_count": 1818,
+      "selected_candidate": null,
+      "source_permendagri_code": "1376"
+    },
+    {
+      "aligned_window_bbox": [
+        11131428.845372679,
+        -84345.16224745498,
+        11152728.845372679,
+        -60645.16224745498
+      ],
+      "aligned_window_height": 237,
+      "aligned_window_width": 213,
+      "candidate_diagnostics": [
+        {
+          "encoded_url_length": 197283,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.0,
+          "valid": true,
+          "vertex_count": 5830
+        },
+        {
+          "encoded_url_length": 130663,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.1,
+          "valid": true,
+          "vertex_count": 3858
+        },
+        {
+          "encoded_url_length": 84472,
+          "pixel_mask_equal": true,
+          "tolerance_m": 0.5,
+          "valid": true,
+          "vertex_count": 2491
+        },
+        {
+          "encoded_url_length": 64268,
+          "pixel_mask_equal": false,
+          "tolerance_m": 1.0,
+          "valid": true,
+          "vertex_count": 1893
+        },
+        {
+          "encoded_url_length": 48456,
+          "pixel_mask_equal": false,
+          "tolerance_m": 2.0,
+          "valid": true,
+          "vertex_count": 1425
+        },
+        {
+          "encoded_url_length": 30125,
+          "pixel_mask_equal": false,
+          "tolerance_m": 5.0,
+          "valid": true,
+          "vertex_count": 882
+        },
+        {
+          "encoded_url_length": 21667,
+          "pixel_mask_equal": false,
+          "tolerance_m": 10.0,
+          "valid": true,
+          "vertex_count": 632
+        },
+        {
+          "encoded_url_length": 15415,
+          "pixel_mask_equal": false,
+          "tolerance_m": 20.0,
+          "valid": true,
+          "vertex_count": 447
+        },
+        {
+          "encoded_url_length": 11591,
+          "pixel_mask_equal": false,
+          "tolerance_m": 30.0,
+          "valid": true,
+          "vertex_count": 334
+        },
+        {
+          "encoded_url_length": 8035,
+          "pixel_mask_equal": false,
+          "tolerance_m": 40.0,
+          "valid": true,
+          "vertex_count": 229
+        },
+        {
+          "encoded_url_length": 5601,
+          "pixel_mask_equal": false,
+          "tolerance_m": 50.0,
+          "valid": true,
+          "vertex_count": 157
+        },
+        {
+          "encoded_url_length": 4213,
+          "pixel_mask_equal": false,
+          "tolerance_m": 75.0,
+          "valid": true,
+          "vertex_count": 116
+        },
+        {
+          "encoded_url_length": 3402,
+          "pixel_mask_equal": false,
+          "tolerance_m": 100.0,
+          "valid": true,
+          "vertex_count": 92
+        },
+        {
+          "encoded_url_length": 2659,
+          "pixel_mask_equal": false,
+          "tolerance_m": 150.0,
+          "valid": true,
+          "vertex_count": 70
+        },
+        {
+          "encoded_url_length": 2318,
+          "pixel_mask_equal": false,
+          "tolerance_m": 200.0,
+          "valid": true,
+          "vertex_count": 60
+        },
+        {
+          "encoded_url_length": 1910,
+          "pixel_mask_equal": false,
+          "tolerance_m": 300.0,
+          "valid": true,
+          "vertex_count": 48
+        },
+        {
+          "encoded_url_length": 1604,
+          "pixel_mask_equal": false,
+          "tolerance_m": 500.0,
+          "valid": true,
+          "vertex_count": 39
+        }
+      ],
+      "geography_id": "idn.13.1377",
+      "geography_name": "Kota Pariaman",
+      "inside_boundary_native_cell_count": 6469,
+      "original_pixel_mask_sha256": "0eb965f0cbab82ab13ff0acd75349659bf5a6a28985616d30151553d5bebd4ac",
+      "original_vertex_count": 5830,
+      "selected_candidate": null,
+      "source_permendagri_code": "1377"
+    }
+  ],
+  "geography_count": 19,
+  "milestone": 26,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_source_value_extraction_performed": false,
+  "padang_panjang": {
+    "aligned_window_bbox": [
+      11172528.845372679,
+      -54345.16224745498,
+      11180728.845372679,
+      -49645.16224745498
+    ],
+    "aligned_window_height": 47,
+    "aligned_window_width": 82,
+    "candidate_diagnostics": [
+      {
+        "encoded_url_length": 220590,
+        "pixel_mask_equal": true,
+        "tolerance_m": 0.0,
+        "valid": true,
+        "vertex_count": 6524
+      },
+      {
+        "encoded_url_length": 88617,
+        "pixel_mask_equal": true,
+        "tolerance_m": 0.1,
+        "valid": true,
+        "vertex_count": 2616
+      },
+      {
+        "encoded_url_length": 60683,
+        "pixel_mask_equal": false,
+        "tolerance_m": 0.5,
+        "valid": true,
+        "vertex_count": 1789
+      },
+      {
+        "encoded_url_length": 47491,
+        "pixel_mask_equal": true,
+        "tolerance_m": 1.0,
+        "valid": true,
+        "vertex_count": 1399
+      },
+      {
+        "encoded_url_length": 33084,
+        "pixel_mask_equal": true,
+        "tolerance_m": 2.0,
+        "valid": true,
+        "vertex_count": 972
+      },
+      {
+        "encoded_url_length": 19898,
+        "pixel_mask_equal": false,
+        "tolerance_m": 5.0,
+        "valid": true,
+        "vertex_count": 582
+      },
+      {
+        "encoded_url_length": 12333,
+        "pixel_mask_equal": false,
+        "tolerance_m": 10.0,
+        "valid": true,
+        "vertex_count": 358
+      },
+      {
+        "encoded_url_length": 7416,
+        "pixel_mask_equal": false,
+        "tolerance_m": 20.0,
+        "valid": true,
+        "vertex_count": 212
+      },
+      {
+        "encoded_url_length": 5529,
+        "pixel_mask_equal": false,
+        "tolerance_m": 30.0,
+        "valid": true,
+        "vertex_count": 156
+      },
+      {
+        "encoded_url_length": 4245,
+        "pixel_mask_equal": false,
+        "tolerance_m": 40.0,
+        "valid": true,
+        "vertex_count": 118
+      },
+      {
+        "encoded_url_length": 3638,
+        "pixel_mask_equal": false,
+        "tolerance_m": 50.0,
+        "valid": true,
+        "vertex_count": 100
+      },
+      {
+        "encoded_url_length": 2656,
+        "pixel_mask_equal": false,
+        "tolerance_m": 75.0,
+        "valid": true,
+        "vertex_count": 71
+      },
+      {
+        "encoded_url_length": 2081,
+        "pixel_mask_equal": false,
+        "tolerance_m": 100.0,
+        "valid": true,
+        "vertex_count": 54
+      },
+      {
+        "encoded_url_length": 1203,
+        "pixel_mask_equal": false,
+        "tolerance_m": 150.0,
+        "valid": true,
+        "vertex_count": 28
+      },
+      {
+        "encoded_url_length": 1033,
+        "pixel_mask_equal": false,
+        "tolerance_m": 200.0,
+        "valid": true,
+        "vertex_count": 23
+      },
+      {
+        "encoded_url_length": 800,
+        "pixel_mask_equal": false,
+        "tolerance_m": 300.0,
+        "valid": true,
+        "vertex_count": 16
+      },
+      {
+        "encoded_url_length": 664,
+        "pixel_mask_equal": false,
+        "tolerance_m": 500.0,
+        "valid": true,
+        "vertex_count": 12
+      }
+    ],
+    "geography_id": "idn.13.1374",
+    "geography_name": "Kota Padang Panjang",
+    "inside_boundary_native_cell_count": 2354,
+    "original_pixel_mask_sha256": "4347e1afd07ff37e4f554e99c625a493adc2470b78a8cd87acf8653aa7d4df65",
+    "original_vertex_count": 6524,
+    "selected_candidate": null,
+    "source_permendagri_code": "1374"
+  },
+  "resolved_geometry_count": 0,
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-population-stats-geometry/v1",
+  "source_family_changed": false,
+  "source_metadata_sha256": "8192ad1f91509b40ba9de044f2dcce2a9c931a675ec479b133575f9a933aad1b",
+  "source_values_accessed": false,
+  "stage": "stage1_transport_qualification",
+  "stage1_population_aggregation_authorized": false,
+  "statistical_model_fit": false,
+  "statistics_live_request_performed": false,
+  "substantive_value_promotion_performed": false,
+  "unresolved_geometry_count": 19
+}
