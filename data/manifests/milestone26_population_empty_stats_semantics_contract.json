@@ -1,0 +1,69 @@
+{
+  "schema": "ranah-observatory/milestone26-population-empty-stats-semantics-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_semantics_qualification",
+  "locked_before_live_probe": true,
+  "trigger": {
+    "shape_diagnostic_commit": "11373ddf2fe3df4cdccb37b0d80d817093463289",
+    "shape_diagnostic_manifest": "data/manifests/milestone26_population_stats_shape_diagnostic.json",
+    "required_first_nonstandard_classification": "empty_statistics",
+    "required_raw_response_sha256": "4d1e55292a765f84a619bb9dd54119be934afb58ab7730af754b76b16bc23695"
+  },
+  "target": {
+    "geography_id": "idn.13.1377",
+    "geography_name": "Kota Pariaman",
+    "source_permendagri_code": "1377",
+    "partition_index": 1,
+    "selected_cell_count": 1,
+    "selection_basis": "first nonstandard response in the preregistered frozen partition scan; no source values, outcomes, or model results used to select the target"
+  },
+  "frozen_inputs": {
+    "partition_manifest": "data/manifests/milestone26_population_stats_partitions.json",
+    "mapserver_identity": "data/manifests/milestone26_population_mapserver_identity.json",
+    "mapserver_pixel_semantics": "data/manifests/milestone26_population_mapserver_pixel_semantics_amendment.json",
+    "mapserver_scale": "data/manifests/milestone26_population_mapserver_scale.json"
+  },
+  "center_derivation": {
+    "crs_epsg": 3395,
+    "native_pixel_size_m": 100,
+    "method": "rerasterize the frozen partition candidate polygon over its frozen partition bbox/window with all_touched=false; require exactly one selected cell; use that cell center",
+    "candidate_geometry_must_rerasterize_to_exactly_one_cell": true,
+    "source_values_may_not_be_used_to_derive_center": true
+  },
+  "image_server_repeat_probe": {
+    "service": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer",
+    "operation": "computeStatisticsHistograms",
+    "repeat_count": 3,
+    "same_frozen_partition_geometry_each_repeat": true,
+    "pixel_size": "100,100",
+    "accepted_empty_body": {"statistics": []}
+  },
+  "mapserver_reference_probe": {
+    "service": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer",
+    "operation": "identify",
+    "layer_id": 0,
+    "accepted_pixel_field": "Stretch.Pixel Value",
+    "repeat_count": 3,
+    "exact_native_center_each_repeat": true,
+    "result_geometry_tolerance_m": 0.001
+  },
+  "decision_rules": {
+    "deterministic_no_valid_source_value_for_exact_native_cell": "all three ImageServer responses are HTTP 200 JSON without ArcGIS error and exactly empty statistics; all three MapServer responses are HTTP 200 JSON without ArcGIS error and contain zero finite accepted-field pixel values for the exact native center",
+    "transient_image_server_empty_statistics": "at least one ImageServer repeat returns a standard one-row statistics object after the frozen empty response; no global empty-statistics semantics may be inferred",
+    "transport_disagreement": "all ImageServer repeats remain empty statistics but at least one MapServer repeat returns a finite accepted-field pixel value for the exact native center",
+    "inconclusive": "any transport/ArcGIS error, any other nonstandard ImageServer shape, any MapServer valid result whose returned geometry does not match the exact native center within tolerance, or any condition not covered above"
+  },
+  "promotion_boundary": "This diagnostic may qualify only the semantics of the exact frozen one-cell anomaly. It may not authorize treating empty statistics as zero for other partitions. Any production fallback must be separately preregistered and must independently confirm every empty partition against all of that partition's exact native centers.",
+  "numeric_aggregation_authorized": false,
+  "cross_geography_component_values_materialized": false,
+  "substantive_value_promotion_authorized": false,
+  "stage1_population_production_extraction_authorized": false,
+  "empty_statistics_global_semantics_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
