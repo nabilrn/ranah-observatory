@@ -1,0 +1,56 @@
+{
+  "schema": "ranah-observatory/milestone26-stage1-statistics-transport-probe-amendment/v2",
+  "milestone": 26,
+  "stage": 1,
+  "locked_before_getsamples_reference_probe": true,
+  "trigger": {
+    "workflow_run_id": 32473741698,
+    "failure": "INARISKPOP_2020 exportImage failed after retries even for the geometry-only-selected pilot native window of 82 x 47 cells",
+    "failed_request_dimensions": {
+      "width": 82,
+      "height": 47,
+      "pixel_size_m": 100
+    }
+  },
+  "reason": "population TIFF export is transport-unusable even at a very small native window, so equivalence cannot require a new population TIFF without circularly blocking every alternative transport",
+  "candidate_operation_under_test": "computeStatisticsHistograms",
+  "reference_operation": {
+    "name": "getSamples",
+    "official_arcgis_reference": "https://developers.arcgis.com/rest/services-reference/enterprise/get-samples/",
+    "geometry_type": "esriGeometryMultipoint",
+    "point_rule": "enumerate every source-native 100 m cell center selected by the same rasterio pixel-center-inside-polygon mask used by the locked Stage 1 aggregation contract",
+    "pixel_size": "100,100",
+    "interpolation": "RSP_NearestNeighbor",
+    "batch_size_points": 50,
+    "batching_changes_point_set": false,
+    "random_sampling_authorized": false,
+    "subsampling_authorized": false,
+    "point_densification_authorized": false
+  },
+  "bridge_validation": {
+    "capacity_source": "inarisk_capacity_2021",
+    "capacity_export_tiff_still_required": true,
+    "capacity_getsamples_must_match_tiff_valid_count": true,
+    "capacity_getsamples_must_match_tiff_sum_and_mean_with_existing_locked_tolerances": true,
+    "purpose": "validate that exact-center getSamples reproduces the already preregistered local TIFF reference method before using the same reference operation for population"
+  },
+  "population_reference": {
+    "source": "inarisk_population_2020",
+    "new_tiff_export_required": false,
+    "getsamples_exact_center_enumeration_required": true,
+    "getsamples_valid_fraction_must_remain_at_least": 0.99,
+    "compute_statistics_count_sum_mean_must_match_getsamples_under_existing_locked_tolerances": true
+  },
+  "pilot_selection_changed": false,
+  "pilot_selection_uses_raster_values": false,
+  "equivalence_tolerances_changed": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "promotion_rule": "computeStatisticsHistograms may replace exportImage transport only if capacity proves TIFF-getSamples bridge equivalence and both capacity and population prove getSamples-computeStatistics equivalence on the same geometry-only-selected pilot"
+}
