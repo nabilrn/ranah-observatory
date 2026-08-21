@@ -4,10 +4,13 @@ on:
   pull_request:
     paths:
       - data/manifests/milestone26_stage1_statistics_transport_probe_contract.json
+      - data/manifests/milestone26_stage1_statistics_transport_probe_amendment_v2.json
       - scripts/probe_milestone26_statistics_transport.py
       - scripts/probe_milestone26_statistics_transport_v2.py
+      - scripts/probe_milestone26_statistics_transport_v3.py
       - tests/test_milestone26_statistics_transport.py
       - tests/test_milestone26_statistics_transport_v2.py
+      - tests/test_milestone26_statistics_transport_v3.py
       - .github/workflows/milestone26-statistics-transport-probe.yml
   workflow_dispatch:
 
@@ -35,15 +38,17 @@ jobs:
         run: |
           python -m py_compile scripts/probe_milestone26_statistics_transport.py
           python -m py_compile scripts/probe_milestone26_statistics_transport_v2.py
+          python -m py_compile scripts/probe_milestone26_statistics_transport_v3.py
 
       - name: Run locked transport tests before live probe
         run: |
           python -m pytest -q \
             tests/test_milestone26_statistics_transport.py \
-            tests/test_milestone26_statistics_transport_v2.py
+            tests/test_milestone26_statistics_transport_v2.py \
+            tests/test_milestone26_statistics_transport_v3.py
 
-      - name: Compare official server statistics with frozen-grid reference method
-        run: python -m scripts.probe_milestone26_statistics_transport_v2
+      - name: Compare official server statistics with exact-center references
+        run: python -m scripts.probe_milestone26_statistics_transport_v3
 
       - name: Assert equivalence qualification and claim boundaries
         run: |
@@ -53,7 +58,9 @@ jobs:
 
           manifest_path = Path('data/manifests/milestone26_stage1_statistics_transport_probe.json')
           manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-          assert manifest['both_sources_equivalent'] is True
+          assert manifest['schema'] == 'ranah-observatory/milestone26-stage1-statistics-transport-probe/v2'
+          assert manifest['capacity_tiff_getsamples_bridge_equivalent'] is True
+          assert manifest['both_sources_getsamples_compute_statistics_equivalent'] is True
           assert manifest['statistics_transport_qualified_for_stage1'] is True
           assert manifest['cross_geography_substantive_values_inspected'] is False
           assert manifest['aggregation_semantics_changed'] is False
@@ -63,8 +70,12 @@ jobs:
           assert manifest['causal_claim_created'] is False
           assert manifest['monetary_wasted_potential_estimated'] is False
           assert set(manifest['source_results']) == {'inarisk_capacity_2021', 'inarisk_population_2020'}
+
+          capacity = manifest['source_results']['inarisk_capacity_2021']
+          assert capacity['capacity_tiff_getsamples_bridge']['all_bridge_gates_passed'] is True
+
           for source_id, result in manifest['source_results'].items():
-              eq = result['equivalence']
+              eq = result['getsamples_compute_statistics_equivalence']
               assert eq['all_equivalence_gates_passed'] is True
               assert eq['count_match'] is True
               assert eq['sum_match'] is True
@@ -72,18 +83,26 @@ jobs:
               assert eq['skip_match'] is True
               assert eq['range_match'] is True
               assert eq['coverage_match'] is True
-              for key in ('reference_export', 'server_statistics'):
-                  item = result[key]
-                  path = Path(item['path'])
+              assert result['getsamples_reference_statistics']['valid_fraction'] >= 0.99
+              server_path = Path(result['server_statistics']['path'])
+              assert server_path.exists()
+              assert hashlib.sha256(server_path.read_bytes()).hexdigest() == result['server_statistics']['sha256']
+              for snapshot in result['getsamples_snapshots']:
+                  path = Path(snapshot['path'])
                   assert path.exists()
-                  assert hashlib.sha256(path.read_bytes()).hexdigest() == item['sha256']
+                  assert hashlib.sha256(path.read_bytes()).hexdigest() == snapshot['sha256']
+
+          capacity_tiff = Path(capacity['capacity_tiff_reference']['path'])
+          assert capacity_tiff.exists()
+          assert hashlib.sha256(capacity_tiff.read_bytes()).hexdigest() == capacity['capacity_tiff_reference']['sha256']
           PY
 
       - name: Re-run focused tests after live probe
         run: |
           python -m pytest -q \
             tests/test_milestone26_statistics_transport.py \
-            tests/test_milestone26_statistics_transport_v2.py
+            tests/test_milestone26_statistics_transport_v2.py \
+            tests/test_milestone26_statistics_transport_v3.py
 
       - name: Commit frozen transport-equivalence evidence
         run: |
