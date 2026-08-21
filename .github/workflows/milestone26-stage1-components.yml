@@ -5,11 +5,14 @@ on:
   pull_request:
     paths:
       - data/manifests/milestone26_stage1_aggregation_contract.json
+      - data/manifests/milestone26_stage1_nodata_transport_amendment.json
       - data/manifests/milestone26_source_qualification.json
       - data/processed/bnpb/m26_source_qualification/**
       - data/snapshots/big/milestone8/big-june-2026-sumbar.geojson
       - scripts/materialize_milestone26_stage1_components.py
+      - scripts/materialize_milestone26_stage1_components_v2.py
       - tests/test_milestone26_stage1_components.py
+      - tests/test_milestone26_stage1_nodata_compat.py
       - .github/workflows/milestone26-stage1-components.yml
   workflow_dispatch:
 
@@ -33,14 +36,19 @@ jobs:
       - name: Install spatial extraction dependencies
         run: python -m pip install --disable-pip-version-check pytest numpy shapely pyproj rasterio
 
-      - name: Compile Stage 1 materializer
-        run: python -m py_compile scripts/materialize_milestone26_stage1_components.py
+      - name: Compile Stage 1 materializer and transport compatibility
+        run: |
+          python -m py_compile scripts/materialize_milestone26_stage1_components.py
+          python -m py_compile scripts/materialize_milestone26_stage1_components_v2.py
 
-      - name: Run locked aggregation tests before values
-        run: python -m pytest -q tests/test_milestone26_stage1_components.py
+      - name: Run locked aggregation and NoData tests before values
+        run: |
+          python -m pytest -q \
+            tests/test_milestone26_stage1_components.py \
+            tests/test_milestone26_stage1_nodata_compat.py
 
       - name: Fetch and materialize only qualified Stage 1 components
-        run: python -m scripts.materialize_milestone26_stage1_components --fetch
+        run: python -m scripts.materialize_milestone26_stage1_components_v2 --fetch
 
       - name: Assert Stage 1 footprint and claim boundaries
         run: |
@@ -49,6 +57,7 @@ jobs:
           from pathlib import Path
 
           manifest_path = Path('data/manifests/milestone26_stage1_components.json')
+          amendment_path = Path('data/manifests/milestone26_stage1_nodata_transport_amendment.json')
           manifest = json.loads(manifest_path.read_text())
           with Path('data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv').open(newline='', encoding='utf-8') as h:
               rows = list(csv.DictReader(h))
@@ -63,6 +72,8 @@ jobs:
           assert manifest['raw_raster_count'] == 38
           assert manifest['authorized_source_ids'] == ['inarisk_capacity_2021', 'inarisk_population_2020']
           assert manifest['held_source_ids'] == ['dibi_kabupaten_hidromet_2015_2024']
+          assert manifest['nodata_transport_amendment']['path'] == amendment_path.as_posix()
+          assert manifest['nodata_transport_amendment']['sha256'] == hashlib.sha256(amendment_path.read_bytes()).hexdigest()
           assert manifest['dibi_numeric_extraction_performed'] is False
           assert manifest['hazard_vulnerability_numeric_extraction_performed'] is False
           assert manifest['event_impact_panel_materialized'] is False
@@ -101,13 +112,16 @@ jobs:
           cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv /tmp/m26-frame.csv
           cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv /tmp/m26-provenance.csv
           cp data/manifests/milestone26_stage1_components.json /tmp/m26-stage1.json
-          python -m scripts.materialize_milestone26_stage1_components
+          python -m scripts.materialize_milestone26_stage1_components_v2
           cmp /tmp/m26-frame.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv
           cmp /tmp/m26-provenance.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv
           cmp /tmp/m26-stage1.json data/manifests/milestone26_stage1_components.json
 
       - name: Re-run focused tests after extraction
-        run: python -m pytest -q tests/test_milestone26_stage1_components.py
+        run: |
+          python -m pytest -q \
+            tests/test_milestone26_stage1_components.py \
+            tests/test_milestone26_stage1_nodata_compat.py
 
       - name: Commit frozen Stage 1 components
         shell: bash
