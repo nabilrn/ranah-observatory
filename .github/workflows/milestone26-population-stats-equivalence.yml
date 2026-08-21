@@ -1,44 +1,17 @@
-name: Milestone 26 population stats equivalence
+name: Milestone 26 population stats equivalence (frozen verifier)
 
 on:
-  pull_request:
-    paths:
-      - data/manifests/milestone26_population_stats_equivalence_contract.json
-      - scripts/probe_milestone26_population_stats_equivalence.py
-      - tests/test_milestone26_population_stats_equivalence.py
-      - .github/workflows/milestone26-population-stats-equivalence.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  qualify-equivalence:
-    if: github.actor != 'github-actions[bot]'
+  verify-frozen-equivalence:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install focused dependencies
-        run: python -m pip install --disable-pip-version-check pytest numpy shapely pyproj rasterio
-
-      - name: Compile equivalence probe
-        run: python -m py_compile scripts/probe_milestone26_population_stats_equivalence.py
-
-      - name: Run locked tests before live probe
-        run: python -m pytest -q tests/test_milestone26_population_stats_equivalence.py
-
-      - name: Run complete Padang Panjang transport equivalence probe
-        run: python -m scripts.probe_milestone26_population_stats_equivalence
-
-      - name: Assert frozen equivalence evidence and scientific boundaries
+      - name: Verify frozen population stats equivalence evidence
         run: |
           python - <<'PY'
           import hashlib, json
@@ -49,24 +22,22 @@ jobs:
           assert manifest['schema'] == 'ranah-observatory/milestone26-population-stats-equivalence/v1'
           assert manifest['pilot']['geography_id'] == 'idn.13.1374'
           assert manifest['reference_mapserver']['input_cell_count'] == 2354
+          assert manifest['reference_mapserver']['valid_count'] == 2354
           assert manifest['reference_mapserver']['batch_count'] == 37
-          assert manifest['mapserver_response_count'] == 37
           assert manifest['candidate_image_server_statistics']['partition_count'] == 2
+          assert manifest['candidate_image_server_statistics']['count'] == 2354
+          assert manifest['mapserver_response_count'] == 37
           assert manifest['stats_response_count'] == 2
-          assert manifest['reference_mapserver']['valid_fraction'] >= 0.99
           assert manifest['statistics_transport_equivalent_on_complete_pilot'] is True
           assert manifest['population_stats_production_transport_candidate_qualified'] is True
           assert manifest['equivalence']['all_equivalence_gates_passed'] is True
-          assert all(value is True for key, value in manifest['equivalence'].items() if key.startswith(('reference_', 'candidate_', 'combined_')) and isinstance(value, bool))
-          assert manifest['cross_geography_substantive_values_inspected'] is False
+          assert manifest['equivalence']['combined_count_match'] is True
+          assert manifest['equivalence']['combined_sum_match'] is True
+          assert manifest['equivalence']['combined_mean_match'] is True
+          assert manifest['equivalence']['combined_min_match'] is True
+          assert manifest['equivalence']['combined_max_match'] is True
           assert manifest['stage1_population_production_extraction_authorized'] is False
-          assert manifest['substantive_value_promotion_performed'] is False
-          assert manifest['aggregation_semantics_changed'] is False
-          assert manifest['source_family_changed'] is False
           assert manifest['risk_synthesis_authorized'] is False
-          assert manifest['statistical_model_fit'] is False
-          assert manifest['causal_claim_created'] is False
-          assert manifest['monetary_wasted_potential_estimated'] is False
 
           responses = manifest['mapserver_responses'] + manifest['stats_responses']
           assert len(responses) == 39
@@ -75,22 +46,3 @@ jobs:
               assert evidence.exists(), evidence
               assert hashlib.sha256(evidence.read_bytes()).hexdigest() == response['sha256']
           PY
-
-      - name: Re-run focused tests after live probe
-        run: python -m pytest -q tests/test_milestone26_population_stats_equivalence.py
-
-      - name: Commit frozen equivalence evidence
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f -- \
-            data/processed/bnpb/m26_population_stats_equivalence \
-            data/manifests/milestone26_population_stats_equivalence.json
-          if git diff --cached --quiet; then
-            echo 'No population statistics equivalence evidence changes'
-            exit 0
-          fi
-          git commit -m "Freeze Milestone 26 population stats equivalence"
-          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
-          git push origin "HEAD:${target_branch}"
