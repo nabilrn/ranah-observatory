@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 DESIGN = ROOT / "data/manifests/milestone26_design_gate.json"
 REGISTRY = ROOT / "data/registries/m26-bnpb-source-candidates.csv"
+DIBI_AMENDMENT = ROOT / "data/manifests/milestone26_dibi_transport_amendment.json"
 OUT = ROOT / "data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv"
 MANIFEST = ROOT / "data/manifests/milestone26_source_qualification.json"
 SNAPSHOT_DIR = ROOT / "data/processed/bnpb/m26_source_qualification"
@@ -46,10 +47,6 @@ EXPECTED_FINAL_STATES = {
 
 ARC_EXTRA = {
     "inarisk_population_2020": ["info/iteminfo"],
-    # The official DIBI service currently exposes duplicate logical layers 0 and 1.
-    # Either may be used to verify the schema; a transient failure on one child
-    # resource must not invalidate the service when the other independently
-    # exposes the locked field surface.
     "dibi_kabupaten_hidromet_2015_2024": ["0", "1"],
 }
 
@@ -111,6 +108,27 @@ def load_design() -> dict[str, Any]:
     return payload
 
 
+def load_dibi_transport_amendment(preferred_endpoint: str) -> dict[str, Any]:
+    payload = json.loads(DIBI_AMENDMENT.read_text(encoding="utf-8"))
+    if payload.get("schema") != "ranah-observatory/milestone26-dibi-transport-amendment/v1":
+        raise M26ProbeError("unexpected M26 DIBI transport amendment schema")
+    if payload.get("source_id") != "dibi_kabupaten_hidromet_2015_2024":
+        raise M26ProbeError("DIBI transport amendment source identity drift")
+    if payload.get("preferred_endpoint", "").rstrip("/") != preferred_endpoint.rstrip("/"):
+        raise M26ProbeError("DIBI preferred endpoint does not match locked registry")
+    if payload.get("source_family_changed") is not False or payload.get("scientific_design_changed") is not False:
+        raise M26ProbeError("DIBI transport amendment changes source family or scientific design")
+    if payload.get("posthoc_source_family_search_performed") is not False:
+        raise M26ProbeError("DIBI transport amendment violates anti-source-shopping gate")
+    if payload.get("numeric_values_promoted_by_amendment") is not False:
+        raise M26ProbeError("DIBI transport amendment must not promote numeric values")
+    fallback = str(payload.get("fallback_endpoint", ""))
+    parsed = urlparse(fallback)
+    if parsed.scheme != "https" or parsed.hostname != "gis.bnpb.go.id" or "/DIBI_Hidromet_2015_2024/MapServer" not in parsed.path:
+        raise M26ProbeError("DIBI fallback endpoint is not the locked official BNPB transport")
+    return payload
+
+
 def fetch(url: str, *, timeout: float = 45.0, retries: int = 3) -> tuple[int, str, str, bytes]:
     last_error: Exception | None = None
     for attempt in range(retries + 1):
@@ -150,7 +168,6 @@ def canonical_snapshot(payload: dict[str, Any]) -> bytes:
 
 
 def methodology_surface_qualifies(final_url: str, content_type: str, body: bytes) -> tuple[bool, str]:
-    """Verify the current InaRISK methodology route without treating SPA text as raster-version evidence."""
     parsed = urlparse(final_url)
     route_ok = (
         parsed.scheme == "https"
@@ -167,24 +184,65 @@ def methodology_surface_qualifies(final_url: str, content_type: str, body: bytes
     return qualifies, mode
 
 
+def parse_arcgis_payload(body: bytes, source_id: str, label: str) -> dict[str, Any]:
+    try:
+        payload = json.loads(body.decode("utf-8"))
+    except json.JSONDecodeError as exc:
+        raise M26ProbeError(f"ArcGIS JSON parse failure: {source_id}/{label}") from exc
+    if not isinstance(payload, dict):
+        raise M26ProbeError(f"ArcGIS JSON root is not an object: {source_id}/{label}")
+    return payload
+
+
+def dibi_runtime_unavailable(payload: dict[str, Any]) -> bool:
+    error = payload.get("error")
+    if not isinstance(error, dict):
+        return False
+    message = str(error.get("message", "")).casefold()
+    return int(error.get("code", 0) or 0) == 500 and "not started" in message
+
+
 def probe_arcgis(row: dict[str, str]) -> tuple[dict[str, Any], dict[str, Any]]:
     source_id = row["source_id"]
-    base = row["source_url"].rstrip("/")
+    preferred_base = row["source_url"].rstrip("/")
+    base = preferred_base
     status, final_url, content_type, body = fetch(with_json_format(base))
     if status != 200:
         raise M26ProbeError(f"ArcGIS HTTP {status}: {source_id}")
-    try:
-        primary = json.loads(body.decode("utf-8"))
-    except json.JSONDecodeError as exc:
-        raise M26ProbeError(f"ArcGIS JSON parse failure: {source_id}") from exc
-    if isinstance(primary, dict) and primary.get("error"):
-        raise M26ProbeError(f"ArcGIS service error: {source_id}: {primary['error']}")
+    primary = parse_arcgis_payload(body, source_id, "primary")
+
+    transport: dict[str, Any] = {
+        "preferred_endpoint": preferred_base,
+        "fallback_used": False,
+    }
+    if primary.get("error"):
+        if source_id == "dibi_kabupaten_hidromet_2015_2024" and dibi_runtime_unavailable(primary):
+            amendment = load_dibi_transport_amendment(preferred_base)
+            transport["preferred_endpoint_error"] = primary["error"]
+            base = str(amendment["fallback_endpoint"]).rstrip("/")
+            status, final_url, content_type, body = fetch(with_json_format(base))
+            if status != 200:
+                raise M26ProbeError(f"DIBI fallback ArcGIS HTTP {status}")
+            primary = parse_arcgis_payload(body, source_id, "fallback-primary")
+            if primary.get("error"):
+                raise M26ProbeError(f"DIBI fallback service error: {primary['error']}")
+            transport.update(
+                {
+                    "fallback_used": True,
+                    "fallback_endpoint": base,
+                    "transport_amendment_path": DIBI_AMENDMENT.relative_to(ROOT).as_posix(),
+                    "transport_amendment_sha256": sha256_bytes(DIBI_AMENDMENT.read_bytes()),
+                }
+            )
+        else:
+            raise M26ProbeError(f"ArcGIS service error: {source_id}: {primary['error']}")
 
     snapshot: dict[str, Any] = {
         "source_id": source_id,
         "requested_url": with_json_format(base),
         "final_url": final_url,
         "content_type": content_type,
+        "transport": transport,
         "primary": primary,
         "extra": {},
     }
@@ -194,11 +252,8 @@ def probe_arcgis(row: dict[str, str]) -> tuple[dict[str, Any], dict[str, Any]]:
             extra_status, extra_final, extra_type, extra_body = fetch(extra_url)
             if extra_status != 200:
                 raise M26ProbeError(f"ArcGIS extra HTTP {extra_status}: {source_id}/{suffix}")
-            try:
-                extra_payload = json.loads(extra_body.decode("utf-8"))
-            except json.JSONDecodeError as exc:
-                raise M26ProbeError(f"ArcGIS extra JSON parse failure: {source_id}/{suffix}") from exc
-            if isinstance(extra_payload, dict) and extra_payload.get("error"):
+            extra_payload = parse_arcgis_payload(extra_body, source_id, suffix)
+            if extra_payload.get("error"):
                 raise M26ProbeError(f"ArcGIS extra service error: {source_id}/{suffix}: {extra_payload['error']}")
             snapshot["extra"][suffix] = {
                 "requested_url": extra_url,
@@ -214,9 +269,12 @@ def probe_arcgis(row: dict[str, str]) -> tuple[dict[str, Any], dict[str, Any]]:
                 "error": str(exc),
             }
 
-    expected = EXPECTED_SERVICE_TOKENS[source_id]
     service_identity = " ".join(str(primary.get(key, "")) for key in ("name", "serviceDescription", "mapName"))
-    identity_ok = expected.casefold() in service_identity.casefold()
+    if source_id == "dibi_kabupaten_hidromet_2015_2024" and transport["fallback_used"]:
+        identity_ok = "DIBI_Hidromet_2015_2024".casefold() in service_identity.casefold()
+    else:
+        expected = EXPECTED_SERVICE_TOKENS[source_id]
+        identity_ok = expected.casefold() in service_identity.casefold()
     if not identity_ok:
         raise M26ProbeError(f"ArcGIS source identity mismatch: {source_id}: {service_identity!r}")
 
@@ -226,6 +284,7 @@ def probe_arcgis(row: dict[str, str]) -> tuple[dict[str, Any], dict[str, Any]]:
         "pixel_type": primary.get("pixelType"),
         "spatial_reference": (primary.get("spatialReference") or {}).get("wkid"),
         "full_extent": primary.get("fullExtent"),
+        "transport_fallback_used": bool(transport["fallback_used"]),
     }
 
     if source_id == "inarisk_capacity_2021":
@@ -240,9 +299,11 @@ def probe_arcgis(row: dict[str, str]) -> tuple[dict[str, Any], dict[str, Any]]:
         state = "qualified_explicit_vintage_metadata" if qualifies else "unavailable_or_unparseable"
         evidence = "official ImageServer/item metadata explicitly binds population-distribution surface to 2020" if qualifies else "population service failed explicit-vintage metadata contract"
     elif source_id == "dibi_kabupaten_hidromet_2015_2024":
-        required_fields = {"id_kab_bps", "NAMA_KAB", "Total_basa", "Total_keri"}
+        amendment = load_dibi_transport_amendment(preferred_base)
+        required_fields = set(str(value) for value in amendment["required_schema_fields"])
         qualified_layers: list[str] = []
         layer_fields: dict[str, list[str]] = {}
+        layer_names: dict[str, str] = {}
         for suffix in ARC_EXTRA[source_id]:
             extra = snapshot["extra"].get(suffix, {})
             layer = extra.get("payload") if isinstance(extra, dict) else None
@@ -250,15 +311,26 @@ def probe_arcgis(row: dict[str, str]) -> tuple[dict[str, Any], dict[str, Any]]:
                 continue
             field_names = [str(field.get("name", "")) for field in layer.get("fields", [])]
             layer_fields[suffix] = field_names
-            if required_fields.issubset(set(field_names)):
+            layer_names[suffix] = str(layer.get("name", ""))
+            if required_fields.issubset(set(field_names)) and str(layer.get("name", "")) == "Kabupaten_basah_kering":
                 qualified_layers.append(suffix)
         metadata["layer_fields"] = layer_fields
+        metadata["layer_names"] = layer_names
         metadata["qualified_layer_ids"] = qualified_layers
-        primary_layer_ids = [str(layer.get("id")) for layer in primary.get("layers", []) if isinstance(layer, dict)]
-        metadata["primary_layer_ids"] = primary_layer_ids
-        qualifies = "2015_2024" in service_identity and bool(qualified_layers)
+        metadata["primary_layer_ids"] = [str(layer.get("id")) for layer in primary.get("layers", []) if isinstance(layer, dict)]
+        coverage_ok = "2015_2024" in service_identity
+        fallback_layer_ok = True
+        if transport["fallback_used"]:
+            fallback_layer_ok = str(amendment["fallback_layer_id"]) in qualified_layers
+        qualifies = coverage_ok and bool(qualified_layers) and fallback_layer_ok
         state = "qualified_explicit_coverage_metadata" if qualifies else "unavailable_or_unparseable"
-        evidence = "official MapServer identity binds 2015-2024 and at least one declared kabupaten layer exposes BPS id plus locked aggregate hydromet fields" if qualifies else "DIBI service failed explicit-coverage/schema contract"
+        evidence = (
+            "official DIBI 2015-2024 MapServer coverage and kabupaten schema verified; documented same-family transport fallback used after preferred dedicated service reported runtime-not-started"
+            if qualifies and transport["fallback_used"]
+            else "official DIBI 2015-2024 MapServer coverage and kabupaten schema verified"
+            if qualifies
+            else "DIBI service failed explicit-coverage/schema contract"
+        )
     else:
         raster_ok = primary.get("bandCount") == 1
         state = "endpoint_verified_version_binding_unresolved" if raster_ok else "unavailable_or_unparseable"
@@ -393,9 +465,11 @@ def run() -> dict[str, Any]:
         "source_ids": [row["source_id"] for row in results],
         "qualification_states": state_by_id,
         "expected_qualification_states_match": states_match,
-        "qualified_numeric_source_ids": [
-            row["source_id"] for row in results if bool(row["numeric_extraction_authorized"])
-        ],
+        "qualified_numeric_source_ids": [row["source_id"] for row in results if bool(row["numeric_extraction_authorized"])],
+        "dibi_transport_amendment": {
+            "path": DIBI_AMENDMENT.relative_to(ROOT).as_posix(),
+            "sha256": sha256_bytes(DIBI_AMENDMENT.read_bytes()),
+        },
         "hazard_vulnerability_numeric_extraction_authorized": False,
         "event_impact_panel_materialized": False,
         "numeric_spatial_aggregation_performed": False,
@@ -411,11 +485,7 @@ def run() -> dict[str, Any]:
             "source_qualification_sha256": hashlib.sha256(OUT.read_bytes()).hexdigest(),
         },
         "snapshots": [
-            {
-                "source_id": row["source_id"],
-                "path": row["snapshot_path"],
-                "sha256": row["snapshot_sha256"],
-            }
+            {"source_id": row["source_id"], "path": row["snapshot_path"], "sha256": row["snapshot_sha256"]}
             for row in results
         ],
     }
@@ -427,11 +497,7 @@ def run() -> dict[str, Any]:
             for key in EXPECTED_IDS
             if state_by_id.get(key) != EXPECTED_FINAL_STATES[key]
         }
-        details = {
-            row["source_id"]: row["identity_evidence"]
-            for row in results
-            if row["source_id"] in mismatches
-        }
+        details = {row["source_id"]: row["identity_evidence"] for row in results if row["source_id"] in mismatches}
         raise M26ProbeError(
             f"M26 Stage 0 qualification did not meet preregistered outcome gates: {mismatches}; details={details}"
         )
