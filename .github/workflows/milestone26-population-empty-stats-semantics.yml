@@ -1,0 +1,101 @@
+name: Milestone 26 population empty-stats semantics
+
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone26_population_empty_stats_semantics_contract.json
+      - scripts/probe_milestone26_population_empty_stats_semantics.py
+      - tests/test_milestone26_population_empty_stats_semantics.py
+      - .github/workflows/milestone26-population-empty-stats-semantics.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  qualify-exact-cell-semantics:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install focused dependencies
+        run: python -m pip install --disable-pip-version-check numpy shapely rasterio pyproj
+
+      - name: Compile exact-cell semantics probe
+        run: python -m py_compile scripts/probe_milestone26_population_empty_stats_semantics.py
+
+      - name: Run locked tests before live requests
+        run: python -m unittest tests.test_milestone26_population_empty_stats_semantics -v
+
+      - name: Probe exact anomalous cell across both qualified transports
+        run: python -m scripts.probe_milestone26_population_empty_stats_semantics
+
+      - name: Assert frozen diagnostic evidence and scientific boundaries
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path('data/manifests/milestone26_population_empty_stats_semantics.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-empty-stats-semantics/v1'
+          target = manifest['target']
+          assert target['geography_id'] == 'idn.13.1377'
+          assert target['partition_index'] == 1
+          assert target['selected_cell_count'] == 1
+          assert target['center_derivation']['rerasterized_selected_cell_count'] == 1
+          assert len(manifest['image_server_repeats']) == 3
+          assert len(manifest['mapserver_repeats']) == 3
+          assert manifest['decision'] in {
+              'deterministic_no_valid_source_value_for_exact_native_cell',
+              'transient_image_server_empty_statistics',
+              'transport_disagreement',
+              'inconclusive',
+          }
+          for row in manifest['image_server_repeats'] + manifest['mapserver_repeats']:
+              response = row['response']
+              raw = Path(response['raw_path'])
+              assert raw.exists()
+              assert hashlib.sha256(raw.read_bytes()).hexdigest() == response['raw_sha256']
+              assert len(raw.read_bytes()) == response['raw_bytes']
+          assert manifest['empty_statistics_global_semantics_qualified'] is False
+          assert manifest['other_empty_partitions_authorized_without_reference_confirmation'] is False
+          assert manifest['numeric_aggregates_computed'] is False
+          assert manifest['cross_geography_component_values_materialized'] is False
+          assert manifest['substantive_values_promoted'] is False
+          assert manifest['stage1_population_production_extraction_authorized'] is False
+          assert manifest['aggregation_semantics_changed'] is False
+          assert manifest['source_family_changed'] is False
+          assert manifest['minimum_valid_fraction_changed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          PY
+
+      - name: Re-run focused tests after live requests
+        run: python -m unittest tests.test_milestone26_population_empty_stats_semantics -v
+
+      - name: Commit frozen exact-cell semantics evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- \
+            data/processed/bnpb/m26_population_empty_stats_semantics \
+            data/manifests/milestone26_population_empty_stats_semantics.json
+          if git diff --cached --quiet; then
+            echo 'No empty-stats semantics evidence changes'
+            exit 0
+          fi
+          git commit -m "Freeze Milestone 26 empty-stats semantics"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
