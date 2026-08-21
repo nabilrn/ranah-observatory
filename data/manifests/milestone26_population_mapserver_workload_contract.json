@@ -1,0 +1,43 @@
+{
+  "schema": "ranah-observatory/milestone26-population-mapserver-workload-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_qualification",
+  "locked_before_workload_computation": true,
+  "purpose": "Compute geometry-only native-grid workload for the exact 19 BIG June 2026 fixed-current-boundary geographies before deciding whether batch-64 MapServer identify transport is operationally suitable for full Stage 1 population extraction.",
+  "source_values_accessed": false,
+  "geography_frame": "BIG_June_2026_fixed_current_boundary",
+  "source_grid_metadata": "frozen INARISKPOP_2020 ImageServer metadata only",
+  "native_grid": {
+    "crs_epsg": 3395,
+    "pixel_size_m": 100,
+    "boundary_rule": "pixel_center_inside_polygon",
+    "all_touched": false
+  },
+  "qualified_batch_size": 64,
+  "diagnostic_headroom_batch_size": 128,
+  "outputs_per_geography": [
+    "aligned_window_width",
+    "aligned_window_height",
+    "aligned_window_pixel_count",
+    "inside_boundary_native_cell_count",
+    "batch64_request_count_ceiling",
+    "batch128_request_count_ceiling"
+  ],
+  "outputs_total": [
+    "inside_boundary_native_cell_count",
+    "batch64_request_count_ceiling",
+    "batch128_request_count_ceiling"
+  ],
+  "no_operational_feasibility_threshold_is_set_in_this_contract": true,
+  "stage1_population_aggregation_authorized": false,
+  "numeric_source_value_extraction_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "cross_geography_numeric_source_extraction_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
