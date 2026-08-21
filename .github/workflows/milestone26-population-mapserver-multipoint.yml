@@ -1,0 +1,85 @@
+name: Milestone 26 population MapServer multipoint
+
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone26_population_mapserver_pixel_semantics_amendment.json
+      - data/manifests/milestone26_population_mapserver_multipoint_contract.json
+      - scripts/probe_milestone26_population_mapserver_multipoint.py
+      - tests/test_milestone26_population_mapserver_multipoint.py
+      - .github/workflows/milestone26-population-mapserver-multipoint.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  qualify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile multipoint probe
+        run: python -m py_compile scripts/probe_milestone26_population_mapserver_multipoint.py
+
+      - name: Run locked tests before live probe
+        run: |
+          python -m pip install --disable-pip-version-check pytest
+          python -m pytest -q tests/test_milestone26_population_mapserver_multipoint.py
+
+      - name: Probe MapServer multipoint pixel transport
+        run: python -m scripts.probe_milestone26_population_mapserver_multipoint
+
+      - name: Assert frozen diagnostic boundaries
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path('data/manifests/milestone26_population_mapserver_multipoint.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-mapserver-multipoint/v1'
+          assert manifest['input_point_count'] == 4
+          assert manifest['accepted_pixel_field'] == 'Stretch.Pixel Value'
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['numeric_aggregation_performed'] is False
+          assert manifest['substantive_value_promotion_performed'] is False
+          assert manifest['cross_geography_numeric_extraction_performed'] is False
+          assert manifest['aggregation_semantics_changed'] is False
+          assert manifest['source_family_changed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          response = manifest['response']
+          evidence = Path(response['body_path'])
+          assert evidence.exists()
+          assert hashlib.sha256(evidence.read_bytes()).hexdigest() == response['body_sha256']
+          PY
+
+      - name: Re-run focused tests after live probe
+        run: python -m pytest -q tests/test_milestone26_population_mapserver_multipoint.py
+
+      - name: Commit frozen multipoint evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- \
+            data/processed/bnpb/m26_population_mapserver_multipoint \
+            data/manifests/milestone26_population_mapserver_multipoint.json
+          if git diff --cached --quiet; then
+            echo 'No multipoint evidence changes'
+            exit 0
+          fi
+          git commit -m "Freeze Milestone 26 population MapServer multipoint"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
