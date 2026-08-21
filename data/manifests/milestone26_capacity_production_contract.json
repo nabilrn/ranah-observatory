@@ -1,0 +1,72 @@
+{
+  "schema": "ranah-observatory/milestone26-capacity-production-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_capacity_component_materialization",
+  "contract_locked_before_cross_geography_numeric_extraction": true,
+  "source_id": "inarisk_capacity_2021",
+  "component_class": "capacity",
+  "claim_type": "modeled_spatial_index",
+  "reference_year": 2021,
+  "spatial_frame": "BIG_June_2026_fixed_current_boundary",
+  "geography_count_expected": 19,
+  "source_metadata": "data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json",
+  "nodata_amendment": "data/manifests/milestone26_stage1_nodata_transport_amendment.json",
+  "semantic_evidence": {
+    "url": "https://inarisk.bnpb.go.id/BUKU-RBI-2022/files/basic-html/page126.html",
+    "required_phrase": "Nilai indeks ketahanan daerah berada pada rentang nilai 0 – 1",
+    "frozen_path": "data/processed/bnpb/m26_capacity_component/capacity-index-scale.html",
+    "evidence_role": "establish_capacity_index_scale_not_raster_vintage"
+  },
+  "source_transport": {
+    "service": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer",
+    "operation": "exportImage",
+    "analysis_extent": "one source-native-grid-aligned bounding box per geography",
+    "format": "tiff",
+    "pixel_type": "F32",
+    "compression": "LZ77",
+    "interpolation": "RSP_NearestNeighbor",
+    "native_grid_crs_epsg": 3395,
+    "native_pixel_size_m": 100,
+    "frozen_valid_value_min": 0.0,
+    "frozen_valid_value_max": 0.7900000214576721,
+    "single_file_max_bytes": 95000000
+  },
+  "aggregation": {
+    "estimand": "mean_of_valid_native_grid_cells_with_centers_inside_fixed_boundary",
+    "primary_value_field": "capacity_index_2021_mean",
+    "boundary_rule": "pixel_center_inside_polygon",
+    "all_touched": false,
+    "minimum_valid_fraction_inside_geography": 0.99,
+    "additive_sum_authorized": false,
+    "area_weighted_rescaling_authorized": false,
+    "downsampling_authorized": false,
+    "upsampling_authorized": false,
+    "imputation_authorized": false
+  },
+  "output": {
+    "component_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-component.csv",
+    "provenance_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-provenance.csv",
+    "manifest": "data/manifests/milestone26_stage1_capacity_component.json",
+    "raw_root": "data/processed/bnpb/m26_capacity_component",
+    "primary_value_decimal_places": 9
+  },
+  "reproducibility": {
+    "freeze_exact_tiff_bytes": true,
+    "freeze_raster_sha256": true,
+    "freeze_request_sidecar": true,
+    "offline_rebuild_required": true,
+    "live_and_offline_outputs_must_be_byte_identical": true
+  },
+  "capacity_component_materialization_authorized": true,
+  "cross_geography_numeric_source_extraction_authorized": true,
+  "population_component_reextraction_authorized": false,
+  "substantive_interpretation_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "source_family_changed": false,
+  "aggregation_semantics_changed": false,
+  "minimum_valid_fraction_changed": false
+}
