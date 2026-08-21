@@ -5,7 +5,9 @@ on:
     paths:
       - data/manifests/milestone26_stage1_statistics_transport_probe_contract.json
       - scripts/probe_milestone26_statistics_transport.py
+      - scripts/probe_milestone26_statistics_transport_v2.py
       - tests/test_milestone26_statistics_transport.py
+      - tests/test_milestone26_statistics_transport_v2.py
       - .github/workflows/milestone26-statistics-transport-probe.yml
   workflow_dispatch:
 
@@ -29,14 +31,19 @@ jobs:
       - name: Install focused spatial dependencies
         run: python -m pip install --disable-pip-version-check pytest numpy shapely pyproj rasterio
 
-      - name: Compile statistics transport probe
-        run: python -m py_compile scripts/probe_milestone26_statistics_transport.py
+      - name: Compile statistics transport probes
+        run: |
+          python -m py_compile scripts/probe_milestone26_statistics_transport.py
+          python -m py_compile scripts/probe_milestone26_statistics_transport_v2.py
 
       - name: Run locked transport tests before live probe
-        run: python -m pytest -q tests/test_milestone26_statistics_transport.py
+        run: |
+          python -m pytest -q \
+            tests/test_milestone26_statistics_transport.py \
+            tests/test_milestone26_statistics_transport_v2.py
 
       - name: Compare official server statistics with frozen-grid reference method
-        run: python -m scripts.probe_milestone26_statistics_transport
+        run: python -m scripts.probe_milestone26_statistics_transport_v2
 
       - name: Assert equivalence qualification and claim boundaries
         run: |
@@ -73,7 +80,10 @@ jobs:
           PY
 
       - name: Re-run focused tests after live probe
-        run: python -m pytest -q tests/test_milestone26_statistics_transport.py
+        run: |
+          python -m pytest -q \
+            tests/test_milestone26_statistics_transport.py \
+            tests/test_milestone26_statistics_transport_v2.py
 
       - name: Commit frozen transport-equivalence evidence
         run: |
