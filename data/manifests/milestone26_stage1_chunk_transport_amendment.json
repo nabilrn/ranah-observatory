@@ -1,19 +1,29 @@
 {
   "schema": "ranah-observatory/milestone26-stage1-chunk-transport-amendment/v1",
+  "revision": 2,
   "milestone": 26,
   "stage": 1,
   "amendment_type": "native_grid_export_chunking",
-  "trigger": {
-    "workflow_run_id": 32455066555,
-    "observed_at_utc": "2026-08-21T06:40:55Z",
-    "failure": "INARISKPOP_2020 native-grid export request for a 2438 x 2952 pixel geography window failed after transport retries"
-  },
+  "transport_history": [
+    {
+      "workflow_run_id": 32455066555,
+      "observed_at_utc": "2026-08-21T06:40:55Z",
+      "attempted_window_pixels": "2438x2952",
+      "failure": "INARISKPOP_2020 whole native-grid geography export failed after transport retries"
+    },
+    {
+      "workflow_run_id": 32460012029,
+      "observed_at_utc": "2026-08-21T07:52:19Z",
+      "attempted_window_pixels": "1500x1500",
+      "failure": "INARISKPOP_2020 fixed native-grid chunk still failed after transport retries"
+    }
+  ],
   "affected_source_ids": [
     "inarisk_capacity_2021",
     "inarisk_population_2020"
   ],
-  "maximum_tile_width_pixels": 1500,
-  "maximum_tile_height_pixels": 1500,
+  "maximum_tile_width_pixels": 500,
+  "maximum_tile_height_pixels": 500,
   "tile_alignment_rule": "split the already locked source-native 100 m aligned geography window only at integer source-grid row/column boundaries",
   "tile_overlap_pixels": 0,
   "tile_gap_pixels": 0,
@@ -34,5 +44,5 @@
   "statistical_model_fit_authorized": false,
   "causal_claim_authorized": false,
   "monetary_wasted_potential_estimate_authorized": false,
-  "claim_boundary": "chunking changes only transport request size; the exact native-grid cell membership and preregistered component estimands remain unchanged"
+  "claim_boundary": "revision 2 changes only transport request size from 1500x1500 to 500x500 after a source-server timeout; exact native-grid cell membership and preregistered component estimands remain unchanged"
 }
