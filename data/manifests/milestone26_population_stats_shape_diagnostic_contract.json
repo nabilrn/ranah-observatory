@@ -1,0 +1,49 @@
+{
+  "schema": "ranah-observatory/milestone26-population-stats-shape-diagnostic-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_shape_diagnostic",
+  "locked_before_live_shape_diagnostic": true,
+  "trigger": {
+    "failed_workflow_run_id": 32502736885,
+    "failed_job_id": 96835950724,
+    "failure_class": "unexpected_computeStatisticsHistograms_statistics_shape",
+    "production_values_committed": false
+  },
+  "source_id": "inarisk_population_2020",
+  "source_service": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer",
+  "operation": "computeStatisticsHistograms",
+  "frozen_partition_manifest": "data/manifests/milestone26_population_stats_partitions.json",
+  "partition_count_maximum": 420,
+  "scan_order": ["geography_id_ascending", "partition_index_ascending"],
+  "stop_rule": "stop_immediately_after_first_nonstandard_statistics_shape",
+  "standard_shape_contract": {
+    "top_level_json_object_required": true,
+    "arcgis_error_prohibited": true,
+    "statistics_must_be_list": true,
+    "statistics_length_must_equal": 1,
+    "statistics_first_item_must_be_object": true,
+    "required_fields": ["count", "sum", "mean", "min", "max", "skipX", "skipY"]
+  },
+  "diagnostic_classes": [
+    "missing_statistics",
+    "statistics_not_list",
+    "empty_statistics",
+    "multiple_statistics",
+    "statistics_item_not_object",
+    "missing_required_fields",
+    "transport_or_arcgis_error"
+  ],
+  "freeze_first_nonstandard_raw_response": true,
+  "standard_response_numeric_values_may_not_be_recorded_in_manifest": true,
+  "numeric_aggregates_computed": false,
+  "cross_geography_component_values_materialized": false,
+  "substantive_values_promoted": false,
+  "stage1_population_production_extraction_authorized_by_this_diagnostic": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
