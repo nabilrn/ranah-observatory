@@ -107,6 +107,19 @@ def test_pilot_selection_is_geometry_only_and_deterministic() -> None:
         {"geography_id": "b", "geometry": mapping(Polygon([(0, 0), (0.01, 0), (0.01, 0.01), (0, 0.01), (0, 0)]))},
         {"geography_id": "a", "geometry": mapping(Polygon([(0, 0), (0.01, 0), (0.01, 0.01), (0, 0.01), (0, 0)]))},
     ]
-    capacity_meta = {"origin_x": 0.0, "origin_y": 0.0, "pixel_x": 100.0, "pixel_y": 100.0}
+    # Match the actual ImageServer metadata shape consumed by aligned_window.
+    # The synthetic extent is deliberately value-free: it only defines the
+    # source-grid origin and export limits needed to rank geometry footprint.
+    capacity_meta = {
+        "fullExtent": {
+            "xmin": 0.0,
+            "ymin": -2000.0,
+            "xmax": 2000.0,
+            "ymax": 2000.0,
+            "spatialReference": {"wkid": 3395},
+        },
+        "maxImageWidth": 15000,
+        "maxImageHeight": 4100,
+    }
     feature, _projected, _bbox, _width, _height = m26.select_geometry_only_pilot(features, capacity_meta)
     assert feature["geography_id"] == "a"
