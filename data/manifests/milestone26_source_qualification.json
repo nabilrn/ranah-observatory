@@ -13,7 +13,7 @@
   "numeric_spatial_aggregation_performed": false,
   "outputs": {
     "source_qualification": "data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv",
-    "source_qualification_sha256": "475322fc86412f54bf6d0f9d78db02989786953137c5eea0c61becd307763471"
+    "source_qualification_sha256": "0ccc9c847c39d10b5e4ee6a2b01818e956003482f20c6a23a5dbe9ca9f3c29cd"
   },
   "posthoc_source_family_search_performed": false,
   "qualification_states": {
@@ -52,7 +52,7 @@
     },
     {
       "path": "data/processed/bnpb/m26_source_qualification/bnpb_event_impact_table.html",
-      "sha256": "cbf32a13435c1a9726aab29cf521f1cc56d73ff32314996f8a1af315399fad0e",
+      "sha256": "f5016c54fa85f83a5f07a048f4b27e6eb01b8be16ebb1916e9692610a154d303",
       "source_id": "bnpb_event_impact_table"
     },
     {
