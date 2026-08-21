@@ -1,0 +1,132 @@
+name: Milestone 26 population component
+
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone26_population_production_contract.json
+      - scripts/materialize_milestone26_population_component.py
+      - tests/test_milestone26_population_component.py
+      - .github/workflows/milestone26-population-component.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-population:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install focused dependencies
+        run: python -m pip install --disable-pip-version-check pytest numpy shapely pyproj rasterio
+
+      - name: Compile production materializer
+        run: python -m py_compile scripts/materialize_milestone26_population_component.py
+
+      - name: Run locked tests before cross-geography extraction
+        run: python -m pytest -q tests/test_milestone26_population_component.py
+
+      - name: Fetch and freeze 19-geography population component
+        run: python -m scripts.materialize_milestone26_population_component --fetch
+
+      - name: Assert materialized component and evidence boundaries
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+
+          manifest_path = Path('data/manifests/milestone26_stage1_population_component.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-stage1-population-component/v1'
+          assert manifest['source_id'] == 'inarisk_population_2020'
+          assert manifest['component_class'] == 'exposure'
+          assert manifest['claim_type'] == 'modeled_population_exposure_proxy'
+          assert manifest['reference_year'] == 2020
+          assert manifest['geography_count'] == 19
+          assert manifest['observation_count'] == 19
+          assert manifest['partition_count'] == 420
+          assert manifest['inside_native_cell_count'] == 4212327
+          assert manifest['valid_native_cell_count'] > 0
+          assert manifest['all_geographies_valid_fraction_pass'] is True
+          assert manifest['transport_equivalence_qualified'] is True
+          assert manifest['raw_response_count'] == 420
+          assert manifest['population_component_materialized'] is True
+          assert manifest['stage1_complete'] is False
+          assert manifest['capacity_component_materialized_in_this_run'] is False
+          assert manifest['substantive_interpretation_performed'] is False
+          assert manifest['cross_component_temporal_aggregation_performed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+
+          semantic = manifest['semantic_evidence']
+          semantic_path = Path(semantic['path'])
+          assert semantic_path.exists()
+          assert hashlib.sha256(semantic_path.read_bytes()).hexdigest() == semantic['sha256']
+
+          index_path = Path(manifest['retrieval_index']['path'])
+          assert hashlib.sha256(index_path.read_bytes()).hexdigest() == manifest['retrieval_index']['sha256']
+          index = json.loads(index_path.read_text(encoding='utf-8'))
+          assert index['response_count'] == 420
+          assert len(index['responses']) == 420
+          for response in index['responses']:
+              raw_path = Path(response['raw_path'])
+              assert raw_path.exists(), raw_path
+              assert hashlib.sha256(raw_path.read_bytes()).hexdigest() == response['raw_sha256']
+
+          frame_path = Path(manifest['outputs']['component_frame'])
+          provenance_path = Path(manifest['outputs']['provenance_frame'])
+          assert hashlib.sha256(frame_path.read_bytes()).hexdigest() == manifest['outputs']['component_frame_sha256']
+          assert hashlib.sha256(provenance_path.read_bytes()).hexdigest() == manifest['outputs']['provenance_frame_sha256']
+          with frame_path.open(newline='', encoding='utf-8') as handle:
+              rows = list(csv.DictReader(handle))
+          assert len(rows) == 19
+          assert len({row['geography_id'] for row in rows}) == 19
+          assert all(float(row['population_valid_fraction']) >= 0.99 for row in rows)
+          assert all(float(row['population_exposure_proxy_2020_persons']) >= 0.0 for row in rows)
+          assert all(row['claim_type'] == 'modeled_population_exposure_proxy' for row in rows)
+          assert all(row['risk_synthesis_authorized'] == 'false' for row in rows)
+          PY
+
+      - name: Prove offline byte-identical rebuild
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/m26-pop-live
+          cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-component.csv /tmp/m26-pop-live/frame.csv
+          cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-provenance.csv /tmp/m26-pop-live/provenance.csv
+          cp data/manifests/milestone26_stage1_population_component.json /tmp/m26-pop-live/manifest.json
+          python -m scripts.materialize_milestone26_population_component
+          cmp /tmp/m26-pop-live/frame.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-component.csv
+          cmp /tmp/m26-pop-live/provenance.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-provenance.csv
+          cmp /tmp/m26-pop-live/manifest.json data/manifests/milestone26_stage1_population_component.json
+
+      - name: Re-run focused tests after materialization
+        run: python -m pytest -q tests/test_milestone26_population_component.py
+
+      - name: Commit frozen population component evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- \
+            data/processed/bnpb/m26_population_component_stats \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-component.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-provenance.csv \
+            data/manifests/milestone26_stage1_population_component.json
+          if git diff --cached --quiet; then
+            echo 'No population component evidence changes'
+            exit 0
+          fi
+          git commit -m "Freeze Milestone 26 population component"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
