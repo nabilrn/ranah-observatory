@@ -34,14 +34,13 @@ def test_tile_specs_cover_window_exactly_without_overlap_or_gap() -> None:
     assert sum(item["width"] * item["height"] for item in specs) == 2438 * 2952
     assert {item["width"] for item in specs} == {1500, 938}
     assert {item["height"] for item in specs} == {1500, 1452}
-    cells = set()
-    for item in specs:
-        for row in range(item["row0"], item["row1"]):
-            for col in range(item["col0"], item["col1"]):
-                key = (row, col)
-                assert key not in cells
-                cells.add(key)
-    assert len(cells) == 2438 * 2952
+    row_ranges = sorted({(item["row0"], item["row1"]) for item in specs})
+    col_ranges = sorted({(item["col0"], item["col1"]) for item in specs})
+    assert row_ranges == [(0, 1500), (1500, 2952)]
+    assert col_ranges == [(0, 1500), (1500, 2438)]
+    assert {(item["row0"], item["col0"]) for item in specs} == {
+        (0, 0), (0, 1500), (1500, 0), (1500, 1500)
+    }
 
 
 def test_single_small_window_remains_one_native_tile() -> None:
