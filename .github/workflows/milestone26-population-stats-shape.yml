@@ -1,0 +1,97 @@
+name: Milestone 26 population stats shape diagnostic
+
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone26_population_stats_shape_diagnostic_contract.json
+      - scripts/probe_milestone26_population_stats_shape.py
+      - tests/test_milestone26_population_stats_shape.py
+      - .github/workflows/milestone26-population-stats-shape.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose-shape:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install focused dependencies
+        run: python -m pip install --disable-pip-version-check numpy shapely pyproj rasterio
+
+      - name: Compile diagnostic probe
+        run: python -m py_compile scripts/probe_milestone26_population_stats_shape.py
+
+      - name: Run locked diagnostic tests before live scan
+        run: python -m unittest tests.test_milestone26_population_stats_shape -v
+
+      - name: Scan frozen partitions until first nonstandard response shape
+        run: python -m scripts.probe_milestone26_population_stats_shape
+
+      - name: Assert diagnostic-only boundaries and frozen anomaly evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_population_stats_shape_diagnostic.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-stats-shape-diagnostic/v1'
+          assert 1 <= manifest['checked_partition_count'] <= 420
+          assert manifest['standard_shape_partition_count_before_first_nonstandard'] <= manifest['checked_partition_count']
+          assert manifest['standard_response_numeric_values_recorded'] is False
+          assert manifest['numeric_aggregates_computed'] is False
+          assert manifest['cross_geography_component_values_materialized'] is False
+          assert manifest['substantive_values_promoted'] is False
+          assert manifest['stage1_population_production_extraction_authorized'] is False
+          assert manifest['aggregation_semantics_changed'] is False
+          assert manifest['source_family_changed'] is False
+          assert manifest['minimum_valid_fraction_changed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+
+          if manifest['first_nonstandard_found']:
+              first = manifest['first_nonstandard']
+              assert first is not None
+              assert first['classification'] != 'standard'
+              raw = Path(first['raw_response_path'])
+              assert raw.exists()
+              assert hashlib.sha256(raw.read_bytes()).hexdigest() == first['raw_response_sha256']
+              assert len(raw.read_bytes()) == first['raw_response_bytes']
+              assert manifest['checked_partition_count'] == manifest['standard_shape_partition_count_before_first_nonstandard'] + 1
+          else:
+              assert manifest['first_nonstandard'] is None
+              assert manifest['checked_partition_count'] == 420
+              assert manifest['standard_shape_partition_count_before_first_nonstandard'] == 420
+          PY
+
+      - name: Re-run diagnostic tests after live scan
+        run: python -m unittest tests.test_milestone26_population_stats_shape -v
+
+      - name: Commit frozen shape diagnostic evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- data/manifests/milestone26_population_stats_shape_diagnostic.json
+          if [ -d data/processed/bnpb/m26_population_stats_shape_diagnostic ]; then
+            git add -f -- data/processed/bnpb/m26_population_stats_shape_diagnostic
+          fi
+          if git diff --cached --quiet; then
+            echo 'No stats shape diagnostic evidence changes'
+            exit 0
+          fi
+          git commit -m "Freeze Milestone 26 population stats shape diagnostic"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
