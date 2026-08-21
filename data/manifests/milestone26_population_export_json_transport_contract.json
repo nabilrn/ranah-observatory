@@ -1,0 +1,42 @@
+{
+  "schema": "ranah-observatory/milestone26-population-export-json-transport-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_diagnostic",
+  "locked_before_live_probe": true,
+  "source_id": "inarisk_population_2020",
+  "official_service": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer",
+  "motivation": "direct exportImage image streaming failed even for the geometry-only-selected 82x47 native-cell pilot; official ArcGIS exportImage also supports f=json returning an href to the generated image resource",
+  "pilot_rule": "reuse exactly the already locked geometry-only-selected pilot and its source-native aligned population window",
+  "export_request": {
+    "operation": "exportImage",
+    "bbox_sr": 3395,
+    "image_sr": 3395,
+    "pixel_size_m": 100,
+    "format": "tiff",
+    "pixel_type": "F32",
+    "interpolation": "RSP_NearestNeighbor",
+    "compression": "LZ77",
+    "return_square_pixels": true,
+    "response_format": "json"
+  },
+  "href_follow": {
+    "required_if_json_success": true,
+    "same_generated_image_only": true,
+    "redirects_allowed": true,
+    "timeout_seconds": 45
+  },
+  "success_gate": "exportImage f=json must return HTTP 200 parseable JSON with href, width, height, and extent matching the locked request dimensions; following href must return a TIFF whose raster metadata is one band, EPSG:3395, 100 m grid and whose byte size is below GitHub file limits",
+  "numeric_aggregation_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "equivalence_decision_authorized": false,
+  "pilot_selection_changed": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "cross_geography_numeric_extraction_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "decision_rule": "if JSON indirection succeeds, preregister a separate equivalence/materialization amendment before any cross-geography population values; if it fails, population exposure remains transport-blocked"
+}
