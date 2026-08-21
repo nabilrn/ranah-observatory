@@ -43,8 +43,29 @@ def test_only_explicit_vintage_or_coverage_states_authorize_later_numeric_extrac
     assert m26.EXPECTED_FINAL_STATES["dibi_kabupaten_hidromet_2015_2024"] == "qualified_explicit_coverage_metadata"
 
 
-def test_dibi_schema_probe_accepts_either_declared_duplicate_child_layer() -> None:
-    assert m26.ARC_EXTRA["dibi_kabupaten_hidromet_2015_2024"] == ["0", "1"]
+def test_dibi_transport_amendment_is_same_family_and_non_numeric() -> None:
+    rows = m26.read_registry()
+    dibi = next(row for row in rows if row["source_id"] == "dibi_kabupaten_hidromet_2015_2024")
+    amendment = m26.load_dibi_transport_amendment(dibi["source_url"])
+    assert amendment["source_family_changed"] is False
+    assert amendment["scientific_design_changed"] is False
+    assert amendment["numeric_values_promoted_by_amendment"] is False
+    assert amendment["posthoc_source_family_search_performed"] is False
+    assert amendment["fallback_layer_id"] == 1
+    assert amendment["fallback_layer_name"] == "Kabupaten_basah_kering"
+    assert set(amendment["required_schema_fields"]) == {
+        "id_kab_bps",
+        "NAMA_KAB",
+        "Total_basa",
+        "Total_ba_1",
+        "Total_keri",
+    }
+
+
+def test_dibi_runtime_unavailable_requires_exact_arcgis_not_started_error() -> None:
+    assert m26.dibi_runtime_unavailable({"error": {"code": 500, "message": "Service X not started "}}) is True
+    assert m26.dibi_runtime_unavailable({"error": {"code": 500, "message": "schema mismatch"}}) is False
+    assert m26.dibi_runtime_unavailable({"error": {"code": 404, "message": "Service X not started"}}) is False
 
 
 def test_hazard_and_vulnerability_are_fail_closed_until_version_bound() -> None:
