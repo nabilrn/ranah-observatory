@@ -43,6 +43,10 @@ def test_only_explicit_vintage_or_coverage_states_authorize_later_numeric_extrac
     assert m26.EXPECTED_FINAL_STATES["dibi_kabupaten_hidromet_2015_2024"] == "qualified_explicit_coverage_metadata"
 
 
+def test_dibi_schema_probe_accepts_either_declared_duplicate_child_layer() -> None:
+    assert m26.ARC_EXTRA["dibi_kabupaten_hidromet_2015_2024"] == ["0", "1"]
+
+
 def test_hazard_and_vulnerability_are_fail_closed_until_version_bound() -> None:
     for source_id in (
         "inarisk_flood_hazard",
@@ -63,6 +67,23 @@ def test_event_impact_field_presence_does_not_authorize_panel_materialization() 
 def test_methodology_surface_is_framework_only() -> None:
     assert m26.EXPECTED_FINAL_STATES["inarisk_current_methodology"] == "framework_verified_current_surface"
     assert "framework_verified_current_surface" not in m26.load_design()["numeric_extraction_authorized_states"]
+
+
+def test_methodology_spa_shell_can_verify_route_without_visible_text() -> None:
+    body = b'<!doctype html><html><head><script src="/assets/app.js"></script></head><body><div id="app"></div></body></html>'
+    qualifies, mode = m26.methodology_surface_qualifies(
+        "https://inarisk2.bnpb.go.id/v4/metodologi",
+        "text/html; charset=utf-8",
+        body,
+    )
+    assert qualifies is True
+    assert mode == "official_route_html_spa_shell"
+    wrong_host, _ = m26.methodology_surface_qualifies(
+        "https://example.com/v4/metodologi",
+        "text/html",
+        body,
+    )
+    assert wrong_host is False
 
 
 def test_html_normalization_and_snapshot_serialization_are_deterministic() -> None:
