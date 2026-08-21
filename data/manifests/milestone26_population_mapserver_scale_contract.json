@@ -1,0 +1,71 @@
+{
+  "schema": "ranah-observatory/milestone26-population-mapserver-scale-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_qualification",
+  "locked_before_live_probe": true,
+  "source_id": "inarisk_population_2020",
+  "candidate_mapserver": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer",
+  "layer_id": 0,
+  "identity_evidence": "data/manifests/milestone26_population_mapserver_identity.json",
+  "semantic_amendment": "data/manifests/milestone26_population_mapserver_pixel_semantics_amendment.json",
+  "small_batch_evidence": "data/manifests/milestone26_population_mapserver_multipoint.json",
+  "accepted_pixel_field": "Stretch.Pixel Value",
+  "native_grid": {
+    "crs_epsg": 3395,
+    "pixel_size_m": 100,
+    "anchor": "frozen Padang Panjang geometry-only pilot center"
+  },
+  "batch_plan": [
+    {
+      "batch_size": 16,
+      "shape_columns": 4,
+      "shape_rows": 4,
+      "purpose": "baseline scale transport",
+      "repeat_count": 1
+    },
+    {
+      "batch_size": 64,
+      "shape_columns": 8,
+      "shape_rows": 8,
+      "purpose": "locked production batch candidate plus reproducibility gate",
+      "repeat_count": 2
+    },
+    {
+      "batch_size": 128,
+      "shape_columns": 16,
+      "shape_rows": 8,
+      "purpose": "headroom diagnostic only; may not increase the production batch size in this gate",
+      "repeat_count": 1
+    }
+  ],
+  "production_batch_candidate": 64,
+  "qualification_gates_per_attempt": {
+    "http_200_json_without_arcgis_error": true,
+    "result_count_must_equal_input_point_count": true,
+    "each_result_layer_id_must_equal": 0,
+    "each_result_must_expose_accepted_pixel_field": true,
+    "each_pixel_value_must_be_finite_and_inside_frozen_image_server_min_max": true,
+    "return_geometry_required": true,
+    "one_to_one_result_geometry_match_to_input_points_within_meters": 0.001,
+    "requested_url_length_recorded": true
+  },
+  "reproducibility_gate_64": {
+    "same_input_points_required": true,
+    "same_point_to_value_mapping_required": true,
+    "numeric_absolute_tolerance": 1e-9,
+    "result_order_may_differ": true
+  },
+  "production_batch_promotion_rule": "Batch size 64 is qualified for later production-transport design only if both independent 64-point attempts pass every per-attempt gate and their point-to-value mappings agree within the preregistered tolerance. The 128-point attempt is diagnostic headroom only and cannot increase the qualified production batch in this gate.",
+  "if_64_fails": "Do not authorize Stage 1 population aggregation. Retain small-batch transport evidence only and redesign transport without changing the scientific estimand.",
+  "stage1_population_aggregation_authorized": false,
+  "numeric_aggregation_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "cross_geography_numeric_extraction_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
