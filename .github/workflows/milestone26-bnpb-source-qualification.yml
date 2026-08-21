@@ -6,6 +6,7 @@ on:
     paths:
       - research/MILESTONE26_DISASTER_RISK_CHAIN_SPEC.md
       - data/manifests/milestone26_design_gate.json
+      - data/manifests/milestone26_dibi_transport_amendment.json
       - data/registries/m26-bnpb-source-candidates.csv
       - scripts/probe_milestone26_bnpb_sources.py
       - tests/test_milestone26_bnpb_source_qualification.py
@@ -44,10 +45,11 @@ jobs:
       - name: Assert Stage 0 qualification footprint and boundaries
         run: |
           python - <<'PY'
-          import csv, json
+          import csv, hashlib, json
           from pathlib import Path
 
           manifest = json.loads(Path('data/manifests/milestone26_source_qualification.json').read_text())
+          amendment_path = Path('data/manifests/milestone26_dibi_transport_amendment.json')
           with Path('data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv').open(newline='', encoding='utf-8') as h:
               rows = list(csv.DictReader(h))
 
@@ -58,6 +60,8 @@ jobs:
               'inarisk_population_2020',
               'dibi_kabupaten_hidromet_2015_2024',
           ]
+          assert manifest['dibi_transport_amendment']['path'] == amendment_path.as_posix()
+          assert manifest['dibi_transport_amendment']['sha256'] == hashlib.sha256(amendment_path.read_bytes()).hexdigest()
           assert manifest['qualification_states']['bnpb_event_impact_table'] == 'field_surface_verified_retrieval_contract_pending'
           for source_id in (
               'inarisk_flood_hazard',
