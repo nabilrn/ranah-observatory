@@ -9,6 +9,13 @@
   "reference_year": 2020,
   "spatial_frame": "BIG_June_2026_fixed_current_boundary",
   "geography_count_expected": 19,
+  "semantic_evidence": {
+    "url": "https://inarisk.bnpb.go.id/BUKU-RBI-2022/files/basic-html/page50.html",
+    "required_phrase": "Pij adalah jumlah penduduk pada grid/sel",
+    "evidence_role": "establish_population_grid_cell_value_as_person_count_not_density",
+    "frozen_path": "data/processed/bnpb/m26_population_component_stats/population-grid-cell-semantics.html",
+    "snapshot_sha256_required": true
+  },
   "transport_qualification": {
     "equivalence_manifest": "data/manifests/milestone26_population_stats_equivalence.json",
     "required_flag": "population_stats_production_transport_candidate_qualified",
@@ -65,6 +72,7 @@
   "reproducibility": {
     "freeze_exact_http_response_bodies": true,
     "freeze_response_sha256": true,
+    "freeze_semantic_evidence_snapshot": true,
     "offline_rebuild_required": true,
     "live_and_offline_outputs_must_be_byte_identical": true
   },
