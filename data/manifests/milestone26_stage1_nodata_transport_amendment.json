@@ -1,0 +1,40 @@
+{
+  "schema": "ranah-observatory/milestone26-stage1-nodata-transport-amendment/v1",
+  "milestone": 26,
+  "stage": 1,
+  "amendment_type": "export_transport_nodata_validity_mask",
+  "trigger": {
+    "workflow_run_id": 32454868877,
+    "observed_at_utc": "2026-08-21T06:34:02Z",
+    "failure": "first capacity GeoTIFF contained at least one finite pixel outside the frozen ImageServer-declared valid source range"
+  },
+  "affected_source_ids": [
+    "inarisk_capacity_2021",
+    "inarisk_population_2020"
+  ],
+  "validity_rule": "a candidate pixel is valid only when it is inside the fixed-boundary polygon, finite, not equal to an explicit dataset NoData tag when present, and within the frozen source metadata minValues[0]..maxValues[0] interval",
+  "source_range_binding": {
+    "inarisk_capacity_2021": {
+      "metadata_path": "data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json",
+      "declared_min": 0.0,
+      "declared_max": 0.7900000214576721
+    },
+    "inarisk_population_2020": {
+      "metadata_path": "data/processed/bnpb/m26_source_qualification/inarisk_population_2020.json",
+      "declared_min": 0.0,
+      "declared_max": 1976.36376953125
+    }
+  },
+  "minimum_valid_fraction_inside_polygon_unchanged": 0.99,
+  "aggregation_semantics_changed": false,
+  "capacity_primary_aggregation_unchanged": "mean_of_valid_native_grid_cells_with_centers_inside_fixed_boundary",
+  "population_primary_aggregation_unchanged": "sum_of_nonnegative_native_grid_cell_person_values_with_centers_inside_fixed_boundary",
+  "cross_geography_substantive_values_inspected_before_amendment": false,
+  "outcome_or_model_results_inspected": false,
+  "source_family_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "claim_boundary": "the amendment changes only exported-raster background/NoData recognition; any geography below the pre-locked 0.99 valid-coverage gate still fails closed"
+}
