@@ -13,6 +13,22 @@
   "held_source_ids": [
     "dibi_kabupaten_hidromet_2015_2024"
   ],
+  "semantic_evidence": {
+    "capacity": {
+      "url": "https://inarisk.bnpb.go.id/BUKU-RBI-2022/files/basic-html/page126.html",
+      "required_phrases": [
+        "Nilai indeks ketahanan daerah berada pada rentang nilai 0 – 1"
+      ],
+      "evidence_role": "establish_capacity_index_scale_not_raster_vintage"
+    },
+    "population": {
+      "url": "https://inarisk.bnpb.go.id/BUKU-RBI-2022/files/basic-html/page50.html",
+      "required_phrases": [
+        "Pij adalah jumlah penduduk pada grid/sel"
+      ],
+      "evidence_role": "establish_population_grid_cell_value_as_person_count_not_density"
+    }
+  },
   "capacity_2021": {
     "source_id": "inarisk_capacity_2021",
     "component_class": "capacity",
@@ -52,7 +68,8 @@
     "spatial_reference": 3395,
     "native_pixel_size_m": 100,
     "export_method": "ArcGIS ImageServer exportImage",
-    "analysis_extent": "union bounding box of the exact 19 qualified BIG June 2026 fixed-current-boundary polygons transformed to source CRS",
+    "analysis_extent": "one native-grid-aligned bounding box per geography for each authorized raster; no national or resampled mosaic",
+    "grid_alignment_rule": "derive bbox edges from the frozen ImageServer native fullExtent origin and exact 100 m pixel size",
     "output_format": "tiff",
     "pixel_type": "F32",
     "boundary_membership_rule": "pixel_center_inside_polygon",
@@ -64,10 +81,12 @@
   "quality_gates": {
     "exact_geography_count": 19,
     "every_geography_requires_positive_valid_pixel_count": true,
+    "minimum_valid_fraction_inside_polygon": 0.99,
     "capacity_values_must_be_finite_and_in_range": true,
     "population_values_must_be_finite_and_nonnegative": true,
     "source_raster_sha256_required": true,
     "source_metadata_sha256_binding_required": true,
+    "semantic_evidence_snapshot_sha256_required": true,
     "no_duplicate_geography_ids": true
   },
   "cross_component_temporal_aggregation_authorized": false,
