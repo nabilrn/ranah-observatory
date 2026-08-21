@@ -1,0 +1,104 @@
+{
+  "aggregation_semantics_changed": false,
+  "candidate_layer": {
+    "crs_epsg": 3395,
+    "extent": [
+      10572228.845372679,
+      -1224845.162247455,
+      15698328.845372679,
+      673254.837752545
+    ],
+    "title": "INARISKPOP_2020_TOPDOWN_KECAMATAN",
+    "type": "Raster Layer"
+  },
+  "candidate_mapserver": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer",
+  "causal_claim_created": false,
+  "contract": {
+    "path": "data/manifests/milestone26_population_mapserver_identity_contract.json",
+    "sha256": "d39eb30ebe091e043ea66a19d65f70775d153d8e2e0e61b72b058c60ce74f538"
+  },
+  "cross_geography_numeric_extraction_performed": false,
+  "frozen_image_server_reference": {
+    "crs_epsg": 3395,
+    "full_extent": [
+      10572228.845372679,
+      -1224845.162247455,
+      15698328.845372679,
+      673254.837752545
+    ],
+    "path": "data/processed/bnpb/m26_source_qualification/inarisk_population_2020.json",
+    "sha256": "8192ad1f91509b40ba9de044f2dcce2a9c931a675ec479b133575f9a933aad1b",
+    "title": "INARISKPOP_2020_TOPDOWN_KECAMATAN"
+  },
+  "identify_transport_success": true,
+  "identity_gates": {
+    "all_identity_gates_passed": true,
+    "crs_match": true,
+    "exact_layer_title_match": true,
+    "full_extent_match": true,
+    "official_bnpb_same_host": true,
+    "raster_layer_type_match": true,
+    "service_layer_name_match": true
+  },
+  "milestone": 26,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_aggregation_performed": false,
+  "pilot": {
+    "center_x": 11176628.845372679,
+    "center_y": -51995.16224745498,
+    "geography_id": "idn.13.1374",
+    "selection_changed": false
+  },
+  "raw_pixel_candidate": null,
+  "raw_pixel_surface_observed": false,
+  "responses": {
+    "identify": {
+      "arcgis_error_present": false,
+      "body_bytes": 146,
+      "body_path": "data/processed/bnpb/m26_population_mapserver_identity/mapserver-identify.body",
+      "body_sha256": "3c6fcdca4feb15ab6948e128ecf131e97cfbdcd5db16cefb78f6e70666aedec5",
+      "content_type": "application/json; charset=UTF-8",
+      "elapsed_seconds": 1.126197,
+      "exception_class": null,
+      "exception_message": null,
+      "final_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer/identify?geometry=11176628.845373%2C-51995.162247&geometryType=esriGeometryPoint&sr=3395&layers=all%3A0&tolerance=1&mapExtent=11176528.845373%2C-52095.162247%2C11176728.845373%2C-51895.162247&imageDisplay=200%2C200%2C96&returnGeometry=false&f=json",
+      "json_parseable": true,
+      "status": 200
+    },
+    "layer_0": {
+      "arcgis_error_present": false,
+      "body_bytes": 2600,
+      "body_path": "data/processed/bnpb/m26_population_mapserver_identity/mapserver-layer-0.body",
+      "body_sha256": "e39b4d8034201dfa58748d32f9ea300e607c526f20cc3efe58437fa545856b7a",
+      "content_type": "text/plain; charset=UTF-8",
+      "elapsed_seconds": 1.089526,
+      "exception_class": null,
+      "exception_message": null,
+      "final_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer/0?f=pjson",
+      "json_parseable": true,
+      "status": 200
+    },
+    "service": {
+      "arcgis_error_present": false,
+      "body_bytes": 2689,
+      "body_path": "data/processed/bnpb/m26_population_mapserver_identity/mapserver-service.body",
+      "body_sha256": "d71dc79023395337b1c3bd07fd8c8e25bb42db675da7abec3d6db6a3e52f9388",
+      "content_type": "text/plain; charset=UTF-8",
+      "elapsed_seconds": 2.995651,
+      "exception_class": null,
+      "exception_message": null,
+      "final_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer?f=pjson",
+      "json_parseable": true,
+      "status": 200
+    }
+  },
+  "risk_synthesis_authorized": false,
+  "same_dataset_transport_candidate_qualified": true,
+  "schema": "ranah-observatory/milestone26-population-mapserver-identity/v1",
+  "source_family_changed": false,
+  "source_id": "inarisk_population_2020",
+  "stage": "stage1_transport_qualification",
+  "stage1_population_aggregation_authorized": false,
+  "statistical_model_fit": false,
+  "substantive_value_promotion_performed": false
+}
