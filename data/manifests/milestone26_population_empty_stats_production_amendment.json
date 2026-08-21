@@ -1,0 +1,70 @@
+{
+  "schema": "ranah-observatory/milestone26-population-empty-stats-production-amendment/v1",
+  "milestone": 26,
+  "stage": "stage1_population_component_materialization",
+  "locked_before_restarting_cross_geography_numeric_extraction": true,
+  "base_production_contract": "data/manifests/milestone26_population_production_contract.json",
+  "trigger_evidence": {
+    "shape_diagnostic": "data/manifests/milestone26_population_stats_shape_diagnostic.json",
+    "exact_cell_semantics_attempt2": "data/manifests/milestone26_population_empty_stats_semantics_attempt2.json",
+    "required_attempt2_decision": "deterministic_no_valid_source_value_for_exact_native_cell",
+    "required_exact_cell_qualified": true
+  },
+  "scope": {
+    "source_id": "inarisk_population_2020",
+    "applies_only_when_computeStatisticsHistograms_returns_http_200_json_exact_empty_statistics_array": true,
+    "standard_one-row_statistics_behavior_unchanged": true,
+    "other_nonstandard_statistics_shapes_fail_closed": true
+  },
+  "empty_partition_reference_confirmation": {
+    "required_for_every_empty_partition": true,
+    "center_set": "all exact selected 100m native-cell centers represented by that frozen partition",
+    "center_derivation": "reconstruct the exact BIG fixed-boundary native-grid mask using the frozen geography aligned window, then slice the frozen partition row/column window; source values may not influence center selection",
+    "mapserver_service": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer",
+    "operation": "identify",
+    "layer_id": 0,
+    "accepted_pixel_field": "Stretch.Pixel Value",
+    "crs_epsg": 3395,
+    "maximum_batch_size": 64,
+    "result_geometry_tolerance_m": 0.001,
+    "each_requested_center_requires_exactly_one_layer0_raw_result": true,
+    "all_raw_result_geometries_must_map_one_to_one_to_requested_centers": true,
+    "all_accepted_field_values_must_be_nonfinite_or_non_numeric_NoData": true,
+    "any_finite_accepted_field_value_causes_transport_disagreement_failure": true,
+    "any_transport_or_arcgis_error_fails_closed": true
+  },
+  "qualified_empty_partition_contribution": {
+    "valid_source_value_count": 0,
+    "additive_sum_contribution": 0.0,
+    "semantic_label": "empty_valid_value_set_additive_identity",
+    "must_not_be_labeled_source_pixel_zero": true,
+    "must_not_be_labeled_population_zero": true,
+    "imputation": false,
+    "selected_inside_cell_count_remains_in_valid_fraction_denominator": true
+  },
+  "quality_gates_unchanged": {
+    "minimum_valid_fraction_inside_geography": 0.99,
+    "population_values_finite_and_nonnegative": true,
+    "exact_geography_count": 19,
+    "no_downsampling": true,
+    "no_upsampling": true
+  },
+  "reproducibility": {
+    "freeze_all_empty_partition_MapServer_response_bodies": true,
+    "freeze_all_response_sha256": true,
+    "record_empty_partition_ids_and_reference_batch_counts": true,
+    "offline_rebuild_required": true,
+    "live_and_offline_outputs_must_be_byte_identical": true
+  },
+  "production_restart_authorized_under_this_amendment": true,
+  "empty_statistics_global_semantics_authorized_without_partition_reference": false,
+  "substantive_interpretation_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
