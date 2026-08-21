@@ -1,0 +1,79 @@
+{
+  "schema": "ranah-observatory/milestone26-stage1-aggregation-contract/v1",
+  "milestone": 26,
+  "stage": 1,
+  "contract_locked_before_cross_geography_numeric_extraction": true,
+  "geography_regime": "BIG_June_2026_fixed_current_boundary",
+  "geography_count": 19,
+  "source_qualification_manifest": "data/manifests/milestone26_source_qualification.json",
+  "authorized_source_ids": [
+    "inarisk_capacity_2021",
+    "inarisk_population_2020"
+  ],
+  "held_source_ids": [
+    "dibi_kabupaten_hidromet_2015_2024"
+  ],
+  "capacity_2021": {
+    "source_id": "inarisk_capacity_2021",
+    "component_class": "capacity",
+    "reference_year": 2021,
+    "source_value_semantics": "continuous capacity/resilience index on a 0-1 scale; not an additive count",
+    "primary_aggregation": "mean_of_valid_native_grid_cells_with_centers_inside_fixed_boundary",
+    "primary_output_field": "capacity_index_2021_mean",
+    "range_gate": [0.0, 1.0],
+    "additive_sum_authorized": false,
+    "area_weighted_rescaling_authorized": false,
+    "interpolation": "nearest_neighbor",
+    "claim_type": "modeled_spatial_index",
+    "interpretation_boundary": "capacity evidence for the 2021 source regime; not contemporaneous with 2009 earthquake evidence or 2024 hydroclimate evidence"
+  },
+  "population_2020": {
+    "source_id": "inarisk_population_2020",
+    "component_class": "exposure",
+    "reference_year": 2020,
+    "source_value_semantics": "estimated number of persons represented by each population grid/cell",
+    "primary_aggregation": "sum_of_nonnegative_native_grid_cell_person_values_with_centers_inside_fixed_boundary",
+    "primary_output_field": "population_exposure_proxy_2020_persons",
+    "nonnegative_gate": true,
+    "mean_as_population_total_authorized": false,
+    "area_weighted_density_integration_authorized": false,
+    "interpolation": "nearest_neighbor",
+    "claim_type": "modeled_population_exposure_proxy",
+    "interpretation_boundary": "population element-at-risk proxy; not asset exposure, vulnerability, observed impact, or an official BPS population total"
+  },
+  "dibi_2015_2024": {
+    "source_id": "dibi_kabupaten_hidromet_2015_2024",
+    "numeric_extraction_authorized_in_stage1": false,
+    "hold_reason": "official layer exposes opaque technical fields Total_basa, Total_ba_1, and Total_keri without a frozen authoritative semantic definition sufficient to label numeric outputs",
+    "schema_qualification_retained": true,
+    "posthoc_alias_interpretation_authorized": false
+  },
+  "raster_transport": {
+    "spatial_reference": 3395,
+    "native_pixel_size_m": 100,
+    "export_method": "ArcGIS ImageServer exportImage",
+    "analysis_extent": "union bounding box of the exact 19 qualified BIG June 2026 fixed-current-boundary polygons transformed to source CRS",
+    "output_format": "tiff",
+    "pixel_type": "F32",
+    "boundary_membership_rule": "pixel_center_inside_polygon",
+    "all_touched": false,
+    "resampling": "nearest_neighbor",
+    "downsampling_authorized": false,
+    "upsampling_authorized": false
+  },
+  "quality_gates": {
+    "exact_geography_count": 19,
+    "every_geography_requires_positive_valid_pixel_count": true,
+    "capacity_values_must_be_finite_and_in_range": true,
+    "population_values_must_be_finite_and_nonnegative": true,
+    "source_raster_sha256_required": true,
+    "source_metadata_sha256_binding_required": true,
+    "no_duplicate_geography_ids": true
+  },
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "stage1_completion_claim": "two independently qualified component summaries on a fixed current-boundary frame; no composite disaster-risk score"
+}
