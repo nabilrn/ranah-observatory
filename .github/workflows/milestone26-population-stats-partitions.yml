@@ -1,0 +1,90 @@
+name: Milestone 26 population stats partitions
+
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone26_population_stats_partition_contract.json
+      - scripts/build_milestone26_population_stats_partitions.py
+      - tests/test_milestone26_population_stats_partitions.py
+      - .github/workflows/milestone26-population-stats-partitions.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-partitions:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install focused spatial dependencies
+        run: python -m pip install --disable-pip-version-check pytest numpy shapely pyproj rasterio
+
+      - name: Compile partition builder
+        run: python -m py_compile scripts/build_milestone26_population_stats_partitions.py
+
+      - name: Run locked partition tests
+        run: python -m pytest -q tests/test_milestone26_population_stats_partitions.py
+
+      - name: Build exact URI-safe native-mask partitions
+        run: python -m scripts.build_milestone26_population_stats_partitions
+
+      - name: Assert geometry-only partition boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_population_stats_partitions.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-stats-partitions/v1'
+          assert manifest['geography_count'] == 19
+          assert len(manifest['geographies']) == 19
+          assert manifest['total_inside_boundary_native_cell_count'] == 4212327
+          assert manifest['all_partition_cell_counts_exact'] is True
+          assert manifest['all_partition_urls_within_gate'] is True
+          assert manifest['source_values_accessed'] is False
+          assert manifest['statistics_live_request_performed'] is False
+          assert manifest['numeric_source_value_extraction_performed'] is False
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['substantive_value_promotion_performed'] is False
+          assert manifest['aggregation_semantics_changed'] is False
+          assert manifest['source_family_changed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          for row in manifest['geographies']:
+              assert row['partition_count'] > 0
+              assert row['partition_cell_count_sum'] == row['inside_boundary_native_cell_count']
+              assert row['max_partition_url_length'] <= 6000
+              assert sum(part['selected_cell_count'] for part in row['partitions']) == row['inside_boundary_native_cell_count']
+              for part in row['partitions']:
+                  assert part['selected_cell_count'] > 0
+                  assert part['candidate']['encoded_url_length'] <= 6000
+          PY
+
+      - name: Re-run focused tests
+        run: python -m pytest -q tests/test_milestone26_population_stats_partitions.py
+
+      - name: Commit frozen partition evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- data/manifests/milestone26_population_stats_partitions.json
+          if git diff --cached --quiet; then
+            echo 'No partition evidence changes'
+            exit 0
+          fi
+          git commit -m "Freeze Milestone 26 population stats partitions"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
