@@ -1,0 +1,53 @@
+name: CHIRPS rainfall panel
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "requirements-climate.txt"
+      - "scripts/build_chirps_rainfall_panel.py"
+      - "scripts/validate_chirps_rainfall_panel.py"
+      - "tests/test_chirps_rainfall_panel.py"
+      - ".github/workflows/chirps-rainfall-panel.yml"
+      - "data/registries/big_geography_map.csv"
+      - "data/registries/geographies.csv"
+      - "data/registries/climate_sources.csv"
+      - "data/registries/indicators.csv"
+      - "docs/CHIRPS_RAINFALL_PANEL.md"
+
+permissions:
+  contents: read
+
+jobs:
+  full-1981-2025:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: requirements-climate.txt
+
+      - name: Install geospatial dependencies
+        run: python -m pip install -r requirements-climate.txt
+
+      - name: Compile CHIRPS pipeline
+        run: python -m py_compile scripts/build_chirps_rainfall_panel.py scripts/validate_chirps_rainfall_panel.py
+
+      - name: Run offline aggregation tests
+        run: python -m unittest tests.test_chirps_rainfall_panel -v
+
+      - name: Materialize CHIRPS 1981-2025 panel
+        run: python scripts/build_chirps_rainfall_panel.py --start-year 1981 --end-year 2025 --output-dir build/chirps-full
+
+      - name: Validate full materialized panel
+        run: python scripts/validate_chirps_rainfall_panel.py build/chirps-full
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chirps-rainfall-panel-1981-2025
+          path: build/chirps-full/
+          if-no-files-found: error
