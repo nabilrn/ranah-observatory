@@ -1,0 +1,129 @@
+name: Milestone 26 Stage 1 qualified components
+
+# Live extraction is restricted to the two Stage-0-qualified rasters whose aggregation semantics were locked before values.
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone26_stage1_aggregation_contract.json
+      - data/manifests/milestone26_source_qualification.json
+      - data/processed/bnpb/m26_source_qualification/**
+      - data/snapshots/big/milestone8/big-june-2026-sumbar.geojson
+      - scripts/materialize_milestone26_stage1_components.py
+      - tests/test_milestone26_stage1_components.py
+      - .github/workflows/milestone26-stage1-components.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install spatial extraction dependencies
+        run: python -m pip install --disable-pip-version-check pytest numpy shapely pyproj rasterio
+
+      - name: Compile Stage 1 materializer
+        run: python -m py_compile scripts/materialize_milestone26_stage1_components.py
+
+      - name: Run locked aggregation tests before values
+        run: python -m pytest -q tests/test_milestone26_stage1_components.py
+
+      - name: Fetch and materialize only qualified Stage 1 components
+        run: python -m scripts.materialize_milestone26_stage1_components --fetch
+
+      - name: Assert Stage 1 footprint and claim boundaries
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+
+          manifest_path = Path('data/manifests/milestone26_stage1_components.json')
+          manifest = json.loads(manifest_path.read_text())
+          with Path('data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv').open(newline='', encoding='utf-8') as h:
+              rows = list(csv.DictReader(h))
+          with Path('data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv').open(newline='', encoding='utf-8') as h:
+              provenance = list(csv.DictReader(h))
+
+          assert manifest['stage1_complete'] is True
+          assert manifest['geography_count'] == len(rows) == 19
+          assert manifest['component_count'] == 2
+          assert manifest['observation_count'] == 38
+          assert manifest['provenance_count'] == len(provenance) == 38
+          assert manifest['raw_raster_count'] == 38
+          assert manifest['authorized_source_ids'] == ['inarisk_capacity_2021', 'inarisk_population_2020']
+          assert manifest['held_source_ids'] == ['dibi_kabupaten_hidromet_2015_2024']
+          assert manifest['dibi_numeric_extraction_performed'] is False
+          assert manifest['hazard_vulnerability_numeric_extraction_performed'] is False
+          assert manifest['event_impact_panel_materialized'] is False
+          assert manifest['cross_component_temporal_aggregation_performed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          assert len({row['geography_id'] for row in rows}) == 19
+          assert all(float(row['capacity_valid_fraction']) >= 0.99 for row in rows)
+          assert all(float(row['population_valid_fraction']) >= 0.99 for row in rows)
+          assert all(0.0 <= float(row['capacity_index_2021_mean']) <= 1.0 for row in rows)
+          assert all(float(row['population_exposure_proxy_2020_persons']) >= 0.0 for row in rows)
+          assert all(row['risk_synthesis_authorized'] == 'false' for row in rows)
+          assert all(row['cross_component_temporal_aggregation_authorized'] == 'false' for row in rows)
+
+          raw_total = 0
+          for item in manifest['raw_rasters']:
+              path = Path(item['path'])
+              assert path.exists()
+              body = path.read_bytes()
+              assert len(body) == int(item['bytes']) < 95_000_000
+              assert hashlib.sha256(body).hexdigest() == item['sha256']
+              raw_total += len(body)
+          assert raw_total == manifest['raw_raster_total_bytes']
+          assert raw_total < 500_000_000
+
+          for role, evidence in manifest['semantic_evidence'].items():
+              path = Path(evidence['path'])
+              assert path.exists()
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == evidence['sha256']
+          PY
+
+      - name: Verify offline rebuild from frozen rasters
+        run: |
+          cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv /tmp/m26-frame.csv
+          cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv /tmp/m26-provenance.csv
+          cp data/manifests/milestone26_stage1_components.json /tmp/m26-stage1.json
+          python -m scripts.materialize_milestone26_stage1_components
+          cmp /tmp/m26-frame.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv
+          cmp /tmp/m26-provenance.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv
+          cmp /tmp/m26-stage1.json data/manifests/milestone26_stage1_components.json
+
+      - name: Re-run focused tests after extraction
+        run: python -m pytest -q tests/test_milestone26_stage1_components.py
+
+      - name: Commit frozen Stage 1 components
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- \
+            data/processed/bnpb/m26_component_extraction \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv \
+            data/manifests/milestone26_stage1_components.json
+          if git diff --cached --quiet; then
+            echo 'No Stage 1 component changes'
+            exit 0
+          fi
+          git commit -m "Freeze Milestone 26 Stage 1 qualified components"
+          target_branch="${{ github.event.pull_request.head.ref || github.ref_name }}"
+          git push origin "HEAD:${target_branch}"
