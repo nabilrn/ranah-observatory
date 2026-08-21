@@ -1,0 +1,45 @@
+{
+  "schema": "ranah-observatory/milestone26-population-mapserver-multipoint-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_qualification",
+  "locked_before_live_probe": true,
+  "source_id": "inarisk_population_2020",
+  "candidate_mapserver": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer",
+  "layer_id": 0,
+  "semantic_amendment": "data/manifests/milestone26_population_mapserver_pixel_semantics_amendment.json",
+  "official_arcgis_reference": "https://developers.arcgis.com/rest/services-reference/enterprise/identify-map-service/",
+  "geometry_type": "esriGeometryMultipoint",
+  "pilot_rule": {
+    "base_point": "the frozen geometry-only-selected Padang Panjang pilot center, which lies on the source native 100 m cell-center lattice",
+    "points": [
+      [0, 0],
+      [100, 0],
+      [0, 100],
+      [100, 100]
+    ],
+    "offset_units": "meters from base point in EPSG:3395",
+    "point_count": 4,
+    "selection_uses_raster_values": false,
+    "selection_uses_model_results": false
+  },
+  "qualification_gates": {
+    "http_200_json_without_arcgis_error": true,
+    "result_count_must_equal_input_point_count": true,
+    "each_result_layer_id_must_equal": 0,
+    "each_result_must_expose_accepted_pixel_field": "Stretch.Pixel Value",
+    "each_pixel_value_must_be_finite_and_inside_frozen_image_server_min_max": true,
+    "return_geometry_required": true,
+    "one_to_one_result_geometry_match_to_input_points_within_meters": 0.001
+  },
+  "promotion_rule": "This probe may qualify only small-batch multipoint pixel transport. It does not authorize geography aggregation or establish scalable full-grid extraction. A separate scale/reproducibility gate is required before Stage 1 population aggregation can be authorized.",
+  "numeric_aggregation_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "cross_geography_numeric_extraction_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
