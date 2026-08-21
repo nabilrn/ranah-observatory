@@ -9,15 +9,18 @@ on:
       - data/manifests/milestone26_stage1_aggregation_contract.json
       - data/manifests/milestone26_stage1_nodata_transport_amendment.json
       - data/manifests/milestone26_stage1_chunk_transport_amendment.json
+      - data/manifests/milestone26_stage1_chunk_transport_amendment_v2.json
       - data/manifests/milestone26_source_qualification.json
       - data/processed/bnpb/m26_source_qualification/**
       - data/snapshots/big/milestone8/big-june-2026-sumbar.geojson
       - scripts/materialize_milestone26_stage1_components.py
       - scripts/materialize_milestone26_stage1_components_v2.py
       - scripts/materialize_milestone26_stage1_components_v3.py
+      - scripts/materialize_milestone26_stage1_components_v4.py
       - tests/test_milestone26_stage1_components.py
       - tests/test_milestone26_stage1_nodata_compat.py
       - tests/test_milestone26_stage1_chunk_transport.py
+      - tests/test_milestone26_stage1_chunk_transport_v2.py
       - .github/workflows/milestone26-stage1-components.yml
   workflow_dispatch:
 
@@ -46,16 +49,18 @@ jobs:
           python -m py_compile scripts/materialize_milestone26_stage1_components.py
           python -m py_compile scripts/materialize_milestone26_stage1_components_v2.py
           python -m py_compile scripts/materialize_milestone26_stage1_components_v3.py
+          python -m py_compile scripts/materialize_milestone26_stage1_components_v4.py
 
       - name: Run locked Stage 1 tests before values
         run: |
           python -m pytest -q \
             tests/test_milestone26_stage1_components.py \
             tests/test_milestone26_stage1_nodata_compat.py \
-            tests/test_milestone26_stage1_chunk_transport.py
+            tests/test_milestone26_stage1_chunk_transport.py \
+            tests/test_milestone26_stage1_chunk_transport_v2.py
 
       - name: Fetch and materialize only qualified Stage 1 components
-        run: python -m scripts.materialize_milestone26_stage1_components_v3 --fetch
+        run: python -m scripts.materialize_milestone26_stage1_components_v4 --fetch
 
       - name: Assert Stage 1 footprint and claim boundaries
         run: |
@@ -65,7 +70,7 @@ jobs:
 
           manifest_path = Path('data/manifests/milestone26_stage1_components.json')
           nodata_path = Path('data/manifests/milestone26_stage1_nodata_transport_amendment.json')
-          chunk_path = Path('data/manifests/milestone26_stage1_chunk_transport_amendment.json')
+          chunk_path = Path('data/manifests/milestone26_stage1_chunk_transport_amendment_v2.json')
           manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
           with Path('data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv').open(newline='', encoding='utf-8') as h:
               rows = list(csv.DictReader(h))
@@ -132,7 +137,7 @@ jobs:
           cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv /tmp/m26-frame.csv
           cp data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv /tmp/m26-provenance.csv
           cp data/manifests/milestone26_stage1_components.json /tmp/m26-stage1.json
-          python -m scripts.materialize_milestone26_stage1_components_v3
+          python -m scripts.materialize_milestone26_stage1_components_v4
           cmp /tmp/m26-frame.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-frame.csv
           cmp /tmp/m26-provenance.csv data/analysis/engine/disaster_risk_chain_v1/m26-stage1-component-provenance.csv
           cmp /tmp/m26-stage1.json data/manifests/milestone26_stage1_components.json
@@ -142,7 +147,8 @@ jobs:
           python -m pytest -q \
             tests/test_milestone26_stage1_components.py \
             tests/test_milestone26_stage1_nodata_compat.py \
-            tests/test_milestone26_stage1_chunk_transport.py
+            tests/test_milestone26_stage1_chunk_transport.py \
+            tests/test_milestone26_stage1_chunk_transport_v2.py
 
       - name: Commit frozen Stage 1 components
         shell: bash
