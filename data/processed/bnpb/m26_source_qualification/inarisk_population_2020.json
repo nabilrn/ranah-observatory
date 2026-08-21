@@ -1,0 +1,169 @@
+{
+  "content_type": "text/plain; charset=UTF-8",
+  "extra": {
+    "info/iteminfo": {
+      "content_type": "text/plain; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer/info/iteminfo?f=pjson",
+      "payload": {
+        "accessInformation": "",
+        "catalogPath": "",
+        "culture": "en-US",
+        "description": "<DIV STYLE=\"text-align:Left;\"><DIV><DIV><P><SPAN STYLE=\"font-size:16pt\">Population distribution as one of the parameters of disaster vulnerability is needed in a disaster risk assessment. Analysis of approaches to determine the spatial population distribution can use many methodological alternatives. The general approach used in Indonesia is distribution approach based on results of a survey or census, where the number of population density is distributed evenly within the administrative borders. Another approach used by Worldpop using Random Regression Tree model-based Forest Mapping. Both of these methodologies have their respective advantages and disadvantages. This study was conducted by combining these two methods and adding some data and parameters as driving factors on the scale of analysis of spatial resolution (grid size) 0.000833333 decimal degrees (approximately 100 m in equatorial region) for case study in Banten Province. Data processing is performed by raster analysis approach and using GIS. The results obtained for the better with the cost requirements are also more affordable and can be utilized to calculate the level of disaster risk in an area.</SPAN></P></DIV></DIV></DIV>",
+        "guid": "",
+        "licenseInfo": "",
+        "name": "INARISKPOP_2020",
+        "snippet": "Disaster risk analysis requires accurate population distribution data to proximate the element at risk which is part of the vulnerability components. The...",
+        "spatialReference": "WGS_1984_World_Mercator",
+        "summary": "Disaster risk analysis requires accurate population distribution data to proximate the element at risk which is part of the vulnerability components. The...",
+        "tags": [
+          "Population Distribution",
+          "Geographic Information System",
+          "Spatial Analysis",
+          "Disaster vulnerability"
+        ],
+        "thumbnail": "thumbnail/thumbnail.png",
+        "title": "INARISKPOP_2020_TOPDOWN_KECAMATAN",
+        "type": "Image Service",
+        "typeKeywords": [
+          "Data",
+          "Service",
+          "Image Service",
+          "ArcGIS Server"
+        ],
+        "url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer"
+      },
+      "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer/info/iteminfo?f=pjson"
+    }
+  },
+  "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer?f=pjson",
+  "primary": {
+    "advancedQueryCapabilities": {
+      "supportsDistinct": false,
+      "supportsOrderBy": false,
+      "supportsPagination": false,
+      "supportsStatistics": false,
+      "useStandardizedQueries": true
+    },
+    "allowAnalysis": true,
+    "allowComputeTiePoints": false,
+    "allowCopy": true,
+    "allowRasterFunction": true,
+    "allowedMosaicMethods": "",
+    "bandCount": 1,
+    "bandNames": [
+      "Band_1"
+    ],
+    "blockHeight": 128,
+    "blockWidth": 128,
+    "capabilities": "Image,Metadata,Mensuration",
+    "compressionType": "NONE",
+    "copyrightText": "",
+    "currentVersion": 11.4,
+    "datasetFormat": "FGDBR",
+    "defaultCompressionQuality": 75,
+    "defaultMosaicMethod": "Center",
+    "defaultResamplingMethod": "Bilinear",
+    "description": "<DIV STYLE=\"text-align:Left;\"><DIV><DIV><P><SPAN STYLE=\"font-size:16pt\">Population distribution as one of the parameters of disaster vulnerability is needed in a disaster risk assessment. Analysis of approaches to determine the spatial population distribution can use many methodological alternatives. The general approach used in Indonesia is distribution approach based on results of a survey or census, where the number of population density is distributed evenly within the administrative borders. Another approach used by Worldpop using Random Regression Tree model-based Forest Mapping. Both of these methodologies have their respective advantages and disadvantages. This study was conducted by combining these two methods and adding some data and parameters as driving factors on the scale of analysis of spatial resolution (grid size) 0.000833333 decimal degrees (approximately 100 m in equatorial region) for case study in Banten Province. Data processing is performed by raster analysis approach and using GIS. The results obtained for the better with the cost requirements are also more affordable and can be utilized to calculate the level of disaster risk in an area.</SPAN></P></DIV></DIV></DIV>",
+    "editFieldsInfo": null,
+    "exportTilesAllowed": false,
+    "extent": {
+      "spatialReference": {
+        "latestWkid": 3395,
+        "wkid": 3395
+      },
+      "xmax": 15698328.845372679,
+      "xmin": 10572228.845372679,
+      "ymax": 673254.837752545,
+      "ymin": -1224845.162247455
+    },
+    "fields": [],
+    "fullExtent": {
+      "spatialReference": {
+        "latestWkid": 3395,
+        "wkid": 3395
+      },
+      "xmax": 15698328.845372679,
+      "xmin": 10572228.845372679,
+      "ymax": 673254.837752545,
+      "ymin": -1224845.162247455
+    },
+    "hasColormap": false,
+    "hasHistograms": true,
+    "hasMultidimensions": false,
+    "hasRasterAttributeTable": false,
+    "initialExtent": {
+      "spatialReference": {
+        "latestWkid": 3395,
+        "wkid": 3395
+      },
+      "xmax": 15698328.845372679,
+      "xmin": 10572228.845372679,
+      "ymax": 673254.837752545,
+      "ymin": -1224845.162247455
+    },
+    "inspectionCapabilities": "",
+    "itemAccess": false,
+    "maxImageHeight": 4100,
+    "maxImageWidth": 15000,
+    "maxPixelSize": 0,
+    "maxScale": 0,
+    "maxValues": [
+      1976.36376953125
+    ],
+    "meanPixelSize": 100,
+    "meanValues": [
+      1.4088652486401898
+    ],
+    "mensurationCapabilities": "Basic",
+    "minPixelSize": 0,
+    "minScale": 0,
+    "minValues": [
+      0
+    ],
+    "mosaicOperator": "First",
+    "name": "inarisk/INARISKPOP_2020",
+    "objectIdField": "",
+    "ownershipBasedAccessControlForRasters": null,
+    "pixelSizeX": 100,
+    "pixelSizeY": 100,
+    "pixelType": "F32",
+    "rasterFunctionInfos": [
+      {
+        "description": "",
+        "help": "",
+        "name": "None"
+      }
+    ],
+    "rasterTypeInfos": [
+      {
+        "description": "Supports all ArcGIS Raster Datasets",
+        "help": "",
+        "name": "Raster Dataset"
+      }
+    ],
+    "serviceDataType": "esriImageServiceDataTypeGeneric",
+    "serviceDescription": "<DIV STYLE=\"text-align:Left;\"><DIV><DIV><P><SPAN STYLE=\"font-size:16pt\">Population distribution as one of the parameters of disaster vulnerability is needed in a disaster risk assessment. Analysis of approaches to determine the spatial population distribution can use many methodological alternatives. The general approach used in Indonesia is distribution approach based on results of a survey or census, where the number of population density is distributed evenly within the administrative borders. Another approach used by Worldpop using Random Regression Tree model-based Forest Mapping. Both of these methodologies have their respective advantages and disadvantages. This study was conducted by combining these two methods and adding some data and parameters as driving factors on the scale of analysis of spatial resolution (grid size) 0.000833333 decimal degrees (approximately 100 m in equatorial region) for case study in Banten Province. Data processing is performed by raster analysis approach and using GIS. The results obtained for the better with the cost requirements are also more affordable and can be utilized to calculate the level of disaster risk in an area.</SPAN></P></DIV></DIV></DIV>",
+    "serviceSourceType": "esriImageServiceSourceTypeDataset",
+    "sortAscending": true,
+    "sortField": "",
+    "sortValue": null,
+    "sortableFields": "",
+    "spatialReference": {
+      "latestWkid": 3395,
+      "wkid": 3395
+    },
+    "stdvValues": [
+      7.112380152929582
+    ],
+    "supportsAdvancedQueries": false,
+    "supportsStatistics": false,
+    "uncompressedSize": 3891940164,
+    "useStandardizedQueries": true
+  },
+  "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer?f=pjson",
+  "source_id": "inarisk_population_2020",
+  "transport": {
+    "fallback_used": false,
+    "preferred_endpoint": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer"
+  }
+}

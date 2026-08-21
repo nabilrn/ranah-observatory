@@ -1,0 +1,646 @@
+{
+  "content_type": "text/plain; charset=UTF-8",
+  "extra": {
+    "0": {
+      "content_type": "text/plain; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer/0?f=pjson",
+      "payload": {
+        "advancedQueryCapabilities": {
+          "supportsAdvancedQueryRelated": true,
+          "supportsCountDistinct": false,
+          "supportsCurrentUserQueries": true,
+          "supportsDistinct": false,
+          "supportsHavingClause": false,
+          "supportsLod": false,
+          "supportsOrderBy": false,
+          "supportsPagination": false,
+          "supportsPercentileStatistics": false,
+          "supportsQueryAnalytic": false,
+          "supportsQueryRelatedPagination": true,
+          "supportsQueryWithDatumTransformation": true,
+          "supportsQueryWithDistance": true,
+          "supportsQueryWithLodSR": false,
+          "supportsReturningQueryExtent": true,
+          "supportsSqlExpression": false,
+          "supportsSqlFormat": false,
+          "supportsStatistics": false,
+          "supportsTimeRelation": true,
+          "supportsTrueCurve": true,
+          "useStandardizedQueries": true
+        },
+        "archivingInfo": {
+          "startArchivingMoment": -1,
+          "supportsQueryWithHistoricMoment": false
+        },
+        "canModifyLayer": true,
+        "canScaleSymbols": false,
+        "capabilities": "Map,Query,Data",
+        "cimVersion": "3.4.0",
+        "copyrightText": "",
+        "currentVersion": 11.4,
+        "dateFieldsTimeReference": null,
+        "datesInUnknownTimezone": false,
+        "defaultSubtypeCode": null,
+        "defaultVisibility": true,
+        "description": "",
+        "displayField": "NAMA_PROP",
+        "drawingInfo": {
+          "labelingInfo": null,
+          "renderer": {
+            "symbol": {
+              "color": [
+                130,
+                130,
+                130,
+                0
+              ],
+              "outline": {
+                "color": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "style": "esriSLSSolid",
+                "type": "esriSLS",
+                "width": 0.5
+              },
+              "style": "esriSFSSolid",
+              "type": "esriSFS"
+            },
+            "type": "simple"
+          },
+          "scaleSymbols": true,
+          "transparency": 0
+        },
+        "extent": {
+          "mmax": null,
+          "mmin": null,
+          "spatialReference": {
+            "falseM": -100000,
+            "falseX": -400,
+            "falseY": -400,
+            "falseZ": -100000,
+            "latestWkid": 4326,
+            "mTolerance": 0.001,
+            "mUnits": 10000,
+            "wkid": 4326,
+            "xyTolerance": 8.983152841195215e-09,
+            "xyUnits": 999999999.9999999,
+            "zTolerance": 0.001,
+            "zUnits": 10000
+          },
+          "xmax": 141.02004178902123,
+          "xmin": 94.9719110459569,
+          "ymax": 6.076832203615879,
+          "ymin": -11.00761537669819,
+          "zmax": null,
+          "zmin": null
+        },
+        "fields": [
+          {
+            "alias": "FID",
+            "domain": null,
+            "name": "FID",
+            "type": "esriFieldTypeOID"
+          },
+          {
+            "alias": "Shape",
+            "domain": null,
+            "name": "Shape",
+            "type": "esriFieldTypeGeometry"
+          },
+          {
+            "alias": "NO_PROP",
+            "domain": null,
+            "name": "NO_PROP",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "NAMA_PROP",
+            "domain": null,
+            "length": 254,
+            "name": "NAMA_PROP",
+            "type": "esriFieldTypeString"
+          },
+          {
+            "alias": "id_provins",
+            "domain": null,
+            "name": "id_provins",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "provinsi",
+            "domain": null,
+            "length": 254,
+            "name": "provinsi",
+            "type": "esriFieldTypeString"
+          },
+          {
+            "alias": "Total_basa",
+            "domain": null,
+            "name": "Total_basa",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "Total_ba_1",
+            "domain": null,
+            "name": "Total_ba_1",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "Total_keri",
+            "domain": null,
+            "name": "Total_keri",
+            "type": "esriFieldTypeDouble"
+          }
+        ],
+        "geometryField": {
+          "alias": "Shape",
+          "name": "Shape",
+          "type": "esriFieldTypeGeometry"
+        },
+        "geometryType": "esriGeometryPolygon",
+        "hasAttachments": false,
+        "hasLabels": false,
+        "hasM": true,
+        "hasMetadata": true,
+        "hasZ": true,
+        "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+        "id": 0,
+        "indexes": [
+          {
+            "description": "",
+            "fields": "Shape",
+            "isAscending": true,
+            "isUnique": false,
+            "name": "Shape"
+          }
+        ],
+        "isDataArchived": false,
+        "isDataVersioned": false,
+        "maxRecordCount": 2000,
+        "maxScale": 0,
+        "maxSelectionCount": 2000,
+        "minScale": 0,
+        "name": "Provinsi_basah_kering",
+        "ownershipBasedAccessControlForFeatures": {
+          "allowOthersToQuery": true
+        },
+        "parentLayer": null,
+        "preferredTimeReference": null,
+        "referenceScale": 0.0,
+        "relationships": [],
+        "serviceItemId": "f7db665e3a9e41289816b2743aa6b9d8",
+        "sourceSpatialReference": {
+          "falseM": -100000,
+          "falseX": -400,
+          "falseY": -400,
+          "falseZ": -100000,
+          "latestWkid": 4326,
+          "mTolerance": 0.001,
+          "mUnits": 10000,
+          "wkid": 4326,
+          "xyTolerance": 8.983152841195215e-09,
+          "xyUnits": 11258999068426.238,
+          "zTolerance": 0.001,
+          "zUnits": 10000
+        },
+        "subLayers": [],
+        "subtypeField": null,
+        "subtypeFieldName": null,
+        "subtypes": [],
+        "supportedQueryFormats": "JSON, geoJSON, PBF",
+        "supportedSpatialRelationships": [
+          "esriSpatialRelIntersects",
+          "esriSpatialRelContains",
+          "esriSpatialRelCrosses",
+          "esriSpatialRelEnvelopeIntersects",
+          "esriSpatialRelIndexIntersects",
+          "esriSpatialRelOverlaps",
+          "esriSpatialRelTouches",
+          "esriSpatialRelWithin",
+          "esriSpatialRelRelation"
+        ],
+        "supportsAdvancedQueries": false,
+        "supportsCoordinatesQuantization": true,
+        "supportsDatumTransformation": true,
+        "supportsDynamicLegends": true,
+        "supportsExceedsLimitStatistics": false,
+        "supportsStatistics": false,
+        "type": "Feature Layer",
+        "typeIdField": null,
+        "useStandardizedQueries": true
+      },
+      "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer/0?f=pjson"
+    },
+    "1": {
+      "content_type": "text/plain; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer/1?f=pjson",
+      "payload": {
+        "advancedQueryCapabilities": {
+          "supportsAdvancedQueryRelated": true,
+          "supportsCountDistinct": false,
+          "supportsCurrentUserQueries": true,
+          "supportsDistinct": false,
+          "supportsHavingClause": false,
+          "supportsLod": false,
+          "supportsOrderBy": false,
+          "supportsPagination": false,
+          "supportsPercentileStatistics": false,
+          "supportsQueryAnalytic": false,
+          "supportsQueryRelatedPagination": true,
+          "supportsQueryWithDatumTransformation": true,
+          "supportsQueryWithDistance": true,
+          "supportsQueryWithLodSR": false,
+          "supportsReturningQueryExtent": true,
+          "supportsSqlExpression": false,
+          "supportsSqlFormat": false,
+          "supportsStatistics": false,
+          "supportsTimeRelation": true,
+          "supportsTrueCurve": true,
+          "useStandardizedQueries": true
+        },
+        "archivingInfo": {
+          "startArchivingMoment": -1,
+          "supportsQueryWithHistoricMoment": false
+        },
+        "canModifyLayer": true,
+        "canScaleSymbols": false,
+        "capabilities": "Map,Query,Data",
+        "cimVersion": "3.4.0",
+        "copyrightText": "",
+        "currentVersion": 11.4,
+        "dateFieldsTimeReference": null,
+        "datesInUnknownTimezone": false,
+        "defaultSubtypeCode": null,
+        "defaultVisibility": true,
+        "description": "",
+        "displayField": "NAMA_PROP",
+        "drawingInfo": {
+          "labelingInfo": null,
+          "renderer": {
+            "symbol": {
+              "color": [
+                130,
+                130,
+                130,
+                0
+              ],
+              "outline": {
+                "color": [
+                  0,
+                  0,
+                  0,
+                  255
+                ],
+                "style": "esriSLSSolid",
+                "type": "esriSLS",
+                "width": 0.5
+              },
+              "style": "esriSFSSolid",
+              "type": "esriSFS"
+            },
+            "type": "simple"
+          },
+          "scaleSymbols": true,
+          "transparency": 0
+        },
+        "extent": {
+          "mmax": null,
+          "mmin": null,
+          "spatialReference": {
+            "falseM": -100000,
+            "falseX": -400,
+            "falseY": -400,
+            "falseZ": -100000,
+            "latestWkid": 4326,
+            "mTolerance": 0.001,
+            "mUnits": 10000,
+            "wkid": 4326,
+            "xyTolerance": 8.983152841195215e-09,
+            "xyUnits": 999999999.9999999,
+            "zTolerance": 0.001,
+            "zUnits": 10000
+          },
+          "xmax": 141.02004178902126,
+          "xmin": 94.97191104595692,
+          "ymax": 6.07683220361584,
+          "ymin": -11.00761537669823,
+          "zmax": null,
+          "zmin": null
+        },
+        "fields": [
+          {
+            "alias": "FID",
+            "domain": null,
+            "name": "FID",
+            "type": "esriFieldTypeOID"
+          },
+          {
+            "alias": "Shape",
+            "domain": null,
+            "name": "Shape",
+            "type": "esriFieldTypeGeometry"
+          },
+          {
+            "alias": "NO_PROP",
+            "domain": null,
+            "name": "NO_PROP",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "NO_KAB",
+            "domain": null,
+            "name": "NO_KAB",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "NAMA_PROP",
+            "domain": null,
+            "length": 254,
+            "name": "NAMA_PROP",
+            "type": "esriFieldTypeString"
+          },
+          {
+            "alias": "NAMA_KAB",
+            "domain": null,
+            "length": 254,
+            "name": "NAMA_KAB",
+            "type": "esriFieldTypeString"
+          },
+          {
+            "alias": "PROVINSI",
+            "domain": null,
+            "length": 40,
+            "name": "PROVINSI",
+            "type": "esriFieldTypeString"
+          },
+          {
+            "alias": "KABKOTA",
+            "domain": null,
+            "length": 40,
+            "name": "KABKOTA",
+            "type": "esriFieldTypeString"
+          },
+          {
+            "alias": "id_kab_bps",
+            "domain": null,
+            "name": "id_kab_bps",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "kabupaten",
+            "domain": null,
+            "length": 254,
+            "name": "kabupaten",
+            "type": "esriFieldTypeString"
+          },
+          {
+            "alias": "Total_basa",
+            "domain": null,
+            "name": "Total_basa",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "Total_ba_1",
+            "domain": null,
+            "name": "Total_ba_1",
+            "type": "esriFieldTypeDouble"
+          },
+          {
+            "alias": "Total_keri",
+            "domain": null,
+            "name": "Total_keri",
+            "type": "esriFieldTypeDouble"
+          }
+        ],
+        "geometryField": {
+          "alias": "Shape",
+          "name": "Shape",
+          "type": "esriFieldTypeGeometry"
+        },
+        "geometryType": "esriGeometryPolygon",
+        "hasAttachments": false,
+        "hasLabels": false,
+        "hasM": true,
+        "hasMetadata": true,
+        "hasZ": true,
+        "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+        "id": 1,
+        "indexes": [
+          {
+            "description": "",
+            "fields": "Shape",
+            "isAscending": true,
+            "isUnique": false,
+            "name": "Shape"
+          }
+        ],
+        "isDataArchived": false,
+        "isDataVersioned": false,
+        "maxRecordCount": 2000,
+        "maxScale": 0,
+        "maxSelectionCount": 2000,
+        "minScale": 0,
+        "name": "Kabupaten_basah_kering",
+        "ownershipBasedAccessControlForFeatures": {
+          "allowOthersToQuery": true
+        },
+        "parentLayer": null,
+        "preferredTimeReference": null,
+        "referenceScale": 0.0,
+        "relationships": [],
+        "serviceItemId": "f7db665e3a9e41289816b2743aa6b9d8",
+        "sourceSpatialReference": {
+          "falseM": -100000,
+          "falseX": -400,
+          "falseY": -400,
+          "falseZ": -100000,
+          "latestWkid": 4326,
+          "mTolerance": 0.001,
+          "mUnits": 10000,
+          "wkid": 4326,
+          "xyTolerance": 8.983152841195215e-09,
+          "xyUnits": 11258999068426.238,
+          "zTolerance": 0.001,
+          "zUnits": 10000
+        },
+        "subLayers": [],
+        "subtypeField": null,
+        "subtypeFieldName": null,
+        "subtypes": [],
+        "supportedQueryFormats": "JSON, geoJSON, PBF",
+        "supportedSpatialRelationships": [
+          "esriSpatialRelIntersects",
+          "esriSpatialRelContains",
+          "esriSpatialRelCrosses",
+          "esriSpatialRelEnvelopeIntersects",
+          "esriSpatialRelIndexIntersects",
+          "esriSpatialRelOverlaps",
+          "esriSpatialRelTouches",
+          "esriSpatialRelWithin",
+          "esriSpatialRelRelation"
+        ],
+        "supportsAdvancedQueries": false,
+        "supportsCoordinatesQuantization": true,
+        "supportsDatumTransformation": true,
+        "supportsDynamicLegends": true,
+        "supportsExceedsLimitStatistics": false,
+        "supportsStatistics": false,
+        "type": "Feature Layer",
+        "typeIdField": null,
+        "useStandardizedQueries": true
+      },
+      "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer/1?f=pjson"
+    }
+  },
+  "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer?f=pjson",
+  "primary": {
+    "archivingInfo": {
+      "supportsHistoricMoment": false
+    },
+    "capabilities": "Map,Query,Data",
+    "cimVersion": "3.4.0",
+    "copyrightText": "",
+    "currentVersion": 11.4,
+    "datesInUnknownTimezone": false,
+    "description": "",
+    "documentInfo": {
+      "AntialiasingMode": "Fast",
+      "Author": "",
+      "Category": "",
+      "Comments": "",
+      "Keywords": "DIBI_Hidromet_2015_2024",
+      "Subject": "",
+      "TextAntialiasingMode": "Force",
+      "Title": "Map",
+      "Version": "3.5.0"
+    },
+    "exportTilesAllowed": false,
+    "fullExtent": {
+      "mmax": null,
+      "mmin": null,
+      "spatialReference": {
+        "falseM": -100000,
+        "falseX": -400,
+        "falseY": -400,
+        "falseZ": -100000,
+        "latestWkid": 4326,
+        "mTolerance": 0.001,
+        "mUnits": 10000,
+        "wkid": 4326,
+        "xyTolerance": 8.983152841195215e-09,
+        "xyUnits": 999999999.9999999,
+        "zTolerance": 0.001,
+        "zUnits": 10000
+      },
+      "xmax": 141.02004178902126,
+      "xmin": 94.9719110459569,
+      "ymax": 6.076832203615879,
+      "ymin": -11.00761537669823,
+      "zmax": null,
+      "zmin": null
+    },
+    "initialExtent": {
+      "spatialReference": {
+        "falseM": -100000,
+        "falseX": -400,
+        "falseY": -400,
+        "falseZ": -100000,
+        "latestWkid": 4326,
+        "mTolerance": 0.001,
+        "mUnits": 10000,
+        "wkid": 4326,
+        "xyTolerance": 8.983152841195215e-09,
+        "xyUnits": 999999999.9999999,
+        "zTolerance": 0.001,
+        "zUnits": 10000
+      },
+      "xmax": 143.32244832617445,
+      "xmin": 92.66950450880367,
+      "ymax": 21.430573564785877,
+      "ymin": -26.36135673786819
+    },
+    "layers": [
+      {
+        "defaultVisibility": true,
+        "geometryType": "esriGeometryPolygon",
+        "id": 0,
+        "maxScale": 0,
+        "minScale": 0,
+        "name": "Provinsi_basah_kering",
+        "parentLayerId": -1,
+        "subLayerIds": null,
+        "supportsDynamicLegends": true,
+        "type": "Feature Layer"
+      },
+      {
+        "defaultVisibility": true,
+        "geometryType": "esriGeometryPolygon",
+        "id": 1,
+        "maxScale": 0,
+        "minScale": 0,
+        "name": "Kabupaten_basah_kering",
+        "parentLayerId": -1,
+        "subLayerIds": null,
+        "supportsDynamicLegends": true,
+        "type": "Feature Layer"
+      }
+    ],
+    "mapName": "DIBI_Hidromet_2015_2024",
+    "mapUnits": {
+      "uwkid": 9102
+    },
+    "maxImageHeight": 4096,
+    "maxImageWidth": 4096,
+    "maxRecordCount": 2000,
+    "maxScale": 0,
+    "maxSelectionCount": 2000,
+    "minScale": 0,
+    "referenceScale": 0.0,
+    "serviceDescription": "",
+    "serviceItemId": "f7db665e3a9e41289816b2743aa6b9d8",
+    "singleFusedMapCache": false,
+    "spatialReference": {
+      "falseM": -100000,
+      "falseX": -400,
+      "falseY": -400,
+      "falseZ": -100000,
+      "latestWkid": 4326,
+      "mTolerance": 0.001,
+      "mUnits": 10000,
+      "wkid": 4326,
+      "xyTolerance": 8.983152841195215e-09,
+      "xyUnits": 999999999.9999999,
+      "zTolerance": 0.001,
+      "zUnits": 10000
+    },
+    "supportedExtensions": "",
+    "supportedImageFormatTypes": "PNG32,PNG24,PNG,JPG,DIB,TIFF,EMF,PS,PDF,GIF,SVG,SVGZ,BMP",
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportsClipping": true,
+    "supportsDatumTransformation": true,
+    "supportsDynamicLayers": true,
+    "supportsQueryDataElements": true,
+    "supportsQueryDomains": true,
+    "supportsSpatialFilter": true,
+    "supportsTimeRelation": true,
+    "tables": [],
+    "units": "esriDecimalDegrees"
+  },
+  "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer?f=pjson",
+  "source_id": "dibi_kabupaten_hidromet_2015_2024",
+  "transport": {
+    "fallback_endpoint": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer",
+    "fallback_used": true,
+    "preferred_endpoint": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Kabupaten_2015_2024_Hidromet/MapServer",
+    "preferred_endpoint_error": {
+      "code": 500,
+      "details": [],
+      "message": "Service inarisk/DIBI_Kabupaten_2015_2024_Hidromet/MapServer not started "
+    },
+    "transport_amendment_path": "data/manifests/milestone26_dibi_transport_amendment.json",
+    "transport_amendment_sha256": "eedf5c3d1e7873dfb67f1026ae783ed4ccb1901611343e3906b5405a7e4dbc01"
+  }
+}
