@@ -1,0 +1,87 @@
+name: Milestone 27 BKPM Period Identity Prefix Probe
+
+on:
+  push:
+    branches:
+      - agent/milestone27-bkpm-investment-history
+    paths:
+      - .github/workflows/milestone27-bkpm-period-identity-prefix.yml
+      - data/manifests/milestone27_period_identity_prefix_contract.json
+      - scripts/probe_milestone27_bkpm_period_identity_prefix.py
+  workflow_dispatch:
+
+concurrency:
+  group: milestone27-bkpm-period-identity-prefix
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  probe-period-prefix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone27-bkpm-investment-history
+          fetch-depth: 0
+
+      - name: Compile probe
+        run: python -m py_compile scripts/probe_milestone27_bkpm_period_identity_prefix.py
+
+      - name: Read only first periode scalar from each pilot
+        run: python scripts/probe_milestone27_bkpm_period_identity_prefix.py
+
+      - name: Verify prefix-only scientific boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_period_identity_prefix_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-period-identity-prefix-probe/v1'
+          assert m['pilot_count'] == 3
+          assert {(r['year'], r['quarter']) for r in m['pilot_results']} == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
+          assert all(r['status'] == 200 for r in m['pilot_results'])
+          assert all(r['content_type'].lower().startswith('application/json') for r in m['pilot_results'])
+          assert all(r['stream_stopped_immediately_after_period_closing_quote'] is True for r in m['pilot_results'])
+          assert all(r['first_data_object_key'] == 'periode' for r in m['pilot_results'])
+          assert all(r['response_remainder_read'] is False for r in m['pilot_results'])
+          assert all(r['subsequent_observation_field_read'] is False for r in m['pilot_results'])
+          assert all(r['target_investment_values_inspected'] is False for r in m['pilot_results'])
+          assert all(r['non_period_observation_values_inspected'] is False for r in m['pilot_results'])
+          assert m['response_remainder_read'] is False
+          assert m['response_body_persisted'] is False
+          assert m['raw_json_persisted'] is False
+          assert m['subsequent_observation_field_read'] is False
+          assert m['target_investment_values_inspected'] is False
+          assert m['non_period_observation_values_inspected'] is False
+          assert m['source_selection_uses_period_value'] is False
+          assert m['record_selection_uses_target_investment_values'] is False
+          assert m['quarterly_flow_interpretation_authorized'] is False
+          assert m['cross_quarter_additivity_authorized'] is False
+          assert m['annual_sum_authorized'] is False
+          assert m['pma_pmdn_combination_authorized'] is False
+          assert m['external_fx_conversion_authorized'] is False
+          assert m['geography_mapping_authorized'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          print({
+              'periods': {(str(r['year']) + '-' + r['quarter']): r['source_native_period_value'] for r in m['pilot_results']},
+              'all_match': m['all_pilot_period_identities_match'],
+              'q2_matches_q2': m['source_2025_q2_period_identity_matches_q2'],
+          })
+          PY
+
+      - name: Commit sanitized period identity evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/manifests/milestone27_bkpm_period_identity_prefix_probe.json
+          if git diff --cached --quiet; then
+            echo "No period-prefix evidence changes to commit"
+            exit 0
+          fi
+          git commit -m "Freeze M27 BKPM period identity prefix evidence"
+          git push origin HEAD:agent/milestone27-bkpm-investment-history
