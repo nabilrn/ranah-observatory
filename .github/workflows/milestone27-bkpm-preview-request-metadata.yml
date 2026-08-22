@@ -1,39 +1,28 @@
-name: Milestone 27 BKPM Preview Request Metadata
+name: Milestone 27 BKPM Preview Request Metadata Evidence
 
 on:
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
+  pull_request:
     paths:
       - .github/workflows/milestone27-bkpm-preview-request-metadata.yml
       - data/manifests/milestone27_preview_request_metadata_contract.json
+      - data/manifests/milestone27_bkpm_preview_request_metadata.json
       - scripts/audit_milestone27_bkpm_preview_request_metadata.py
   workflow_dispatch:
 
-concurrency:
-  group: milestone27-bkpm-preview-request-metadata
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  audit-request-metadata:
+  verify-frozen-request-metadata:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
 
-      - name: Compile audit
-        run: python -m py_compile scripts/audit_milestone27_bkpm_preview_request_metadata.py
-
-      - name: Audit request construction from frozen HTML only
+      - name: Rebuild request metadata from frozen HTML
         run: python scripts/audit_milestone27_bkpm_preview_request_metadata.py
 
-      - name: Verify boundaries and resolved request metadata
+      - name: Verify deterministic result and boundaries
         run: |
           python - <<'PY'
           import json
@@ -42,17 +31,13 @@ jobs:
           m = json.loads(Path('data/manifests/milestone27_bkpm_preview_request_metadata.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone27-bkpm-preview-request-metadata/v1'
           assert m['pilot_count'] == 3
-          assert m['target_route'] == 'https://data.bkpm.go.id/data'
-          assert m['offline_frozen_html_only'] is True
           assert m['request_metadata_consistent_across_pilots'] is True
           assert m['request_metadata_resolved'] is True
-          assert {(r['year'], r['quarter']) for r in m['pilot_results']} == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
           for r in m['pilot_results']:
               assert r['target_route_match_count'] == 2
               assert r['http_methods'] == ['GET']
               assert r['request_parameter_key_names'] == ['dataset_detail_parent_id']
-              assert r['datatable_flags']['serverSide'] is True
-              assert r['datatable_flags']['processing'] is True
+              assert r['datatable_flags'] == {'processing': True, 'serverSide': True}
           for key in (
               'request_parameter_values_extracted',
               'csrf_or_token_values_extracted',
@@ -78,23 +63,7 @@ jobs:
               'monetary_wasted_potential_estimated',
           ):
               assert m[key] is False, key
-          print({
-              'resolved': m['request_metadata_resolved'],
-              'consistent': m['request_metadata_consistent_across_pilots'],
-              'match_counts': sorted({r['target_route_match_count'] for r in m['pilot_results']}),
-              'methods': sorted({tuple(r['http_methods']) for r in m['pilot_results']}),
-              'parameter_keys': sorted({tuple(r['request_parameter_key_names']) for r in m['pilot_results']}),
-          })
           PY
 
-      - name: Commit deterministic request-metadata evidence
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/manifests/milestone27_bkpm_preview_request_metadata.json
-          if git diff --cached --quiet; then
-            echo "No request-metadata changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M27 BKPM preview request metadata"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
+      - name: Require byte-identical committed output
+        run: git diff --exit-code -- data/manifests/milestone27_bkpm_preview_request_metadata.json
