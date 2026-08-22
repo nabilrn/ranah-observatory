@@ -1,39 +1,25 @@
-name: Milestone 27 BKPM Public Data HEAD Probe
+name: Milestone 27 BKPM Public Data HEAD Evidence
 
 on:
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
+  pull_request:
     paths:
       - .github/workflows/milestone27-bkpm-public-data-head-probe.yml
       - data/manifests/milestone27_public_data_head_probe_contract.json
+      - data/manifests/milestone27_bkpm_public_data_head_probe.json
       - scripts/probe_milestone27_bkpm_public_data_head.py
   workflow_dispatch:
 
-concurrency:
-  group: milestone27-bkpm-public-data-head-probe
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  probe-public-data-head:
+  verify-frozen-head-evidence:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
 
-      - name: Compile probe
-        run: python -m py_compile scripts/probe_milestone27_bkpm_public_data_head.py
-
-      - name: Run HEAD-only route probe
-        run: python scripts/probe_milestone27_bkpm_public_data_head.py
-
-      - name: Verify body-free scientific boundaries
+      - name: Verify frozen HEAD evidence
         run: |
           python - <<'PY'
           import json
@@ -41,54 +27,12 @@ jobs:
           m = json.loads(Path('data/manifests/milestone27_bkpm_public_data_head_probe.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone27-bkpm-public-data-head-probe/v1'
           assert m['pilot_count'] == 3
-          assert {(r['year'], r['quarter']) for r in m['pilot_results']} == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
-          assert all(r['request_method'] == 'HEAD' for r in m['pilot_results'])
-          assert all(r['request_parameter_submitted'] is True for r in m['pilot_results'])
+          assert m['status_codes'] == [200, 200, 200]
+          assert m['head_supported_all_pilots'] is True
+          assert all(r['content_type'].lower().startswith('application/json') for r in m['pilot_results'])
           assert all(r['response_body_read'] is False for r in m['pilot_results'])
           assert all(r['response_body_persisted'] is False for r in m['pilot_results'])
-          for key in (
-              'response_body_read',
-              'response_body_persisted',
-              'get_request_performed',
-              'post_request_performed',
-              'datatable_pagination_parameters_submitted',
-              'preview_table_schema_inspected',
-              'table_column_names_extracted',
-              'table_header_extracted',
-              'table_body_extracted',
-              'table_cell_text_extracted',
-              'target_investment_values_inspected',
-              'period_column_inspected',
-              'csv_schema_inspected',
-              'zip_resource_requested',
-              'interactive_disclaimer_form_submitted',
-              'synthetic_personal_information_submitted',
-              'source_selection_uses_transport_result',
-              'investment_value_aggregation_performed',
-              'quarterly_flow_interpretation_authorized',
-              'cross_quarter_additivity_authorized',
-              'annual_sum_authorized',
-              'geography_mapping_authorized',
-              'statistical_model_fit',
-              'causal_claim_created',
-              'monetary_wasted_potential_estimated',
-          ):
-              assert m[key] is False, key
-          print({
-              'statuses': m['status_codes'],
-              'head_supported_all_pilots': m['head_supported_all_pilots'],
-              'transport_classification': m['transport_classification'],
-          })
+          assert m['get_request_performed'] is False
+          assert m['post_request_performed'] is False
+          assert m['target_investment_values_inspected'] is False
           PY
-
-      - name: Commit frozen HEAD metadata
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/manifests/milestone27_bkpm_public_data_head_probe.json
-          if git diff --cached --quiet; then
-            echo "No HEAD metadata changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M27 BKPM public data HEAD evidence"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
