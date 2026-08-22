@@ -38,9 +38,9 @@
       "event_type": "BANJIR",
       "raw_html_bytes": 15341,
       "raw_html_path": "data/processed/bnpb/m26_stage2_event_impact_2024/banjir.html",
-      "raw_html_sha256": "b1edb1ad45026be3d9592d06283e1ac805b911b403a67f4358099bcae853dd47",
+      "raw_html_sha256": "7a9d5ff3db4460a2e3b8a0f3dd2db05e66e10fdf89307bfcbeed414763af0b5a",
       "request_sidecar_path": "data/processed/bnpb/m26_stage2_event_impact_2024/banjir.request.json",
-      "request_sidecar_sha256": "577bce541f86e4fd90757c4e6b4e1d4458b2a828b5083d21a0ad0ac8d0e5b623",
+      "request_sidecar_sha256": "a1b63d85d6599116bfb8abb06ac8a1bc4081fc348fe6a33ff954eaab486b877a",
       "retained_sumbar_row_count": 0,
       "source_row_count": 0
     },
@@ -48,9 +48,9 @@
       "event_type": "TANAH LONGSOR",
       "raw_html_bytes": 15349,
       "raw_html_path": "data/processed/bnpb/m26_stage2_event_impact_2024/tanah-longsor.html",
-      "raw_html_sha256": "61b7e0c78fa1554d5807f761253f10a9a89617f755e2bb581ba1906395b7bb0e",
+      "raw_html_sha256": "1e787fe7b3e8c24b729a5384ac80315887ac285b1bf2e3b59137e612b1c6eede",
       "request_sidecar_path": "data/processed/bnpb/m26_stage2_event_impact_2024/tanah-longsor.request.json",
-      "request_sidecar_sha256": "60c1270c14198269e87b55bda92a5feef68a1200600768f11bcb1f10f008b407",
+      "request_sidecar_sha256": "3dc271c33b30fa0ca5ff072889109c6db6641cbc56a3548d6ad5802735d89908",
       "retained_sumbar_row_count": 0,
       "source_row_count": 0
     }
