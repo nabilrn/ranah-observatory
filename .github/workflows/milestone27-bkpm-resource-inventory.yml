@@ -1,48 +1,32 @@
-name: Milestone 27 BKPM resource inventory
+name: Milestone 27 BKPM frozen inventory verifier
 
+# Live Stage 0 discovery is frozen. This workflow verifies the committed
+# official listing/detail evidence and never re-fetches BKPM or writes the branch.
 on:
   pull_request:
     paths:
       - research/MILESTONE27_BKPM_INVESTMENT_HISTORY_SPEC.md
       - data/manifests/milestone27_design_gate.json
-      - scripts/probe_milestone27_bkpm_resource_inventory.py
-      - .github/workflows/milestone27-bkpm-resource-inventory.yml
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
-    paths:
-      - data/manifests/milestone27_design_gate.json
-      - scripts/probe_milestone27_bkpm_resource_inventory.py
+      - data/manifests/milestone27_bkpm_resource_inventory.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv
+      - data/processed/bkpm/m27_resource_inventory/**
       - .github/workflows/milestone27-bkpm-resource-inventory.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: milestone27-bkpm-resource-inventory-${{ github.ref }}
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  inventory:
+  verify-frozen-inventory:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Compile value-blind inventory probe
-        run: python -m py_compile scripts/probe_milestone27_bkpm_resource_inventory.py
-
-      - name: Inventory official BKPM quarterly history metadata
-        run: python -m scripts.probe_milestone27_bkpm_resource_inventory --mode live
-
-      - name: Verify Stage 0 scientific boundaries
+      - name: Verify frozen Stage 0 inventory evidence
         run: |
           python - <<'PY'
           import csv
@@ -50,52 +34,35 @@ jobs:
           import json
           from pathlib import Path
 
-          manifest_path = Path('data/manifests/milestone27_bkpm_resource_inventory.json')
-          m = json.loads(manifest_path.read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-resource-inventory/v1'
+          m = json.loads(Path('data/manifests/milestone27_bkpm_resource_inventory.json').read_text(encoding='utf-8'))
           assert m['milestone'] == 27
-          assert m['stage'] == 'stage0_value_blind_resource_inventory'
-          assert m['source_candidate_id'] == 'bkpm_satudata_investment'
-          assert m['target_period']['start_year'] == 2010
-          assert m['target_period']['end_year'] == 2025
+          assert m['candidate_detail_count'] == 64
+          assert m['distinct_period_count'] == 64
           assert m['possible_period_count'] == 64
-          assert m['candidate_detail_count'] > 0
-          assert m['distinct_period_count'] > 0
+          assert m['missing_period_count'] == 0
+          assert m['duplicate_period_count'] == 0
+          assert m['declared_expected_schema_complete_period_count'] == 64
           assert m['resource_file_download_performed'] is False
           assert m['resource_header_retrieval_performed'] is False
           assert m['target_investment_values_inspected'] is False
-          assert m['source_selection_uses_target_investment_values'] is False
           assert m['investment_value_aggregation_performed'] is False
           assert m['annual_sum_performed'] is False
-          assert m['pma_pmdn_combination_performed'] is False
-          assert m['external_currency_conversion_performed'] is False
-          assert m['missing_row_interpreted_as_zero'] is False
-          assert m['value_based_deduplication_performed'] is False
-          assert m['historical_boundary_reconstruction_performed'] is False
-          assert m['per_capita_normalization_performed'] is False
-          assert m['ranking_performed'] is False
           assert m['statistical_model_fit'] is False
           assert m['causal_claim_created'] is False
           assert m['monetary_wasted_potential_estimated'] is False
-          assert m['stage0_complete'] is False
 
           inventory = Path(m['outputs']['inventory'])
           assert hashlib.sha256(inventory.read_bytes()).hexdigest() == m['outputs']['inventory_sha256']
           with inventory.open(newline='', encoding='utf-8') as handle:
               rows = list(csv.DictReader(handle))
-          assert len(rows) == m['candidate_detail_count']
-          for row in rows:
-              assert 2010 <= int(row['year']) <= 2025
-              assert row['quarter'] in {'I', 'II', 'III', 'IV'}
-              assert row['dataset_detail_url'].startswith('https://data.bkpm.go.id/')
-              assert row['resource_file_downloaded'] == 'false'
-              assert row['target_investment_values_inspected'] == 'false'
-              assert row['investment_value_aggregation_performed'] == 'false'
-              assert row['promotion_state'] in {
-                  'metadata_qualified_resource_transport_pending',
-                  'metadata_and_transport_qualified_schema_pending',
-              }
+          assert len(rows) == 64
+          periods = {(int(r['year']), int(r['quarter_number'])) for r in rows}
+          assert periods == {(y, q) for y in range(2010, 2026) for q in range(1, 5)}
+          assert all(r['declared_expected_schema_complete'] == 'true' for r in rows)
+          assert all(r['resource_file_downloaded'] == 'false' for r in rows)
+          assert all(r['target_investment_values_inspected'] == 'false' for r in rows)
 
+          assert len(m['detail_evidence']) == 64
           for item in m['listing_evidence']:
               p = Path(item['raw_path'])
               assert p.exists()
@@ -107,19 +74,3 @@ jobs:
               assert hashlib.sha256(raw.read_bytes()).hexdigest() == item['raw_sha256']
               assert hashlib.sha256(sidecar.read_bytes()).hexdigest() == item['request_sidecar_sha256']
           PY
-
-      - name: Commit frozen Stage 0 inventory evidence
-        run: |
-          git add \
-            data/processed/bkpm/m27_resource_inventory \
-            data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv \
-            data/manifests/milestone27_bkpm_resource_inventory.json
-          if git diff --cached --quiet; then
-            echo 'BKPM inventory evidence unchanged.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'm27: freeze BKPM quarterly investment resource inventory'
-          git pull --rebase origin agent/milestone27-bkpm-investment-history
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
