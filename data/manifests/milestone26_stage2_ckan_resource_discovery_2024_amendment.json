@@ -1,0 +1,30 @@
+{
+  "schema": "ranah-observatory/milestone26-stage2-ckan-resource-discovery-2024-amendment/v1",
+  "milestone": 26,
+  "stage": "stage2a_observed_impact_transport_discovery",
+  "amendment_type": "metadata_only_expansion_to_explicitly_versioned_2024_official_package",
+  "locked_before_2024_package_metadata_snapshot": true,
+  "trigger": "official BNPB Satu Data portal exposes a dedicated 2024 Kompilasi Data Kejadian dan Dampak Bencana package, so its resource metadata must be checked before concluding that no public CKAN event-level impact transport exists",
+  "official_source": {
+    "base_url": "https://data.bnpb.go.id",
+    "package_id": "36d9a6b5-9755-4515-8f8d-16e29843abc4",
+    "package_title_expected": "Kompilasi Data Kejadian dan Dampak Bencana tahun 2024",
+    "action": "package_show"
+  },
+  "inherits_selection_dimensions_and_eligibility_rules_from": "data/manifests/milestone26_stage2_ckan_resource_discovery_contract.json",
+  "package_metadata_only": true,
+  "datastore_records_retrieval_authorized": false,
+  "resource_file_download_authorized": false,
+  "target_impact_values_inspection_authorized": false,
+  "resource_selection_after_target_value_inspection_authorized": false,
+  "event_level_identity_inference_authorized": false,
+  "impact_aggregation_authorized": false,
+  "blank_as_zero_authorized": false,
+  "automatic_duplicate_collapse_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_loss_inference_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
