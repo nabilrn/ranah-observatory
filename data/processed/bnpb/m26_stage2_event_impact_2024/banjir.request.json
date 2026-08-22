@@ -13,7 +13,7 @@
   "qualified_crosswalk_sha256": "ded46ffab5ccad59e215c72925ff27876e0ccad33437fa7a3b81303ca022cc45",
   "response_bytes": 15341,
   "response_path": "data/processed/bnpb/m26_stage2_event_impact_2024/banjir.html",
-  "response_sha256": "7a9d5ff3db4460a2e3b8a0f3dd2db05e66e10fdf89307bfcbeed414763af0b5a",
+  "response_sha256": "594b3b0337f98f99ee4b39bfae41023dd0dcea32946b7c16e04c5f6fa8be2ed5",
   "schema": "ranah-observatory/milestone26-stage2a-event-impact-request/v2",
   "source_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
   "stage2_contract_path": "data/manifests/milestone26_stage2_event_impact_contract.json",
