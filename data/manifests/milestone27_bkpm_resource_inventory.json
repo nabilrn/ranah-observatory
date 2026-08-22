@@ -740,9 +740,9 @@
   "official_surface": "https://data.bkpm.go.id/",
   "outputs": {
     "inventory": "data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv",
-    "inventory_sha256": "8ba0380c4272d77d50f85085f0e1b471d183bbcba700140fafddc6dea2706590",
+    "inventory_sha256": "e6a8f1c3a58d9a9edbbc62747f4edfe3f019a34f9cbc57b0a730d9c3b4a79382",
     "semantic_audit": "data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv",
-    "semantic_audit_sha256": "79983d0f2ae1d799a1e3ff85ef4d6a517d97f1813778f9df234d55cd84286a7d"
+    "semantic_audit_sha256": "60bf19c855a43e2ab3213379f4fc1f66cdcb5190cbbdbfaab9202ba9225acba4"
   },
   "per_capita_normalization_performed": false,
   "period_coverage_inferred_from_adjacent_periods": false,
@@ -761,14 +761,14 @@
   "schema": "ranah-observatory/milestone27-bkpm-resource-inventory/v2",
   "semantic_audit": {
     "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv",
-    "sha256": "79983d0f2ae1d799a1e3ff85ef4d6a517d97f1813778f9df234d55cd84286a7d"
+    "sha256": "60bf19c855a43e2ab3213379f4fc1f66cdcb5190cbbdbfaab9202ba9225acba4"
   },
   "semantic_contract": {
     "path": "data/manifests/milestone27_quarter_semantics_contract.json",
     "sha256": "b9e2b55a727acad58b3e7f463ba393c1f2db97c9b66e84d8c209f688dbd03e1b"
   },
-  "semantic_family_hold_period_count": 2,
-  "semantic_family_match_period_count": 62,
+  "semantic_family_hold_period_count": 1,
+  "semantic_family_match_period_count": 63,
   "source_candidate_id": "bkpm_satudata_investment",
   "source_selection_uses_target_investment_values": false,
   "stage": "stage0_inventory_and_semantic_continuity_qualified_transport_pending",

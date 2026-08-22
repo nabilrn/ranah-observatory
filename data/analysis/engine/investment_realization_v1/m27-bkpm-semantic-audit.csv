@@ -58,7 +58,7 @@ year,quarter,quarter_number,dataset_identifier,description_period_match,lkpm_sou
 2024,I,1,Data-realisasi-investasi-triwulan-i-tahun-2024,true,true,true,true,true,true,true,semantic_family_match,false,false
 2024,II,2,Data-realisasi-investasi-triwulan-ii-tahun-2024-UVTkOaI,true,true,true,true,true,true,true,semantic_family_match,false,false
 2024,III,3,Data-realisasi-investasi-triwulan-iii-tahun-2024-oXA2V00,true,true,true,true,true,true,true,semantic_family_match,false,false
-2024,IV,4,Data-realisasi-investasi-triwulan-iv-tahun-2024-nKo1EyF,true,true,false,true,true,true,true,held_semantic_evidence_incomplete,false,false
+2024,IV,4,Data-realisasi-investasi-triwulan-iv-tahun-2024-nKo1EyF,true,true,true,true,true,true,true,semantic_family_match,false,false
 2025,I,1,Data-realisasi-investasi-triwulan-i-tahun-2025-X4LGYJf,true,true,true,true,true,true,true,semantic_family_match,false,false
 2025,II,2,Data-realisasi-investasi-triwulan-ii-tahun-2025,false,true,true,true,true,true,true,held_semantic_evidence_incomplete,false,false
 2025,III,3,Data-realisasi-investasi-triwulan-iii-tahun-2025-hXdFHZK,true,true,true,true,true,true,true,semantic_family_match,false,false
