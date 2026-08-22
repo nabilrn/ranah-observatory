@@ -1,0 +1,67 @@
+name: Milestone 26 Stage 2a event-impact transport diagnostic
+
+on:
+  pull_request:
+    paths:
+      - scripts/probe_milestone26_stage2a_transport_semantics.py
+      - data/manifests/milestone26_stage2a_transport_diagnostic_contract.json
+      - .github/workflows/milestone26-stage2a-transport-diagnostic.yml
+  push:
+    branches:
+      - agent/milestone26-disaster-risk-chain
+    paths:
+      - scripts/probe_milestone26_stage2a_transport_semantics.py
+      - data/manifests/milestone26_stage2a_transport_diagnostic_contract.json
+      - .github/workflows/milestone26-stage2a-transport-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/milestone26-disaster-risk-chain
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile diagnostic probe
+        run: python -m py_compile scripts/probe_milestone26_stage2a_transport_semantics.py
+      - name: Run transport-only diagnostic
+        run: python -m scripts.probe_milestone26_stage2a_transport_semantics
+      - name: Verify no impact inspection or promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone26_stage2a_transport_diagnostic.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone26-stage2a-transport-diagnostic/v1'
+          assert len(m['results']) == 5
+          assert all(r['header_match'] is True for r in m['results'])
+          assert all(r['impact_cell_values_inspected'] is False for r in m['results'])
+          assert m['impact_cell_values_inspected'] is False
+          assert m['row_level_impact_promotion_authorized'] is False
+          assert m['impact_aggregation_performed'] is False
+          assert m['target_contract_changed'] is False
+          assert m['risk_synthesis_authorized'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_loss_inferred'] is False
+          PY
+      - name: Commit frozen transport diagnostic
+        run: |
+          git add \
+            data/processed/bnpb/m26_stage2_transport_diagnostic \
+            data/manifests/milestone26_stage2a_transport_diagnostic.json
+          if git diff --cached --quiet; then
+            echo 'Transport diagnostic unchanged.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'm26: freeze Stage 2a event-impact transport diagnostic'
+          git push origin HEAD:agent/milestone26-disaster-risk-chain
