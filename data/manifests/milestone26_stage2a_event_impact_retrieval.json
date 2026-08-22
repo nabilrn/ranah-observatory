@@ -1,0 +1,88 @@
+{
+  "all_retained_sumbar_rows_crosswalked": true,
+  "automatic_duplicate_collapse_performed": false,
+  "blank_interpreted_as_zero": false,
+  "blank_source_event_id_count": 0,
+  "canonical_frame": {
+    "path": "data/analysis/engine/spatial_climate_risk_v1/m16-spatial-component-frame.csv",
+    "sha256": "e8fb46ab2baa8d151fb92c3a422735a4e0ea2ac18f236523a685f0ae4e39e1aa"
+  },
+  "causal_claim_created": false,
+  "cross_component_temporal_aggregation_performed": false,
+  "duplicate_nonblank_source_event_id_count": 0,
+  "duplicate_nonblank_source_event_ids": [],
+  "duplicate_resolution_decision": "pending_explicit_stage2b_decision",
+  "exact_duplicate_fingerprint_count": 0,
+  "exact_duplicate_fingerprints": [],
+  "exact_table_schema_required": true,
+  "historical_boundary_reconstruction_performed": false,
+  "impact_aggregation_performed": false,
+  "impact_cell_profile": {
+    "blank_not_reported_or_missing": 0,
+    "explicit_reported_zero": 0,
+    "reported_positive_count": 0
+  },
+  "impact_cell_type_profile_completed": true,
+  "milestone": 26,
+  "monetary_loss_inferred": false,
+  "monetary_wasted_potential_estimated": false,
+  "qualified_bnpb_crosswalk": {
+    "path": "data/registries/bnpb_geography_map.csv",
+    "sha256": "ded46ffab5ccad59e215c72925ff27876e0ccad33437fa7a3b81303ca022cc45"
+  },
+  "represented_geography_count": 0,
+  "represented_geography_ids": [],
+  "retained_row_count": 0,
+  "retrievals": [
+    {
+      "event_type": "BANJIR",
+      "raw_html_bytes": 15341,
+      "raw_html_path": "data/processed/bnpb/m26_stage2_event_impact_2024/banjir.html",
+      "raw_html_sha256": "b1edb1ad45026be3d9592d06283e1ac805b911b403a67f4358099bcae853dd47",
+      "request_sidecar_path": "data/processed/bnpb/m26_stage2_event_impact_2024/banjir.request.json",
+      "request_sidecar_sha256": "577bce541f86e4fd90757c4e6b4e1d4458b2a828b5083d21a0ad0ac8d0e5b623",
+      "retained_sumbar_row_count": 0,
+      "source_row_count": 0
+    },
+    {
+      "event_type": "TANAH LONGSOR",
+      "raw_html_bytes": 15349,
+      "raw_html_path": "data/processed/bnpb/m26_stage2_event_impact_2024/tanah-longsor.html",
+      "raw_html_sha256": "61b7e0c78fa1554d5807f761253f10a9a89617f755e2bb581ba1906395b7bb0e",
+      "request_sidecar_path": "data/processed/bnpb/m26_stage2_event_impact_2024/tanah-longsor.request.json",
+      "request_sidecar_sha256": "60c1270c14198269e87b55bda92a5feef68a1200600768f11bcb1f10f008b407",
+      "retained_sumbar_row_count": 0,
+      "source_row_count": 0
+    }
+  ],
+  "risk_synthesis_authorized": false,
+  "row_diagnostics": {
+    "path": "data/analysis/engine/disaster_risk_chain_v1/m26-stage2a-event-impact-row-diagnostics.jsonl",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "schema": "ranah-observatory/milestone26-stage2a-event-impact-retrieval/v2",
+  "source_event_type_validation_passed": true,
+  "source_id_assumed_canonical": false,
+  "source_name_crosscheck_passed": true,
+  "stage": "2a_live_retrieval_qualification",
+  "stage2a_geography_contract": {
+    "path": "data/manifests/milestone26_stage2a_geography_crosswalk_contract.json",
+    "sha256": "0c89220eb2be81c9a7a549ffba89a968e4cd0e58aa18438d9163405f200d310b"
+  },
+  "stage2b_promotion_authorized": false,
+  "statistical_model_fit": false,
+  "target_date_range_validation_passed": true,
+  "target_regime": {
+    "end_date": "31/12/2024",
+    "event_types": [
+      "BANJIR",
+      "TANAH LONGSOR"
+    ],
+    "geography_count": 19,
+    "geography_filter_rule": "retrieve each locked event type for the full target date range, then retain rows whose source ID Kabupaten maps exactly to one of the 19 current Sumatera Barat canonical geographies",
+    "geography_regime": "BIG_June_2026_fixed_current_boundary",
+    "server_side_province_filter_assumed": false,
+    "start_date": "01/01/2024",
+    "year": 2024
+  }
+}
