@@ -6,7 +6,7 @@
   "resource_file_requested": false,
   "response_bytes": 181899,
   "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q1-044.html",
-  "response_sha256": "de3f57093b7fc28acda9ccc907f30501b442aa2d3622e6e5b779bd0076079e4a",
+  "response_sha256": "8650f05bdf9ff1741fe6a316ef0af3786f722d9d4c92a64833dcbf5c4ae9f195",
   "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
   "target_investment_values_inspected": false,
   "year": 2021

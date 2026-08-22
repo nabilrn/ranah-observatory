@@ -6,7 +6,7 @@
   "resource_file_requested": false,
   "response_bytes": 181910,
   "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q2-021.html",
-  "response_sha256": "f688a38f2c8e5ffedc40d572ea14cee685c2e30bcfcd25fe720628ad1a0cabfa",
+  "response_sha256": "c9224e2cf7685536c75b3f4f739197bfe24b8579ffdb0d38fc7a00cb9fabb139",
   "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
   "target_investment_values_inspected": false,
   "year": 2015

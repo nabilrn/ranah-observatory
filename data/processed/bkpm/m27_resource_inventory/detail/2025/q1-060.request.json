@@ -6,7 +6,7 @@
   "resource_file_requested": false,
   "response_bytes": 181800,
   "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q1-060.html",
-  "response_sha256": "5c159bd336d2fed0c23dea9a1f8a55e6c8db3ab320acab3725d1d1e5304e6da3",
+  "response_sha256": "7f6b58d91e0166bc0956154a323e6c1fe3221113d435982d7fa9b435e9826445",
   "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
   "target_investment_values_inspected": false,
   "year": 2025
