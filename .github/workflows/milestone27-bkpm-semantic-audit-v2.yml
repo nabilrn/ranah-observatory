@@ -1,50 +1,43 @@
-name: Milestone 27 BKPM semantic audit v2
+name: Milestone 27 BKPM semantic continuity verifier
 
+# Semantic continuity is frozen at 63 qualified periods + one explicit 2025-Q2
+# source-metadata conflict. Rebuild only from committed official HTML and fail on drift.
 on:
   pull_request:
     paths:
       - data/manifests/milestone27_semantic_representation_amendment.json
-      - scripts/audit_milestone27_bkpm_frozen_inventory_v2.py
       - data/manifests/milestone27_quarter_semantics_contract.json
-      - .github/workflows/milestone27-bkpm-semantic-audit-v2.yml
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
-    paths:
-      - data/manifests/milestone27_semantic_representation_amendment.json
+      - data/manifests/milestone27_bkpm_resource_inventory.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv
+      - data/processed/bkpm/m27_resource_inventory/detail/**
+      - scripts/audit_milestone27_bkpm_frozen_inventory.py
       - scripts/audit_milestone27_bkpm_frozen_inventory_v2.py
       - .github/workflows/milestone27-bkpm-semantic-audit-v2.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: milestone27-bkpm-semantic-audit-v2-${{ github.ref }}
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  audit-v2:
+  verify-semantic-continuity:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Compile semantic auditors
+      - name: Compile frozen semantic auditors
         run: |
           python -m py_compile scripts/audit_milestone27_bkpm_frozen_inventory.py
           python -m py_compile scripts/audit_milestone27_bkpm_frozen_inventory_v2.py
 
-      - name: Apply representation-only semantic amendment offline
+      - name: Rebuild semantic audit offline from frozen official pages
         run: python -m scripts.audit_milestone27_bkpm_frozen_inventory_v2
 
-      - name: Verify 2024-Q4 punctuation correction and preserve 2025-Q2 source conflict
+      - name: Verify 63 qualified periods and preserve 2025-Q2 source conflict
         run: |
           python - <<'PY'
           import csv, json
@@ -52,26 +45,34 @@ jobs:
 
           m = json.loads(Path('data/manifests/milestone27_bkpm_resource_inventory.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone27-bkpm-resource-inventory/v2'
+          assert m['candidate_detail_count'] == 64
+          assert m['distinct_period_count'] == 64
+          assert m['missing_period_count'] == 0
+          assert m['duplicate_period_count'] == 0
           assert m['semantic_family_match_period_count'] == 63
           assert m['semantic_family_hold_period_count'] == 1
-          assert m['quarter_specific_period_semantics_supported_by_page_text'] is False
-          assert m['incremental_reported_realization_semantics_supported_by_page_text'] is False
+          assert m['direct_resource_url_count'] == 0
+          assert m['resource_download_action_period_count'] == 64
+          assert m['resource_transport_endpoint_resolved_period_count'] == 0
           assert m['resource_transport_endpoint_qualified'] is False
           assert m['quarterly_flow_interpretation_authorized'] is False
           assert m['cross_quarter_additivity_authorized'] is False
           assert m['annual_sum_authorized'] is False
+          assert m['resource_file_download_performed'] is False
           assert m['target_investment_values_inspected'] is False
           assert m['investment_value_aggregation_performed'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
 
           with Path(m['outputs']['semantic_audit']).open(newline='', encoding='utf-8') as h:
               rows = list(csv.DictReader(h))
           by_period = {(int(r['year']), int(r['quarter_number'])): r for r in rows}
-          q4_2024 = by_period[(2024, 4)]
-          assert q4_2024['period_field_semantics_match'] == 'true'
-          assert q4_2024['semantic_family_state'] == 'semantic_family_match'
+          assert len(by_period) == 64
+          assert by_period[(2024, 4)]['period_field_semantics_match'] == 'true'
+          assert by_period[(2024, 4)]['semantic_family_state'] == 'semantic_family_match'
           q2_2025 = by_period[(2025, 2)]
           assert q2_2025['description_period_match'] == 'false'
-          assert q2_2025['lkpm_source_identity_match'] == 'true'
           assert q2_2025['period_field_semantics_match'] == 'true'
           assert q2_2025['rupiah_increment_semantics_match'] == 'true'
           assert q2_2025['usd_increment_semantics_match'] == 'true'
@@ -79,18 +80,9 @@ jobs:
           assert sum(r['semantic_family_state'] != 'semantic_family_match' for r in rows) == 1
           PY
 
-      - name: Commit amended semantic audit
+      - name: Require byte-identical frozen semantic outputs
         run: |
-          git add \
+          git diff --exit-code -- \
             data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv \
             data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv \
             data/manifests/milestone27_bkpm_resource_inventory.json
-          if git diff --cached --quiet; then
-            echo 'M27 semantic audit v2 unchanged.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'm27: distinguish punctuation drift from 2025-Q2 period conflict'
-          git pull --rebase origin agent/milestone27-bkpm-investment-history
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
