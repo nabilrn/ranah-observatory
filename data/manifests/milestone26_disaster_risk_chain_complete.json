@@ -30,7 +30,7 @@
     "observed_impact": {
       "manifest": {
         "path": "data/manifests/milestone26_stage2_observed_impact_decision.json",
-        "sha256": "e33079981f1acd7d7c7b213fa99f1e5bc03b2a96fcac28655fabb720fbf10420"
+        "sha256": "128155dad689bd5bd0edd3127ef31109f9d994b49c56e10a1f58d519b9a6de7e"
       },
       "observation_count_promoted": 0,
       "status": "held_event_level_transport_unqualified"
