@@ -1,0 +1,29 @@
+{
+  "csv_schema_inspected": false,
+  "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+  "disclaimer_form_submitted": false,
+  "headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "public",
+    "content-disposition": "attachment; filename=data-realisasi-investasi-triwulan-iv-tahun-2025_6a89c2c267b3b.zip",
+    "content-length": "486397",
+    "content-type": "application/zip"
+  },
+  "method": "HEAD",
+  "period_column_inspected": false,
+  "pilot_role": "latest_inventory_vintage",
+  "quarter": "IV",
+  "quarter_number": 4,
+  "reason": "OK",
+  "redirect_followed": false,
+  "requested_url": "https://data.bkpm.go.id/dataset/generate-download-zip/625bf941-ad51-4425-ab13-88de84c1bd0e/file?upload_file_id=615",
+  "resource_download_action_file_uuid": "625bf941-ad51-4425-ab13-88de84c1bd0e",
+  "resource_download_action_record_id": "615",
+  "response_body_bytes_read": 0,
+  "response_body_read": false,
+  "semantic_family_state": "semantic_family_match",
+  "status": 200,
+  "synthetic_personal_information_submitted": false,
+  "target_investment_values_inspected": false,
+  "year": 2025
+}

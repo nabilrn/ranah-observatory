@@ -1,0 +1,29 @@
+{
+  "csv_schema_inspected": false,
+  "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2025",
+  "disclaimer_form_submitted": false,
+  "headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "public",
+    "content-disposition": "attachment; filename=data-realisasi-investasi-triwulan-ii-tahun-2025_6a89c2c0bdc11.zip",
+    "content-length": "575152",
+    "content-type": "application/zip"
+  },
+  "method": "HEAD",
+  "period_column_inspected": false,
+  "pilot_role": "held_source_period_identity_conflict",
+  "quarter": "II",
+  "quarter_number": 2,
+  "reason": "OK",
+  "redirect_followed": false,
+  "requested_url": "https://data.bkpm.go.id/dataset/generate-download-zip/ab32082f-39ca-485c-bf69-43368eef5be1/file?upload_file_id=442",
+  "resource_download_action_file_uuid": "ab32082f-39ca-485c-bf69-43368eef5be1",
+  "resource_download_action_record_id": "442",
+  "response_body_bytes_read": 0,
+  "response_body_read": false,
+  "semantic_family_state": "held_semantic_evidence_incomplete",
+  "status": 200,
+  "synthetic_personal_information_submitted": false,
+  "target_investment_values_inspected": false,
+  "year": 2025
+}

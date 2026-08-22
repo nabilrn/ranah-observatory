@@ -1,0 +1,29 @@
+{
+  "csv_schema_inspected": false,
+  "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+  "disclaimer_form_submitted": false,
+  "headers": {
+    "accept-ranges": "bytes",
+    "cache-control": "public",
+    "content-disposition": "attachment; filename=data-realisasi-investasi-triwulan-i-tahun-2010_6a89c2bf331b3.zip",
+    "content-length": "11311",
+    "content-type": "application/zip"
+  },
+  "method": "HEAD",
+  "period_column_inspected": false,
+  "pilot_role": "earliest_inventory_vintage",
+  "quarter": "I",
+  "quarter_number": 1,
+  "reason": "OK",
+  "redirect_followed": false,
+  "requested_url": "https://data.bkpm.go.id/dataset/generate-download-zip/0617bee9-adee-48a6-aade-1e546c735bcb/file?upload_file_id=421",
+  "resource_download_action_file_uuid": "0617bee9-adee-48a6-aade-1e546c735bcb",
+  "resource_download_action_record_id": "421",
+  "response_body_bytes_read": 0,
+  "response_body_read": false,
+  "semantic_family_state": "semantic_family_match",
+  "status": 200,
+  "synthetic_personal_information_submitted": false,
+  "target_investment_values_inspected": false,
+  "year": 2010
+}
