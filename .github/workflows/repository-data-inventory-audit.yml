@@ -1,0 +1,26 @@
+name: Repository Data Inventory Audit
+
+on:
+  push:
+    branches:
+      - agent/milestone27-bkpm-investment-history
+    paths:
+      - scripts/audit_repository_inventory.py
+      - .github/workflows/repository-data-inventory-audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone27-bkpm-investment-history
+          fetch-depth: 1
+
+      - name: Audit tracked data inventory
+        run: python scripts/audit_repository_inventory.py
