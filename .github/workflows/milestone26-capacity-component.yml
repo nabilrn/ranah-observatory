@@ -1,0 +1,128 @@
+name: Milestone 26 capacity component
+
+on:
+  pull_request:
+    paths:
+      - scripts/materialize_milestone26_capacity_component.py
+      - data/manifests/milestone26_capacity_production_contract.json
+      - data/manifests/milestone26_capacity_transport_preflight.json
+      - data/manifests/milestone26_stage1_nodata_transport_amendment.json
+      - data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json
+      - data/snapshots/big/milestone8/big-june-2026-sumbar.geojson
+      - .github/workflows/milestone26-capacity-component.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-capacity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/milestone26-disaster-risk-chain
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install focused geospatial dependencies
+        run: python -m pip install --disable-pip-version-check numpy shapely pyproj rasterio
+
+      - name: Compile capacity materializer
+        run: python -m py_compile scripts/materialize_milestone26_capacity_component.py
+
+      - name: Materialize live capacity component
+        run: python -m scripts.materialize_milestone26_capacity_component --mode live
+
+      - name: Capture live derived-output hashes
+        run: |
+          sha256sum \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-component.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-provenance.csv \
+            data/manifests/milestone26_stage1_capacity_component.json \
+            > /tmp/m26-capacity-live.sha256
+
+      - name: Rebuild derived outputs offline from frozen raw evidence
+        run: python -m scripts.materialize_milestone26_capacity_component --mode offline
+
+      - name: Require live and offline derived outputs to be byte-identical
+        run: sha256sum -c /tmp/m26-capacity-live.sha256
+
+      - name: Verify scientific and reproducibility gates
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+
+          manifest_path = Path('data/manifests/milestone26_stage1_capacity_component.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-stage1-capacity-component/v1'
+          assert manifest['source_id'] == 'inarisk_capacity_2021'
+          assert manifest['reference_year'] == 2021
+          assert manifest['geography_count'] == 19
+          assert manifest['observation_count'] == 19
+          assert manifest['capacity_component_materialized'] is True
+          assert manifest['population_component_reextracted'] is False
+          assert manifest['big_boundary_probe_qualified'] is True
+          assert manifest['all_geographies_valid_fraction_pass'] is True
+          assert manifest['minimum_valid_fraction_observed'] >= 0.99
+          assert manifest['raw_raster_count'] == 19
+          assert manifest['raw_request_sidecar_count'] == 19
+          assert manifest['offline_rebuild_required'] is True
+          assert manifest['live_and_offline_outputs_must_be_byte_identical'] is True
+          assert manifest['substantive_interpretation_performed'] is False
+          assert manifest['cross_component_temporal_aggregation_performed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          assert manifest['stage1_complete'] is False
+
+          component = Path(manifest['outputs']['component_frame'])
+          provenance = Path(manifest['outputs']['provenance_frame'])
+          assert hashlib.sha256(component.read_bytes()).hexdigest() == manifest['outputs']['component_frame_sha256']
+          assert hashlib.sha256(provenance.read_bytes()).hexdigest() == manifest['outputs']['provenance_frame_sha256']
+
+          with component.open(newline='', encoding='utf-8') as handle:
+              rows = list(csv.DictReader(handle))
+          assert len(rows) == 19
+          assert len({row['geography_id'] for row in rows}) == 19
+          assert all(float(row['capacity_valid_fraction']) >= 0.99 for row in rows)
+          assert all(0.0 <= float(row['capacity_index_2021_mean']) <= 0.7900000214576721 for row in rows)
+          assert all(row['claim_type'] == 'modeled_spatial_index' for row in rows)
+          assert all(row['component_class'] == 'capacity' for row in rows)
+          assert all(row['substantive_interpretation_authorized'] == 'false' for row in rows)
+          assert all(row['risk_synthesis_authorized'] == 'false' for row in rows)
+
+          assert len(manifest['raw_evidence']) == 19
+          for item in manifest['raw_evidence']:
+              raster = Path(item['raster_path'])
+              sidecar = Path(item['request_sidecar_path'])
+              assert raster.exists() and sidecar.exists()
+              assert hashlib.sha256(raster.read_bytes()).hexdigest() == item['raster_sha256']
+              assert hashlib.sha256(sidecar.read_bytes()).hexdigest() == item['request_sidecar_sha256']
+              assert raster.stat().st_size == item['raster_bytes']
+              assert item['raster_bytes'] < 95_000_000
+          PY
+
+      - name: Commit frozen capacity component evidence
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git add \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-component.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-provenance.csv \
+            data/manifests/milestone26_stage1_capacity_component.json \
+            data/processed/bnpb/m26_capacity_component
+          if git diff --cached --quiet; then
+            echo 'Capacity component evidence unchanged.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'm26: freeze capacity 2021 component'
+          git push origin HEAD:agent/milestone26-disaster-risk-chain
