@@ -1,91 +1,78 @@
-name: Milestone 27 BKPM Preview Route Discovery
+name: Milestone 27 BKPM Preview Route Evidence
 
 on:
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
+  pull_request:
     paths:
       - .github/workflows/milestone27-bkpm-preview-route-discovery.yml
       - data/manifests/milestone27_preview_route_discovery_contract.json
-      - scripts/probe_milestone27_bkpm_preview_route.py
+      - data/manifests/milestone27_bkpm_preview_route_discovery.json
+      - data/processed/bkpm/m27_preview_route_discovery/**
   workflow_dispatch:
 
-concurrency:
-  group: milestone27-bkpm-preview-route-discovery
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  discover-preview-route:
+  verify-frozen-preview-route-evidence:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
 
-      - name: Compile probe
-        run: python -m py_compile scripts/probe_milestone27_bkpm_preview_route.py
-
-      - name: Discover public preview route literals
-        run: python scripts/probe_milestone27_bkpm_preview_route.py
-
-      - name: Verify scientific boundaries
+      - name: Verify frozen evidence and scientific boundaries
         run: |
           python - <<'PY'
+          import hashlib
           import json
           from pathlib import Path
 
-          path = Path('data/manifests/milestone27_bkpm_preview_route_discovery.json')
-          m = json.loads(path.read_text(encoding='utf-8'))
+          root = Path('.')
+          manifest = json.loads((root / 'data/manifests/milestone27_bkpm_preview_route_discovery.json').read_text(encoding='utf-8'))
 
-          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-preview-route-discovery/v1'
-          assert m['pilot_count'] == 3
-          assert m['preview_page_html_retrieved'] is True
-          assert len(m['pilot_results']) == 3
-          assert all(r['title_match'] is True for r in m['pilot_results'])
-          assert all(r['table_header_extracted'] is False for r in m['pilot_results'])
-          assert all(r['table_body_extracted'] is False for r in m['pilot_results'])
-          assert all(r['table_cell_text_extracted'] is False for r in m['pilot_results'])
-          assert m['table_header_extracted'] is False
-          assert m['table_body_extracted'] is False
-          assert m['table_cell_text_extracted'] is False
-          assert m['client_side_data_endpoint_requested'] is False
-          assert m['zip_resource_requested'] is False
-          assert m['interactive_disclaimer_form_submitted'] is False
-          assert m['synthetic_personal_information_submitted'] is False
-          assert m['target_investment_values_inspected'] is False
-          assert m['period_column_inspected'] is False
-          assert m['csv_schema_inspected'] is False
-          assert m['investment_value_aggregation_performed'] is False
-          assert m['quarterly_flow_interpretation_authorized'] is False
-          assert m['cross_quarter_additivity_authorized'] is False
-          assert m['annual_sum_authorized'] is False
-          assert m['geography_mapping_authorized'] is False
-          assert m['statistical_model_fit'] is False
-          assert m['causal_claim_created'] is False
-          assert m['monetary_wasted_potential_estimated'] is False
+          assert manifest['schema'] == 'ranah-observatory/milestone27-bkpm-preview-route-discovery/v1'
+          assert manifest['pilot_count'] == 3
+          assert manifest['preview_page_html_retrieved'] is True
+          assert manifest['route_candidate_found'] is True
+          assert 'https://data.bkpm.go.id/data' in manifest['common_route_literal_candidates']
 
-          pilots = {(r['year'], r['quarter']) for r in m['pilot_results']}
+          forbidden_false = [
+              'table_header_extracted',
+              'table_body_extracted',
+              'table_cell_text_extracted',
+              'client_side_data_endpoint_requested',
+              'zip_resource_requested',
+              'interactive_disclaimer_form_submitted',
+              'synthetic_personal_information_submitted',
+              'target_investment_values_inspected',
+              'period_column_inspected',
+              'csv_schema_inspected',
+              'investment_value_aggregation_performed',
+              'quarterly_flow_interpretation_authorized',
+              'cross_quarter_additivity_authorized',
+              'annual_sum_authorized',
+              'geography_mapping_authorized',
+              'statistical_model_fit',
+              'causal_claim_created',
+              'monetary_wasted_potential_estimated',
+          ]
+          for key in forbidden_false:
+              assert manifest[key] is False, key
+
+          pilots = {(r['year'], r['quarter']) for r in manifest['pilot_results']}
           assert pilots == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
-          print({
-              'pilot_count': m['pilot_count'],
-              'route_candidate_found': m['route_candidate_found'],
-              'common_route_literal_candidate_count': m['common_route_literal_candidate_count'],
-          })
-          PY
 
-      - name: Commit frozen preview-route evidence
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/processed/bkpm/m27_preview_route_discovery data/manifests/milestone27_bkpm_preview_route_discovery.json
-          if git diff --cached --quiet; then
-            echo "No evidence changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M27 BKPM preview-route discovery evidence"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
+          for row in manifest['pilot_results']:
+              assert row['title_match'] is True
+              assert row['client_side_data_endpoint_requested'] is False
+              assert row['target_investment_values_inspected'] is False
+              for path_key, sha_key in (
+                  ('response_path', 'response_sha256'),
+                  ('script_route_evidence_path', 'script_route_evidence_sha256'),
+              ):
+                  path = root / row[path_key]
+                  assert path.is_file(), path
+                  digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                  assert digest == row[sha_key], (path, digest, row[sha_key])
+
+          print('frozen M27 preview-route evidence verified')
+          PY
