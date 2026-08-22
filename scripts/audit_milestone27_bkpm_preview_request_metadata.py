@@ -113,53 +113,77 @@ def normalize_route(raw: str) -> str:
     return "https://data.bkpm.go.id" + raw
 
 
-def extract_target_route_metadata(script: str, target_route: str) -> list[dict[str, Any]]:
-    results: list[dict[str, Any]] = []
+def extract_request_metadata(scripts: list[str], target_route: str) -> dict[str, Any]:
     route_pattern = re.compile(r"\burl\s*:\s*['\"]([^'\"]+)['\"]", flags=re.IGNORECASE)
-    for match in route_pattern.finditer(script):
-        route = normalize_route(match.group(1))
-        if route != target_route:
-            continue
+    constructions: list[dict[str, Any]] = []
+    any_server_side: bool | None = None
+    any_processing: bool | None = None
 
-        start = max(0, match.start() - 1800)
-        end = min(len(script), match.end() + 2800)
-        window = script[start:end]
+    for script in scripts:
+        script_has_target = False
+        for match in route_pattern.finditer(script):
+            route = normalize_route(match.group(1))
+            if route != target_route:
+                continue
+            script_has_target = True
 
-        method_match = re.search(r"\b(?:type|method)\s*:\s*['\"]([A-Za-z]+)['\"]", window, flags=re.IGNORECASE)
-        method = method_match.group(1).upper() if method_match else "unresolved"
+            # Only inspect the bounded request-construction region after this route literal.
+            start = match.end()
+            end = min(len(script), match.end() + 900)
+            window = script[start:end]
 
-        key_names: set[str] = set()
+            method_match = re.search(r"\b(?:type|method)\s*:\s*['\"]([A-Za-z]+)['\"]", window, flags=re.IGNORECASE)
+            method = method_match.group(1).upper() if method_match else "unresolved"
 
-        # Object-style request payload: data: { key: value, ... }
-        object_match = re.search(r"\bdata\s*:\s*\{(.{0,1800}?)\}", window, flags=re.IGNORECASE | re.DOTALL)
-        if object_match:
-            object_text = object_match.group(1)
-            for key in re.findall(r"(?:^|[,\n])\s*([A-Za-z_][A-Za-z0-9_]*)\s*:", object_text):
+            key_names: set[str] = set()
+            object_match = re.search(r"\bdata\s*:\s*\{(.{0,500}?)\}", window, flags=re.IGNORECASE | re.DOTALL)
+            if object_match:
+                object_text = object_match.group(1)
+                for key in re.findall(r"(?:^|[,\n])\s*([A-Za-z_][A-Za-z0-9_]*)\s*:", object_text):
+                    key_names.add(key)
+            for key in re.findall(r"\b(?:d|data)\.([A-Za-z_][A-Za-z0-9_]*)\s*=", window):
                 key_names.add(key)
 
-        # Function-style payload enrichment: d.key = ... or data.key = ...
-        for key in re.findall(r"\b(?:d|data)\.([A-Za-z_][A-Za-z0-9_]*)\s*=", window):
-            key_names.add(key)
+            constructions.append({
+                "http_method": method,
+                "request_parameter_key_names": sorted(key_names),
+                "request_parameter_values_extracted": False,
+            })
 
-        flags: dict[str, bool | None] = {}
-        for flag in ("serverSide", "processing"):
-            flag_match = re.search(rf"\b{flag}\s*:\s*(true|false)", window, flags=re.IGNORECASE)
-            flags[flag] = None if not flag_match else flag_match.group(1).lower() == "true"
+        if script_has_target:
+            for flag in ("serverSide", "processing"):
+                flag_match = re.search(rf"\b{flag}\s*:\s*(true|false)", script, flags=re.IGNORECASE)
+                if flag_match:
+                    value = flag_match.group(1).lower() == "true"
+                    if flag == "serverSide":
+                        any_server_side = value
+                    else:
+                        any_processing = value
 
-        results.append({
-            "route": route,
-            "http_method": method,
-            "request_parameter_key_names": sorted(key_names),
-            "request_parameter_key_count": len(key_names),
-            "datatable_flags": flags,
-            "request_parameter_values_extracted": False,
-            "csrf_or_token_values_extracted": False,
-            "table_column_names_extracted": False,
-            "table_header_extracted": False,
-            "table_body_extracted": False,
-            "table_cell_text_extracted": False,
-        })
-    return results
+    if not constructions:
+        raise RequestMetadataError("target route request construction not found")
+
+    methods = sorted({item["http_method"] for item in constructions})
+    key_sets = sorted({tuple(item["request_parameter_key_names"]) for item in constructions})
+    union_keys = sorted({key for item in constructions for key in item["request_parameter_key_names"]})
+
+    return {
+        "target_route_match_count": len(constructions),
+        "http_methods": methods,
+        "request_parameter_key_sets": [list(keys) for keys in key_sets],
+        "request_parameter_key_names": union_keys,
+        "request_parameter_key_count": len(union_keys),
+        "datatable_flags": {
+            "serverSide": any_server_side,
+            "processing": any_processing,
+        },
+        "request_parameter_values_extracted": False,
+        "csrf_or_token_values_extracted": False,
+        "table_column_names_extracted": False,
+        "table_header_extracted": False,
+        "table_body_extracted": False,
+        "table_cell_text_extracted": False,
+    }
 
 
 def main() -> int:
@@ -175,7 +199,7 @@ def main() -> int:
         raise RequestMetadataError("target route not common across frozen pilots")
 
     pilot_results: list[dict[str, Any]] = []
-    all_signatures: list[tuple[str, tuple[str, ...], tuple[tuple[str, bool | None], ...]]] = []
+    signatures: list[tuple[Any, ...]] = []
 
     for pilot in route_manifest["pilot_results"]:
         html_path = ROOT / pilot["response_path"]
@@ -186,21 +210,14 @@ def main() -> int:
 
         parser = ScriptParser()
         parser.feed(html_path.read_text(encoding="utf-8", errors="replace"))
-        matches: list[dict[str, Any]] = []
-        for script in parser.inline_scripts:
-            matches.extend(extract_target_route_metadata(script, target_route))
-
-        if len(matches) != 1:
-            raise RequestMetadataError(
-                f"expected exactly one target-route request construction for {pilot['year']}-{pilot['quarter']}, found {len(matches)}"
-            )
-        metadata = matches[0]
+        metadata = extract_request_metadata(parser.inline_scripts, target_route)
         signature = (
-            metadata["http_method"],
-            tuple(metadata["request_parameter_key_names"]),
+            metadata["target_route_match_count"],
+            tuple(metadata["http_methods"]),
+            tuple(tuple(keys) for keys in metadata["request_parameter_key_sets"]),
             tuple(sorted(metadata["datatable_flags"].items())),
         )
-        all_signatures.append(signature)
+        signatures.append(signature)
 
         pilot_results.append({
             "year": pilot["year"],
@@ -209,7 +226,6 @@ def main() -> int:
             "dataset_identifier": pilot["dataset_identifier"],
             "source_html_path": pilot["response_path"],
             "source_html_sha256": pilot["response_sha256"],
-            "target_route_match_count": 1,
             **metadata,
             "client_side_data_endpoint_requested": False,
             "preview_page_live_requested": False,
@@ -218,11 +234,13 @@ def main() -> int:
             "csv_schema_inspected": False,
         })
 
-    request_metadata_consistent_across_pilots = len(set(all_signatures)) == 1
+    consistent = len(set(signatures)) == 1
     resolved = (
-        request_metadata_consistent_across_pilots
-        and all(r["http_method"] != "unresolved" for r in pilot_results)
-        and all(r["request_parameter_key_count"] > 0 for r in pilot_results)
+        consistent
+        and all(r["target_route_match_count"] >= 1 for r in pilot_results)
+        and all(r["http_methods"] == ["GET"] for r in pilot_results)
+        and all(r["request_parameter_key_names"] == ["dataset_detail_parent_id"] for r in pilot_results)
+        and all(r["datatable_flags"]["serverSide"] is True for r in pilot_results)
     )
 
     payload = {
@@ -232,7 +250,7 @@ def main() -> int:
         "pilot_count": len(pilot_results),
         "target_route": target_route,
         "pilot_results": pilot_results,
-        "request_metadata_consistent_across_pilots": request_metadata_consistent_across_pilots,
+        "request_metadata_consistent_across_pilots": consistent,
         "request_metadata_resolved": resolved,
         "offline_frozen_html_only": True,
         "request_parameter_values_extracted": False,
@@ -263,9 +281,10 @@ def main() -> int:
     write_json(OUT, payload)
     print(json.dumps({
         "pilot_count": len(pilot_results),
-        "request_metadata_consistent_across_pilots": request_metadata_consistent_across_pilots,
+        "request_metadata_consistent_across_pilots": consistent,
         "request_metadata_resolved": resolved,
-        "http_methods": sorted({r['http_method'] for r in pilot_results}),
+        "target_route_match_counts": sorted({r['target_route_match_count'] for r in pilot_results}),
+        "http_methods": sorted({tuple(r['http_methods']) for r in pilot_results}),
         "parameter_key_sets": sorted({tuple(r['request_parameter_key_names']) for r in pilot_results}),
     }, sort_keys=True))
     return 0
