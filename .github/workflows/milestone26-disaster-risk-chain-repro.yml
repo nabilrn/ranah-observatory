@@ -1,0 +1,85 @@
+name: Milestone 26 Disaster-Risk Chain Reproducibility
+
+on:
+  pull_request:
+    paths:
+      - scripts/materialize_milestone26_population_component.py
+      - scripts/materialize_milestone26_population_component_v2.py
+      - scripts/materialize_milestone26_capacity_component.py
+      - scripts/materialize_milestone26_dibi_occurrence_context.py
+      - scripts/materialize_milestone26_dibi_occurrence_context_v2.py
+      - scripts/build_milestone26_stage2_observed_impact_decision.py
+      - scripts/finalize_milestone26_disaster_risk_chain.py
+      - data/manifests/milestone26_**
+      - data/analysis/engine/disaster_risk_chain_v1/**
+      - data/processed/bnpb/m26_**
+      - data/registries/bnpb_geography_map.csv
+      - .github/workflows/milestone26-disaster-risk-chain-repro.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce-m26:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused geospatial dependencies
+        run: python -m pip install --disable-pip-version-check numpy shapely pyproj rasterio
+      - name: Compile permanent rebuild chain
+        run: |
+          python -m py_compile scripts/materialize_milestone26_population_component.py
+          python -m py_compile scripts/materialize_milestone26_population_component_v2.py
+          python -m py_compile scripts/materialize_milestone26_capacity_component.py
+          python -m py_compile scripts/materialize_milestone26_dibi_occurrence_context.py
+          python -m py_compile scripts/materialize_milestone26_dibi_occurrence_context_v2.py
+          python -m py_compile scripts/build_milestone26_stage2_observed_impact_decision.py
+          python -m py_compile scripts/finalize_milestone26_disaster_risk_chain.py
+      - name: Verify frozen completion boundary before rebuild
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone26_disaster_risk_chain_complete.json').read_text(encoding='utf-8'))
+          assert m['milestone26_evidence_qualification_complete'] is True
+          assert m['promoted_numeric_component_count'] == 3
+          assert m['materialized_component_observation_count'] == 57
+          assert m['event_level_observed_impact_promoted'] is False
+          assert m['undated_hazard_or_vulnerability_raster_aggregated'] is False
+          assert m['risk_synthesis_authorized'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_loss_inferred'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          PY
+      - name: Rebuild population exposure offline
+        run: python -m scripts.materialize_milestone26_population_component_v2
+      - name: Rebuild capacity offline
+        run: python -m scripts.materialize_milestone26_capacity_component --mode offline
+      - name: Rebuild DIBI occurrence context offline with qualified canonical crosswalk
+        run: python -m scripts.materialize_milestone26_dibi_occurrence_context_v2 --mode offline
+      - name: Rebuild observed-impact hold decision from frozen diagnostics and metadata
+        run: python -m scripts.build_milestone26_stage2_observed_impact_decision
+      - name: Rebuild M26 completion manifest and documentation
+        run: python -m scripts.finalize_milestone26_disaster_risk_chain
+      - name: Require byte-identical deterministic outputs and clean tree
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-component.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-provenance.csv \
+            data/manifests/milestone26_stage1_population_component.json \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-component.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-provenance.csv \
+            data/manifests/milestone26_stage1_capacity_component.json \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-context.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-provenance.csv \
+            data/manifests/milestone26_stage1_dibi_occurrence_context.json \
+            data/manifests/milestone26_stage2_observed_impact_decision.json \
+            data/manifests/milestone26_disaster_risk_chain_complete.json \
+            docs/MILESTONE26_DISASTER_RISK_CHAIN.md
+          test -z "$(git status --porcelain --untracked-files=no)"
