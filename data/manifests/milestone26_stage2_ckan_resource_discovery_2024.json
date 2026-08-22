@@ -27,7 +27,7 @@
   "schema": "ranah-observatory/milestone26-stage2-ckan-resource-discovery-2024/v1",
   "snapshot": {
     "path": "data/processed/bnpb/m26_stage2_ckan_discovery_2024/package-metadata.json",
-    "sha256": "38921d18261d9b9622569eb1e932542d548544a1d64236757c111cb715139648"
+    "sha256": "29af73fa12c82ec915d2dcdd55e0908b93d833e7c257cd6e7e591f16f67d5e79"
   },
   "stage": "stage2a_observed_impact_transport_discovery",
   "statistical_model_fit": false,
