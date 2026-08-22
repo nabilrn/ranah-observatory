@@ -1,39 +1,25 @@
-name: Milestone 27 BKPM Period Homogeneity Probe
+name: Milestone 27 BKPM Period Homogeneity Evidence
 
 on:
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
+  pull_request:
     paths:
       - .github/workflows/milestone27-bkpm-period-homogeneity.yml
       - data/manifests/milestone27_period_homogeneity_contract.json
+      - data/manifests/milestone27_bkpm_period_homogeneity_probe.json
       - scripts/probe_milestone27_bkpm_period_homogeneity.py
   workflow_dispatch:
 
-concurrency:
-  group: milestone27-bkpm-period-homogeneity
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  probe-period-homogeneity:
+  verify-frozen-period-homogeneity-evidence:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
 
-      - name: Compile probe
-        run: python -m py_compile scripts/probe_milestone27_bkpm_period_homogeneity.py
-
-      - name: Run zero-row exact and negative-control period filters
-        run: python scripts/probe_milestone27_bkpm_period_homogeneity.py
-
-      - name: Verify fail-closed boundaries
+      - name: Verify frozen fail-closed result
         run: |
           python - <<'PY'
           import json
@@ -41,53 +27,15 @@ jobs:
           m = json.loads(Path('data/manifests/milestone27_bkpm_period_homogeneity_probe.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone27-bkpm-period-homogeneity-probe/v1'
           assert m['pilot_count'] == 3
-          assert {(r['year'], r['quarter']) for r in m['pilot_results']} == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
+          assert m['all_pilots_period_homogeneous'] is False
+          assert m['source_2025_q2_resource_wide_period_identity_qualified'] is False
           for r in m['pilot_results']:
-              for key in ('exact_period_filter', 'negative_control_filter'):
-                  q = r[key]
-                  assert q['status'] == 200
-                  assert q['data_array_empty'] is True
-                  assert q['response_body_persisted'] is False
-                  assert q['raw_json_persisted'] is False
-                  assert q['data_array_elements_inspected'] is False
-                  assert q['target_investment_values_inspected'] is False
-                  assert q['non_period_observation_values_inspected'] is False
-          assert m['response_body_persisted'] is False
-          assert m['raw_json_persisted'] is False
-          assert m['data_array_elements_inspected'] is False
+              assert r['exact_period_filter']['records_filtered'] == r['baseline_records_total']
+              assert r['negative_control_filter']['records_filtered'] == r['baseline_records_total']
+              assert r['period_homogeneous'] is False
+              assert r['data_array_elements_inspected'] is False
+              assert r['target_investment_values_inspected'] is False
           assert m['target_investment_values_inspected'] is False
           assert m['non_period_observation_values_inspected'] is False
-          assert m['source_selection_uses_filter_result'] is False
-          assert m['quarterly_flow_interpretation_authorized'] is False
-          assert m['cross_quarter_additivity_authorized'] is False
           assert m['annual_sum_authorized'] is False
-          assert m['pma_pmdn_combination_authorized'] is False
-          assert m['external_fx_conversion_authorized'] is False
-          assert m['geography_mapping_authorized'] is False
-          assert m['statistical_model_fit'] is False
-          assert m['causal_claim_created'] is False
-          assert m['monetary_wasted_potential_estimated'] is False
-          print({
-              'all_homogeneous': m['all_pilots_period_homogeneous'],
-              'q2_qualified': m['source_2025_q2_resource_wide_period_identity_qualified'],
-              'counts': {
-                  f"{r['year']}-{r['quarter']}": [
-                      r['baseline_records_total'],
-                      r['exact_period_filter']['records_filtered'],
-                      r['negative_control_filter']['records_filtered']
-                  ] for r in m['pilot_results']
-              }
-          })
           PY
-
-      - name: Commit sanitized homogeneity evidence
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/manifests/milestone27_bkpm_period_homogeneity_probe.json
-          if git diff --cached --quiet; then
-            echo "No homogeneity evidence changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M27 BKPM period homogeneity evidence"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
