@@ -62,12 +62,12 @@ jobs:
       - name: Commit frozen preflight manifest
         if: github.event.pull_request.head.repo.full_name == github.repository
         run: |
-          if git diff --quiet -- data/manifests/milestone26_capacity_transport_preflight.json; then
+          git add data/manifests/milestone26_capacity_transport_preflight.json
+          if git diff --cached --quiet -- data/manifests/milestone26_capacity_transport_preflight.json; then
             echo 'Capacity preflight manifest unchanged.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/manifests/milestone26_capacity_transport_preflight.json
           git commit -m 'm26: freeze capacity transport preflight'
           git push origin HEAD:agent/milestone26-disaster-risk-chain
