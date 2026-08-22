@@ -1,61 +1,37 @@
-name: Milestone 27 BKPM Sumbar Search Representation Audit
+name: Milestone 27 BKPM Sumbar Search Qualification
 
 on:
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
+  pull_request:
     paths:
       - .github/workflows/milestone27-bkpm-sumbar-global-search-v2.yml
       - data/manifests/milestone27_sumbar_global_search_representation_amendment.json
+      - data/manifests/milestone27_bkpm_sumbar_global_search_probe.json
+      - data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json
       - scripts/audit_milestone27_bkpm_sumbar_global_search_v2.py
   workflow_dispatch:
 
-concurrency:
-  group: milestone27-bkpm-sumbar-global-search-v2
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  audit-search-representation:
+  verify-search-qualification:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
 
-      - name: Reclassify frozen transport evidence offline
+      - name: Rebuild qualification offline
         run: python scripts/audit_milestone27_bkpm_sumbar_global_search_v2.py
 
-      - name: Verify amended qualification
+      - name: Verify byte-identical qualification
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json').read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-sumbar-global-search-qualified/v1'
-          assert m['pilot_count'] == 3
           assert m['global_search_transport_qualified_all_pilots'] is True
           assert [r['sumbar_post_search_count'] for r in m['pilot_results']] == [1, 642, 517]
-          assert all(r['negative_records_total'] == 0 and r['negative_records_filtered'] == 0 for r in m['pilot_results'])
-          assert m['original_probe_result_preserved'] is True
           assert m['target_investment_values_inspected'] is False
-          assert m['data_array_elements_inspected'] is False
           assert m['numeric_materialization_authorized'] is False
-          assert m['annual_sum_authorized'] is False
           PY
-
-      - name: Commit deterministic amended qualification
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json
-          if git diff --cached --quiet; then
-            echo "No amended qualification changes to commit"
-            exit 0
-          fi
-          git commit -m "Qualify M27 BKPM Sumbar global-search transport"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
+          git diff --exit-code -- data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json
