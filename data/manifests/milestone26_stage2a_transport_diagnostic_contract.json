@@ -1,0 +1,74 @@
+{
+  "schema": "ranah-observatory/milestone26-stage2a-transport-diagnostic-contract/v1",
+  "milestone": 26,
+  "stage": "2a_event_impact_transport_diagnostic",
+  "locked_before_diagnostic_requests": true,
+  "source_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+  "diagnostic_role": "distinguish target-period source unavailability from POST/filter transport failure without inspecting or promoting impact values",
+  "variants": [
+    {
+      "id": "get_default",
+      "method": "GET",
+      "form": null
+    },
+    {
+      "id": "post_banjir_event_only",
+      "method": "POST",
+      "form": {
+        "s_kejadian": "BANJIR",
+        "tgl_awal": "",
+        "tgl_akhir": "",
+        "submit": "Cari"
+      }
+    },
+    {
+      "id": "post_banjir_2026",
+      "method": "POST",
+      "form": {
+        "s_kejadian": "BANJIR",
+        "tgl_awal": "01/01/2026",
+        "tgl_akhir": "31/12/2026",
+        "submit": "Cari"
+      }
+    },
+    {
+      "id": "post_tanah_longsor_2026",
+      "method": "POST",
+      "form": {
+        "s_kejadian": "TANAH LONGSOR",
+        "tgl_awal": "01/01/2026",
+        "tgl_akhir": "31/12/2026",
+        "submit": "Cari"
+      }
+    },
+    {
+      "id": "post_banjir_2024_repeat",
+      "method": "POST",
+      "form": {
+        "s_kejadian": "BANJIR",
+        "tgl_awal": "01/01/2024",
+        "tgl_akhir": "31/12/2024",
+        "submit": "Cari"
+      }
+    }
+  ],
+  "permitted_observations": [
+    "HTTP status",
+    "final URL",
+    "content type",
+    "exact table header match",
+    "parsed table row count",
+    "form value echo state"
+  ],
+  "impact_cell_values_inspection_authorized": false,
+  "row_level_impact_promotion_authorized": false,
+  "impact_aggregation_authorized": false,
+  "duplicate_resolution_authorized": false,
+  "target_contract_change_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_loss_inference_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
