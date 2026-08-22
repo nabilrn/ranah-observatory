@@ -1,3 +1,4 @@
+# Live qualification is intentionally diagnostic-only; no impact aggregation is authorized.
 name: Milestone 26 Stage 2a event-impact live qualification
 
 on:
