@@ -1,0 +1,73 @@
+{
+  "aggregate_ckan_impact_resources_promoted_as_event_rows": false,
+  "automatic_duplicate_collapse_authorized": false,
+  "causal_claim_authorized": false,
+  "ckan_dedicated_2024_package_evidence": {
+    "metadata_text_event_level_candidate_count": 0,
+    "metadata_text_impact_candidate_count": 14,
+    "metadata_text_kabupaten_granularity_resource_count": 14,
+    "metadata_text_provinsi_granularity_resource_count": 14,
+    "package_id": "36d9a6b5-9755-4515-8f8d-16e29843abc4",
+    "path": "data/manifests/milestone26_stage2_ckan_resource_discovery_2024.json",
+    "resource_count": 28,
+    "sha256": "10afa042035e70705140b39815166c331865ea7c50ea487dbf90a1cc2c6623aa"
+  },
+  "ckan_primary_package_evidence": {
+    "datastore_impact_candidate_count": 15,
+    "metadata_text_event_level_candidate_count": 0,
+    "metadata_text_impact_candidate_count": 15,
+    "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+    "path": "data/manifests/milestone26_stage2_ckan_resource_discovery.json",
+    "resource_count": 38,
+    "sha256": "b5ab3dab6458b7c19f08e302ee290b2bdd16029a56a5dbe949adebdc6f709116"
+  },
+  "component_class": "observed_impact",
+  "cross_component_temporal_aggregation_authorized": false,
+  "decision": "held_deterministic_event_level_transport_unqualified",
+  "decision_reason": "the official legacy BNPB Data Bencana table exposes the required event-impact fields but its dated POST filter transport is not deterministically qualified, while both official BNPB Satu Data CKAN package metadata surfaces expose aggregate impact resources and no metadata-qualified event-level candidate",
+  "event_level_observed_impact_qualified": false,
+  "impact_aggregation_authorized": false,
+  "legacy_html_evidence": {
+    "classification": "post_filter_transport_not_proven",
+    "default_get_row_count": 80,
+    "interpretation": "zero dated-query rows are treated as transport nonqualification, not evidence of zero disasters or zero impacts",
+    "path": "data/manifests/milestone26_stage2a_transport_diagnostic.json",
+    "post_banjir_2024_row_count": 0,
+    "post_banjir_2026_row_count": 0,
+    "post_banjir_event_only_row_count": 1,
+    "post_tanah_longsor_2026_row_count": 0,
+    "sha256": "56cdc0b8831ee6755d018d9f94e4f55858fc07b1b30a51531a4f991c176f4a10"
+  },
+  "milestone": 26,
+  "milestone_spec": {
+    "path": "research/MILESTONE26_DISASTER_RISK_CHAIN_SPEC.md",
+    "sha256": "c7304494ad5fc6b16adefe1cb2b6b028911ef23ed0fb2ad782a6afba58ac1cfd"
+  },
+  "monetary_loss_inference_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "next_reconsideration_gate": "a public deterministic BNPB event-level retrieval surface or an official machine-readable resource with documented event identity, target-period coverage, geography mapping, and missingness semantics",
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-stage2-observed-impact-decision/v1",
+  "stage2_contract": {
+    "path": "data/manifests/milestone26_stage2_event_impact_contract.json",
+    "sha256": "7417915cb1d316e642d5651c291923e787484ed552da6da6fdcf1ef6412fbaa1"
+  },
+  "stage2b_promotion_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "target_impact_values_inspected_for_resource_selection": false,
+  "target_regime": {
+    "end_date": "31/12/2024",
+    "event_types": [
+      "BANJIR",
+      "TANAH LONGSOR"
+    ],
+    "geography_count": 19,
+    "geography_filter_rule": "retrieve each locked event type for the full target date range, then retain rows whose source ID Kabupaten maps exactly to one of the 19 current Sumatera Barat canonical geographies",
+    "geography_regime": "BIG_June_2026_fixed_current_boundary",
+    "server_side_province_filter_assumed": false,
+    "start_date": "01/01/2024",
+    "year": 2024
+  },
+  "zero_rows_interpreted_as_zero_disaster_occurrence": false,
+  "zero_rows_interpreted_as_zero_observed_impact": false
+}
