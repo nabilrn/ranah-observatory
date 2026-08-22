@@ -1,29 +1,19 @@
-name: Milestone 26 capacity component
+name: Milestone 26 capacity component (frozen verifier)
 
+# Capacity 2021 production evidence is frozen. Rebuild only from committed raw
+# TIFFs/sidecars and fail if any derived byte or checksum drifts.
 on:
-  pull_request:
-    paths:
-      - scripts/materialize_milestone26_capacity_component.py
-      - data/manifests/milestone26_capacity_production_contract.json
-      - data/manifests/milestone26_capacity_transport_preflight.json
-      - data/manifests/milestone26_stage1_nodata_transport_amendment.json
-      - data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json
-      - data/snapshots/big/milestone8/big-june-2026-sumbar.geojson
-      - .github/workflows/milestone26-capacity-component.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  materialize-capacity:
+  verify-frozen-capacity-component:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: agent/milestone26-disaster-risk-chain
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -34,24 +24,7 @@ jobs:
       - name: Compile capacity materializer
         run: python -m py_compile scripts/materialize_milestone26_capacity_component.py
 
-      - name: Materialize live capacity component
-        run: python -m scripts.materialize_milestone26_capacity_component --mode live
-
-      - name: Capture live derived-output hashes
-        run: |
-          sha256sum \
-            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-component.csv \
-            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-provenance.csv \
-            data/manifests/milestone26_stage1_capacity_component.json \
-            > /tmp/m26-capacity-live.sha256
-
-      - name: Rebuild derived outputs offline from frozen raw evidence
-        run: python -m scripts.materialize_milestone26_capacity_component --mode offline
-
-      - name: Require live and offline derived outputs to be byte-identical
-        run: sha256sum -c /tmp/m26-capacity-live.sha256
-
-      - name: Verify scientific and reproducibility gates
+      - name: Verify frozen manifest and raw evidence checksums
         run: |
           python - <<'PY'
           import csv
@@ -71,6 +44,8 @@ jobs:
           assert manifest['big_boundary_probe_qualified'] is True
           assert manifest['all_geographies_valid_fraction_pass'] is True
           assert manifest['minimum_valid_fraction_observed'] >= 0.99
+          assert manifest['inside_native_cell_count'] == 4212219
+          assert manifest['invalid_native_cell_count'] == 168
           assert manifest['raw_raster_count'] == 19
           assert manifest['raw_request_sidecar_count'] == 19
           assert manifest['offline_rebuild_required'] is True
@@ -110,19 +85,12 @@ jobs:
               assert item['raster_bytes'] < 95_000_000
           PY
 
-      - name: Commit frozen capacity component evidence
-        if: github.event.pull_request.head.repo.full_name == github.repository
+      - name: Rebuild derived outputs offline from frozen raw evidence
+        run: python -m scripts.materialize_milestone26_capacity_component --mode offline
+
+      - name: Require offline rebuild to reproduce committed bytes exactly
         run: |
-          git add \
+          git diff --exit-code -- \
             data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-component.csv \
             data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-provenance.csv \
-            data/manifests/milestone26_stage1_capacity_component.json \
-            data/processed/bnpb/m26_capacity_component
-          if git diff --cached --quiet; then
-            echo 'Capacity component evidence unchanged.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'm26: freeze capacity 2021 component'
-          git push origin HEAD:agent/milestone26-disaster-risk-chain
+            data/manifests/milestone26_stage1_capacity_component.json
