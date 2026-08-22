@@ -7,6 +7,12 @@ on:
     paths:
       - scripts/audit_repository_inventory.py
       - .github/workflows/repository-data-inventory-audit.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - scripts/audit_repository_inventory.py
+      - .github/workflows/repository-data-inventory-audit.yml
   workflow_dispatch:
 
 permissions:
