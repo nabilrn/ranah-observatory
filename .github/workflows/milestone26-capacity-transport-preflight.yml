@@ -33,7 +33,7 @@ jobs:
         run: python -m py_compile scripts/preflight_milestone26_capacity_transport.py
 
       - name: Run live representative export preflight
-        run: python scripts/preflight_milestone26_capacity_transport.py --fetch-sample
+        run: python -m scripts.preflight_milestone26_capacity_transport --fetch-sample
 
       - name: Verify preflight gates
         run: |
