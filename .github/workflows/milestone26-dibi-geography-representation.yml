@@ -1,0 +1,72 @@
+name: Milestone 26 DIBI geography representation probe
+
+on:
+  push:
+    branches:
+      - agent/milestone26-disaster-risk-chain
+    paths:
+      - '.github/workflows/milestone26-dibi-geography-representation.yml'
+      - 'scripts/probe_milestone26_dibi_geography_representation.py'
+      - 'data/manifests/milestone26_dibi_transport_amendment.json'
+      - 'data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone26-dibi-geography-representation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone26-disaster-risk-chain
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run identifier-only live probe
+        run: python scripts/probe_milestone26_dibi_geography_representation.py --mode live
+
+      - name: Verify frozen evidence offline
+        run: python scripts/probe_milestone26_dibi_geography_representation.py --mode offline
+
+      - name: Guard against numeric occurrence leakage
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_dibi_geography_representation_probe.json').read_text())
+          assert manifest['numeric_occurrence_fields_requested'] is False
+          assert manifest['numeric_occurrence_values_inspected'] is False
+          assert manifest['numeric_occurrence_values_promoted'] is False
+          assert manifest['representation_contract_amendment_required'] is True
+          print({
+              'all_feature_count': manifest['all_feature_count'],
+              'sumbar_candidate_count': manifest['sumbar_candidate_count'],
+              'candidate_ids': manifest['sumbar_candidate_id_kab_bps_values'],
+          })
+          PY
+
+      - name: Commit frozen representation evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            data/manifests/milestone26_dibi_geography_representation_probe.json \
+            data/processed/bnpb/m26_dibi_geography_probe
+          if git diff --cached --quiet; then
+            echo 'No representation evidence changes to commit.'
+          else
+            git commit -m 'data(m26): freeze DIBI geography representation probe'
+            git push origin HEAD:agent/milestone26-disaster-risk-chain
+          fi
