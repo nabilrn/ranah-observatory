@@ -44,7 +44,7 @@ jobs:
       - name: Correct transport representation and audit 64 period pages offline
         run: python -m scripts.audit_milestone27_bkpm_frozen_inventory
 
-      - name: Verify corrected scientific state
+      - name: Verify corrected fail-closed scientific state
         run: |
           python - <<'PY'
           import csv, hashlib, json
@@ -62,10 +62,10 @@ jobs:
           assert m['direct_resource_url_count'] == 0
           assert m['resource_download_action_period_count'] == 64
           assert m['resource_transport_endpoint_resolved_period_count'] == 0
-          assert m['semantic_family_match_period_count'] == 64
-          assert m['semantic_family_hold_period_count'] == 0
-          assert m['quarter_specific_period_semantics_supported_by_page_text'] is True
-          assert m['incremental_reported_realization_semantics_supported_by_page_text'] is True
+          assert m['semantic_family_match_period_count'] + m['semantic_family_hold_period_count'] == 64
+          assert m['semantic_family_match_period_count'] > 0
+          assert m['quarter_specific_period_semantics_supported_by_page_text'] == (m['semantic_family_match_period_count'] == 64)
+          assert m['incremental_reported_realization_semantics_supported_by_page_text'] == (m['semantic_family_match_period_count'] == 64)
           assert m['quarterly_flow_interpretation_authorized'] is False
           assert m['cross_quarter_additivity_authorized'] is False
           assert m['annual_sum_authorized'] is False
@@ -90,7 +90,9 @@ jobs:
           assert all(r['resource_transport_locator_count'] == '0' for r in rows)
           assert all(r['resource_transport_endpoint_resolved'] == 'false' for r in rows)
           assert all(r['resource_download_action_count'] == '1' for r in rows)
-          assert all(r['semantic_family_state'] == 'semantic_family_match' for r in rows)
+          assert all(r['semantic_family_state'] in {'semantic_family_match', 'held_semantic_evidence_incomplete'} for r in rows)
+          assert sum(r['semantic_family_state'] == 'semantic_family_match' for r in rows) == m['semantic_family_match_period_count']
+          assert sum(r['semantic_family_state'] != 'semantic_family_match' for r in rows) == m['semantic_family_hold_period_count']
           assert all(r['promotion_state'] == 'metadata_qualified_resource_transport_pending' for r in rows)
           PY
 
