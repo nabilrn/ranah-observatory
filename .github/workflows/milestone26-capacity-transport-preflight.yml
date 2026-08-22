@@ -1,9 +1,7 @@
 name: Milestone 26 capacity transport preflight
 
 on:
-  push:
-    branches:
-      - agent/milestone26-disaster-risk-chain
+  pull_request:
     paths:
       - scripts/preflight_milestone26_capacity_transport.py
       - data/manifests/milestone26_capacity_production_contract.json
@@ -62,6 +60,7 @@ jobs:
           PY
 
       - name: Commit frozen preflight manifest
+        if: github.event.pull_request.head.repo.full_name == github.repository
         run: |
           if git diff --quiet -- data/manifests/milestone26_capacity_transport_preflight.json; then
             echo 'Capacity preflight manifest unchanged.'
