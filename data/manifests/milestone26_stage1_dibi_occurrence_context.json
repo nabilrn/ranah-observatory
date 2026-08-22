@@ -1,15 +1,5 @@
 {
-  "aggregate_2015_2024_source_values_repartitioned": false,
   "annualization_performed": false,
-  "canonical_crosswalk": {
-    "path": "data/registries/bnpb_geography_map.csv",
-    "sha256": "ded46ffab5ccad59e215c72925ff27876e0ccad33437fa7a3b81303ca022cc45"
-  },
-  "canonical_crosswalk_amendment": {
-    "path": "data/manifests/milestone26_dibi_canonical_crosswalk_amendment.json",
-    "sha256": "edb3b325389f4740d4a16db2350e6624b2bd817c4a6e850a8709d226d97479fa"
-  },
-  "canonical_crosswalk_applied": true,
   "causal_claim_created": false,
   "claim_type": "recorded_occurrence_context_aggregate",
   "component_class": "recorded_event_occurrence",
@@ -27,10 +17,8 @@
   "cross_field_ratio_performed": false,
   "cross_field_sum_performed": false,
   "event_level_record_inference_performed": false,
-  "exact_canonical_geography_set_pass": true,
-  "exact_source_key_set_pass": true,
+  "exact_geography_key_set_pass": true,
   "geography_count": 19,
-  "historical_boundary_reconstruction_performed": false,
   "imputation_performed": false,
   "live_and_offline_outputs_must_be_byte_identical": true,
   "milestone": 26,
@@ -40,9 +28,9 @@
   "offline_rebuild_required": true,
   "outputs": {
     "component_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-context.csv",
-    "component_frame_sha256": "850ef43dc65b26419d42ecf8ea66e77462e34f3017fa2f5624f3a4682621ef15",
+    "component_frame_sha256": "5dc15a9ea8243d5fc74254b8d4b9901aa420060039e728384336e78276fc420d",
     "provenance_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-provenance.csv",
-    "provenance_frame_sha256": "7e74412f14518ea0796c135835b2a5d8e3ae722c4d20676b9f5291680e6e80e1"
+    "provenance_frame_sha256": "3de4b928295a797136e6c4ccc4243b2ae4206e990d87fd327056d6608f649444"
   },
   "preferred_service_runtime_unavailable_evidence": {
     "path": "data/processed/bnpb/m26_dibi_occurrence_context/preferred-service-status.json",
@@ -68,17 +56,15 @@
     "Total_keri"
   ],
   "risk_synthesis_authorized": false,
-  "schema": "ranah-observatory/milestone26-stage1-dibi-occurrence-context/v2",
+  "schema": "ranah-observatory/milestone26-stage1-dibi-occurrence-context/v1",
   "semantic_interpretation_of_abbreviated_field_names_performed": false,
   "source_field_renaming_performed": false,
   "source_geography_key": "NO_KAB",
   "source_id": "dibi_kabupaten_hidromet_2015_2024",
-  "source_key_assumed_canonical": false,
   "source_metadata": {
     "path": "data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json",
     "sha256": "c27e1b91f9e8fa8dcc116b3ebd646b64be6de164af6f11813e253787cfc518dc"
   },
-  "source_numeric_values_changed_by_crosswalk_correction": false,
   "source_province_filter": "NO_PROP = 13",
   "source_qualification": {
     "path": "data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv",
