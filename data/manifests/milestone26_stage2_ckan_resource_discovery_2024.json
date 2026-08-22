@@ -1,0 +1,35 @@
+{
+  "automatic_duplicate_collapse_performed": false,
+  "blank_interpreted_as_zero": false,
+  "catalog": {
+    "path": "data/analysis/engine/disaster_risk_chain_v1/m26-stage2-ckan-resource-catalog-2024.json",
+    "sha256": "4059cab7e375413caafef7881eaeae6ee1f6c0e461db138a9d45d390ce89a21e"
+  },
+  "causal_claim_created": false,
+  "datastore_records_retrieved": false,
+  "impact_aggregation_performed": false,
+  "metadata_text_event_level_candidate_count": 0,
+  "metadata_text_event_level_candidate_resource_ids": [],
+  "metadata_text_impact_candidate_count": 14,
+  "metadata_text_kabupaten_granularity_resource_count": 14,
+  "metadata_text_provinsi_granularity_resource_count": 14,
+  "milestone": 26,
+  "monetary_loss_inferred": false,
+  "monetary_wasted_potential_estimated": false,
+  "package_id": "36d9a6b5-9755-4515-8f8d-16e29843abc4",
+  "package_metadata_modified": "2026-04-16T07:37:39.623402",
+  "package_metadata_only": true,
+  "package_title": "Kompilasi Data Kejadian dan Dampak Bencana tahun 2024",
+  "resource_count": 28,
+  "resource_files_downloaded": false,
+  "resource_selected_for_promotion": false,
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-stage2-ckan-resource-discovery-2024/v1",
+  "snapshot": {
+    "path": "data/processed/bnpb/m26_stage2_ckan_discovery_2024/package-metadata.json",
+    "sha256": "8aa5a30d52375b82f52b3b9a06bd13da9c4cee1398556475f0865553ff6652aa"
+  },
+  "stage": "stage2a_observed_impact_transport_discovery",
+  "statistical_model_fit": false,
+  "target_impact_values_inspected": false
+}

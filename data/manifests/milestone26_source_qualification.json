@@ -1,0 +1,99 @@
+{
+  "causal_claim_created": false,
+  "cross_component_temporal_aggregation_performed": false,
+  "dibi_transport_amendment": {
+    "path": "data/manifests/milestone26_dibi_transport_amendment.json",
+    "sha256": "eedf5c3d1e7873dfb67f1026ae783ed4ccb1901611343e3906b5405a7e4dbc01"
+  },
+  "event_impact_panel_materialized": false,
+  "expected_qualification_states_match": true,
+  "hazard_vulnerability_numeric_extraction_authorized": false,
+  "milestone": 26,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_spatial_aggregation_performed": false,
+  "outputs": {
+    "source_qualification": "data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv",
+    "source_qualification_sha256": "d7b742f9f850a7ee8a3281b22e33a42f116887000eada8c2d31871f6166499b1"
+  },
+  "posthoc_source_family_search_performed": false,
+  "qualification_states": {
+    "bnpb_event_impact_table": "field_surface_verified_retrieval_contract_pending",
+    "dibi_kabupaten_hidromet_2015_2024": "qualified_explicit_coverage_metadata",
+    "inarisk_capacity_2021": "qualified_explicit_vintage_metadata",
+    "inarisk_current_methodology": "framework_verified_current_surface",
+    "inarisk_flood_hazard": "endpoint_verified_version_binding_unresolved",
+    "inarisk_flood_vulnerability": "endpoint_verified_version_binding_unresolved",
+    "inarisk_landslide_hazard": "endpoint_verified_version_binding_unresolved",
+    "inarisk_landslide_vulnerability": "endpoint_verified_version_binding_unresolved",
+    "inarisk_population_2020": "qualified_explicit_vintage_metadata"
+  },
+  "qualified_numeric_source_ids": [
+    "inarisk_capacity_2021",
+    "inarisk_population_2020",
+    "dibi_kabupaten_hidromet_2015_2024"
+  ],
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-source-qualification/v1",
+  "snapshots": [
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json",
+      "sha256": "2a6de70aee227751903de18b22c88e78ebe7d4d9db811414b2e2c56cda596157",
+      "source_id": "inarisk_capacity_2021"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/inarisk_population_2020.json",
+      "sha256": "8192ad1f91509b40ba9de044f2dcce2a9c931a675ec479b133575f9a933aad1b",
+      "source_id": "inarisk_population_2020"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json",
+      "sha256": "c27e1b91f9e8fa8dcc116b3ebd646b64be6de164af6f11813e253787cfc518dc",
+      "source_id": "dibi_kabupaten_hidromet_2015_2024"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/bnpb_event_impact_table.html",
+      "sha256": "52be84d3ae0708a984cc6383e1ce452fb90d2da552b25d6f87fea70a2bcf8f86",
+      "source_id": "bnpb_event_impact_table"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/inarisk_flood_hazard.json",
+      "sha256": "9141fd567b3a84ebd9e7deae764c67721e28c59ad6c993c34749eb91b600b080",
+      "source_id": "inarisk_flood_hazard"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/inarisk_landslide_hazard.json",
+      "sha256": "dd2a706be344f9227c1a0e5f760baadc76bfe36d71f48b38279af2b9153cc9cb",
+      "source_id": "inarisk_landslide_hazard"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/inarisk_flood_vulnerability.json",
+      "sha256": "fab258f4f9ab839dddad511b31af655dca9f29d53d7a6ad86cc6c6fea1e11619",
+      "source_id": "inarisk_flood_vulnerability"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/inarisk_landslide_vulnerability.json",
+      "sha256": "90300621e71b7e8d1c319e6fd07ef5d625ef27e1211f8cd4a79c72d9ad51e1ed",
+      "source_id": "inarisk_landslide_vulnerability"
+    },
+    {
+      "path": "data/processed/bnpb/m26_source_qualification/inarisk_current_methodology.html",
+      "sha256": "c7fcd40d6c4d1520900e09a31b7b7dedeca97eb9897b9a123c4029cf36883625",
+      "source_id": "inarisk_current_methodology"
+    }
+  ],
+  "source_count": 9,
+  "source_ids": [
+    "inarisk_capacity_2021",
+    "inarisk_population_2020",
+    "dibi_kabupaten_hidromet_2015_2024",
+    "bnpb_event_impact_table",
+    "inarisk_flood_hazard",
+    "inarisk_landslide_hazard",
+    "inarisk_flood_vulnerability",
+    "inarisk_landslide_vulnerability",
+    "inarisk_current_methodology"
+  ],
+  "stage": 0,
+  "stage0_complete": true,
+  "statistical_model_fit": false
+}

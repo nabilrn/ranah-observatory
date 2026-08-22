@@ -1,0 +1,35 @@
+name: Milestone 26 population MapServer identity (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen MapServer identity evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path('data/manifests/milestone26_population_mapserver_identity.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-mapserver-identity/v1'
+          assert manifest['identity_gates']['all_identity_gates_passed'] is True
+          assert manifest['identify_transport_success'] is True
+          assert manifest['same_dataset_transport_candidate_qualified'] is True
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['numeric_aggregation_performed'] is False
+          assert manifest['substantive_value_promotion_performed'] is False
+          assert manifest['cross_geography_numeric_extraction_performed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          for response in manifest['responses'].values():
+              evidence = Path(response['body_path'])
+              assert evidence.exists()
+              assert hashlib.sha256(evidence.read_bytes()).hexdigest() == response['body_sha256']
+          PY

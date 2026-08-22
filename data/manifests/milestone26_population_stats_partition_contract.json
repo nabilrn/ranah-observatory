@@ -1,0 +1,49 @@
+{
+  "schema": "ranah-observatory/milestone26-population-stats-partition-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_qualification",
+  "locked_before_partition_build": true,
+  "purpose": "Replace oversized administrative-boundary GET geometry with a deterministic, disjoint set of URI-safe polygons derived directly from the locked native 100 m inside-cell mask. This changes transport representation only; the selected native cell set must remain exact.",
+  "source_values_accessed": false,
+  "source_grid": {
+    "crs_epsg": 3395,
+    "pixel_size_m": 100,
+    "boundary_rule": "pixel_center_inside_polygon",
+    "all_touched": false
+  },
+  "mask_polygonization": {
+    "method": "rasterio_features_shapes_on_binary_inside_mask",
+    "cell_edge_geometry": true,
+    "coordinate_rounding_decimals_m": 3,
+    "safe_simplification_tolerances_m_in_descending_order": [49, 40, 30, 20, 10, 0],
+    "candidate_is_accepted_only_if_rerasterized_subwindow_mask_is_exactly_equal": true
+  },
+  "adaptive_partition": {
+    "maximum_encoded_statistics_url_length": 6000,
+    "split_rule": "if no mask-equivalent candidate fits the URL gate, bisect the native-grid window at an integer cell boundary along the longer dimension; ties split rows; recurse; empty children are skipped",
+    "minimum_leaf_window": "1x1 native cell",
+    "leaf_cell_sets_must_be_disjoint": true,
+    "leaf_cell_counts_must_sum_to_original_inside_cell_count": true
+  },
+  "statistics_request_template": {
+    "operation": "computeStatisticsHistograms",
+    "method": "GET",
+    "geometry_type": "esriGeometryPolygon",
+    "pixel_size": "100,100",
+    "response_format": "json"
+  },
+  "selection_uses_source_values": false,
+  "selection_uses_model_results": false,
+  "statistics_live_request_authorized_in_this_contract": false,
+  "stage1_population_aggregation_authorized": false,
+  "numeric_source_value_extraction_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "cross_geography_numeric_source_extraction_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

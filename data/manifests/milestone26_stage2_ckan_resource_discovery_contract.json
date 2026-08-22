@@ -1,0 +1,52 @@
+{
+  "schema": "ranah-observatory/milestone26-stage2-ckan-resource-discovery-contract/v1",
+  "milestone": 26,
+  "stage": "stage2a_observed_impact_transport_discovery",
+  "locked_before_ckan_package_metadata_snapshot": true,
+  "purpose": "determine whether the already-qualified BNPB Satu Data package exposes a deterministic public machine-readable resource whose granularity and fields can support the locked 2024 observed-impact event-row contract",
+  "official_source": {
+    "base_url": "https://data.bnpb.go.id",
+    "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+    "package_title_expected": "Kompilasi Data Kejadian dan Dampak Bencana",
+    "action": "package_show"
+  },
+  "resource_selection_dimensions": [
+    "resource_id",
+    "resource_name",
+    "resource_description",
+    "format",
+    "datastore_active",
+    "resource_url",
+    "created_or_modified_metadata",
+    "declared_temporal_coverage",
+    "declared_geographic_granularity",
+    "declared_measure_or_impact_family"
+  ],
+  "eligible_for_stage2_transport_candidate_if": [
+    "official BNPB resource in the locked package or an explicitly versioned 2024 package",
+    "public deterministic machine-readable access is available",
+    "resource metadata supports 2024 coverage",
+    "resource granularity is event-level or otherwise preserves the row identity required by the locked Stage 2 contract",
+    "resource exposes observed-impact measures or a documented route to the locked impact fields without converting missing values to zero"
+  ],
+  "aggregate_resource_rule": "kabupaten-year or disaster-type-by-kabupaten aggregate impact resources may be catalogued but cannot silently replace the locked event-level observed-impact estimand; changing estimand requires a separate preregistered scientific amendment before data values are inspected",
+  "known_held_resource_ids": [
+    "89eb9dac-a891-477e-b264-2265f72f4e56"
+  ],
+  "known_held_resource_reason": "2024 affected-person aggregate is source-native context with unresolved aggregation/unique-person semantics and is not automatically event-level observed impact",
+  "package_metadata_only": true,
+  "datastore_records_retrieval_authorized": false,
+  "resource_file_download_authorized": false,
+  "target_impact_values_inspection_authorized": false,
+  "resource_selection_after_target_value_inspection_authorized": false,
+  "event_level_identity_inference_authorized": false,
+  "impact_aggregation_authorized": false,
+  "blank_as_zero_authorized": false,
+  "automatic_duplicate_collapse_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_loss_inference_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

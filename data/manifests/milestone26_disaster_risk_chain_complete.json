@@ -1,0 +1,83 @@
+{
+  "causal_claim_created": false,
+  "completion_semantics": "staged_evidence_qualification_complete_composite_risk_model_not_authorized",
+  "components": {
+    "capacity": {
+      "manifest": {
+        "path": "data/manifests/milestone26_stage1_capacity_component.json",
+        "sha256": "f90e9a9dfbcaaa225e3b94ba2b222836c04f54ffa145b33eeec52bc420ae76fb"
+      },
+      "observation_count": 19,
+      "reference_year": 2021,
+      "status": "qualified_and_materialized"
+    },
+    "flood_hazard": {
+      "numeric_extraction_authorized": false,
+      "status": "endpoint_verified_version_binding_unresolved"
+    },
+    "flood_vulnerability": {
+      "numeric_extraction_authorized": false,
+      "status": "endpoint_verified_version_binding_unresolved"
+    },
+    "landslide_hazard": {
+      "numeric_extraction_authorized": false,
+      "status": "endpoint_verified_version_binding_unresolved"
+    },
+    "landslide_vulnerability": {
+      "numeric_extraction_authorized": false,
+      "status": "endpoint_verified_version_binding_unresolved"
+    },
+    "observed_impact": {
+      "manifest": {
+        "path": "data/manifests/milestone26_stage2_observed_impact_decision.json",
+        "sha256": "128155dad689bd5bd0edd3127ef31109f9d994b49c56e10a1f58d519b9a6de7e"
+      },
+      "observation_count_promoted": 0,
+      "status": "held_event_level_transport_unqualified"
+    },
+    "population_exposure": {
+      "manifest": {
+        "path": "data/manifests/milestone26_stage1_population_component.json",
+        "sha256": "318ab0c62de842e99fca4311d33455a31b5695a6181f7883555f64243e91fd18"
+      },
+      "observation_count": 19,
+      "reference_year": 2020,
+      "status": "qualified_and_materialized"
+    },
+    "recorded_occurrence_context": {
+      "canonical_crosswalk_applied": true,
+      "declared_end_year": 2024,
+      "declared_start_year": 2015,
+      "manifest": {
+        "path": "data/manifests/milestone26_stage1_dibi_occurrence_context.json",
+        "sha256": "af6757f5f3bc16e462f4a84a64040089982e4413666856938635cd52f2c84f4a"
+      },
+      "observation_count": 19,
+      "status": "qualified_and_materialized_source_native_aggregate"
+    }
+  },
+  "cross_component_temporal_aggregation_performed": false,
+  "dibi_abbreviated_fields_semantically_reinterpreted": false,
+  "event_level_observed_impact_promoted": false,
+  "geography_count": 19,
+  "geography_regime": "BIG_June_2026_fixed_current_boundary",
+  "historical_boundary_reconstruction_performed": false,
+  "materialized_component_observation_count": 57,
+  "milestone": 26,
+  "milestone26_evidence_qualification_complete": true,
+  "milestone_spec": {
+    "path": "research/MILESTONE26_DISASTER_RISK_CHAIN_SPEC.md",
+    "sha256": "c7304494ad5fc6b16adefe1cb2b6b028911ef23ed0fb2ad782a6afba58ac1cfd"
+  },
+  "monetary_loss_inferred": false,
+  "monetary_wasted_potential_estimated": false,
+  "promoted_numeric_component_count": 3,
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-disaster-risk-chain-complete/v1",
+  "source_qualification": {
+    "path": "data/manifests/milestone26_source_qualification.json",
+    "sha256": "f986d2d789d5ce5c7122f16aa912a0f78e0d708ee5821f1fa981b0d9e04ee4e1"
+  },
+  "statistical_model_fit": false,
+  "undated_hazard_or_vulnerability_raster_aggregated": false
+}

@@ -1,0 +1,41 @@
+name: Milestone 26 population stats shape diagnostic (frozen verifier)
+
+# Frozen after locating the first nonstandard response at Kota Pariaman
+# partition 1. Do not rescan 417 partitions on every PR synchronize event.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-shape-diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen first nonstandard response
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_population_stats_shape_diagnostic.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-stats-shape-diagnostic/v1'
+          assert manifest['checked_partition_count'] == 417
+          assert manifest['standard_shape_partition_count_before_first_nonstandard'] == 416
+          assert manifest['first_nonstandard_found'] is True
+          first = manifest['first_nonstandard']
+          assert first['geography_id'] == 'idn.13.1377'
+          assert first['partition_index'] == 1
+          assert first['selected_cell_count'] == 1
+          assert first['classification'] == 'empty_statistics'
+          assert first['response_status'] == 200
+          assert first['response_arcgis_error_present'] is False
+          raw = Path(first['raw_response_path'])
+          assert raw.read_bytes() == b'{"statistics":[]}'
+          assert hashlib.sha256(raw.read_bytes()).hexdigest() == first['raw_response_sha256']
+          assert manifest['numeric_aggregates_computed'] is False
+          assert manifest['substantive_values_promoted'] is False
+          assert manifest['stage1_population_production_extraction_authorized'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          PY

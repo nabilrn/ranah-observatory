@@ -1,0 +1,20 @@
+name: Milestone 26 population transport capabilities
+
+# PARKED: operation-level evidence has been frozen. The diagnostic established
+# computeStatisticsHistograms=414 (GET URI too large), getSamples=timeout, and
+# identify=520 for INARISKPOP_2020. Keep this read-only/manual while the next
+# preregistered exportImage JSON-indirection transport lane is tested.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parked:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report frozen capability diagnostic
+        run: |
+          echo 'M26 population transport capability diagnostic is frozen and parked.'
+          echo 'No substantive numeric values were promoted.'

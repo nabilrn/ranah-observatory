@@ -1,0 +1,46 @@
+{
+  "schema": "ranah-observatory/milestone26-population-stats-geometry-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_qualification",
+  "locked_before_geometry_simplification": true,
+  "purpose": "Derive URI-safe ArcGIS polygon geometries that are exactly equivalent to the original BIG boundary under the locked native 100 m pixel-center membership rule, before any computeStatisticsHistograms value request.",
+  "official_arcgis_operation": {
+    "url": "https://developers.arcgis.com/rest/services-reference/enterprise/compute-statistics-and-histograms/",
+    "method": "GET",
+    "geometry_type": "esriGeometryPolygon",
+    "pixel_size": "100,100",
+    "response_format": "json"
+  },
+  "source_values_accessed": false,
+  "geography_frame": "BIG_June_2026_fixed_current_boundary",
+  "native_grid": {
+    "crs_epsg": 3395,
+    "pixel_size_m": 100,
+    "boundary_rule": "pixel_center_inside_polygon",
+    "all_touched": false
+  },
+  "geometry_processing": {
+    "algorithm": "topology_preserving_douglas_peucker",
+    "tolerance_sequence_m_in_ascending_order": [0, 0.1, 0.5, 1, 2, 5, 10, 20, 30, 40, 50, 75, 100, 150, 200, 300, 500],
+    "coordinate_rounding_decimals_m": 3,
+    "arcgis_outer_ring_orientation": "clockwise",
+    "arcgis_inner_ring_orientation": "counterclockwise",
+    "candidate_selection_rule": "select the first ascending tolerance whose rounded simplified geometry is valid, has an identical native-grid pixel-center mask to the original geometry, and produces a computeStatisticsHistograms GET URL no longer than the locked maximum",
+    "pixel_mask_equivalence_required": true
+  },
+  "maximum_encoded_statistics_url_length": 6000,
+  "selection_uses_source_values": false,
+  "selection_uses_model_results": false,
+  "statistics_live_request_authorized_in_this_contract": false,
+  "stage1_population_aggregation_authorized": false,
+  "numeric_source_value_extraction_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "cross_geography_numeric_source_extraction_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

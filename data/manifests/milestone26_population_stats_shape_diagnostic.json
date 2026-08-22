@@ -1,0 +1,55 @@
+{
+  "aggregation_semantics_changed": false,
+  "causal_claim_created": false,
+  "checked_partition_count": 417,
+  "contract": {
+    "path": "data/manifests/milestone26_population_stats_shape_diagnostic_contract.json",
+    "sha256": "82402dca130ec724f62a0020217566da27ae2b8903f89825dd0838c503b9551b"
+  },
+  "cross_geography_component_values_materialized": false,
+  "first_nonstandard": {
+    "attempts_used": 1,
+    "classification": "empty_statistics",
+    "geography_id": "idn.13.1377",
+    "geography_name": "Kota Pariaman",
+    "missing_required_fields": [],
+    "partition_index": 1,
+    "raw_response_bytes": 17,
+    "raw_response_path": "data/processed/bnpb/m26_population_stats_shape_diagnostic/first-nonstandard-response.json",
+    "raw_response_sha256": "4d1e55292a765f84a619bb9dd54119be934afb58ab7730af754b76b16bc23695",
+    "requested_url_length": 427,
+    "response_arcgis_error_present": false,
+    "response_content_type": "application/json; charset=UTF-8",
+    "response_exception_class": null,
+    "response_json_parseable": true,
+    "response_status": 200,
+    "scan_position": 417,
+    "selected_cell_count": 1,
+    "source_permendagri_code": "1377",
+    "statistics_length": 0,
+    "statistics_present": true,
+    "statistics_type": "list"
+  },
+  "first_nonstandard_found": true,
+  "milestone": 26,
+  "minimum_valid_fraction_changed": false,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_aggregates_computed": false,
+  "partition_manifest": {
+    "path": "data/manifests/milestone26_population_stats_partitions.json",
+    "sha256": "0224bb314fec4af53ca91ed60fbe79720e97be6dd0f27e67281722fe73265fdf"
+  },
+  "risk_synthesis_authorized": false,
+  "scan_order": [
+    "geography_id_ascending",
+    "partition_index_ascending"
+  ],
+  "schema": "ranah-observatory/milestone26-population-stats-shape-diagnostic/v1",
+  "source_family_changed": false,
+  "stage": "stage1_transport_shape_diagnostic",
+  "stage1_population_production_extraction_authorized": false,
+  "standard_response_numeric_values_recorded": false,
+  "standard_shape_partition_count_before_first_nonstandard": 416,
+  "statistical_model_fit": false,
+  "substantive_values_promoted": false
+}

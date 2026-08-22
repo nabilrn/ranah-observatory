@@ -1,0 +1,333 @@
+{
+  "all_windows_within_imageserver_limits": true,
+  "big_boundary_probe_qualified": true,
+  "capacity_component_materialized": false,
+  "causal_claim_created": false,
+  "claim_type": "modeled_spatial_index",
+  "contract": {
+    "path": "data/manifests/milestone26_capacity_production_contract.json",
+    "sha256": "76470e36c3d9304694b68e3f4949ae243fcba418cf25932330e20270f21edf29"
+  },
+  "geography_count": 19,
+  "imageserver_limits": {
+    "max_height": 4100,
+    "max_width": 15000,
+    "single_file_max_bytes": 95000000
+  },
+  "max_window_height": 2953,
+  "max_window_uncompressed_f32_bytes": 28797656,
+  "max_window_width": 2438,
+  "milestone": 26,
+  "monetary_wasted_potential_estimated": false,
+  "population_component_reextracted": false,
+  "reference_year": 2021,
+  "representative_transport_sample": {
+    "content_type": "image/tiff",
+    "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer/exportImage?bbox=11172536.164321%2C-54395.108968%2C11180736.164321%2C-49595.108968&bboxSR=3395&size=82%2C48&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=image",
+    "geography_id": "idn.13.1374",
+    "geography_name": "Kota Padang Panjang",
+    "performed": true,
+    "raster_bytes": 2380,
+    "raster_sha256": "d25f292a414b326be15174ff528ce8ffb20969fe8886ebb6c73c0915dadf3df1",
+    "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer/exportImage?bbox=11172536.164321%2C-54395.108968%2C11180736.164321%2C-49595.108968&bboxSR=3395&size=82%2C48&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=image",
+    "within_single_file_byte_gate": true
+  },
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-capacity-transport-preflight/v1",
+  "source_id": "inarisk_capacity_2021",
+  "source_metadata": {
+    "path": "data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json",
+    "sha256": "2a6de70aee227751903de18b22c88e78ebe7d4d9db811414b2e2c56cda596157"
+  },
+  "spatial_frame": "BIG_June_2026_fixed_current_boundary",
+  "stage": "stage1_capacity_transport_preflight",
+  "statistical_model_fit": false,
+  "substantive_interpretation_performed": false,
+  "windows": [
+    {
+      "bbox_native": [
+        10975636.164321,
+        -395395.108968,
+        11219436.164321,
+        -100095.108968
+      ],
+      "geography_id": "idn.13.1301",
+      "geography_name": "Kepulauan Mentawai",
+      "height": 2953,
+      "native_cell_bbox_count": 7199414,
+      "source_permendagri_code": "1309",
+      "uncompressed_f32_bytes": 28797656,
+      "width": 2438
+    },
+    {
+      "bbox_native": [
+        11164836.164321,
+        -274195.108968,
+        11275936.164321,
+        -105995.108968
+      ],
+      "geography_id": "idn.13.1302",
+      "geography_name": "Pesisir Selatan",
+      "height": 1682,
+      "native_cell_bbox_count": 1868702,
+      "source_permendagri_code": "1301",
+      "uncompressed_f32_bytes": 7474808,
+      "width": 1111
+    },
+    {
+      "bbox_native": [
+        11179336.164321,
+        -146995.108968,
+        11272536.164321,
+        -58795.108968
+      ],
+      "geography_id": "idn.13.1303",
+      "geography_name": "Solok",
+      "height": 882,
+      "native_cell_bbox_count": 822024,
+      "source_permendagri_code": "1302",
+      "uncompressed_f32_bytes": 3288096,
+      "width": 932
+    },
+    {
+      "bbox_native": [
+        11219736.164321,
+        -109595.108968,
+        11304336.164321,
+        -34495.108968
+      ],
+      "geography_id": "idn.13.1304",
+      "geography_name": "Sijunjung",
+      "height": 751,
+      "native_cell_bbox_count": 635346,
+      "source_permendagri_code": "1303",
+      "uncompressed_f32_bytes": 2541384,
+      "width": 846
+    },
+    {
+      "bbox_native": [
+        11166736.164321,
+        -72995.108968,
+        11226536.164321,
+        -30695.108968
+      ],
+      "geography_id": "idn.13.1305",
+      "geography_name": "Tanah Datar",
+      "height": 423,
+      "native_cell_bbox_count": 252954,
+      "source_permendagri_code": "1304",
+      "uncompressed_f32_bytes": 1011816,
+      "width": 598
+    },
+    {
+      "bbox_native": [
+        11127636.164321,
+        -96895.108968,
+        11183036.164321,
+        -35495.108968
+      ],
+      "geography_id": "idn.13.1306",
+      "geography_name": "Padang Pariaman",
+      "height": 614,
+      "native_cell_bbox_count": 340156,
+      "source_permendagri_code": "1305",
+      "uncompressed_f32_bytes": 1360624,
+      "width": 554
+    },
+    {
+      "bbox_native": [
+        11106436.164321,
+        -52995.108968,
+        11192536.164321,
+        -3295.108968
+      ],
+      "geography_id": "idn.13.1307",
+      "geography_name": "Agam",
+      "height": 497,
+      "native_cell_bbox_count": 427917,
+      "source_permendagri_code": "1306",
+      "uncompressed_f32_bytes": 1711668,
+      "width": 861
+    },
+    {
+      "bbox_native": [
+        11161436.164321,
+        -41095.108968,
+        11228236.164321,
+        47004.891032
+      ],
+      "geography_id": "idn.13.1308",
+      "geography_name": "Lima Puluh Kota",
+      "height": 881,
+      "native_cell_bbox_count": 588508,
+      "source_permendagri_code": "1307",
+      "uncompressed_f32_bytes": 2354032,
+      "width": 668
+    },
+    {
+      "bbox_native": [
+        11103336.164321,
+        -12395.108968,
+        11171336.164321,
+        100304.891032
+      ],
+      "geography_id": "idn.13.1309",
+      "geography_name": "Pasaman",
+      "height": 1127,
+      "native_cell_bbox_count": 766360,
+      "source_permendagri_code": "1308",
+      "uncompressed_f32_bytes": 3065440,
+      "width": 680
+    },
+    {
+      "bbox_native": [
+        11230736.164321,
+        -190795.108968,
+        11318136.164321,
+        -110995.108968
+      ],
+      "geography_id": "idn.13.1310",
+      "geography_name": "Solok Selatan",
+      "height": 798,
+      "native_cell_bbox_count": 697452,
+      "source_permendagri_code": "1311",
+      "uncompressed_f32_bytes": 2789808,
+      "width": 874
+    },
+    {
+      "bbox_native": [
+        11259036.164321,
+        -187595.108968,
+        11342736.164321,
+        -90795.108968
+      ],
+      "geography_id": "idn.13.1311",
+      "geography_name": "Dharmasraya",
+      "height": 968,
+      "native_cell_bbox_count": 810216,
+      "source_permendagri_code": "1310",
+      "uncompressed_f32_bytes": 3240864,
+      "width": 837
+    },
+    {
+      "bbox_native": [
+        11039236.164321,
+        -20195.108968,
+        11139236.164321,
+        61104.891032
+      ],
+      "geography_id": "idn.13.1312",
+      "geography_name": "Pasaman Barat",
+      "height": 813,
+      "native_cell_bbox_count": 813000,
+      "source_permendagri_code": "1312",
+      "uncompressed_f32_bytes": 3252000,
+      "width": 1000
+    },
+    {
+      "bbox_native": [
+        11147236.164321,
+        -125795.108968,
+        11194936.164321,
+        -80195.108968
+      ],
+      "geography_id": "idn.13.1371",
+      "geography_name": "Kota Padang",
+      "height": 456,
+      "native_cell_bbox_count": 217512,
+      "source_permendagri_code": "1371",
+      "uncompressed_f32_bytes": 870048,
+      "width": 477
+    },
+    {
+      "bbox_native": [
+        11192136.164321,
+        -90595.108968,
+        11208336.164321,
+        -81895.108968
+      ],
+      "geography_id": "idn.13.1372",
+      "geography_name": "Kota Solok",
+      "height": 87,
+      "native_cell_bbox_count": 14094,
+      "source_permendagri_code": "1372",
+      "uncompressed_f32_bytes": 56376,
+      "width": 162
+    },
+    {
+      "bbox_native": [
+        11208436.164321,
+        -85495.108968,
+        11222536.164321,
+        -60495.108968
+      ],
+      "geography_id": "idn.13.1373",
+      "geography_name": "Kota Sawahlunto",
+      "height": 250,
+      "native_cell_bbox_count": 35250,
+      "source_permendagri_code": "1373",
+      "uncompressed_f32_bytes": 141000,
+      "width": 141
+    },
+    {
+      "bbox_native": [
+        11172536.164321,
+        -54395.108968,
+        11180736.164321,
+        -49595.108968
+      ],
+      "geography_id": "idn.13.1374",
+      "geography_name": "Kota Padang Panjang",
+      "height": 48,
+      "native_cell_bbox_count": 3936,
+      "source_permendagri_code": "1374",
+      "uncompressed_f32_bytes": 15744,
+      "width": 82
+    },
+    {
+      "bbox_native": [
+        11168936.164321,
+        -36095.108968,
+        11177436.164321,
+        -29895.108968
+      ],
+      "geography_id": "idn.13.1375",
+      "geography_name": "Kota Bukittinggi",
+      "height": 62,
+      "native_cell_bbox_count": 5270,
+      "source_permendagri_code": "1375",
+      "uncompressed_f32_bytes": 21080,
+      "width": 85
+    },
+    {
+      "bbox_native": [
+        11196736.164321,
+        -30695.108968,
+        11208336.164321,
+        -20295.108968
+      ],
+      "geography_id": "idn.13.1376",
+      "geography_name": "Kota Payakumbuh",
+      "height": 104,
+      "native_cell_bbox_count": 12064,
+      "source_permendagri_code": "1376",
+      "uncompressed_f32_bytes": 48256,
+      "width": 116
+    },
+    {
+      "bbox_native": [
+        11131436.164321,
+        -84295.108968,
+        11152736.164321,
+        -60695.108968
+      ],
+      "geography_id": "idn.13.1377",
+      "geography_name": "Kota Pariaman",
+      "height": 236,
+      "native_cell_bbox_count": 50268,
+      "source_permendagri_code": "1377",
+      "uncompressed_f32_bytes": 201072,
+      "width": 213
+    }
+  ]
+}

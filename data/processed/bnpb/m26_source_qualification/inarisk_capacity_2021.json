@@ -1,0 +1,135 @@
+{
+  "content_type": "text/plain; charset=UTF-8",
+  "extra": {},
+  "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer?f=pjson",
+  "primary": {
+    "advancedQueryCapabilities": {
+      "supportsDistinct": false,
+      "supportsOrderBy": false,
+      "supportsPagination": false,
+      "supportsStatistics": false,
+      "useStandardizedQueries": true
+    },
+    "allowAnalysis": true,
+    "allowComputeTiePoints": false,
+    "allowCopy": true,
+    "allowRasterFunction": true,
+    "allowedMosaicMethods": "",
+    "bandCount": 1,
+    "bandNames": [
+      "Band_1"
+    ],
+    "blockHeight": 128,
+    "blockWidth": 128,
+    "capabilities": "Image,Metadata,Mensuration",
+    "compressionType": "LZ77",
+    "copyrightText": "",
+    "currentVersion": 11.4,
+    "datasetFormat": "FGDBR",
+    "defaultCompressionQuality": 75,
+    "defaultMosaicMethod": "Center",
+    "defaultResamplingMethod": "Bilinear",
+    "description": "",
+    "editFieldsInfo": null,
+    "exportTilesAllowed": false,
+    "extent": {
+      "spatialReference": {
+        "latestWkid": 3395,
+        "wkid": 3395
+      },
+      "xmax": 15698336.164320603,
+      "xmin": 10576536.164320603,
+      "ymax": 673304.8910324574,
+      "ymin": -1224895.1089675426
+    },
+    "fields": [],
+    "fullExtent": {
+      "spatialReference": {
+        "latestWkid": 3395,
+        "wkid": 3395
+      },
+      "xmax": 15698336.164320603,
+      "xmin": 10576536.164320603,
+      "ymax": 673304.8910324574,
+      "ymin": -1224895.1089675426
+    },
+    "hasColormap": false,
+    "hasHistograms": true,
+    "hasMultidimensions": false,
+    "hasRasterAttributeTable": false,
+    "initialExtent": {
+      "spatialReference": {
+        "latestWkid": 3395,
+        "wkid": 3395
+      },
+      "xmax": 15698336.164320603,
+      "xmin": 10576536.164320603,
+      "ymax": 673304.8910324574,
+      "ymin": -1224895.1089675426
+    },
+    "inspectionCapabilities": "",
+    "itemAccess": false,
+    "maxImageHeight": 4100,
+    "maxImageWidth": 15000,
+    "maxPixelSize": 0,
+    "maxScale": 0,
+    "maxValues": [
+      0.7900000214576721
+    ],
+    "meanPixelSize": 100,
+    "meanValues": [
+      0.2810143706881909
+    ],
+    "mensurationCapabilities": "Basic",
+    "minPixelSize": 0,
+    "minScale": 0,
+    "minValues": [
+      0
+    ],
+    "mosaicOperator": "First",
+    "name": "inarisk/INDEKS_KAPASITAS_2021",
+    "objectIdField": "",
+    "ownershipBasedAccessControlForRasters": null,
+    "pixelSizeX": 100,
+    "pixelSizeY": 100,
+    "pixelType": "F32",
+    "rasterFunctionInfos": [
+      {
+        "description": "",
+        "help": "",
+        "name": "None"
+      }
+    ],
+    "rasterTypeInfos": [
+      {
+        "description": "Supports all ArcGIS Raster Datasets",
+        "help": "",
+        "name": "Raster Dataset"
+      }
+    ],
+    "serviceDataType": "esriImageServiceDataTypeGeneric",
+    "serviceDescription": "inarisk/INDEKS_KAPASITAS_2021",
+    "serviceSourceType": "esriImageServiceSourceTypeDataset",
+    "sortAscending": true,
+    "sortField": "",
+    "sortValue": null,
+    "sortableFields": "",
+    "spatialReference": {
+      "latestWkid": 3395,
+      "wkid": 3395
+    },
+    "stdvValues": [
+      0.09388698885252826
+    ],
+    "supportsAdvancedQueries": false,
+    "supportsStatistics": false,
+    "uncompressedSize": 3888880304,
+    "useStandardizedQueries": true
+  },
+  "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer?f=pjson",
+  "source_id": "inarisk_capacity_2021",
+  "transport": {
+    "fallback_used": false,
+    "preferred_endpoint": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer"
+  }
+}

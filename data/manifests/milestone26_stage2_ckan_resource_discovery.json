@@ -1,0 +1,52 @@
+{
+  "automatic_duplicate_collapse_performed": false,
+  "blank_interpreted_as_zero": false,
+  "catalog": {
+    "path": "data/analysis/engine/disaster_risk_chain_v1/m26-stage2-ckan-resource-catalog.json",
+    "sha256": "dab70b70e26ac33098bd93c613a5f0c6e8cef3c6e3c0adc7b872e8f90063927d"
+  },
+  "causal_claim_created": false,
+  "datastore_impact_candidate_count": 15,
+  "datastore_impact_candidate_resource_ids": [
+    "b2b878ac-988e-4ef3-8deb-c279b1097dac",
+    "318f541a-5b0d-448c-8b78-9ba56c0478f2",
+    "a19366cf-0ac4-45d1-bc6e-89a020ab45a1",
+    "b1e58b39-8dc4-4b9b-abc6-50139acd2fda",
+    "ce67795b-57e4-4c84-8c2a-3bf03828ff0d",
+    "d1fd9f08-26e1-453a-9be0-422538f01b5e",
+    "d7b61b56-43d5-4dcc-8d7b-45c993e1bdb0",
+    "69605ad2-73ea-4967-b2d5-639ad9291833",
+    "b2fa5c46-9a07-4d30-a3bd-57e143e775f1",
+    "5b9f7853-e69b-4d3a-917c-3fa3e473ed60",
+    "7f9e5218-bbba-4916-a2b8-13cf1764dc96",
+    "5f3bdd4d-b7e1-4249-9cb5-85636f1d1a49",
+    "759ee230-c78c-48a1-bf0d-9596accb524c",
+    "471f71cb-27a4-4460-836f-416c0c35b4dc",
+    "27bbeb6b-6f86-4490-840a-c1bc6393102b"
+  ],
+  "datastore_records_retrieved": false,
+  "impact_aggregation_performed": false,
+  "known_held_resource_ids_present": [],
+  "metadata_text_event_level_candidate_count": 0,
+  "metadata_text_event_level_candidate_resource_ids": [],
+  "metadata_text_impact_candidate_count": 15,
+  "milestone": 26,
+  "monetary_loss_inferred": false,
+  "monetary_wasted_potential_estimated": false,
+  "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+  "package_metadata_modified": "2026-04-16T07:32:00.853316",
+  "package_metadata_only": true,
+  "package_title": "Kompilasi Data Kejadian dan Dampak Bencana",
+  "resource_count": 38,
+  "resource_files_downloaded": false,
+  "resource_selected_for_promotion": false,
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-stage2-ckan-resource-discovery/v1",
+  "snapshot": {
+    "path": "data/processed/bnpb/m26_stage2_ckan_discovery/package-metadata.json",
+    "sha256": "ec1e9350e8b00a5a387966fef3bed0756dba94345166c5baa4a05fe3b4533b62"
+  },
+  "stage": "stage2a_observed_impact_transport_discovery",
+  "statistical_model_fit": false,
+  "target_impact_values_inspected": false
+}

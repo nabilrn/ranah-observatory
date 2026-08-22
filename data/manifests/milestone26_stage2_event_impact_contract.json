@@ -1,0 +1,101 @@
+{
+  "schema": "ranah-observatory/milestone26-stage2-event-impact-contract/v1",
+  "milestone": 26,
+  "stage": 2,
+  "contract_locked_before_target_period_event_impact_retrieval": true,
+  "purpose": "qualify observed-impact evidence for the same 2024 flood/landslide occurrence regime already present in M16 without converting missing impact fields to zero or inventing event identities",
+  "official_source": {
+    "url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+    "method": "POST",
+    "form_parameters": {
+      "event_type": "s_kejadian",
+      "start_date": "tgl_awal",
+      "end_date": "tgl_akhir",
+      "submit": "submit"
+    },
+    "date_format": "dd/mm/yyyy",
+    "submit_value": "Cari"
+  },
+  "target_regime": {
+    "year": 2024,
+    "start_date": "01/01/2024",
+    "end_date": "31/12/2024",
+    "event_types": [
+      "BANJIR",
+      "TANAH LONGSOR"
+    ],
+    "geography_regime": "BIG_June_2026_fixed_current_boundary",
+    "geography_count": 19,
+    "server_side_province_filter_assumed": false,
+    "geography_filter_rule": "retrieve each locked event type for the full target date range, then retain rows whose source ID Kabupaten maps exactly to one of the 19 current Sumatera Barat canonical geographies"
+  },
+  "expected_table_columns": [
+    "No.",
+    "Kode Identitas Bencana",
+    "ID Kabupaten",
+    "Tanggal Kejadian",
+    "Kejadian",
+    "Lokasi",
+    "Kabupaten",
+    "Provinsi",
+    "Kronologi & Dokumentasi",
+    "Penyebab",
+    "Meninggal",
+    "Hilang",
+    "Terluka",
+    "Rumah Rusak",
+    "Rumah Terendam",
+    "Fasum Rusak"
+  ],
+  "impact_fields": [
+    "Meninggal",
+    "Hilang",
+    "Terluka",
+    "Rumah Rusak",
+    "Rumah Terendam",
+    "Fasum Rusak"
+  ],
+  "missing_value_semantics": {
+    "blank_cell": "not_reported_or_missing; must remain null and must not be interpreted as zero",
+    "literal_zero": "explicit_reported_zero",
+    "positive_integer": "reported_count",
+    "negative_or_noninteger_numeric": "fail_closed_pending_source_semantic_review"
+  },
+  "event_identity_rule": {
+    "source_event_id_field": "Kode Identitas Bencana",
+    "source_event_id_may_be_blank": true,
+    "fallback_row_fingerprint_fields": [
+      "ID Kabupaten",
+      "Tanggal Kejadian",
+      "Kejadian",
+      "Lokasi",
+      "Meninggal",
+      "Hilang",
+      "Terluka",
+      "Rumah Rusak",
+      "Rumah Terendam",
+      "Fasum Rusak"
+    ],
+    "fallback_fingerprint_role": "stable source-row identity only; not asserted to be a unique real-world disaster event identifier",
+    "automatic_duplicate_collapse_authorized": false
+  },
+  "stage2a_retrieval_qualification": {
+    "raw_html_snapshot_required_for_each_event_type": true,
+    "response_sha256_required": true,
+    "exact_table_schema_required": true,
+    "target_date_range_validation_required": true,
+    "source_event_type_validation_required": true,
+    "geography_id_mapping_required": true,
+    "impact_cell_type_profile_required": true,
+    "exact_duplicate_fingerprint_diagnostics_required": true,
+    "impact_aggregation_authorized": false
+  },
+  "stage2b_promotion_gate": "observed-impact rows may be promoted only after Stage 2a proves deterministic retrieval, exact geography mapping, parseable impact-cell semantics, and an explicit duplicate-resolution decision; Stage 2a itself cannot aggregate impact totals",
+  "historical_boundary_reconstruction_performed": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_loss_inference_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

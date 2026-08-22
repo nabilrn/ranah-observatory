@@ -1,0 +1,91 @@
+{
+  "schema": "ranah-observatory/milestone26-population-production-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_population_component_materialization",
+  "contract_locked_before_cross_geography_numeric_extraction": true,
+  "source_id": "inarisk_population_2020",
+  "component_class": "exposure",
+  "claim_type": "modeled_population_exposure_proxy",
+  "reference_year": 2020,
+  "spatial_frame": "BIG_June_2026_fixed_current_boundary",
+  "geography_count_expected": 19,
+  "semantic_evidence": {
+    "url": "https://inarisk.bnpb.go.id/BUKU-RBI-2022/files/basic-html/page50.html",
+    "required_phrase": "Pij adalah jumlah penduduk pada grid/sel",
+    "evidence_role": "establish_population_grid_cell_value_as_person_count_not_density",
+    "frozen_path": "data/processed/bnpb/m26_population_component_stats/population-grid-cell-semantics.html",
+    "snapshot_sha256_required": true
+  },
+  "transport_qualification": {
+    "equivalence_manifest": "data/manifests/milestone26_population_stats_equivalence.json",
+    "required_flag": "population_stats_production_transport_candidate_qualified",
+    "required_value": true,
+    "complete_pilot_geography_id": "idn.13.1374",
+    "complete_pilot_cell_count": 2354
+  },
+  "partition_contract": {
+    "manifest": "data/manifests/milestone26_population_stats_partitions.json",
+    "partition_count_expected": 420,
+    "inside_native_cell_count_expected": 4212327,
+    "all_partition_cell_counts_exact_required": true,
+    "all_partition_urls_within_gate_required": true,
+    "maximum_encoded_get_url_length": 6000
+  },
+  "source_transport": {
+    "service": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer",
+    "operation": "computeStatisticsHistograms",
+    "method": "GET",
+    "geometry_type": "esriGeometryPolygon",
+    "pixel_size": "100,100",
+    "native_grid_crs_epsg": 3395,
+    "native_pixel_size_m": 100,
+    "required_statistics_fields": ["count", "sum", "mean", "min", "max", "skipX", "skipY"],
+    "skipX_required": 1,
+    "skipY_required": 1,
+    "frozen_valid_value_min": 0.0,
+    "frozen_valid_value_max": 1976.36376953125
+  },
+  "aggregation": {
+    "estimand": "sum_of_nonnegative_native_grid_cell_person_values_with_centers_inside_fixed_boundary",
+    "partition_combination": "sum_statistics_sum_across_nonoverlapping_exact_native_mask_partitions",
+    "valid_count_combination": "sum_statistics_count_across_partitions",
+    "inside_count_basis": "frozen_exact_partition_selected_cell_count",
+    "minimum_valid_fraction_inside_geography": 0.99,
+    "all_touched": false,
+    "boundary_rule": "pixel_center_inside_polygon",
+    "resampling": "nearest_neighbor",
+    "downsampling_authorized": false,
+    "upsampling_authorized": false,
+    "mean_as_population_total_authorized": false,
+    "area_weighted_density_integration_authorized": false,
+    "imputation_authorized": false
+  },
+  "output": {
+    "component_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-component.csv",
+    "provenance_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-provenance.csv",
+    "manifest": "data/manifests/milestone26_stage1_population_component.json",
+    "raw_root": "data/processed/bnpb/m26_population_component_stats",
+    "retrieval_index": "data/processed/bnpb/m26_population_component_stats/retrieval-index.json",
+    "primary_value_field": "population_exposure_proxy_2020_persons",
+    "primary_value_decimal_places": 6
+  },
+  "reproducibility": {
+    "freeze_exact_http_response_bodies": true,
+    "freeze_response_sha256": true,
+    "freeze_semantic_evidence_snapshot": true,
+    "offline_rebuild_required": true,
+    "live_and_offline_outputs_must_be_byte_identical": true
+  },
+  "stage1_population_production_extraction_authorized": true,
+  "component_value_materialization_authorized": true,
+  "cross_geography_numeric_source_extraction_authorized": true,
+  "substantive_interpretation_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "source_family_changed": false,
+  "aggregation_semantics_changed": false,
+  "minimum_valid_fraction_changed": false
+}

@@ -1,0 +1,41 @@
+name: Milestone 26 population empty-stats semantics attempt 1 (frozen verifier)
+
+# Frozen after attempt 1 was inconclusive because both BNPB transports returned
+# HTTP 521 for all three repeats. Preserve that outage evidence; do not overwrite
+# it by re-running the same writer.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-attempt-1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen inconclusive outage evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_population_empty_stats_semantics.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-empty-stats-semantics/v1'
+          assert manifest['decision'] == 'inconclusive'
+          assert manifest['diagnostic_inconclusive'] is True
+          assert manifest['target']['geography_id'] == 'idn.13.1377'
+          assert manifest['target']['partition_index'] == 1
+          assert manifest['target']['selected_cell_count'] == 1
+          assert len(manifest['image_server_repeats']) == 3
+          assert len(manifest['mapserver_repeats']) == 3
+          for row in manifest['image_server_repeats'] + manifest['mapserver_repeats']:
+              assert row['transport_ok'] is False
+              assert row['response']['status'] == 521
+              raw = Path(row['response']['raw_path'])
+              assert hashlib.sha256(raw.read_bytes()).hexdigest() == row['response']['raw_sha256']
+          assert manifest['exact_cell_no_valid_source_value_qualified'] is False
+          assert manifest['empty_statistics_global_semantics_qualified'] is False
+          assert manifest['stage1_population_production_extraction_authorized'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          PY

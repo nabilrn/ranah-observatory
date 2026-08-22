@@ -1,0 +1,33 @@
+{
+  "bbox_native": [
+    10975636.164321,
+    -395395.108968,
+    11219436.164321,
+    -100095.108968
+  ],
+  "compression": "LZ77",
+  "content_type": "image/tiff",
+  "contract_path": "data/manifests/milestone26_capacity_production_contract.json",
+  "contract_sha256": "76470e36c3d9304694b68e3f4949ae243fcba418cf25932330e20270f21edf29",
+  "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer/exportImage?bbox=10975636.164321%2C-395395.108968%2C11219436.164321%2C-100095.108968&bboxSR=3395&size=2438%2C2953&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=image",
+  "format": "tiff",
+  "geography_id": "idn.13.1301",
+  "geography_name": "Kepulauan Mentawai",
+  "height": 2953,
+  "interpolation": "RSP_NearestNeighbor",
+  "native_grid_crs_epsg": 3395,
+  "native_pixel_size_m": 100.0,
+  "pixel_type": "F32",
+  "raster_bytes": 342392,
+  "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1301.tif",
+  "raster_sha256": "05a6dab1613bdb07cc48e50fef794873384a25cefc1e99aa81cc2755af7aae7c",
+  "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer/exportImage?bbox=10975636.164321%2C-395395.108968%2C11219436.164321%2C-100095.108968&bboxSR=3395&size=2438%2C2953&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=image",
+  "schema": "ranah-observatory/milestone26-capacity-raster-request/v1",
+  "semantic_evidence_path": "data/processed/bnpb/m26_capacity_component/capacity-index-scale.html",
+  "semantic_evidence_sha256": "9e4d79bc8fc6035830a49912cc5e6c207af6c09b55cc89d792d498ee00725ab3",
+  "source_id": "inarisk_capacity_2021",
+  "source_metadata_path": "data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json",
+  "source_metadata_sha256": "2a6de70aee227751903de18b22c88e78ebe7d4d9db811414b2e2c56cda596157",
+  "source_permendagri_code": "1309",
+  "width": 2438
+}

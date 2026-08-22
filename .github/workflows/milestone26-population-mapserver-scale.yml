@@ -1,0 +1,36 @@
+name: Milestone 26 population MapServer scale (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen scale evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path('data/manifests/milestone26_population_mapserver_scale.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-mapserver-scale/v1'
+          assert manifest['production_batch_transport_qualified'] is True
+          assert manifest['qualified_production_batch_size'] == 64
+          assert manifest['reproducibility_64']['both_attempts_passed'] is True
+          assert manifest['reproducibility_64']['point_value_mapping_reproducible'] is True
+          assert manifest['headroom_128_observed_pass'] is True
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['numeric_aggregation_performed'] is False
+          assert manifest['substantive_value_promotion_performed'] is False
+          for attempt in manifest['attempts']:
+              response = attempt['response']
+              evidence = Path(response['body_path'])
+              assert evidence.exists()
+              assert hashlib.sha256(evidence.read_bytes()).hexdigest() == response['body_sha256']
+          PY

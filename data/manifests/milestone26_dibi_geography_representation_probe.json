@@ -1,0 +1,238 @@
+{
+  "all_feature_count": 514,
+  "causal_claim_created": false,
+  "event_level_record_inference_performed": false,
+  "fallback_layer_id": 1,
+  "fallback_layer_name": "Kabupaten_basah_kering",
+  "identifier_fields_requested": [
+    "id_kab_bps",
+    "NAMA_KAB",
+    "NAMA_PROP",
+    "KABKOTA",
+    "NO_PROP",
+    "NO_KAB"
+  ],
+  "layer_max_record_count": 2000,
+  "milestone": 26,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_occurrence_fields_forbidden": [
+    "Total_basa",
+    "Total_ba_1",
+    "Total_keri"
+  ],
+  "numeric_occurrence_fields_requested": false,
+  "numeric_occurrence_values_inspected": false,
+  "numeric_occurrence_values_promoted": false,
+  "observed_impact_inference_performed": false,
+  "preferred_service_status": {
+    "path": "data/processed/bnpb/m26_dibi_geography_probe/preferred-service-status.json",
+    "sha256": "4a01cb0dca35f37416e677a6e5783cc21b35ae2d1b99165de85e5e99d93810e3"
+  },
+  "raw_identifier_response": {
+    "bytes": 68670,
+    "path": "data/processed/bnpb/m26_dibi_geography_probe/identifier-only-kabupaten.json",
+    "sha256": "baa1e8a8f7882ccc1f3796fd9faa91c7a766787881b1966ccee1c45a9e11bb09"
+  },
+  "representation_contract_amendment_required": true,
+  "request_sidecar": {
+    "path": "data/processed/bnpb/m26_dibi_geography_probe/identifier-only-query.request.json",
+    "sha256": "ad5b5ff0ebf7a16e3012b3503f5c9988ea4e418017ff24eec29a490e84f2a7bc"
+  },
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-dibi-geography-representation-probe/v1",
+  "source_id": "dibi_kabupaten_hidromet_2015_2024",
+  "source_metadata": {
+    "path": "data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json",
+    "sha256": "c27e1b91f9e8fa8dcc116b3ebd646b64be6de164af6f11813e253787cfc518dc"
+  },
+  "stage": "representation_only_probe_before_dibi_numeric_contract_amendment",
+  "statistical_model_fit": false,
+  "substantive_interpretation_performed": false,
+  "sumbar_candidate_count": 19,
+  "sumbar_candidate_id_kab_bps_values": [
+    1306.0,
+    0.0,
+    1307.0,
+    1308.0
+  ],
+  "sumbar_candidate_nama_kab_values": [
+    "KAB. AGAM",
+    "KAB. DHARMASRAYA",
+    "KAB. KEPULAUAN MENTAWAI",
+    "KAB. LIMA PULUH KOTA",
+    "KAB. PADANG PARIAMAN",
+    "KAB. PASAMAN",
+    "KAB. PASAMAN BARAT",
+    "KAB. PESISIR SELATAN",
+    "KAB. SIJUNJUNG",
+    "KAB. SOLOK",
+    "KAB. SOLOK SELATAN",
+    "KAB. TANAH DATAR",
+    "KOTA BUKITTINGGI",
+    "KOTA PADANG",
+    "KOTA PADANG PANJANG",
+    "KOTA PARIAMAN",
+    "KOTA PAYAKUMBUH",
+    "KOTA SAWAHLUNTO",
+    "KOTA SOLOK"
+  ],
+  "sumbar_candidate_rule": "NAMA_PROP normalized equals SUMATERA BARAT OR NO_PROP numerically equals 13",
+  "sumbar_candidates": [
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. AGAM",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1306,
+      "NO_PROP": 13,
+      "id_kab_bps": 1306.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. DHARMASRAYA",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1310,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. KEPULAUAN MENTAWAI",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1309,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. LIMA PULUH KOTA",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1307,
+      "NO_PROP": 13,
+      "id_kab_bps": 1307.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. PADANG PARIAMAN",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1305,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. PASAMAN",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1308,
+      "NO_PROP": 13,
+      "id_kab_bps": 1308.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. PASAMAN BARAT",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1312,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. PESISIR SELATAN",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1301,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. SIJUNJUNG",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1303,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. SOLOK",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1302,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. SOLOK SELATAN",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1311,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KAB. TANAH DATAR",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1304,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KOTA BUKITTINGGI",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1375,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KOTA PADANG",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1371,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KOTA PADANG PANJANG",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1374,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KOTA PARIAMAN",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1377,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KOTA PAYAKUMBUH",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1376,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KOTA SAWAHLUNTO",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1373,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    },
+    {
+      "KABKOTA": " ",
+      "NAMA_KAB": "KOTA SOLOK",
+      "NAMA_PROP": "SUMATERA BARAT",
+      "NO_KAB": 1372,
+      "NO_PROP": 13,
+      "id_kab_bps": 0.0
+    }
+  ],
+  "transport_amendment": {
+    "path": "data/manifests/milestone26_dibi_transport_amendment.json",
+    "sha256": "eedf5c3d1e7873dfb67f1026ae783ed4ccb1901611343e3906b5405a7e4dbc01"
+  }
+}

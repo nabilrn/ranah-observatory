@@ -1,0 +1,42 @@
+{
+  "schema": "ranah-observatory/milestone26-population-mapserver-pixel-semantics-amendment/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_qualification",
+  "locked_before_multipoint_probe": true,
+  "trigger": "The frozen single-point MapServer identify response exposed the field Stretch.Pixel Value, while the preregistered parser accepted only Pixel Value and therefore conservatively left raw_pixel_surface_observed=false.",
+  "frozen_identify_response": {
+    "path": "data/processed/bnpb/m26_population_mapserver_identity/mapserver-identify.body",
+    "sha256": "3c6fcdca4feb15ab6948e128ecf131e97cfbdcd5db16cefb78f6e70666aedec5",
+    "field_name": "Stretch.Pixel Value"
+  },
+  "official_esri_semantic_evidence": [
+    {
+      "url": "https://learn.arcgis.com/en/projects/find-ocean-bathymetry-data/",
+      "claim": "Esri's official tutorial states that Stretch.Pixel Value is the raster measurement at the clicked cell and interprets it in the dataset's physical units."
+    },
+    {
+      "url": "https://learn.arcgis.com/en/projects/calculate-travel-time-for-a-tsunami/",
+      "claim": "Esri's official tutorial uses Stretch.Pixel Value as the numeric raster data value used for downstream calculation, not as a display-color byte."
+    }
+  ],
+  "semantic_binding": {
+    "accepted_field_name": "Stretch.Pixel Value",
+    "classification": "published_raster_cell_value",
+    "renderer_color_code_interpretation_rejected": true,
+    "byte_exact_equivalence_to_image_server_source_proven": false,
+    "aggregation_equivalence_proven": false
+  },
+  "decision_basis": "field-name semantics and official Esri documentation only",
+  "observed_numeric_value_used_to_choose_semantics": false,
+  "same_dataset_identity_gate_already_passed_independently": true,
+  "numeric_aggregation_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "cross_geography_numeric_extraction_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

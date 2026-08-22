@@ -1,0 +1,215 @@
+{
+  "aggregation_estimand": "mean_of_valid_native_grid_cells_with_centers_inside_fixed_boundary",
+  "all_geographies_valid_fraction_pass": true,
+  "big_boundary_probe_qualified": true,
+  "boundary_rule": "pixel_center_inside_polygon",
+  "capacity_component_materialized": true,
+  "causal_claim_created": false,
+  "claim_type": "modeled_spatial_index",
+  "component_class": "capacity",
+  "contract": {
+    "path": "data/manifests/milestone26_capacity_production_contract.json",
+    "sha256": "76470e36c3d9304694b68e3f4949ae243fcba418cf25932330e20270f21edf29"
+  },
+  "cross_component_temporal_aggregation_performed": false,
+  "geography_count": 19,
+  "inside_native_cell_count": 4212219,
+  "invalid_native_cell_count": 168,
+  "live_and_offline_outputs_must_be_byte_identical": true,
+  "milestone": 26,
+  "minimum_valid_fraction_observed": 0.999692071,
+  "minimum_valid_fraction_required": 0.99,
+  "monetary_wasted_potential_estimated": false,
+  "nodata_transport_amendment": {
+    "path": "data/manifests/milestone26_stage1_nodata_transport_amendment.json",
+    "sha256": "64dd75f5f55b4ca99c127be4392044731ba4da5796d6cb2e9aab5f722e423a2b"
+  },
+  "observation_count": 19,
+  "offline_rebuild_required": true,
+  "outputs": {
+    "component_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-component.csv",
+    "component_frame_sha256": "b950f4864dcae10ccfaaea0d066931505990c6fd47e8edbd5511bcfb4dab2c34",
+    "provenance_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-capacity-provenance.csv",
+    "provenance_frame_sha256": "a62b7b3086ff33f64a7da5d31b6da22ee889d242e8647e22b93d5264d0ad5ea1"
+  },
+  "population_component_reextracted": false,
+  "raw_evidence": [
+    {
+      "geography_id": "idn.13.1301",
+      "raster_bytes": 342392,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1301.tif",
+      "raster_sha256": "05a6dab1613bdb07cc48e50fef794873384a25cefc1e99aa81cc2755af7aae7c",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1301.request.json",
+      "request_sidecar_sha256": "f36a3bac2a120cdd1c88a48744e61cd6d71a58942a230acb5426706f19a7a29c"
+    },
+    {
+      "geography_id": "idn.13.1302",
+      "raster_bytes": 133274,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1302.tif",
+      "raster_sha256": "e8214a8024d63252c08617faa4305ec1e35338bfdd4a37c3a9a658cfbef062aa",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1302.request.json",
+      "request_sidecar_sha256": "e607747bfad3d139c6b09d80849baf2e12aac70dbc53944e991a37ef54cfb52f"
+    },
+    {
+      "geography_id": "idn.13.1303",
+      "raster_bytes": 68675,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1303.tif",
+      "raster_sha256": "8c21c2764babd453264e836528ab5aa6f70943e8bf06e7bd68cf95d7202d9d09",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1303.request.json",
+      "request_sidecar_sha256": "b07deba5caf70935d682fb341f8b89ad5ee1063e2e122dc15b8fe435eaea54d7"
+    },
+    {
+      "geography_id": "idn.13.1304",
+      "raster_bytes": 50014,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1304.tif",
+      "raster_sha256": "5e67885a31506fd8ab2a7603adf05dbc93505fc739a982dc011a766ec64e88ef",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1304.request.json",
+      "request_sidecar_sha256": "7289a08cedc4c8b74b2827212d7c866e2807cc421b995b49533b565ab2cd401e"
+    },
+    {
+      "geography_id": "idn.13.1305",
+      "raster_bytes": 28717,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1305.tif",
+      "raster_sha256": "845a93a5aeb88abcf0af980a6a21525eec1c212936c1517f7509c22cf4abe338",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1305.request.json",
+      "request_sidecar_sha256": "d92a8865f304b90d22c70421ffd0126ed14f4e061dd7110d260642fc2343a84e"
+    },
+    {
+      "geography_id": "idn.13.1306",
+      "raster_bytes": 35345,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1306.tif",
+      "raster_sha256": "5f9cdc655765650196700c60f0d2764483673dbebccaabd9c329e9b5edaf00ce",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1306.request.json",
+      "request_sidecar_sha256": "ca30c5c809118196d5ee91be83806a6440ce5f546a5643c432d8281d9d278b68"
+    },
+    {
+      "geography_id": "idn.13.1307",
+      "raster_bytes": 38246,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1307.tif",
+      "raster_sha256": "d918ca3bafa15bb73a0fe9716bf4527373e0c64cfa98cc8021288936baa29dda",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1307.request.json",
+      "request_sidecar_sha256": "6a49e0f72a72a0effff39ffac8a70001212e7b6703c7d2737136cbebc05e50f5"
+    },
+    {
+      "geography_id": "idn.13.1308",
+      "raster_bytes": 55520,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1308.tif",
+      "raster_sha256": "90826738ead6d47034a3d60ac79bf1a7ff530f7d1ce9c1d0a155aee857e93c5a",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1308.request.json",
+      "request_sidecar_sha256": "d64cd201599a56a6381f5358e3838715cd2077acd65b10d416c62a9e3fd758eb"
+    },
+    {
+      "geography_id": "idn.13.1309",
+      "raster_bytes": 67497,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1309.tif",
+      "raster_sha256": "c71b5af61ad9fc9b1301386f62d14ae9e42f15fc5b757fd8e3d2994f3c04e447",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1309.request.json",
+      "request_sidecar_sha256": "6971b8d5c79b4df861176ea8c948f87a4cdc647334d8f7198dbc92bafef9541b"
+    },
+    {
+      "geography_id": "idn.13.1310",
+      "raster_bytes": 60571,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1310.tif",
+      "raster_sha256": "990dae98590b855f76400b5f210b2a8aa107345f390230f56888b5aeacfccb25",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1310.request.json",
+      "request_sidecar_sha256": "5b0d413e1d756f2fccf20a8da93ab3e343f1deaa79e1b664d4e0f98f427da6af"
+    },
+    {
+      "geography_id": "idn.13.1311",
+      "raster_bytes": 72973,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1311.tif",
+      "raster_sha256": "c336c3729113817a8e3e838fe810a28526cfd0cd2a849cdde1d0af2758e50e9e",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1311.request.json",
+      "request_sidecar_sha256": "9c94f9a71f93179191069cd10b00a25ed8d30579998d902e97454183f64489f7"
+    },
+    {
+      "geography_id": "idn.13.1312",
+      "raster_bytes": 61246,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1312.tif",
+      "raster_sha256": "4295e7630fdb3aee9352ac40b0aa127637a9fd7df3cf8a0b6ecd7ce3d3c74952",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1312.request.json",
+      "request_sidecar_sha256": "e0a13f107d322dd1584a905f0f80741279e029e12a960fa30c85a2aa9f935519"
+    },
+    {
+      "geography_id": "idn.13.1371",
+      "raster_bytes": 22015,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1371.tif",
+      "raster_sha256": "52c7b5cabd0e08dd361294e03315beadb3da8c5e60835d35faeea16acd22bd7d",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1371.request.json",
+      "request_sidecar_sha256": "f2985cb4386783a00304029fb33e5dfda987e32157b03c8b90ed233efe744960"
+    },
+    {
+      "geography_id": "idn.13.1372",
+      "raster_bytes": 3034,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1372.tif",
+      "raster_sha256": "84adb766ef19fa573f2766cf3d7f519271ef0683ae6dcf706cec20b77c0e6a51",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1372.request.json",
+      "request_sidecar_sha256": "1367a8c489dcc7d62fb91594e89845dc570d298dea865d8d117234bbc292d4cf"
+    },
+    {
+      "geography_id": "idn.13.1373",
+      "raster_bytes": 6630,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1373.tif",
+      "raster_sha256": "59814a17e0ec84a1994e4cf60c9280cc4fbbf2183fbfae492f293c641351420b",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1373.request.json",
+      "request_sidecar_sha256": "b8d2ddd343ad5f9a769d9574e29565518c69b56c6bbabeaa02d2fa2f126f941e"
+    },
+    {
+      "geography_id": "idn.13.1374",
+      "raster_bytes": 2380,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1374.tif",
+      "raster_sha256": "d25f292a414b326be15174ff528ce8ffb20969fe8886ebb6c73c0915dadf3df1",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1374.request.json",
+      "request_sidecar_sha256": "d1858cd5213454106d6197f781b975f6755d4881aeda38b1ab9c63765df115c4"
+    },
+    {
+      "geography_id": "idn.13.1375",
+      "raster_bytes": 2052,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1375.tif",
+      "raster_sha256": "8ccdf40c214270a6320b7eaa33d323c11ddc5d4ca55b2d41f9570617a75c4cf3",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1375.request.json",
+      "request_sidecar_sha256": "cde6e0b30b2e5a986bd4008cf04e4265a2b4ef81167d03f9d0c63e1302df9104"
+    },
+    {
+      "geography_id": "idn.13.1376",
+      "raster_bytes": 2852,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1376.tif",
+      "raster_sha256": "25e9e1300e5deaa6ed2aaf9f89a878aef0b20bafd203d411ea9676c5b683904d",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1376.request.json",
+      "request_sidecar_sha256": "b1741517f57b89ab84d1a81c1790adf810a2cbf93f87e973031fe25c2c74bf45"
+    },
+    {
+      "geography_id": "idn.13.1377",
+      "raster_bytes": 6962,
+      "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1377.tif",
+      "raster_sha256": "a0664c0fae55fb55d2af2c4f1bdecc41ef6ed1890ae7ee4b180d225d240c0d36",
+      "request_sidecar_path": "data/processed/bnpb/m26_capacity_component/idn-13-1377.request.json",
+      "request_sidecar_sha256": "e6ac8ec54acfdc10bccd053f153da83a42ffd3d1abd0845e6e56892877d2acd7"
+    }
+  ],
+  "raw_raster_count": 19,
+  "raw_request_sidecar_count": 19,
+  "reference_year": 2021,
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-stage1-capacity-component/v1",
+  "semantic_evidence": {
+    "path": "data/processed/bnpb/m26_capacity_component/capacity-index-scale.html",
+    "role": "establish_capacity_index_scale_not_raster_vintage",
+    "sha256": "9e4d79bc8fc6035830a49912cc5e6c207af6c09b55cc89d792d498ee00725ab3"
+  },
+  "source_id": "inarisk_capacity_2021",
+  "source_metadata": {
+    "path": "data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json",
+    "sha256": "2a6de70aee227751903de18b22c88e78ebe7d4d9db811414b2e2c56cda596157"
+  },
+  "spatial_frame": "BIG_June_2026_fixed_current_boundary",
+  "stage": "stage1_capacity_component_materialization",
+  "stage1_complete": false,
+  "statistical_model_fit": false,
+  "substantive_interpretation_performed": false,
+  "transport_preflight": {
+    "path": "data/manifests/milestone26_capacity_transport_preflight.json",
+    "sha256": "8e4e82fa53471f0261e06b0071058408a56b5741e02f2eb7a1012e44bc0b8129"
+  },
+  "valid_native_cell_count": 4212051
+}

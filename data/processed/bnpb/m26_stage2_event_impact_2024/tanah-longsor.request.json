@@ -1,0 +1,21 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "event_type": "TANAH LONGSOR",
+  "final_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+  "form": {
+    "s_kejadian": "TANAH LONGSOR",
+    "submit": "Cari",
+    "tgl_akhir": "31/12/2024",
+    "tgl_awal": "01/01/2024"
+  },
+  "method": "POST",
+  "qualified_crosswalk_path": "data/registries/bnpb_geography_map.csv",
+  "qualified_crosswalk_sha256": "ded46ffab5ccad59e215c72925ff27876e0ccad33437fa7a3b81303ca022cc45",
+  "response_bytes": 15349,
+  "response_path": "data/processed/bnpb/m26_stage2_event_impact_2024/tanah-longsor.html",
+  "response_sha256": "4a3ad5bf61cf4d39f37b725044953685ac4017e5748ad23411d12c471227ee6d",
+  "schema": "ranah-observatory/milestone26-stage2a-event-impact-request/v2",
+  "source_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+  "stage2_contract_path": "data/manifests/milestone26_stage2_event_impact_contract.json",
+  "stage2a_geography_contract_path": "data/manifests/milestone26_stage2a_geography_crosswalk_contract.json"
+}

@@ -1,0 +1,21 @@
+name: Milestone 26 Stage 1 qualified components
+
+# PARKED: direct ImageServer export transport failed reproducibly for
+# INARISKPOP_2020 at full-window, 1500x1500, and 500x500 request sizes.
+# Stage 1 must not be re-run until a preregistered equivalent transport is
+# qualified. This workflow remains manual-only as a guard against accidental
+# repeated live extraction while transport equivalence is under review.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parked:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report parked Stage 1 writer
+        run: |
+          echo 'Milestone 26 Stage 1 writer is parked pending transport-equivalence qualification.'
+          echo 'Do not promote numeric component values from the failed exportImage runs.'

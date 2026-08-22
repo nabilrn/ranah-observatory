@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data Bencana</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://gis.bnpb.go.id/Images/Logo-BNPB_bulat.png" rel="shortcut icon" type="image/png">
+    <script src="https://gis.bnpb.go.id/databencana/tabel/DataTables/jquery/jquery.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://gis.bnpb.go.id/databencana/tabel/DataTables/bootstrap/js/bootstrap.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+    <!-- Load file CSS Bootstrap offline -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://gis.bnpb.go.id/databencana/tabel/js/bootstrap-datepicker.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://gis.bnpb.go.id/databencana/tabel/datepicker/js/bootstrap-datepicker.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https:/resources/demos/style.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+
+</head>
+<body>
+        		<div class="container-fluid">
+    <div>
+    <h3 style="text-align:center">Tabel Pencarian Data</h3>
+    <hr>
+    </div>
+    <form action="/databencana/tabel/pencarian.php" method="post">
+    <div class="container">
+     <div class="row">
+<!--        <div class="col-sm-5 form-group ">
+            <label>Nama Provinsi</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                </div>
+			    <select name="s_provinsi" id="s_provinsi" class="form-control">
+			        <option value="">Provinsi</option>
+			        <option value="ACEH" >ACEH</option>
+			        <option value="TANAH LONGSOR" >TANAH LONGSOR</option>
+					<option value="GEMPA BUMI" >GEMPABUMI</option>
+					<option value="LETUSAN GUNUNG API" >LETUSAN GUNUNG API</option>
+					<option value="PUTING BELIUNG" >PUTING BELIUNG</option>
+					<option value="GELOMBANG PASANG / ABRASI" >GELOMBANG PASANG / ABRASI</option>
+					<option value="KEKERINGAN" >KEKERINGAN</option>
+					<option value="KEBAKARAN HUTAN DAN LAHAN" >KEBAKARAN HUTAN DAN LAHAN</option>
+                </select>
+            </div> 
+		</div> -->
+		<div class="col-sm-5 form-group ">
+            <label>Jenis Kejadian Bencana</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                </div>
+			    <select name="s_kejadian" id="s_kejadian" class="form-control">
+			        <option value="">Kejadian</option>
+			        <option value="BANJIR" selected>BANJIR</option>
+			        <option value="TANAH LONGSOR" >TANAH LONGSOR</option>
+					<option value="GEMPABUMI" >GEMPABUMI</option>
+					<option value="ERUPSI GUNUNG API" >ERUPSI GUNUNG API</option>
+					<option value="CUACA EKSTREM" >CUACA EKSTREM</option>
+					<option value="GELOMBANG PASANG DAN ABRASI" >GELOMBANG PASANG DAN ABRASI</option>
+					<option value="KEKERINGAN" >KEKERINGAN</option>
+					<option value="KEBAKARAN HUTAN DAN LAHAN" >KEBAKARAN HUTAN DAN LAHAN</option>
+                    <option value="TSUNAMI" >TSUNAMI</option>
+                    <option value="GEMPA BUMI DAN TSUNAMI" >GEMPA BUMI DAN TSUNAMI</option>
+                </select>
+            </div> 
+		</div>
+		<div class="col-sm-3 form-group ">
+            <label>Tanggal Awal</label>
+            <div class="input-group date" data-provide="datepicker">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+                <input id="tgl_mulai" placeholder="masukkan tanggal Awal" type="text" class="form-control" name="tgl_awal"  value="01/01/2026" >
+            </div>
+        </div>
+        <div class="col-sm-3 form-group ">
+            <label>Tanggal Akhir</label>
+            <div class="input-group date" data-provide="datepicker">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+                <input id="tgl_akhir" placeholder="masukkan tanggal Akhir" type="text" class="form-control" name="tgl_akhir" value="31/12/2026">
+            </div>
+        </div>
+
+        <script type="d93c6bce92c583137a581cbe-text/javascript">
+            $(function(){
+                $(".datepicker").datepicker({
+                    format: 'dd/mm/yyyy',
+                    autoclose: true,
+                    todayHighlight: false,
+                });
+                $("#tgl_mulai").on('changeDate', function(selected) {
+                    var startDate = new Date(selected.date.valueOf());
+                    $("#tgl_akhir").datepicker('setStartDate', startDate);
+                    if($("#tgl_mulai").val() > $("#tgl_akhir").val()){
+                        $("#tgl_akhir").val($("#tgl_mulai").val());
+                    }
+                });
+            });
+        </script>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 form-group">
+                <input type="submit" id="submit" name="submit" class="btn btn-info" value="Cari">
+            </div>
+        </div>
+    </div>    
+    </form>
+    
+    <table class="table table-bordered table-hover datatab">
+    <thead>
+        <tr>
+            <td style="text-align:center"><b>No.</td>
+            <td width="150px" style="text-align:center"><b>Kode Identitas Bencana</b></td>
+			<td style="text-align:center"><b>ID Kabupaten</b></td>
+            <td style="text-align:center"><b>Tanggal Kejadian</b></td>
+			<td style="text-align:center"><b>Kejadian</b></td>
+			<td style="text-align:center"><b>Lokasi</b></td>
+			<td style="text-align:center"><b>Kabupaten</b></td>
+			<td style="text-align:center"><b>Provinsi</b></td>
+            <td style="text-align:center"><b>Kronologi & Dokumentasi</b></td>
+            <td style="text-align:center"><b>Penyebab</b></td>
+			<td style="text-align:center"><b>Meninggal</b></td>
+            <td style="text-align:center"><b>Hilang</b></td>
+            <td style="text-align:center"><b>Terluka</b></td>
+            <td style="text-align:center"><b>Rumah Rusak</b></td>
+            <td style="text-align:center"><b>Rumah Terendam</b></td>
+            <td style="text-align:center"><b>Fasum Rusak</b></td>
+            
+
+        </tr>
+        </thead>  
+        <tbody>
+                  </tbody>
+    </table>
+    <div class="col-md-8" style="width:14vw">
+            <a href="javascript:;" type="button" class="btn btn-success btn-sm btn-block button_export_excel" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-save"></i> Unduh Data</a>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h4 class="modal-title">Survey Layanan</h4>
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="card-body">
+                <!-- <h4 class="card-title">Survey Layanan</h4> -->
+                <p class="card-text">Yuk bantu kami meningkatkan kualitas pelayanan data bencana ini. Terima Kasih.</p>
+                <a href="https://docs.google.com/forms/d/1MlnFACDO7Vu3ZChxATAt4qL1BRSevIpH1mAhOpljPj0/viewform?edit_requested=true" class="btn btn-info" target="_blank">Isi Kuisioner</a>
+                </div>
+            </div>
+            <!-- <div class="modal-body">
+                <div class="card-body">
+                <h4 class="card-title">Kontak Kami</h4>
+                <p class="card-text">Data yang kamu cari tidak ada disini?</p>
+                <a href="https://wa.me/6285157717474" class="btn btn-primary" target="_blank">Hubungi Kami</a>
+                </div>
+            </div> -->
+            <!-- Modal footer -->
+            <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+        </div>
+            
+        </div>
+        </div>
+    </div>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d93c6bce92c583137a581cbe-|49" defer></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"7ad0fb90f15b48e4a3d93a604c197ac3","r":1}' crossorigin="anonymous"></script>
+</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js" type="d93c6bce92c583137a581cbe-text/javascript"></script>
+    <!--<script>
+    $(document).ready(function() {
+        $('.datatab').DataTable();
+    } );
+    </script>-->
+    <script type="d93c6bce92c583137a581cbe-text/javascript">
+    $(document).ready(function() {
+        $('.datatab').DataTable({
+        
+        buttons: [
+            {
+                extend: 'excel'
+            },
+            {
+                extend: 'csv'
+            },
+        ]
+    });
+    $('.button_export_excel').click(() => {
+    $('.datatab').DataTable().buttons(0,0).trigger()
+    })
+    });
+    </script>
+    <footer class="foot" style="padding-top:8vh;padding-bottom:5vh">
+        <hr>
+        <div class="row">
+            <!-- <div class="col-sm-2">
+                <img src="images/data.png" alt="" style="width:100px;height:auto;float:right">
+            </div> -->
+            <div class="col-sm-6" style="padding-left:20vw">
+                <div>
+                    <div class="card-body">
+                    <h4 class="card-title">Permohonan Data</h4>
+                    <p class="card-text">Data yang kamu cari tidak ada disini?</p>
+                    <a href="https://forms.gle/CaeaL9G33zxGTVSp6" class="btn btn-primary" target="_blank">Isi Formulir</a>
+                    </div>
+                </div>
+            </div>
+            <div></div>
+            <div class="col-sm-6" style="padding-left:10vw">
+                <div>
+                    <div class="card-body">
+                    <h4 class="card-title">Kontak Kami</h4>
+                    <p class="card-text">Pertanyaan terkait pelayanan data bencana?</p>
+                    <a href="https://wa.me/6285157717474" class="btn btn-primary" target="_blank">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>

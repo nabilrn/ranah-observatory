@@ -1,0 +1,506 @@
+[
+  {
+    "created": "2025-09-23T06:46:33.933384",
+    "datastore_active": true,
+    "description": "Jumlah Fasilitas Pelayanan Kesehatan yang Rusak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T06:46:33.846380",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "public_facilities_damaged"
+      ]
+    },
+    "metadata_modified": "2025-09-23T06:46:33.908798",
+    "name": "Jumlah Fasilitas Pelayanan Kesehatan yang Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "353da3aa-9ada-42aa-a5c2-e653d52ffd9c",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/353da3aa-9ada-42aa-a5c2-e653d52ffd9c/download/jumlah-fasilitas-pelayanan-kesehatan-yang-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:35:29.656480",
+    "datastore_active": true,
+    "description": "Jumlah Fasilitas Pelayanan Kesehatan yang Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:35:29.591771",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "public_facilities_damaged"
+      ]
+    },
+    "metadata_modified": "2025-09-23T03:35:29.634885",
+    "name": "Jumlah Fasilitas Pelayanan Kesehatan yang Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "26858365-9061-4ff7-9ccf-53480c6efb61",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/26858365-9061-4ff7-9ccf-53480c6efb61/download/jumlah-fasilitas-pelayanan-kesehatan-yang-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T06:50:02.156161",
+    "datastore_active": true,
+    "description": "Jumlah jembatan Rusak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T06:50:02.063536",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T06:50:02.128291",
+    "name": "Jumlah jembatan Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "fdebc70a-2305-4b25-9fa7-e876892b0f54",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/fdebc70a-2305-4b25-9fa7-e876892b0f54/download/jumlah-jembatan-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:10:06.425968",
+    "datastore_active": true,
+    "description": "Jumlah Jembatan Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:10:06.362924",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T03:10:07.146650",
+    "name": "Jumlah Jembatan Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "ad86fca8-b15b-4fb6-b30c-259ab32e3113",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/ad86fca8-b15b-4fb6-b30c-259ab32e3113/download/jumlah-jembatan-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T06:48:09.115876",
+    "datastore_active": true,
+    "description": "Jumlah Kantor yang Rusak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T06:48:09.008945",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T06:48:09.076095",
+    "name": "Jumlah Kantor yang Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "caefcb96-50a3-4a32-af0f-9ccc4bbcf487",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/caefcb96-50a3-4a32-af0f-9ccc4bbcf487/download/jumlah-kantor-yang-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:09:25.248045",
+    "datastore_active": true,
+    "description": "Jumlah Kantor yang Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:09:25.181259",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T03:10:06.403621",
+    "name": "Jumlah Kantor yang Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "091da066-4aca-4699-bd51-a2452f371778",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/091da066-4aca-4699-bd51-a2452f371778/download/jumlah-kantor-yang-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:40:20.178558",
+    "datastore_active": true,
+    "description": "Jumlah Kejadian Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:40:20.100442",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T03:40:20.154436",
+    "name": "Jumlah Kejadian Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "5ff9f41f-8312-4b7c-aa18-fdbedac6ee7e",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/5ff9f41f-8312-4b7c-aa18-fdbedac6ee7e/download/jumlah-kejadian-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:04:17.696374",
+    "datastore_active": true,
+    "description": "Jumlah Kejadian Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:04:17.654670",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T03:37:44.852589",
+    "name": "Jumlah Kejadian Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "f345ba43-99aa-428c-82d8-4b6a0bba380e",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/f345ba43-99aa-428c-82d8-4b6a0bba380e/download/jumlah-kejadian-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T06:48:43.973888",
+    "datastore_active": true,
+    "description": "Jumlah Kios / Toko yang Rusak yang Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T07:07:01.078603",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T07:07:01.132720",
+    "name": "Jumlah Kios / Toko yang Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "135f1962-4cb7-4634-a284-ff440a21a70c",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/135f1962-4cb7-4634-a284-ff440a21a70c/download/jumlah-kios-yang-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:36:09.846573",
+    "datastore_active": true,
+    "description": "Jumlah Kios / Toko yang Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T07:15:01.177470",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T07:15:01.234611",
+    "name": "Jumlah Kios / Toko yang Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "cbc56396-4cfa-4959-b9bd-38bf9d4a2d6c",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/cbc56396-4cfa-4959-b9bd-38bf9d4a2d6c/download/jumlah-kios-yang-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T04:23:07.397042",
+    "datastore_active": true,
+    "description": "Jumlah Korban Hilang Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T04:23:07.323306",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "missing"
+      ]
+    },
+    "metadata_modified": "2025-09-23T04:23:07.370166",
+    "name": "Jumlah Korban Hilang Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "4cddaa9f-45b1-47f5-9428-519e876a8e20",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/4cddaa9f-45b1-47f5-9428-519e876a8e20/download/jumlah-korban-hilang-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:05:52.471591",
+    "datastore_active": true,
+    "description": "Jumlah Korban Hilang Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:05:52.423796",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "missing"
+      ]
+    },
+    "metadata_modified": "2025-09-23T03:06:16.064132",
+    "name": "Jumlah Korban Hilang Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "e5c7f8e7-c3b4-44ff-9581-e7d187240886",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/e5c7f8e7-c3b4-44ff-9581-e7d187240886/download/jumlah-korban-hilang-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T04:23:52.818535",
+    "datastore_active": true,
+    "description": "Jumlah Korban Luka / Sakit Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T04:23:52.738181",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "injured"
+      ]
+    },
+    "metadata_modified": "2025-09-23T04:23:52.791501",
+    "name": "Jumlah Korban Luka / Sakit Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "820e56bc-fd26-4e47-ae12-5b23f1d5fd08",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/820e56bc-fd26-4e47-ae12-5b23f1d5fd08/download/jumlah-korban-luka-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:06:16.087569",
+    "datastore_active": true,
+    "description": "Jumlah Korban Luka Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:06:16.033013",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "injured"
+      ]
+    },
+    "metadata_modified": "2025-09-23T03:27:08.249283",
+    "name": "Jumlah Korban Luka / Sakit Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "1852744b-f6b1-4010-933e-cf60087dd54e",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/1852744b-f6b1-4010-933e-cf60087dd54e/download/jumlah-korban-luka-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T04:25:17.923258",
+    "datastore_active": true,
+    "description": "Jumlah Korban Mengungsi Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T04:25:17.841146",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "displaced"
+      ]
+    },
+    "metadata_modified": "2025-09-23T04:25:17.895058",
+    "name": "Jumlah Korban Mengungsi Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "68c4448c-3de9-42e3-987d-31f5c05c37ba",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/68c4448c-3de9-42e3-987d-31f5c05c37ba/download/jumlah-korban-mengungsi-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:07:13.073440",
+    "datastore_active": true,
+    "description": "Jumlah Korban Mengungsi Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:07:13.003349",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "displaced"
+      ]
+    },
+    "metadata_modified": "2025-09-23T03:10:39.160351",
+    "name": "Jumlah Korban Mengungsi Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "d528ad3f-5159-4c7d-b87e-e41d614df191",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/d528ad3f-5159-4c7d-b87e-e41d614df191/download/jumlah-korban-mengungsi-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T04:22:39.013381",
+    "datastore_active": true,
+    "description": "Jumlah Korban Meninggal Dunia Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T04:22:38.941534",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "deaths"
+      ]
+    },
+    "metadata_modified": "2025-09-23T04:22:38.987267",
+    "name": "Jumlah Korban Meninggal Dunia Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "bf415deb-7076-4aaf-90ad-013b9a5292f7",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/bf415deb-7076-4aaf-90ad-013b9a5292f7/download/jumlah-korban-meninggal-dunia-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:05:28.088224",
+    "datastore_active": true,
+    "description": "Jumlah Korban Meninggal Dunia Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:05:28.042231",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "deaths"
+      ]
+    },
+    "metadata_modified": "2025-09-23T03:05:52.449009",
+    "name": "Jumlah Korban Meninggal Dunia Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "7a42016e-ce4d-402e-b10e-4e691a3c436f",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/7a42016e-ce4d-402e-b10e-4e691a3c436f/download/jumlah-korban-meninggal-dunia-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T04:24:50.395291",
+    "datastore_active": true,
+    "description": "Jumlah Korban Terdampak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T04:24:50.308288",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "affected"
+      ]
+    },
+    "metadata_modified": "2025-09-23T04:24:50.363524",
+    "name": "Jumlah Korban Terdampak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "89eb9dac-a891-477e-b264-2265f72f4e56",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/89eb9dac-a891-477e-b264-2265f72f4e56/download/jumlah-korban-terdampak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:06:56.461184",
+    "datastore_active": true,
+    "description": "Jumlah Korban Terdampak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:06:56.406308",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "affected"
+      ]
+    },
+    "metadata_modified": "2025-09-23T03:07:13.033820",
+    "name": "Jumlah Korban Terdampak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "39ceb577-b49f-45c9-b909-7dd8daef417a",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/39ceb577-b49f-45c9-b909-7dd8daef417a/download/jumlah-korban-terdampak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T06:49:22.736262",
+    "datastore_active": true,
+    "description": "Jumlah Pabrik Rusak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T06:49:22.643250",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T06:49:22.709206",
+    "name": "Jumlah Pabrik Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "11ba1fdc-27cc-46e3-b75b-f4ec545dcf8f",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/11ba1fdc-27cc-46e3-b75b-f4ec545dcf8f/download/jumlah-pabrik-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:36:42.024653",
+    "datastore_active": true,
+    "description": "Jumlah Pabrik Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:36:41.930003",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T03:36:41.991419",
+    "name": "Jumlah Pabrik Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "5f69273d-7755-4a5f-82f7-617303ba78ec",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/5f69273d-7755-4a5f-82f7-617303ba78ec/download/jumlah-pabrik-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T06:46:05.079901",
+    "datastore_active": true,
+    "description": "Jumlah Rumah Ibadat yang Rusak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T06:46:04.990891",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T06:46:05.047100",
+    "name": "Jumlah Rumah Ibadat yang Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "d81153ed-d515-4d03-be64-6591c83b9539",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/d81153ed-d515-4d03-be64-6591c83b9539/download/jumlah-rumah-ibadat-yang-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:08:50.427920",
+    "datastore_active": true,
+    "description": "Jumlah Rumah Ibadat yang Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:08:50.354510",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T03:09:25.221335",
+    "name": "Jumlah Rumah Ibadat yang Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "200c487f-e0fc-4dd3-8cf0-b4222d460229",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/200c487f-e0fc-4dd3-8cf0-b4222d460229/download/jumlah-rumah-ibadat-yang-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T04:25:41.021092",
+    "datastore_active": true,
+    "description": "Jumlah Rumah Rusak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T04:25:40.934596",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "houses_damaged"
+      ]
+    },
+    "metadata_modified": "2025-09-23T04:25:40.994619",
+    "name": "Jumlah Rumah Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "5c9f7ea9-f809-487c-b1f8-f05a6f3291b3",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/5c9f7ea9-f809-487c-b1f8-f05a6f3291b3/download/jumlah-rumah-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:07:45.112441",
+    "datastore_active": true,
+    "description": "Jumlah Rumah Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:07:45.056475",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": [
+        "houses_damaged"
+      ]
+    },
+    "metadata_modified": "2025-09-23T03:08:50.402582",
+    "name": "Jumlah Rumah Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "b5e3d843-cf11-4333-b8e3-233a2279b65a",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/b5e3d843-cf11-4333-b8e3-233a2279b65a/download/jumlah-rumah-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T06:44:07.138017",
+    "datastore_active": true,
+    "description": "Jumlah Satuan Pendidikan Rusak Akibat Bencana Menurut Kabupaten Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T06:44:07.056234",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T06:44:07.112508",
+    "name": "Jumlah Satuan Pendidikan Rusak Akibat Bencana Menurut Kabupaten 2024.xlsx",
+    "resource_id": "8eea8adc-3c4d-4d0d-be9f-6d170127ff6c",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/8eea8adc-3c4d-4d0d-be9f-6d170127ff6c/download/jumlah-satuan-pendidikan-rusak-akibat-bencana-menurut-kabupaten-2024.xlsx",
+    "values_inspected": false
+  },
+  {
+    "created": "2025-09-23T03:34:46.925951",
+    "datastore_active": true,
+    "description": "Jumlah Satuan Pendidikan Rusak Akibat Bencana Menurut Provinsi Pada Tahun 2024",
+    "format": "XLSX",
+    "last_modified": "2025-09-23T03:34:46.864776",
+    "metadata_classification": {
+      "aggregate_metadata_marker_present": true,
+      "event_level_metadata_marker_present": false,
+      "impact_families_from_metadata_text": []
+    },
+    "metadata_modified": "2025-09-23T03:34:46.901822",
+    "name": "Jumlah Satuan Pendidikan Rusak Akibat Bencana Menurut Provinsi 2024.xlsx",
+    "resource_id": "76c8231d-75e8-4e8e-bb9a-1b35ba6ed1f3",
+    "url": "https://data.bnpb.go.id/dataset/36d9a6b5-9755-4515-8f8d-16e29843abc4/resource/76c8231d-75e8-4e8e-bb9a-1b35ba6ed1f3/download/jumlah-satuan-pendidikan-rusak-akibat-bencana-menurut-provinsi-2024.xlsx",
+    "values_inspected": false
+  }
+]

@@ -1,0 +1,113 @@
+{
+  "schema": "ranah-observatory/milestone26-dibi-occurrence-production-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_dibi_recorded_occurrence_context_materialization",
+  "contract_locked_before_cross_geography_numeric_extraction": true,
+  "source_id": "dibi_kabupaten_hidromet_2015_2024",
+  "component_class": "recorded_event_occurrence",
+  "claim_type": "recorded_occurrence_context_aggregate",
+  "coverage": {
+    "declared_start_year": 2015,
+    "declared_end_year": 2024,
+    "time_resolution": "source_declared_coverage_aggregate_only",
+    "annual_disaggregation_authorized": false
+  },
+  "spatial_frame": "BNPB_DIBI_kabupaten_source_geography_crosswalked_to_19_current_Sumbar_geographies",
+  "geography_count_expected": 19,
+  "source_qualification": "data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv",
+  "source_metadata": "data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json",
+  "transport_amendment": "data/manifests/milestone26_dibi_transport_amendment.json",
+  "source_transport": {
+    "preferred_service": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Kabupaten_2015_2024_Hidromet/MapServer",
+    "fallback_service": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer",
+    "fallback_authorized_only_when_preferred_service_runtime_unavailable": true,
+    "qualified_layer_id": 1,
+    "qualified_layer_name": "Kabupaten_basah_kering",
+    "operation": "query",
+    "response_format": "json",
+    "return_geometry": false,
+    "server_ordering_required": false,
+    "local_sort_key": "id_kab_bps"
+  },
+  "geography_contract": {
+    "source_key": "id_kab_bps",
+    "source_name_field": "NAMA_KAB",
+    "expected_source_keys": [
+      1301,
+      1302,
+      1303,
+      1304,
+      1305,
+      1306,
+      1307,
+      1308,
+      1309,
+      1310,
+      1311,
+      1312,
+      1371,
+      1372,
+      1373,
+      1374,
+      1375,
+      1376,
+      1377
+    ],
+    "canonical_geography_id_rule": "idn.13.<four_digit_id_kab_bps>",
+    "exact_key_set_required": true,
+    "unique_source_key_required": true,
+    "missing_geography_authorized": false,
+    "extra_geography_authorized": false
+  },
+  "query_contract": {
+    "where": "id_kab_bps IN (1301,1302,1303,1304,1305,1306,1307,1308,1309,1310,1311,1312,1371,1372,1373,1374,1375,1376,1377)",
+    "out_fields": [
+      "id_kab_bps",
+      "NAMA_KAB",
+      "Total_basa",
+      "Total_ba_1",
+      "Total_keri"
+    ],
+    "return_geometry": false,
+    "f": "json",
+    "expected_feature_count": 19
+  },
+  "numeric_fields": {
+    "retained_source_native_fields": [
+      "Total_basa",
+      "Total_ba_1",
+      "Total_keri"
+    ],
+    "finite_numeric_required": true,
+    "nonnegative_required": true,
+    "integer_coercion_authorized": false,
+    "source_field_renaming_authorized": false,
+    "cross_field_sum_authorized": false,
+    "cross_field_ratio_authorized": false,
+    "annualization_authorized": false,
+    "imputation_authorized": false,
+    "semantic_interpretation_of_abbreviated_field_names_authorized": false
+  },
+  "output": {
+    "component_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-context.csv",
+    "provenance_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-provenance.csv",
+    "manifest": "data/manifests/milestone26_stage1_dibi_occurrence_context.json",
+    "raw_root": "data/processed/bnpb/m26_dibi_occurrence_context"
+  },
+  "reproducibility": {
+    "freeze_exact_json_response_bytes": true,
+    "freeze_response_sha256": true,
+    "freeze_request_sidecar": true,
+    "offline_rebuild_required": true,
+    "live_and_offline_outputs_must_be_byte_identical": true
+  },
+  "numeric_materialization_authorized": true,
+  "event_level_record_inference_authorized": false,
+  "observed_impact_inference_authorized": false,
+  "substantive_interpretation_authorized": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

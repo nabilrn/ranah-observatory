@@ -1,0 +1,20 @@
+geography_id,geography_name,source_permendagri_code,reference_year,capacity_index_2021_mean,capacity_valid_fraction,inside_native_cell_count,valid_native_cell_count,invalid_native_cell_count,claim_type,component_class,source_id,spatial_frame,substantive_interpretation_authorized,risk_synthesis_authorized
+idn.13.1301,Kepulauan Mentawai,1309,2021,0.253300011,0.999809371,598020,597906,114,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1302,Pesisir Selatan,1301,2021,0.403299987,0.999963630,604895,604873,22,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1303,Solok,1302,2021,0.257945837,1.000000000,359133,359133,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1304,Sijunjung,1303,2021,0.279437098,1.000000000,315066,315066,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1305,Tanah Datar,1304,2021,0.400516853,1.000000000,137735,137735,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1306,Padang Pariaman,1305,2021,0.393236238,0.999955285,134184,134178,6,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1307,Agam,1306,2021,0.253550094,1.000000000,222526,222526,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1308,Lima Puluh Kota,1307,2021,0.328238049,1.000000000,327361,327361,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1309,Pasaman,1308,2021,0.317229528,1.000000000,390250,390250,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1310,Solok Selatan,1311,2021,0.303596791,1.000000000,328422,328422,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1311,Dharmasraya,1310,2021,0.337092337,1.000000000,292257,292257,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1312,Pasaman Barat,1312,2021,0.255224063,0.999942874,385113,385091,22,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1371,Kota Padang,1371,2021,0.253435424,0.999971210,69469,69467,2,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1372,Kota Solok,1372,2021,0.253300011,1.000000000,5871,5871,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1373,Kota Sawahlunto,1373,2021,0.348109883,1.000000000,23195,23195,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1374,Kota Padang Panjang,1374,2021,0.280190406,1.000000000,2354,2354,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1375,Kota Bukittinggi,1375,2021,0.253300011,1.000000000,2415,2415,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1376,Kota Payakumbuh,1376,2021,0.270077953,1.000000000,7458,7458,0,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false
+idn.13.1377,Kota Pariaman,1377,2021,0.309988730,0.999692071,6495,6493,2,modeled_spatial_index,capacity,inarisk_capacity_2021,BIG_June_2026_fixed_current_boundary,false,false

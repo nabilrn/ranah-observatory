@@ -1,0 +1,62 @@
+name: Milestone 26 capacity transport preflight (frozen verifier)
+
+# Transport qualification is frozen after successful live proof. Do not re-fetch
+# BNPB on unrelated PR synchronize events; verify the committed evidence only.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-capacity-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify frozen capacity transport evidence
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          manifest_path = Path('data/manifests/milestone26_capacity_transport_preflight.json')
+          contract_path = Path('data/manifests/milestone26_capacity_production_contract.json')
+          source_path = Path('data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+
+          assert manifest['schema'] == 'ranah-observatory/milestone26-capacity-transport-preflight/v1'
+          assert manifest['source_id'] == 'inarisk_capacity_2021'
+          assert manifest['reference_year'] == 2021
+          assert manifest['geography_count'] == 19
+          assert manifest['big_boundary_probe_qualified'] is True
+          assert manifest['all_windows_within_imageserver_limits'] is True
+          assert manifest['max_window_width'] == 2438
+          assert manifest['max_window_height'] == 2953
+          assert manifest['max_window_uncompressed_f32_bytes'] == 28797656
+          assert manifest['imageserver_limits']['max_width'] == 15000
+          assert manifest['imageserver_limits']['max_height'] == 4100
+          assert manifest['imageserver_limits']['single_file_max_bytes'] == 95000000
+          assert manifest['contract']['sha256'] == hashlib.sha256(contract_path.read_bytes()).hexdigest()
+          assert manifest['source_metadata']['sha256'] == hashlib.sha256(source_path.read_bytes()).hexdigest()
+
+          sample = manifest['representative_transport_sample']
+          assert sample['performed'] is True
+          assert sample['geography_id'] == 'idn.13.1374'
+          assert sample['content_type'].lower().startswith('image/tiff')
+          assert sample['within_single_file_byte_gate'] is True
+          frozen_sample = Path('data/processed/bnpb/m26_capacity_component/idn-13-1374.tif')
+          assert frozen_sample.exists()
+          assert hashlib.sha256(frozen_sample.read_bytes()).hexdigest() == sample['raster_sha256']
+          assert frozen_sample.stat().st_size == sample['raster_bytes']
+
+          assert manifest['capacity_component_materialized'] is False
+          assert manifest['population_component_reextracted'] is False
+          assert manifest['substantive_interpretation_performed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          PY

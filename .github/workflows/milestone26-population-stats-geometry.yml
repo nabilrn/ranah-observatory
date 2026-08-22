@@ -1,0 +1,31 @@
+name: Milestone 26 population stats geometry (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen simplification evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_population_stats_geometry.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-stats-geometry/v1'
+          assert manifest['geography_count'] == 19
+          assert manifest['resolved_geometry_count'] == 0
+          assert manifest['unresolved_geometry_count'] == 19
+          assert manifest['all_geographies_uri_safe_mask_equivalent'] is False
+          assert manifest['source_values_accessed'] is False
+          assert manifest['statistics_live_request_performed'] is False
+          assert manifest['numeric_source_value_extraction_performed'] is False
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          PY

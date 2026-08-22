@@ -1,0 +1,58 @@
+{
+  "aggregation_semantics_changed": false,
+  "causal_claim_created": false,
+  "contract": {
+    "path": "data/manifests/milestone26_population_export_json_transport_contract.json",
+    "sha256": "b89e16663e141c8d1f8f10db6240ec467dead98489f70b593f7f4beb6eb479c2"
+  },
+  "cross_geography_numeric_extraction_performed": false,
+  "equivalence_decision_performed": false,
+  "export_json_response": {
+    "arcgis_error_present": false,
+    "body_bytes": 0,
+    "body_path": "data/processed/bnpb/m26_population_export_json_transport/export-response.body",
+    "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "content_type": "",
+    "elapsed_seconds": 45.171064,
+    "exception_class": "TimeoutError",
+    "exception_message": "The read operation timed out",
+    "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer/exportImage?bbox=11172528.845373%2C-54345.162247%2C11180728.845373%2C-49645.162247&bboxSR=3395&size=82%2C47&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=json",
+    "href_present": false,
+    "json_parseable": false,
+    "reported_extent_present": false,
+    "reported_height": null,
+    "reported_width": null,
+    "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer/exportImage?bbox=11172528.845373%2C-54345.162247%2C11180728.845373%2C-49645.162247&bboxSR=3395&size=82%2C47&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=json",
+    "requested_url_length": 308,
+    "response_contract_gate_passed": false,
+    "status": null
+  },
+  "href_response": null,
+  "milestone": 26,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_aggregation_performed": false,
+  "pilot": {
+    "bbox_native": [
+      11172528.845372679,
+      -54345.16224745498,
+      11180728.845372679,
+      -49645.16224745498
+    ],
+    "big_expected_edition": "Juni 2026",
+    "crs_epsg": 3395,
+    "height": 47,
+    "pilot_geography_id": "idn.13.1374",
+    "pilot_geography_name": "Kota Padang Panjang",
+    "pixel_size_m": 100,
+    "width": 82
+  },
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-population-export-json-transport/v1",
+  "source_family_changed": false,
+  "source_id": "inarisk_population_2020",
+  "stage": "stage1_transport_diagnostic",
+  "statistical_model_fit": false,
+  "substantive_value_promotion_performed": false,
+  "tiff_metadata": null,
+  "transport_success": false
+}

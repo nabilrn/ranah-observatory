@@ -1,0 +1,55 @@
+{
+  "schema": "ranah-observatory/milestone26-population-empty-stats-semantics-attempt2-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_semantics_qualification",
+  "locked_before_live_probe": true,
+  "prior_attempt": {
+    "manifest": "data/manifests/milestone26_population_empty_stats_semantics.json",
+    "required_decision": "inconclusive",
+    "required_image_server_http_statuses": [521, 521, 521],
+    "required_mapserver_http_statuses": [521, 521, 521],
+    "reason": "simultaneous origin outage prevented semantic qualification"
+  },
+  "target": {
+    "geography_id": "idn.13.1377",
+    "partition_index": 1,
+    "selected_cell_count": 1,
+    "reuse_exact_target_and_center_derivation_from_attempt1_contract": true
+  },
+  "recovery_gate": {
+    "repeat_count_per_service": 2,
+    "image_server_metadata_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer?f=json",
+    "mapserver_metadata_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer?f=json",
+    "required_status": 200,
+    "json_object_required": true,
+    "arcgis_error_prohibited": true,
+    "all_repeats_both_services_must_pass_before_semantic_probe": true
+  },
+  "semantic_probe": {
+    "image_server_repeat_count": 3,
+    "mapserver_repeat_count": 3,
+    "reuse_attempt1_locked_decision_rules": true,
+    "reuse_attempt1_exact_image_server_partition_geometry": true,
+    "reuse_attempt1_exact_mapserver_native_center": true
+  },
+  "attempt2_decisions": [
+    "service_not_recovered",
+    "deterministic_no_valid_source_value_for_exact_native_cell",
+    "transient_image_server_empty_statistics",
+    "transport_disagreement",
+    "inconclusive"
+  ],
+  "promotion_boundary": "Attempt 2 may qualify only the exact frozen one-cell anomaly after the recovery gate passes. It cannot establish global empty-statistics semantics or authorize production extraction by itself.",
+  "numeric_aggregation_authorized": false,
+  "cross_geography_component_values_materialized": false,
+  "substantive_value_promotion_authorized": false,
+  "stage1_population_production_extraction_authorized": false,
+  "empty_statistics_global_semantics_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

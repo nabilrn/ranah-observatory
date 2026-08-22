@@ -1,0 +1,180 @@
+{
+  "aggregation_semantics_changed": false,
+  "causal_claim_created": false,
+  "contract": {
+    "path": "data/manifests/milestone26_population_empty_stats_semantics_contract.json",
+    "sha256": "db90213235148658bac74fa46ec29ca7b774ba5ecc15dbff3209f21aa922b0e6"
+  },
+  "cross_geography_component_values_materialized": false,
+  "decision": "inconclusive",
+  "diagnostic_inconclusive": true,
+  "empty_statistics_global_semantics_qualified": false,
+  "exact_cell_no_valid_source_value_qualified": false,
+  "frozen_inputs": {
+    "mapserver_identity_sha256": "8c57740ea5ad2f5ff1a7197f79e2cf8f3167a9f5fffa38886e1e57085dc831f5",
+    "mapserver_scale_sha256": "002d8601c910848dd49e864708b0f35828acadaf5beb63d8ab6b4c5cafb4cf4c",
+    "mapserver_semantics_sha256": "ca709ac83aff5e138b690f1e8404654d615bfd3d592a8c11f87cef035442b732",
+    "partition_manifest_sha256": "0224bb314fec4af53ca91ed60fbe79720e97be6dd0f27e67281722fe73265fdf",
+    "shape_diagnostic_sha256": "a62dcc244e7579974390ac2436640d1bf307f71bb469d1d6d0fb448b6de5f2e3"
+  },
+  "image_server_repeats": [
+    {
+      "arcgis_error_present": false,
+      "classification": "missing_statistics",
+      "repeat": 1,
+      "requested_url_length": 427,
+      "response": {
+        "content_type": "application/json; charset=utf-8",
+        "elapsed_seconds": 0.516432,
+        "exception_class": "HTTPError",
+        "exception_message": "HTTP Error 521: <none>",
+        "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer/computeStatisticsHistograms?geometry=%7B%22rings%22%3A%5B%5B%5B11140328.845%2C-65845.162%5D%2C%5B11140428.845%2C-65845.162%5D%2C%5B11140428.845%2C-65945.162%5D%2C%5B11140328.845%2C-65945.162%5D%2C%5B11140328.845%2C-65845.162%5D%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryPolygon&pixelSize=100%2C100&f=json",
+        "raw_bytes": 953,
+        "raw_path": "data/processed/bnpb/m26_population_empty_stats_semantics/image-server-repeat-1.json",
+        "raw_sha256": "9486cb101ab8f06dce1db6a48eda90d3ee8ad324e111996ecb9e960e50aa4537",
+        "status": 521
+      },
+      "statistics_length": null,
+      "transport_ok": false
+    },
+    {
+      "arcgis_error_present": false,
+      "classification": "missing_statistics",
+      "repeat": 2,
+      "requested_url_length": 427,
+      "response": {
+        "content_type": "application/json; charset=utf-8",
+        "elapsed_seconds": 0.289526,
+        "exception_class": "HTTPError",
+        "exception_message": "HTTP Error 521: <none>",
+        "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer/computeStatisticsHistograms?geometry=%7B%22rings%22%3A%5B%5B%5B11140328.845%2C-65845.162%5D%2C%5B11140428.845%2C-65845.162%5D%2C%5B11140428.845%2C-65945.162%5D%2C%5B11140328.845%2C-65945.162%5D%2C%5B11140328.845%2C-65845.162%5D%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryPolygon&pixelSize=100%2C100&f=json",
+        "raw_bytes": 953,
+        "raw_path": "data/processed/bnpb/m26_population_empty_stats_semantics/image-server-repeat-2.json",
+        "raw_sha256": "e17edaa218eb77a1b2bf9513acdb8e8431fcae57522f6a1350a61a319f1f8ca4",
+        "status": 521
+      },
+      "statistics_length": null,
+      "transport_ok": false
+    },
+    {
+      "arcgis_error_present": false,
+      "classification": "missing_statistics",
+      "repeat": 3,
+      "requested_url_length": 427,
+      "response": {
+        "content_type": "application/json; charset=utf-8",
+        "elapsed_seconds": 0.287633,
+        "exception_class": "HTTPError",
+        "exception_message": "HTTP Error 521: <none>",
+        "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer/computeStatisticsHistograms?geometry=%7B%22rings%22%3A%5B%5B%5B11140328.845%2C-65845.162%5D%2C%5B11140428.845%2C-65845.162%5D%2C%5B11140428.845%2C-65945.162%5D%2C%5B11140328.845%2C-65945.162%5D%2C%5B11140328.845%2C-65845.162%5D%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryPolygon&pixelSize=100%2C100&f=json",
+        "raw_bytes": 953,
+        "raw_path": "data/processed/bnpb/m26_population_empty_stats_semantics/image-server-repeat-3.json",
+        "raw_sha256": "c99fd63f6e0c50733099cb7bdb66405058cb4605e3f7f86c5a6c0fcd758ba977",
+        "status": 521
+      },
+      "statistics_length": null,
+      "transport_ok": false
+    }
+  ],
+  "mapserver_repeats": [
+    {
+      "accepted_result_geometry_matches_exact_center": true,
+      "arcgis_error_present": false,
+      "finite_accepted_pixel_value_count": 0,
+      "raw_result_count": 0,
+      "repeat": 1,
+      "requested_url_length": 429,
+      "response": {
+        "content_type": "application/json; charset=utf-8",
+        "elapsed_seconds": 0.316194,
+        "exception_class": "HTTPError",
+        "exception_message": "HTTP Error 521: <none>",
+        "final_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer/identify?geometry=%7B%22points%22%3A%5B%5B11140378.845372679%2C-65895.16224745498%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryMultipoint&sr=3395&layers=all%3A0&tolerance=1&mapExtent=11140278.845373%2C-65995.162247%2C11140478.845373%2C-65795.162247&imageDisplay=800%2C800%2C96&returnGeometry=true&f=json",
+        "raw_bytes": 953,
+        "raw_path": "data/processed/bnpb/m26_population_empty_stats_semantics/mapserver-repeat-1.json",
+        "raw_sha256": "4181a3d4c346c7b07e0d09a9060dfc5bd401a3da57daca4c24b3b40c58e137dd",
+        "status": 521
+      },
+      "transport_ok": false
+    },
+    {
+      "accepted_result_geometry_matches_exact_center": true,
+      "arcgis_error_present": false,
+      "finite_accepted_pixel_value_count": 0,
+      "raw_result_count": 0,
+      "repeat": 2,
+      "requested_url_length": 429,
+      "response": {
+        "content_type": "application/json; charset=utf-8",
+        "elapsed_seconds": 0.258973,
+        "exception_class": "HTTPError",
+        "exception_message": "HTTP Error 521: <none>",
+        "final_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer/identify?geometry=%7B%22points%22%3A%5B%5B11140378.845372679%2C-65895.16224745498%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryMultipoint&sr=3395&layers=all%3A0&tolerance=1&mapExtent=11140278.845373%2C-65995.162247%2C11140478.845373%2C-65795.162247&imageDisplay=800%2C800%2C96&returnGeometry=true&f=json",
+        "raw_bytes": 953,
+        "raw_path": "data/processed/bnpb/m26_population_empty_stats_semantics/mapserver-repeat-2.json",
+        "raw_sha256": "d2986fa9a3e41d7723ff51bf4777b8ea1804c05bd35da6dd35dd8fea0f4eee7a",
+        "status": 521
+      },
+      "transport_ok": false
+    },
+    {
+      "accepted_result_geometry_matches_exact_center": true,
+      "arcgis_error_present": false,
+      "finite_accepted_pixel_value_count": 0,
+      "raw_result_count": 0,
+      "repeat": 3,
+      "requested_url_length": 429,
+      "response": {
+        "content_type": "application/json; charset=utf-8",
+        "elapsed_seconds": 0.412023,
+        "exception_class": "HTTPError",
+        "exception_message": "HTTP Error 521: <none>",
+        "final_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer/identify?geometry=%7B%22points%22%3A%5B%5B11140378.845372679%2C-65895.16224745498%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryMultipoint&sr=3395&layers=all%3A0&tolerance=1&mapExtent=11140278.845373%2C-65995.162247%2C11140478.845373%2C-65795.162247&imageDisplay=800%2C800%2C96&returnGeometry=true&f=json",
+        "raw_bytes": 953,
+        "raw_path": "data/processed/bnpb/m26_population_empty_stats_semantics/mapserver-repeat-3.json",
+        "raw_sha256": "7e29d296f3adb011f101b258c1d8298723a3cc16d7dd1f0ab8d0a107fd47a966",
+        "status": 521
+      },
+      "transport_ok": false
+    }
+  ],
+  "milestone": 26,
+  "minimum_valid_fraction_changed": false,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_aggregates_computed": false,
+  "other_empty_partitions_authorized_without_reference_confirmation": false,
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-population-empty-stats-semantics/v1",
+  "source_family_changed": false,
+  "stage": "stage1_transport_semantics_qualification",
+  "stage1_population_production_extraction_authorized": false,
+  "statistical_model_fit": false,
+  "substantive_values_promoted": false,
+  "target": {
+    "center_derivation": {
+      "bbox": [
+        11131428.845372679,
+        -72445.16224745498,
+        11142028.845372679,
+        -60645.16224745498
+      ],
+      "candidate_geometry_sha256": "b7a6ba68621cca0b0ddf56f0f15e496bfdb630bfabdca5487432be4cc4932cf7",
+      "rerasterized_selected_cell_count": 1,
+      "selected_col": 89,
+      "selected_row": 52,
+      "window_height": 118,
+      "window_width": 106
+    },
+    "geography_id": "idn.13.1377",
+    "geography_name": "Kota Pariaman",
+    "native_center_epsg3395": [
+      11140378.845372679,
+      -65895.16224745498
+    ],
+    "partition_index": 1,
+    "selected_cell_count": 1,
+    "source_permendagri_code": "1377"
+  },
+  "transient_empty_statistics_observed": false,
+  "transport_disagreement_observed": false
+}

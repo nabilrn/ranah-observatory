@@ -1,0 +1,20 @@
+name: Milestone 26 statistics transport equivalence
+
+# PARKED: exportImage and exact-center getSamples both failed for
+# INARISKPOP_2020. This equivalence workflow remains manual-only while the
+# population ImageServer operation surface is diagnosed. No numeric value may
+# be promoted from the failed attempts.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parked:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report parked transport-equivalence workflow
+        run: |
+          echo 'Milestone 26 statistics transport equivalence is parked.'
+          echo 'Run the population transport capability diagnostic before selecting another reference lane.'

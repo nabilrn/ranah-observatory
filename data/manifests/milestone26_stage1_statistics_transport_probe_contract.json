@@ -1,0 +1,63 @@
+{
+  "schema": "ranah-observatory/milestone26-stage1-statistics-transport-probe-contract/v1",
+  "milestone": 26,
+  "stage": 1,
+  "locked_before_statistics_transport_probe": true,
+  "reason": "INARISKPOP_2020 exportImage TIFF transport failed after retries for a whole 2438x2952 native window, a 1500x1500 native chunk, and a 500x500 native chunk; a different official ImageServer operation must be qualified rather than continuing arbitrary chunk reduction",
+  "failed_export_workflow_runs": [
+    32455066555,
+    32460012029,
+    32460906198
+  ],
+  "candidate_operation": {
+    "name": "computeStatisticsHistograms",
+    "official_arcgis_reference": "https://developers.arcgis.com/rest/services-reference/enterprise/compute-statistics-and-histograms/",
+    "required_geometry_type": "esriGeometryPolygon",
+    "pixel_size": "100,100",
+    "response_format": "json",
+    "required_statistics_fields": [
+      "count",
+      "sum",
+      "mean",
+      "min",
+      "max",
+      "skipX",
+      "skipY"
+    ]
+  },
+  "pilot_selection": {
+    "candidate_geographies": "exact 19 BIG June 2026 fixed-current-boundary kabupaten/kota",
+    "rule": "select the geography with the smallest capacity-source aligned native-grid bounding-window pixel area; ties break by canonical geography_id",
+    "selection_uses_raster_values": false,
+    "selection_uses_outcomes_or_model_results": false
+  },
+  "source_ids": [
+    "inarisk_capacity_2021",
+    "inarisk_population_2020"
+  ],
+  "equivalence_reference": "existing preregistered exportImage TIFF plus local pixel-center-inside-polygon aggregation with source-declared valid range and nearest-neighbor native 100 m grid",
+  "equivalence_gates": {
+    "pilot_export_must_succeed": true,
+    "statistics_operation_must_succeed": true,
+    "statistics_skipX_must_equal": 1,
+    "statistics_skipY_must_equal": 1,
+    "statistics_count_must_equal_local_valid_pixel_count": true,
+    "statistics_sum_relative_tolerance": 1e-8,
+    "statistics_sum_absolute_tolerance": 1e-6,
+    "statistics_mean_relative_tolerance": 1e-8,
+    "statistics_mean_absolute_tolerance": 1e-9,
+    "local_valid_fraction_must_remain_at_least": 0.99,
+    "capacity_statistics_range_must_remain_within_source_declared_range": true,
+    "population_statistics_range_must_remain_within_source_declared_range": true
+  },
+  "promotion_rule": "computeStatisticsHistograms may replace exportImage transport for Stage 1 only if both authorized sources pass every equivalence gate on the geometry-only-selected pilot; no tolerance or geography selection rule may be changed after seeing pilot values",
+  "if_probe_fails": "retain Stage 1 population transport unresolved and do not promote server statistics as equivalent",
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "cross_component_temporal_aggregation_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

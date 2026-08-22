@@ -1,0 +1,91 @@
+name: Milestone 26 BNPB source qualification
+
+# Stage 0 is frozen. This workflow verifies the committed qualification evidence
+# and must not re-fetch dynamic BNPB pages or move the PR head.
+on:
+  pull_request:
+    paths:
+      - research/MILESTONE26_DISASTER_RISK_CHAIN_SPEC.md
+      - data/manifests/milestone26_design_gate.json
+      - data/manifests/milestone26_dibi_transport_amendment.json
+      - data/manifests/milestone26_source_qualification.json
+      - data/registries/m26-bnpb-source-candidates.csv
+      - data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv
+      - data/processed/bnpb/m26_source_qualification/**
+      - scripts/probe_milestone26_bnpb_sources.py
+      - tests/test_milestone26_bnpb_source_qualification.py
+      - .github/workflows/milestone26-bnpb-source-qualification.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-stage0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install focused test runner
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Compile Stage 0 probe contract
+        run: python -m py_compile scripts/probe_milestone26_bnpb_sources.py
+
+      - name: Run locked-contract tests
+        run: python -m pytest -q tests/test_milestone26_bnpb_source_qualification.py
+
+      - name: Verify frozen Stage 0 evidence and scientific boundaries
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+
+          manifest_path = Path('data/manifests/milestone26_source_qualification.json')
+          amendment_path = Path('data/manifests/milestone26_dibi_transport_amendment.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          with Path('data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv').open(newline='', encoding='utf-8') as h:
+              rows = list(csv.DictReader(h))
+
+          assert manifest['stage0_complete'] is True
+          assert manifest['expected_qualification_states_match'] is True
+          assert manifest['source_count'] == len(rows) == 9
+          assert manifest['qualified_numeric_source_ids'] == [
+              'inarisk_capacity_2021',
+              'inarisk_population_2020',
+              'dibi_kabupaten_hidromet_2015_2024',
+          ]
+          assert manifest['dibi_transport_amendment']['path'] == amendment_path.as_posix()
+          assert manifest['dibi_transport_amendment']['sha256'] == hashlib.sha256(amendment_path.read_bytes()).hexdigest()
+          assert manifest['qualification_states']['bnpb_event_impact_table'] == 'field_surface_verified_retrieval_contract_pending'
+          for source_id in (
+              'inarisk_flood_hazard',
+              'inarisk_landslide_hazard',
+              'inarisk_flood_vulnerability',
+              'inarisk_landslide_vulnerability',
+          ):
+              assert manifest['qualification_states'][source_id] == 'endpoint_verified_version_binding_unresolved'
+          assert manifest['qualification_states']['inarisk_current_methodology'] == 'framework_verified_current_surface'
+          assert manifest['hazard_vulnerability_numeric_extraction_authorized'] is False
+          assert manifest['event_impact_panel_materialized'] is False
+          assert manifest['numeric_spatial_aggregation_performed'] is False
+          assert manifest['cross_component_temporal_aggregation_performed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+
+          snapshots = manifest['snapshots']
+          assert len(snapshots) == 9
+          for item in snapshots:
+              path = Path(item['path'])
+              assert path.exists(), path
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == item['sha256']
+
+          table_path = Path(manifest['outputs']['source_qualification'])
+          assert hashlib.sha256(table_path.read_bytes()).hexdigest() == manifest['outputs']['source_qualification_sha256']
+          PY

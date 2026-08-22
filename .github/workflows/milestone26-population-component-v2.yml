@@ -1,0 +1,69 @@
+name: Milestone 26 population component v2 (frozen verifier)
+
+# Population Stage 1 component is frozen. Production extraction must not rerun
+# on unrelated PR synchronize events.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-population-component:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen population component and fallback evidence
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_stage1_population_component.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-stage1-population-component/v1'
+          assert manifest['geography_count'] == 19
+          assert manifest['observation_count'] == 19
+          assert manifest['partition_count'] == 420
+          assert manifest['inside_native_cell_count'] == 4212327
+          assert manifest['valid_native_cell_count'] == 4211506
+          assert manifest['all_geographies_valid_fraction_pass'] is True
+          assert manifest['population_component_materialized'] is True
+          assert manifest['empty_statistics_partition_count'] == 1
+          assert manifest['empty_statistics_partition_ids'] == ['idn.13.1377/partition-0001']
+          assert manifest['mapserver_nodata_confirmation_response_count'] == 1
+          assert manifest['empty_statistics_partitions_all_reference_confirmed'] is True
+          assert manifest['empty_statistics_treated_as_population_zero'] is False
+          assert manifest['empty_statistics_imputed'] is False
+          assert manifest['raw_response_count'] == 420
+          assert manifest['raw_evidence_response_count'] == 421
+          assert manifest['transport_equivalence_qualified'] is True
+          assert manifest['stage1_complete'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+
+          index_path = Path(manifest['retrieval_index']['path'])
+          assert hashlib.sha256(index_path.read_bytes()).hexdigest() == manifest['retrieval_index']['sha256']
+          index = json.loads(index_path.read_text(encoding='utf-8'))
+          assert index['response_count'] == 420
+          assert index['empty_statistics_partition_count'] == 1
+          for response in index['responses']:
+              raw = Path(response['raw_path'])
+              assert hashlib.sha256(raw.read_bytes()).hexdigest() == response['raw_sha256']
+              if response['empty_statistics']:
+                  assert response['empty_statistics_reference_confirmed'] is True
+                  assert len(response['mapserver_fallback_responses']) == 1
+                  fallback = response['mapserver_fallback_responses'][0]
+                  fallback_raw = Path(fallback['raw_path'])
+                  assert hashlib.sha256(fallback_raw.read_bytes()).hexdigest() == fallback['raw_sha256']
+                  assert fallback['validation']['finite_accepted_pixel_value_count'] == 0
+
+          frame = Path(manifest['outputs']['component_frame'])
+          provenance = Path(manifest['outputs']['provenance_frame'])
+          assert hashlib.sha256(frame.read_bytes()).hexdigest() == manifest['outputs']['component_frame_sha256']
+          assert hashlib.sha256(provenance.read_bytes()).hexdigest() == manifest['outputs']['provenance_frame_sha256']
+          with frame.open(newline='', encoding='utf-8') as handle:
+              rows = list(csv.DictReader(handle))
+          assert len(rows) == 19
+          assert all(float(row['population_valid_fraction']) >= 0.99 for row in rows)
+          assert all(row['claim_type'] == 'modeled_population_exposure_proxy' for row in rows)
+          assert all(row['risk_synthesis_authorized'] == 'false' for row in rows)
+          PY

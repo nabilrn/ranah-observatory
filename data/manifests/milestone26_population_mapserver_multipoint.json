@@ -1,0 +1,109 @@
+{
+  "accepted_pixel_field": "Stretch.Pixel Value",
+  "aggregation_semantics_changed": false,
+  "causal_claim_created": false,
+  "contract": {
+    "path": "data/manifests/milestone26_population_mapserver_multipoint_contract.json",
+    "sha256": "3f6fecb03d4044e7fb488e0361e9961501cf2558cf5e9e90e9f8b55bda19e50d"
+  },
+  "cross_geography_numeric_extraction_performed": false,
+  "diagnostic_pixel_results": [
+    {
+      "field": "Stretch.Pixel Value",
+      "geometry": [
+        11176628.845372679,
+        -51995.16224745498
+      ],
+      "value": 71.001961
+    },
+    {
+      "field": "Stretch.Pixel Value",
+      "geometry": [
+        11176728.845372679,
+        -51995.16224745498
+      ],
+      "value": 45.974602
+    },
+    {
+      "field": "Stretch.Pixel Value",
+      "geometry": [
+        11176628.845372679,
+        -51895.16224745498
+      ],
+      "value": 76.980209
+    },
+    {
+      "field": "Stretch.Pixel Value",
+      "geometry": [
+        11176728.845372679,
+        -51895.16224745498
+      ],
+      "value": 49.513817
+    }
+  ],
+  "frozen_valid_range": [
+    0.0,
+    1976.36376953125
+  ],
+  "gates": {
+    "all_values_inside_frozen_range": true,
+    "multipoint_batch_transport_qualified": true,
+    "one_to_one_result_geometry_match": true,
+    "result_count_match": true,
+    "transport_ok": true
+  },
+  "identity_evidence": {
+    "path": "data/manifests/milestone26_population_mapserver_identity.json",
+    "sha256": "8c57740ea5ad2f5ff1a7197f79e2cf8f3167a9f5fffa38886e1e57085dc831f5"
+  },
+  "input_point_count": 4,
+  "input_points": [
+    [
+      11176628.845372679,
+      -51995.16224745498
+    ],
+    [
+      11176728.845372679,
+      -51995.16224745498
+    ],
+    [
+      11176628.845372679,
+      -51895.16224745498
+    ],
+    [
+      11176728.845372679,
+      -51895.16224745498
+    ]
+  ],
+  "milestone": 26,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_aggregation_performed": false,
+  "parsed_pixel_result_count": 4,
+  "raw_result_count": 4,
+  "response": {
+    "arcgis_error_present": false,
+    "body_bytes": 1125,
+    "body_path": "data/processed/bnpb/m26_population_mapserver_multipoint/multipoint-identify.body",
+    "body_sha256": "6a0deed2dfdafd54dc88075452ee64cf05e067bbef3173488e8d1c4f9cca24d0",
+    "content_type": "application/json; charset=UTF-8",
+    "elapsed_seconds": 1.258506,
+    "exception_class": null,
+    "exception_message": null,
+    "final_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer/identify?geometry=%7B%22points%22%3A%5B%5B11176628.845372679%2C-51995.16224745498%5D%2C%5B11176728.845372679%2C-51995.16224745498%5D%2C%5B11176628.845372679%2C-51895.16224745498%5D%2C%5B11176728.845372679%2C-51895.16224745498%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryMultipoint&sr=3395&layers=all%3A0&tolerance=1&mapExtent=11176528.845373%2C-52095.162247%2C11176828.845373%2C-51795.162247&imageDisplay=400%2C400%2C96&returnGeometry=true&f=json",
+    "json_parseable": true,
+    "requested_url": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer/identify?geometry=%7B%22points%22%3A%5B%5B11176628.845372679%2C-51995.16224745498%5D%2C%5B11176728.845372679%2C-51995.16224745498%5D%2C%5B11176628.845372679%2C-51895.16224745498%5D%2C%5B11176728.845372679%2C-51895.16224745498%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A3395%7D%7D&geometryType=esriGeometryMultipoint&sr=3395&layers=all%3A0&tolerance=1&mapExtent=11176528.845373%2C-52095.162247%2C11176828.845373%2C-51795.162247&imageDisplay=400%2C400%2C96&returnGeometry=true&f=json",
+    "requested_url_length": 573,
+    "status": 200
+  },
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-population-mapserver-multipoint/v1",
+  "semantic_amendment": {
+    "path": "data/manifests/milestone26_population_mapserver_pixel_semantics_amendment.json",
+    "sha256": "ca709ac83aff5e138b690f1e8404654d615bfd3d592a8c11f87cef035442b732"
+  },
+  "source_family_changed": false,
+  "stage": "stage1_transport_qualification",
+  "stage1_population_aggregation_authorized": false,
+  "statistical_model_fit": false,
+  "substantive_value_promotion_performed": false
+}

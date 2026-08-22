@@ -1,0 +1,33 @@
+{
+  "bbox_native": [
+    11168936.164321,
+    -36095.108968,
+    11177436.164321,
+    -29895.108968
+  ],
+  "compression": "LZ77",
+  "content_type": "image/tiff",
+  "contract_path": "data/manifests/milestone26_capacity_production_contract.json",
+  "contract_sha256": "76470e36c3d9304694b68e3f4949ae243fcba418cf25932330e20270f21edf29",
+  "final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer/exportImage?bbox=11168936.164321%2C-36095.108968%2C11177436.164321%2C-29895.108968&bboxSR=3395&size=85%2C62&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=image",
+  "format": "tiff",
+  "geography_id": "idn.13.1375",
+  "geography_name": "Kota Bukittinggi",
+  "height": 62,
+  "interpolation": "RSP_NearestNeighbor",
+  "native_grid_crs_epsg": 3395,
+  "native_pixel_size_m": 100.0,
+  "pixel_type": "F32",
+  "raster_bytes": 2052,
+  "raster_path": "data/processed/bnpb/m26_capacity_component/idn-13-1375.tif",
+  "raster_sha256": "8ccdf40c214270a6320b7eaa33d323c11ddc5d4ca55b2d41f9570617a75c4cf3",
+  "requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/INDEKS_KAPASITAS_2021/ImageServer/exportImage?bbox=11168936.164321%2C-36095.108968%2C11177436.164321%2C-29895.108968&bboxSR=3395&size=85%2C62&imageSR=3395&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&returnSquarePixels=true&f=image",
+  "schema": "ranah-observatory/milestone26-capacity-raster-request/v1",
+  "semantic_evidence_path": "data/processed/bnpb/m26_capacity_component/capacity-index-scale.html",
+  "semantic_evidence_sha256": "9e4d79bc8fc6035830a49912cc5e6c207af6c09b55cc89d792d498ee00725ab3",
+  "source_id": "inarisk_capacity_2021",
+  "source_metadata_path": "data/processed/bnpb/m26_source_qualification/inarisk_capacity_2021.json",
+  "source_metadata_sha256": "2a6de70aee227751903de18b22c88e78ebe7d4d9db811414b2e2c56cda596157",
+  "source_permendagri_code": "1375",
+  "width": 85
+}

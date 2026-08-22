@@ -1,0 +1,31 @@
+name: Milestone 26 population MapServer workload (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-workload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen workload sizing
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_population_mapserver_workload.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-mapserver-workload/v1'
+          assert manifest['geography_count'] == 19
+          assert manifest['totals']['inside_boundary_native_cell_count'] == 4212327
+          assert manifest['totals']['batch64_request_count_ceiling'] == 65826
+          assert manifest['totals']['batch128_request_count_ceiling'] == 32916
+          assert manifest['padang_panjang_pilot_workload']['inside_boundary_native_cell_count'] == 2354
+          assert manifest['source_values_accessed'] is False
+          assert manifest['numeric_source_value_extraction_performed'] is False
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          PY

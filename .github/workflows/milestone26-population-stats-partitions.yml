@@ -1,0 +1,36 @@
+name: Milestone 26 population stats partitions (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen stats partitions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone26_population_stats_partitions.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-stats-partitions/v1'
+          assert manifest['geography_count'] == 19
+          assert manifest['total_inside_boundary_native_cell_count'] == 4212327
+          assert manifest['total_partition_count'] == 420
+          assert manifest['padang_panjang_partition_count'] == 2
+          assert manifest['all_partition_cell_counts_exact'] is True
+          assert manifest['all_partition_urls_within_gate'] is True
+          assert manifest['source_values_accessed'] is False
+          assert manifest['statistics_live_request_performed'] is False
+          assert manifest['numeric_source_value_extraction_performed'] is False
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          for row in manifest['geographies']:
+              assert row['partition_cell_count_sum'] == row['inside_boundary_native_cell_count']
+              assert row['max_partition_url_length'] <= 6000
+          PY

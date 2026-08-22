@@ -1,0 +1,58 @@
+name: Milestone 26 DIBI geography representation probe (frozen verifier)
+
+# The identifier-only representation probe is frozen. Re-run only from the
+# committed identifier evidence; do not hit BNPB automatically on PR updates.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-geography-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile identifier-only probe
+        run: python -m py_compile scripts/probe_milestone26_dibi_geography_representation.py
+
+      - name: Verify frozen identifier evidence has no occurrence values
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          manifest_path = Path('data/manifests/milestone26_dibi_geography_representation_probe.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-dibi-geography-representation-probe/v1'
+          assert manifest['source_id'] == 'dibi_kabupaten_hidromet_2015_2024'
+          assert manifest['all_feature_count'] == 514
+          assert manifest['sumbar_candidate_count'] == 19
+          assert manifest['numeric_occurrence_fields_requested'] is False
+          assert manifest['numeric_occurrence_values_inspected'] is False
+          assert manifest['numeric_occurrence_values_promoted'] is False
+          assert manifest['sumbar_candidate_id_kab_bps_values'] == [1306.0, 0.0, 1307.0, 1308.0]
+          expected_no_kab = {1301,1302,1303,1304,1305,1306,1307,1308,1309,1310,1311,1312,1371,1372,1373,1374,1375,1376,1377}
+          assert {int(row['NO_KAB']) for row in manifest['sumbar_candidates']} == expected_no_kab
+          assert all(str(row['NAMA_PROP']).strip().upper() == 'SUMATERA BARAT' for row in manifest['sumbar_candidates'])
+
+          raw_path = Path(manifest['raw_identifier_response']['path'])
+          raw = json.loads(raw_path.read_text(encoding='utf-8-sig'))
+          forbidden = {'Total_basa', 'Total_ba_1', 'Total_keri'}
+          for feature in raw.get('features', []):
+              attrs = feature.get('attributes', {})
+              assert not forbidden.intersection(attrs)
+          assert hashlib.sha256(raw_path.read_bytes()).hexdigest() == manifest['raw_identifier_response']['sha256']
+          PY
+
+      - name: Rebuild manifest offline from frozen identifier evidence
+        run: |
+          sha256sum data/manifests/milestone26_dibi_geography_representation_probe.json > /tmp/m26-dibi-probe.sha256
+          python -m scripts.probe_milestone26_dibi_geography_representation --mode offline
+          sha256sum -c /tmp/m26-dibi-probe.sha256

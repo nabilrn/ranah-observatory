@@ -1,0 +1,38 @@
+{
+  "schema": "ranah-observatory/milestone26-stage1-chunk-transport-amendment/v1",
+  "milestone": 26,
+  "stage": 1,
+  "amendment_type": "native_grid_export_chunking",
+  "trigger": {
+    "workflow_run_id": 32455066555,
+    "observed_at_utc": "2026-08-21T06:40:55Z",
+    "failure": "INARISKPOP_2020 native-grid export request for a 2438 x 2952 pixel geography window failed after transport retries"
+  },
+  "affected_source_ids": [
+    "inarisk_capacity_2021",
+    "inarisk_population_2020"
+  ],
+  "maximum_tile_width_pixels": 1500,
+  "maximum_tile_height_pixels": 1500,
+  "tile_alignment_rule": "split the already locked source-native 100 m aligned geography window only at integer source-grid row/column boundaries",
+  "tile_overlap_pixels": 0,
+  "tile_gap_pixels": 0,
+  "per_tile_crs_epsg": 3395,
+  "per_tile_pixel_size_m": 100,
+  "per_tile_resampling": "nearest_neighbor",
+  "downsampling_authorized": false,
+  "upsampling_authorized": false,
+  "aggregation_semantics_changed": false,
+  "capacity_combination_rule": "sum valid capacity pixel values across all tiles divided by total valid capacity pixel count; algebraically identical to the preregistered mean over the unsplit geography window",
+  "population_combination_rule": "sum valid population person-grid values across all tiles; algebraically identical to the preregistered sum over the unsplit geography window",
+  "boundary_membership_rule_unchanged": "pixel_center_inside_polygon",
+  "minimum_valid_fraction_inside_polygon_unchanged": 0.99,
+  "cross_geography_substantive_values_inspected_before_amendment": false,
+  "outcome_or_model_results_inspected": false,
+  "source_family_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "claim_boundary": "chunking changes only transport request size; the exact native-grid cell membership and preregistered component estimands remain unchanged"
+}

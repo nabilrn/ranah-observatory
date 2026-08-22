@@ -1,0 +1,44 @@
+name: Milestone 26 population export JSON transport (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify frozen export JSON diagnostic
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path('data/manifests/milestone26_population_export_json_transport.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-export-json-transport/v1'
+          assert manifest['transport_success'] is False
+          assert manifest['numeric_aggregation_performed'] is False
+          assert manifest['substantive_value_promotion_performed'] is False
+          assert manifest['equivalence_decision_performed'] is False
+          assert manifest['cross_geography_numeric_extraction_performed'] is False
+          assert manifest['aggregation_semantics_changed'] is False
+          assert manifest['source_family_changed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          export = manifest['export_json_response']
+          assert export['exception_class'] == 'TimeoutError'
+          assert export['status'] is None
+          assert export['href_present'] is False
+          body_path = Path(export['body_path'])
+          assert body_path.exists()
+          assert hashlib.sha256(body_path.read_bytes()).hexdigest() == export['body_sha256']
+          PY

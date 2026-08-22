@@ -1,0 +1,50 @@
+{
+  "schema": "ranah-observatory/milestone26-population-transport-capability-diagnostic-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_diagnostic",
+  "locked_before_live_capability_probe": true,
+  "source_id": "inarisk_population_2020",
+  "official_service": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer",
+  "motivation": "exportImage failed for whole, 1500x1500, 500x500, and 82x47 native windows; getSamples exact-center batches also failed generically. Diagnose operation-level HTTP behavior before any further transport amendment.",
+  "pilot_rule": "reuse the already locked geometry-only pilot from the statistics transport contract; choose the lexicographically first exact native-grid cell center inside that pilot only for point-operation capability diagnostics",
+  "operations": [
+    {
+      "name": "computeStatisticsHistograms",
+      "geometry": "full geometry-only-selected pilot polygon",
+      "pixel_size": "100,100",
+      "purpose": "determine whether server-side polygon statistics operation itself is reachable and parseable"
+    },
+    {
+      "name": "getSamples",
+      "geometry": "one exact native-grid cell center inside the pilot polygon",
+      "pixel_size": "100,100",
+      "interpolation": "RSP_NearestNeighbor",
+      "purpose": "separate operation availability from multipoint URL length or batch complexity"
+    },
+    {
+      "name": "identify",
+      "geometry": "same one exact native-grid cell center",
+      "pixel_size": "100,100",
+      "purpose": "test a second official point-value ImageServer operation without promoting its value"
+    }
+  ],
+  "request_method": "GET",
+  "retries_per_operation": 0,
+  "timeout_seconds": 30,
+  "capture_http_status": true,
+  "capture_content_type": true,
+  "capture_response_body_sha256": true,
+  "capture_error_body_snippet": true,
+  "capture_exception_class": true,
+  "capture_elapsed_seconds": true,
+  "substantive_value_promotion_authorized": false,
+  "equivalence_decision_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "cross_geography_numeric_extraction_authorized": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "decision_rule": "use operation-level status only to choose the next preregistered transport-validation lane; no returned numeric pixel/statistic may be promoted by this diagnostic"
+}

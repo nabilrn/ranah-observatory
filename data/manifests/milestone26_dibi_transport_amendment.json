@@ -1,0 +1,34 @@
+{
+  "schema": "ranah-observatory/milestone26-dibi-transport-amendment/v1",
+  "milestone": 26,
+  "stage": 0,
+  "source_id": "dibi_kabupaten_hidromet_2015_2024",
+  "amendment_type": "representation_only_transport_endpoint_fallback",
+  "trigger": {
+    "workflow_run_id": 32454159871,
+    "observed_at_utc": "2026-08-21T06:23:23Z",
+    "preferred_endpoint_failure": "ArcGIS application error code 500: Service inarisk/DIBI_Kabupaten_2015_2024_Hidromet/MapServer not started"
+  },
+  "preferred_endpoint": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Kabupaten_2015_2024_Hidromet/MapServer",
+  "fallback_endpoint": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer",
+  "fallback_layer_id": 1,
+  "fallback_layer_name": "Kabupaten_basah_kering",
+  "declared_coverage": "2015-2024",
+  "required_schema_fields": [
+    "id_kab_bps",
+    "NAMA_KAB",
+    "Total_basa",
+    "Total_ba_1",
+    "Total_keri"
+  ],
+  "same_official_owner": "BNPB",
+  "same_source_family": "DIBI hydrometeorological occurrence/context 2015-2024 at kabupaten level",
+  "source_family_changed": false,
+  "scientific_design_changed": false,
+  "cross_geography_values_inspected_before_amendment": false,
+  "numeric_values_promoted_by_amendment": false,
+  "posthoc_source_family_search_performed": false,
+  "fallback_authorized_only_when_preferred_endpoint_reports_runtime_unavailable": true,
+  "qualification_rule": "fallback must independently expose 2015_2024 service identity, a declared kabupaten layer, and every required schema field before qualified_explicit_coverage_metadata is emitted",
+  "claim_boundary": "transport fallback qualifies source coverage/schema only; it does not authorize occurrence values, impact values, risk synthesis, causal inference, or monetary estimation"
+}

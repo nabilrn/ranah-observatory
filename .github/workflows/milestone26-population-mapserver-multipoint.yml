@@ -1,0 +1,37 @@
+name: Milestone 26 population MapServer multipoint (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen multipoint evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path('data/manifests/milestone26_population_mapserver_multipoint.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-mapserver-multipoint/v1'
+          assert manifest['input_point_count'] == 4
+          assert manifest['accepted_pixel_field'] == 'Stretch.Pixel Value'
+          assert manifest['gates']['transport_ok'] is True
+          assert manifest['gates']['result_count_match'] is True
+          assert manifest['gates']['all_values_inside_frozen_range'] is True
+          assert manifest['gates']['one_to_one_result_geometry_match'] is True
+          assert manifest['gates']['multipoint_batch_transport_qualified'] is True
+          assert manifest['stage1_population_aggregation_authorized'] is False
+          assert manifest['numeric_aggregation_performed'] is False
+          assert manifest['substantive_value_promotion_performed'] is False
+          response = manifest['response']
+          evidence = Path(response['body_path'])
+          assert evidence.exists()
+          assert hashlib.sha256(evidence.read_bytes()).hexdigest() == response['body_sha256']
+          PY

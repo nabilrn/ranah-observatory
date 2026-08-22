@@ -1,0 +1,21 @@
+name: Milestone 26 population component
+
+# PARKED: production statistics extraction is paused while the exact
+# empty-statistics semantics observed on Kota Pariaman partition 1 are
+# qualified against the already-frozen MapServer pixel reference. Keep this
+# workflow manual-only until a preregistered transport amendment is committed.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parked:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report parked population writer
+        run: |
+          echo 'Milestone 26 population production writer is parked.'
+          echo 'Reason: Kota Pariaman partition 1 returned HTTP 200 {"statistics":[]} for one selected native cell.'
+          echo 'No production component values are authorized until empty-statistics semantics are independently qualified.'

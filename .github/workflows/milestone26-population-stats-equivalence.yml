@@ -1,0 +1,48 @@
+name: Milestone 26 population stats equivalence (frozen verifier)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-equivalence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen population stats equivalence evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          path = Path('data/manifests/milestone26_population_stats_equivalence.json')
+          manifest = json.loads(path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-population-stats-equivalence/v1'
+          assert manifest['pilot']['geography_id'] == 'idn.13.1374'
+          assert manifest['reference_mapserver']['input_cell_count'] == 2354
+          assert manifest['reference_mapserver']['valid_count'] == 2354
+          assert manifest['reference_mapserver']['batch_count'] == 37
+          assert manifest['candidate_image_server_statistics']['partition_count'] == 2
+          assert manifest['candidate_image_server_statistics']['count'] == 2354
+          assert manifest['mapserver_response_count'] == 37
+          assert manifest['stats_response_count'] == 2
+          assert manifest['statistics_transport_equivalent_on_complete_pilot'] is True
+          assert manifest['population_stats_production_transport_candidate_qualified'] is True
+          assert manifest['equivalence']['all_equivalence_gates_passed'] is True
+          assert manifest['equivalence']['combined_count_match'] is True
+          assert manifest['equivalence']['combined_sum_match'] is True
+          assert manifest['equivalence']['combined_mean_match'] is True
+          assert manifest['equivalence']['combined_min_match'] is True
+          assert manifest['equivalence']['combined_max_match'] is True
+          assert manifest['stage1_population_production_extraction_authorized'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+
+          responses = manifest['mapserver_responses'] + manifest['stats_responses']
+          assert len(responses) == 39
+          for response in responses:
+              evidence = Path(response['path'])
+              assert evidence.exists(), evidence
+              assert hashlib.sha256(evidence.read_bytes()).hexdigest() == response['sha256']
+          PY

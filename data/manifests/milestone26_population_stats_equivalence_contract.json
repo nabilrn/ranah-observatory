@@ -1,0 +1,83 @@
+{
+  "schema": "ranah-observatory/milestone26-population-stats-equivalence-contract/v1",
+  "milestone": 26,
+  "stage": "stage1_transport_qualification",
+  "locked_before_live_equivalence_probe": true,
+  "source_id": "inarisk_population_2020",
+  "pilot": {
+    "geography_id": "idn.13.1374",
+    "geography_name": "Kota Padang Panjang",
+    "selection_basis": "existing geometry-only-selected smallest native-grid pilot",
+    "inside_native_cell_count_expected": 2354,
+    "mapserver_reference_batch_size": 64,
+    "mapserver_reference_request_count_expected": 37,
+    "image_server_partition_count_expected": 2,
+    "all_inside_cells_required": true,
+    "sampling_prohibited": true
+  },
+  "frozen_inputs": {
+    "image_server_metadata": "data/processed/bnpb/m26_source_qualification/inarisk_population_2020.json",
+    "mapserver_identity": "data/manifests/milestone26_population_mapserver_identity.json",
+    "mapserver_pixel_semantics": "data/manifests/milestone26_population_mapserver_pixel_semantics_amendment.json",
+    "mapserver_scale": "data/manifests/milestone26_population_mapserver_scale.json",
+    "stats_partitions": "data/manifests/milestone26_population_stats_partitions.json"
+  },
+  "reference_transport": {
+    "service": "https://gis.bnpb.go.id/server/rest/services/Basemap/Kepadatan_penduduk_2020/MapServer",
+    "operation": "identify",
+    "layer_id": 0,
+    "geometry_type": "esriGeometryMultipoint",
+    "accepted_pixel_field": "Stretch.Pixel Value",
+    "native_grid_crs_epsg": 3395,
+    "native_pixel_size_m": 100,
+    "result_geometry_tolerance_m": 0.001,
+    "minimum_valid_fraction": 0.99
+  },
+  "candidate_transport": {
+    "service": "https://gis.bnpb.go.id/server/rest/services/inarisk/INARISKPOP_2020/ImageServer",
+    "operation": "computeStatisticsHistograms",
+    "official_reference": "https://developers.arcgis.com/rest/services-reference/enterprise/compute-statistics-and-histograms/",
+    "method": "GET",
+    "geometry_type": "esriGeometryPolygon",
+    "pixel_size": "100,100",
+    "response_format": "json",
+    "required_statistics_fields": ["count", "sum", "mean", "min", "max", "skipX", "skipY"],
+    "skipX_required": 1,
+    "skipY_required": 1
+  },
+  "equivalence_tolerances": {
+    "mapserver_published_decimal_places": 6,
+    "per_cell_absolute_quantization_bound": 0.0000005,
+    "sum_absolute_tolerance_formula": "valid_reference_count * 0.0000005 + 0.000000001",
+    "sum_relative_tolerance": 1e-8,
+    "mean_absolute_tolerance": 0.000000501,
+    "mean_relative_tolerance": 1e-8,
+    "min_max_absolute_tolerance": 0.000000501,
+    "count_tolerance": 0
+  },
+  "equivalence_gates": {
+    "reference_input_cell_count_must_equal_expected": true,
+    "reference_all_returned_points_must_map_one_to_one_to_requested_native_centers": true,
+    "reference_valid_fraction_must_be_at_least": 0.99,
+    "all_reference_values_must_be_inside_frozen_image_server_range": true,
+    "all_stats_partition_requests_must_return_http_200_json_without_arcgis_error": true,
+    "all_stats_partitions_must_have_skipX_skipY_equal_one": true,
+    "all_stats_partition_ranges_must_be_inside_frozen_image_server_range": true,
+    "combined_stats_count_must_equal_reference_valid_count": true,
+    "combined_stats_sum_must_match_reference_with_locked_tolerance": true,
+    "combined_stats_mean_must_match_reference_with_locked_tolerance": true,
+    "combined_stats_min_max_must_match_reference_with_locked_tolerance": true
+  },
+  "promotion_rule": "ImageServer computeStatisticsHistograms is qualified as a population Stage 1 production transport candidate only if every locked equivalence gate passes on the complete Padang Panjang native-cell pilot. This pilot does not itself publish or interpret the numeric exposure aggregate and does not authorize cross-geography extraction until a separate production contract is frozen.",
+  "pilot_numeric_transport_validation_authorized": true,
+  "stage1_population_production_extraction_authorized": false,
+  "substantive_value_promotion_authorized": false,
+  "cross_geography_numeric_source_extraction_authorized": false,
+  "aggregation_semantics_changed": false,
+  "source_family_changed": false,
+  "minimum_valid_fraction_changed": false,
+  "risk_synthesis_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

@@ -1,0 +1,82 @@
+{
+  "all_geographies_valid_fraction_pass": true,
+  "capacity_component_materialized_in_this_run": false,
+  "causal_claim_created": false,
+  "claim_type": "modeled_population_exposure_proxy",
+  "component_class": "exposure",
+  "contract": {
+    "path": "data/manifests/milestone26_population_production_contract.json",
+    "sha256": "d04e6f586482ccd89333d50a84d6df37f099cc60b928e822ecc7d312be9243bc"
+  },
+  "cross_component_temporal_aggregation_performed": false,
+  "empty_statistics_imputed": false,
+  "empty_statistics_partition_count": 1,
+  "empty_statistics_partition_ids": [
+    "idn.13.1377/partition-0001"
+  ],
+  "empty_statistics_partitions_all_reference_confirmed": true,
+  "empty_statistics_treated_as_population_zero": false,
+  "empty_stats_semantics_evidence": {
+    "path": "data/manifests/milestone26_population_empty_stats_semantics_attempt2.json",
+    "sha256": "2ad4185673408a5ea47c8e5c8be758748fee80b11e9fd6b185d2c9d78ad9f107"
+  },
+  "equivalence_manifest": {
+    "path": "data/manifests/milestone26_population_stats_equivalence.json",
+    "sha256": "23eb25fbb07b28dd60fa309473f1de2c30ffc209f08dacee93a103da52029ffe"
+  },
+  "geography_count": 19,
+  "inside_native_cell_count": 4212327,
+  "mapserver_nodata_confirmation_response_count": 1,
+  "mapserver_nodata_confirmation_total_bytes": 288,
+  "milestone": 26,
+  "minimum_valid_fraction_required": 0.99,
+  "monetary_wasted_potential_estimated": false,
+  "observation_count": 19,
+  "outputs": {
+    "component_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-component.csv",
+    "component_frame_sha256": "1187488b664f80b22a0abcceb3a13160b1bdf68e955c1944b93e56126a1dbbd7",
+    "provenance_frame": "data/analysis/engine/disaster_risk_chain_v1/m26-stage1-population-provenance.csv",
+    "provenance_frame_sha256": "95a49b1360e5551a657bb16660ad231f7056a690675ff3c51834434dc63af07f"
+  },
+  "partition_count": 420,
+  "partition_manifest": {
+    "path": "data/manifests/milestone26_population_stats_partitions.json",
+    "sha256": "0224bb314fec4af53ca91ed60fbe79720e97be6dd0f27e67281722fe73265fdf"
+  },
+  "population_component_materialized": true,
+  "production_amendment": {
+    "path": "data/manifests/milestone26_population_empty_stats_production_amendment.json",
+    "sha256": "bc7a49f312f1c779f0338bca0b0604d4d239ead4da38819ffac84a5ab576e34f"
+  },
+  "qualified_empty_partition_contribution_semantics": "empty_valid_value_set_additive_identity",
+  "raw_evidence_response_count": 421,
+  "raw_evidence_total_bytes": 373221,
+  "raw_response_count": 420,
+  "raw_response_total_bytes": 372933,
+  "reference_year": 2020,
+  "retrieval_index": {
+    "path": "data/processed/bnpb/m26_population_component_stats/retrieval-index.json",
+    "sha256": "00ecc79e8120c40025f00418909d190b04602a364ae8792029dd9e17b5e420b7"
+  },
+  "risk_synthesis_authorized": false,
+  "schema": "ranah-observatory/milestone26-stage1-population-component/v1",
+  "semantic_evidence": {
+    "evidence_role": "establish_population_grid_cell_value_as_person_count_not_density",
+    "path": "data/processed/bnpb/m26_population_component_stats/population-grid-cell-semantics.html",
+    "sha256": "61405cdd37e526b7e0cef3df94ddaeaa81221f3bc729ed96fd7af82063993863",
+    "source_url": "https://inarisk.bnpb.go.id/BUKU-RBI-2022/files/basic-html/page50.html"
+  },
+  "source_id": "inarisk_population_2020",
+  "source_metadata": {
+    "path": "data/processed/bnpb/m26_source_qualification/inarisk_population_2020.json",
+    "sha256": "8192ad1f91509b40ba9de044f2dcce2a9c931a675ec479b133575f9a933aad1b"
+  },
+  "spatial_frame": "BIG_June_2026_fixed_current_boundary",
+  "stage": "stage1_population_component_materialization",
+  "stage1_complete": false,
+  "statistical_model_fit": false,
+  "substantive_interpretation_performed": false,
+  "transport": "ImageServer_computeStatisticsHistograms_with_MapServer_NoData_confirmation",
+  "transport_equivalence_qualified": true,
+  "valid_native_cell_count": 4211506
+}
