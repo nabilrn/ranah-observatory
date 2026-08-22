@@ -1,26 +1,19 @@
-name: Milestone 26 DIBI geography representation probe
+name: Milestone 26 DIBI geography representation probe (frozen verifier)
 
+# The identifier-only representation probe is frozen. Re-run only from the
+# committed identifier evidence; do not hit BNPB automatically on PR updates.
 on:
-  pull_request:
-    paths:
-      - scripts/probe_milestone26_dibi_geography_representation.py
-      - data/manifests/milestone26_dibi_transport_amendment.json
-      - data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json
-      - .github/workflows/milestone26-dibi-geography-probe.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  probe-geography-representation:
+  verify-frozen-geography-probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: agent/milestone26-disaster-risk-chain
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -28,10 +21,7 @@ jobs:
       - name: Compile identifier-only probe
         run: python -m py_compile scripts/probe_milestone26_dibi_geography_representation.py
 
-      - name: Run live identifier-only geography probe
-        run: python -m scripts.probe_milestone26_dibi_geography_representation --mode live
-
-      - name: Verify probe contains no occurrence values
+      - name: Verify frozen identifier evidence has no occurrence values
         run: |
           python - <<'PY'
           import hashlib
@@ -42,57 +32,27 @@ jobs:
           manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
           assert manifest['schema'] == 'ranah-observatory/milestone26-dibi-geography-representation-probe/v1'
           assert manifest['source_id'] == 'dibi_kabupaten_hidromet_2015_2024'
-          assert manifest['fallback_layer_id'] == 1
-          assert manifest['fallback_layer_name'] == 'Kabupaten_basah_kering'
-          assert manifest['identifier_fields_requested'] == ['id_kab_bps', 'NAMA_KAB', 'NAMA_PROP', 'KABKOTA', 'NO_PROP', 'NO_KAB']
-          assert manifest['numeric_occurrence_fields_forbidden'] == ['Total_basa', 'Total_ba_1', 'Total_keri']
-          assert manifest['numeric_occurrence_fields_requested'] is False
-          assert manifest['all_feature_count'] > 19
-          assert manifest['all_feature_count'] <= manifest['layer_max_record_count']
+          assert manifest['all_feature_count'] == 514
           assert manifest['sumbar_candidate_count'] == 19
-          assert len(manifest['sumbar_candidates']) == 19
-          assert len(manifest['sumbar_candidate_nama_kab_values']) == 19
-          assert manifest['representation_contract_amendment_required'] is True
+          assert manifest['numeric_occurrence_fields_requested'] is False
           assert manifest['numeric_occurrence_values_inspected'] is False
           assert manifest['numeric_occurrence_values_promoted'] is False
-          assert manifest['event_level_record_inference_performed'] is False
-          assert manifest['observed_impact_inference_performed'] is False
-          assert manifest['substantive_interpretation_performed'] is False
-          assert manifest['risk_synthesis_authorized'] is False
-          assert manifest['statistical_model_fit'] is False
-          assert manifest['causal_claim_created'] is False
-          assert manifest['monetary_wasted_potential_estimated'] is False
+          assert manifest['sumbar_candidate_id_kab_bps_values'] == [1306.0, 0.0, 1307.0, 1308.0]
+          expected_no_kab = {1301,1302,1303,1304,1305,1306,1307,1308,1309,1310,1311,1312,1371,1372,1373,1374,1375,1376,1377}
+          assert {int(row['NO_KAB']) for row in manifest['sumbar_candidates']} == expected_no_kab
+          assert all(str(row['NAMA_PROP']).strip().upper() == 'SUMATERA BARAT' for row in manifest['sumbar_candidates'])
 
-          raw = json.loads(Path(manifest['raw_identifier_response']['path']).read_text(encoding='utf-8-sig'))
+          raw_path = Path(manifest['raw_identifier_response']['path'])
+          raw = json.loads(raw_path.read_text(encoding='utf-8-sig'))
           forbidden = {'Total_basa', 'Total_ba_1', 'Total_keri'}
           for feature in raw.get('features', []):
               attrs = feature.get('attributes', {})
               assert not forbidden.intersection(attrs)
-
-          for key in ('raw_identifier_response', 'preferred_service_status', 'request_sidecar'):
-              item = manifest[key]
-              path = Path(item['path'])
-              assert path.exists()
-              assert hashlib.sha256(path.read_bytes()).hexdigest() == item['sha256']
+          assert hashlib.sha256(raw_path.read_bytes()).hexdigest() == manifest['raw_identifier_response']['sha256']
           PY
 
-      - name: Rebuild probe offline from frozen identifier evidence
+      - name: Rebuild manifest offline from frozen identifier evidence
         run: |
-          sha256sum data/manifests/milestone26_dibi_geography_representation_probe.json > /tmp/m26-dibi-probe-live.sha256
+          sha256sum data/manifests/milestone26_dibi_geography_representation_probe.json > /tmp/m26-dibi-probe.sha256
           python -m scripts.probe_milestone26_dibi_geography_representation --mode offline
-          sha256sum -c /tmp/m26-dibi-probe-live.sha256
-
-      - name: Commit frozen identifier-only geography evidence
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        run: |
-          git add \
-            data/manifests/milestone26_dibi_geography_representation_probe.json \
-            data/processed/bnpb/m26_dibi_geography_probe
-          if git diff --cached --quiet; then
-            echo 'DIBI geography probe evidence unchanged.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'm26: freeze DIBI identifier-only geography probe'
-          git push origin HEAD:agent/milestone26-disaster-risk-chain
+          sha256sum -c /tmp/m26-dibi-probe.sha256
