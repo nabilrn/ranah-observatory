@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - scripts/harvest_bnpb.py
-      - bnpb_client.py
+      - scripts/bnpb_client.py
       - scripts/build_milestone26_stage2_ckan_resource_catalog.py
       - data/manifests/milestone26_stage2_ckan_resource_discovery_contract.json
       - .github/workflows/milestone26-stage2-ckan-resource-discovery.yml
@@ -12,6 +12,8 @@ on:
     branches:
       - agent/milestone26-disaster-risk-chain
     paths:
+      - scripts/harvest_bnpb.py
+      - scripts/bnpb_client.py
       - scripts/build_milestone26_stage2_ckan_resource_catalog.py
       - data/manifests/milestone26_stage2_ckan_resource_discovery_contract.json
       - .github/workflows/milestone26-stage2-ckan-resource-discovery.yml
@@ -34,6 +36,7 @@ jobs:
           python-version: '3.12'
       - name: Compile metadata discovery tools
         run: |
+          python -m py_compile scripts/bnpb_client.py
           python -m py_compile scripts/harvest_bnpb.py
           python -m py_compile scripts/build_milestone26_stage2_ckan_resource_catalog.py
       - name: Freeze official BNPB package metadata only
