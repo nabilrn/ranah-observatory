@@ -19,7 +19,7 @@
     "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
     "path": "data/manifests/milestone26_stage2_ckan_resource_discovery.json",
     "resource_count": 38,
-    "sha256": "b5ab3dab6458b7c19f08e302ee290b2bdd16029a56a5dbe949adebdc6f709116"
+    "sha256": "32615e9c5cae58ccaf075ebdf599efd31138d6a31612b863f44e369a42d92c5e"
   },
   "component_class": "observed_impact",
   "cross_component_temporal_aggregation_authorized": false,
