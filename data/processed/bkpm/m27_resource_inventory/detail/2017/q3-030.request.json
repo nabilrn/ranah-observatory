@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2017-8p2TRIL",
+  "quarter": "III",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2017-8p2TRIL",
+  "resource_file_requested": false,
+  "response_bytes": 181921,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q3-030.html",
+  "response_sha256": "1eafafc44ca9b99c3f5bc548dd75858727db50cd455aa6af644e777f6e084749",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2017
+}

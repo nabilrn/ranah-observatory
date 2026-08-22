@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2012-yg0KpKS",
+  "quarter": "IV",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2012-yg0KpKS",
+  "resource_file_requested": false,
+  "response_bytes": 181910,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q4-011.html",
+  "response_sha256": "ecd905b2f216393890529a1ad54037a84ac8dff230bb4cf56cb0c97419c3cf9c",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2012
+}

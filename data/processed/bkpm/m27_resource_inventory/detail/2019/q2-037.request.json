@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2019-pcqR17c",
+  "quarter": "II",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2019-pcqR17c",
+  "resource_file_requested": false,
+  "response_bytes": 181910,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q2-037.html",
+  "response_sha256": "a3d9b005869abfa51f3aec8971cd33036be3d292c3015bac811fbafda77ec1c0",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2019
+}

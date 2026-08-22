@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2025-hXdFHZK",
+  "quarter": "III",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2025-hXdFHZK",
+  "resource_file_requested": false,
+  "response_bytes": 181838,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q3-062.html",
+  "response_sha256": "dfedb67dc8b25ab9e1c2057e56babfbdfcdb7dc51382f0c059665b7f9883060b",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2025
+}

@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2010-geKW4zP",
+  "quarter": "IV",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2010-geKW4zP",
+  "resource_file_requested": false,
+  "response_bytes": 181910,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q4-003.html",
+  "response_sha256": "e3156e7be96f462081c20f9928d3f2d70fcd3733afc665b169cc3b2fe91df6cb",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2010
+}

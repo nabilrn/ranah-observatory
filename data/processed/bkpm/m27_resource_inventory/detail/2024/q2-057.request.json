@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2024-UVTkOaI",
+  "quarter": "II",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2024-UVTkOaI",
+  "resource_file_requested": false,
+  "response_bytes": 181899,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q2-057.html",
+  "response_sha256": "f622df313ed1ef659669d5fe1f4d4d01adedb155dfb16b20bee440451db78b60",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2024
+}

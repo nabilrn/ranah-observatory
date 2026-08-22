@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2021-WnE2Dzx",
+  "quarter": "II",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2021-WnE2Dzx",
+  "resource_file_requested": false,
+  "response_bytes": 181910,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q2-045.html",
+  "response_sha256": "d6bc7a9b262f52edaa24dddddff7e77297e0a692dd9b4dedb2911690af0e3dfc",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2021
+}

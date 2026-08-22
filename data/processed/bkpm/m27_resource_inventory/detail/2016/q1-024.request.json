@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2016-iGR4Qiq",
+  "quarter": "I",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2016-iGR4Qiq",
+  "resource_file_requested": false,
+  "response_bytes": 181899,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q1-024.html",
+  "response_sha256": "32bc0607f1ee01eeba1993126a285eef31fd27b7598952460cc3b1941c061178",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2016
+}

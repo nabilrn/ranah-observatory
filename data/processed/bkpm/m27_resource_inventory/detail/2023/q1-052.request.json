@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2023-6pOYjbx",
+  "quarter": "I",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2023-6pOYjbx",
+  "resource_file_requested": false,
+  "response_bytes": 181888,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q1-052.html",
+  "response_sha256": "98fa3b4711a5cf32baad8ea97154f57bd311ac1b808031fbef67a41246eec887",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2023
+}

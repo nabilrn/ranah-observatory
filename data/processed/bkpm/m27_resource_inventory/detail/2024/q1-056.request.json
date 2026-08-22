@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2024",
+  "quarter": "I",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2024",
+  "resource_file_requested": false,
+  "response_bytes": 181820,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q1-056.html",
+  "response_sha256": "a2049d3cf8d7e57987f208faf494caf9d0a96e38cf42266266b1a066b92d3985",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2024
+}

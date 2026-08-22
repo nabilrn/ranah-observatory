@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2015-Xe6Djkq",
+  "quarter": "III",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2015-Xe6Djkq",
+  "resource_file_requested": false,
+  "response_bytes": 181921,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q3-022.html",
+  "response_sha256": "5ee5ff3093c8e6ff80a0d6b93a265f007098038522911ad6dcda95651d7d85fc",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2015
+}

@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2020-8i2qwNr",
+  "quarter": "III",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2020-8i2qwNr",
+  "resource_file_requested": false,
+  "response_bytes": 181921,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q3-042.html",
+  "response_sha256": "3c136e84ac01ebbe6077d5e7fb4be87744b2b44b39d3a013967f63a3a92174b4",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2020
+}

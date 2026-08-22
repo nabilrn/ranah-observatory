@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2019-X5Sqrn9",
+  "quarter": "IV",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2019-X5Sqrn9",
+  "resource_file_requested": false,
+  "response_bytes": 181910,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q4-039.html",
+  "response_sha256": "e60fee20d206851f203401d25779f5d60431db55552e1becd633d3f4d5e90615",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2019
+}

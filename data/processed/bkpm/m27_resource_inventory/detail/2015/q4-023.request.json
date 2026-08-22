@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2015-sonjzmO",
+  "quarter": "IV",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2015-sonjzmO",
+  "resource_file_requested": false,
+  "response_bytes": 181910,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q4-023.html",
+  "response_sha256": "43bbbcc5ab61f0b96cb3bacf2b6c7c96c3515a0c39325cf589fa0893f5522009",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2015
+}

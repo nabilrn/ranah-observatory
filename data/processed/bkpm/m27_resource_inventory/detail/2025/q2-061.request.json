@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2025",
+  "quarter": "II",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2025",
+  "resource_file_requested": false,
+  "response_bytes": 181777,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q2-061.html",
+  "response_sha256": "d8bea45072d62f1f8255fdfe3d9349f4a9a25d3f4abed291939cf943fd9359c7",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2025
+}
