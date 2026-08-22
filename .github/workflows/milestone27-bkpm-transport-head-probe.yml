@@ -1,0 +1,110 @@
+name: Milestone 27 BKPM HEAD-only transport probe
+
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone27_transport_probe_contract.json
+      - scripts/probe_milestone27_bkpm_transport_head.py
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv
+      - .github/workflows/milestone27-bkpm-transport-head-probe.yml
+  push:
+    branches:
+      - agent/milestone27-bkpm-investment-history
+    paths:
+      - data/manifests/milestone27_transport_probe_contract.json
+      - scripts/probe_milestone27_bkpm_transport_head.py
+      - .github/workflows/milestone27-bkpm-transport-head-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone27-bkpm-transport-head-probe-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe-head:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/milestone27-bkpm-investment-history
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile HEAD-only transport probe
+        run: python -m py_compile scripts/probe_milestone27_bkpm_transport_head.py
+
+      - name: Probe preregistered BKPM resource routes with HEAD only
+        run: python -m scripts.probe_milestone27_bkpm_transport_head
+
+      - name: Verify no disclaimer submission, body read, or value inspection
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          m = json.loads(Path('data/manifests/milestone27_bkpm_transport_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-transport-probe/v1'
+          assert m['pilot_count'] == 3
+          assert len(m['pilot_results']) == 3
+          assert m['probe_method'] == 'HEAD'
+          assert m['transport_endpoint_qualified_for_file_retrieval'] is False
+          assert m['interactive_disclaimer_form_submitted'] is False
+          assert m['synthetic_personal_information_submitted'] is False
+          assert m['disclaimer_bypass_performed'] is False
+          assert m['redirect_following_performed'] is False
+          assert m['response_body_read'] is False
+          assert m['response_body_bytes_read'] == 0
+          assert m['resource_file_downloaded'] is False
+          assert m['resource_header_content_inspected'] is False
+          assert m['csv_schema_inspected'] is False
+          assert m['period_column_inspected'] is False
+          assert m['target_investment_values_inspected'] is False
+          assert m['investment_value_aggregation_performed'] is False
+          assert m['quarterly_flow_interpretation_authorized'] is False
+          assert m['cross_quarter_additivity_authorized'] is False
+          assert m['annual_sum_authorized'] is False
+          assert m['geography_mapping_authorized'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          assert m['classification'] in {
+              'head_route_reachable_without_response_body',
+              'access_gate_observed_head_route_not_qualified',
+              'redirect_gate_observed_head_route_not_qualified',
+              'head_method_not_supported_route_not_qualified',
+              'mixed_or_unexpected_transport_state',
+          }
+          periods = {(x['year'], x['quarter']) for x in m['pilot_results']}
+          assert periods == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
+          for item in m['pilot_results']:
+              assert item['response_body_read'] is False
+              assert item['response_body_bytes_read'] == 0
+              assert item['disclaimer_form_submitted'] is False
+              assert item['synthetic_personal_information_submitted'] is False
+              assert item['target_investment_values_inspected'] is False
+              sidecar = Path(item['sidecar_path'])
+              assert sidecar.exists()
+              assert hashlib.sha256(sidecar.read_bytes()).hexdigest() == item['sidecar_sha256']
+          PY
+
+      - name: Commit frozen transport probe evidence
+        run: |
+          git add \
+            data/processed/bkpm/m27_transport_probe \
+            data/manifests/milestone27_bkpm_transport_probe.json
+          if git diff --cached --quiet; then
+            echo 'M27 transport probe evidence unchanged.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'm27: freeze HEAD-only BKPM transport probe'
+          git pull --rebase origin agent/milestone27-bkpm-investment-history
+          git push origin HEAD:agent/milestone27-bkpm-investment-history
