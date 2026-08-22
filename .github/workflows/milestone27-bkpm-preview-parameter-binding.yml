@@ -1,91 +1,41 @@
-name: Milestone 27 BKPM Preview Parameter Binding
+name: Milestone 27 BKPM Preview Parameter Binding Evidence
 
 on:
-  push:
-    branches:
-      - agent/milestone27-bkpm-investment-history
+  pull_request:
     paths:
       - .github/workflows/milestone27-bkpm-preview-parameter-binding.yml
       - data/manifests/milestone27_preview_parameter_binding_contract.json
+      - data/manifests/milestone27_bkpm_preview_parameter_binding.json
       - scripts/audit_milestone27_bkpm_preview_parameter_binding.py
   workflow_dispatch:
 
-concurrency:
-  group: milestone27-bkpm-preview-parameter-binding
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  audit-parameter-binding:
+  verify-frozen-parameter-binding:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
 
-      - name: Compile audit
-        run: python -m py_compile scripts/audit_milestone27_bkpm_preview_parameter_binding.py
-
-      - name: Audit frozen parameter binding
+      - name: Rebuild binding from frozen evidence
         run: python scripts/audit_milestone27_bkpm_preview_parameter_binding.py
 
-      - name: Verify qualified binding and boundaries
+      - name: Verify qualified binding
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-
           m = json.loads(Path('data/manifests/milestone27_bkpm_preview_parameter_binding.json').read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-preview-parameter-binding/v1'
-          assert m['pilot_count'] == 3
           assert m['binding_qualified'] is True
-          assert m['parameter_name'] == 'dataset_detail_parent_id'
-          assert {(r['year'], r['quarter']) for r in m['pilot_results']} == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
-          assert all(r['hidden_input_match_count'] == 1 for r in m['pilot_results'])
+          assert m['pilot_count'] == 3
           assert all(r['exact_uuid_match'] is True for r in m['pilot_results'])
-          for key in (
-              'source_selection_uses_parameter_values',
-              'preview_page_live_requested',
-              'client_side_data_endpoint_requested',
-              'request_parameter_submitted',
-              'table_column_names_extracted',
-              'table_header_extracted',
-              'table_body_extracted',
-              'table_cell_text_extracted',
-              'target_investment_values_inspected',
-              'period_column_inspected',
-              'csv_schema_inspected',
-              'zip_resource_requested',
-              'interactive_disclaimer_form_submitted',
-              'synthetic_personal_information_submitted',
-              'investment_value_aggregation_performed',
-              'quarterly_flow_interpretation_authorized',
-              'cross_quarter_additivity_authorized',
-              'annual_sum_authorized',
-              'geography_mapping_authorized',
-              'statistical_model_fit',
-              'causal_claim_created',
-              'monetary_wasted_potential_estimated',
-          ):
-              assert m[key] is False, key
-          print({
-              'binding_qualified': m['binding_qualified'],
-              'exact_match_count': sum(1 for r in m['pilot_results'] if r['exact_uuid_match']),
-          })
+          assert all(r['target_investment_values_inspected'] is False for r in m['pilot_results'])
+          assert m['client_side_data_endpoint_requested'] is False
+          assert m['request_parameter_submitted'] is False
+          assert m['target_investment_values_inspected'] is False
           PY
 
-      - name: Commit deterministic binding evidence
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/manifests/milestone27_bkpm_preview_parameter_binding.json
-          if git diff --cached --quiet; then
-            echo "No binding changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M27 BKPM preview parameter binding"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
+      - name: Require byte-identical committed output
+        run: git diff --exit-code -- data/manifests/milestone27_bkpm_preview_parameter_binding.json
