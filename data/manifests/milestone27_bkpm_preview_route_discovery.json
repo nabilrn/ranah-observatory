@@ -1,0 +1,243 @@
+{
+  "annual_sum_authorized": false,
+  "causal_claim_created": false,
+  "client_side_data_endpoint_requested": false,
+  "common_route_literal_candidate_count": 9,
+  "common_route_literal_candidates": [
+    "https://data.bkpm.go.id/autocomplete",
+    "https://data.bkpm.go.id/chat/admin-status",
+    "https://data.bkpm.go.id/chat/end",
+    "https://data.bkpm.go.id/chat/history",
+    "https://data.bkpm.go.id/chat/mode",
+    "https://data.bkpm.go.id/chat/quick-buttons",
+    "https://data.bkpm.go.id/chat/user-connected",
+    "https://data.bkpm.go.id/chat/user-disconnected",
+    "https://data.bkpm.go.id/data"
+  ],
+  "contract": {
+    "path": "data/manifests/milestone27_preview_route_discovery_contract.json",
+    "sha256": "eaf5231fb672876d93b7334076f0535737eb24dc809164792657b59beaee37e6"
+  },
+  "cross_quarter_additivity_authorized": false,
+  "csv_schema_inspected": false,
+  "geography_mapping_authorized": false,
+  "interactive_disclaimer_form_submitted": false,
+  "inventory": {
+    "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv",
+    "sha256": "e6a8f1c3a58d9a9edbbc62747f4edfe3f019a34f9cbc57b0a730d9c3b4a79382"
+  },
+  "investment_value_aggregation_performed": false,
+  "milestone": 27,
+  "monetary_wasted_potential_estimated": false,
+  "period_column_inspected": false,
+  "pilot_count": 3,
+  "pilot_results": [
+    {
+      "client_side_data_endpoint_requested": false,
+      "content_type": "text/html; charset=UTF-8",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "disclaimer_form_submitted": false,
+      "external_script_src_count": 14,
+      "final_url": "https://data.bkpm.go.id/dataset-view/data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "inline_script_count": 8,
+      "pilot_role": "earliest_inventory_vintage",
+      "preview_url": "https://data.bkpm.go.id/dataset-view/data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "quarter": "I",
+      "quarter_number": 1,
+      "response_bytes": 49795,
+      "response_path": "data/processed/bkpm/m27_preview_route_discovery/2010-q1-preview.html",
+      "response_sha256": "19d7c5850679a4b1f230750969094e5688bd12e84db687827673ecbbcf5b52a9",
+      "route_literal_candidate_count": 9,
+      "route_literal_candidates": [
+        {
+          "discovery_kind": "ajax_url_literal",
+          "url": "https://data.bkpm.go.id/autocomplete"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/admin-status"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/end"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/history"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/mode"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/quick-buttons"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/user-connected"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/user-disconnected"
+        },
+        {
+          "discovery_kind": "ajax_url_literal",
+          "url": "https://data.bkpm.go.id/data"
+        }
+      ],
+      "script_route_evidence_path": "data/processed/bkpm/m27_preview_route_discovery/2010-q1-script-routes.json",
+      "script_route_evidence_sha256": "02e97d9441865db46338e2401b9440386fd3de0a187f6e0f7699da3cbb8c032e",
+      "semantic_family_state": "semantic_family_match",
+      "table_body_extracted": false,
+      "table_cell_text_extracted": false,
+      "table_header_extracted": false,
+      "target_investment_values_inspected": false,
+      "title_match": true,
+      "year": 2010,
+      "zip_resource_requested": false
+    },
+    {
+      "client_side_data_endpoint_requested": false,
+      "content_type": "text/html; charset=UTF-8",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "disclaimer_form_submitted": false,
+      "external_script_src_count": 14,
+      "final_url": "https://data.bkpm.go.id/dataset-view/data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "inline_script_count": 8,
+      "pilot_role": "held_source_period_identity_conflict",
+      "preview_url": "https://data.bkpm.go.id/dataset-view/data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "quarter": "II",
+      "quarter_number": 2,
+      "response_bytes": 49789,
+      "response_path": "data/processed/bkpm/m27_preview_route_discovery/2025-q2-preview.html",
+      "response_sha256": "42e2b5e065fec9cb24f0601afe5c92e4612b20cf547faee6f073618cbb2d0281",
+      "route_literal_candidate_count": 9,
+      "route_literal_candidates": [
+        {
+          "discovery_kind": "ajax_url_literal",
+          "url": "https://data.bkpm.go.id/autocomplete"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/admin-status"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/end"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/history"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/mode"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/quick-buttons"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/user-connected"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/user-disconnected"
+        },
+        {
+          "discovery_kind": "ajax_url_literal",
+          "url": "https://data.bkpm.go.id/data"
+        }
+      ],
+      "script_route_evidence_path": "data/processed/bkpm/m27_preview_route_discovery/2025-q2-script-routes.json",
+      "script_route_evidence_sha256": "04d9fcd42dbe5c9eb333a968e0c3765bef348c13d5db709bc9f4dc1d00fd51e6",
+      "semantic_family_state": "held_semantic_evidence_incomplete",
+      "table_body_extracted": false,
+      "table_cell_text_extracted": false,
+      "table_header_extracted": false,
+      "target_investment_values_inspected": false,
+      "title_match": true,
+      "year": 2025,
+      "zip_resource_requested": false
+    },
+    {
+      "client_side_data_endpoint_requested": false,
+      "content_type": "text/html; charset=UTF-8",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "disclaimer_form_submitted": false,
+      "external_script_src_count": 14,
+      "final_url": "https://data.bkpm.go.id/dataset-view/data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "inline_script_count": 8,
+      "pilot_role": "latest_inventory_vintage",
+      "preview_url": "https://data.bkpm.go.id/dataset-view/data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "quarter": "IV",
+      "quarter_number": 4,
+      "response_bytes": 49797,
+      "response_path": "data/processed/bkpm/m27_preview_route_discovery/2025-q4-preview.html",
+      "response_sha256": "cf5beee7b0256842a5fc33b7d408d9a225c8ed6f29748f0d3a46466091050509",
+      "route_literal_candidate_count": 9,
+      "route_literal_candidates": [
+        {
+          "discovery_kind": "ajax_url_literal",
+          "url": "https://data.bkpm.go.id/autocomplete"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/admin-status"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/end"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/history"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/mode"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/quick-buttons"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/user-connected"
+        },
+        {
+          "discovery_kind": "fetch_literal",
+          "url": "https://data.bkpm.go.id/chat/user-disconnected"
+        },
+        {
+          "discovery_kind": "ajax_url_literal",
+          "url": "https://data.bkpm.go.id/data"
+        }
+      ],
+      "script_route_evidence_path": "data/processed/bkpm/m27_preview_route_discovery/2025-q4-script-routes.json",
+      "script_route_evidence_sha256": "e4f31dfad18ea22409ba6f136af37ea57d53e38a01dcaaac62cc27e9c3a4ead4",
+      "semantic_family_state": "semantic_family_match",
+      "table_body_extracted": false,
+      "table_cell_text_extracted": false,
+      "table_header_extracted": false,
+      "target_investment_values_inspected": false,
+      "title_match": true,
+      "year": 2025,
+      "zip_resource_requested": false
+    }
+  ],
+  "preview_page_html_retrieved": true,
+  "quarterly_flow_interpretation_authorized": false,
+  "route_candidate_found": true,
+  "schema": "ranah-observatory/milestone27-bkpm-preview-route-discovery/v1",
+  "stage": "stage0d_public_preview_route_discovery",
+  "statistical_model_fit": false,
+  "synthetic_personal_information_submitted": false,
+  "table_body_extracted": false,
+  "table_cell_text_extracted": false,
+  "table_header_extracted": false,
+  "target_investment_values_inspected": false,
+  "zip_resource_requested": false
+}

@@ -1,0 +1,41 @@
+name: Milestone 27 BKPM Preview Parameter Binding Evidence
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone27-bkpm-preview-parameter-binding.yml
+      - data/manifests/milestone27_preview_parameter_binding_contract.json
+      - data/manifests/milestone27_bkpm_preview_parameter_binding.json
+      - scripts/audit_milestone27_bkpm_preview_parameter_binding.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-parameter-binding:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rebuild binding from frozen evidence
+        run: python scripts/audit_milestone27_bkpm_preview_parameter_binding.py
+
+      - name: Verify qualified binding
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_preview_parameter_binding.json').read_text(encoding='utf-8'))
+          assert m['binding_qualified'] is True
+          assert m['pilot_count'] == 3
+          assert all(r['exact_uuid_match'] is True for r in m['pilot_results'])
+          assert all(r['target_investment_values_inspected'] is False for r in m['pilot_results'])
+          assert m['client_side_data_endpoint_requested'] is False
+          assert m['request_parameter_submitted'] is False
+          assert m['target_investment_values_inspected'] is False
+          PY
+
+      - name: Require byte-identical committed output
+        run: git diff --exit-code -- data/manifests/milestone27_bkpm_preview_parameter_binding.json

@@ -1,0 +1,150 @@
+{
+  "annual_sum_authorized": false,
+  "causal_claim_created": false,
+  "client_side_data_endpoint_requested": false,
+  "contract": {
+    "path": "data/manifests/milestone27_preview_request_metadata_contract.json",
+    "sha256": "da1bf16cf2242f974f2ba288faba7370b30a0e7f5d3e609a538bd3e5f2c47a67"
+  },
+  "cross_quarter_additivity_authorized": false,
+  "csrf_or_token_values_extracted": false,
+  "csv_schema_inspected": false,
+  "geography_mapping_authorized": false,
+  "interactive_disclaimer_form_submitted": false,
+  "investment_value_aggregation_performed": false,
+  "milestone": 27,
+  "monetary_wasted_potential_estimated": false,
+  "offline_frozen_html_only": true,
+  "period_column_inspected": false,
+  "pilot_count": 3,
+  "pilot_results": [
+    {
+      "client_side_data_endpoint_requested": false,
+      "csrf_or_token_values_extracted": false,
+      "csv_schema_inspected": false,
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "datatable_flags": {
+        "processing": true,
+        "serverSide": true
+      },
+      "http_methods": [
+        "GET"
+      ],
+      "period_column_inspected": false,
+      "pilot_role": "earliest_inventory_vintage",
+      "preview_page_live_requested": false,
+      "quarter": "I",
+      "request_parameter_key_count": 1,
+      "request_parameter_key_names": [
+        "dataset_detail_parent_id"
+      ],
+      "request_parameter_key_sets": [
+        [
+          "dataset_detail_parent_id"
+        ]
+      ],
+      "request_parameter_values_extracted": false,
+      "source_html_path": "data/processed/bkpm/m27_preview_route_discovery/2010-q1-preview.html",
+      "source_html_sha256": "19d7c5850679a4b1f230750969094e5688bd12e84db687827673ecbbcf5b52a9",
+      "table_body_extracted": false,
+      "table_cell_text_extracted": false,
+      "table_column_names_extracted": false,
+      "table_header_extracted": false,
+      "target_investment_values_inspected": false,
+      "target_route_match_count": 2,
+      "year": 2010
+    },
+    {
+      "client_side_data_endpoint_requested": false,
+      "csrf_or_token_values_extracted": false,
+      "csv_schema_inspected": false,
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "datatable_flags": {
+        "processing": true,
+        "serverSide": true
+      },
+      "http_methods": [
+        "GET"
+      ],
+      "period_column_inspected": false,
+      "pilot_role": "held_source_period_identity_conflict",
+      "preview_page_live_requested": false,
+      "quarter": "II",
+      "request_parameter_key_count": 1,
+      "request_parameter_key_names": [
+        "dataset_detail_parent_id"
+      ],
+      "request_parameter_key_sets": [
+        [
+          "dataset_detail_parent_id"
+        ]
+      ],
+      "request_parameter_values_extracted": false,
+      "source_html_path": "data/processed/bkpm/m27_preview_route_discovery/2025-q2-preview.html",
+      "source_html_sha256": "42e2b5e065fec9cb24f0601afe5c92e4612b20cf547faee6f073618cbb2d0281",
+      "table_body_extracted": false,
+      "table_cell_text_extracted": false,
+      "table_column_names_extracted": false,
+      "table_header_extracted": false,
+      "target_investment_values_inspected": false,
+      "target_route_match_count": 2,
+      "year": 2025
+    },
+    {
+      "client_side_data_endpoint_requested": false,
+      "csrf_or_token_values_extracted": false,
+      "csv_schema_inspected": false,
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "datatable_flags": {
+        "processing": true,
+        "serverSide": true
+      },
+      "http_methods": [
+        "GET"
+      ],
+      "period_column_inspected": false,
+      "pilot_role": "latest_inventory_vintage",
+      "preview_page_live_requested": false,
+      "quarter": "IV",
+      "request_parameter_key_count": 1,
+      "request_parameter_key_names": [
+        "dataset_detail_parent_id"
+      ],
+      "request_parameter_key_sets": [
+        [
+          "dataset_detail_parent_id"
+        ]
+      ],
+      "request_parameter_values_extracted": false,
+      "source_html_path": "data/processed/bkpm/m27_preview_route_discovery/2025-q4-preview.html",
+      "source_html_sha256": "cf5beee7b0256842a5fc33b7d408d9a225c8ed6f29748f0d3a46466091050509",
+      "table_body_extracted": false,
+      "table_cell_text_extracted": false,
+      "table_column_names_extracted": false,
+      "table_header_extracted": false,
+      "target_investment_values_inspected": false,
+      "target_route_match_count": 2,
+      "year": 2025
+    }
+  ],
+  "preview_page_live_requested": false,
+  "quarterly_flow_interpretation_authorized": false,
+  "request_metadata_consistent_across_pilots": true,
+  "request_metadata_resolved": true,
+  "request_parameter_values_extracted": false,
+  "route_discovery_manifest": {
+    "path": "data/manifests/milestone27_bkpm_preview_route_discovery.json",
+    "sha256": "2bd9a9b4f82d36dcb80df8336543886607877277ca9b17d577c8396aa8d2e179"
+  },
+  "schema": "ranah-observatory/milestone27-bkpm-preview-request-metadata/v1",
+  "stage": "stage0e_frozen_preview_request_metadata",
+  "statistical_model_fit": false,
+  "synthetic_personal_information_submitted": false,
+  "table_body_extracted": false,
+  "table_cell_text_extracted": false,
+  "table_column_names_extracted": false,
+  "table_header_extracted": false,
+  "target_investment_values_inspected": false,
+  "target_route": "https://data.bkpm.go.id/data",
+  "zip_resource_requested": false
+}

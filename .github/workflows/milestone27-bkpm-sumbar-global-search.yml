@@ -1,0 +1,37 @@
+name: Milestone 27 BKPM Sumbar Global Search Evidence
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone27-bkpm-sumbar-global-search.yml
+      - data/manifests/milestone27_sumbar_global_search_contract.json
+      - data/manifests/milestone27_bkpm_sumbar_global_search_probe.json
+      - scripts/probe_milestone27_bkpm_sumbar_global_search.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-search-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify frozen transport evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_sumbar_global_search_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-sumbar-global-search-probe/v1'
+          assert m['pilot_count'] == 3
+          assert [r['positive_search']['records_filtered'] for r in m['pilot_results']] == [1, 642, 517]
+          assert [r['negative_control_search']['records_filtered'] for r in m['pilot_results']] == [0, 0, 0]
+          assert all(r['positive_search']['records_total'] == r['positive_search']['records_filtered'] for r in m['pilot_results'])
+          assert all(r['negative_control_search']['records_total'] == 0 for r in m['pilot_results'])
+          assert m['target_investment_values_inspected'] is False
+          assert m['data_array_elements_inspected'] is False
+          assert m['numeric_materialization_authorized'] is False
+          PY

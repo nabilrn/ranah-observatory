@@ -1,0 +1,57 @@
+name: Milestone 27 BKPM frozen transport verifier
+
+# The HEAD-only transport evidence is frozen. This verifier never performs
+# network requests, submits the disclaimer, or reads resource bodies.
+on:
+  pull_request:
+    paths:
+      - data/manifests/milestone27_transport_probe_contract.json
+      - data/manifests/milestone27_bkpm_transport_probe.json
+      - data/processed/bkpm/m27_transport_probe/**
+      - .github/workflows/milestone27-bkpm-transport-head-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen HEAD-only transport evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          m = json.loads(Path('data/manifests/milestone27_bkpm_transport_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-transport-probe/v1'
+          assert m['pilot_count'] == 3
+          assert m['status_codes'] == [200, 200, 200]
+          assert m['classification'] == 'head_route_reachable_without_response_body'
+          assert m['all_pilots_2xx'] is True
+          assert m['transport_route_reachable_without_response_body'] is True
+          assert m['transport_endpoint_qualified_for_file_retrieval'] is False
+          assert m['interactive_disclaimer_form_submitted'] is False
+          assert m['synthetic_personal_information_submitted'] is False
+          assert m['disclaimer_bypass_performed'] is False
+          assert m['redirect_following_performed'] is False
+          assert m['response_body_read'] is False
+          assert m['response_body_bytes_read'] == 0
+          assert m['resource_file_downloaded'] is False
+          assert m['csv_schema_inspected'] is False
+          assert m['period_column_inspected'] is False
+          assert m['target_investment_values_inspected'] is False
+          assert m['investment_value_aggregation_performed'] is False
+          assert m['annual_sum_authorized'] is False
+          for item in m['pilot_results']:
+              assert item['status'] == 200
+              assert item['headers'].get('content-type') == 'application/zip'
+              assert item['headers'].get('content-disposition', '').startswith('attachment;')
+              assert int(item['headers'].get('content-length', '0')) > 0
+              assert item['response_body_read'] is False
+              sidecar = Path(item['sidecar_path'])
+              assert hashlib.sha256(sidecar.read_bytes()).hexdigest() == item['sidecar_sha256']
+          PY

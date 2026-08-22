@@ -1,0 +1,27 @@
+{
+  "schema": "ranah-observatory/milestone27-sumbar-global-search-representation-amendment/v1",
+  "milestone": 27,
+  "stage": "stage0k_representation_amendment",
+  "purpose": "correct only the interpretation of BKPM DataTables count fields after the preregistered search probe showed that recordsTotal is rewritten to the post-search count, while preserving the original probe and all value-blind boundaries",
+  "trigger_evidence": "data/manifests/milestone27_bkpm_sumbar_global_search_probe.json",
+  "original_qualification_rule_retained_as_historical_record": true,
+  "observed_transport_semantics": {
+    "positive_search": "recordsTotal equals recordsFiltered after search rather than preserving the unfiltered baseline total",
+    "negative_control": "both recordsTotal and recordsFiltered become zero",
+    "data_array_under_length_zero": "empty"
+  },
+  "why_this_is_representation_only": "the amendment changes no source, pilot, geography target, row selection, period identity, schema, investment value, or scientific estimand; it only interprets endpoint count-field behavior demonstrated by the preregistered positive and negative transport controls",
+  "amended_transport_qualification_rule": "for each locked pilot: positive search must return HTTP 200 JSON with data=[], positive post-search count > 0 and < the separately frozen unfiltered baseline count, positive recordsTotal == recordsFiltered; negative control must return HTTP 200 JSON with data=[] and recordsTotal == recordsFiltered == 0",
+  "positive_search_value_locked_before_probe": "Sumatera Barat",
+  "negative_control_locked_before_probe": "__ranah_observatory_impossible_geography_sentinel_6b12a7__",
+  "source_selection_uses_target_investment_values": false,
+  "target_investment_values_inspection_authorized": false,
+  "numeric_materialization_authorized": false,
+  "quarterly_flow_interpretation_authorized": false,
+  "cross_quarter_additivity_authorized": false,
+  "annual_sum_authorized": false,
+  "geography_mapping_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

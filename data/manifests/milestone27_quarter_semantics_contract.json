@@ -1,0 +1,66 @@
+{
+  "schema": "ranah-observatory/milestone27-quarter-semantics-contract/v1",
+  "milestone": 27,
+  "stage": "stage0b_semantic_continuity_qualification",
+  "contract_locked_before_inventory_coverage_results_reviewed": true,
+  "dependency": "data/manifests/milestone27_bkpm_resource_inventory.json",
+  "evidence_scope": "frozen_official_bkpm_dataset_detail_html_only",
+  "target_period": {
+    "start_year": 2010,
+    "end_year": 2025,
+    "quarters": ["I", "II", "III", "IV"]
+  },
+  "required_semantic_propositions": {
+    "source_system": {
+      "expected_concept": "Laporan Kegiatan Penanaman Modal (LKPM)",
+      "role": "official_reporting_source_identity"
+    },
+    "period_field": {
+      "field": "periode",
+      "expected_concept": "grouped by year and quarter",
+      "role": "quarter_period_identity"
+    },
+    "rupiah_investment_field": {
+      "field": "investasi_rp_juta",
+      "expected_concept": "nilai tambahan realisasi",
+      "expected_unit": "Juta Rupiah",
+      "role": "incremental_reported_realization_metric"
+    },
+    "usd_investment_field": {
+      "field": "investasi_us_ribu",
+      "expected_concept": "nilai tambahan realisasi",
+      "expected_unit": "Ribu US Dolar",
+      "role": "source_native_foreign_currency_realization_metric"
+    },
+    "reporting_frequency": {
+      "expected_concept": "Triwulanan",
+      "role": "collection_and_update_frequency"
+    }
+  },
+  "required_page_period_crosscheck": {
+    "dataset_title_must_match_inventory_year_quarter": true,
+    "description_must_reference_same_year_quarter": true,
+    "period_field_definition_required": true,
+    "investment_field_definition_required": true
+  },
+  "semantic_continuity_decision": {
+    "all_required_propositions_match": "semantic_family_match",
+    "required_proposition_missing": "held_semantic_evidence_incomplete",
+    "required_proposition_conflicts": "held_semantic_discontinuity",
+    "page_period_conflict": "held_period_identity_conflict"
+  },
+  "quarterly_flow_interpretation_authorized_by_this_stage": false,
+  "annual_sum_authorized_by_this_stage": false,
+  "cross_quarter_additivity_authorized_by_this_stage": false,
+  "pma_pmdn_combination_authorized": false,
+  "currency_conversion_authorized": false,
+  "target_investment_values_inspection_authorized": false,
+  "resource_file_download_authorized": false,
+  "resource_header_retrieval_authorized": false,
+  "numeric_aggregation_authorized": false,
+  "geography_mapping_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "next_gate_if_semantic_family_matches": "resource_transport_and_header_only_schema_qualification"
+}

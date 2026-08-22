@@ -21,4 +21,9 @@ Climate and disaster resilience are core development dimensions, not an appendix
 ## Current phase
 v0.1 is a research-foundation sprint: source catalog, geography design, indicator framework, validated initial data, comparative panel prototype, and a small number of defensible case studies before product UI work.
 
+## Development workflow
+Research work uses grouped workstream branches rather than one branch per milestone. Normal work is routed to `research/evidence`, `research/analysis`, or `release/publication`; `main` remains the canonical publication authority.
+
+See `docs/BRANCHING_POLICY.md` for the mandatory branching rules.
+
 See `research/RESEARCH_CHARTER.md` and `docs/ROADMAP_25_DAYS.md`.

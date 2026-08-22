@@ -1,0 +1,76 @@
+name: Milestone 27 BKPM frozen inventory verifier
+
+# Live Stage 0 discovery is frozen. This workflow verifies the committed
+# official listing/detail evidence and never re-fetches BKPM or writes the branch.
+on:
+  pull_request:
+    paths:
+      - research/MILESTONE27_BKPM_INVESTMENT_HISTORY_SPEC.md
+      - data/manifests/milestone27_design_gate.json
+      - data/manifests/milestone27_bkpm_resource_inventory.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv
+      - data/processed/bkpm/m27_resource_inventory/**
+      - .github/workflows/milestone27-bkpm-resource-inventory.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify frozen Stage 0 inventory evidence
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+
+          m = json.loads(Path('data/manifests/milestone27_bkpm_resource_inventory.json').read_text(encoding='utf-8'))
+          assert m['milestone'] == 27
+          assert m['candidate_detail_count'] == 64
+          assert m['distinct_period_count'] == 64
+          assert m['possible_period_count'] == 64
+          assert m['missing_period_count'] == 0
+          assert m['duplicate_period_count'] == 0
+          assert m['declared_expected_schema_complete_period_count'] == 64
+          assert m['resource_file_download_performed'] is False
+          assert m['resource_header_retrieval_performed'] is False
+          assert m['target_investment_values_inspected'] is False
+          assert m['investment_value_aggregation_performed'] is False
+          assert m['annual_sum_performed'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+
+          inventory = Path(m['outputs']['inventory'])
+          assert hashlib.sha256(inventory.read_bytes()).hexdigest() == m['outputs']['inventory_sha256']
+          with inventory.open(newline='', encoding='utf-8') as handle:
+              rows = list(csv.DictReader(handle))
+          assert len(rows) == 64
+          periods = {(int(r['year']), int(r['quarter_number'])) for r in rows}
+          assert periods == {(y, q) for y in range(2010, 2026) for q in range(1, 5)}
+          assert all(r['declared_expected_schema_complete'] == 'true' for r in rows)
+          assert all(r['resource_file_downloaded'] == 'false' for r in rows)
+          assert all(r['target_investment_values_inspected'] == 'false' for r in rows)
+
+          assert len(m['detail_evidence']) == 64
+          for item in m['listing_evidence']:
+              p = Path(item['raw_path'])
+              assert p.exists()
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['raw_sha256']
+          for item in m['detail_evidence']:
+              raw = Path(item['raw_path'])
+              sidecar = Path(item['request_sidecar_path'])
+              assert raw.exists() and sidecar.exists()
+              assert hashlib.sha256(raw.read_bytes()).hexdigest() == item['raw_sha256']
+              assert hashlib.sha256(sidecar.read_bytes()).hexdigest() == item['request_sidecar_sha256']
+          PY
