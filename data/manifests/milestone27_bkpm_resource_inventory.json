@@ -1,7 +1,9 @@
 {
+  "annual_sum_authorized": false,
   "annual_sum_performed": false,
   "candidate_detail_count": 64,
   "causal_claim_created": false,
+  "cross_quarter_additivity_authorized": false,
   "declared_expected_schema_complete_period_count": 64,
   "design_gate": {
     "path": "data/manifests/milestone27_design_gate.json",
@@ -585,12 +587,16 @@
       "year": 2025
     }
   ],
-  "direct_resource_transport_period_count": 64,
+  "direct_resource_transport_period_count": 0,
+  "direct_resource_url_count": 0,
   "distinct_period_count": 64,
   "duplicate_period_count": 0,
   "duplicate_periods": {},
   "external_currency_conversion_performed": false,
+  "false_positive_locator_class": "shared_storage_image_assets",
   "historical_boundary_reconstruction_performed": false,
+  "incremental_reported_realization_semantics_supported_by_page_text": false,
+  "inventory_parser_transport_false_positive_corrected": true,
   "investment_value_aggregation_performed": false,
   "listing_empty_page_seen": true,
   "listing_evidence": [
@@ -734,19 +740,38 @@
   "official_surface": "https://data.bkpm.go.id/",
   "outputs": {
     "inventory": "data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv",
-    "inventory_sha256": "32f277f2002fcdcbdee80bc21fc89af3c67b4b8ec13c91d097d301545bee4a97"
+    "inventory_sha256": "8ba0380c4272d77d50f85085f0e1b471d183bbcba700140fafddc6dea2706590",
+    "semantic_audit": "data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv",
+    "semantic_audit_sha256": "79983d0f2ae1d799a1e3ff85ef4d6a517d97f1813778f9df234d55cd84286a7d"
   },
   "per_capita_normalization_performed": false,
   "period_coverage_inferred_from_adjacent_periods": false,
   "pma_pmdn_combination_performed": false,
   "possible_period_count": 64,
+  "quarter_specific_period_semantics_supported_by_page_text": false,
+  "quarterly_flow_interpretation_authorized": false,
   "ranking_performed": false,
+  "resource_download_action_period_count": 64,
+  "resource_download_action_unique_pair_count": 64,
   "resource_file_download_performed": false,
+  "resource_header_retrieval_authorized": false,
   "resource_header_retrieval_performed": false,
-  "schema": "ranah-observatory/milestone27-bkpm-resource-inventory/v1",
+  "resource_transport_endpoint_qualified": false,
+  "resource_transport_endpoint_resolved_period_count": 0,
+  "schema": "ranah-observatory/milestone27-bkpm-resource-inventory/v2",
+  "semantic_audit": {
+    "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv",
+    "sha256": "79983d0f2ae1d799a1e3ff85ef4d6a517d97f1813778f9df234d55cd84286a7d"
+  },
+  "semantic_contract": {
+    "path": "data/manifests/milestone27_quarter_semantics_contract.json",
+    "sha256": "b9e2b55a727acad58b3e7f463ba393c1f2db97c9b66e84d8c209f688dbd03e1b"
+  },
+  "semantic_family_hold_period_count": 2,
+  "semantic_family_match_period_count": 62,
   "source_candidate_id": "bkpm_satudata_investment",
   "source_selection_uses_target_investment_values": false,
-  "stage": "stage0_value_blind_resource_inventory",
+  "stage": "stage0_inventory_and_semantic_continuity_qualified_transport_pending",
   "stage0_complete": false,
   "statistical_model_fit": false,
   "target_investment_values_inspected": false,
