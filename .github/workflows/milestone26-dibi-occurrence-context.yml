@@ -1,0 +1,137 @@
+name: Milestone 26 DIBI occurrence context
+
+on:
+  pull_request:
+    paths:
+      - scripts/materialize_milestone26_dibi_occurrence_context.py
+      - data/manifests/milestone26_dibi_occurrence_production_contract.json
+      - data/manifests/milestone26_dibi_transport_amendment.json
+      - data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv
+      - data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json
+      - .github/workflows/milestone26-dibi-occurrence-context.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-dibi-occurrence-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/milestone26-disaster-risk-chain
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile DIBI materializer
+        run: python -m py_compile scripts/materialize_milestone26_dibi_occurrence_context.py
+
+      - name: Materialize live DIBI occurrence/context fields
+        run: python -m scripts.materialize_milestone26_dibi_occurrence_context --mode live
+
+      - name: Capture live derived-output hashes
+        run: |
+          sha256sum \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-context.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-provenance.csv \
+            data/manifests/milestone26_stage1_dibi_occurrence_context.json \
+            > /tmp/m26-dibi-live.sha256
+
+      - name: Rebuild derived outputs offline from frozen raw evidence
+        run: python -m scripts.materialize_milestone26_dibi_occurrence_context --mode offline
+
+      - name: Require live and offline derived outputs to be byte-identical
+        run: sha256sum -c /tmp/m26-dibi-live.sha256
+
+      - name: Verify scientific and reproducibility gates
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          import math
+          from pathlib import Path
+
+          manifest_path = Path('data/manifests/milestone26_stage1_dibi_occurrence_context.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone26-stage1-dibi-occurrence-context/v1'
+          assert manifest['source_id'] == 'dibi_kabupaten_hidromet_2015_2024'
+          assert manifest['component_class'] == 'recorded_event_occurrence'
+          assert manifest['claim_type'] == 'recorded_occurrence_context_aggregate'
+          assert manifest['coverage']['declared_start_year'] == 2015
+          assert manifest['coverage']['declared_end_year'] == 2024
+          assert manifest['coverage']['annual_disaggregation_authorized'] is False
+          assert manifest['geography_count'] == 19
+          assert manifest['observation_count'] == 19
+          assert manifest['exact_geography_key_set_pass'] is True
+          assert manifest['retained_source_native_numeric_fields'] == ['Total_basa', 'Total_ba_1', 'Total_keri']
+          assert manifest['source_field_renaming_performed'] is False
+          assert manifest['cross_field_sum_performed'] is False
+          assert manifest['cross_field_ratio_performed'] is False
+          assert manifest['annualization_performed'] is False
+          assert manifest['imputation_performed'] is False
+          assert manifest['semantic_interpretation_of_abbreviated_field_names_performed'] is False
+          assert manifest['transport_fallback_used'] is True
+          assert manifest['transport_fallback_authorized'] is True
+          assert manifest['offline_rebuild_required'] is True
+          assert manifest['live_and_offline_outputs_must_be_byte_identical'] is True
+          assert manifest['event_level_record_inference_performed'] is False
+          assert manifest['observed_impact_inference_performed'] is False
+          assert manifest['substantive_interpretation_performed'] is False
+          assert manifest['cross_component_temporal_aggregation_performed'] is False
+          assert manifest['risk_synthesis_authorized'] is False
+          assert manifest['statistical_model_fit'] is False
+          assert manifest['causal_claim_created'] is False
+          assert manifest['monetary_wasted_potential_estimated'] is False
+          assert manifest['stage1_complete'] is False
+
+          component = Path(manifest['outputs']['component_frame'])
+          provenance = Path(manifest['outputs']['provenance_frame'])
+          assert hashlib.sha256(component.read_bytes()).hexdigest() == manifest['outputs']['component_frame_sha256']
+          assert hashlib.sha256(provenance.read_bytes()).hexdigest() == manifest['outputs']['provenance_frame_sha256']
+
+          with component.open(newline='', encoding='utf-8') as handle:
+              rows = list(csv.DictReader(handle))
+          expected_keys = {1301,1302,1303,1304,1305,1306,1307,1308,1309,1310,1311,1312,1371,1372,1373,1374,1375,1376,1377}
+          assert len(rows) == 19
+          assert {int(row['id_kab_bps']) for row in rows} == expected_keys
+          assert len({row['geography_id'] for row in rows}) == 19
+          for row in rows:
+              key = int(row['id_kab_bps'])
+              assert row['geography_id'] == f'idn.13.{key:04d}'
+              for field in ('Total_basa', 'Total_ba_1', 'Total_keri'):
+                  value = float(row[field])
+                  assert math.isfinite(value) and value >= 0
+              assert row['semantic_interpretation_of_abbreviated_field_names_authorized'] == 'false'
+              assert row['event_level_record_inference_authorized'] == 'false'
+              assert row['observed_impact_inference_authorized'] == 'false'
+              assert row['risk_synthesis_authorized'] == 'false'
+
+          for key in ('preferred_service_runtime_unavailable_evidence', 'raw_response', 'request_sidecar'):
+              item = manifest[key]
+              path = Path(item['path'])
+              assert path.exists()
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == item['sha256']
+          assert Path(manifest['raw_response']['path']).stat().st_size == manifest['raw_response']['bytes']
+          PY
+
+      - name: Commit frozen DIBI occurrence/context evidence
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git add \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-context.csv \
+            data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-provenance.csv \
+            data/manifests/milestone26_stage1_dibi_occurrence_context.json \
+            data/processed/bnpb/m26_dibi_occurrence_context
+          if git diff --cached --quiet; then
+            echo 'DIBI occurrence/context evidence unchanged.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'm26: freeze DIBI 2015-2024 occurrence context'
+          git push origin HEAD:agent/milestone26-disaster-risk-chain
