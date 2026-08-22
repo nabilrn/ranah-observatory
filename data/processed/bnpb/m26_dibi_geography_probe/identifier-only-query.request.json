@@ -1,0 +1,35 @@
+{
+  "fallback_layer_id": 1,
+  "fallback_layer_name": "Kabupaten_basah_kering",
+  "fallback_query_content_type": "application/json; charset=UTF-8",
+  "fallback_query_final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer/1/query?where=1%3D1&outFields=id_kab_bps%2CNAMA_KAB%2CNAMA_PROP%2CKABKOTA%2CNO_PROP%2CNO_KAB&returnGeometry=false&f=json",
+  "fallback_query_requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Hidromet_2015_2024/MapServer/1/query?where=1%3D1&outFields=id_kab_bps%2CNAMA_KAB%2CNAMA_PROP%2CKABKOTA%2CNO_PROP%2CNO_KAB&returnGeometry=false&f=json",
+  "forbidden_numeric_occurrence_fields": [
+    "Total_basa",
+    "Total_ba_1",
+    "Total_keri"
+  ],
+  "numeric_occurrence_fields_requested": false,
+  "preferred_status_content_type": "text/plain; charset=UTF-8",
+  "preferred_status_final_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Kabupaten_2015_2024_Hidromet/MapServer?f=pjson",
+  "preferred_status_path": "data/processed/bnpb/m26_dibi_geography_probe/preferred-service-status.json",
+  "preferred_status_requested_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/DIBI_Kabupaten_2015_2024_Hidromet/MapServer?f=pjson",
+  "preferred_status_sha256": "4a01cb0dca35f37416e677a6e5783cc21b35ae2d1b99165de85e5e99d93810e3",
+  "raw_bytes": 68670,
+  "raw_path": "data/processed/bnpb/m26_dibi_geography_probe/identifier-only-kabupaten.json",
+  "raw_sha256": "baa1e8a8f7882ccc1f3796fd9faa91c7a766787881b1966ccee1c45a9e11bb09",
+  "requested_fields": [
+    "id_kab_bps",
+    "NAMA_KAB",
+    "NAMA_PROP",
+    "KABKOTA",
+    "NO_PROP",
+    "NO_KAB"
+  ],
+  "schema": "ranah-observatory/milestone26-dibi-geography-probe-request/v1",
+  "source_id": "dibi_kabupaten_hidromet_2015_2024",
+  "source_metadata_path": "data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json",
+  "source_metadata_sha256": "c27e1b91f9e8fa8dcc116b3ebd646b64be6de164af6f11813e253787cfc518dc",
+  "transport_amendment_path": "data/manifests/milestone26_dibi_transport_amendment.json",
+  "transport_amendment_sha256": "eedf5c3d1e7873dfb67f1026ae783ed4ccb1901611343e3906b5405a7e4dbc01"
+}
