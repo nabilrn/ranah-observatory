@@ -49,9 +49,20 @@ def main() -> int:
     assert dedicated["target_impact_values_inspected"] is False
     assert dedicated["resource_selected_for_promotion"] is False
 
-    assert contract["stage2a"]["impact_aggregation_authorized"] is False
-    assert contract["stage2a"]["automatic_duplicate_collapse_authorized"] is False
-    assert contract["stage2a"]["stage2b_promotion_authorized"] is False
+    assert contract["schema"] == "ranah-observatory/milestone26-stage2-event-impact-contract/v1"
+    assert contract["contract_locked_before_target_period_event_impact_retrieval"] is True
+    assert contract["stage2a_retrieval_qualification"]["impact_aggregation_authorized"] is False
+    assert contract["event_identity_rule"]["automatic_duplicate_collapse_authorized"] is False
+    assert "only after Stage 2a proves deterministic retrieval" in contract["stage2b_promotion_gate"]
+    for key in (
+        "cross_component_temporal_aggregation_authorized",
+        "risk_synthesis_authorized",
+        "statistical_model_fit_authorized",
+        "causal_claim_authorized",
+        "monetary_loss_inference_authorized",
+        "monetary_wasted_potential_estimate_authorized",
+    ):
+        assert contract[key] is False
 
     payload = {
         "schema": "ranah-observatory/milestone26-stage2-observed-impact-decision/v1",
