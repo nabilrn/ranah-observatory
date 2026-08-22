@@ -1,0 +1,91 @@
+{
+  "causal_claim_created": false,
+  "classification": "post_filter_transport_not_proven",
+  "impact_aggregation_performed": false,
+  "impact_cell_values_inspected": false,
+  "milestone": 26,
+  "monetary_loss_inferred": false,
+  "results": [
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+      "form": null,
+      "header_match": true,
+      "id": "get_default",
+      "impact_cell_values_inspected": false,
+      "method": "GET",
+      "raw_path": "data/processed/bnpb/m26_stage2_transport_diagnostic/get_default.html",
+      "row_count": 80
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+      "form": {
+        "s_kejadian": "BANJIR",
+        "submit": "Cari",
+        "tgl_akhir": "",
+        "tgl_awal": ""
+      },
+      "header_match": true,
+      "id": "post_banjir_event_only",
+      "impact_cell_values_inspected": false,
+      "method": "POST",
+      "raw_path": "data/processed/bnpb/m26_stage2_transport_diagnostic/post_banjir_event_only.html",
+      "row_count": 1
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+      "form": {
+        "s_kejadian": "BANJIR",
+        "submit": "Cari",
+        "tgl_akhir": "31/12/2026",
+        "tgl_awal": "01/01/2026"
+      },
+      "header_match": true,
+      "id": "post_banjir_2026",
+      "impact_cell_values_inspected": false,
+      "method": "POST",
+      "raw_path": "data/processed/bnpb/m26_stage2_transport_diagnostic/post_banjir_2026.html",
+      "row_count": 0
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+      "form": {
+        "s_kejadian": "TANAH LONGSOR",
+        "submit": "Cari",
+        "tgl_akhir": "31/12/2026",
+        "tgl_awal": "01/01/2026"
+      },
+      "header_match": true,
+      "id": "post_tanah_longsor_2026",
+      "impact_cell_values_inspected": false,
+      "method": "POST",
+      "raw_path": "data/processed/bnpb/m26_stage2_transport_diagnostic/post_tanah_longsor_2026.html",
+      "row_count": 0
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "final_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+      "form": {
+        "s_kejadian": "BANJIR",
+        "submit": "Cari",
+        "tgl_akhir": "31/12/2024",
+        "tgl_awal": "01/01/2024"
+      },
+      "header_match": true,
+      "id": "post_banjir_2024_repeat",
+      "impact_cell_values_inspected": false,
+      "method": "POST",
+      "raw_path": "data/processed/bnpb/m26_stage2_transport_diagnostic/post_banjir_2024_repeat.html",
+      "row_count": 0
+    }
+  ],
+  "risk_synthesis_authorized": false,
+  "row_level_impact_promotion_authorized": false,
+  "schema": "ranah-observatory/milestone26-stage2a-transport-diagnostic/v1",
+  "stage": "2a_event_impact_transport_diagnostic",
+  "target_2024_row_count_observed": 0,
+  "target_contract_changed": false
+}
