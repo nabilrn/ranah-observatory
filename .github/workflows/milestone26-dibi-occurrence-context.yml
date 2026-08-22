@@ -1,5 +1,6 @@
 name: Milestone 26 DIBI occurrence context
 
+# Representation-only geography correction is frozen before numeric extraction.
 on:
   pull_request:
     paths:
