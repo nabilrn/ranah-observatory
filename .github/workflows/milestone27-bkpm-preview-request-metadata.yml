@@ -33,7 +33,7 @@ jobs:
       - name: Audit request construction from frozen HTML only
         run: python scripts/audit_milestone27_bkpm_preview_request_metadata.py
 
-      - name: Verify boundaries
+      - name: Verify boundaries and resolved request metadata
         run: |
           python - <<'PY'
           import json
@@ -44,7 +44,15 @@ jobs:
           assert m['pilot_count'] == 3
           assert m['target_route'] == 'https://data.bkpm.go.id/data'
           assert m['offline_frozen_html_only'] is True
+          assert m['request_metadata_consistent_across_pilots'] is True
+          assert m['request_metadata_resolved'] is True
           assert {(r['year'], r['quarter']) for r in m['pilot_results']} == {(2010, 'I'), (2025, 'II'), (2025, 'IV')}
+          for r in m['pilot_results']:
+              assert r['target_route_match_count'] == 2
+              assert r['http_methods'] == ['GET']
+              assert r['request_parameter_key_names'] == ['dataset_detail_parent_id']
+              assert r['datatable_flags']['serverSide'] is True
+              assert r['datatable_flags']['processing'] is True
           for key in (
               'request_parameter_values_extracted',
               'csrf_or_token_values_extracted',
@@ -73,7 +81,8 @@ jobs:
           print({
               'resolved': m['request_metadata_resolved'],
               'consistent': m['request_metadata_consistent_across_pilots'],
-              'methods': sorted({r['http_method'] for r in m['pilot_results']}),
+              'match_counts': sorted({r['target_route_match_count'] for r in m['pilot_results']}),
+              'methods': sorted({tuple(r['http_methods']) for r in m['pilot_results']}),
               'parameter_keys': sorted({tuple(r['request_parameter_key_names']) for r in m['pilot_results']}),
           })
           PY
