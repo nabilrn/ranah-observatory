@@ -2,6 +2,18 @@ name: Milestone 26 DIBI occurrence context
 
 # Representation-only geography correction is frozen before numeric extraction.
 on:
+  push:
+    branches:
+      - agent/milestone26-disaster-risk-chain
+    paths:
+      - scripts/materialize_milestone26_dibi_occurrence_context.py
+      - data/manifests/milestone26_dibi_occurrence_production_contract.json
+      - data/manifests/milestone26_dibi_geography_representation_amendment.json
+      - data/manifests/milestone26_dibi_geography_representation_probe.json
+      - data/manifests/milestone26_dibi_transport_amendment.json
+      - data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv
+      - data/processed/bnpb/m26_source_qualification/dibi_kabupaten_hidromet_2015_2024.json
+      - .github/workflows/milestone26-dibi-occurrence-context.yml
   pull_request:
     paths:
       - scripts/materialize_milestone26_dibi_occurrence_context.py
@@ -16,6 +28,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: milestone26-dibi-occurrence-context-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   materialize-dibi-occurrence-context:
@@ -127,7 +143,7 @@ jobs:
           PY
 
       - name: Commit frozen DIBI occurrence/context evidence
-        if: github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository)
         run: |
           git add \
             data/analysis/engine/disaster_risk_chain_v1/m26-stage1-dibi-occurrence-context.csv \
