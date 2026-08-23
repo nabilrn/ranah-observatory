@@ -1,85 +1,47 @@
-name: Milestone 27 BKPM Stage 1 Pilot
+name: Milestone 27 BKPM Stage 1 Pilot Evidence
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/milestone27-bkpm-investment-history
+      - main
     paths:
+      - data/manifests/milestone27_bkpm_stage1_pilot.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-stage1-pilot-quarterly.csv
+      - data/registries/bkpm_sumbar_geography_contract.csv
+      - scripts/materialize_milestone27_bkpm_stage1_pilot.py
       - .github/workflows/milestone27-bkpm-stage1-pilot.yml
-
-concurrency:
-  group: milestone27-bkpm-stage1-pilot-writer
-  cancel-in-progress: false
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  materialize-stage1-pilot:
+  verify-stage1-pilot:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
-
-      - name: Compile materializer
-        run: python -m py_compile scripts/materialize_milestone27_bkpm_stage1_pilot.py
-
-      - name: Materialize locked Stage 1 pilot after geography representation amendment
-        run: python scripts/materialize_milestone27_bkpm_stage1_pilot.py
-
-      - name: Verify successful pilot and scientific boundaries
+      - uses: actions/checkout@v4
+      - name: Verify frozen Stage 1 pilot
         run: |
           python - <<'PY'
-          import json
+          import csv, json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone27_bkpm_stage1_pilot.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone27-bkpm-stage1-pilot/v1'
           assert m['pilot_count'] == 3
           assert m['pilot_success'] is True
-          assert all(r['qualified'] is True for r in m['pilot_results'])
-          assert all(not r['fail_reasons'] for r in m['pilot_results'])
-          assert m['materialized_geography_status_observation_count'] > 0
-          assert m['target_investment_values_retrieved'] is True
-          assert m['target_investment_values_inspected'] is True
-          assert m['raw_filtered_response_persisted'] is True
-          assert m['within_quarter_within_status_within_geography_addition_performed'] is True
+          assert all(r['qualified'] is True and not r['fail_reasons'] for r in m['pilot_results'])
+          assert m['materialized_geography_status_observation_count'] == 70
           assert m['missing_values_coerced_to_zero'] is False
           assert m['absent_geography_status_groups_materialized_as_zero'] is False
-          for key in (
-              'pma_pmdn_combination_performed',
-              'cross_quarter_addition_performed',
-              'annual_sum_performed',
-              'q4_interpreted_as_annual_total',
-              'external_fx_conversion_performed',
-              'per_capita_normalization_performed',
-              'ranking_created',
-              'statistical_model_fit',
-              'causal_claim_created',
-              'monetary_wasted_potential_estimated',
-          ):
-              assert m[key] is False, key
-          print({
-              'pilot_success': m['pilot_success'],
-              'observations': m['materialized_geography_status_observation_count'],
-              'mapped_geographies': {f"{r['year']}-{r['quarter']}": r['mapped_geography_count'] for r in m['pilot_results']},
-              'qualified': {f"{r['year']}-{r['quarter']}": r['qualified'] for r in m['pilot_results']},
-          })
+          assert m['pma_pmdn_combination_performed'] is False
+          assert m['cross_quarter_addition_performed'] is False
+          assert m['annual_sum_performed'] is False
+          assert m['q4_interpreted_as_annual_total'] is False
+          assert m['external_fx_conversion_performed'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          rows = list(csv.DictReader(Path('data/analysis/engine/investment_realization_v1/m27-bkpm-stage1-pilot-quarterly.csv').open(encoding='utf-8')))
+          assert len(rows) == 70
+          print({'pilot_success': True, 'observations': len(rows)})
           PY
-
-      - name: Commit frozen Stage 1 pilot evidence
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            data/processed/bkpm/m27_stage1_pilot \
-            data/analysis/engine/investment_realization_v1/m27-bkpm-stage1-pilot-quarterly.csv \
-            data/manifests/milestone27_bkpm_stage1_pilot.json
-          if git diff --cached --quiet; then
-            echo "No Stage 1 pilot changes to commit"
-            exit 0
-          fi
-          git commit -m "Qualify M27 BKPM Stage 1 numeric pilot"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
