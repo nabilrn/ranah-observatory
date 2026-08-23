@@ -1,0 +1,81 @@
+{
+  "affiliation": "Independent Researcher",
+  "author": "Nabil Rizki Navisa",
+  "canonical_pdf": {
+    "path": "publication/v0.1/distribution/Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf",
+    "sha256": "5325b209acb37d622151fe2ce898edd28e5d25bf4176d660e50754cae06e888a"
+  },
+  "corresponding_author_contact": null,
+  "distribution_freeze_commit": "cbdadc11de3e37995ad5ebeb97727edd5824401d",
+  "distribution_manifest": {
+    "path": "publication/v0.1/distribution/distribution-manifest.json",
+    "sha256": "a78c2ca5534aa04224b2c2bed9d8b5a53803d3fde7d130ee3b1d71edfb28383a"
+  },
+  "doi": null,
+  "external_deposit_performed": false,
+  "external_publish_authorized": false,
+  "github_release_performed": false,
+  "hard_blockers": [
+    {
+      "id": "explicit_external_publish_authorization",
+      "reason": "External publication is irreversible enough to require an explicit author instruction to publish/deposit.",
+      "status": "pending"
+    },
+    {
+      "id": "corresponding_author_contact",
+      "reason": "M32 intentionally left corresponding_author_contact unset for confirmation before external deposit.",
+      "status": "pending"
+    }
+  ],
+  "optional_predeposit_enrichment": [
+    {
+      "id": "orcid",
+      "status": "unset_optional",
+      "value": null
+    }
+  ],
+  "orcid": null,
+  "post_deposit_fields": [
+    {
+      "id": "doi",
+      "status": "pending_deposit",
+      "value": null
+    }
+  ],
+  "publication_license": "CC-BY-4.0",
+  "publish_sequence": [
+    "Confirm corresponding-author contact and explicit authorization to publish externally.",
+    "Create a Zenodo draft record without publishing it.",
+    "Upload the canonical PDF and SHA256SUMS.txt only; do not silently redistribute third-party source datasets.",
+    "Apply publication/v0.1/submission/zenodo-deposit.json metadata verbatim except confirmed contact/ORCID additions.",
+    "Verify title, creator, affiliation, version, license, access right, and canonical PDF SHA-256 before publication.",
+    "Publish the Zenodo record only after explicit author authorization.",
+    "Capture the assigned DOI and update repository publication metadata in a new audited commit."
+  ],
+  "recommended_upload_set": [
+    "publication/v0.1/distribution/Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf",
+    "publication/v0.1/distribution/SHA256SUMS.txt"
+  ],
+  "release": "v0.1",
+  "schema": "ranah-observatory/publication-v0.1-external-deposit-handoff/v1",
+  "science_boundary": {
+    "blocked_claim_count_retained": 9,
+    "claim_upgrade_performed": false,
+    "new_analytical_source_acquisition": false,
+    "new_statistical_or_ml_model_fit": false
+  },
+  "status": "awaiting_explicit_external_authorization",
+  "submission_metadata": {
+    "path": "publication/v0.1/submission/metadata.json",
+    "sha256": "532d97ac49f11bc3980e5704b7c2bf747d9f30b8a6f15203a6e33a4fb0b7989c"
+  },
+  "target_repository": "Zenodo",
+  "zenodo_metadata": {
+    "access_right": "open",
+    "license": "cc-by-4.0",
+    "path": "publication/v0.1/submission/zenodo-deposit.json",
+    "publication_type": "preprint",
+    "sha256": "49480582125d2685b5f978291a9dc5a590f6a0ed7c367bf45e4a3b9dc088763a",
+    "upload_type": "publication"
+  }
+}
