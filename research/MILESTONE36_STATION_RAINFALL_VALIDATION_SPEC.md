@@ -28,7 +28,7 @@ The first numerical overlap target is deliberately restricted to **1997–1998**
 Before inspecting or aggregating target precipitation values:
 
 1. retain the BMKG WIS2/DayCLI negative transport result as prior repository evidence;
-2. re-check the current BMKG WIS2 station identity only as a station-history guard;
+2. re-check the current BMKG WIS2 station identity only as a diagnostic station-history guard, allowing the prior qualified repository result to remain authoritative if the live host blocks hosted runners;
 3. probe NOAA/NCEI public archive representations without choosing a representation based on rainfall magnitude;
 4. test candidate identifier representations in this locked order:
    - GHCN/NCEI: `IDM00096163`;
@@ -38,26 +38,53 @@ Before inspecting or aggregating target precipitation values:
 
 A failed candidate is retained as a negative transport/coverage result. No post-hoc station shopping is permitted in M36.
 
+### Stage 0 result
+
+The live read-only Stage 0 qualification completed before any target precipitation aggregation.
+
+- Daily Summaries / GHCN candidate `IDM00096163` did not provide qualifying 1997–1998 coverage through the locked probe.
+- GSOD candidate `96163099999` exposed both 1997 and 1998 files with station name `TABING, ID` and coordinates approximately `-0.874989, 100.351881`, within the pre-tightened historical-coordinate guard around BMKG Padang/Tabing.
+- The GSOD representation is therefore the **locked Stage 1 representation**. This is a fallback determined by the preregistered candidate order and identity/coverage criteria, not by precipitation magnitude.
+- The BMKG WIS2 current-station recheck returned HTTP 403 from the hosted runner; this does not erase the already-qualified current Minangkabau identity from closed PR #20 and is retained as a transport diagnostic.
+
 ## Stage 1 — bounded 1997–1998 precipitation overlap
 
-Stage 1 may execute only after Stage 0 qualifies a historical Padang/Tabing representation.
+Stage 1 may execute only after Stage 0 qualifies a historical Padang/Tabing representation. Stage 0 has authorized the fixed GSOD representation `96163099999`.
 
-Preferred numerical source: NCEI Daily Summaries / GHCN-Daily precipitation (`PRCP`). A source-native annual product may be used as a preregistered cross-check, not as a replacement selected because its result is more convenient.
+The numerical inputs are exactly the NCEI GSOD CSVs for station `96163099999` for calendar years 1997 and 1998. No alternate station or year may be substituted after numerical values are inspected.
 
-Rules:
+### Locked completeness rules
 
-- missing precipitation is never converted to zero;
-- trace/missing flags retain source semantics;
-- yearly totals require an explicit completeness audit;
-- if coverage is insufficient for an annual comparison, the result is held rather than imputed;
-- point-station totals are not expected to equal CHIRPS polygon means;
-- the primary validation object is the **direction of the 1997→1998 annual change**, not magnitude equality.
+These rules are frozen **before the first Stage 1 numerical run**:
 
-Possible classifications are exactly:
+1. A calendar year is numerically comparable only if at least **90% of its calendar days** have source-valid `PRCP` values. Both target years are non-leap years, so the minimum is `ceil(0.90 × 365) = 329` valid precipitation days.
+2. A comparable year must not contain a run of more than **31 consecutive calendar days** without a source-valid precipitation value.
+3. Blank/non-numeric precipitation and source missing sentinels are missing. Missing precipitation is never converted to zero.
+4. GSOD `PRCP=99.99` (and values in the reserved missing-sentinel range `>=99.0` inches) are treated as missing, never as rainfall. The raw source value remains auditable in the frozen source file.
+5. Valid non-missing GSOD `PRCP` is interpreted in source units of inches; millimetres are reported using the exact conversion `1 inch = 25.4 mm`.
+6. Duplicate dates, wrong years, wrong station identifiers, non-Tabing aliases, or coordinates outside the locked historical guard invalidate the affected source file rather than being silently repaired.
+7. Source-row absence and present-row/missing-PRCP are reported separately.
+8. Completeness is evaluated before annual totals are admitted to the comparison.
 
-- `station_overlap_directionally_supportive`;
-- `station_overlap_directionally_discordant`;
-- `station_overlap_incomplete_or_noncomparable`.
+NCEI documents GSOD precipitation as a daily total derived from synoptic/hourly observations, with precipitation totals appearing only when reports are sufficient. Non-U.S. GSOD daily summaries are UTC-based and may include a portion of the previous local day; M36 therefore treats annual totals as an independent directional overlap check, not exact local-calendar equivalence.
+
+### Locked comparison rule
+
+If **both** years pass the completeness rules:
+
+- compute the sum of valid daily GSOD precipitation for each year;
+- compute `delta = total_1998 - total_1997`;
+- compare only the **sign** of that delta with the frozen CHIRPS regional finding that all 19 current-boundary geographies are wetter in 1998 than 1997.
+
+Magnitude equality is not a target because a point station and polygon-mean gridded estimates are different estimands.
+
+The classification is exactly one of:
+
+- `station_overlap_directionally_supportive` if both years pass and `total_1998 > total_1997`;
+- `station_overlap_directionally_discordant` if both years pass and `total_1998 <= total_1997`;
+- `station_overlap_incomplete_or_noncomparable` if either year fails completeness or source-identity validation.
+
+No threshold or source may be changed after the first numerical run because of the observed classification.
 
 Even a supportive result does not set global CHIRPS station validation to complete from one station.
 
@@ -83,14 +110,14 @@ M36 does not authorize:
 - a monetary wasted-potential estimate;
 - a policy ranking.
 
-## Sources used to lock Stage 0
+## Sources used to lock the design
 
 - BMKG WIS2 OGC API station/DayCLI surfaces: `https://wis2node.bmkg.go.id/oapi`
 - BMKG Regulation No. 20/2014 Data Policy station list: `https://iklim.bmkg.go.id/publikasi-klimat/ftp/regulasi-brosur/Perka_20.2014_Data_Policy.pdf`
 - NOAA/NCEI Access Data Service documentation: `https://www.ncei.noaa.gov/access/search/documentation/data-service/`
 - NOAA/NCEI Access Search Service documentation: `https://www.ncei.noaa.gov/access/search/documentation/search-service/`
 - NOAA/NCEI Daily Summaries / GHCN-Daily dataset.
-- NOAA/NCEI Global Surface Summary of the Day dataset.
+- NOAA/NCEI Global Surface Summary of the Day dataset and GSOD readme.
 
 ## Closure rule
 
@@ -98,8 +125,9 @@ M36 is complete only when the repository contains a deterministic record of:
 
 1. the station-history break guard;
 2. Stage 0 archive representation/coverage results;
-3. if qualified, Stage 1 1997–1998 precipitation completeness and directional comparison;
+3. Stage 1 1997–1998 precipitation completeness and directional comparison, or a frozen held result;
 4. all failed/held paths;
-5. an offline reproducibility check over the frozen source evidence used for any numerical result.
+5. raw source-file hashes for any numerical result;
+6. an offline reproducibility check over the frozen source evidence used for any numerical result.
 
 No publication package is modified by M36.
