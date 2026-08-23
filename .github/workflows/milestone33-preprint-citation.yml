@@ -1,0 +1,139 @@
+name: Milestone 33 Citation-Ready Preprint
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/milestone29-publication-v0.1.yml
+      - .github/workflows/milestone33-preprint-citation.yml
+      - CITATION.cff
+      - publication/v0.1/MILESTONE33_CITATION_APPARATUS.md
+      - publication/v0.1/references.bib
+      - publication/v0.1/reference-map.csv
+      - publication/v0.1/tools/build_preprint.py
+      - publication/v0.1/preprint/**
+
+permissions:
+  contents: read
+
+jobs:
+  certify-citation-ready-preprint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require M33 editorial-only scope
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              '.github/workflows/milestone29-publication-v0.1.yml',
+              '.github/workflows/milestone33-preprint-citation.yml',
+              'CITATION.cff',
+              'publication/v0.1/MILESTONE33_CITATION_APPARATUS.md',
+              'publication/v0.1/references.bib',
+              'publication/v0.1/reference-map.csv',
+              'publication/v0.1/tools/build_preprint.py',
+          }
+          changed = subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'], text=True).splitlines()
+          offenders = [p for p in changed if p not in allowed and not p.startswith('publication/v0.1/preprint/')]
+          assert not offenders, offenders
+          print({'changed_files': len(changed), 'unauthorized_paths': 0})
+          PY
+
+      - name: Preserve M29 scientific publication freeze
+        run: python scripts/audit_milestone29_publication_v0_1.py
+
+      - name: Rebuild and verify M30 canonical assets
+        run: |
+          python publication/v0.1/tools/build_assets.py
+          git diff --exit-code -- publication/v0.1/rendered
+          test -z "$(git status --porcelain -- publication/v0.1/rendered)"
+
+      - name: Rebuild and verify M31 finalized submission package
+        run: |
+          python publication/v0.1/tools/finalize_submission_metadata.py
+          git diff --exit-code -- publication/v0.1/submission
+          test -z "$(git status --porcelain -- publication/v0.1/submission)"
+
+      - name: Build M33 citation-ready preprint
+        run: python publication/v0.1/tools/build_preprint.py
+
+      - name: Validate citation and scientific-boundary contract
+        run: |
+          python - <<'PY'
+          import csv, json, re
+          from pathlib import Path
+          root = Path('publication/v0.1')
+          pre = root/'preprint'
+          required = {'README.md','preprint.md','references.md','reference-map.csv','preprint-manifest.json'}
+          assert {p.name for p in pre.iterdir() if p.is_file()} == required
+
+          with (root/'reference-map.csv').open(encoding='utf-8', newline='') as h:
+              mapping = list(csv.DictReader(h))
+          assert len(mapping) == 16
+          ref_ids = {r['reference_id'] for r in mapping}
+          assert len(ref_ids) == 16
+
+          bib = (root/'references.bib').read_text(encoding='utf-8')
+          bib_ids = set(re.findall(r'@[A-Za-z]+\{([^,\s]+),', bib))
+          assert bib_ids == ref_ids
+
+          manuscript = (pre/'preprint.md').read_text(encoding='utf-8')
+          assert '**Nabil Rizki Navisa**' in manuscript
+          assert 'Independent Researcher' in manuscript
+          assert 'CC BY 4.0' in manuscript
+          for ref_id in ref_ids:
+              assert f'[{ref_id}]' in manuscript
+
+          blocked = {
+              'B01_MONETARY_WASTED_POTENTIAL','B02_THEORETICAL_MAXIMUM','B03_CAUSAL_RESIDUAL',
+              'B04_GUARANTEED_POLICY_GAIN','B05_CAUSAL_RAINFALL_UNEMPLOYMENT','B06_EVENT_COUNTS_AS_IMPACT',
+              'B07_COMPOSITE_DISASTER_RISK','B08_SENSITIVITY_AS_POLICY_EFFECT','B09_POLICY_RANKING'
+          }
+          assert all(b in manuscript for b in blocked)
+
+          meta = json.loads((pre/'preprint-manifest.json').read_text(encoding='utf-8'))
+          assert meta['reference_count'] == 16
+          assert meta['author'] == 'Nabil Rizki Navisa'
+          assert meta['affiliation'] == 'Independent Researcher'
+          assert meta['publication_license'] == 'CC-BY-4.0'
+          assert meta['editorial_reference_acquisition'] is True
+          assert meta['new_analytical_source_acquisition'] is False
+          assert meta['new_statistical_or_ml_model_fit'] is False
+          assert meta['claim_upgrade_performed'] is False
+          assert set(meta['blocked_claims_retained']) == blocked
+
+          cff = Path('CITATION.cff').read_text(encoding='utf-8')
+          assert 'family-names: Navisa' in cff
+          assert 'given-names: Nabil Rizki' in cff
+          assert 'license: CC-BY-4.0' in cff
+          assert 'date-released: 2026-08-23' in cff
+          print({'references': 16, 'author': 'Nabil Rizki Navisa', 'blocked_claims': 9, 'claim_upgrade': False})
+          PY
+
+      - name: Upload verified citation-ready preprint
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-v0.1-citation-ready-preprint
+          path: publication/v0.1/preprint
+          retention-days: 7
+
+      - name: Require byte-identical canonical preprint layer
+        run: |
+          git diff --exit-code -- publication/v0.1/preprint
+          test -z "$(git status --porcelain -- publication/v0.1/preprint)"
+
+      - name: Require no upstream scientific changes
+        run: |
+          git diff --exit-code origin/main...HEAD -- \
+            data \
+            docs \
+            research/MILESTONE0* \
+            research/MILESTONE1* \
+            research/MILESTONE2* \
+            scripts/build_milestone* \
+            scripts/finalize_milestone*

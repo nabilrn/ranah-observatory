@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - .github/workflows/milestone29-publication-v0.1.yml
+      - .github/workflows/milestone33-preprint-citation.yml
+      - CITATION.cff
       - data/manifests/milestone29_publication_design_gate.json
       - publication/v0.1/**
       - research/MILESTONE29_PUBLICATION_FREEZE_V0_1_SPEC.md
@@ -31,6 +33,8 @@ jobs:
           allowed_exact = {
               '.github/workflows/milestone29-publication-v0.1.yml',
               '.github/workflows/milestone31-publication-submission.yml',
+              '.github/workflows/milestone33-preprint-citation.yml',
+              'CITATION.cff',
               'data/manifests/milestone29_publication_design_gate.json',
               'research/MILESTONE29_PUBLICATION_FREEZE_V0_1_SPEC.md',
               'scripts/audit_milestone29_publication_v0_1.py',
