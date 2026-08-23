@@ -11,8 +11,10 @@ class Milestone36StationArchiveTests(unittest.TestCase):
     def test_historical_identity_guards(self) -> None:
         self.assertTrue(m36.historical_name_ok("PADANG/TABING"))
         self.assertTrue(m36.historical_name_ok("PADANG / TABING"))
+        self.assertTrue(m36.historical_name_ok("TABING, ID"))
         self.assertFalse(m36.historical_name_ok("PADANG PARIAMAN/MINANGKABAU"))
         self.assertTrue(m36.coordinate_ok(-0.8833, 100.35))
+        self.assertTrue(m36.coordinate_ok(-0.874989, 100.351881))
         self.assertFalse(m36.coordinate_ok(-0.7936, 100.2892))
 
     def test_current_minangkabau_identity_triggers_break_guard(self) -> None:
@@ -37,13 +39,30 @@ class Milestone36StationArchiveTests(unittest.TestCase):
         }
         with patch.object(m36, "fetch", return_value=fake):
             result = m36.probe_current_bmkg_station()
-        self.assertTrue(result["current_minangkabau_identity_qualified"])
+        self.assertTrue(result["live_current_minangkabau_identity_qualified"])
+        self.assertTrue(result["station_history_break_guard_triggered"])
+        self.assertTrue(result["prior_repository_current_identity"]["identity_qualified"])
+
+    def test_prior_break_guard_survives_live_transport_block(self) -> None:
+        fake = {
+            "url": m36.BMKG_CURRENT_STATION_URL,
+            "reachable": True,
+            "http_status": 403,
+            "content_type": "text/html",
+            "content_range": None,
+            "bytes": 3,
+            "sha256": "3" * 64,
+            "body": b"403",
+        }
+        with patch.object(m36, "fetch", return_value=fake):
+            result = m36.probe_current_bmkg_station()
+        self.assertFalse(result["live_current_minangkabau_identity_qualified"])
         self.assertTrue(result["station_history_break_guard_triggered"])
 
     def test_gsod_identity_never_parses_precipitation(self) -> None:
         csv_body = (
             'STATION,DATE,LATITUDE,LONGITUDE,ELEVATION,NAME,PRCP,PRCP_ATTRIBUTES\n'
-            '96163099999,1997-01-01,-0.883,100.350,3.0,"PADANG/TABING",999.9,"A"\n'
+            '96163099999,1997-01-01,-0.874989,100.351881,3.0,"TABING, ID",999.9,"A"\n'
         ).encode()
         fake = {
             "url": "https://example.invalid",
