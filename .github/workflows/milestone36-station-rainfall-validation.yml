@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   station-overlap-qualification:
@@ -28,6 +28,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - uses: actions/setup-python@v5
         with:
@@ -200,6 +201,35 @@ jobs:
           })
           PY
 
+      - name: Upload finalized canonical-form evidence candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone36-finalized-evidence-candidate
+          path: artifacts/m36/finalized
+          retention-days: 7
+
+      - name: One-time freeze validated M36 evidence
+        run: |
+          rm -rf data/validation/climate/station/m36
+          mkdir -p data/validation/climate/station/m36
+          cp -a artifacts/m36/finalized/. data/validation/climate/station/m36/
+          git add data/validation/climate/station/m36
+          if git diff --cached --quiet; then
+            echo "canonical M36 evidence already frozen"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Freeze validated M36 station rainfall evidence"
+          git push origin "HEAD:${GITHUB_HEAD_REF}"
+
+      - name: Require byte-identical canonical M36 evidence
+        run: |
+          test -d data/validation/climate/station/m36
+          diff -qr artifacts/m36/finalized data/validation/climate/station/m36
+          git diff --exit-code -- data/validation/climate/station/m36
+          test -z "$(git status --porcelain -- data/validation/climate/station/m36)"
+
       - name: Require no change to frozen CHIRPS or publication outputs
         if: github.event_name == 'pull_request'
         run: |
@@ -222,14 +252,5 @@ jobs:
         with:
           name: milestone36-stage1-station-overlap-candidate
           path: artifacts/m36/stage1
-          if-no-files-found: ignore
-          retention-days: 7
-
-      - name: Upload finalized canonical-form evidence candidate
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: milestone36-finalized-evidence-candidate
-          path: artifacts/m36/finalized
           if-no-files-found: ignore
           retention-days: 7
