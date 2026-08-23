@@ -1,0 +1,56 @@
+{
+  "schema": "ranah-observatory/publication-v0.1-completeness-certificate/v1",
+  "release": "v0.1",
+  "frozen_research_base_commit": "e1571e63fd19222c0f6112d340b61ed5d7996e58",
+  "offline_verification_passed": true,
+  "claim_count": 30,
+  "state_counts": {
+    "blocked": 9,
+    "context_only": 5,
+    "publishable_bounded": 11,
+    "publishable_negative_result": 5
+  },
+  "evidence_row_count": 17,
+  "table_plan_count": 7,
+  "figure_plan_count": 6,
+  "manuscript_unique_claim_reference_count": 30,
+  "all_ledger_claims_referenced_in_manuscript": true,
+  "required_negative_results_retained": true,
+  "required_negative_claim_ids": [
+    "C08_EARTHQUAKE_NULL",
+    "N19_FORECAST_FAILURE",
+    "N20_MONOTONIC_RAINFALL",
+    "N21_REGIME_SHIFT",
+    "N22_SCHOOLING_POVERTY_TRAJECTORY"
+  ],
+  "all_nine_m18_blocked_claims_retained": true,
+  "blocked_claim_ids": [
+    "B01_MONETARY_WASTED_POTENTIAL",
+    "B02_THEORETICAL_MAXIMUM",
+    "B03_CAUSAL_RESIDUAL",
+    "B04_GUARANTEED_POLICY_GAIN",
+    "B05_CAUSAL_RAINFALL_UNEMPLOYMENT",
+    "B06_EVENT_COUNTS_AS_IMPACT",
+    "B07_COMPOSITE_DISASTER_RISK",
+    "B08_SENSITIVITY_AS_POLICY_EFFECT",
+    "B09_POLICY_RANKING"
+  ],
+  "context_only_claim_ids": [
+    "X24_NATIONAL_COMPARATOR",
+    "X25_PUBLIC_FINANCE",
+    "X26_DISASTER_COMPONENTS",
+    "X27_INVESTMENT_HISTORY",
+    "X28_BROADER_PANEL"
+  ],
+  "new_source_acquisition_performed_in_m29": false,
+  "new_statistical_or_ml_model_fit_performed_in_m29": false,
+  "posthoc_model_search_performed_in_m29": false,
+  "imputation_performed_in_m29": false,
+  "new_composite_score_created_in_m29": false,
+  "monetary_gap_aggregation_performed_in_m29": false,
+  "causal_claim_upgrade_performed_in_m29": false,
+  "policy_or_cost_benefit_ranking_performed_in_m29": false,
+  "bmkg_station_daily_validation_required_for_v0_1": false,
+  "auditor": "scripts/audit_milestone29_publication_v0_1.py",
+  "certificate_semantics": "Deterministic offline package-completeness and claim-registry consistency certificate. It does not independently re-estimate upstream models; upstream scientific results remain frozen at the declared research-base commit."
+}
