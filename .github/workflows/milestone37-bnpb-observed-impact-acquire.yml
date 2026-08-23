@@ -1,4 +1,4 @@
-# retrigger: 2026-08-24 M37 evidence freeze
+# temporary writer: retire before merge
 name: Milestone 37 BNPB Observed Impact Acquisition
 
 on:
@@ -7,6 +7,14 @@ on:
       - research/evidence
     paths:
       - ".github/workflows/milestone37-bnpb-observed-impact-acquire.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone37-bnpb-observed-impact-acquire.yml"
+      - "scripts/build_milestone37_bnpb_observed_impact.py"
+      - "tests/test_milestone37_bnpb_observed_impact.py"
+      - "research/MILESTONE37_BNPB_OBSERVED_IMPACT_CONTEXT.md"
   workflow_dispatch:
 
 permissions:
