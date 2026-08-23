@@ -6,7 +6,10 @@ import json
 import shutil
 from pathlib import Path
 
-from scripts import build_milestone36_station_overlap as overlap
+try:
+    from scripts import build_milestone36_station_overlap as overlap
+except ModuleNotFoundError:
+    import build_milestone36_station_overlap as overlap
 
 FIRST_STAGE0_SUCCESS_RUN = 32645859174
 FIRST_STAGE0_ARTIFACT_DIGEST = "sha256:b2cd66500cd8d4826270435708a5f2fcd7a413a16e323b840c8881a2dd7ad002"
