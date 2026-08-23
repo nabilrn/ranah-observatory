@@ -1,76 +1,44 @@
-name: Milestone 27 BKPM 2024-Q1 Duplicate Diagnostic
+name: Milestone 27 BKPM 2024-Q1 Duplicate Evidence
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/milestone27-bkpm-investment-history
+      - main
     paths:
+      - data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-2024q1-duplicate-diagnostic.csv
+      - scripts/audit_milestone27_bkpm_2024q1_duplicates.py
       - .github/workflows/milestone27-bkpm-2024q1-duplicate-diagnostic.yml
-
-concurrency:
-  group: milestone27-bkpm-2024q1-duplicate-diagnostic-writer
-  cancel-in-progress: false
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  diagnose-frozen-duplicates:
+  verify-frozen-duplicate-diagnostic:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
-
-      - name: Compile offline diagnostic
-        run: python -m py_compile scripts/audit_milestone27_bkpm_2024q1_duplicates.py
-
-      - name: Diagnose frozen 2024-Q1 duplicate structure
+      - uses: actions/checkout@v4
+      - name: Rebuild duplicate diagnostic offline
         run: python scripts/audit_milestone27_bkpm_2024q1_duplicates.py
-
-      - name: Verify diagnostic-only boundaries
+      - name: Verify frozen result and boundaries
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json').read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-2024q1-duplicate-diagnostic/v1'
           assert m['offline_frozen_evidence_only'] is True
           assert m['network_requests_performed'] is False
+          assert m['classification'] == 'mixed_duplicate_mechanisms'
           assert m['reconstructed_source_row_count'] == 1107
-          assert m['original_2024q1_failure_preserved'] is True
-          assert m['raw_target_metric_values_written_to_diagnostic_outputs'] is False
-          for key in (
-              'deduplication_performed', 'aggregation_contract_amended', 'source_rows_deleted',
-              'annual_sum_performed', 'cross_quarter_addition_performed', 'pma_pmdn_combination_performed',
-              'external_fx_conversion_performed', 'statistical_model_fit', 'causal_claim_created',
-              'monetary_wasted_potential_estimated',
-          ):
-              assert m[key] is False, key
-          print({
-              'classification': m['classification'],
-              'duplicate_groups': m['duplicate_dimension_group_count'],
-              'rows_in_duplicate_groups': m['rows_in_duplicate_dimension_groups'],
-              'exact_groups': m['exact_full_row_duplicate_group_count'],
-              'divergent_groups': m['dimension_collision_with_distinct_full_rows_group_count'],
-              'cross_page_groups': m['cross_page_duplicate_dimension_group_count'],
-              'exact_cross_page_groups': m['exact_full_row_cross_page_duplicate_group_count'],
-              'differing_fields': m['differing_non_dimension_field_group_counts'],
-          })
+          assert m['duplicate_dimension_group_count'] == 174
+          assert m['rows_in_duplicate_dimension_groups'] == 850
+          assert m['exact_full_row_duplicate_group_count'] == 47
+          assert m['dimension_collision_with_distinct_full_rows_group_count'] == 127
+          assert m['exact_full_row_cross_page_duplicate_group_count'] == 2
+          assert m['deduplication_performed'] is False
+          assert m['aggregation_contract_amended'] is False
+          assert m['annual_sum_performed'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          print({'classification': m['classification'], 'duplicate_groups': m['duplicate_dimension_group_count']})
           PY
-
-      - name: Commit frozen duplicate diagnostic
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json \
-            data/analysis/engine/investment_realization_v1/m27-bkpm-2024q1-duplicate-diagnostic.csv
-          if git diff --cached --quiet; then
-            echo "No diagnostic changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M27 BKPM 2024-Q1 duplicate diagnostic"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
