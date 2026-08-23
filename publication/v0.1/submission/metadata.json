@@ -1,9 +1,17 @@
 {
-  "author_record_status": "pending_final_confirmation",
+  "author_record_status": "confirmed",
+  "authors": [
+    {
+      "affiliation": "Independent Researcher",
+      "name": "Nabil Rizki Navisa",
+      "role": "author"
+    }
+  ],
   "canonical_figure_count": 6,
   "canonical_table_count": 7,
   "claim_upgrade_performed": false,
   "corresponding_author_contact": null,
+  "corresponding_author_name": "Nabil Rizki Navisa",
   "doi": null,
   "frozen_research_base_commit": "e1571e63fd19222c0f6112d340b61ed5d7996e58",
   "integrated_manuscript": "publication/v0.1/submission/manuscript-with-assets.md",
@@ -21,16 +29,13 @@
   "new_statistical_or_ml_model_fit": false,
   "orcid": null,
   "pending_human_confirmation": [
-    "final author name and affiliation formatting",
     "ORCID if available",
-    "corresponding-author contact",
-    "publication license",
-    "target venue or repository",
-    "DOI after deposit or acceptance",
-    "venue-specific manuscript style"
+    "corresponding-author contact before external deposit",
+    "DOI after Zenodo publication"
   ],
   "publication_asset_base_commit": "a1a1c63749624d4d0a29c6b19720711889577629",
-  "publication_license": null,
+  "publication_date": "2026-08-23",
+  "publication_license": "CC-BY-4.0",
   "publication_type": "technical_report_preprint",
   "release": "v0.1",
   "repository": "https://github.com/nabilrn/ranah-observatory",
@@ -43,7 +48,8 @@
   },
   "schema": "ranah-observatory/publication-v0.1-submission-metadata/v1",
   "scientific_claim_source": "publication/v0.1/manuscript.md",
-  "status": "preprint_submission_package_candidate",
+  "status": "preprint_deposit_ready",
+  "target_repository": "Zenodo",
   "title": "Ranah Observatory: A Reproducible Evidence Framework for Development Gaps, Socioeconomic Trajectories, and Climate-Disaster Constraints in West Sumatra",
-  "venue": null
+  "venue": "Zenodo"
 }
