@@ -1,0 +1,42 @@
+{
+  "bps_var_id": 756,
+  "candidate_id": "dependency_ratio_projection",
+  "domain": "1300",
+  "dynamic_data_requested": false,
+  "error": "",
+  "metadata_only": true,
+  "periods": [
+    {
+      "th": "2024",
+      "th_id": 124
+    },
+    {
+      "th": "2023",
+      "th_id": 123
+    },
+    {
+      "th": "2022",
+      "th_id": 122
+    },
+    {
+      "th": "2021",
+      "th_id": 121
+    },
+    {
+      "th": "2020",
+      "th_id": 120
+    }
+  ],
+  "schema": "ranah-observatory/milestone28-stage1a-candidate-metadata/v1",
+  "source_id": "bps_webapi",
+  "target_values_inspected": false,
+  "turth": [
+    {
+      "group_turth_id": 0,
+      "name_group_turth": "Tahunan",
+      "turth": "Tahun",
+      "turth_id": 0
+    }
+  ],
+  "turvar": []
+}

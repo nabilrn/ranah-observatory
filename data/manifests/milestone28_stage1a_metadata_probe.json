@@ -1,0 +1,75 @@
+{
+  "allowed_api_models_used": [
+    "th",
+    "turvar",
+    "turth"
+  ],
+  "audit_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-stage1a-metadata-audit.csv",
+    "sha256": "33fae8de89a851b66b9a4ba0b14900d5fa52ae2231cee15a85323875cea2cb8c"
+  },
+  "candidate_count": 8,
+  "candidate_metadata": [
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-169.json",
+      "sha256": "51c878f141750dc35bdad2aaf6bdead88a4e758d5739c84422fc9e5b822411d5"
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-547.json",
+      "sha256": "a9cd65dd169536dc8785062d89165c38d713088aa431f48e6af4c054ba24b683"
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-763.json",
+      "sha256": "54004c4cff71376b8522294651da843b769d2110297fb3b9a254533a22a7ed0f"
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-320.json",
+      "sha256": "8800720b074f7717b4943ee71eac888716297be90c8f95d029b2f0b8d0e7d8ef"
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-341.json",
+      "sha256": "835f0539eb3be7ef8599b455c765ee35dcf312afd9602cc7daee5763f9b713ab"
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-352.json",
+      "sha256": "b0706ba71cc8727a236011782da1e907085689cc15f81de1c1842814467cd572"
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-756.json",
+      "sha256": "a0d003055a77b3363f19ccdc75f96d9974de7e54c30a782abef6d9af5ab48ddb"
+    },
+    {
+      "bps_var_id": 337,
+      "path": "data/processed/bps/m28_stage1a_metadata/var-337.json",
+      "sha256": "0461ce85249f35b30b2d0f8d3b525c6ee390c26dd8f21f5f5fba4f2b7ca20fa2"
+    }
+  ],
+  "causal_claim_created": false,
+  "classification_counts": {
+    "metadata_full_target_period_coverage": 3,
+    "metadata_partial_target_period_coverage": 5
+  },
+  "credential_persisted": false,
+  "derived_indicator_materialized": false,
+  "domain": "1300",
+  "dynamic_observation_requested": false,
+  "global_window_shortening_performed": false,
+  "imputation_performed": false,
+  "metadata_only": true,
+  "milestone": 28,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "next_gate": "lock exact source-native selectors and methodology treatment from this frozen metadata; only then authorize one structure-only dynamic pilot per retained candidate",
+  "schema": "ranah-observatory/milestone28-stage1a-metadata-probe/v1",
+  "stage": "stage1a_selector_period_metadata",
+  "statistical_model_fit": false,
+  "target_values_inspected": false,
+  "target_values_persisted": false
+}
