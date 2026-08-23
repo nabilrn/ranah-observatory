@@ -1,0 +1,116 @@
+{
+  "added_indicator_count": 7,
+  "added_observation_count": 931,
+  "backward_fill_performed": false,
+  "base_indicator_count": 15,
+  "base_m10_rows_preserved_field_exact": true,
+  "base_observation_count": 1748,
+  "base_panel_overwritten": false,
+  "causal_analysis_performed": false,
+  "complete_2018_2025_indicator_ids": [
+    "expected_years_schooling",
+    "mean_years_schooling",
+    "labor_force_participation",
+    "unemployment_rate",
+    "poverty_rate",
+    "real_grdp_growth",
+    "rice_yield",
+    "annual_rainfall",
+    "internet_access_age5plus",
+    "adequate_sanitation_access"
+  ],
+  "cross_indicator_aggregation_performed": false,
+  "duplicate_key_count": 0,
+  "end_year": 2025,
+  "forward_fill_performed": false,
+  "geography_count": 19,
+  "global_window_shortening_performed": false,
+  "imputation_performed": false,
+  "indicator_count": 22,
+  "indicator_ids": [
+    "expected_years_schooling",
+    "mean_years_schooling",
+    "life_expectancy",
+    "labor_force_participation",
+    "unemployment_rate",
+    "poverty_rate",
+    "real_grdp_growth",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "rice_yield",
+    "underemployment_rate",
+    "population_total",
+    "annual_rainfall",
+    "flood_events",
+    "landslide_events",
+    "real_grdp_per_capita",
+    "morbidity_rate",
+    "jkn_membership_coverage",
+    "internet_access_age5plus",
+    "adequate_sanitation_access",
+    "adequate_drinking_water_access",
+    "dependency_ratio"
+  ],
+  "integration_success": true,
+  "long_observation_count": 2679,
+  "m28_dependency_projection_row_count": 76,
+  "m28_drinking_water_backcast_row_count": 38,
+  "m28_structured_missing_indicator_cells": 133,
+  "m28_values_claims_methodologies_preserved": true,
+  "milestone": 28,
+  "missing_indicator_cells": 665,
+  "monetary_wasted_potential_estimated": false,
+  "outputs": {
+    "coverage": {
+      "path": "data/analysis/engine/panel_v2/m28-indicator-coverage.csv",
+      "sha256": "4548f42728078587fbee45336121258e3330f1b3312028e8dc1d492b8f2fbd06"
+    },
+    "long": {
+      "path": "data/analysis/engine/panel_v2/m28-panel-long.csv",
+      "sha256": "0a2eb9e472bad8ca90b00ae95b236ef1900274b455103ce8968478d0192b14c7"
+    },
+    "metadata": {
+      "path": "data/analysis/engine/panel_v2/m28-indicator-metadata.csv",
+      "sha256": "248306213cab7ff63c130401568a8c5f6ed8c3209a8955273636daded5f2bcb0"
+    },
+    "wide": {
+      "path": "data/analysis/engine/panel_v2/m28-panel-wide.csv",
+      "sha256": "23283b9015e13abc5ddb3c7ade829ae3a4502941523807c45bc8f74bf5b260c8"
+    }
+  },
+  "prerequisite_manifests": {
+    "data/manifests/milestone10_analytical_panel.json": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433",
+    "data/manifests/milestone28_panel_integration_contract.json": "1ef01a1747b4ef6033aebf18333266056cd483774d6bbf583e081de1cd6b5940",
+    "data/manifests/milestone28_stage2b_full_history.json": "f7fff5b3cde4888eb560ab9dd349123f837e114e78985234e225422fe344c49a",
+    "data/manifests/milestone28_stage2b_offline_reproducibility.json": "af8238970d417729c0ec0b51f748bc81fa19100877f1d0f50b3ef2498f2e9efe"
+  },
+  "regime_id": "sumbar_current_kabkota_2018_2025_v1",
+  "schema": "ranah-observatory/milestone28-integrated-panel/v1",
+  "source_files": {
+    "data/analysis/engine/broader_panel_v1/m28-broader-panel-observations.csv": "c4db280bfc4348ebf4830107f5effd3d8d7197a50511e95da166e59ec75c495f",
+    "data/analysis/engine/broader_panel_v1/m28-broader-panel-provenance.csv": "50d6fe7d080388af62100c937f1f9c31527ba61314e53e95df2bd4227043537e",
+    "data/analysis/engine/panel_v1/m10-indicator-metadata.csv": "3a0b444e37563c82a44d9936c9fae3ce318095c340d75d2bc8696a97af83842c",
+    "data/analysis/engine/panel_v1/m10-panel-long.csv": "36bb81140c238ac96c171e83065c40fd8c849ac0c9711e9db950b208f711f11b",
+    "data/registries/milestone28_indicator_extension.csv": "f8b13487993793e288b7c9c83c8e40683e00b9ace0563191b5225f67d82b761c"
+  },
+  "sparse_indicator_ids": [
+    "life_expectancy",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "underemployment_rate",
+    "population_total",
+    "flood_events",
+    "landslide_events",
+    "real_grdp_per_capita",
+    "morbidity_rate",
+    "jkn_membership_coverage",
+    "adequate_drinking_water_access",
+    "dependency_ratio"
+  ],
+  "start_year": 2018,
+  "statistical_model_fit": false,
+  "total_possible_indicator_cells": 3344,
+  "wide_row_count": 152,
+  "year_count": 8,
+  "zero_fill_missing_years_performed": false
+}
