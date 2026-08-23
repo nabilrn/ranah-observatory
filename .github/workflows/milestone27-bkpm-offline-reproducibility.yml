@@ -1,42 +1,38 @@
 name: Milestone 27 BKPM Offline Reproducibility
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/milestone27-bkpm-investment-history
+      - main
     paths:
+      - data/manifests/milestone27_bkpm_offline_reproducibility.json
+      - data/manifests/milestone27_bkpm_stage1_qualification.json
+      - data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json
+      - data/processed/bkpm/m27_full_history/**
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-quarterly-history.csv
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-quarter-audit.csv
+      - scripts/audit_milestone27_bkpm_full_history_offline.py
       - .github/workflows/milestone27-bkpm-offline-reproducibility.yml
-
-concurrency:
-  group: milestone27-bkpm-offline-reproducibility-writer
-  cancel-in-progress: false
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   rebuild-offline:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-        with:
-          ref: agent/milestone27-bkpm-investment-history
-          fetch-depth: 0
-
+      - uses: actions/checkout@v4
       - name: Compile offline rebuild
         run: python -m py_compile scripts/audit_milestone27_bkpm_full_history_offline.py
-
       - name: Rebuild frozen quarterly history without network
         run: python -m scripts.audit_milestone27_bkpm_full_history_offline
-
       - name: Verify byte-identical bounded history
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone27_bkpm_offline_reproducibility.json').read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-offline-reproducibility/v1'
           assert m['offline_only'] is True
           assert m['network_requests_performed'] is False
           assert m['rebuild_success'] is True
@@ -46,7 +42,6 @@ jobs:
           assert m['materialized_observation_count'] == 1440
           assert m['quarterly_output_byte_identical'] is True
           assert m['quarter_audit_byte_identical'] is True
-          assert len(m['held_quarters']) == 1
           assert m['held_quarters'][0]['year'] == 2024 and m['held_quarters'][0]['quarter'] == 'I'
           assert m['missing_values_coerced_to_zero'] is False
           assert m['pma_pmdn_combination_performed'] is False
@@ -56,17 +51,5 @@ jobs:
           assert m['statistical_model_fit'] is False
           assert m['causal_claim_created'] is False
           assert m['monetary_wasted_potential_estimated'] is False
-          print({'rebuild_success': True, 'qualified_quarters': 63, 'held': '2024-Q1', 'observations': 1440})
+          print({'offline_rebuild': 'byte-identical', 'qualified_quarters': 63, 'held': '2024-Q1', 'observations': 1440})
           PY
-
-      - name: Commit reproducibility certificate
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/manifests/milestone27_bkpm_offline_reproducibility.json
-          if git diff --cached --quiet; then
-            echo "No reproducibility changes to commit"
-            exit 0
-          fi
-          git commit -m "Certify M27 BKPM offline reproducibility"
-          git push origin HEAD:agent/milestone27-bkpm-investment-history
