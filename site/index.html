@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ranah Observatory — observatorium data dan riset pembangunan Sumatera Barat yang membedakan temuan, hasil negatif, konteks, dan klaim yang belum didukung.">
+  <meta name="theme-color" content="#f4f1e8">
+  <title>Ranah Observatory — Sumatera Barat dalam data</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke isi utama</a>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Ranah Observatory, kembali ke atas">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span>
+        <strong>Ranah Observatory</strong>
+        <small>Sumatera Barat dalam data</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#temuan">Temuan</a>
+      <a href="#batas">Batas</a>
+      <a href="#metode">Metode</a>
+      <a href="#sumber">Sumber</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow" id="hero-eyebrow">Memuat observatorium…</p>
+        <h1 id="hero-title">Data harus menjelaskan, bukan membuat kepastian palsu.</h1>
+        <p class="hero-summary" id="hero-summary"></p>
+        <p class="hero-boundary" id="hero-boundary"></p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#temuan">Lihat yang sudah kita tahu</a>
+          <a class="button button-secondary" id="preprint-link" href="#sumber">Baca laporan teknis</a>
+        </div>
+      </div>
+      <aside class="hero-note" aria-label="Cara membaca status bukti">
+        <p class="note-kicker">Empat status bukti</p>
+        <div class="legend" id="legend">
+          <div><span class="status-dot status-supported"></span><strong>Didukung</strong><small>Lolos gate dalam batas yang jelas.</small></div>
+          <div><span class="status-dot status-negative"></span><strong>Hasil negatif</strong><small>Analisis dilakukan, tetapi klaim gagal lolos.</small></div>
+          <div><span class="status-dot status-context"></span><strong>Konteks</strong><small>Datanya qualified, inferensinya belum.</small></div>
+          <div><span class="status-dot status-blocked"></span><strong>Belum didukung</strong><small>Secara eksplisit tidak boleh diklaim.</small></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section stat-section" aria-labelledby="snapshot-title">
+      <div class="section-heading compact-heading">
+        <p class="eyebrow">Snapshot</p>
+        <h2 id="snapshot-title">Empat angka untuk memahami posisi riset sekarang</h2>
+      </div>
+      <div class="stat-grid" id="headline-stats" aria-live="polite"></div>
+    </section>
+
+    <section class="section" id="temuan" aria-labelledby="stories-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Temuan utama</p>
+          <h2 id="stories-title">Apa yang sebenarnya dikatakan data?</h2>
+        </div>
+        <p>Setiap kartu membawa caveat-nya sendiri. Angka tanpa batas interpretasi tidak ditampilkan sebagai kesimpulan.</p>
+      </div>
+      <div class="filter-row" id="story-filters" aria-label="Filter kategori temuan"></div>
+      <div class="story-grid" id="stories" aria-live="polite"></div>
+    </section>
+
+    <section class="section boundary-section" id="batas" aria-labelledby="boundaries-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Batas pengetahuan</p>
+          <h2 id="boundaries-title">Hal yang belum boleh kami klaim</h2>
+        </div>
+        <p>Ini bukan catatan kaki. Daftar ini adalah bagian inti dari produk agar pembaca tahu persis di mana bukti berhenti.</p>
+      </div>
+      <div class="boundary-grid" id="boundaries"></div>
+    </section>
+
+    <section class="section" id="metode" aria-labelledby="method-title">
+      <div class="section-heading">
+        <p class="eyebrow">Cara kerja</p>
+        <h2 id="method-title">Mengapa observatorium ini lebih lambat daripada sekadar membuat dashboard?</h2>
+        <p id="method-intro">Karena setiap visual harus melewati rantai bukti yang sama dengan risetnya.</p>
+      </div>
+      <ol class="method-grid" id="method-steps"></ol>
+    </section>
+
+    <section class="section source-section" id="sumber" aria-labelledby="sources-title">
+      <div class="source-card">
+        <div>
+          <p class="eyebrow">Audit trail</p>
+          <h2 id="sources-title">Mau memeriksa sendiri?</h2>
+          <p>Semua cerita publik ini berasal dari claim ledger, manifest, dan source evidence yang tetap tersedia di repository. Produk ini tidak memiliki jalur analisis tersembunyi.</p>
+        </div>
+        <div class="source-actions">
+          <a class="button button-primary" id="repo-link" href="https://github.com/nabilrn/ranah-observatory">Buka repository</a>
+          <a class="button button-secondary" id="ledger-link" href="https://github.com/nabilrn/ranah-observatory/blob/main/publication/v0.1/claim-ledger.csv">Lihat claim ledger</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Ranah Observatory</strong> · Open research infrastructure for West Sumatra.</p>
+    <p id="footer-version">Public product v0.1</p>
+  </footer>
+
+  <noscript>
+    <div class="noscript">Halaman ini membutuhkan JavaScript untuk membaca kontrak data publik lokal. Tidak ada data yang diambil dari API eksternal saat runtime.</div>
+  </noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>

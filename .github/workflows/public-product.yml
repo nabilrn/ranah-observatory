@@ -1,0 +1,78 @@
+name: Public Product Claim Gate
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - site/**
+      - docs/PRODUCT_V0_1_SPEC.md
+      - scripts/validate_public_product.py
+      - tests/test_public_product.py
+      - .github/workflows/public-product.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-product:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restrict product workstream scope
+        if: github.event_name == 'pull_request'
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed_exact = {
+              'docs/PRODUCT_V0_1_SPEC.md',
+              'scripts/validate_public_product.py',
+              'tests/test_public_product.py',
+              '.github/workflows/public-product.yml',
+          }
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'origin/main...HEAD'], text=True
+          ).splitlines()
+          offenders = [
+              path for path in changed
+              if path not in allowed_exact and not path.startswith('site/')
+          ]
+          assert not offenders, offenders
+          print({'changed_files': len(changed), 'unauthorized_paths': 0})
+          PY
+
+      - name: Validate public narrative against frozen claim ledger
+        run: python scripts/validate_public_product.py
+
+      - name: Run product contract tests
+        run: python -m unittest tests.test_public_product -v
+
+      - name: Check browser JavaScript syntax
+        run: node --check site/app.js
+
+      - name: Require static product files
+        run: |
+          test -s site/index.html
+          test -s site/styles.css
+          test -s site/app.js
+          test -s site/data/overview.json
+          grep -q 'id="temuan"' site/index.html
+          grep -q 'id="batas"' site/index.html
+          grep -q 'id="metode"' site/index.html
+
+      - name: Protect frozen science and publication package
+        if: github.event_name == 'pull_request'
+        run: |
+          git diff --exit-code origin/main...HEAD -- \
+            data \
+            publication/v0.1 \
+            research
