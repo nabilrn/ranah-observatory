@@ -1,0 +1,58 @@
+name: Milestone 28 Stage 2B Offline Reproducibility
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - .github/workflows/milestone28-stage2b-offline-reproducibility.yml
+
+concurrency:
+  group: milestone28-stage2b-offline-reproducibility-writer
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+          fetch-depth: 0
+      - name: Compile offline rebuild
+        run: python -m py_compile scripts/audit_milestone28_stage2b_offline_rebuild.py
+      - name: Rebuild all canonical outputs offline
+        run: python scripts/audit_milestone28_stage2b_offline_rebuild.py
+      - name: Verify byte-identical certificate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_stage2b_offline_reproducibility.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone28-stage2b-offline-reproducibility/v1'
+          assert m['offline_only'] is True
+          assert m['network_requests_performed'] is False
+          assert m['raw_snapshot_count_verified'] == 49
+          assert m['replayed_candidate_year_count'] == 49
+          assert m['qualified_candidate_year_count'] == 49
+          assert m['structured_missing_candidate_year_count'] == 7
+          assert m['promoted_observation_count'] == 931
+          assert m['all_outputs_byte_identical'] is True
+          assert m['rebuild_success'] is True
+          assert all(v['byte_identical'] for v in m['outputs'].values())
+          print({'rebuild_success': True, 'outputs': list(m['outputs']), 'observations': 931})
+          PY
+      - name: Commit reproducibility certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/manifests/milestone28_stage2b_offline_reproducibility.json
+          if git diff --cached --quiet; then
+            echo "No reproducibility certificate changes to commit"
+            exit 0
+          fi
+          git commit -m "Certify M28 offline reproducibility"
+          git push origin HEAD:research/evidence
