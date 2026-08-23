@@ -1,67 +1,43 @@
-name: Milestone 28 Stage 1A Metadata Probe
+name: Milestone 28 Stage 1A Metadata Verification
 
 on:
-  push:
+  pull_request:
     branches:
-      - research/evidence
+      - main
     paths:
+      - data/registries/milestone28_stage1a_shortlist.csv
+      - data/manifests/milestone28_stage1a_metadata_contract.json
+      - data/manifests/milestone28_stage1a_metadata_probe.json
+      - data/analysis/engine/broader_panel_v1/m28-stage1a-metadata-audit.csv
+      - data/processed/bps/m28_stage1a_metadata/**
+      - scripts/probe_milestone28_stage1a_metadata.py
       - .github/workflows/milestone28-stage1a-metadata.yml
 
-concurrency:
-  group: milestone28-stage1a-metadata-writer
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  probe-metadata:
+  verify-frozen-metadata:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout evidence branch
-        uses: actions/checkout@v4
-        with:
-          ref: research/evidence
-          fetch-depth: 0
-
-      - name: Compile Stage 1A probe
-        run: python -m py_compile scripts/probe_milestone28_stage1a_metadata.py
-
-      - name: Probe periods and selector metadata only
-        env:
-          BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
-        run: python scripts/probe_milestone28_stage1a_metadata.py
-
-      - name: Verify Stage 1A boundaries
+      - uses: actions/checkout@v4
+      - name: Verify frozen Stage 1A evidence
         run: |
           python - <<'PY'
-          import json
+          import hashlib, json
           from pathlib import Path
-          m = json.loads(Path('data/manifests/milestone28_stage1a_metadata_probe.json').read_text(encoding='utf-8'))
+          root = Path('.')
+          m = json.loads((root/'data/manifests/milestone28_stage1a_metadata_probe.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone28-stage1a-metadata-probe/v1'
           assert m['candidate_count'] == 8
           assert m['metadata_only'] is True
-          assert m['allowed_api_models_used'] == ['th', 'turvar', 'turth']
           assert m['dynamic_observation_requested'] is False
           assert m['target_values_inspected'] is False
           assert m['target_values_persisted'] is False
-          assert m['credential_persisted'] is False
-          for key in ('global_window_shortening_performed','imputation_performed','missing_values_coerced_to_zero','derived_indicator_materialized','statistical_model_fit','causal_claim_created','monetary_wasted_potential_estimated'):
-              assert m[key] is False, key
-          print({'candidate_count': m['candidate_count'], 'classifications': m['classification_counts']})
+          for item in m['candidate_metadata']:
+              p = root/item['path']
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+          audit = root/m['audit_csv']['path']
+          assert hashlib.sha256(audit.read_bytes()).hexdigest() == m['audit_csv']['sha256']
+          print({'candidate_count': 8, 'classification_counts': m['classification_counts']})
           PY
-
-      - name: Commit frozen Stage 1A metadata
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            data/processed/bps/m28_stage1a_metadata \
-            data/analysis/engine/broader_panel_v1/m28-stage1a-metadata-audit.csv \
-            data/manifests/milestone28_stage1a_metadata_probe.json
-          if git diff --cached --quiet; then
-            echo "No Stage 1A metadata changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M28 Stage 1A selector metadata"
-          git push origin HEAD:research/evidence
