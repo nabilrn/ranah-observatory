@@ -1,0 +1,74 @@
+name: Milestone 28 BPS Candidate Discovery
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - .github/workflows/milestone28-bps-candidate-discovery.yml
+
+concurrency:
+  group: milestone28-bps-candidate-discovery-writer
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  discover-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout evidence branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+          fetch-depth: 0
+
+      - name: Compile metadata-only discovery
+        run: python -m py_compile scripts/probe_milestone28_bps_candidate_catalog.py
+
+      - name: Discover BPS domain-1300 variable metadata
+        env:
+          BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+        run: python scripts/probe_milestone28_bps_candidate_catalog.py
+
+      - name: Verify Stage 0 boundaries
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_bps_catalog_discovery.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone28-bps-catalog-discovery/v1'
+          assert m['domain'] == '1300'
+          assert m['metadata_only'] is True
+          assert m['dynamic_observation_requested'] is False
+          assert m['target_values_inspected'] is False
+          assert m['credential_persisted'] is False
+          assert m['catalog_row_count'] > 0
+          assert m['candidate_count'] > 0
+          assert m['global_window_shortening_performed'] is False
+          assert m['imputation_performed'] is False
+          assert m['missing_values_coerced_to_zero'] is False
+          assert m['derived_indicator_materialized'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          rows = list(csv.DictReader(Path('data/analysis/engine/broader_panel_v1/m28-candidate-catalog.csv').open(encoding='utf-8')))
+          assert len(rows) == m['candidate_count']
+          print({'catalog_rows': m['catalog_row_count'], 'candidate_count': m['candidate_count'], 'families': m['candidate_family_counts']})
+          PY
+
+      - name: Commit frozen metadata discovery
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/processed/bps/m28_candidate_discovery/bps-domain1300-variable-catalog.json \
+            data/analysis/engine/broader_panel_v1/m28-candidate-catalog.csv \
+            data/manifests/milestone28_bps_catalog_discovery.json
+          if git diff --cached --quiet; then
+            echo "No M28 discovery changes to commit"
+            exit 0
+          fi
+          git commit -m "Freeze M28 BPS candidate catalog"
+          git push origin HEAD:research/evidence
