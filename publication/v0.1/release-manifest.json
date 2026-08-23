@@ -1,0 +1,77 @@
+{
+  "schema": "ranah-observatory/publication-v0.1-release-manifest/v1",
+  "release": "v0.1",
+  "publication_type": "technical_report_preprint",
+  "working_title": "Ranah Observatory: A Reproducible Evidence Framework for Development Gaps, Socioeconomic Trajectories, and Climate-Disaster Constraints in West Sumatra",
+  "frozen_research_base_commit": "e1571e63fd19222c0f6112d340b61ed5d7996e58",
+  "publication_branch": "research/publication",
+  "milestone": 29,
+  "research_scope": {
+    "primary_geography": "19 current West Sumatra kabupaten/kota",
+    "modern_panel_period": "2018-2025",
+    "historical_climate_period": "1981-2025",
+    "national_comparator_period": "2018-2025",
+    "national_comparator_geography": "32 stable-boundary current provinces"
+  },
+  "upstream_manifest_paths": [
+    "data/manifests/milestone18_final_analytical_synthesis.json",
+    "data/manifests/milestone19_dynamic_forecast_engine.json",
+    "data/manifests/milestone20_historical_climate_trend.json",
+    "data/manifests/milestone21_climate_regime_shift.json",
+    "data/manifests/milestone22_hierarchical_socioeconomic_trajectory.json",
+    "data/manifests/milestone24_bps_stable32_complete.json",
+    "data/manifests/milestone25_djpk_public_finance_complete.json",
+    "data/manifests/milestone26_disaster_risk_chain_complete.json",
+    "data/manifests/milestone27_completion.json",
+    "data/manifests/milestone28_completion.json"
+  ],
+  "upstream_summary_paths": [
+    "docs/MILESTONE18_FINAL_ANALYTICAL_SYNTHESIS.md",
+    "docs/MILESTONE20_HISTORICAL_CLIMATE_TREND.md",
+    "docs/MILESTONE21_CLIMATE_REGIME_SHIFT.md",
+    "docs/MILESTONE22_HIERARCHICAL_SOCIOECONOMIC_TRAJECTORY.md",
+    "docs/MILESTONE25_DJPK_PUBLIC_FINANCE.md",
+    "docs/MILESTONE26_DISASTER_RISK_CHAIN.md",
+    "research/MILESTONE27_BKPM_INVESTMENT_HISTORY_RESULT.md",
+    "docs/MILESTONE28_BROADER_OUTCOME_INFRASTRUCTURE_HEALTH.md"
+  ],
+  "required_publication_outputs": [
+    "publication/v0.1/release-manifest.json",
+    "publication/v0.1/claim-ledger.csv",
+    "publication/v0.1/evidence-table.csv",
+    "publication/v0.1/table-plan.csv",
+    "publication/v0.1/figure-plan.csv",
+    "publication/v0.1/manuscript-outline.md",
+    "publication/v0.1/manuscript.md",
+    "publication/v0.1/completeness-certificate.json"
+  ],
+  "claim_states": [
+    "publishable_bounded",
+    "publishable_negative_result",
+    "context_only",
+    "blocked"
+  ],
+  "locked_rules": {
+    "new_source_acquisition": false,
+    "new_statistical_or_ml_model_fit": false,
+    "posthoc_model_search": false,
+    "model_refit_for_headline_improvement": false,
+    "imputation": false,
+    "missing_as_zero": false,
+    "geography_backcasting": false,
+    "new_composite_score": false,
+    "monetary_gap_aggregation": false,
+    "causal_claim_upgrade": false,
+    "policy_treatment_effect_interpretation": false,
+    "cost_benefit_ranking": false,
+    "negative_results_must_remain_visible": true,
+    "m18_blocked_claims_must_remain_blocked": true,
+    "every_substantive_manuscript_claim_requires_claim_id": true
+  },
+  "bmkg_station_daily_validation_required_for_v0_1": false,
+  "verification_basis": "All upstream scientific evidence is resolved by immutable path-at-frozen-commit identity. Publication-only files may evolve on the publication branch without changing the frozen analytical base.",
+  "verification_script": "scripts/audit_milestone29_publication_v0_1.py",
+  "verification_workflow": ".github/workflows/milestone29-publication-v0.1.yml",
+  "completion_state": "certified_ready_for_merge",
+  "offline_completeness_certificate_required_before_release": true
+}
