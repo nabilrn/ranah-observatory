@@ -26,6 +26,7 @@ jobs:
           python - <<'PY'
           import subprocess
           allowed = {
+              '.github/workflows/milestone29-publication-v0.1.yml',
               '.github/workflows/milestone31-publication-submission.yml',
               'publication/v0.1/MILESTONE31_SUBMISSION_PACKAGE.md',
               'publication/v0.1/tools/build_submission.py',
