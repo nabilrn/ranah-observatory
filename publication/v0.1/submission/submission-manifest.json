@@ -1,0 +1,25 @@
+{
+  "asset_count": 13,
+  "builder": "publication/v0.1/tools/build_submission.py",
+  "claim_upgrade_performed": false,
+  "figure_count": 6,
+  "new_source_acquisition": false,
+  "new_statistical_or_ml_model_fit": false,
+  "output_sha256": {
+    "publication/v0.1/submission/README.md": "097ff8197ce53acb4566796a48ba8b3c8b1293903ac5f85997b8b76afbbcd9c2",
+    "publication/v0.1/submission/asset-index.csv": "c9f219293b1fe639f7e738c876f1ad53caad601b339de8b58310222e87c338f8",
+    "publication/v0.1/submission/manuscript-with-assets.md": "35c5eafb883e4dd4638980c404d2f8069cc92aa4878f759867df0b1bb5423f9e",
+    "publication/v0.1/submission/metadata.json": "a3e672d7a2d979be77151f40858a1078f5393e397eb8746d9f682a2c5fed11e4"
+  },
+  "release": "v0.1",
+  "schema": "ranah-observatory/publication-v0.1-submission-manifest/v1",
+  "source_sha256": {
+    "publication/v0.1/claim-ledger.csv": "0236a8950ef39cf6446f408d5634fb5d4d85174bcfb2d7ebd925d697e9d8c210",
+    "publication/v0.1/figure-plan.csv": "58e68345d9b3ebac06de10c0ba701e59937bdb60ffc5f8b8e4ea06d9d1811238",
+    "publication/v0.1/manuscript.md": "5eaf620657709d1b7c5a3131f8a7c050b879db77952e011edd434ff4ec01574b",
+    "publication/v0.1/release-manifest.json": "2b05cb64c25935f02ea713a6f18d0ecaf4e1f4c0c154cc5f8270960512cd380b",
+    "publication/v0.1/rendered/render-manifest.json": "d70b19fde4534aedce8fdd190e241d96720249fd97b8a177e1970942d309314e",
+    "publication/v0.1/table-plan.csv": "3d6a2cc2712b13f092516e13831ed7c7139421b2e5f29baa5d919d07ff69894f"
+  },
+  "table_count": 7
+}

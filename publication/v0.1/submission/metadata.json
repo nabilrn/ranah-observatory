@@ -1,0 +1,49 @@
+{
+  "author_record_status": "pending_final_confirmation",
+  "canonical_figure_count": 6,
+  "canonical_table_count": 7,
+  "claim_upgrade_performed": false,
+  "corresponding_author_contact": null,
+  "doi": null,
+  "frozen_research_base_commit": "e1571e63fd19222c0f6112d340b61ed5d7996e58",
+  "integrated_manuscript": "publication/v0.1/submission/manuscript-with-assets.md",
+  "keywords": [
+    "West Sumatra",
+    "development gaps",
+    "reproducible research",
+    "socioeconomic trajectories",
+    "empirical benchmarking",
+    "climate variability",
+    "disaster risk",
+    "negative results"
+  ],
+  "new_source_acquisition": false,
+  "new_statistical_or_ml_model_fit": false,
+  "orcid": null,
+  "pending_human_confirmation": [
+    "final author name and affiliation formatting",
+    "ORCID if available",
+    "corresponding-author contact",
+    "publication license",
+    "target venue or repository",
+    "DOI after deposit or acceptance",
+    "venue-specific manuscript style"
+  ],
+  "publication_asset_base_commit": "a1a1c63749624d4d0a29c6b19720711889577629",
+  "publication_license": null,
+  "publication_type": "technical_report_preprint",
+  "release": "v0.1",
+  "repository": "https://github.com/nabilrn/ranah-observatory",
+  "research_scope": {
+    "historical_climate_period": "1981-2025",
+    "modern_panel_period": "2018-2025",
+    "national_comparator_geography": "32 stable-boundary current provinces",
+    "national_comparator_period": "2018-2025",
+    "primary_geography": "19 current West Sumatra kabupaten/kota"
+  },
+  "schema": "ranah-observatory/publication-v0.1-submission-metadata/v1",
+  "scientific_claim_source": "publication/v0.1/manuscript.md",
+  "status": "preprint_submission_package_candidate",
+  "title": "Ranah Observatory: A Reproducible Evidence Framework for Development Gaps, Socioeconomic Trajectories, and Climate-Disaster Constraints in West Sumatra",
+  "venue": null
+}
