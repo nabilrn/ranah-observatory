@@ -72,6 +72,6 @@
   "verification_basis": "All upstream scientific evidence is resolved by immutable path-at-frozen-commit identity. Publication-only files may evolve on the publication branch without changing the frozen analytical base.",
   "verification_script": "scripts/audit_milestone29_publication_v0_1.py",
   "verification_workflow": ".github/workflows/milestone29-publication-v0.1.yml",
-  "completion_state": "package_materialized_pending_ci",
+  "completion_state": "certified_ready_for_merge",
   "offline_completeness_certificate_required_before_release": true
 }
