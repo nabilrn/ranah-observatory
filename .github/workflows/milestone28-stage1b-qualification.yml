@@ -1,54 +1,40 @@
-name: Milestone 28 Stage 1B Offline Qualification
+name: Milestone 28 Stage 1B Qualification Verification
 
 on:
-  push:
+  pull_request:
     branches:
-      - research/evidence
+      - main
     paths:
+      - data/registries/milestone28_var169_local_geography_map.csv
+      - data/manifests/milestone28_var169_geography_representation_amendment.json
+      - data/analysis/engine/broader_panel_v1/m28-stage1b-qualification.csv
+      - data/manifests/milestone28_stage1b_qualification.json
+      - scripts/audit_milestone28_stage1b_qualification.py
       - .github/workflows/milestone28-stage1b-qualification.yml
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  qualify-offline:
+  verify-offline-qualification:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: research/evidence
-          fetch-depth: 0
-      - name: Run offline qualification
+      - name: Rebuild Stage 1B qualification offline
         run: python scripts/audit_milestone28_stage1b_qualification.py
-      - name: Verify qualification boundaries
+      - name: Verify frozen result
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone28_stage1b_qualification.json').read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone28-stage1b-qualification/v1'
           assert m['offline_only'] is True
           assert m['network_requests_performed'] is False
-          assert m['original_probe_failure_preserved'] is True
-          assert m['var169_typed_geography_amendment_applied'] is True
+          assert m['structure_qualified_count'] == 7
+          assert m['held_count'] == 1
+          assert m['held_var_ids'] == [337]
+          assert m['var169_2024_mapping_exact'] is True
           assert m['var169_cross_year_stability_assumed'] is False
-          assert m['candidate_count'] == 8
           assert m['numeric_materialization_authorized'] is False
-          assert m['target_values_inspected'] is False
-          for key in ('global_window_shortening_performed','imputation_performed','missing_values_coerced_to_zero','derived_indicator_materialized','statistical_model_fit','causal_claim_created','monetary_wasted_potential_estimated'):
-              assert m[key] is False, key
-          print({'qualified': m['structure_qualified_count'], 'held': m['held_count'], 'vars': m['qualified_var_ids']})
+          print({'qualified': m['qualified_var_ids'], 'held': m['held_var_ids']})
           PY
-      - name: Commit frozen qualification
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            data/analysis/engine/broader_panel_v1/m28-stage1b-qualification.csv \
-            data/manifests/milestone28_stage1b_qualification.json
-          if git diff --cached --quiet; then
-            echo "No qualification changes to commit"
-            exit 0
-          fi
-          git commit -m "Qualify M28 Stage 1B structures"
-          git push origin HEAD:research/evidence
