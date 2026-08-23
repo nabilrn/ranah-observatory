@@ -8,6 +8,7 @@ on:
       - .github/workflows/milestone31-publication-submission.yml
       - publication/v0.1/AUTHORSHIP.md
       - publication/v0.1/MILESTONE31_SUBMISSION_PACKAGE.md
+      - publication/v0.1/MILESTONE32_AUTHOR_DEPOSIT_METADATA.md
       - publication/v0.1/tools/build_submission.py
       - publication/v0.1/tools/finalize_submission_metadata.py
       - publication/v0.1/submission/**
@@ -32,6 +33,7 @@ jobs:
               '.github/workflows/milestone31-publication-submission.yml',
               'publication/v0.1/AUTHORSHIP.md',
               'publication/v0.1/MILESTONE31_SUBMISSION_PACKAGE.md',
+              'publication/v0.1/MILESTONE32_AUTHOR_DEPOSIT_METADATA.md',
               'publication/v0.1/tools/build_submission.py',
               'publication/v0.1/tools/finalize_submission_metadata.py',
           }
