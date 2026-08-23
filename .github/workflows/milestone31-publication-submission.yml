@@ -11,7 +11,7 @@ on:
       - publication/v0.1/submission/**
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   certify-submission-package:
@@ -20,7 +20,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.head_ref }}
 
       - name: Require M31 publication-only scope
         run: |
@@ -46,7 +45,7 @@ jobs:
           git diff --exit-code -- publication/v0.1/rendered
           test -z "$(git status --porcelain -- publication/v0.1/rendered)"
 
-      - name: Generate submission package
+      - name: Rebuild submission package
         run: python publication/v0.1/tools/build_submission.py
 
       - name: Validate submission contract
@@ -77,20 +76,12 @@ jobs:
           print({'submission_outputs': 5, 'indexed_assets': 13, 'claim_upgrade': False})
           PY
 
-      - name: Commit canonical submission package
-        shell: bash
+      - name: Require byte-identical canonical submission package
         run: |
-          if git diff --quiet -- publication/v0.1/submission && git ls-files --error-unmatch publication/v0.1/submission/submission-manifest.json >/dev/null 2>&1; then
-            echo "canonical submission package already committed"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add publication/v0.1/submission
-          git commit -m "Materialize v0.1 submission package"
-          git push origin HEAD:${{ github.head_ref }}
+          git diff --exit-code -- publication/v0.1/submission
+          test -z "$(git status --porcelain -- publication/v0.1/submission)"
 
-      - name: Upload generated submission package
+      - name: Upload verified submission package
         uses: actions/upload-artifact@v4
         with:
           name: publication-v0.1-submission
