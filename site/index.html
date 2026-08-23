@@ -21,6 +21,7 @@
     </a>
     <nav class="nav" aria-label="Navigasi utama">
       <a href="#temuan">Temuan</a>
+      <a href="#daerah">Daerah</a>
       <a href="#batas">Batas</a>
       <a href="#metode">Metode</a>
       <a href="#sumber">Sumber</a>
@@ -36,6 +37,7 @@
         <p class="hero-boundary" id="hero-boundary"></p>
         <div class="hero-actions">
           <a class="button button-primary" href="#temuan">Lihat yang sudah kita tahu</a>
+          <a class="button button-secondary" href="#daerah">Jelajahi daerah</a>
           <a class="button button-secondary" id="preprint-link" href="#sumber">Baca laporan teknis</a>
         </div>
       </div>
@@ -68,6 +70,34 @@
       </div>
       <div class="filter-row" id="story-filters" aria-label="Filter kategori temuan"></div>
       <div class="story-grid" id="stories" aria-live="polite"></div>
+    </section>
+
+    <section class="section explorer-section" id="daerah" aria-labelledby="district-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Explorer kabupaten/kota</p>
+          <h2 id="district-title">Apa yang berubah di daerah saya?</h2>
+        </div>
+        <p>Explorer ini hanya memakai empat indikator yang model trajectory M22-nya lolos benchmark. Ia tidak membuat ranking antar daerah.</p>
+      </div>
+
+      <div class="explorer-toolbar">
+        <label for="district-select">Pilih kabupaten/kota</label>
+        <select id="district-select" disabled>
+          <option>Memuat data daerah…</option>
+        </select>
+      </div>
+
+      <div class="district-header" id="district-header" aria-live="polite">
+        <div>
+          <p class="district-type" id="district-type"></p>
+          <h3 id="district-name">—</h3>
+        </div>
+        <p id="district-summary">Data explorer sedang dimuat.</p>
+      </div>
+
+      <div class="indicator-grid" id="district-indicators" aria-live="polite"></div>
+      <p class="explorer-boundary" id="district-boundary"></p>
     </section>
 
     <section class="section boundary-section" id="batas" aria-labelledby="boundaries-title">
