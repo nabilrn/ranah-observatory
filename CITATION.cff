@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using the metadata below."
+title: "Ranah Observatory: A Reproducible Evidence Framework for Development Gaps, Socioeconomic Trajectories, and Climate-Disaster Constraints in West Sumatra"
+version: "v0.1"
+date-released: 2026-08-23
+authors:
+  - family-names: Navisa
+    given-names: Nabil Rizki
+url: "https://github.com/nabilrn/ranah-observatory"
+license: CC-BY-4.0
+keywords:
+  - West Sumatra
+  - development gaps
+  - reproducible research
+  - socioeconomic trajectories
+  - empirical benchmarking
+  - climate variability
+  - disaster risk
+  - negative results
