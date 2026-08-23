@@ -1,0 +1,95 @@
+{
+  "bps_var_id": 320,
+  "candidate_id": "internet_access_age5plus",
+  "domain": "1300",
+  "dynamic_data_requested": false,
+  "error": "",
+  "metadata_only": true,
+  "periods": [
+    {
+      "th": "2025",
+      "th_id": 125
+    },
+    {
+      "th": "2024",
+      "th_id": 124
+    },
+    {
+      "th": "2023",
+      "th_id": 123
+    },
+    {
+      "th": "2022",
+      "th_id": 122
+    },
+    {
+      "th": "2021",
+      "th_id": 121
+    },
+    {
+      "th": "2020",
+      "th_id": 120
+    },
+    {
+      "th": "2019",
+      "th_id": 119
+    },
+    {
+      "th": "2018",
+      "th_id": 118
+    },
+    {
+      "th": "2017",
+      "th_id": 117
+    },
+    {
+      "th": "2016",
+      "th_id": 116
+    },
+    {
+      "th": "2015",
+      "th_id": 115
+    },
+    {
+      "th": "2014",
+      "th_id": 114
+    },
+    {
+      "th": "2013",
+      "th_id": 113
+    },
+    {
+      "th": "2012",
+      "th_id": 112
+    },
+    {
+      "th": "2011",
+      "th_id": 111
+    }
+  ],
+  "schema": "ranah-observatory/milestone28-stage1a-candidate-metadata/v1",
+  "source_id": "bps_webapi",
+  "target_values_inspected": false,
+  "turth": [
+    {
+      "group_turth_id": 0,
+      "name_group_turth": "Tahunan",
+      "turth": "Tahun",
+      "turth_id": 0
+    }
+  ],
+  "turvar": [
+    {
+      "group_turvar_id": 105,
+      "name_group_turvar": "akses internet",
+      "turvar": "Pernah Mengakses Internet     ",
+      "turvar_id": 595
+    },
+    {
+      "group_turvar_id": 105,
+      "name_group_turvar": "akses internet",
+      "turvar": "Tidak Pernah Mengakses Internet ",
+      "turvar_id": 596
+    }
+  ]
+}

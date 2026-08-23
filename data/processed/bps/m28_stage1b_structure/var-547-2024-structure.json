@@ -1,0 +1,184 @@
+{
+  "bps_var_id": 547,
+  "candidate_id": "morbidity_rate",
+  "classification": "structure_pilot_pass",
+  "data-availability": "available",
+  "datacontent_key_count": 20,
+  "datacontent_keys": [
+    "130154701240",
+    "130254701240",
+    "130354701240",
+    "130454701240",
+    "130554701240",
+    "130654701240",
+    "130754701240",
+    "130854701240",
+    "130954701240",
+    "131054701240",
+    "131154701240",
+    "131254701240",
+    "137154701240",
+    "137254701240",
+    "137354701240",
+    "137454701240",
+    "137554701240",
+    "137654701240",
+    "137754701240",
+    "137854701240"
+  ],
+  "datacontent_values_persisted": false,
+  "error": "",
+  "expected_datacontent_key_count_from_metadata": 20,
+  "labelvervar": "Kabupaten/Kota",
+  "last_update": "2024-12-19 03:14:37",
+  "mapped_geography_codes": [
+    "1301",
+    "1302",
+    "1303",
+    "1304",
+    "1305",
+    "1306",
+    "1307",
+    "1308",
+    "1309",
+    "1310",
+    "1311",
+    "1312",
+    "1371",
+    "1372",
+    "1373",
+    "1374",
+    "1375",
+    "1376",
+    "1377"
+  ],
+  "missing_geography_codes": [],
+  "period_present": true,
+  "pilot_year": 2024,
+  "requested_turth_id": "0",
+  "requested_turvar_id": "",
+  "resolved_th_id": "124",
+  "schema": "ranah-observatory/milestone28-stage1b-redacted-structure/v1",
+  "selector_present": true,
+  "source_definition": "Sumber: Survei Sosial Ekonomi Nasional (Susenas)",
+  "source_last_update": "2024-12-19 03:14:37",
+  "source_note": "Data Dikutip dari Publikasi Statistik Kesejahteraan Rakyat Provinsi Sumatera Barat",
+  "source_title": "Angka Kesakitan/Morbiditas Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+  "source_unit": "Persen",
+  "source_vertical_label": "Kabupaten/Kota",
+  "status": "OK",
+  "tahun": [
+    {
+      "label": "2024",
+      "val": 124
+    }
+  ],
+  "target_values_inspected": false,
+  "turtahun": [
+    {
+      "label": "Tahun",
+      "val": 0
+    }
+  ],
+  "turth_present": true,
+  "turvar": [
+    {
+      "label": "Tidak ada",
+      "val": "0"
+    }
+  ],
+  "unexpected_datacontent_keys": [],
+  "var": [
+    {
+      "decimal": 2,
+      "def": "Sumber: Survei Sosial Ekonomi Nasional (Susenas)",
+      "label": "Angka Kesakitan/Morbiditas Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+      "note": "Data Dikutip dari Publikasi Statistik Kesejahteraan Rakyat Provinsi Sumatera Barat",
+      "subj": "Kesehatan",
+      "unit": "Persen",
+      "val": 547
+    }
+  ],
+  "vervar": [
+    {
+      "label": "Kab. Kepulauan Mentawai",
+      "val": 1301
+    },
+    {
+      "label": "Kab. Pesisir Selatan",
+      "val": 1302
+    },
+    {
+      "label": "Kab. Solok",
+      "val": 1303
+    },
+    {
+      "label": "Kab. Sijunjung",
+      "val": 1304
+    },
+    {
+      "label": "Kab. Tanah Datar",
+      "val": 1305
+    },
+    {
+      "label": "Kab. Padang Pariaman",
+      "val": 1306
+    },
+    {
+      "label": "Kab. Agam",
+      "val": 1307
+    },
+    {
+      "label": "Kab. Lima Puluh Kota",
+      "val": 1308
+    },
+    {
+      "label": "Kab. Pasaman",
+      "val": 1309
+    },
+    {
+      "label": "Kab. Solok Selatan",
+      "val": 1310
+    },
+    {
+      "label": "Kab. Dharmasraya",
+      "val": 1311
+    },
+    {
+      "label": "Kab. Pasaman Barat",
+      "val": 1312
+    },
+    {
+      "label": "Kota Padang",
+      "val": 1371
+    },
+    {
+      "label": "Kota Solok",
+      "val": 1372
+    },
+    {
+      "label": "Kota Sawahlunto",
+      "val": 1373
+    },
+    {
+      "label": "Kota Padang Panjang",
+      "val": 1374
+    },
+    {
+      "label": "Kota Bukittinggi",
+      "val": 1375
+    },
+    {
+      "label": "Kota Payakumbuh",
+      "val": 1376
+    },
+    {
+      "label": "Kota Pariaman",
+      "val": 1377
+    },
+    {
+      "label": "Provinsi Sumatera Barat ",
+      "val": 1378
+    }
+  ]
+}

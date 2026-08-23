@@ -1,0 +1,9 @@
+candidate_id,bps_var_id,classification,structure_qualified,period_coverage,provisional_claim_type,qualification_basis,hold_reason
+real_grdp_per_capita_2010,169,qualified_structure_after_typed_geography_amendment,True,2018-2024,observed_source_published,frozen_2024_local_ordinal_plus_label_map,
+morbidity_rate,547,qualified_structure,True,2018-2024,observed,frozen_2024_canonical_bps_code_structure,
+jkn_coverage,763,qualified_structure,True,2019-2025,observed,frozen_2024_canonical_bps_code_structure,
+internet_access_age5plus,320,qualified_structure,True,2018-2025,observed,frozen_2024_canonical_bps_code_structure,
+sanitation_access_adequate,341,qualified_structure,True,2018-2025,observed,frozen_2024_canonical_bps_code_structure,
+safe_drinking_water_access,352,qualified_structure,True,2018-2025,observed,frozen_2024_canonical_bps_code_structure,
+dependency_ratio_projection,756,qualified_structure,True,2020-2024,model_estimate_projection,frozen_2024_canonical_bps_code_structure,
+household_lighting_source,337,held_no_direct_electricity_selector,False,2018-2022,observed,pre_registered_selector_hold,Only PLN; non-PLN; and non-electric categories exist. Stage 1B does not authorize summing PLN plus non-PLN or relabeling one category as total electricity access.

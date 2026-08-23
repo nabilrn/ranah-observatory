@@ -1,0 +1,99 @@
+name: Milestone 28 Completion
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/milestone28-*.yml
+      - data/analysis/engine/broader_panel_v1/**
+      - data/analysis/engine/panel_v2/**
+      - data/manifests/milestone28_*.json
+      - data/processed/bps/m28_*/**
+      - data/registries/milestone28_*.csv
+      - docs/MILESTONE28_BROADER_OUTCOME_INFRASTRUCTURE_HEALTH.md
+      - research/MILESTONE28_BROADER_OUTCOME_INFRASTRUCTURE_HEALTH_SPEC.md
+      - scripts/*milestone28*.py
+
+permissions:
+  contents: read
+
+jobs:
+  certify-m28:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require all Milestone 28 workflows to be read-only
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          offenders = []
+          writer_permission = re.compile(r'^  contents:\s*write\s*$', re.MULTILINE)
+          paths = sorted(Path('.github/workflows').glob('milestone28-*.yml'))
+          for path in paths:
+              text = path.read_text(encoding='utf-8')
+              if writer_permission.search(text):
+                  offenders.append(str(path))
+          assert not offenders, f'active M28 writer workflows remain: {offenders}'
+          print({'m28_workflows': len(paths), 'active_writers': 0})
+          PY
+      - name: Rebuild Stage 2B evidence offline
+        run: python scripts/audit_milestone28_stage2b_offline_rebuild.py
+      - name: Rebuild Panel v2 offline
+        run: python scripts/build_milestone28_integrated_panel.py
+      - name: Require deterministic rebuilds to leave canonical outputs unchanged
+        run: |
+          git diff --exit-code -- \
+            data/analysis/engine/broader_panel_v1 \
+            data/analysis/engine/panel_v2 \
+            data/manifests/milestone28_stage2b_offline_reproducibility.json \
+            data/manifests/milestone28_panel_integration.json
+      - name: Validate completion certificate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('.')
+          completion = json.loads((root/'data/manifests/milestone28_completion.json').read_text(encoding='utf-8'))
+          discovery = json.loads((root/'data/manifests/milestone28_bps_catalog_discovery.json').read_text(encoding='utf-8'))
+          stage1a = json.loads((root/'data/manifests/milestone28_stage1a_metadata_probe.json').read_text(encoding='utf-8'))
+          stage1b = json.loads((root/'data/manifests/milestone28_stage1b_qualification.json').read_text(encoding='utf-8'))
+          pilot = json.loads((root/'data/manifests/milestone28_stage2a_numeric_pilot.json').read_text(encoding='utf-8'))
+          history = json.loads((root/'data/manifests/milestone28_stage2b_full_history.json').read_text(encoding='utf-8'))
+          repro = json.loads((root/'data/manifests/milestone28_stage2b_offline_reproducibility.json').read_text(encoding='utf-8'))
+          panel = json.loads((root/'data/manifests/milestone28_panel_integration.json').read_text(encoding='utf-8'))
+
+          assert completion['schema'] == 'ranah-observatory/milestone28-completion/v1'
+          assert completion['milestone28_complete'] is True
+          assert completion['m23_tier_b_priority5_complete'] is True
+          assert discovery['catalog_row_count'] == 553 and discovery['candidate_count'] == 62
+          assert discovery['target_values_inspected'] is False
+          assert stage1a['candidate_count'] == 8 and stage1a['dynamic_observation_requested'] is False
+          assert stage1b['structure_qualified_count'] == 7 and stage1b['held_count'] == 1
+          assert stage1b['held_var_ids'] == [337]
+          assert stage1b['var169_cross_year_stability_assumed'] is False
+          assert pilot['pilot_success'] is True and pilot['promoted_observation_count'] == 133
+          assert history['full_history_success'] is True
+          assert history['authorized_request_count'] == 49
+          assert history['qualified_candidate_year_count'] == 49
+          assert history['held_candidate_year_count'] == 0
+          assert history['structured_missing_candidate_year_count'] == 7
+          assert history['promoted_observation_count'] == 931
+          assert repro['rebuild_success'] is True and repro['all_outputs_byte_identical'] is True
+          assert panel['integration_success'] is True
+          assert panel['indicator_count'] == 22
+          assert panel['wide_row_count'] == 152
+          assert panel['long_observation_count'] == 2679
+          assert panel['missing_indicator_cells'] == 665
+          assert panel['m28_structured_missing_indicator_cells'] == 133
+          assert panel['base_m10_rows_preserved_field_exact'] is True
+          assert panel['m28_values_claims_methodologies_preserved'] is True
+          assert len(panel['complete_2018_2025_indicator_ids']) == 10
+          assert panel['m28_drinking_water_backcast_row_count'] == 38
+          assert panel['m28_dependency_projection_row_count'] == 76
+          for key, value in completion['claim_boundaries'].items():
+              assert value is False, key
+          assert completion['publication_freeze_can_proceed_without_m29'] is True
+          print({'milestone28_complete': True, 'panel_v2_observations': 2679, 'complete_indicators': 10})
+          PY

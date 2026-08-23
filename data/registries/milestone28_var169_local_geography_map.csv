@@ -1,0 +1,20 @@
+source_vervar_id,source_label,geography_id,bps_code,canonical_name,scope
+1,Kab. Kep. Mentawai,idn.13.1301,1301,Kepulauan Mentawai,var169_local_ordinal
+2,Kab. Pesisir Selatan,idn.13.1302,1302,Pesisir Selatan,var169_local_ordinal
+3,Kab. Solok,idn.13.1303,1303,Solok,var169_local_ordinal
+4,Kab. Sijunjung,idn.13.1304,1304,Sijunjung,var169_local_ordinal
+5,Kab. Tanah datar,idn.13.1305,1305,Tanah Datar,var169_local_ordinal
+6,Kab. Padang Pariaman,idn.13.1306,1306,Padang Pariaman,var169_local_ordinal
+7,Kab. Agam,idn.13.1307,1307,Agam,var169_local_ordinal
+8,Kab. Lima Puluh Kota,idn.13.1308,1308,Lima Puluh Kota,var169_local_ordinal
+9,Kab. Pasaman,idn.13.1309,1309,Pasaman,var169_local_ordinal
+10,Kab. Solok Selatan,idn.13.1310,1310,Solok Selatan,var169_local_ordinal
+11,Kab. Dharmasraya,idn.13.1311,1311,Dharmasraya,var169_local_ordinal
+12,Kab. Pasaman Barat,idn.13.1312,1312,Pasaman Barat,var169_local_ordinal
+13,Kota Padang,idn.13.1371,1371,Padang,var169_local_ordinal
+14,Kota Solok,idn.13.1372,1372,Solok,var169_local_ordinal
+15,Kota Sawahlunto,idn.13.1373,1373,Sawahlunto,var169_local_ordinal
+16,Kota Padang Panjang,idn.13.1374,1374,Padang Panjang,var169_local_ordinal
+17,Kota Bukittinggi,idn.13.1375,1375,Bukittinggi,var169_local_ordinal
+18,Kota Payakumbuh,idn.13.1376,1376,Payakumbuh,var169_local_ordinal
+19,Kota Pariaman,idn.13.1377,1377,Pariaman,var169_local_ordinal

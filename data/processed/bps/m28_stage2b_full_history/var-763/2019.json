@@ -1,0 +1,158 @@
+{
+  "domain": "1300",
+  "request": {
+    "th": "119",
+    "turth": 0,
+    "turvar": 0,
+    "var": 763
+  },
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "130176301190": 34.61,
+      "130276301190": 23.43,
+      "130376301190": 28.48,
+      "130476301190": 28.94,
+      "130576301190": 43.71,
+      "130676301190": 27.09,
+      "130776301190": 49.35,
+      "130876301190": 32.18,
+      "130976301190": 52.94,
+      "131076301190": 33.16,
+      "131176301190": 16.13,
+      "131276301190": 32.88,
+      "137176301190": 61.48,
+      "137276301190": 57.82,
+      "137376301190": 63.19,
+      "137476301190": 54.4,
+      "137576301190": 49.14,
+      "137676301190": 74.78,
+      "137776301190": 45.62,
+      "137876301190": 40.25
+    },
+    "labelvervar": "Kabupaten/Kota",
+    "last_update": "2026-05-20 03:53:12",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Kesehatan",
+        "val": 522
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2019",
+        "val": 119
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "Catatan: Jaminan Kesehatan Nasional terdiri dari BPJS Mandiri maupun BPJS PBI",
+        "label": "Cakupan Kepesertaan Jaminan Kesehatan Nasional Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+        "note": "",
+        "subj": "Kesehatan",
+        "unit": "Persen",
+        "val": 763
+      }
+    ],
+    "vervar": [
+      {
+        "label": "Kab. Kepulauan Mentawai",
+        "val": 1301
+      },
+      {
+        "label": "Kab. Pesisir Selatan",
+        "val": 1302
+      },
+      {
+        "label": "Kab. Solok",
+        "val": 1303
+      },
+      {
+        "label": "Kab. Sijunjung",
+        "val": 1304
+      },
+      {
+        "label": "Kab. Tanah Datar",
+        "val": 1305
+      },
+      {
+        "label": "Kab. Padang Pariaman",
+        "val": 1306
+      },
+      {
+        "label": "Kab. Agam",
+        "val": 1307
+      },
+      {
+        "label": "Kab. Lima Puluh Kota",
+        "val": 1308
+      },
+      {
+        "label": "Kab. Pasaman",
+        "val": 1309
+      },
+      {
+        "label": "Kab. Solok Selatan",
+        "val": 1310
+      },
+      {
+        "label": "Kab. Dharmasraya",
+        "val": 1311
+      },
+      {
+        "label": "Kab. Pasaman Barat",
+        "val": 1312
+      },
+      {
+        "label": "Kota Padang",
+        "val": 1371
+      },
+      {
+        "label": "Kota Solok",
+        "val": 1372
+      },
+      {
+        "label": "Kota Sawahlunto",
+        "val": 1373
+      },
+      {
+        "label": "Kota Padang Panjang",
+        "val": 1374
+      },
+      {
+        "label": "Kota Bukittinggi",
+        "val": 1375
+      },
+      {
+        "label": "Kota Payakumbuh",
+        "val": 1376
+      },
+      {
+        "label": "Kota Pariaman",
+        "val": 1377
+      },
+      {
+        "label": "Provinsi Sumatera Barat ",
+        "val": 1378
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-23T07:45:07+00:00",
+  "snapshot_schema": "ranah-observatory/milestone28-bps-dynamic-snapshot/v1",
+  "source_id": "bps_webapi"
+}

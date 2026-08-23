@@ -1,0 +1,50 @@
+name: Milestone 28 Panel v2 Verification
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/analysis/engine/panel_v1/**
+      - data/analysis/engine/panel_v2/**
+      - data/analysis/engine/broader_panel_v1/**
+      - data/registries/milestone28_indicator_extension.csv
+      - data/manifests/milestone28_panel_integration_contract.json
+      - data/manifests/milestone28_panel_integration.json
+      - scripts/build_milestone28_integrated_panel.py
+      - .github/workflows/milestone28-panel-integration.yml
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild-panel-v2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild Panel v2 offline
+        run: python scripts/build_milestone28_integrated_panel.py
+      - name: Verify completion footprint
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_panel_integration.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone28-integrated-panel/v1'
+          assert m['integration_success'] is True
+          assert m['wide_row_count'] == 152
+          assert m['indicator_count'] == 22
+          assert m['long_observation_count'] == 2679
+          assert m['missing_indicator_cells'] == 665
+          assert m['m28_structured_missing_indicator_cells'] == 133
+          assert m['duplicate_key_count'] == 0
+          assert m['base_m10_rows_preserved_field_exact'] is True
+          assert m['m28_values_claims_methodologies_preserved'] is True
+          assert m['m28_drinking_water_backcast_row_count'] == 38
+          assert m['m28_dependency_projection_row_count'] == 76
+          assert len(m['complete_2018_2025_indicator_ids']) == 10
+          assert m['base_panel_overwritten'] is False
+          for key in ('global_window_shortening_performed','imputation_performed','forward_fill_performed','backward_fill_performed','zero_fill_missing_years_performed','cross_indicator_aggregation_performed','statistical_model_fit','causal_analysis_performed','monetary_wasted_potential_estimated'):
+              assert m[key] is False, key
+          print({'observations': 2679, 'missing': 665, 'complete_indicators': 10})
+          PY

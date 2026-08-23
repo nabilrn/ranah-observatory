@@ -1,0 +1,48 @@
+{
+  "all_outputs_byte_identical": true,
+  "causal_claim_created": false,
+  "cross_indicator_aggregation_performed": false,
+  "cross_year_aggregation_performed": false,
+  "global_window_shortening_performed": false,
+  "imputation_performed": false,
+  "milestone": 28,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "network_requests_performed": false,
+  "offline_only": true,
+  "outputs": {
+    "audit_csv": {
+      "byte_identical": true,
+      "generated_sha256": "33f45bf27d06058d61c714f83a1f0865f62ae84eb160f516aeae18a0c7be362b",
+      "live_sha256": "33f45bf27d06058d61c714f83a1f0865f62ae84eb160f516aeae18a0c7be362b",
+      "path": "data/analysis/engine/broader_panel_v1/m28-full-history-audit.csv"
+    },
+    "coverage_csv": {
+      "byte_identical": true,
+      "generated_sha256": "d2da74a57f71b858892fa47812d1bddcb1cbf7014ee493d8275589628b211ae2",
+      "live_sha256": "d2da74a57f71b858892fa47812d1bddcb1cbf7014ee493d8275589628b211ae2",
+      "path": "data/analysis/engine/broader_panel_v1/m28-indicator-year-coverage.csv"
+    },
+    "observations_csv": {
+      "byte_identical": true,
+      "generated_sha256": "c4db280bfc4348ebf4830107f5effd3d8d7197a50511e95da166e59ec75c495f",
+      "live_sha256": "c4db280bfc4348ebf4830107f5effd3d8d7197a50511e95da166e59ec75c495f",
+      "path": "data/analysis/engine/broader_panel_v1/m28-broader-panel-observations.csv"
+    },
+    "provenance_csv": {
+      "byte_identical": true,
+      "generated_sha256": "50d6fe7d080388af62100c937f1f9c31527ba61314e53e95df2bd4227043537e",
+      "live_sha256": "50d6fe7d080388af62100c937f1f9c31527ba61314e53e95df2bd4227043537e",
+      "path": "data/analysis/engine/broader_panel_v1/m28-broader-panel-provenance.csv"
+    }
+  },
+  "promoted_observation_count": 931,
+  "qualified_candidate_year_count": 49,
+  "raw_snapshot_count_verified": 49,
+  "rebuild_success": true,
+  "replayed_candidate_year_count": 49,
+  "schema": "ranah-observatory/milestone28-stage2b-offline-reproducibility/v1",
+  "stage": "stage2b_offline_byte_identical_rebuild",
+  "statistical_model_fit": false,
+  "structured_missing_candidate_year_count": 7
+}

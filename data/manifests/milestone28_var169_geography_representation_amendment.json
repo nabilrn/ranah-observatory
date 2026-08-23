@@ -1,0 +1,20 @@
+{
+  "schema": "ranah-observatory/milestone28-var169-geography-representation-amendment/v1",
+  "milestone": 28,
+  "bps_var_id": 169,
+  "reason": "The BPS dynamic payload uses source-local ordinal vervar IDs 1-19 for Sumatera Barat kabupaten/kota, with 20=Jumlah and 21=Provinsi Sumatera Barat, instead of canonical BPS area codes 1301-1377.",
+  "evidence_path": "data/processed/bps/m28_stage1b_structure/var-169-2024-structure.json",
+  "mapping_path": "data/registries/milestone28_var169_local_geography_map.csv",
+  "mapping_scope": "var169_local_ordinal_only",
+  "mapping_row_count": 19,
+  "source_local_ids_are_not_global_bps_codes": true,
+  "canonical_registry_modified": false,
+  "2024_structure_evidence_only": true,
+  "cross_year_stability_assumed": false,
+  "numeric_stage_requires_exact_source_local_id_and_label_match_each_year": true,
+  "aggregate_source_rows_20_and_21_promoted": false,
+  "missing_as_zero_authorized": false,
+  "numeric_materialization_authorized_by_this_amendment": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

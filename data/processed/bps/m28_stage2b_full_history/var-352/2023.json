@@ -1,0 +1,158 @@
+{
+  "domain": "1300",
+  "request": {
+    "th": "123",
+    "turth": 0,
+    "turvar": 0,
+    "var": 352
+  },
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "130135201230": 68.34,
+      "130235201230": 86.8,
+      "130335201230": 82.36,
+      "130435201230": 69.6,
+      "130535201230": 87.17,
+      "130635201230": 87.19,
+      "130735201230": 90.02,
+      "130835201230": 69.39,
+      "130935201230": 81.44,
+      "131035201230": 80.11,
+      "131135201230": 71.5,
+      "131235201230": 78.79,
+      "137135201230": 98.64,
+      "137235201230": 96.22,
+      "137335201230": 90.46,
+      "137435201230": 99.07,
+      "137535201230": 99.95,
+      "137635201230": 98.63,
+      "137735201230": 94.48,
+      "137835201230": 85.59
+    },
+    "labelvervar": "Kabupaten/Kota",
+    "last_update": "2026-04-07 02:07:20",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Pemukiman dan Perumahan",
+        "val": 525
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2023",
+        "val": 123
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "Catatan: \n1. Sejak tahun 2019, konsep yang digunakan mengacu pada metadata SDGs dimana rumah tangga dikatakan memiliki akses air minum layak (access to improved water) yaitu jika sumber air minum utama yang digunakan adalah leding, air terlindungi, dan air hujan. Air terlindungi mencakup sumur bor/pompa, sumur terlindung dan mata air terlindung. Bagi rumah tangga yang menggunakan sumber air minum berupa air kemasan, maka rumah tangga dikategorikan memiliki akses air minum layak jika sumber air untuk mandi/cuci berasal dari leding, sumur bor/pompa, sumur terlindung, mata air terlindung, dan air hujan.\n\n2. Data tahun 2019-2020 merupakan data Backcasting",
+        "label": "Persentase Rumah Tangga yang Memiliki Akses Terhadap Sumber Air Minum Layak Menurut Kabupaten/Kota",
+        "note": "Sumber : BPS,  Survei Sosial Ekonomi Nasional (Susenas).\nData dikutip dari Publikasi Provinsi Sumatera Barat dalam Angka",
+        "subj": "Perumahan",
+        "unit": "Persen",
+        "val": 352
+      }
+    ],
+    "vervar": [
+      {
+        "label": "Kab. Kepulauan Mentawai",
+        "val": 1301
+      },
+      {
+        "label": "Kab. Pesisir Selatan",
+        "val": 1302
+      },
+      {
+        "label": "Kab. Solok",
+        "val": 1303
+      },
+      {
+        "label": "Kab. Sijunjung",
+        "val": 1304
+      },
+      {
+        "label": "Kab. Tanah Datar",
+        "val": 1305
+      },
+      {
+        "label": "Kab. Padang Pariaman",
+        "val": 1306
+      },
+      {
+        "label": "Kab. Agam",
+        "val": 1307
+      },
+      {
+        "label": "Kab. Lima Puluh Kota",
+        "val": 1308
+      },
+      {
+        "label": "Kab. Pasaman",
+        "val": 1309
+      },
+      {
+        "label": "Kab. Solok Selatan",
+        "val": 1310
+      },
+      {
+        "label": "Kab. Dharmasraya",
+        "val": 1311
+      },
+      {
+        "label": "Kab. Pasaman Barat",
+        "val": 1312
+      },
+      {
+        "label": "Kota Padang",
+        "val": 1371
+      },
+      {
+        "label": "Kota Solok",
+        "val": 1372
+      },
+      {
+        "label": "Kota Sawahlunto",
+        "val": 1373
+      },
+      {
+        "label": "Kota Padang Panjang",
+        "val": 1374
+      },
+      {
+        "label": "Kota Bukittinggi",
+        "val": 1375
+      },
+      {
+        "label": "Kota Payakumbuh",
+        "val": 1376
+      },
+      {
+        "label": "Kota Pariaman",
+        "val": 1377
+      },
+      {
+        "label": "Provinsi Sumatera Barat ",
+        "val": 1378
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-23T07:45:40+00:00",
+  "snapshot_schema": "ranah-observatory/milestone28-bps-dynamic-snapshot/v1",
+  "source_id": "bps_webapi"
+}

@@ -1,0 +1,39 @@
+{
+  "candidate_count": 8,
+  "causal_claim_created": false,
+  "derived_indicator_materialized": false,
+  "global_window_shortening_performed": false,
+  "held_count": 1,
+  "held_var_ids": [
+    337
+  ],
+  "imputation_performed": false,
+  "milestone": 28,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "network_requests_performed": false,
+  "next_gate": "freeze candidate-specific Stage 2 numeric acquisition contracts; var169 must revalidate the exact local ordinal+label mapping in every acquired year",
+  "numeric_materialization_authorized": false,
+  "offline_only": true,
+  "original_probe_failure_preserved": true,
+  "qualification_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-stage1b-qualification.csv",
+    "sha256": "142924387f9fab53525dbae0cf07849a81b64291ebc62bc67ce7495c0a21540c"
+  },
+  "qualified_var_ids": [
+    169,
+    547,
+    763,
+    320,
+    341,
+    352,
+    756
+  ],
+  "schema": "ranah-observatory/milestone28-stage1b-qualification/v1",
+  "statistical_model_fit": false,
+  "structure_qualified_count": 7,
+  "target_values_inspected": false,
+  "var169_2024_mapping_exact": true,
+  "var169_cross_year_stability_assumed": false,
+  "var169_typed_geography_amendment_applied": true
+}

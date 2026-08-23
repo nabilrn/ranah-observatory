@@ -1,0 +1,100 @@
+{
+  "schema": "ranah-observatory/milestone28-completion/v1",
+  "milestone": 28,
+  "status": "complete",
+  "m23_priority": "Tier B #5 broader_outcome_infrastructure_health_panel",
+  "source_family": "BPS WebAPI domain 1300",
+  "target_regime": "sumbar_current_kabkota_2018_2025_v1",
+  "geography_count": 19,
+  "stage0_metadata_discovery": {
+    "catalog_variable_count": 553,
+    "candidate_count": 62,
+    "target_values_inspected": false
+  },
+  "stage1_selector_and_structure": {
+    "shortlisted_candidate_count": 8,
+    "structure_qualified_candidate_count": 7,
+    "held_candidate_count": 1,
+    "held_bps_var_ids": [337],
+    "held_reason": "No source-native total electricity-access selector; PLN plus non-PLN arithmetic was not authorized.",
+    "var169_typed_local_geography_amendment": true,
+    "var169_cross_year_stability_assumed": false
+  },
+  "stage2_numeric_evidence": {
+    "pilot_year": 2024,
+    "pilot_candidate_count": 7,
+    "pilot_observation_count": 133,
+    "pilot_success": true,
+    "candidate_year_cell_count": 56,
+    "authorized_candidate_year_request_count": 49,
+    "qualified_candidate_year_count": 49,
+    "held_candidate_year_count": 0,
+    "structured_missing_candidate_year_count": 7,
+    "promoted_observation_count": 931,
+    "full_history_success": true
+  },
+  "promoted_indicator_ids": [
+    "real_grdp_per_capita",
+    "morbidity_rate",
+    "jkn_membership_coverage",
+    "internet_access_age5plus",
+    "adequate_sanitation_access",
+    "adequate_drinking_water_access",
+    "dependency_ratio"
+  ],
+  "methodology_boundaries": {
+    "adequate_drinking_water_2018": "excluded_pre_sdgs_concept",
+    "adequate_drinking_water_2019_2020": "backcast_estimate",
+    "adequate_drinking_water_2021_2025": "observed_under_sdgs_aligned_source_definition",
+    "dependency_ratio_2020": "observed_census_anchor_lf_sp2020",
+    "dependency_ratio_2021_2024": "model_estimate_projection_2020_2035_sp2020_basis",
+    "real_grdp_per_capita": "source_published_constant_2010_price_series_with_source_revision_status_retained"
+  },
+  "offline_reproducibility": {
+    "raw_snapshot_count_verified": 49,
+    "replayed_candidate_year_count": 49,
+    "all_four_stage2b_outputs_byte_identical": true,
+    "rebuild_success": true
+  },
+  "panel_v2": {
+    "base_m10_indicator_count": 15,
+    "added_m28_indicator_count": 7,
+    "combined_indicator_count": 22,
+    "wide_geography_year_row_count": 152,
+    "base_m10_observation_count": 1748,
+    "added_m28_observation_count": 931,
+    "combined_observation_count": 2679,
+    "total_possible_indicator_cells": 3344,
+    "missing_indicator_cells": 665,
+    "m28_structured_missing_indicator_cells": 133,
+    "complete_2018_2025_indicator_count": 10,
+    "base_m10_rows_preserved_field_exact": true,
+    "m28_values_claims_methodologies_preserved": true,
+    "base_panel_overwritten": false
+  },
+  "claim_boundaries": {
+    "global_window_shortening_performed": false,
+    "imputation_performed": false,
+    "missing_values_coerced_to_zero": false,
+    "cross_year_aggregation_performed": false,
+    "cross_indicator_aggregation_performed": false,
+    "statistical_model_fit": false,
+    "causal_claim_created": false,
+    "policy_ranking_created": false,
+    "monetary_wasted_potential_estimated": false
+  },
+  "canonical_outputs": [
+    "data/analysis/engine/broader_panel_v1/m28-broader-panel-observations.csv",
+    "data/analysis/engine/broader_panel_v1/m28-broader-panel-provenance.csv",
+    "data/analysis/engine/broader_panel_v1/m28-full-history-audit.csv",
+    "data/analysis/engine/broader_panel_v1/m28-indicator-year-coverage.csv",
+    "data/analysis/engine/panel_v2/m28-panel-long.csv",
+    "data/analysis/engine/panel_v2/m28-panel-wide.csv",
+    "data/analysis/engine/panel_v2/m28-indicator-coverage.csv",
+    "data/analysis/engine/panel_v2/m28-indicator-metadata.csv"
+  ],
+  "milestone28_complete": true,
+  "m23_tier_b_priority5_complete": true,
+  "publication_freeze_can_proceed_without_m29": true,
+  "remaining_m23_tier_b_priority6_station_daily_climate_validation": "valuable_nonblocking_for_v0_1_publication"
+}

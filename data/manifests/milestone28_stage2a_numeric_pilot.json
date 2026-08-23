@@ -1,0 +1,72 @@
+{
+  "aggregation_across_geographies_performed": false,
+  "aggregation_across_years_performed": false,
+  "audit_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-audit.csv",
+    "sha256": "a5cc9be69eaad46742d1a6859735bdf3453587553166b68498a17c5e7d7b458c"
+  },
+  "candidate_count": 7,
+  "candidate_hold_count": 0,
+  "candidate_pass_count": 7,
+  "causal_claim_created": false,
+  "full_history_materialization_authorized": false,
+  "global_window_shortening_performed": false,
+  "imputation_performed": false,
+  "milestone": 28,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "next_gate": "if and only if pilot_success=true, freeze a separate Stage 2B full-history authorization using the preregistered series-year regimes; otherwise diagnose held candidate(s) without changing value-based selection rules",
+  "numeric_values_inspected": true,
+  "numeric_values_requested": true,
+  "observations_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-observations.csv",
+    "sha256": "109afe523a88d34d9652b7d4171de3dd56cbbc0d95528e400e1caa2a9687663f"
+  },
+  "pilot_success": true,
+  "pilot_year": 2024,
+  "promoted_observation_count": 133,
+  "provenance_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-provenance.csv",
+    "sha256": "d57a97cc481ef9a7a2589ca378a19f1b7f29b1f141203c825118a8a57186143c"
+  },
+  "raw_dynamic_payloads_frozen": true,
+  "raw_snapshots": [
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2a_numeric_pilot/var-169-2024.json",
+      "sha256": "1a22a50117c760cfe1d2d35172317c74c13bfbf8ebe985534cccddc12b669fb2"
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2a_numeric_pilot/var-547-2024.json",
+      "sha256": "5d311a2dcba0d0478db66d4e44069ec36af3550673fec3b697378e4cb52bb3a9"
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2a_numeric_pilot/var-763-2024.json",
+      "sha256": "bab2153714546fc0ce9e24c466b109f08554616c6ec1507b1d07feb436de7638"
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2a_numeric_pilot/var-320-2024.json",
+      "sha256": "5e272324621c053ce769567219601efc58b39fcd9edc64f0f723e24aba38e18d"
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2a_numeric_pilot/var-341-2024.json",
+      "sha256": "41a3cfa2929711e07d8657eec641d54bebb306a51ea2929cf9fdb2b1cf3564a0"
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2a_numeric_pilot/var-352-2024.json",
+      "sha256": "21f03f075214afb0939ab04d563e9ddb1aa7bfee8a4a64e34b21b5e4e0b7b8f2"
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage2a_numeric_pilot/var-756-2024.json",
+      "sha256": "7c4afdb8e32fe4ce55d82020f10ec00b5c160bb5f7f99a884d98f68b87837ad4"
+    }
+  ],
+  "schema": "ranah-observatory/milestone28-stage2a-numeric-pilot/v1",
+  "statistical_model_fit": false
+}

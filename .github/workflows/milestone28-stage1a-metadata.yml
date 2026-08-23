@@ -1,0 +1,43 @@
+name: Milestone 28 Stage 1A Metadata Verification
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/registries/milestone28_stage1a_shortlist.csv
+      - data/manifests/milestone28_stage1a_metadata_contract.json
+      - data/manifests/milestone28_stage1a_metadata_probe.json
+      - data/analysis/engine/broader_panel_v1/m28-stage1a-metadata-audit.csv
+      - data/processed/bps/m28_stage1a_metadata/**
+      - scripts/probe_milestone28_stage1a_metadata.py
+      - .github/workflows/milestone28-stage1a-metadata.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen Stage 1A evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('.')
+          m = json.loads((root/'data/manifests/milestone28_stage1a_metadata_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone28-stage1a-metadata-probe/v1'
+          assert m['candidate_count'] == 8
+          assert m['metadata_only'] is True
+          assert m['dynamic_observation_requested'] is False
+          assert m['target_values_inspected'] is False
+          assert m['target_values_persisted'] is False
+          for item in m['candidate_metadata']:
+              p = root/item['path']
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+          audit = root/m['audit_csv']['path']
+          assert hashlib.sha256(audit.read_bytes()).hexdigest() == m['audit_csv']['sha256']
+          print({'candidate_count': 8, 'classification_counts': m['classification_counts']})
+          PY

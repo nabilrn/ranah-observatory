@@ -1,0 +1,49 @@
+name: Milestone 28 Stage 2B Frozen History Verification
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/processed/bps/m28_stage2b_full_history/**
+      - data/analysis/engine/broader_panel_v1/m28-broader-panel-observations.csv
+      - data/analysis/engine/broader_panel_v1/m28-broader-panel-provenance.csv
+      - data/analysis/engine/broader_panel_v1/m28-full-history-audit.csv
+      - data/analysis/engine/broader_panel_v1/m28-indicator-year-coverage.csv
+      - data/manifests/milestone28_stage2b_full_history.json
+      - data/manifests/milestone28_stage2b_full_history_contract.json
+      - scripts/materialize_milestone28_stage2b_full_history.py
+      - .github/workflows/milestone28-stage2b-full-history.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-history:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen bounded-history certificate
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_stage2b_full_history.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone28-stage2b-full-history/v1'
+          assert m['full_history_success'] is True
+          assert m['executed_request_count'] == 49
+          assert m['qualified_candidate_year_count'] == 49
+          assert m['held_candidate_year_count'] == 0
+          assert m['structured_missing_candidate_year_count'] == 7
+          assert m['promoted_observation_count'] == 931
+          for item in m['raw_snapshots']:
+              p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+          for key in ('observations_csv','provenance_csv','audit_csv','coverage_csv'):
+              item = m[key]
+              p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+          for key in ('global_window_shortening_performed','imputation_performed','missing_values_coerced_to_zero','cross_year_aggregation_performed','cross_indicator_aggregation_performed','statistical_model_fit','causal_claim_created','monetary_wasted_potential_estimated'):
+              assert m[key] is False, key
+          print({'qualified_candidate_years': 49, 'structured_missing': 7, 'observations': 931})
+          PY

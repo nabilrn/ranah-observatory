@@ -1,0 +1,54 @@
+name: Milestone 28 BPS Candidate Discovery Evidence
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/processed/bps/m28_candidate_discovery/bps-domain1300-variable-catalog.json
+      - data/analysis/engine/broader_panel_v1/m28-candidate-catalog.csv
+      - data/manifests/milestone28_bps_catalog_discovery.json
+      - data/manifests/milestone28_design_gate.json
+      - scripts/probe_milestone28_bps_candidate_catalog.py
+      - .github/workflows/milestone28-bps-candidate-discovery.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-metadata-discovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen M28 catalog discovery
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_bps_catalog_discovery.json').read_text(encoding='utf-8'))
+          raw = Path(m['raw_catalog']['path'])
+          out = Path(m['candidate_csv']['path'])
+          assert hashlib.sha256(raw.read_bytes()).hexdigest() == m['raw_catalog']['sha256']
+          assert hashlib.sha256(out.read_bytes()).hexdigest() == m['candidate_csv']['sha256']
+          assert m['catalog_row_count'] == 553
+          assert m['candidate_count'] == 62
+          assert m['candidate_family_counts'] == {
+              'demographic_structure': 28,
+              'economic_level': 5,
+              'health': 12,
+              'infrastructure_basic_services': 15,
+          }
+          assert all(m['seed_candidate_presence'].values())
+          assert m['metadata_only'] is True
+          assert m['dynamic_observation_requested'] is False
+          assert m['target_values_inspected'] is False
+          assert m['credential_persisted'] is False
+          assert m['global_window_shortening_performed'] is False
+          assert m['imputation_performed'] is False
+          assert m['missing_values_coerced_to_zero'] is False
+          assert m['statistical_model_fit'] is False
+          rows = list(csv.DictReader(out.open(encoding='utf-8')))
+          assert len(rows) == 62
+          print({'catalog_rows': 553, 'candidates': 62, 'families': m['candidate_family_counts']})
+          PY

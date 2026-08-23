@@ -1,0 +1,42 @@
+name: Milestone 28 Stage 1B Structure Verification
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/processed/bps/m28_stage1b_structure/**
+      - data/analysis/engine/broader_panel_v1/m28-stage1b-structure-audit.csv
+      - data/manifests/milestone28_stage1b_structure_probe.json
+      - data/registries/milestone28_stage1b_selector_decisions.csv
+      - data/manifests/milestone28_stage1b_structure_contract.json
+      - scripts/probe_milestone28_stage1b_structure.py
+      - .github/workflows/milestone28-stage1b-structure.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify redacted structure evidence
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_stage1b_structure_probe.json').read_text(encoding='utf-8'))
+          assert m['authorized_request_count'] == 7
+          assert m['executed_candidate_count'] == 7
+          assert m['target_values_inspected'] is False
+          assert m['datacontent_values_persisted'] is False
+          for item in m['redacted_structure_files']:
+              p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+              obj = json.loads(p.read_text(encoding='utf-8'))
+              assert obj['target_values_inspected'] is False
+              assert obj['datacontent_values_persisted'] is False
+              assert 'datacontent' not in obj
+          print({'original_passes': m['structure_pass_count'], 'original_holds': m['structure_hold_count']})
+          PY

@@ -1,0 +1,40 @@
+name: Milestone 28 Stage 1B Qualification Verification
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/registries/milestone28_var169_local_geography_map.csv
+      - data/manifests/milestone28_var169_geography_representation_amendment.json
+      - data/analysis/engine/broader_panel_v1/m28-stage1b-qualification.csv
+      - data/manifests/milestone28_stage1b_qualification.json
+      - scripts/audit_milestone28_stage1b_qualification.py
+      - .github/workflows/milestone28-stage1b-qualification.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify-offline-qualification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild Stage 1B qualification offline
+        run: python scripts/audit_milestone28_stage1b_qualification.py
+      - name: Verify frozen result
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_stage1b_qualification.json').read_text(encoding='utf-8'))
+          assert m['offline_only'] is True
+          assert m['network_requests_performed'] is False
+          assert m['structure_qualified_count'] == 7
+          assert m['held_count'] == 1
+          assert m['held_var_ids'] == [337]
+          assert m['var169_2024_mapping_exact'] is True
+          assert m['var169_cross_year_stability_assumed'] is False
+          assert m['numeric_materialization_authorized'] is False
+          print({'qualified': m['qualified_var_ids'], 'held': m['held_var_ids']})
+          PY
