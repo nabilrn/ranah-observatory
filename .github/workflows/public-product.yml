@@ -8,7 +8,9 @@ on:
       - site/**
       - docs/PRODUCT_V0_1_SPEC.md
       - scripts/validate_public_product.py
+      - scripts/build_public_district_explorer.py
       - tests/test_public_product.py
+      - tests/test_public_district_explorer.py
       - .github/workflows/public-product.yml
   workflow_dispatch:
 
@@ -36,7 +38,9 @@ jobs:
           allowed_exact = {
               'docs/PRODUCT_V0_1_SPEC.md',
               'scripts/validate_public_product.py',
+              'scripts/build_public_district_explorer.py',
               'tests/test_public_product.py',
+              'tests/test_public_district_explorer.py',
               '.github/workflows/public-product.yml',
           }
           changed = subprocess.check_output(
@@ -50,11 +54,19 @@ jobs:
           print({'changed_files': len(changed), 'unauthorized_paths': 0})
           PY
 
+      - name: Rebuild deterministic district explorer candidate
+        run: |
+          cp site/data/districts.json /tmp/districts-frozen.json
+          python scripts/build_public_district_explorer.py
+          diff -u /tmp/districts-frozen.json site/data/districts.json
+
       - name: Validate public narrative against frozen claim ledger
         run: python scripts/validate_public_product.py
 
       - name: Run product contract tests
-        run: python -m unittest tests.test_public_product -v
+        run: |
+          python -m unittest tests.test_public_product -v
+          python -m unittest tests.test_public_district_explorer -v
 
       - name: Check browser JavaScript syntax
         run: node --check site/app.js
@@ -63,9 +75,12 @@ jobs:
         run: |
           test -s site/index.html
           test -s site/styles.css
+          test -s site/explorer.css
           test -s site/app.js
           test -s site/data/overview.json
+          test -s site/data/districts.json
           grep -q 'id="temuan"' site/index.html
+          grep -q 'id="daerah"' site/index.html
           grep -q 'id="batas"' site/index.html
           grep -q 'id="metode"' site/index.html
 
