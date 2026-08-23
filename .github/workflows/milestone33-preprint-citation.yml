@@ -8,6 +8,7 @@ on:
       - .github/workflows/milestone29-publication-v0.1.yml
       - .github/workflows/milestone33-preprint-citation.yml
       - .github/workflows/milestone34-pdf-release.yml
+      - .github/workflows/milestone35-deposit-handoff.yml
       - CITATION.cff
       - publication/v0.1/MILESTONE33_CITATION_APPARATUS.md
       - publication/v0.1/references.bib
@@ -34,13 +35,16 @@ jobs:
               '.github/workflows/milestone29-publication-v0.1.yml',
               '.github/workflows/milestone33-preprint-citation.yml',
               '.github/workflows/milestone34-pdf-release.yml',
+              '.github/workflows/milestone35-deposit-handoff.yml',
               'CITATION.cff',
               'publication/v0.1/MILESTONE33_CITATION_APPARATUS.md',
               'publication/v0.1/MILESTONE34_PDF_RELEASE_BUNDLE.md',
+              'publication/v0.1/MILESTONE35_EXTERNAL_DEPOSIT_HANDOFF.md',
               'publication/v0.1/references.bib',
               'publication/v0.1/reference-map.csv',
               'publication/v0.1/tools/build_preprint.py',
               'publication/v0.1/tools/build_pdf_release.py',
+              'publication/v0.1/tools/build_deposit_handoff.py',
           }
           changed = subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'], text=True).splitlines()
           offenders = [
@@ -48,6 +52,7 @@ jobs:
               if p not in allowed
               and not p.startswith('publication/v0.1/preprint/')
               and not p.startswith('publication/v0.1/distribution/')
+              and not p.startswith('publication/v0.1/deposit/')
           ]
           assert not offenders, offenders
           print({'changed_files': len(changed), 'unauthorized_paths': 0})
