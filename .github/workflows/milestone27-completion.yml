@@ -1,0 +1,75 @@
+name: Milestone 27 Completion
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - research/MILESTONE27_BKPM_INVESTMENT_HISTORY_RESULT.md
+      - data/manifests/milestone27_completion.json
+      - data/manifests/milestone27_bkpm_stage1_qualification.json
+      - data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json
+      - data/manifests/milestone27_bkpm_offline_reproducibility.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-quarterly-history.csv
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-quarter-audit.csv
+      - scripts/audit_milestone27_bkpm_2024q1_duplicates.py
+      - scripts/audit_milestone27_bkpm_full_history_offline.py
+      - .github/workflows/milestone27-completion.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  completion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild 2024-Q1 duplicate diagnostic offline
+        run: python scripts/audit_milestone27_bkpm_2024q1_duplicates.py
+      - name: Rebuild bounded quarterly history offline
+        run: python -m scripts.audit_milestone27_bkpm_full_history_offline
+      - name: Verify M27 completion certificate
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from pathlib import Path
+
+          c = json.loads(Path('data/manifests/milestone27_completion.json').read_text(encoding='utf-8'))
+          q = json.loads(Path('data/manifests/milestone27_bkpm_stage1_qualification.json').read_text(encoding='utf-8'))
+          d = json.loads(Path('data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json').read_text(encoding='utf-8'))
+          r = json.loads(Path('data/manifests/milestone27_bkpm_offline_reproducibility.json').read_text(encoding='utf-8'))
+
+          assert c['milestone27_complete'] is True
+          assert c['inventory_quarter_count'] == 64
+          assert c['numeric_qualified_quarter_count'] == 63
+          assert c['held_quarters'] == ['2024-Q1']
+          assert c['bounded_quarterly_investment_history_qualified'] is True
+          assert c['continuous_64_quarter_history_qualified'] is False
+          assert c['materialized_geography_quarter_status_observation_count'] == 1440
+          assert q['bounded_quarterly_history_qualified'] is True
+          assert d['classification'] == 'mixed_duplicate_mechanisms'
+          assert d['duplicate_dimension_group_count'] == 174
+          assert d['dimension_collision_with_distinct_full_rows_group_count'] == 127
+          assert r['rebuild_success'] is True
+          assert r['quarterly_output_byte_identical'] is True
+          assert r['quarter_audit_byte_identical'] is True
+
+          out = Path('data/analysis/engine/investment_realization_v1/m27-bkpm-quarterly-history.csv')
+          audit = Path('data/analysis/engine/investment_realization_v1/m27-bkpm-quarter-audit.csv')
+          assert hashlib.sha256(out.read_bytes()).hexdigest() == c['canonical_quarterly_output_sha256']
+          assert hashlib.sha256(audit.read_bytes()).hexdigest() == c['canonical_quarter_audit_sha256']
+          assert len(list(csv.DictReader(out.open(encoding='utf-8')))) == 1440
+
+          for key in (
+              'missing_or_absent_as_zero_authorized', 'pma_pmdn_combination_authorized',
+              'cross_quarter_additivity_authorized', 'annual_sum_authorized',
+              'q4_as_annual_total_authorized', 'external_fx_conversion_authorized',
+              'per_capita_normalization_authorized', 'ranking_authorized',
+              'statistical_model_fit_authorized', 'causal_claim_authorized',
+              'monetary_wasted_potential_estimate_authorized',
+          ):
+              assert c[key] is False, key
+
+          print({'milestone27_complete': True, 'qualified_quarters': 63, 'held': '2024-Q1', 'observations': 1440})
+          PY
