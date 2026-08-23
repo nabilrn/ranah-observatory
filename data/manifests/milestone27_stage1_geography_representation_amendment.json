@@ -1,0 +1,41 @@
+{
+  "schema": "ranah-observatory/milestone27-stage1-geography-representation-amendment/v1",
+  "milestone": 27,
+  "stage": "stage1_numeric_pilot_representation_amendment",
+  "amendment_type": "source_geography_lexical_alias",
+  "scientific_target_changed": false,
+  "source_selection_changed": false,
+  "numeric_values_used_to_define_amendment": false,
+  "failed_pilot_manifest": {
+    "path": "data/manifests/milestone27_bkpm_stage1_pilot.json",
+    "git_blob_sha": "5f736acd1bfb6a4d4c49f5bfb1d6992a9cad5ee9"
+  },
+  "observed_failure": {
+    "affected_pilots": ["2025-Q2", "2025-Q4"],
+    "failure_reason": "unmapped_kabupaten_kota",
+    "source_label": "Kota Sawah Lunto",
+    "normalized_source_type": "city",
+    "normalized_source_name": "sawah lunto",
+    "otherwise_mapped_geography_count": 18,
+    "period_mismatch_row_count": 0,
+    "false_positive_province_row_count": 0,
+    "unexpected_status_row_count": 0,
+    "duplicate_source_dimension_tuple_count": 0
+  },
+  "canonical_binding": {
+    "geography_id": "idn.13.1373",
+    "canonical_name": "Sawahlunto",
+    "geography_level": "city",
+    "required_source_type": "city",
+    "new_accepted_normalized_alias": "sawah lunto"
+  },
+  "basis": "BKPM exposes the explicit source type Kota and the lexical form Sawah Lunto. The canonical geography registry already binds idn.13.1373 to current city Sawahlunto and notes that source-native historical spelling may be retained through provenance. The amendment changes only lexical representation, not geography identity or target selection.",
+  "rerun_rule": "rerun the same three locked Stage 1 pilot periods with all original numeric, period, province, status, duplicate, missingness, and no-aggregation boundaries unchanged",
+  "annual_sum_authorized": false,
+  "pma_pmdn_combination_authorized": false,
+  "cross_quarter_additivity_authorized": false,
+  "external_fx_conversion_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}
