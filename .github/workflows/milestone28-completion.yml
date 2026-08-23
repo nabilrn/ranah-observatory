@@ -26,14 +26,17 @@ jobs:
       - name: Require all Milestone 28 workflows to be read-only
         run: |
           python - <<'PY'
+          import re
           from pathlib import Path
           offenders = []
-          for path in sorted(Path('.github/workflows').glob('milestone28-*.yml')):
+          writer_permission = re.compile(r'^  contents:\s*write\s*$', re.MULTILINE)
+          paths = sorted(Path('.github/workflows').glob('milestone28-*.yml'))
+          for path in paths:
               text = path.read_text(encoding='utf-8')
-              if 'contents: write' in text:
+              if writer_permission.search(text):
                   offenders.append(str(path))
           assert not offenders, f'active M28 writer workflows remain: {offenders}'
-          print({'m28_workflows': len(list(Path('.github/workflows').glob('milestone28-*.yml'))), 'active_writers': 0})
+          print({'m28_workflows': len(paths), 'active_writers': 0})
           PY
       - name: Rebuild Stage 2B evidence offline
         run: python scripts/audit_milestone28_stage2b_offline_rebuild.py
