@@ -1,0 +1,2 @@
+year,quarter,geography_id,canonical_name,status_penanaman_modal,observed_source_row_count,investasi_rp_juta_complete,investasi_rp_juta_missing_rows,investasi_rp_juta_sum,investasi_us_ribu_complete,investasi_us_ribu_missing_rows,investasi_us_ribu_sum,raw_evidence_path,raw_evidence_sha256
+2010,I,idn.13.1303,Solok,PMA,1,true,0,0,true,0,0,data/processed/bkpm/m27_stage1_pilot/2010-qi.json,056fba17eaaec8cf4d275ac6d1bf87ff4bdcb90fedf408ccca42a500546c2110
