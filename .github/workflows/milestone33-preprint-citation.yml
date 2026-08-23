@@ -15,7 +15,7 @@ on:
       - publication/v0.1/preprint/**
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   certify-citation-ready-preprint:
@@ -115,22 +115,12 @@ jobs:
           print({'references': 16, 'author': 'Nabil Rizki Navisa', 'blocked_claims': 9, 'claim_upgrade': False})
           PY
 
-      - name: Upload candidate citation-ready preprint
+      - name: Upload verified citation-ready preprint
         uses: actions/upload-artifact@v4
         with:
           name: publication-v0.1-citation-ready-preprint
           path: publication/v0.1/preprint
           retention-days: 7
-
-      - name: One-time freeze validated preprint outputs
-        run: |
-          if [ -n "$(git status --porcelain -- publication/v0.1/preprint)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add publication/v0.1/preprint
-            git commit -m "Freeze M33 citation-ready preprint outputs"
-            git push origin HEAD:research/publication
-          fi
 
       - name: Require byte-identical canonical preprint layer
         run: |
