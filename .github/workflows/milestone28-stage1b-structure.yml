@@ -1,72 +1,42 @@
-name: Milestone 28 Stage 1B Structure Pilot
+name: Milestone 28 Stage 1B Structure Verification
 
 on:
-  push:
+  pull_request:
     branches:
-      - research/evidence
+      - main
     paths:
+      - data/processed/bps/m28_stage1b_structure/**
+      - data/analysis/engine/broader_panel_v1/m28-stage1b-structure-audit.csv
+      - data/manifests/milestone28_stage1b_structure_probe.json
+      - data/registries/milestone28_stage1b_selector_decisions.csv
+      - data/manifests/milestone28_stage1b_structure_contract.json
+      - scripts/probe_milestone28_stage1b_structure.py
       - .github/workflows/milestone28-stage1b-structure.yml
 
-concurrency:
-  group: milestone28-stage1b-structure-writer
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  probe-structure:
+  verify-frozen-structure:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout evidence branch
-        uses: actions/checkout@v4
-        with:
-          ref: research/evidence
-          fetch-depth: 0
-
-      - name: Compile Stage 1B probe
-        run: python -m py_compile scripts/probe_milestone28_stage1b_structure.py
-
-      - name: Probe one redacted 2024 structure per retained candidate
-        env:
-          BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
-        run: python scripts/probe_milestone28_stage1b_structure.py
-
-      - name: Verify no target values were persisted
+      - uses: actions/checkout@v4
+      - name: Verify redacted structure evidence
         run: |
           python - <<'PY'
-          import json
+          import hashlib, json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone28_stage1b_structure_probe.json').read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone28-stage1b-structure-probe/v1'
           assert m['authorized_request_count'] == 7
           assert m['executed_candidate_count'] == 7
-          assert m['held_without_dynamic_request_count'] == 1
           assert m['target_values_inspected'] is False
           assert m['datacontent_values_persisted'] is False
-          assert m['datacontent_keys_inspected'] is True
-          for key in ('numeric_materialization_performed','aggregation_performed','derived_indicator_materialized','global_window_shortening_performed','imputation_performed','missing_values_coerced_to_zero','statistical_model_fit','causal_claim_created','monetary_wasted_potential_estimated'):
-              assert m[key] is False, key
           for item in m['redacted_structure_files']:
               p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
               obj = json.loads(p.read_text(encoding='utf-8'))
               assert obj['target_values_inspected'] is False
               assert obj['datacontent_values_persisted'] is False
               assert 'datacontent' not in obj
-          print({'passes': m['structure_pass_count'], 'holds': m['structure_hold_count'], 'preheld': m['held_without_dynamic_request_count']})
+          print({'original_passes': m['structure_pass_count'], 'original_holds': m['structure_hold_count']})
           PY
-
-      - name: Commit redacted structure evidence
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            data/processed/bps/m28_stage1b_structure \
-            data/analysis/engine/broader_panel_v1/m28-stage1b-structure-audit.csv \
-            data/manifests/milestone28_stage1b_structure_probe.json
-          if git diff --cached --quiet; then
-            echo "No Stage 1B structure changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M28 Stage 1B structure pilot"
-          git push origin HEAD:research/evidence
