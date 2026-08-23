@@ -1,0 +1,77 @@
+name: Deploy Public Product
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - site/**
+      - scripts/validate_public_product.py
+      - scripts/build_public_district_explorer.py
+      - publication/v0.1/claim-ledger.csv
+      - data/analysis/engine/hierarchical_trajectory_v1/m22-geography-trajectories.csv
+      - data/validation/climate/station/m36/**
+      - .github/workflows/deploy-public-product.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: public-product-pages
+  cancel-in-progress: false
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout canonical repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Validate public narrative claim gating
+        run: python scripts/validate_public_product.py
+
+      - name: Rebuild and require deterministic district explorer
+        run: |
+          cp site/data/districts.json /tmp/districts-frozen.json
+          python scripts/build_public_district_explorer.py
+          diff -u /tmp/districts-frozen.json site/data/districts.json
+
+      - name: Validate static product surface
+        run: |
+          node --check site/app.js
+          test -s site/index.html
+          test -s site/styles.css
+          test -s site/explorer.css
+          test -s site/app.js
+          test -s site/data/overview.json
+          test -s site/data/districts.json
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload public product artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: validate-and-package
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
