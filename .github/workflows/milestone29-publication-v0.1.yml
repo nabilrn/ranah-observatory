@@ -1,0 +1,78 @@
+name: Milestone 29 Publication v0.1
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/milestone29-publication-v0.1.yml
+      - data/manifests/milestone29_publication_design_gate.json
+      - publication/v0.1/**
+      - research/MILESTONE29_PUBLICATION_FREEZE_V0_1_SPEC.md
+      - scripts/audit_milestone29_publication_v0_1.py
+
+permissions:
+  contents: read
+
+jobs:
+  certify-publication-v0-1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require publication-only branch scope
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+
+          allowed_exact = {
+              '.github/workflows/milestone29-publication-v0.1.yml',
+              'data/manifests/milestone29_publication_design_gate.json',
+              'research/MILESTONE29_PUBLICATION_FREEZE_V0_1_SPEC.md',
+              'scripts/audit_milestone29_publication_v0_1.py',
+          }
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'origin/main...HEAD'], text=True
+          ).splitlines()
+          offenders = [
+              path for path in changed
+              if path not in allowed_exact and not path.startswith('publication/v0.1/')
+          ]
+          assert not offenders, f'unauthorized M29 paths changed: {offenders}'
+          print({'changed_files': len(changed), 'unauthorized_paths': 0})
+          PY
+
+      - name: Audit frozen publication registry and manuscript
+        run: python scripts/audit_milestone29_publication_v0_1.py
+
+      - name: Require no upstream analytical artifacts changed
+        run: |
+          git diff --exit-code origin/main...HEAD -- \
+            data/analysis \
+            data/processed \
+            data/registries \
+            docs \
+            research/MILESTONE0* \
+            research/MILESTONE1* \
+            research/MILESTONE2[0-8]* \
+            scripts/build_milestone* \
+            scripts/finalize_milestone*
+
+      - name: Publication certificate summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cert = json.loads(Path('publication/v0.1/completeness-certificate.json').read_text(encoding='utf-8'))
+          print({
+              'release': cert['release'],
+              'claims': cert['claim_count'],
+              'states': cert['state_counts'],
+              'negative_results_retained': cert['required_negative_results_retained'],
+              'blocked_claims_retained': cert['all_nine_m18_blocked_claims_retained'],
+              'offline_verification_passed': cert['offline_verification_passed'],
+          })
+          PY
