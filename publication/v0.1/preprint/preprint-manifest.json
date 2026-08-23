@@ -1,0 +1,39 @@
+{
+  "affiliation": "Independent Researcher",
+  "author": "Nabil Rizki Navisa",
+  "blocked_claims_retained": [
+    "B01_MONETARY_WASTED_POTENTIAL",
+    "B02_THEORETICAL_MAXIMUM",
+    "B03_CAUSAL_RESIDUAL",
+    "B04_GUARANTEED_POLICY_GAIN",
+    "B05_CAUSAL_RAINFALL_UNEMPLOYMENT",
+    "B06_EVENT_COUNTS_AS_IMPACT",
+    "B07_COMPOSITE_DISASTER_RISK",
+    "B08_SENSITIVITY_AS_POLICY_EFFECT",
+    "B09_POLICY_RANKING"
+  ],
+  "builder": "publication/v0.1/tools/build_preprint.py",
+  "claim_upgrade_performed": false,
+  "editorial_reference_acquisition": true,
+  "new_analytical_source_acquisition": false,
+  "new_statistical_or_ml_model_fit": false,
+  "output_sha256": {
+    "publication/v0.1/preprint/README.md": "e9892c117f0126ec71f1ae3ff76725105c7ca8ceb0591d0f2c2994695fcfc334",
+    "publication/v0.1/preprint/preprint.md": "3c2ea4d0c5db4f5d789146a2bd4ea42a36bdf190369065c22a7ade39f79ba612",
+    "publication/v0.1/preprint/reference-map.csv": "b7e440e2ff5edf54b264c7a13fa1c49dc1c71a1be7d00436e279e5266b1d5314",
+    "publication/v0.1/preprint/references.md": "311025507e181d95c7b3f3ecb30ea8a36562e16a6313515cf28daf145636555d"
+  },
+  "publication_license": "CC-BY-4.0",
+  "reference_count": 16,
+  "release": "v0.1",
+  "schema": "ranah-observatory/publication-v0.1-preprint-manifest/v1",
+  "source_sha256": {
+    "CITATION.cff": "f60733979821d2504d3565c2ba24280087d14c597f25b74d83f138bcc491df1a",
+    "publication/v0.1/AUTHORSHIP.md": "a196ad4070050d2e054dc0ab46e23255153b8ad5e8269de300573b71860c5325",
+    "publication/v0.1/claim-ledger.csv": "0236a8950ef39cf6446f408d5634fb5d4d85174bcfb2d7ebd925d697e9d8c210",
+    "publication/v0.1/reference-map.csv": "b7e440e2ff5edf54b264c7a13fa1c49dc1c71a1be7d00436e279e5266b1d5314",
+    "publication/v0.1/references.bib": "39000995ec25ee44270ae97f6736c2f4eb3043e3fd957aede6b8a3cb202a1fcb",
+    "publication/v0.1/submission/manuscript-with-assets.md": "35c5eafb883e4dd4638980c404d2f8069cc92aa4878f759867df0b1bb5423f9e",
+    "publication/v0.1/submission/metadata.json": "532d97ac49f11bc3980e5704b7c2bf747d9f30b8a6f15203a6e33a4fb0b7989c"
+  }
+}

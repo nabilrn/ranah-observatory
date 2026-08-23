@@ -1,0 +1,17 @@
+reference_id,reference_class,section_anchor,citation_role
+CHIRPS3_DATA_2025,source_documentation,2.2 Historical climate regime,Primary CHIRPS v3 data repository used to document the frozen rainfall source family
+FUNK_ET_AL_2026_CHIRPS3,method_and_source_documentation,2.2 Historical climate regime,Peer-reviewed CHIRPS v3 data descriptor
+BPS_WEBAPI,source_documentation,2.1 Primary modern kabupaten/kota regime,Official BPS programmatic data access documentation for the modern statistical source family
+BIG_BOUNDARIES,source_documentation,2.1 Primary modern kabupaten/kota regime,Official BIG kabupaten/kota administrative-boundary service documentation
+DJPK_SIKD_APBD,source_documentation,2.4 Public finance disaster components investment and broader outcomes,Official SIKD APBD portal documentation for public-finance account families
+BKPM_REALIZATION_REPORTS,source_documentation,2.4 Public finance disaster components investment and broader outcomes,Official BKPM investment-realization report archive
+BKPM_SATUDATA,source_documentation,2.4 Public finance disaster components investment and broader outcomes,Official BKPM structured open-data surface for PMA and PMDN realization data
+BNPB_INARISK_METHOD,framework_documentation,2.4 Public finance disaster components investment and broader outcomes,Current InaRISK risk-component methodology documentation only and not a vintage binding for held rasters
+BNPB_DIBI_2012,source_documentation,2.4 Public finance disaster components investment and broader outcomes,Official BNPB governance documentation for Indonesian disaster data and information
+USGS_PADANG_2009,source_documentation,3.3 Association and identification,Official USGS event record for the 30 September 2009 West Sumatra earthquake case study
+MANN1945,method_documentation,3.5 Locked negative-result designs,Primary Mann trend-test reference
+THEIL1950,method_documentation,3.5 Locked negative-result designs,Original rank-invariant regression reference supporting Theil slope terminology
+SEN1968,method_documentation,3.5 Locked negative-result designs,Primary Kendall-tau-based median slope estimator and interval reference
+HAMED_RAO1998,method_documentation,3.5 Locked negative-result designs,Primary autocorrelation-adjusted Mann-Kendall variance reference used by the M20 design
+HOLM1979,method_documentation,3.5 Locked negative-result designs,Primary sequentially rejective family-wise error correction reference
+PETTITT1979,method_documentation,3.5 Locked negative-result designs,Primary non-parametric change-point reference used by the M21 design
