@@ -132,7 +132,7 @@ jobs:
 
           text_path = Path('/tmp/ranah-preprint.txt')
           subprocess.run(['pdftotext', str(pdf), str(text_path)], check=True)
-          text = text_path.read_text(encoding='utf-8')
+          text = ' '.join(text_path.read_text(encoding='utf-8').split())
           required_text = [
               'Nabil Rizki Navisa', 'Independent Researcher',
               'Ranah Observatory: A Reproducible Evidence Framework',
