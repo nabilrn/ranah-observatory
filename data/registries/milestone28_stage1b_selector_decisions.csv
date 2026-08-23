@@ -1,0 +1,9 @@
+candidate_id,bps_var_id,decision,pilot_year,selected_turvar_id,selected_turvar_label,selected_turth_id,selected_turth_label,provisional_claim_type,period_coverage,hold_reason
+real_grdp_per_capita_2010,169,retain_structure_pilot,2024,31,Harga Konstan 2010,0,Tahun,observed_source_published,2018-2024,
+morbidity_rate,547,retain_structure_pilot,2024,,,0,Tahun,observed,2018-2024,
+jkn_coverage,763,retain_structure_pilot,2024,,,0,Tahun,observed,2019-2025,
+internet_access_age5plus,320,retain_structure_pilot,2024,595,Pernah Mengakses Internet,0,Tahun,observed,2018-2025,
+sanitation_access_adequate,341,retain_structure_pilot,2024,,,0,Tahun,observed,2018-2025,
+safe_drinking_water_access,352,retain_structure_pilot,2024,,,0,Tahun,observed,2018-2025,
+dependency_ratio_projection,756,retain_structure_pilot,2024,,,0,Tahun,model_estimate_projection,2020-2024,
+household_lighting_source,337,held_no_direct_electricity_selector,,,,,,observed,2018-2022,Only PLN; non-PLN; and non-electric categories exist. Stage 1B does not authorize summing PLN plus non-PLN or relabeling one category as total electricity access.
