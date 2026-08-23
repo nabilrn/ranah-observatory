@@ -25,10 +25,12 @@ GSOD_ID = "96163099999"
 TARGET_YEARS = (1997, 1998)
 
 # BMKG Regulation No. 20/2014 lists 96163 PADANG/TABING at 00 53 00 S,
-# 100 21 00 E. Decimal coordinates are used only as an identity guard.
+# 100 21 00 E. The source coordinates are rounded to minutes, so a 0.04°
+# guard comfortably covers that rounding while excluding the modern
+# Minangkabau site roughly 0.09° north of the historical latitude.
 HISTORICAL_LAT = -(53.0 / 60.0)
 HISTORICAL_LON = 100.0 + 21.0 / 60.0
-MAX_IDENTITY_DISTANCE_DEG = 0.25
+MAX_IDENTITY_DISTANCE_DEG = 0.04
 
 USER_AGENT = "ranah-observatory-m36/1 (+https://github.com/nabilrn/ranah-observatory)"
 
