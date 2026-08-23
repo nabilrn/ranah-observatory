@@ -18,15 +18,15 @@
   "external_fx_conversion_performed": false,
   "geography_contract": {
     "path": "data/registries/bkpm_sumbar_geography_contract.csv",
-    "sha256": "4cbd1a02700e5d06d08e1f44d29af5bac42a42e290416e71f857156a870725a6"
+    "sha256": "0d2fc549983180e4e7751594964ee2f9cf848f496d613383b053c5a9f837bcac"
   },
-  "materialized_geography_status_observation_count": 1,
+  "materialized_geography_status_observation_count": 70,
   "milestone": 27,
   "missing_values_coerced_to_zero": false,
   "monetary_wasted_potential_estimated": false,
   "output_csv": {
     "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-stage1-pilot-quarterly.csv",
-    "sha256": "e74cbc2d444288216f12963dbcf6fa2172d015fa85affb1307961f838287fc62"
+    "sha256": "04f91d2cea069ec2f453b112fce04fcff3f8d385ca7de62e76f5688124c140eb"
   },
   "per_capita_normalization_performed": false,
   "pilot_count": 3,
@@ -76,13 +76,11 @@
       "content_type": "application/json",
       "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2025",
       "duplicate_source_dimension_tuple_count": 0,
-      "emitted_geography_status_observation_count": 0,
+      "emitted_geography_status_observation_count": 34,
       "expected_sumbar_search_count": 642,
-      "fail_reasons": [
-        "unmapped_kabupaten_kota"
-      ],
+      "fail_reasons": [],
       "false_positive_province_row_count": 0,
-      "mapped_geography_count": 18,
+      "mapped_geography_count": 19,
       "mapped_geography_ids": [
         "idn.13.1301",
         "idn.13.1302",
@@ -98,6 +96,7 @@
         "idn.13.1312",
         "idn.13.1371",
         "idn.13.1372",
+        "idn.13.1373",
         "idn.13.1374",
         "idn.13.1375",
         "idn.13.1376",
@@ -137,7 +136,7 @@
       ],
       "period_mismatch_row_count": 0,
       "pilot_role": "resolved_page_description_conflict",
-      "qualified": false,
+      "qualified": true,
       "quarter": "II",
       "raw_evidence_bytes": 275549,
       "raw_evidence_path": "data/processed/bkpm/m27_stage1_pilot/2025-qii.json",
@@ -148,22 +147,18 @@
       "response_records_total": 642,
       "status": 200,
       "unexpected_status_row_count": 0,
-      "unmapped_geography_labels": [
-        "Kota Sawah Lunto"
-      ],
+      "unmapped_geography_labels": [],
       "year": 2025
     },
     {
       "content_type": "application/json",
       "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
       "duplicate_source_dimension_tuple_count": 0,
-      "emitted_geography_status_observation_count": 0,
+      "emitted_geography_status_observation_count": 35,
       "expected_sumbar_search_count": 517,
-      "fail_reasons": [
-        "unmapped_kabupaten_kota"
-      ],
+      "fail_reasons": [],
       "false_positive_province_row_count": 0,
-      "mapped_geography_count": 18,
+      "mapped_geography_count": 19,
       "mapped_geography_ids": [
         "idn.13.1301",
         "idn.13.1302",
@@ -179,6 +174,7 @@
         "idn.13.1312",
         "idn.13.1371",
         "idn.13.1372",
+        "idn.13.1373",
         "idn.13.1374",
         "idn.13.1375",
         "idn.13.1376",
@@ -218,7 +214,7 @@
       ],
       "period_mismatch_row_count": 0,
       "pilot_role": "latest_control",
-      "qualified": false,
+      "qualified": true,
       "quarter": "IV",
       "raw_evidence_bytes": 222125,
       "raw_evidence_path": "data/processed/bkpm/m27_stage1_pilot/2025-qiv.json",
@@ -229,13 +225,11 @@
       "response_records_total": 517,
       "status": 200,
       "unexpected_status_row_count": 0,
-      "unmapped_geography_labels": [
-        "Kota Sawah Lunto"
-      ],
+      "unmapped_geography_labels": [],
       "year": 2025
     }
   ],
-  "pilot_success": false,
+  "pilot_success": true,
   "pma_pmdn_combination_performed": false,
   "q4_interpreted_as_annual_total": false,
   "ranking_created": false,
@@ -253,5 +247,5 @@
   "statistical_model_fit": false,
   "target_investment_values_inspected": true,
   "target_investment_values_retrieved": true,
-  "within_quarter_within_status_within_geography_addition_performed": false
+  "within_quarter_within_status_within_geography_addition_performed": true
 }
