@@ -1,0 +1,257 @@
+.explorer-section {
+  border-top: 1px solid var(--line);
+}
+
+.explorer-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.explorer-toolbar label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.explorer-toolbar select {
+  min-width: min(100%, 330px);
+  min-height: 44px;
+  margin-left: auto;
+  padding: 0.65rem 2.3rem 0.65rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.7rem;
+  background: var(--surface-strong);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 650;
+}
+
+.district-header {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+.district-type {
+  margin: 0 0 0.2rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.district-header h3 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.district-header > p {
+  margin: 0;
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.indicator-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.indicator-card {
+  min-width: 0;
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.indicator-topline,
+.change-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.indicator-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.trajectory-badge {
+  flex: none;
+  padding: 0.34rem 0.52rem;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
+}
+
+.trajectory-up {
+  color: var(--supported);
+  background: var(--supported-bg);
+}
+
+.trajectory-down {
+  color: var(--context);
+  background: var(--context-bg);
+}
+
+.trajectory-held {
+  color: var(--negative);
+  background: var(--negative-bg);
+}
+
+.endpoint-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 1.8rem;
+}
+
+.endpoint-row > div span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.endpoint-row > div strong {
+  display: block;
+  margin-top: 0.12rem;
+  font-size: clamp(1.8rem, 4vw, 3.1rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.endpoint-end {
+  text-align: right;
+}
+
+.endpoint-arrow {
+  color: var(--line-strong);
+  font-size: 1.4rem;
+}
+
+.mini-trend {
+  width: 100%;
+  height: auto;
+  margin: 1.2rem 0 0.65rem;
+  overflow: visible;
+}
+
+.mini-trend.trajectory-up { color: var(--supported); background: transparent; }
+.mini-trend.trajectory-down { color: var(--context); background: transparent; }
+.mini-trend.trajectory-held { color: var(--negative); background: transparent; }
+
+.trend-baseline {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.trend-line {
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.trend-point {
+  fill: var(--surface-strong);
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+.trend-year {
+  fill: var(--muted);
+  font-size: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.change-row {
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.77rem;
+}
+
+.change-row span { color: var(--muted); }
+.change-row strong { text-align: right; }
+
+.indicator-meaning {
+  margin: 1rem 0 0;
+  color: #3d3934;
+  font-size: 0.78rem;
+}
+
+.indicator-meaning strong {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.indicator-detail {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.indicator-detail summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.indicator-detail p { margin: 0.65rem 0; }
+.indicator-detail code {
+  font-size: 0.65rem;
+  overflow-wrap: anywhere;
+}
+
+.explorer-boundary {
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+@media (max-width: 800px) {
+  .district-header,
+  .indicator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .district-header { gap: 0.75rem; }
+}
+
+@media (max-width: 560px) {
+  .explorer-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .explorer-toolbar select {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .indicator-topline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
