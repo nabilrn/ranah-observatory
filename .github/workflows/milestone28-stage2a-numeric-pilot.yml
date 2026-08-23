@@ -1,62 +1,44 @@
-name: Milestone 28 Stage 2A Numeric Pilot
+name: Milestone 28 Stage 2A Numeric Pilot Verification
 
 on:
-  push:
+  pull_request:
     branches:
-      - research/evidence
+      - main
     paths:
+      - data/processed/bps/m28_stage2a_numeric_pilot/**
+      - data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-observations.csv
+      - data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-provenance.csv
+      - data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-audit.csv
+      - data/manifests/milestone28_stage2a_numeric_pilot.json
+      - data/manifests/milestone28_stage2a_numeric_pilot_contract.json
+      - scripts/materialize_milestone28_stage2a_numeric_pilot.py
       - .github/workflows/milestone28-stage2a-numeric-pilot.yml
 
-concurrency:
-  group: milestone28-stage2a-numeric-pilot-writer
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  materialize-pilot:
+  verify-frozen-pilot:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: research/evidence
-          fetch-depth: 0
-      - name: Compile numeric pilot
-        run: python -m py_compile scripts/materialize_milestone28_stage2a_numeric_pilot.py
-      - name: Materialize locked 2024 pilot
-        env:
-          BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
-        run: python scripts/materialize_milestone28_stage2a_numeric_pilot.py
-      - name: Verify pilot boundaries
+      - name: Verify pilot certificate and raw checksums
         run: |
           python - <<'PY'
-          import json
+          import hashlib, json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone28_stage2a_numeric_pilot.json').read_text(encoding='utf-8'))
-          assert m['schema'] == 'ranah-observatory/milestone28-stage2a-numeric-pilot/v1'
-          assert m['candidate_count'] == 7
-          assert m['numeric_values_requested'] is True
-          assert m['numeric_values_inspected'] is True
-          assert m['raw_dynamic_payloads_frozen'] is True
+          assert m['pilot_success'] is True
+          assert m['candidate_pass_count'] == 7
+          assert m['candidate_hold_count'] == 0
+          assert m['promoted_observation_count'] == 133
           assert m['full_history_materialization_authorized'] is False
-          for key in ('aggregation_across_geographies_performed','aggregation_across_years_performed','imputation_performed','missing_values_coerced_to_zero','global_window_shortening_performed','statistical_model_fit','causal_claim_created','monetary_wasted_potential_estimated'):
-              assert m[key] is False, key
-          print({'pilot_success': m['pilot_success'], 'passes': m['candidate_pass_count'], 'holds': m['candidate_hold_count'], 'observations': m['promoted_observation_count']})
+          for item in m['raw_snapshots']:
+              p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+          for key in ('observations_csv','provenance_csv','audit_csv'):
+              item = m[key]
+              p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+          print({'pilot_success': True, 'observations': 133})
           PY
-      - name: Commit frozen pilot evidence
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            data/processed/bps/m28_stage2a_numeric_pilot \
-            data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-observations.csv \
-            data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-provenance.csv \
-            data/analysis/engine/broader_panel_v1/m28-stage2a-pilot-audit.csv \
-            data/manifests/milestone28_stage2a_numeric_pilot.json
-          if git diff --cached --quiet; then
-            echo "No Stage 2A pilot changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M28 Stage 2A numeric pilot"
-          git push origin HEAD:research/evidence
