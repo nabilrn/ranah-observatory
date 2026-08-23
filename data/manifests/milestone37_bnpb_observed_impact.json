@@ -1,0 +1,137 @@
+{
+  "coverage": {
+    "expected_cells": 90,
+    "hazard_count": 9,
+    "metric_count": 5,
+    "numeric_cells": 89,
+    "source_blank_cells": 1,
+    "years": [
+      2024,
+      2025
+    ]
+  },
+  "interpretation": {
+    "allowed": "Report source-native BNPB province-by-hazard administrative impact counts for each metric and year with blanks preserved separately from numeric zero.",
+    "forbidden": "Do not treat aggregate cells as event-level records, unique people across events or hazards, a composite disaster-risk score, causal climate effects, monetary loss, or policy ranking."
+  },
+  "metrics": {
+    "affected": {
+      "label": "reported_affected_people",
+      "unit": "persons_reported"
+    },
+    "deaths": {
+      "label": "reported_deaths",
+      "unit": "persons_reported"
+    },
+    "displaced": {
+      "label": "reported_displaced_people",
+      "unit": "persons_reported"
+    },
+    "houses": {
+      "label": "reported_damaged_houses",
+      "unit": "housing_units_reported"
+    },
+    "injured": {
+      "label": "reported_injured_or_sick_people",
+      "unit": "persons_reported"
+    }
+  },
+  "milestone": 37,
+  "normalized_output": {
+    "path": "data/processed/bnpb/m37_observed_impact/sumatera-barat-observed-impact-2024-2025.csv",
+    "row_count": 90,
+    "sha256": "8e69ed382a5adcd31906ace27775c5f6708cf02ed73f389c54a0b9ecdc7b7da2"
+  },
+  "qualification": {
+    "causal_claim_authorized": false,
+    "classification": "qualified_source_native_provincial_observed_impact_context",
+    "cross_hazard_person_sum_authorized": false,
+    "cross_metric_composite_authorized": false,
+    "district_city_observed_impact_authorized": false,
+    "event_level_observed_impact_authorized": false,
+    "monetary_loss_inference_authorized": false,
+    "observed_impact_context_authorized": true,
+    "policy_ranking_authorized": false,
+    "risk_synthesis_authorized": false,
+    "unique_person_annual_aggregation_authorized": false
+  },
+  "schema": "ranah-observatory/milestone37-bnpb-observed-impact/v1",
+  "source_blank_cells": [
+    {
+      "hazard": "GEMPABUMI",
+      "interpretation": "unknown_or_not_reported_in_source_cell_not_zero",
+      "metric_id": "displaced",
+      "year": 2024
+    }
+  ],
+  "source_snapshot": {
+    "full_workbooks_committed": false,
+    "path": "data/raw/bnpb/m37_observed_impact/sumatera-barat-source-rows.json",
+    "record_count": 10,
+    "sha256": "bdbfb91a573b67a24373c368555d7f3467808fc85d37709cad2f6b71f2ac182d",
+    "workbook_sha256_recorded": true
+  },
+  "title": "BNPB provincial observed-impact context for West Sumatra, 2024-2025",
+  "workbook_digests": [
+    {
+      "metric_id": "deaths",
+      "resource_id": "69605ad2-73ea-4967-b2d5-639ad9291833",
+      "sha256": "e8699902e7f19b89f7432ad12b85223c8c49f1f931924beea7dbee17f5d9249d",
+      "year": 2024
+    },
+    {
+      "metric_id": "affected",
+      "resource_id": "5b9f7853-e69b-4d3a-917c-3fa3e473ed60",
+      "sha256": "b733859754c3a88812e6eb00604c21cd931746df13907b1c144679afff41d118",
+      "year": 2024
+    },
+    {
+      "metric_id": "injured",
+      "resource_id": "b1e58b39-8dc4-4b9b-abc6-50139acd2fda",
+      "sha256": "cd6eb63c02854ed7ea591ae3158ec2f431c1d1e029856cbb50af1b8307c927d0",
+      "year": 2024
+    },
+    {
+      "metric_id": "displaced",
+      "resource_id": "d1fd9f08-26e1-453a-9be0-422538f01b5e",
+      "sha256": "b0bfa6b145535a990ac3e06ae79daf3e7e4218947d55094a9c23d146179a9a83",
+      "year": 2024
+    },
+    {
+      "metric_id": "houses",
+      "resource_id": "471f71cb-27a4-4460-836f-416c0c35b4dc",
+      "sha256": "f022f98faa87e294c548dc8144e370605dabcd25ac160bf0f7a0fb282cb7387a",
+      "year": 2024
+    },
+    {
+      "metric_id": "deaths",
+      "resource_id": "aefe8331-5962-4610-8b0c-2de637a336cd",
+      "sha256": "623019598556c7bb97f622059e364f7632fcaf64fdee59ca43427cb103b630f6",
+      "year": 2025
+    },
+    {
+      "metric_id": "affected",
+      "resource_id": "8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a",
+      "sha256": "619490fc3463e0c8810796a5abd50b6da41aa285cc3291cab17fa741454c31fd",
+      "year": 2025
+    },
+    {
+      "metric_id": "injured",
+      "resource_id": "50b99a45-d8ff-496e-a64f-9e689754371c",
+      "sha256": "49075b3e1b18ec00a5238815ffcae6eb8497f658cc9dbab582032ccaec6db0b0",
+      "year": 2025
+    },
+    {
+      "metric_id": "displaced",
+      "resource_id": "eefa5746-5c65-4156-ac74-2eff2bfac767",
+      "sha256": "c0830bab4a6bd809310fd70898544db147331621b5eef42c210a3270356dd551",
+      "year": 2025
+    },
+    {
+      "metric_id": "houses",
+      "resource_id": "43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636",
+      "sha256": "7b953507dab9dc861030f8e1bd8feaf69cc6c7479c0efbe9643b4ac761357912",
+      "year": 2025
+    }
+  ]
+}

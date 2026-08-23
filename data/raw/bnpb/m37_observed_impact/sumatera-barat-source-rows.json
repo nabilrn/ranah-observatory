@@ -1,0 +1,118 @@
+{
+  "schema": "ranah-observatory/bnpb-observed-impact-source-row-snapshot/v1",
+  "scope": {
+    "province_code": 13,
+    "province_name": "SUMATERA BARAT",
+    "years": [2024, 2025],
+    "metrics": ["deaths", "affected", "injured", "displaced", "houses"],
+    "hazards": ["BANJIR", "CUACA EKSTREM", "ERUPSI GUNUNG API", "GELOMBANG PASANG DAN ABRASI", "GEMPABUMI", "KEBAKARAN HUTAN DAN LAHAN", "KEKERINGAN", "TANAH LONGSOR", "TSUNAMI"]
+  },
+  "storage_boundary": {
+    "full_workbooks_committed": false,
+    "workbook_sha256_recorded": true,
+    "snapshot_grain": "one reviewed Sumatera Barat source row per official resource",
+    "extraction_key": "Kode Wilayah Provinsi=13 and Provinsi=SUMATERA BARAT"
+  },
+  "records": [
+    {
+      "year": 2024,
+      "metric_id": "deaths",
+      "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+      "resource_id": "69605ad2-73ea-4967-b2d5-639ad9291833",
+      "workbook_sha256": "e8699902e7f19b89f7432ad12b85223c8c49f1f931924beea7dbee17f5d9249d",
+      "methodology_reference_text": "Juklak BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 61, "CUACA EKSTREM": 3, "ERUPSI GUNUNG API": 32, "GELOMBANG PASANG DAN ABRASI": 0, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 23, "TSUNAMI": 0}
+    },
+    {
+      "year": 2024,
+      "metric_id": "affected",
+      "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+      "resource_id": "5b9f7853-e69b-4d3a-917c-3fa3e473ed60",
+      "workbook_sha256": "b733859754c3a88812e6eb00604c21cd931746df13907b1c144679afff41d118",
+      "methodology_reference_text": "Juklak BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 196788, "CUACA EKSTREM": 315, "ERUPSI GUNUNG API": 3345, "GELOMBANG PASANG DAN ABRASI": 565, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 1292, "TANAH LONGSOR": 50, "TSUNAMI": 0}
+    },
+    {
+      "year": 2024,
+      "metric_id": "injured",
+      "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+      "resource_id": "b1e58b39-8dc4-4b9b-abc6-50139acd2fda",
+      "workbook_sha256": "cd6eb63c02854ed7ea591ae3158ec2f431c1d1e029856cbb50af1b8307c927d0",
+      "methodology_reference_text": "Juklak BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 66, "CUACA EKSTREM": 1, "ERUPSI GUNUNG API": 2, "GELOMBANG PASANG DAN ABRASI": 0, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 19, "TSUNAMI": 0}
+    },
+    {
+      "year": 2024,
+      "metric_id": "displaced",
+      "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+      "resource_id": "d1fd9f08-26e1-453a-9be0-422538f01b5e",
+      "workbook_sha256": "b0bfa6b145535a990ac3e06ae79daf3e7e4218947d55094a9c23d146179a9a83",
+      "methodology_reference_text": "Juklak BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 106503, "CUACA EKSTREM": 0, "ERUPSI GUNUNG API": 3061, "GELOMBANG PASANG DAN ABRASI": 6, "GEMPABUMI": null, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 77, "TSUNAMI": 0}
+    },
+    {
+      "year": 2024,
+      "metric_id": "houses",
+      "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+      "resource_id": "471f71cb-27a4-4460-836f-416c0c35b4dc",
+      "workbook_sha256": "f022f98faa87e294c548dc8144e370605dabcd25ac160bf0f7a0fb282cb7387a",
+      "methodology_reference_text": "Juklak BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 12577, "CUACA EKSTREM": 164, "ERUPSI GUNUNG API": 236, "GELOMBANG PASANG DAN ABRASI": 23, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 10, "TSUNAMI": 0}
+    },
+    {
+      "year": 2025,
+      "metric_id": "deaths",
+      "package_id": "58878b43-41b5-4ffb-b851-c6d8c8c4d438",
+      "resource_id": "aefe8331-5962-4610-8b0c-2de637a336cd",
+      "workbook_sha256": "623019598556c7bb97f622059e364f7632fcaf64fdee59ca43427cb103b630f6",
+      "methodology_reference_text": "Peraturan BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 267, "CUACA EKSTREM": 3, "ERUPSI GUNUNG API": 0, "GELOMBANG PASANG DAN ABRASI": 0, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 0, "TSUNAMI": 0}
+    },
+    {
+      "year": 2025,
+      "metric_id": "affected",
+      "package_id": "58878b43-41b5-4ffb-b851-c6d8c8c4d438",
+      "resource_id": "8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a",
+      "workbook_sha256": "619490fc3463e0c8810796a5abd50b6da41aa285cc3291cab17fa741454c31fd",
+      "methodology_reference_text": "Peraturan BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 328428, "CUACA EKSTREM": 1610, "ERUPSI GUNUNG API": 0, "GELOMBANG PASANG DAN ABRASI": 90, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 1000, "TANAH LONGSOR": 336, "TSUNAMI": 0}
+    },
+    {
+      "year": 2025,
+      "metric_id": "injured",
+      "package_id": "58878b43-41b5-4ffb-b851-c6d8c8c4d438",
+      "resource_id": "50b99a45-d8ff-496e-a64f-9e689754371c",
+      "workbook_sha256": "49075b3e1b18ec00a5238815ffcae6eb8497f658cc9dbab582032ccaec6db0b0",
+      "methodology_reference_text": "Peraturan BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 382, "CUACA EKSTREM": 3, "ERUPSI GUNUNG API": 0, "GELOMBANG PASANG DAN ABRASI": 0, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 0, "TSUNAMI": 0}
+    },
+    {
+      "year": 2025,
+      "metric_id": "displaced",
+      "package_id": "58878b43-41b5-4ffb-b851-c6d8c8c4d438",
+      "resource_id": "eefa5746-5c65-4156-ac74-2eff2bfac767",
+      "workbook_sha256": "c0830bab4a6bd809310fd70898544db147331621b5eef42c210a3270356dd551",
+      "methodology_reference_text": "Peraturan BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 10915, "CUACA EKSTREM": 0, "ERUPSI GUNUNG API": 0, "GELOMBANG PASANG DAN ABRASI": 10, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 0, "TSUNAMI": 0}
+    },
+    {
+      "year": 2025,
+      "metric_id": "houses",
+      "package_id": "58878b43-41b5-4ffb-b851-c6d8c8c4d438",
+      "resource_id": "43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636",
+      "workbook_sha256": "7b953507dab9dc861030f8e1bd8feaf69cc6c7479c0efbe9643b4ac761357912",
+      "methodology_reference_text": "Peraturan BNPB No. 7 Tahun 2023",
+      "source_note_province_label_swap_present": true,
+      "values": {"BANJIR": 12683, "CUACA EKSTREM": 351, "ERUPSI GUNUNG API": 0, "GELOMBANG PASANG DAN ABRASI": 2, "GEMPABUMI": 0, "KEBAKARAN HUTAN DAN LAHAN": 0, "KEKERINGAN": 0, "TANAH LONGSOR": 6, "TSUNAMI": 0}
+    }
+  ]
+}
