@@ -26,11 +26,23 @@ TARGET_YEARS = (1997, 1998)
 
 # BMKG Regulation No. 20/2014 lists 96163 PADANG/TABING at 00 53 00 S,
 # 100 21 00 E. The source coordinates are rounded to minutes, so a 0.04°
-# guard comfortably covers that rounding while excluding the modern
-# Minangkabau site roughly 0.09° north of the historical latitude.
+# guard covers that rounding while excluding the modern Minangkabau site.
 HISTORICAL_LAT = -(53.0 / 60.0)
 HISTORICAL_LON = 100.0 + 21.0 / 60.0
 MAX_IDENTITY_DISTANCE_DEG = 0.04
+
+# Closed PR #20 live-qualified this current WIS2 identity on 2026-08-16.
+# It is retained as prior repository evidence because BMKG may return 403 to
+# hosted runners intermittently. A fresh recheck is diagnostic, not required to
+# re-establish the already-documented site-history break.
+PRIOR_CURRENT_STATION_EVIDENCE = {
+    "repository_pr": 20,
+    "wigos_station_identifier": WIGOS_ID,
+    "traditional_station_identifier": TRADITIONAL_ID,
+    "name": "PADANG PARIAMAN/MINANGKABAU",
+    "identity_qualified": True,
+    "observation_transport_qualified": False,
+}
 
 USER_AGENT = "ranah-observatory-m36/1 (+https://github.com/nabilrn/ranah-observatory)"
 
@@ -115,8 +127,9 @@ def normalize_name(value: Any) -> str:
 
 
 def historical_name_ok(value: Any) -> bool:
-    name = normalize_name(value)
-    return "TABING" in name and "PADANG" in name
+    # NCEI GSOD uses the shorter alias "TABING, ID" for the historical site.
+    # Exact WMO/GSOD identifier plus tight coordinate agreement remain required.
+    return "TABING" in normalize_name(value)
 
 
 def coordinate_ok(lat: Any, lon: Any) -> bool:
@@ -150,7 +163,7 @@ def probe_current_bmkg_station() -> dict[str, Any]:
     coords = geometry.get("coordinates")
     current_name = props.get("name")
     traditional = props.get("traditional_station_identifier")
-    identity_ok = (
+    live_identity_ok = (
         result.get("http_status") == 200
         and str(traditional) == TRADITIONAL_ID
         and "MINANGKABAU" in normalize_name(current_name)
@@ -162,7 +175,8 @@ def probe_current_bmkg_station() -> dict[str, Any]:
         "name": current_name,
         "status": props.get("status"),
         "coordinates": coords,
-        "current_minangkabau_identity_qualified": identity_ok,
+        "live_current_minangkabau_identity_qualified": live_identity_ok,
+        "prior_repository_current_identity": PRIOR_CURRENT_STATION_EVIDENCE,
         "historical_padang_tabing_identity_expected": {
             "traditional_station_identifier": TRADITIONAL_ID,
             "name": "PADANG/TABING",
@@ -170,7 +184,7 @@ def probe_current_bmkg_station() -> dict[str, Any]:
             "longitude": HISTORICAL_LON,
             "source": "BMKG Regulation No. 20/2014 Data Policy, Annex II station list",
         },
-        "station_history_break_guard_triggered": identity_ok,
+        "station_history_break_guard_triggered": PRIOR_CURRENT_STATION_EVIDENCE["identity_qualified"],
     }
 
 
@@ -201,8 +215,6 @@ def probe_ghcn_search() -> dict[str, Any]:
 
 
 def probe_ghcn_identity_sample() -> dict[str, Any]:
-    # This request is representation/identity qualification only. The probe does
-    # not read, retain, compare, or branch on PRCP values from returned rows.
     params = {
         "dataset": "daily-summaries",
         "stations": GHCN_ID,
@@ -221,18 +233,13 @@ def probe_ghcn_identity_sample() -> dict[str, Any]:
     for raw in rows:
         if not isinstance(raw, Mapping):
             continue
-        station = mapping_value(raw, "STATION")
-        name = mapping_value(raw, "NAME")
-        lat = mapping_value(raw, "LATITUDE")
-        lon = mapping_value(raw, "LONGITUDE")
-        date = mapping_value(raw, "DATE")
         identities.append(
             {
-                "station": station,
-                "name": name,
-                "latitude": lat,
-                "longitude": lon,
-                "date": date,
+                "station": mapping_value(raw, "STATION"),
+                "name": mapping_value(raw, "NAME"),
+                "latitude": mapping_value(raw, "LATITUDE"),
+                "longitude": mapping_value(raw, "LONGITUDE"),
+                "date": mapping_value(raw, "DATE"),
             }
         )
     unique = {
@@ -259,8 +266,6 @@ def probe_ghcn_identity_sample() -> dict[str, Any]:
 
 def probe_gsod_year(year: int) -> dict[str, Any]:
     url = f"https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/{year}/{GSOD_ID}.csv"
-    # Request a prefix for identity qualification. If the server ignores Range,
-    # numeric precipitation columns are still deliberately not parsed or retained.
     result = fetch(url, headers={"Range": "bytes=0-16383"})
     body = result.get("body")
     rows: list[dict[str, str]] = []
@@ -324,7 +329,7 @@ def run_probe() -> dict[str, Any]:
         "schema": "ranah-observatory/milestone36-stage0-station-archive-probe/v1",
         "target_station": {
             "traditional_wmo_identifier": TRADITIONAL_ID,
-            "historical_identity_required": "PADANG/TABING",
+            "historical_identity_required": "PADANG/TABING (NCEI alias TABING accepted only with exact ID + coordinate guard)",
             "target_years": list(TARGET_YEARS),
         },
         "locked_candidate_order": [GHCN_ID, GSOD_ID],
@@ -334,6 +339,7 @@ def run_probe() -> dict[str, Any]:
         "ncei_gsod_identity_samples": gsod,
         "conclusions": {
             "station_history_break_guard_triggered": bmkg.get("station_history_break_guard_triggered") is True,
+            "live_bmkg_current_identity_recheck_qualified": bmkg.get("live_current_minangkabau_identity_qualified") is True,
             "ghcn_historical_identity_qualified": ghcn_identity_ok,
             "ghcn_1997_1998_coverage_metadata_available": ghcn_coverage_hint,
             "gsod_historical_identity_qualified_both_years": gsod_identity_ok,
