@@ -1,0 +1,158 @@
+{
+  "domain": "1300",
+  "request": {
+    "th": "124",
+    "turth": 0,
+    "turvar": 595,
+    "var": 320
+  },
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "13013205951240": 49.6,
+      "13023205951240": 70.45,
+      "13033205951240": 69.89,
+      "13043205951240": 67.38,
+      "13053205951240": 73.64,
+      "13063205951240": 71.13,
+      "13073205951240": 77.45,
+      "13083205951240": 63.65,
+      "13093205951240": 71.18,
+      "13103205951240": 75.04,
+      "13113205951240": 82.62,
+      "13123205951240": 68.41,
+      "13713205951240": 84.41,
+      "13723205951240": 85.56,
+      "13733205951240": 76.67,
+      "13743205951240": 88.57,
+      "13753205951240": 87.7,
+      "13763205951240": 82.91,
+      "13773205951240": 69.87,
+      "13783205951240": 74.59
+    },
+    "labelvervar": "Kabupaten/Kota",
+    "last_update": "2026-02-28 02:00:54",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Masyarakat Informasi",
+        "val": 565
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2024",
+        "val": 124
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Pernah Mengakses Internet     ",
+        "val": 595
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "",
+        "label": "Persentase Penduduk Usia 5 Tahun Ke Atas yang Mengakses Internet dalam 3 Bulan Terakhir Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+        "note": "Sumber : BPS, Survei Sosial Ekonomi Nasional",
+        "subj": "Komunikasi",
+        "unit": "Persen",
+        "val": 320
+      }
+    ],
+    "vervar": [
+      {
+        "label": "Kab. Kepulauan Mentawai",
+        "val": 1301
+      },
+      {
+        "label": "Kab. Pesisir Selatan",
+        "val": 1302
+      },
+      {
+        "label": "Kab. Solok",
+        "val": 1303
+      },
+      {
+        "label": "Kab. Sijunjung",
+        "val": 1304
+      },
+      {
+        "label": "Kab. Tanah Datar",
+        "val": 1305
+      },
+      {
+        "label": "Kab. Padang Pariaman",
+        "val": 1306
+      },
+      {
+        "label": "Kab. Agam",
+        "val": 1307
+      },
+      {
+        "label": "Kab. Lima Puluh Kota",
+        "val": 1308
+      },
+      {
+        "label": "Kab. Pasaman",
+        "val": 1309
+      },
+      {
+        "label": "Kab. Solok Selatan",
+        "val": 1310
+      },
+      {
+        "label": "Kab. Dharmasraya",
+        "val": 1311
+      },
+      {
+        "label": "Kab. Pasaman Barat",
+        "val": 1312
+      },
+      {
+        "label": "Kota Padang",
+        "val": 1371
+      },
+      {
+        "label": "Kota Solok",
+        "val": 1372
+      },
+      {
+        "label": "Kota Sawahlunto",
+        "val": 1373
+      },
+      {
+        "label": "Kota Padang Panjang",
+        "val": 1374
+      },
+      {
+        "label": "Kota Bukittinggi",
+        "val": 1375
+      },
+      {
+        "label": "Kota Payakumbuh",
+        "val": 1376
+      },
+      {
+        "label": "Kota Pariaman",
+        "val": 1377
+      },
+      {
+        "label": "Provinsi Sumatera Barat ",
+        "val": 1378
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-23T07:43:01+00:00",
+  "snapshot_schema": "ranah-observatory/milestone28-bps-dynamic-snapshot/v1",
+  "source_id": "bps_webapi"
+}

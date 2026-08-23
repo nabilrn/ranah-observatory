@@ -1,0 +1,8 @@
+candidate_id,bps_var_id,year,normalized_source_row_count,normalizer_observed_value_count,selected_geography_count,missing_geography_codes,duplicate_geography_codes,range_failure_codes,geography_representation_failure_ids,selector_failure_count,unit_failure_count,classification,error,raw_snapshot_path,raw_snapshot_sha256
+dependency_ratio_projection,756,2024,20,20,19,,,,,0,0,numeric_pilot_pass,,data/processed/bps/m28_stage2a_numeric_pilot/var-756-2024.json,7c4afdb8e32fe4ce55d82020f10ec00b5c160bb5f7f99a884d98f68b87837ad4
+internet_access_age5plus,320,2024,20,20,19,,,,,0,0,numeric_pilot_pass,,data/processed/bps/m28_stage2a_numeric_pilot/var-320-2024.json,5e272324621c053ce769567219601efc58b39fcd9edc64f0f723e24aba38e18d
+jkn_coverage,763,2024,20,20,19,,,,,0,0,numeric_pilot_pass,,data/processed/bps/m28_stage2a_numeric_pilot/var-763-2024.json,bab2153714546fc0ce9e24c466b109f08554616c6ec1507b1d07feb436de7638
+morbidity_rate,547,2024,20,20,19,,,,,0,0,numeric_pilot_pass,,data/processed/bps/m28_stage2a_numeric_pilot/var-547-2024.json,5d311a2dcba0d0478db66d4e44069ec36af3550673fec3b697378e4cb52bb3a9
+real_grdp_per_capita_2010,169,2024,21,21,19,,,,,0,0,numeric_pilot_pass,,data/processed/bps/m28_stage2a_numeric_pilot/var-169-2024.json,1a22a50117c760cfe1d2d35172317c74c13bfbf8ebe985534cccddc12b669fb2
+safe_drinking_water_access,352,2024,20,20,19,,,,,0,0,numeric_pilot_pass,,data/processed/bps/m28_stage2a_numeric_pilot/var-352-2024.json,21f03f075214afb0939ab04d563e9ddb1aa7bfee8a4a64e34b21b5e4e0b7b8f2
+sanitation_access_adequate,341,2024,20,20,19,,,,,0,0,numeric_pilot_pass,,data/processed/bps/m28_stage2a_numeric_pilot/var-341-2024.json,41a3cfa2929711e07d8657eec641d54bebb306a51ea2929cf9fdb2b1cf3564a0
