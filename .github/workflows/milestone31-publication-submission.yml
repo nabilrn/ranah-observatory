@@ -101,17 +101,17 @@ jobs:
           print({'submission_outputs': 6, 'indexed_assets': 13, 'author': 'Nabil Rizki Navisa', 'target': 'Zenodo', 'claim_upgrade': False})
           PY
 
-      - name: Require byte-identical canonical submission package
-        run: |
-          git diff --exit-code -- publication/v0.1/submission
-          test -z "$(git status --porcelain -- publication/v0.1/submission)"
-
-      - name: Upload verified submission package
+      - name: Upload candidate submission package
         uses: actions/upload-artifact@v4
         with:
           name: publication-v0.1-submission
           path: publication/v0.1/submission
           retention-days: 7
+
+      - name: Require byte-identical canonical submission package
+        run: |
+          git diff --exit-code -- publication/v0.1/submission
+          test -z "$(git status --porcelain -- publication/v0.1/submission)"
 
       - name: Require no upstream science changes
         run: |
