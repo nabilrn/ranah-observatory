@@ -8,6 +8,7 @@ on:
       - research/MILESTONE36_STATION_RAINFALL_VALIDATION_SPEC.md
       - scripts/probe_milestone36_station_archive.py
       - scripts/build_milestone36_station_overlap.py
+      - scripts/finalize_milestone36_station_evidence.py
       - tests/test_milestone36_station_archive.py
       - tests/test_milestone36_station_overlap.py
       - data/validation/climate/station/**
@@ -42,6 +43,7 @@ jobs:
               'research/MILESTONE36_STATION_RAINFALL_VALIDATION_SPEC.md',
               'scripts/probe_milestone36_station_archive.py',
               'scripts/build_milestone36_station_overlap.py',
+              'scripts/finalize_milestone36_station_evidence.py',
               'tests/test_milestone36_station_archive.py',
               'tests/test_milestone36_station_overlap.py',
               'docs/MILESTONE36_STATION_RAINFALL_VALIDATION.md',
@@ -93,13 +95,13 @@ jobs:
           })
           PY
 
-      - name: Build first preregistered Stage 1 numeric candidate
+      - name: Build preregistered Stage 1 numeric candidate
         run: python scripts/build_milestone36_station_overlap.py --output-dir artifacts/m36/stage1
 
       - name: Validate Stage 1 classification contract
         run: |
           python - <<'PY'
-          import json, math
+          import json
           from pathlib import Path
           p = json.loads(Path('artifacts/m36/stage1/station-overlap.json').read_text(encoding='utf-8'))
           assert p['schema'] == 'ranah-observatory/milestone36-station-overlap/v1'
@@ -154,6 +156,50 @@ jobs:
           })
           PY
 
+      - name: Build deterministic canonical-form evidence candidate offline
+        run: |
+          python scripts/finalize_milestone36_station_evidence.py \
+            --candidate-dir artifacts/m36/stage1 \
+            --output-dir artifacts/m36/finalized
+
+      - name: Validate finalized evidence manifest
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('artifacts/m36/finalized')
+          manifest = json.loads((root/'manifest.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone36-station-evidence-manifest/v1'
+          assert manifest['classification'] == 'station_overlap_directionally_supportive'
+          assert manifest['offline_rebuild_supported'] is True
+          assert manifest['raw_source_files_frozen'] is True
+          assert manifest['chirps_baseline_modified'] is False
+          assert manifest['publication_package_modified'] is False
+          assert manifest['causal_claim_authorized'] is False
+          for rel, meta in manifest['files'].items():
+              path = root/rel
+              assert path.is_file(), rel
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == meta['sha256'], rel
+              assert path.stat().st_size == meta['bytes'], rel
+          overlap = json.loads((root/'station-overlap.json').read_text(encoding='utf-8'))
+          assert overlap['source_mode'] == ['frozen_offline_source']
+          assert overlap['comparison']['classification'] == 'station_overlap_directionally_supportive'
+          assert overlap['annual'][0]['valid_prcp_days'] == 345
+          assert overlap['annual'][1]['valid_prcp_days'] == 340
+          assert overlap['annual'][0]['annual_prcp_mm'] == 774.192
+          assert overlap['annual'][1]['annual_prcp_mm'] == 2730.5
+          stage0 = json.loads((root/'stage0-qualification.json').read_text(encoding='utf-8'))
+          assert stage0['accepted_stage1_representation'] == 'ncei_gsod_96163099999'
+          assert stage0['precipitation_values_inspected_during_stage0'] is False
+          assert stage0['stage1_numeric_inspection_authorized'] is True
+          assert stage0['station_history_guard']['safe_to_merge_96163_across_station_history'] is False
+          print({
+              'classification': manifest['classification'],
+              'manifest_files': len(manifest['files']),
+              'offline_rebuild_supported': True,
+          })
+          PY
+
       - name: Require no change to frozen CHIRPS or publication outputs
         if: github.event_name == 'pull_request'
         run: |
@@ -176,5 +222,14 @@ jobs:
         with:
           name: milestone36-stage1-station-overlap-candidate
           path: artifacts/m36/stage1
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Upload finalized canonical-form evidence candidate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone36-finalized-evidence-candidate
+          path: artifacts/m36/finalized
           if-no-files-found: ignore
           retention-days: 7
