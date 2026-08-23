@@ -1,0 +1,39 @@
+{
+  "affiliation": "Independent Researcher",
+  "author": "Nabil Rizki Navisa",
+  "blocked_claims_retained": [
+    "B01_MONETARY_WASTED_POTENTIAL",
+    "B02_THEORETICAL_MAXIMUM",
+    "B03_CAUSAL_RESIDUAL",
+    "B04_GUARANTEED_POLICY_GAIN",
+    "B05_CAUSAL_RAINFALL_UNEMPLOYMENT",
+    "B06_EVENT_COUNTS_AS_IMPACT",
+    "B07_COMPOSITE_DISASTER_RISK",
+    "B08_SENSITIVITY_AS_POLICY_EFFECT",
+    "B09_POLICY_RANKING"
+  ],
+  "builder": "publication/v0.1/tools/build_pdf_release.py",
+  "canonical_figure_count": 6,
+  "canonical_table_count": 7,
+  "claim_upgrade_performed": false,
+  "new_analytical_source_acquisition": false,
+  "new_statistical_or_ml_model_fit": false,
+  "output_sha256": {
+    "publication/v0.1/distribution/README.md": "eb6ac5aa2a39bf0027ebbe5a4821fab9243d3517556377b76673184373bc5748",
+    "publication/v0.1/distribution/Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf": "5325b209acb37d622151fe2ce898edd28e5d25bf4176d660e50754cae06e888a",
+    "publication/v0.1/distribution/SHA256SUMS.txt": "f94a353527613d6dcc6c0f2f1ee1dab13affbf3c2e21c0b8890d9681dcae13ce"
+  },
+  "pdf": "Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf",
+  "publication_license": "CC-BY-4.0",
+  "release": "v0.1",
+  "release_date": "2026-08-23",
+  "schema": "ranah-observatory/publication-v0.1-distribution-manifest/v1",
+  "source_sha256": {
+    "publication/v0.1/claim-ledger.csv": "0236a8950ef39cf6446f408d5634fb5d4d85174bcfb2d7ebd925d697e9d8c210",
+    "publication/v0.1/preprint/preprint-manifest.json": "63e23d8f51bfdd9fc0f9238b1d20b9e1298af30ec9abd803670c4cf59150fb52",
+    "publication/v0.1/preprint/preprint.md": "3c2ea4d0c5db4f5d789146a2bd4ea42a36bdf190369065c22a7ade39f79ba612",
+    "publication/v0.1/rendered/render-manifest.json": "d70b19fde4534aedce8fdd190e241d96720249fd97b8a177e1970942d309314e",
+    "publication/v0.1/submission/metadata.json": "532d97ac49f11bc3980e5704b7c2bf747d9f30b8a6f15203a6e33a4fb0b7989c"
+  },
+  "target_repository": "Zenodo"
+}
