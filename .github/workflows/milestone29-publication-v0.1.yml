@@ -41,12 +41,39 @@ jobs:
               path for path in changed
               if path not in allowed_exact and not path.startswith('publication/v0.1/')
           ]
-          assert not offenders, f'unauthorized M29 paths changed: {offenders}'
+          assert not offenders, f'unauthorized publication paths changed: {offenders}'
           print({'changed_files': len(changed), 'unauthorized_paths': 0})
           PY
 
       - name: Audit frozen publication registry and manuscript
         run: python scripts/audit_milestone29_publication_v0_1.py
+
+      - name: Generate deterministic publication tables and figures
+        run: python publication/v0.1/tools/build_assets.py
+
+      - name: Validate generated asset contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('publication/v0.1/rendered')
+          manifest = json.loads((root/'render-manifest.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/publication-v0.1-render-manifest/v1'
+          assert manifest['table_count'] == 7
+          assert manifest['figure_count'] == 6
+          assert manifest['new_source_acquisition'] is False
+          assert manifest['new_statistical_or_ml_model_fit'] is False
+          assert len(list((root/'tables').glob('T*.csv'))) == 7
+          assert len(list((root/'figures').glob('F*.svg'))) == 6
+          print({'tables': 7, 'figures': 6, 'asset_generation': 'passed'})
+          PY
+
+      - name: Upload rendered publication assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-v0.1-rendered
+          path: publication/v0.1/rendered
+          retention-days: 7
 
       - name: Require no upstream analytical artifacts changed
         run: |
