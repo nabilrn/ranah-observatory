@@ -11,7 +11,7 @@ on:
       - publication/v0.1/submission/**
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   certify-submission-package:
@@ -20,6 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - name: Require M31 publication-only scope
         run: |
@@ -75,6 +76,19 @@ jobs:
               assert asset_id in manuscript, asset_id
           print({'submission_outputs': 5, 'indexed_assets': 13, 'claim_upgrade': False})
           PY
+
+      - name: Commit canonical submission package
+        shell: bash
+        run: |
+          if git diff --quiet -- publication/v0.1/submission && git ls-files --error-unmatch publication/v0.1/submission/submission-manifest.json >/dev/null 2>&1; then
+            echo "canonical submission package already committed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add publication/v0.1/submission
+          git commit -m "Materialize v0.1 submission package"
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Upload generated submission package
         uses: actions/upload-artifact@v4
