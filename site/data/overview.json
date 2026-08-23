@@ -1,0 +1,220 @@
+{
+  "schema": "ranah-observatory/public-overview/v1",
+  "version": "0.1.0",
+  "language": "id",
+  "title": "Ranah Observatory",
+  "subtitle": "Membaca Sumatera Barat dengan data, tanpa melebih-lebihkan apa yang belum terbukti.",
+  "hero": {
+    "eyebrow": "Observatorium pembangunan Sumatera Barat",
+    "headline": "Ada kesenjangan yang bisa diukur. Belum ada satu angka rupiah yang sah untuk menyebut seluruh ‘potensi terbuang’.",
+    "summary": "Riset ini membandingkan kondisi daerah dengan pola yang diharapkan dari data, melihat perubahan sosial-ekonomi, memeriksa konteks iklim dan bencana, lalu memisahkan dengan tegas mana temuan yang didukung, gagal lolos uji, hanya bersifat konteks, atau belum boleh diklaim.",
+    "boundary": "Produk ini menyederhanakan hasil riset yang sudah dibekukan. Ia tidak melakukan analisis baru di browser dan tidak mengubah klaim ilmiah."
+  },
+  "headline_stats": [
+    {
+      "value": "15",
+      "label": "baris hasil yang secara material kurang menguntungkan dari yang diharapkan",
+      "detail": "Dari 342 baris target-tahun-daerah pada analisis gap; 313 berada dalam interval yang diharapkan dan 14 lebih menguntungkan dari yang diharapkan.",
+      "source_claim_ids": ["C13_GAP_DISTRIBUTION"]
+    },
+    {
+      "value": "0 / 3",
+      "label": "target yang lolos untuk ramalan substantif 2026",
+      "detail": "Model satu-tahun-ke-depan untuk kemiskinan, pengangguran, dan pertumbuhan PDRB riil tidak mengalahkan benchmark persistence pada RMSE dan MAE sekaligus.",
+      "source_claim_ids": ["N19_FORECAST_FAILURE"]
+    },
+    {
+      "value": "0 / 19",
+      "label": "daerah yang lolos uji tren hujan monoton yang robust",
+      "detail": "Tidak ada kabupaten/kota yang memenuhi seluruh gate tren monoton CHIRPS 1981–2025 yang telah dikunci sebelumnya.",
+      "source_claim_ids": ["N20_MONOTONIC_RAINFALL"]
+    },
+    {
+      "value": "1",
+      "label": "cross-check stasiun historis independen untuk sinyal hujan 1997→1998",
+      "detail": "Catatan historis Tabing bergerak ke arah yang sama dengan CHIRPS: 1998 lebih basah daripada 1997. Ini hanya validasi arah, bukan validasi seluruh besaran CHIRPS.",
+      "source_paths": ["data/validation/climate/station/m36/manifest.json"]
+    }
+  ],
+  "stories": [
+    {
+      "id": "development-gap",
+      "category": "Kesenjangan pembangunan",
+      "evidence_state": "supported",
+      "title": "Sebagian hasil daerah memang berada di bawah rentang yang diharapkan — tetapi gap itu bukan otomatis ‘uang yang hilang’.",
+      "plain_language": "Analisis gap menghasilkan 342 baris target-tahun-daerah. Sebanyak 15 dinilai secara material kurang menguntungkan dari yang diharapkan, 313 masih berada dalam interval yang diharapkan, dan 14 lebih menguntungkan dari yang diharapkan. Interpretasi yang lebih kuat hanya diizinkan untuk 243 baris; 99 lainnya tidak memiliki dukungan yang cukup.",
+      "why_it_matters": "Ini memberi cara yang lebih disiplin untuk menemukan area yang layak diperiksa lebih lanjut tanpa langsung menyalahkan kebijakan, pemerintah, atau faktor tertentu.",
+      "caveat": "Gap bersifat relatif terhadap model dan empirical reference. Ia bukan causal underperformance dan tidak boleh dijumlahkan menjadi nilai rupiah ‘wasted potential’.",
+      "source_claim_ids": ["C13_GAP_DISTRIBUTION", "C13_METHOD_DISAGREEMENT"]
+    },
+    {
+      "id": "unemployment-trajectory",
+      "category": "Pasar kerja",
+      "evidence_state": "supported",
+      "title": "Arah pengangguran tidak seragam antar daerah.",
+      "plain_language": "Untuk periode modern 2018–2025, model hierarkis pengangguran lolos benchmark. Sebanyak 11 daerah diklasifikasikan mengalami penurunan yang persisten, 5 mengalami kenaikan yang persisten, dan 3 tidak cukup robust untuk diberi arah.",
+      "why_it_matters": "Ringkasan provinsi saja bisa menyembunyikan perbedaan lintas kabupaten/kota.",
+      "caveat": "Klasifikasi ini tidak menjelaskan penyebab perubahan dan tidak boleh diekstrapolasi sebagai ramalan setelah 2025.",
+      "source_claim_ids": ["C22_UNEMPLOYMENT_TRAJECTORY"]
+    },
+    {
+      "id": "labor-force-participation",
+      "category": "Pasar kerja",
+      "evidence_state": "supported",
+      "title": "Partisipasi angkatan kerja menunjukkan pola kenaikan yang lebih luas.",
+      "plain_language": "Model hierarkis labor-force participation lolos benchmark; 17 trajectory daerah diklasifikasikan sebagai kenaikan persisten dan tidak ada yang diklasifikasikan sebagai penurunan persisten di bawah aturan robustness yang dikunci.",
+      "why_it_matters": "Ini memberi gambaran bahwa keterlibatan penduduk dalam pasar kerja bergerak naik di banyak daerah, walaupun kualitas dan penyebab perubahan tidak dijawab oleh model ini.",
+      "caveat": "Ini bukan bukti bahwa kebijakan tertentu berhasil dan bukan jaminan tren akan berlanjut.",
+      "source_claim_ids": ["C22_LFP_TRAJECTORY"]
+    },
+    {
+      "id": "rice-yield",
+      "category": "Pertanian",
+      "evidence_state": "supported",
+      "title": "Produktivitas padi bergerak naik di sebagian daerah, turun di sebagian lain.",
+      "plain_language": "Rice yield lolos benchmark hierarkis: 10 trajectory daerah merupakan kenaikan persisten, 3 penurunan persisten, dan 6 tidak cukup robust untuk diberi arah.",
+      "why_it_matters": "Perubahan produktivitas pertanian tidak bisa dibaca sebagai satu cerita tunggal untuk seluruh Sumatera Barat.",
+      "caveat": "Hasil ini tidak mengidentifikasi efek kebijakan pertanian, cuaca, input produksi, atau penyebab lain.",
+      "source_claim_ids": ["C22_RICE_YIELD_TRAJECTORY"]
+    },
+    {
+      "id": "forecast-failure",
+      "category": "Ramalan",
+      "evidence_state": "negative_result",
+      "title": "Riset ini sengaja tidak menerbitkan ramalan 2026 yang belum terbukti lebih baik dari baseline sederhana.",
+      "plain_language": "Tiga target — kemiskinan, pengangguran, dan pertumbuhan PDRB riil — gagal mengalahkan own-lag persistence pada RMSE dan MAE sekaligus. Karena itu tidak ada model-generated 2026 row yang dianggap forecast substantif yang qualified.",
+      "why_it_matters": "Tidak menerbitkan prediksi yang gagal uji adalah bagian dari kualitas riset, bukan kekurangan yang perlu disembunyikan.",
+      "caveat": "Kegagalan model saat ini tidak berarti indikator-indikator itu mustahil diramalkan dengan data atau desain yang lebih baik di masa depan.",
+      "source_claim_ids": ["N19_FORECAST_FAILURE"]
+    },
+    {
+      "id": "rainfall-trend",
+      "category": "Iklim",
+      "evidence_state": "negative_result",
+      "title": "Data CHIRPS 1981–2025 tidak mendukung klaim sederhana bahwa hujan naik atau turun secara monoton di 19 daerah.",
+      "plain_language": "Nol dari 19 kabupaten/kota lolos keseluruhan gate robust monotonic rainfall trend yang telah ditentukan sebelumnya.",
+      "why_it_matters": "Perubahan iklim dan perubahan curah hujan lokal lebih kompleks daripada satu garis tren naik/turun.",
+      "caveat": "Hasil ini tidak membuktikan bahwa iklim tidak berubah, tidak menggantikan observasi stasiun, dan tidak melakukan atribusi perubahan iklim antropogenik.",
+      "source_claim_ids": ["N20_MONOTONIC_RAINFALL"]
+    },
+    {
+      "id": "rainfall-1998-crosscheck",
+      "category": "Iklim",
+      "evidence_state": "supported_post_v0_1",
+      "title": "Sinyal ‘1998 lebih basah dari 1997’ mendapat satu cross-check independen dari stasiun historis Tabing.",
+      "plain_language": "Dengan aturan kelengkapan yang dikunci sebelum angka hujan diperiksa, 1997 memiliki 345 hari presipitasi valid dan total qualified 774.192 mm; 1998 memiliki 340 hari valid dan total qualified 2,730.500 mm. Keduanya lolos ambang minimal 90% hari valid dan gap maksimum 4 hari.",
+      "why_it_matters": "Sinyal regional CHIRPS 1997→1998 sekarang tidak berdiri sendirian; satu arsip stasiun historis yang cocok identitasnya bergerak ke arah yang sama.",
+      "caveat": "Satu titik stasiun tidak setara dengan 19 polygon mean CHIRPS. Hasil ini tidak menjadikan CHIRPS ‘observed station data’ dan tidak memberi atribusi ENSO atau sebab lain.",
+      "source_paths": [
+        "data/validation/climate/station/m36/manifest.json",
+        "data/validation/climate/station/m36/station-overlap.json"
+      ]
+    },
+    {
+      "id": "disaster-components",
+      "category": "Bencana",
+      "evidence_state": "context",
+      "title": "Komponen risiko bencana tersedia, tetapi belum boleh dipadatkan menjadi satu skor risiko.",
+      "plain_language": "Riset memiliki 57 observasi pada tiga kelas komponen yang qualified: proxy paparan penduduk 2020, kapasitas 2021, dan konteks kejadian hidrometeorologi tercatat 2015–2024. Dampak event-level dan agregasi hazard/vulnerability raster masih ditahan.",
+      "why_it_matters": "Paparan, kapasitas, kejadian, hazard, vulnerability, dan impact adalah konsep berbeda dan terjadi pada periode yang berbeda.",
+      "caveat": "Jumlah kejadian tidak boleh disebut sebagai korban, kerusakan, kerugian, atau dampak ekonomi; komponen juga tidak boleh dijumlahkan menjadi composite risk score.",
+      "source_claim_ids": ["X26_DISASTER_COMPONENTS"]
+    },
+    {
+      "id": "investment-history",
+      "category": "Investasi",
+      "evidence_state": "context",
+      "title": "Riwayat investasi resmi cukup panjang untuk konteks, dengan satu periode yang sengaja tidak dipaksakan masuk.",
+      "plain_language": "Sebanyak 63 dari 64 periode kuartalan resmi BKPM 2010-Q1 sampai 2025-Q4 qualified. Periode 2024-Q1 tetap held karena mekanisme duplikasi campuran membuat forced deduplication tidak defensible.",
+      "why_it_matters": "Menyimpan periode bermasalah sebagai held lebih aman daripada menciptakan angka bersih yang tidak dapat dipertanggungjawabkan.",
+      "caveat": "PMA dan PMDN tetap dipisahkan dengan mata uang native; data ini belum boleh dipakai untuk ranking investasi atau causal effect.",
+      "source_claim_ids": ["X27_INVESTMENT_HISTORY"]
+    }
+  ],
+  "boundaries": [
+    {
+      "claim_id": "B01_MONETARY_WASTED_POTENTIAL",
+      "evidence_state": "not_supported",
+      "title": "Belum ada nilai rupiah definitif untuk ‘wasted potential’ Sumatera Barat.",
+      "reason": "Model gaps, data fiskal, investasi, dan evidence lain tidak boleh dijumlahkan menjadi monetary aggregate tanpa metode dan identifikasi yang qualified."
+    },
+    {
+      "claim_id": "B02_THEORETICAL_MAXIMUM",
+      "evidence_state": "not_supported",
+      "title": "Empirical reference bukan theoretical maximum.",
+      "reason": "Ia adalah pembanding empiris bersyarat di dalam sampel, bukan batas produksi atau potensi teoritis tertinggi."
+    },
+    {
+      "claim_id": "B03_CAUSAL_RESIDUAL",
+      "evidence_state": "not_supported",
+      "title": "Predictive residual bukan bukti causal underperformance.",
+      "reason": "Residual mendukung perbandingan prediktif terbatas, bukan atribusi kepada governance, kebijakan, atau penyebab tertentu."
+    },
+    {
+      "claim_id": "B04_GUARANTEED_POLICY_GAIN",
+      "evidence_state": "not_supported",
+      "title": "Jarak ke empirical reference bukan keuntungan kebijakan yang dijamin.",
+      "reason": "Jarak empiris tidak boleh diterjemahkan langsung menjadi intervention effect atau gain yang pasti dapat direalisasikan."
+    },
+    {
+      "claim_id": "B05_CAUSAL_RAINFALL_UNEMPLOYMENT",
+      "evidence_state": "not_supported",
+      "title": "Hubungan hujan–gap pengangguran belum bersifat kausal.",
+      "reason": "M14 menemukan association stabil, tetapi desainnya tidak mengizinkan klaim bahwa hujan menyebabkan gap pengangguran."
+    },
+    {
+      "claim_id": "B06_EVENT_COUNTS_AS_IMPACT",
+      "evidence_state": "not_supported",
+      "title": "Jumlah kejadian bencana bukan ukuran dampak.",
+      "reason": "Occurrence count tidak boleh diubah label menjadi korban, kerugian, kerusakan, atau affected population."
+    },
+    {
+      "claim_id": "B07_COMPOSITE_DISASTER_RISK",
+      "evidence_state": "not_supported",
+      "title": "Belum ada composite disaster-risk score yang qualified.",
+      "reason": "Komponen yang berbeda versi dan periode tetap ditampilkan terpisah."
+    },
+    {
+      "claim_id": "B08_SENSITIVITY_AS_POLICY_EFFECT",
+      "evidence_state": "not_supported",
+      "title": "Predictive sensitivity bukan policy treatment effect dan bukan forecast.",
+      "reason": "Perturbasi model tidak boleh diterjemahkan menjadi efek intervensi nyata tanpa identification design."
+    },
+    {
+      "claim_id": "B09_POLICY_RANKING",
+      "evidence_state": "not_supported",
+      "title": "Belum ada ranking kebijakan atau cost-benefit yang sah.",
+      "reason": "Ranking memerlukan effect, cost, horizon implementasi, feasibility, dan risk evidence yang belum qualified."
+    }
+  ],
+  "method": {
+    "title": "Cara membaca observatorium ini",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Data dikualifikasi dulu",
+        "text": "Sumber resmi dan dataset publik tidak otomatis dianggap dapat dibandingkan. Identitas wilayah, periode, missingness, dan provenance diperiksa sebelum dipakai."
+      },
+      {
+        "number": "02",
+        "title": "Model harus mengalahkan baseline",
+        "text": "Model yang terlihat canggih tetapi tidak mengalahkan benchmark sederhana diperlakukan sebagai hasil negatif, bukan dipoles menjadi headline."
+      },
+      {
+        "number": "03",
+        "title": "Association dipisahkan dari causality",
+        "text": "Hubungan statistik dapat menjadi sinyal untuk riset lanjutan, tetapi tidak otomatis berarti satu faktor menyebabkan faktor lain."
+      },
+      {
+        "number": "04",
+        "title": "Yang belum terbukti tetap terlihat",
+        "text": "Blocked claims dan data yang held ditampilkan sebagai batas pengetahuan agar pembaca tidak mendapatkan kepastian palsu."
+      }
+    ]
+  },
+  "links": {
+    "repository": "https://github.com/nabilrn/ranah-observatory",
+    "preprint_path": "../publication/v0.1/distribution/Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf",
+    "claim_ledger_path": "../publication/v0.1/claim-ledger.csv"
+  }
+}
