@@ -1,0 +1,70 @@
+name: Milestone 28 Panel v2 Integration
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - .github/workflows/milestone28-panel-integration.yml
+
+concurrency:
+  group: milestone28-panel-integration-writer
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build-panel-v2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+          fetch-depth: 0
+      - name: Compile integration builder
+        run: python -m py_compile scripts/build_milestone28_integrated_panel.py
+      - name: Build Panel v2 offline
+        run: python scripts/build_milestone28_integrated_panel.py
+      - name: Verify completion footprint
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone28_panel_integration.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone28-integrated-panel/v1'
+          assert m['integration_success'] is True
+          assert m['regime_id'] == 'sumbar_current_kabkota_2018_2025_v1'
+          assert m['geography_count'] == 19
+          assert m['year_count'] == 8
+          assert m['wide_row_count'] == 152
+          assert m['indicator_count'] == 22
+          assert m['base_observation_count'] == 1748
+          assert m['added_observation_count'] == 931
+          assert m['long_observation_count'] == 2679
+          assert m['total_possible_indicator_cells'] == 3344
+          assert m['missing_indicator_cells'] == 665
+          assert m['m28_structured_missing_indicator_cells'] == 133
+          assert m['duplicate_key_count'] == 0
+          assert m['base_m10_rows_preserved_field_exact'] is True
+          assert m['m28_values_claims_methodologies_preserved'] is True
+          assert m['m28_drinking_water_backcast_row_count'] == 38
+          assert m['m28_dependency_projection_row_count'] == 76
+          assert m['base_panel_overwritten'] is False
+          for key in ('global_window_shortening_performed','imputation_performed','forward_fill_performed','backward_fill_performed','zero_fill_missing_years_performed','cross_indicator_aggregation_performed','statistical_model_fit','causal_analysis_performed','monetary_wasted_potential_estimated'):
+              assert m[key] is False, key
+          print({'observations': 2679, 'missing': 665, 'complete_indicators': len(m['complete_2018_2025_indicator_ids'])})
+          PY
+      - name: Commit Panel v2 evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/analysis/engine/panel_v2 \
+            data/manifests/milestone28_panel_integration.json
+          if git diff --cached --quiet; then
+            echo "No Panel v2 changes to commit"
+            exit 0
+          fi
+          git commit -m "Integrate M28 evidence into Panel v2"
+          git push origin HEAD:research/evidence
