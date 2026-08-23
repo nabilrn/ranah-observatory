@@ -30,6 +30,7 @@ jobs:
 
           allowed_exact = {
               '.github/workflows/milestone29-publication-v0.1.yml',
+              '.github/workflows/milestone31-publication-submission.yml',
               'data/manifests/milestone29_publication_design_gate.json',
               'research/MILESTONE29_PUBLICATION_FREEZE_V0_1_SPEC.md',
               'scripts/audit_milestone29_publication_v0_1.py',
