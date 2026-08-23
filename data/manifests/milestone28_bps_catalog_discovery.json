@@ -1,0 +1,62 @@
+{
+  "candidate_count": 62,
+  "candidate_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-candidate-catalog.csv",
+    "sha256": "bb432710c30f783dd71f98cfae80955cfa00f812bcfa5a5951a826137b5e4c50"
+  },
+  "candidate_family_counts": {
+    "demographic_structure": 28,
+    "economic_level": 5,
+    "health": 12,
+    "infrastructure_basic_services": 15
+  },
+  "catalog_observed_key_counts": {
+    "def": 553,
+    "graph_id": 553,
+    "graph_name": 553,
+    "notes": 553,
+    "sub_id": 553,
+    "sub_name": 553,
+    "subcsa_id": 553,
+    "subcsa_name": 553,
+    "title": 553,
+    "unit": 553,
+    "var_id": 553,
+    "vertical": 553
+  },
+  "catalog_row_count": 553,
+  "causal_claim_created": false,
+  "credential_persisted": false,
+  "derived_indicator_materialized": false,
+  "design_gate": {
+    "path": "data/manifests/milestone28_design_gate.json",
+    "sha256": "87804c4b8d1bc736701b4e3a4fd04aa50035f150f61b15bea48f5b6c86d98019"
+  },
+  "domain": "1300",
+  "dynamic_observation_requested": false,
+  "global_window_shortening_performed": false,
+  "imputation_performed": false,
+  "metadata_only": true,
+  "milestone": 28,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "next_gate": "period and dynamic-structure qualification for a preregistered subset of metadata candidates; no values before selector/unit/methodology contracts are locked",
+  "raw_catalog": {
+    "path": "data/processed/bps/m28_candidate_discovery/bps-domain1300-variable-catalog.json",
+    "sha256": "4abe26c96f52f5ebd78f0b246271a46c7b3f2b46e8fcac230235faac38ce907e"
+  },
+  "schema": "ranah-observatory/milestone28-bps-catalog-discovery/v1",
+  "seed_candidate_presence": {
+    "32": true,
+    "320": true,
+    "512": true,
+    "672": true,
+    "752": true,
+    "755": true,
+    "797": true,
+    "877": true
+  },
+  "stage": "stage0_metadata_catalog_discovery",
+  "statistical_model_fit": false,
+  "target_values_inspected": false
+}
