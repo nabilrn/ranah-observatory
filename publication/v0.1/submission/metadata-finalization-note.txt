@@ -1,1 +1,0 @@
-M32 author/deposit metadata synchronization in progress.
