@@ -12,6 +12,7 @@ on:
       - tests/test_public_product.py
       - tests/test_public_district_explorer.py
       - .github/workflows/public-product.yml
+      - .github/workflows/deploy-public-product.yml
   workflow_dispatch:
 
 permissions:
@@ -42,6 +43,7 @@ jobs:
               'tests/test_public_product.py',
               'tests/test_public_district_explorer.py',
               '.github/workflows/public-product.yml',
+              '.github/workflows/deploy-public-product.yml',
           }
           changed = subprocess.check_output(
               ['git', 'diff', '--name-only', 'origin/main...HEAD'], text=True
@@ -71,6 +73,17 @@ jobs:
       - name: Check browser JavaScript syntax
         run: node --check site/app.js
 
+      - name: Validate Pages workflow safety contract
+        run: |
+          grep -q 'pages: write' .github/workflows/deploy-public-product.yml
+          grep -q 'id-token: write' .github/workflows/deploy-public-product.yml
+          grep -q 'actions/configure-pages@v5' .github/workflows/deploy-public-product.yml
+          grep -q 'actions/upload-pages-artifact@v4' .github/workflows/deploy-public-product.yml
+          grep -q 'actions/deploy-pages@v4' .github/workflows/deploy-public-product.yml
+          grep -q 'path: site' .github/workflows/deploy-public-product.yml
+          grep -q 'python scripts/validate_public_product.py' .github/workflows/deploy-public-product.yml
+          grep -q 'python scripts/build_public_district_explorer.py' .github/workflows/deploy-public-product.yml
+
       - name: Require static product files
         run: |
           test -s site/index.html
@@ -79,6 +92,7 @@ jobs:
           test -s site/app.js
           test -s site/data/overview.json
           test -s site/data/districts.json
+          test -f site/.nojekyll
           grep -q 'id="temuan"' site/index.html
           grep -q 'id="daerah"' site/index.html
           grep -q 'id="batas"' site/index.html
