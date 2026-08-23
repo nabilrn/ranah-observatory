@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="650" viewBox="0 0 1220 650">
+<title>F05 Historical rainfall qualification diagnostics</title>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+<text x="35.0" y="36.0" font-size="22" font-weight="bold" text-anchor="start">F05. Historical rainfall qualification diagnostics</text>
+<text x="35.0" y="61.0" font-size="12" font-weight="normal" text-anchor="start">CHIRPS model-estimate evidence on a fixed current-boundary frame; candidate patterns remain unqualified.</text>
+<line x1="70.0" y1="435.0" x2="1150.0" y2="435.0" stroke="#ddd" stroke-width="1"/>
+<text x="60.0" y="439.0" font-size="9" font-weight="normal" text-anchor="end">1303</text>
+<line x1="70.0" y1="352.5" x2="1150.0" y2="352.5" stroke="#ddd" stroke-width="1"/>
+<text x="60.0" y="356.5" font-size="9" font-weight="normal" text-anchor="end">2000</text>
+<line x1="70.0" y1="270.0" x2="1150.0" y2="270.0" stroke="#ddd" stroke-width="1"/>
+<text x="60.0" y="274.0" font-size="9" font-weight="normal" text-anchor="end">2696</text>
+<line x1="70.0" y1="187.5" x2="1150.0" y2="187.5" stroke="#ddd" stroke-width="1"/>
+<text x="60.0" y="191.5" font-size="9" font-weight="normal" text-anchor="end">3393</text>
+<line x1="70.0" y1="105.0" x2="1150.0" y2="105.0" stroke="#ddd" stroke-width="1"/>
+<text x="60.0" y="109.0" font-size="9" font-weight="normal" text-anchor="end">4089</text>
+<polyline points="70.0,211.6 94.5,320.6 119.1,256.1 143.6,160.1 168.2,231.3 192.7,184.6 217.3,252.0 241.8,200.4 266.4,241.0 290.9,249.2 315.5,251.5 340.0,248.8 364.5,307.8 389.1,382.5 413.6,243.4 438.2,278.9 462.7,421.6 487.3,259.9 511.8,151.8 536.4,209.0 560.9,259.6 585.5,235.0 610.0,197.8 634.5,256.5 659.1,209.7 683.6,288.5 708.2,206.3 732.7,196.2 757.3,235.5 781.8,162.2 806.4,255.9 830.9,199.7 855.5,198.1 880.0,245.5 904.5,293.5 929.1,189.9 953.6,192.2 978.2,220.2 1002.7,297.6 1027.3,222.0 1051.8,195.6 1076.4,123.6 1100.9,227.6 1125.5,161.2 1150.0,176.2" fill="none" stroke="#222" stroke-width="1.8"/>
+<line x1="487.3" y1="105.0" x2="487.3" y2="435.0" stroke="#555" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="493.3" y="123.0" font-size="11" font-weight="bold" text-anchor="start">candidate break 1998</text>
+<text x="70.0" y="462.0" font-size="12" font-weight="normal" text-anchor="start">Full-period slope 9.45 mm/year; early -13.08, late 12.84.</text>
+<text x="70.0" y="484.0" font-size="12" font-weight="bold" text-anchor="start">M20: no_robust_monotonic_trend; public claim=False</text>
+<text x="70.0" y="520.0" font-size="12" font-weight="bold" text-anchor="start">Rolling-origin selected break years</text>
+<circle cx="300.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="340.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="380.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="420.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="460.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="500.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="540.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="580.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="620.0" cy="596.2" r="3.5" fill="#333"/>
+<circle cx="660.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="700.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="740.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="780.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="820.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="860.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="900.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="940.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="980.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="1020.0" cy="543.8" r="3.5" fill="#333"/>
+<circle cx="1060.0" cy="543.8" r="3.5" fill="#333"/>
+<text x="1080.0" y="548.0" font-size="10" font-weight="normal" text-anchor="start">median 1998.0</text>
+<text x="1080.0" y="566.0" font-size="10" font-weight="normal" text-anchor="start">within ±3y 55%</text>
+<text x="1080.0" y="584.0" font-size="10" font-weight="bold" text-anchor="start">stability FAIL</text>
+</g>
+</svg>

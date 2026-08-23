@@ -1,0 +1,4 @@
+target_id,m11_benchmark_qualified,m11_model_rmse,m11_naive_rmse,m11_model_mae,m11_naive_mae,m12_primary_reference,m12_alternative_reference,m13_gap_rows_total,m13_authorized_rows_total,m13_blocked_rows_total,m13_frontier_sign_disagreements_total
+poverty_rate,True,1.959249,2.549731,1.364451,1.728402,conditional_favorable_residual_quantile,structural_neighbor_favorable_envelope,342,243,99,50
+unemployment_rate,True,1.714351,2.038703,1.218136,1.354922,conditional_favorable_residual_quantile,structural_neighbor_favorable_envelope,342,243,99,50
+real_grdp_growth,True,0.99543,1.006514,0.422502,0.442232,conditional_favorable_residual_quantile,structural_neighbor_favorable_envelope,342,243,99,50

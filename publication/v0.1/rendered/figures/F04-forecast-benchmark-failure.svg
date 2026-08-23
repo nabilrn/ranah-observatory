@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="560" viewBox="0 0 1140 560">
+<title>F04 One-year-ahead forecast benchmark failure</title>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+<text x="35.0" y="38.0" font-size="22" font-weight="bold" text-anchor="start">F04. One-year-ahead forecast benchmark failure</text>
+<text x="35.0" y="62.0" font-size="12" font-weight="normal" text-anchor="start">Each target uses its own scale. Lower error is better; zero of three targets qualify.</text>
+<text x="190.0" y="100.0" font-size="14" font-weight="bold" text-anchor="middle">poverty_rate</text>
+<rect x="70.0" y="147.2" width="55.0" height="277.8" fill="#333" stroke="#111" stroke-width="1" rx="0"/>
+<text x="97.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 97.5 447)">RMSE dyn</text>
+<text x="97.5" y="140.2" font-size="10" font-weight="bold" text-anchor="middle">0.495</text>
+<rect x="140.0" y="163.9" width="55.0" height="261.1" fill="#aaa" stroke="#111" stroke-width="1" rx="0"/>
+<text x="167.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 167.5 447)">RMSE pers</text>
+<text x="167.5" y="156.9" font-size="10" font-weight="bold" text-anchor="middle">0.465</text>
+<rect x="210.0" y="197.5" width="55.0" height="227.5" fill="#333" stroke="#111" stroke-width="1" rx="0"/>
+<text x="237.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 237.5 447)">MAE dyn</text>
+<text x="237.5" y="190.5" font-size="10" font-weight="bold" text-anchor="middle">0.405</text>
+<rect x="280.0" y="220.8" width="55.0" height="204.2" fill="#aaa" stroke="#111" stroke-width="1" rx="0"/>
+<text x="307.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 307.5 447)">MAE pers</text>
+<text x="307.5" y="213.8" font-size="10" font-weight="bold" text-anchor="middle">0.364</text>
+<text x="190.0" y="492.0" font-size="13" font-weight="bold" text-anchor="middle">FAILED</text>
+<text x="555.0" y="100.0" font-size="14" font-weight="bold" text-anchor="middle">unemployment_rate</text>
+<rect x="435.0" y="147.2" width="55.0" height="277.8" fill="#333" stroke="#111" stroke-width="1" rx="0"/>
+<text x="462.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 462.5 447)">RMSE dyn</text>
+<text x="462.5" y="140.2" font-size="10" font-weight="bold" text-anchor="middle">0.902</text>
+<rect x="505.0" y="169.0" width="55.0" height="256.0" fill="#aaa" stroke="#111" stroke-width="1" rx="0"/>
+<text x="532.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 532.5 447)">RMSE pers</text>
+<text x="532.5" y="162.0" font-size="10" font-weight="bold" text-anchor="middle">0.831</text>
+<rect x="575.0" y="221.7" width="55.0" height="203.3" fill="#333" stroke="#111" stroke-width="1" rx="0"/>
+<text x="602.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 602.5 447)">MAE dyn</text>
+<text x="602.5" y="214.7" font-size="10" font-weight="bold" text-anchor="middle">0.66</text>
+<rect x="645.0" y="249.7" width="55.0" height="175.3" fill="#aaa" stroke="#111" stroke-width="1" rx="0"/>
+<text x="672.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 672.5 447)">MAE pers</text>
+<text x="672.5" y="242.7" font-size="10" font-weight="bold" text-anchor="middle">0.569</text>
+<text x="555.0" y="492.0" font-size="13" font-weight="bold" text-anchor="middle">FAILED</text>
+<text x="920.0" y="100.0" font-size="14" font-weight="bold" text-anchor="middle">real_grdp_growth</text>
+<rect x="800.0" y="147.2" width="55.0" height="277.8" fill="#333" stroke="#111" stroke-width="1" rx="0"/>
+<text x="827.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 827.5 447)">RMSE dyn</text>
+<text x="827.5" y="140.2" font-size="10" font-weight="bold" text-anchor="middle">12.762</text>
+<rect x="870.0" y="368.9" width="55.0" height="56.1" fill="#aaa" stroke="#111" stroke-width="1" rx="0"/>
+<text x="897.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 897.5 447)">RMSE pers</text>
+<text x="897.5" y="361.9" font-size="10" font-weight="bold" text-anchor="middle">2.576</text>
+<rect x="940.0" y="281.4" width="55.0" height="143.6" fill="#333" stroke="#111" stroke-width="1" rx="0"/>
+<text x="967.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 967.5 447)">MAE dyn</text>
+<text x="967.5" y="274.4" font-size="10" font-weight="bold" text-anchor="middle">6.597</text>
+<rect x="1010.0" y="390.8" width="55.0" height="34.2" fill="#aaa" stroke="#111" stroke-width="1" rx="0"/>
+<text x="1037.5" y="447.0" font-size="9" font-weight="normal" text-anchor="middle" transform="rotate(-35 1037.5 447)">MAE pers</text>
+<text x="1037.5" y="383.8" font-size="10" font-weight="bold" text-anchor="middle">1.571</text>
+<text x="920.0" y="492.0" font-size="13" font-weight="bold" text-anchor="middle">FAILED</text>
+</g>
+</svg>

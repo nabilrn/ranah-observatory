@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="500" viewBox="0 0 1180 500">
+<title>F06 Post-M18 evidence coverage expansion</title>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+<text x="35.0" y="38.0" font-size="22" font-weight="bold" text-anchor="start">F06. Post-M18 evidence coverage expansion</text>
+<text x="35.0" y="62.0" font-size="12" font-weight="normal" text-anchor="start">Cards show source-native coverage. Counts are not compared on a common magnitude axis.</text>
+<rect x="35.0" y="110.0" width="205.0" height="300.0" fill="#f8f8f8" stroke="#111" stroke-width="1" rx="8"/>
+<text x="51.0" y="140.0" font-size="18" font-weight="bold" text-anchor="start">M24</text>
+<text x="51.0" y="165.0" font-size="10" font-weight="bold" text-anchor="start">BPS stable-32 province</text>
+<text x="51.0" y="180.0" font-size="10" font-weight="bold" text-anchor="start">comparator</text>
+<text x="51.0" y="212.0" font-size="11" font-weight="normal" text-anchor="start">Period: 2018-2025</text>
+<text x="51.0" y="234.0" font-size="11" font-weight="normal" text-anchor="start">Geographies: 32</text>
+<text x="51.0" y="256.0" font-size="11" font-weight="normal" text-anchor="start">Observations: 1536</text>
+<text x="51.0" y="292.0" font-size="10" font-weight="normal" text-anchor="start">6 current Papua-region</text>
+<text x="51.0" y="309.0" font-size="10" font-weight="normal" text-anchor="start">provinces excluded; no</text>
+<text x="51.0" y="326.0" font-size="10" font-weight="normal" text-anchor="start">backcasting</text>
+<text x="51.0" y="390.0" font-size="11" font-weight="bold" text-anchor="start">context_only</text>
+<rect x="260.0" y="110.0" width="205.0" height="300.0" fill="#f8f8f8" stroke="#111" stroke-width="1" rx="8"/>
+<text x="276.0" y="140.0" font-size="18" font-weight="bold" text-anchor="start">M25</text>
+<text x="276.0" y="165.0" font-size="10" font-weight="bold" text-anchor="start">DJPK annual-final public</text>
+<text x="276.0" y="180.0" font-size="10" font-weight="bold" text-anchor="start">finance</text>
+<text x="276.0" y="212.0" font-size="11" font-weight="normal" text-anchor="start">Period: 2018-2025</text>
+<text x="276.0" y="234.0" font-size="11" font-weight="normal" text-anchor="start">Geographies: 19</text>
+<text x="276.0" y="256.0" font-size="11" font-weight="normal" text-anchor="start">Observations: 608</text>
+<text x="276.0" y="292.0" font-size="10" font-weight="normal" text-anchor="start">central_transfer_revenue</text>
+<text x="276.0" y="309.0" font-size="10" font-weight="normal" text-anchor="start">held; no derived ratios</text>
+<text x="276.0" y="390.0" font-size="11" font-weight="bold" text-anchor="start">context_only</text>
+<rect x="485.0" y="110.0" width="205.0" height="300.0" fill="#f8f8f8" stroke="#111" stroke-width="1" rx="8"/>
+<text x="501.0" y="140.0" font-size="18" font-weight="bold" text-anchor="start">M26</text>
+<text x="501.0" y="165.0" font-size="10" font-weight="bold" text-anchor="start">disaster-risk component</text>
+<text x="501.0" y="180.0" font-size="10" font-weight="bold" text-anchor="start">evidence</text>
+<text x="501.0" y="212.0" font-size="11" font-weight="normal" text-anchor="start">Period: mixed component vintages</text>
+<text x="501.0" y="234.0" font-size="11" font-weight="normal" text-anchor="start">Geographies: 19</text>
+<text x="501.0" y="256.0" font-size="11" font-weight="normal" text-anchor="start">Observations: 57</text>
+<text x="501.0" y="292.0" font-size="10" font-weight="normal" text-anchor="start">observed impact and</text>
+<text x="501.0" y="309.0" font-size="10" font-weight="normal" text-anchor="start">hazard/vulnerability numeric</text>
+<text x="501.0" y="326.0" font-size="10" font-weight="normal" text-anchor="start">promotion held; no composite</text>
+<text x="501.0" y="343.0" font-size="10" font-weight="normal" text-anchor="start">risk</text>
+<text x="501.0" y="390.0" font-size="11" font-weight="bold" text-anchor="start">context_only</text>
+<rect x="710.0" y="110.0" width="205.0" height="300.0" fill="#f8f8f8" stroke="#111" stroke-width="1" rx="8"/>
+<text x="726.0" y="140.0" font-size="18" font-weight="bold" text-anchor="start">M27</text>
+<text x="726.0" y="165.0" font-size="10" font-weight="bold" text-anchor="start">BKPM quarterly investment</text>
+<text x="726.0" y="180.0" font-size="10" font-weight="bold" text-anchor="start">history</text>
+<text x="726.0" y="212.0" font-size="11" font-weight="normal" text-anchor="start">Period: 2010-Q1-2025-Q4</text>
+<text x="726.0" y="234.0" font-size="11" font-weight="normal" text-anchor="start">Geographies: 19</text>
+<text x="726.0" y="256.0" font-size="11" font-weight="normal" text-anchor="start">Observations: 1440</text>
+<text x="726.0" y="292.0" font-size="10" font-weight="normal" text-anchor="start">2024-Q1 held; PMA/PMDN and</text>
+<text x="726.0" y="309.0" font-size="10" font-weight="normal" text-anchor="start">source currencies remain</text>
+<text x="726.0" y="326.0" font-size="10" font-weight="normal" text-anchor="start">separate</text>
+<text x="726.0" y="390.0" font-size="11" font-weight="bold" text-anchor="start">context_only</text>
+<rect x="935.0" y="110.0" width="205.0" height="300.0" fill="#f8f8f8" stroke="#111" stroke-width="1" rx="8"/>
+<text x="951.0" y="140.0" font-size="18" font-weight="bold" text-anchor="start">M28</text>
+<text x="951.0" y="165.0" font-size="10" font-weight="bold" text-anchor="start">broader BPS outcome,</text>
+<text x="951.0" y="180.0" font-size="10" font-weight="bold" text-anchor="start">infrastructure, health and</text>
+<text x="951.0" y="195.0" font-size="10" font-weight="bold" text-anchor="start">demographic panel</text>
+<text x="951.0" y="212.0" font-size="11" font-weight="normal" text-anchor="start">Period: 2018-2025</text>
+<text x="951.0" y="234.0" font-size="11" font-weight="normal" text-anchor="start">Geographies: 19</text>
+<text x="951.0" y="256.0" font-size="11" font-weight="normal" text-anchor="start">Observations: 931</text>
+<text x="951.0" y="292.0" font-size="10" font-weight="normal" text-anchor="start">electricity-access candidate</text>
+<text x="951.0" y="309.0" font-size="10" font-weight="normal" text-anchor="start">held at structure stage;</text>
+<text x="951.0" y="326.0" font-size="10" font-weight="normal" text-anchor="start">methodology-specific</text>
+<text x="951.0" y="343.0" font-size="10" font-weight="normal" text-anchor="start">missingness retained</text>
+<text x="951.0" y="390.0" font-size="11" font-weight="bold" text-anchor="start">context_only</text>
+</g>
+</svg>
