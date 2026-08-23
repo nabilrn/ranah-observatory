@@ -13,7 +13,7 @@ idn.13.1311,Dharmasraya,regency,regency,dharmasraya,,preregistered_candidate,cur
 idn.13.1312,Pasaman Barat,regency,regency,pasaman barat,,preregistered_candidate,current canonical BPS registry; source type must identify kabupaten/regency
 idn.13.1371,Padang,city,city,padang,,preregistered_candidate,current canonical BPS registry; source type must identify kota/city
 idn.13.1372,Solok,city,city,solok,,preregistered_candidate,current canonical BPS registry; type is mandatory because Kabupaten Solok also exists
-idn.13.1373,Sawahlunto,city,city,sawahlunto,,preregistered_candidate,current canonical BPS registry
+idn.13.1373,Sawahlunto,city,city,sawahlunto,sawah lunto,qualified_representation_amendment,current canonical BPS registry; BKPM Stage 1 pilot source-native lexical form Kota Sawah Lunto explicitly amended without changing geography identity
 idn.13.1374,Padang Panjang,city,city,padang panjang,,preregistered_candidate,current canonical BPS registry
 idn.13.1375,Bukittinggi,city,city,bukittinggi,bukit tinggi,preregistered_candidate,current canonical BPS registry plus already-qualified DJPK lexical alias
 idn.13.1376,Payakumbuh,city,city,payakumbuh,,preregistered_candidate,current canonical BPS registry
