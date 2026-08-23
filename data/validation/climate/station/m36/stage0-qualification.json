@@ -1,0 +1,59 @@
+{
+  "accepted_stage1_representation": "ncei_gsod_96163099999",
+  "boundaries": {
+    "causal_claim_authorized": false,
+    "safe_to_mark_global_chirps_station_validation_complete": false,
+    "safe_to_relabel_chirps_as_observed": false
+  },
+  "candidate_results": [
+    {
+      "accepted": false,
+      "candidate": "ncei_daily_summaries_ghcn_IDM00096163",
+      "identity_qualified": false,
+      "reason": "locked Daily Summaries/GHCN probe did not expose qualifying 1997-1998 coverage",
+      "target_period_coverage_qualified": false
+    },
+    {
+      "accepted": true,
+      "candidate": "ncei_gsod_96163099999",
+      "identity_qualified": true,
+      "ncei_coordinate": [
+        100.351881,
+        -0.874989
+      ],
+      "ncei_name": "TABING, ID",
+      "reason": "exact locked GSOD identifier plus tight coordinate guard qualifies historical Tabing for both target years",
+      "target_period_coverage_qualified": true
+    }
+  ],
+  "first_successful_stage0_artifact_digest": "sha256:b2cd66500cd8d4826270435708a5f2fcd7a413a16e323b840c8881a2dd7ad002",
+  "first_successful_stage0_workflow_run_id": 32645859174,
+  "first_successful_stage1_artifact_digest": "sha256:742086c441be9ce3d4f36cf79b945aa57a8995d5e0d4472a0e0b98d99cffb38d",
+  "first_successful_stage1_workflow_run_id": 32646150222,
+  "locked_candidate_order": [
+    "ncei_daily_summaries_ghcn_IDM00096163",
+    "ncei_gsod_96163099999"
+  ],
+  "precipitation_values_inspected_during_stage0": false,
+  "schema": "ranah-observatory/milestone36-stage0-qualification/v1",
+  "stage1_numeric_inspection_authorized": true,
+  "station_history_guard": {
+    "current_identity_from_prior_repository_probe": "PADANG PARIAMAN/MINANGKABAU",
+    "historical_bmkg_identity": "PADANG/TABING",
+    "live_current_bmkg_recheck_from_hosted_runner": "http_403_transport_blocked",
+    "prior_repository_pr": 20,
+    "safe_to_merge_96163_across_station_history": false
+  },
+  "target": {
+    "historical_bmkg_coordinate": [
+      100.35,
+      -0.8833333333333333
+    ],
+    "historical_identity": "BMKG PADANG/TABING",
+    "target_years": [
+      1997,
+      1998
+    ],
+    "traditional_station_identifier": "96163"
+  }
+}

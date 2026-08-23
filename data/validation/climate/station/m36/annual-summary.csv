@@ -1,0 +1,3 @@
+year,source_row_count,calendar_days,minimum_valid_prcp_days,valid_prcp_days,valid_prcp_fraction,present_rows_missing_prcp_days,calendar_days_without_source_row,maximum_consecutive_days_without_valid_prcp,identity_valid,completeness_pass,annual_prcp_inches,annual_prcp_mm
+1997,345,365,329,345,0.945205479,0,20,4,true,true,30.480000,774.192000
+1998,342,365,329,340,0.931506849,2,23,4,true,true,107.500000,2730.500000

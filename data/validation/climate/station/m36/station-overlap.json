@@ -1,0 +1,164 @@
+{
+  "annual": [
+    {
+      "annual_prcp_inches": 30.48,
+      "annual_prcp_mm": 774.192,
+      "calendar_days": 365,
+      "calendar_days_without_source_row": 20,
+      "completeness_pass": true,
+      "duplicate_dates": [],
+      "identity_fail_rows": 0,
+      "identity_sample": [
+        {
+          "date": "1997-01-01",
+          "latitude": -0.874989,
+          "longitude": 100.351881,
+          "name": "TABING, ID",
+          "station": "96163099999"
+        },
+        {
+          "date": "1997-01-02",
+          "latitude": -0.874989,
+          "longitude": 100.351881,
+          "name": "TABING, ID",
+          "station": "96163099999"
+        },
+        {
+          "date": "1997-01-03",
+          "latitude": -0.874989,
+          "longitude": 100.351881,
+          "name": "TABING, ID",
+          "station": "96163099999"
+        }
+      ],
+      "identity_valid": true,
+      "maximum_consecutive_days_without_valid_prcp": 4,
+      "minimum_valid_prcp_days": 329,
+      "prcp_attribute_counts": {
+        "B": 8,
+        "C": 33,
+        "D": 298,
+        "E": 1,
+        "H": 5
+      },
+      "present_rows_missing_prcp_days": 0,
+      "source_row_count": 345,
+      "valid_prcp_days": 345,
+      "valid_prcp_fraction": 0.9452054794520548,
+      "wrong_year_rows": 0,
+      "year": 1997
+    },
+    {
+      "annual_prcp_inches": 107.5,
+      "annual_prcp_mm": 2730.5,
+      "calendar_days": 365,
+      "calendar_days_without_source_row": 23,
+      "completeness_pass": true,
+      "duplicate_dates": [],
+      "identity_fail_rows": 0,
+      "identity_sample": [
+        {
+          "date": "1998-01-01",
+          "latitude": -0.874989,
+          "longitude": 100.351881,
+          "name": "TABING, ID",
+          "station": "96163099999"
+        },
+        {
+          "date": "1998-01-02",
+          "latitude": -0.874989,
+          "longitude": 100.351881,
+          "name": "TABING, ID",
+          "station": "96163099999"
+        },
+        {
+          "date": "1998-01-03",
+          "latitude": -0.874989,
+          "longitude": 100.351881,
+          "name": "TABING, ID",
+          "station": "96163099999"
+        }
+      ],
+      "identity_valid": true,
+      "maximum_consecutive_days_without_valid_prcp": 4,
+      "minimum_valid_prcp_days": 329,
+      "prcp_attribute_counts": {
+        "A": 1,
+        "B": 9,
+        "C": 77,
+        "D": 238,
+        "H": 13,
+        "I": 2
+      },
+      "present_rows_missing_prcp_days": 2,
+      "source_row_count": 342,
+      "valid_prcp_days": 340,
+      "valid_prcp_fraction": 0.9315068493150684,
+      "wrong_year_rows": 0,
+      "year": 1998
+    }
+  ],
+  "comparison": {
+    "chirps_claim_class": "model_estimate",
+    "chirps_finding_id": "m6_climate_1997_1998_signal",
+    "chirps_statement": "Within the fixed June 2026 current-boundary CHIRPS frame, all 19 kabupaten/kota are wetter in 1998 than 1997; the geography-level increase ranges from 43.05% to 162.90%. This is a descriptive regional signal, not a station observation or causal ENSO estimate.",
+    "chirps_status_before_m36": "descriptive_signal_pending_station_validation",
+    "classification": "station_overlap_directionally_supportive",
+    "comparison_scope": "directional_independent_overlap_only",
+    "delta_1998_minus_1997_inches": 77.02,
+    "delta_1998_minus_1997_mm": 1956.3079999999998,
+    "station_percent_change_1997_to_1998": 252.69028871391077
+  },
+  "conclusions": {
+    "both_years_completeness_pass": true,
+    "causal_claim_authorized": false,
+    "safe_to_mark_global_chirps_station_validation_complete": false,
+    "safe_to_merge_96163_across_station_history": false,
+    "safe_to_relabel_chirps_as_observed": false,
+    "station_overlap_classification": "station_overlap_directionally_supportive"
+  },
+  "limitations": [
+    "GSOD precipitation is derived from synoptic/hourly reports and daily totals appear only when reporting is sufficient.",
+    "For this non-US station the GSOD summary day is UTC-based rather than a local-calendar climate day.",
+    "A single point station is not magnitude-equivalent to 19 polygon-mean CHIRPS estimates.",
+    "The station identifier 96163 has a documented historical-site/current-site discontinuity and is not concatenated across that transition."
+  ],
+  "locked_rules": {
+    "inch_to_mm": 25.4,
+    "maximum_missing_streak_days": 31,
+    "minimum_valid_days_each_target_year": 329,
+    "minimum_valid_fraction": 0.9,
+    "missing_as_zero": false,
+    "missing_sentinel_floor_inches": 99.0,
+    "primary_comparison": "sign(total_1998 - total_1997)"
+  },
+  "schema": "ranah-observatory/milestone36-station-overlap/v1",
+  "source_files": [
+    {
+      "bytes": 77589,
+      "file": "source/ncei_gsod_96163099999_1997.csv",
+      "sha256": "1c993277916d7b749b0eb87e51aa8a858860ee947b9a820cfeaa02a5a583f649",
+      "url": "https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/1997/96163099999.csv",
+      "year": 1997
+    },
+    {
+      "bytes": 76917,
+      "file": "source/ncei_gsod_96163099999_1998.csv",
+      "sha256": "b869dd6289889bb9725bf3bd3cac2c38a4d081ff4840e4ea5cb20c99232b1f75",
+      "url": "https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/1998/96163099999.csv",
+      "year": 1998
+    }
+  ],
+  "source_mode": [
+    "frozen_offline_source"
+  ],
+  "station": {
+    "gsod_station_identifier": "96163099999",
+    "historical_bmkg_coordinate": [
+      100.35,
+      -0.8833333333333333
+    ],
+    "historical_identity": "TABING, ID / BMKG PADANG/TABING",
+    "stage1_representation": "ncei_gsod_96163099999"
+  }
+}
