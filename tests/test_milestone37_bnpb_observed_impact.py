@@ -8,31 +8,26 @@ from scripts import build_milestone37_bnpb_observed_impact as m37
 
 
 class Milestone37BnpbObservedImpactTests(unittest.TestCase):
-    def test_sumbar_identity_and_known_values(self) -> None:
-        _, values_2024, diag_2024 = m37.extract_sumbar_bytes(
-            m37.raw_member_bytes(2024, "deaths"), "2024/deaths.xlsx"
-        )
-        _, values_2025, diag_2025 = m37.extract_sumbar_bytes(
-            m37.raw_member_bytes(2025, "deaths"), "2025/deaths.xlsx"
-        )
-        self.assertEqual(values_2024["BANJIR"], 61)
-        self.assertEqual(values_2024["TANAH LONGSOR"], 23)
-        self.assertEqual(values_2025["BANJIR"], 267)
-        self.assertEqual(values_2025["CUACA EKSTREM"], 3)
-        self.assertTrue(diag_2024["source_note_province_label_swap_present"])
-        self.assertTrue(diag_2025["source_note_province_label_swap_present"])
+    def test_snapshot_identity_and_known_values(self) -> None:
+        snapshot = m37.load_snapshot()
+        lookup = {(r["year"], r["metric_id"]): r for r in snapshot["records"]}
+        self.assertEqual(lookup[(2024, "deaths")]["values"]["BANJIR"], 61)
+        self.assertEqual(lookup[(2024, "deaths")]["values"]["TANAH LONGSOR"], 23)
+        self.assertEqual(lookup[(2025, "deaths")]["values"]["BANJIR"], 267)
+        self.assertEqual(lookup[(2025, "deaths")]["values"]["CUACA EKSTREM"], 3)
+        self.assertFalse(snapshot["storage_boundary"]["full_workbooks_committed"])
+        self.assertTrue(snapshot["storage_boundary"]["workbook_sha256_recorded"])
 
     def test_source_blank_is_not_coerced_to_zero(self) -> None:
-        _, values, _ = m37.extract_sumbar_bytes(
-            m37.raw_member_bytes(2024, "displaced"), "2024/displaced.xlsx"
-        )
-        self.assertIsNone(values["GEMPABUMI"])
-        self.assertEqual(values["CUACA EKSTREM"], 0)
+        snapshot = m37.load_snapshot()
+        record = next(r for r in snapshot["records"] if r["year"] == 2024 and r["metric_id"] == "displaced")
+        self.assertIsNone(record["values"]["GEMPABUMI"])
+        self.assertEqual(record["values"]["CUACA EKSTREM"], 0)
 
     def test_build_preserves_locked_coverage_and_boundaries(self) -> None:
-        csv_sha_1, _ = m37.build()
-        csv_sha_2, _ = m37.build()
-        self.assertEqual(csv_sha_1, csv_sha_2)
+        csv_sha_1, manifest_sha_1 = m37.build()
+        csv_sha_2, manifest_sha_2 = m37.build()
+        self.assertEqual((csv_sha_1, manifest_sha_1), (csv_sha_2, manifest_sha_2))
 
         with m37.OUT_CSV.open(newline="", encoding="utf-8") as handle:
             rows = list(csv.DictReader(handle))
@@ -41,16 +36,10 @@ class Milestone37BnpbObservedImpactTests(unittest.TestCase):
         self.assertEqual(sum(r["source_cell_state"] == "source_blank" for r in rows), 1)
 
         blank = next(r for r in rows if r["source_cell_state"] == "source_blank")
-        self.assertEqual(
-            (blank["year"], blank["metric_id"], blank["hazard"], blank["value"]),
-            ("2024", "displaced", "GEMPABUMI", ""),
-        )
+        self.assertEqual((blank["year"], blank["metric_id"], blank["hazard"], blank["value"]), ("2024", "displaced", "GEMPABUMI", ""))
 
         manifest = json.loads(m37.OUT_MANIFEST.read_text(encoding="utf-8"))
-        self.assertEqual(
-            manifest["qualification"]["classification"],
-            "qualified_source_native_provincial_observed_impact_context",
-        )
+        self.assertEqual(manifest["qualification"]["classification"], "qualified_source_native_provincial_observed_impact_context")
         self.assertTrue(manifest["qualification"]["observed_impact_context_authorized"])
         for key in (
             "event_level_observed_impact_authorized",
