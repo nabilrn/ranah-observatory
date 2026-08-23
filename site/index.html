@@ -8,6 +8,7 @@
   <title>Ranah Observatory — Sumatera Barat dalam data</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="explorer.css">
+  <link rel="stylesheet" href="glossary.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Lewati ke isi utama</a>
@@ -24,6 +25,7 @@
       <a href="#temuan">Temuan</a>
       <a href="#daerah">Daerah</a>
       <a href="#batas">Batas</a>
+      <a href="#glosarium">Glosarium</a>
       <a href="#metode">Metode</a>
       <a href="#sumber">Sumber</a>
     </nav>
@@ -112,6 +114,17 @@
       <div class="boundary-grid" id="boundaries"></div>
     </section>
 
+    <section class="section glossary-section" id="glosarium" aria-labelledby="glossary-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Bahasa manusia</p>
+          <h2 id="glossary-title">Glosarium riset</h2>
+        </div>
+        <p id="glossary-intro">Memuat penjelasan istilah teknis…</p>
+      </div>
+      <div class="glossary-grid" id="glossary-grid" aria-live="polite"></div>
+    </section>
+
     <section class="section" id="metode" aria-labelledby="method-title">
       <div class="section-heading">
         <p class="eyebrow">Cara kerja</p>
@@ -145,5 +158,6 @@
     <div class="noscript">Halaman ini membutuhkan JavaScript untuk membaca kontrak data publik lokal. Tidak ada data yang diambil dari API eksternal saat runtime.</div>
   </noscript>
   <script src="app.js" defer></script>
+  <script src="glossary.js" defer></script>
 </body>
 </html>
