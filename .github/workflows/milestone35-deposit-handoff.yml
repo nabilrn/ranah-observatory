@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - .github/workflows/milestone29-publication-v0.1.yml
+      - .github/workflows/milestone33-preprint-citation.yml
+      - .github/workflows/milestone34-pdf-release.yml
       - .github/workflows/milestone35-deposit-handoff.yml
       - publication/v0.1/MILESTONE35_EXTERNAL_DEPOSIT_HANDOFF.md
       - publication/v0.1/tools/build_deposit_handoff.py
@@ -28,6 +30,8 @@ jobs:
           import subprocess
           allowed = {
               '.github/workflows/milestone29-publication-v0.1.yml',
+              '.github/workflows/milestone33-preprint-citation.yml',
+              '.github/workflows/milestone34-pdf-release.yml',
               '.github/workflows/milestone35-deposit-handoff.yml',
               'publication/v0.1/MILESTONE35_EXTERNAL_DEPOSIT_HANDOFF.md',
               'publication/v0.1/tools/build_deposit_handoff.py',
