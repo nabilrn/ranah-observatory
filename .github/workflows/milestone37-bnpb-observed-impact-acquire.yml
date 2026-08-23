@@ -1,0 +1,117 @@
+name: Milestone 37 BNPB Observed Impact Acquisition
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone37-bnpb-observed-impact-acquire.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  acquire:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Freeze official BNPB workbooks with locked hashes
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import time
+          import urllib.request
+          import zipfile
+          from pathlib import Path
+
+          packages = {
+              2024: "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+              2025: "58878b43-41b5-4ffb-b851-c6d8c8c4d438",
+          }
+          resources = {
+              (2024, "deaths"): ("69605ad2-73ea-4967-b2d5-639ad9291833", "e8699902e7f19b89f7432ad12b85223c8c49f1f931924beea7dbee17f5d9249d"),
+              (2024, "affected"): ("5b9f7853-e69b-4d3a-917c-3fa3e473ed60", "b733859754c3a88812e6eb00604c21cd931746df13907b1c144679afff41d118"),
+              (2024, "injured"): ("b1e58b39-8dc4-4b9b-abc6-50139acd2fda", "cd6eb63c02854ed7ea591ae3158ec2f431c1d1e029856cbb50af1b8307c927d0"),
+              (2024, "displaced"): ("d1fd9f08-26e1-453a-9be0-422538f01b5e", "b0bfa6b145535a990ac3e06ae79daf3e7e4218947d55094a9c23d146179a9a83"),
+              (2024, "houses"): ("471f71cb-27a4-4460-836f-416c0c35b4dc", "f022f98faa87e294c548dc8144e370605dabcd25ac160bf0f7a0fb282cb7387a"),
+              (2025, "deaths"): ("aefe8331-5962-4610-8b0c-2de637a336cd", "623019598556c7bb97f622059e364f7632fcaf64fdee59ca43427cb103b630f6"),
+              (2025, "affected"): ("8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a", "619490fc3463e0c8810796a5abd50b6da41aa285cc3291cab17fa741454c31fd"),
+              (2025, "injured"): ("50b99a45-d8ff-496e-a64f-9e689754371c", "49075b3e1b18ec00a5238815ffcae6eb8497f658cc9dbab582032ccaec6db0b0"),
+              (2025, "displaced"): ("eefa5746-5c65-4156-ac74-2eff2bfac767", "c0830bab4a6bd809310fd70898544db147331621b5eef42c210a3270356dd551"),
+              (2025, "houses"): ("43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636", "7b953507dab9dc861030f8e1bd8feaf69cc6c7479c0efbe9643b4ac761357912"),
+          }
+          order = ["deaths", "affected", "injured", "displaced", "houses"]
+          headers = {"User-Agent": "ranah-observatory/0.1 evidence-freeze"}
+
+          def get(url: str) -> bytes:
+              last = None
+              for attempt in range(3):
+                  try:
+                      req = urllib.request.Request(url, headers=headers)
+                      with urllib.request.urlopen(req, timeout=60) as response:
+                          return response.read()
+                  except Exception as exc:
+                      last = exc
+                      time.sleep(2 ** attempt)
+              raise last
+
+          package_resources = {}
+          for year, package_id in packages.items():
+              url = f"https://data.bnpb.go.id/api/3/action/package_show?id={package_id}"
+              payload = json.loads(get(url))
+              assert payload["success"] is True
+              package_resources[year] = {r["id"]: r["url"] for r in payload["result"]["resources"]}
+
+          members = {}
+          for year in (2024, 2025):
+              for metric in order:
+                  resource_id, expected_sha = resources[(year, metric)]
+                  url = package_resources[year][resource_id]
+                  data = get(url)
+                  actual_sha = hashlib.sha256(data).hexdigest()
+                  assert actual_sha == expected_sha, (year, metric, expected_sha, actual_sha, url)
+                  members[f"{year}/{metric}.xlsx"] = data
+
+          out = Path("data/raw/bnpb/m37_observed_impact/official-workbooks.zip")
+          out.parent.mkdir(parents=True, exist_ok=True)
+          with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_STORED) as archive:
+              for year in (2024, 2025):
+                  for metric in order:
+                      name = f"{year}/{metric}.xlsx"
+                      info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+                      info.compress_type = zipfile.ZIP_STORED
+                      info.external_attr = 0o100644 << 16
+                      archive.writestr(info, members[name])
+
+          archive_sha = hashlib.sha256(out.read_bytes()).hexdigest()
+          assert archive_sha == "479a5d29119af027b50e9f57b619c22b4de4b700a4d052fed6b83161c1d16f8d", archive_sha
+          print(json.dumps({"archive_sha256": archive_sha, "members": len(members)}, sort_keys=True))
+          PY
+
+      - name: Build normalized M37 evidence
+        run: python scripts/build_milestone37_bnpb_observed_impact.py
+
+      - name: Run focused tests
+        run: python -m unittest tests.test_milestone37_bnpb_observed_impact
+
+      - name: Commit frozen evidence to workstream branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/raw/bnpb/m37_observed_impact/official-workbooks.zip \
+            data/processed/bnpb/m37_observed_impact/sumatera-barat-observed-impact-2024-2025.csv \
+            data/manifests/milestone37_bnpb_observed_impact.json
+          git commit -m "Freeze M37 BNPB observed-impact evidence [skip ci]"
+          git push origin HEAD:research/evidence
