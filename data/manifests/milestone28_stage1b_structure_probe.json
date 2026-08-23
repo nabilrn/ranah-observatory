@@ -1,0 +1,73 @@
+{
+  "aggregation_performed": false,
+  "audit_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-stage1b-structure-audit.csv",
+    "sha256": "bc8c575defb2db30d858103d008cce37c4cef54c1debd268f78f146a8d422ae5"
+  },
+  "authorized_request_count": 7,
+  "causal_claim_created": false,
+  "datacontent_keys_inspected": true,
+  "datacontent_values_persisted": false,
+  "derived_indicator_materialized": false,
+  "dynamic_payload_requested": true,
+  "executed_candidate_count": 7,
+  "global_window_shortening_performed": false,
+  "held_selector_decisions": [
+    {
+      "bps_var_id": 337,
+      "candidate_id": "household_lighting_source",
+      "decision": "held_no_direct_electricity_selector",
+      "hold_reason": "Only PLN; non-PLN; and non-electric categories exist. Stage 1B does not authorize summing PLN plus non-PLN or relabeling one category as total electricity access."
+    }
+  ],
+  "held_without_dynamic_request_count": 1,
+  "imputation_performed": false,
+  "milestone": 28,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "next_gate": "review source definition/note/unit and structural results; freeze candidate-specific numeric acquisition contracts only for retained candidates",
+  "numeric_materialization_performed": false,
+  "redacted_structure_files": [
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage1b_structure/var-169-2024-structure.json",
+      "sha256": "ebddded293790fc4333b63731d9acf404eabe2221d32634eaa9d6dbe160ce54f"
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage1b_structure/var-547-2024-structure.json",
+      "sha256": "450e54381365b88baf9d5709e0732905acce8de8413695df60e074e1d5d90699"
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage1b_structure/var-763-2024-structure.json",
+      "sha256": "d447433eb9b68d0a97591ac15165cfc3697ddf5e4105de1b4bebbd059f31040c"
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage1b_structure/var-320-2024-structure.json",
+      "sha256": "4589d907c3c66bad9a94eca4dc190f89707c91564a113db1fdddba251c840c3c"
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage1b_structure/var-341-2024-structure.json",
+      "sha256": "d5740114c66025ebdf32bb23cfd58f947eebfaecbf0f0c6d10f8ad66ecc7ca00"
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage1b_structure/var-352-2024-structure.json",
+      "sha256": "31630b2b39875aecc7c39becf604a34a3f446bb021b8fe1e225340f9d4d5c9f0"
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage1b_structure/var-756-2024-structure.json",
+      "sha256": "28ee03303c8cd0be6770a12de0330acf8e70c2fc2da82ba47f08316b3d76a018"
+    }
+  ],
+  "schema": "ranah-observatory/milestone28-stage1b-structure-probe/v1",
+  "stage": "stage1b_structure_only_dynamic_pilot",
+  "statistical_model_fit": false,
+  "structure_hold_count": 1,
+  "structure_pass_count": 6,
+  "target_values_inspected": false
+}

@@ -1,0 +1,189 @@
+{
+  "bps_var_id": 169,
+  "candidate_id": "real_grdp_per_capita_2010",
+  "classification": "held_structure_pilot_failed",
+  "data-availability": "available",
+  "datacontent_key_count": 21,
+  "datacontent_keys": [
+    "10169311240",
+    "11169311240",
+    "1169311240",
+    "12169311240",
+    "13169311240",
+    "14169311240",
+    "15169311240",
+    "16169311240",
+    "17169311240",
+    "18169311240",
+    "19169311240",
+    "20169311240",
+    "21169311240",
+    "2169311240",
+    "3169311240",
+    "4169311240",
+    "5169311240",
+    "6169311240",
+    "7169311240",
+    "8169311240",
+    "9169311240"
+  ],
+  "datacontent_values_persisted": false,
+  "error": "",
+  "expected_datacontent_key_count_from_metadata": 21,
+  "labelvervar": "Kabupaten/ Kota_",
+  "last_update": "2025-02-28 05:26:10",
+  "mapped_geography_codes": [],
+  "missing_geography_codes": [
+    "1301",
+    "1302",
+    "1303",
+    "1304",
+    "1305",
+    "1306",
+    "1307",
+    "1308",
+    "1309",
+    "1310",
+    "1311",
+    "1312",
+    "1371",
+    "1372",
+    "1373",
+    "1374",
+    "1375",
+    "1376",
+    "1377"
+  ],
+  "period_present": true,
+  "pilot_year": 2024,
+  "requested_turth_id": "0",
+  "requested_turvar_id": "31",
+  "resolved_th_id": "124",
+  "schema": "ranah-observatory/milestone28-stage1b-redacted-structure/v1",
+  "selector_present": true,
+  "source_definition": "",
+  "source_last_update": "2025-02-28 05:26:10",
+  "source_note": "2023: angka sangat sementara\n<br/>\n2024: angka sangat-sangat sementara",
+  "source_title": "[Seri 2010] Produk Domestik Regional Bruto per Kapita Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+  "source_unit": "Ribu Rupiah",
+  "source_vertical_label": "Kabupaten/ Kota_",
+  "status": "OK",
+  "tahun": [
+    {
+      "label": "2024",
+      "val": 124
+    }
+  ],
+  "target_values_inspected": false,
+  "turtahun": [
+    {
+      "label": "Tahun",
+      "val": 0
+    }
+  ],
+  "turth_present": true,
+  "turvar": [
+    {
+      "label": "Harga Konstan 2010",
+      "val": 31
+    }
+  ],
+  "unexpected_datacontent_keys": [],
+  "var": [
+    {
+      "decimal": 2,
+      "def": "",
+      "label": "[Seri 2010] Produk Domestik Regional Bruto per Kapita Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+      "note": "2023: angka sangat sementara\n<br/>\n2024: angka sangat-sangat sementara",
+      "subj": "Produk Domestik Regional Bruto (Kabupaten/Kota)",
+      "unit": "Ribu Rupiah",
+      "val": 169
+    }
+  ],
+  "vervar": [
+    {
+      "label": "Kab. Kep. Mentawai",
+      "val": 1
+    },
+    {
+      "label": "Kab. Pesisir Selatan",
+      "val": 2
+    },
+    {
+      "label": "Kab. Solok",
+      "val": 3
+    },
+    {
+      "label": "Kab. Sijunjung",
+      "val": 4
+    },
+    {
+      "label": "Kab. Tanah datar",
+      "val": 5
+    },
+    {
+      "label": "Kab. Padang Pariaman",
+      "val": 6
+    },
+    {
+      "label": "Kab. Agam",
+      "val": 7
+    },
+    {
+      "label": "Kab. Lima Puluh Kota",
+      "val": 8
+    },
+    {
+      "label": "Kab. Pasaman",
+      "val": 9
+    },
+    {
+      "label": "Kab. Solok Selatan",
+      "val": 10
+    },
+    {
+      "label": "Kab. Dharmasraya",
+      "val": 11
+    },
+    {
+      "label": "Kab. Pasaman Barat",
+      "val": 12
+    },
+    {
+      "label": "Kota Padang",
+      "val": 13
+    },
+    {
+      "label": "Kota Solok",
+      "val": 14
+    },
+    {
+      "label": "Kota Sawahlunto",
+      "val": 15
+    },
+    {
+      "label": "Kota Padang Panjang",
+      "val": 16
+    },
+    {
+      "label": "Kota Bukittinggi",
+      "val": 17
+    },
+    {
+      "label": "Kota Payakumbuh",
+      "val": 18
+    },
+    {
+      "label": "Kota Pariaman",
+      "val": 19
+    },
+    {
+      "label": "Jumlah",
+      "val": 20
+    },
+    {
+      "label": "Provinsi Sumatera Barat",
+      "val": 21
+    }
+  ]
+}
