@@ -27,10 +27,10 @@ jobs:
       - name: Compile materializer
         run: python -m py_compile scripts/materialize_milestone27_bkpm_stage1_pilot.py
 
-      - name: Materialize locked Stage 1 pilot
+      - name: Materialize locked Stage 1 pilot after geography representation amendment
         run: python scripts/materialize_milestone27_bkpm_stage1_pilot.py
 
-      - name: Verify scientific boundaries
+      - name: Verify successful pilot and scientific boundaries
         run: |
           python - <<'PY'
           import json
@@ -38,9 +38,14 @@ jobs:
           m = json.loads(Path('data/manifests/milestone27_bkpm_stage1_pilot.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone27-bkpm-stage1-pilot/v1'
           assert m['pilot_count'] == 3
+          assert m['pilot_success'] is True
+          assert all(r['qualified'] is True for r in m['pilot_results'])
+          assert all(not r['fail_reasons'] for r in m['pilot_results'])
+          assert m['materialized_geography_status_observation_count'] > 0
           assert m['target_investment_values_retrieved'] is True
           assert m['target_investment_values_inspected'] is True
           assert m['raw_filtered_response_persisted'] is True
+          assert m['within_quarter_within_status_within_geography_addition_performed'] is True
           assert m['missing_values_coerced_to_zero'] is False
           assert m['absent_geography_status_groups_materialized_as_zero'] is False
           for key in (
@@ -59,8 +64,8 @@ jobs:
           print({
               'pilot_success': m['pilot_success'],
               'observations': m['materialized_geography_status_observation_count'],
+              'mapped_geographies': {f"{r['year']}-{r['quarter']}": r['mapped_geography_count'] for r in m['pilot_results']},
               'qualified': {f"{r['year']}-{r['quarter']}": r['qualified'] for r in m['pilot_results']},
-              'fail_reasons': {f"{r['year']}-{r['quarter']}": r['fail_reasons'] for r in m['pilot_results']},
           })
           PY
 
@@ -76,5 +81,5 @@ jobs:
             echo "No Stage 1 pilot changes to commit"
             exit 0
           fi
-          git commit -m "Freeze M27 BKPM Stage 1 numeric pilot"
+          git commit -m "Qualify M27 BKPM Stage 1 numeric pilot"
           git push origin HEAD:agent/milestone27-bkpm-investment-history
