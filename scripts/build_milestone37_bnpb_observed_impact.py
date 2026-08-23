@@ -5,32 +5,13 @@ import csv
 import hashlib
 import io
 import json
-import re
-import zipfile
 from pathlib import Path
-from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW_DIR = ROOT / "data/raw/bnpb/m37_observed_impact"
-RAW_ARCHIVE = RAW_DIR / "official-workbooks.zip"
+RAW = ROOT / "data/raw/bnpb/m37_observed_impact/sumatera-barat-source-rows.json"
 OUT_DIR = ROOT / "data/processed/bnpb/m37_observed_impact"
 OUT_CSV = OUT_DIR / "sumatera-barat-observed-impact-2024-2025.csv"
 OUT_MANIFEST = ROOT / "data/manifests/milestone37_bnpb_observed_impact.json"
-
-PROVINCE_CODE = 13
-PROVINCE_NAME = "SUMATERA BARAT"
-
-HAZARDS = (
-    "BANJIR",
-    "CUACA EKSTREM",
-    "ERUPSI GUNUNG API",
-    "GELOMBANG PASANG DAN ABRASI",
-    "GEMPABUMI",
-    "KEBAKARAN HUTAN DAN LAHAN",
-    "KEKERINGAN",
-    "TANAH LONGSOR",
-    "TSUNAMI",
-)
 
 METRICS = {
     "deaths": {"label": "reported_deaths", "unit": "persons_reported"},
@@ -40,255 +21,89 @@ METRICS = {
     "houses": {"label": "reported_damaged_houses", "unit": "housing_units_reported"},
 }
 
-SOURCES = {
-    2024: {
-        "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
-        "dataset_title": "Kompilasi Data Kejadian dan Dampak Bencana",
-        "release_role": "master_compilation_detailed_2024",
-        "resources": {
-            "deaths": "69605ad2-73ea-4967-b2d5-639ad9291833",
-            "affected": "5b9f7853-e69b-4d3a-917c-3fa3e473ed60",
-            "injured": "b1e58b39-8dc4-4b9b-abc6-50139acd2fda",
-            "displaced": "d1fd9f08-26e1-453a-9be0-422538f01b5e",
-            "houses": "471f71cb-27a4-4460-836f-416c0c35b4dc",
-        },
-    },
-    2025: {
-        "package_id": "58878b43-41b5-4ffb-b851-c6d8c8c4d438",
-        "dataset_title": "Kompilasi Data Kejadian dan Dampak Bencana 2025",
-        "release_role": "separate_2026_published_release",
-        "resources": {
-            "deaths": "aefe8331-5962-4610-8b0c-2de637a336cd",
-            "affected": "8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a",
-            "injured": "50b99a45-d8ff-496e-a64f-9e689754371c",
-            "displaced": "eefa5746-5c65-4156-ac74-2eff2bfac767",
-            "houses": "43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636",
-        },
-    },
-}
-
-NS_MAIN = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
-NS_REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
-NS_PKG_REL = "http://schemas.openxmlformats.org/package/2006/relationships"
-
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def sha256_file(path: Path) -> str:
-    return sha256_bytes(path.read_bytes())
-
-
-def col_index(cell_ref: str) -> int:
-    match = re.match(r"([A-Z]+)", cell_ref)
-    if not match:
-        raise ValueError(f"invalid cell reference: {cell_ref}")
-    value = 0
-    for ch in match.group(1):
-        value = value * 26 + (ord(ch) - 64)
-    return value - 1
-
-
-def _shared_strings(zf: zipfile.ZipFile) -> list[str]:
-    try:
-        xml = zf.read("xl/sharedStrings.xml")
-    except KeyError:
-        return []
-    root = ET.fromstring(xml)
-    return ["".join(t.text or "" for t in si.iter(f"{{{NS_MAIN}}}t")) for si in root.findall(f"{{{NS_MAIN}}}si")]
-
-
-def _sheet_paths(zf: zipfile.ZipFile) -> list[tuple[str, str]]:
-    workbook = ET.fromstring(zf.read("xl/workbook.xml"))
-    rels = ET.fromstring(zf.read("xl/_rels/workbook.xml.rels"))
-    rel_map = {rel.attrib["Id"]: rel.attrib["Target"] for rel in rels.findall(f"{{{NS_PKG_REL}}}Relationship")}
-    out: list[tuple[str, str]] = []
-    sheets = workbook.find(f"{{{NS_MAIN}}}sheets")
-    assert sheets is not None
-    for sheet in sheets.findall(f"{{{NS_MAIN}}}sheet"):
-        name = sheet.attrib["name"]
-        rid = sheet.attrib[f"{{{NS_REL}}}id"]
-        target = rel_map[rid].lstrip("/")
-        if not target.startswith("xl/"):
-            target = "xl/" + target
-        out.append((name, target))
-    return out
-
-
-def _sheet_rows(zf: zipfile.ZipFile, path: str, shared: list[str]) -> list[list[object | None]]:
-    root = ET.fromstring(zf.read(path))
-    rows: list[list[object | None]] = []
-    for row in root.findall(f".//{{{NS_MAIN}}}row"):
-        cells: dict[int, object | None] = {}
-        max_index = -1
-        for cell in row.findall(f"{{{NS_MAIN}}}c"):
-            idx = col_index(cell.attrib.get("r", ""))
-            max_index = max(max_index, idx)
-            cell_type = cell.attrib.get("t")
-            value_el = cell.find(f"{{{NS_MAIN}}}v")
-            value: object | None
-            if cell_type == "inlineStr":
-                inline = cell.find(f"{{{NS_MAIN}}}is")
-                value = "" if inline is None else "".join(t.text or "" for t in inline.iter(f"{{{NS_MAIN}}}t"))
-            elif value_el is None or value_el.text is None:
-                value = None
-            elif cell_type == "s":
-                value = shared[int(value_el.text)]
-            elif cell_type in {"str", "e"}:
-                value = value_el.text
-            else:
-                raw = value_el.text
-                try:
-                    num = float(raw)
-                    value = int(num) if num.is_integer() else num
-                except ValueError:
-                    value = raw
-            cells[idx] = value
-        rows.append([cells.get(i) for i in range(max_index + 1)] if max_index >= 0 else [])
-    return rows
-
-
-def read_workbook_bytes(data: bytes) -> dict[str, list[list[object | None]]]:
-    with zipfile.ZipFile(io.BytesIO(data)) as zf:
-        shared = _shared_strings(zf)
-        return {name: _sheet_rows(zf, target, shared) for name, target in _sheet_paths(zf)}
-
-
-def raw_member_bytes(year: int, metric_id: str) -> bytes:
-    member = f"{year}/{metric_id}.xlsx"
-    with zipfile.ZipFile(RAW_ARCHIVE) as archive:
-        return archive.read(member)
-
-
-def find_data_sheet(workbook: dict[str, list[list[object | None]]]) -> tuple[str, list[list[object | None]]]:
-    for name, rows in workbook.items():
-        for row in rows[:8]:
-            strings = {str(v).strip() for v in row if v is not None}
-            if {"Kode Wilayah Provinsi", "Provinsi", "BANJIR", "TSUNAMI"}.issubset(strings):
-                return name, rows
-    raise AssertionError("no provincial impact data sheet found")
-
-
-def extract_sumbar_bytes(data: bytes, source_label: str = "<bytes>") -> tuple[str, dict[str, object | None], dict[str, object]]:
-    workbook = read_workbook_bytes(data)
-    sheet_name, rows = find_data_sheet(workbook)
-    header_index = next(i for i, row in enumerate(rows) if "Kode Wilayah Provinsi" in row and "Provinsi" in row)
-    header = rows[header_index]
-    index = {str(v).strip(): i for i, v in enumerate(header) if v is not None}
-    assert all(h in index for h in HAZARDS)
-    target = None
-    for row in rows[header_index + 1:]:
-        if len(row) <= index["Kode Wilayah Provinsi"]:
-            continue
-        code = row[index["Kode Wilayah Provinsi"]]
-        if code in (PROVINCE_CODE, float(PROVINCE_CODE), str(PROVINCE_CODE)):
-            target = row
-            break
-    assert target is not None, f"province code {PROVINCE_CODE} absent in {source_label}"
-    assert str(target[index["Provinsi"]]).strip().upper() == PROVINCE_NAME
-    values = {hazard: target[index[hazard]] if index[hazard] < len(target) else None for hazard in HAZARDS}
-    for hazard, value in values.items():
-        assert value is None or (isinstance(value, (int, float)) and value >= 0), (hazard, value)
-    notes_rows = workbook.get("Keterangan", [])
-    notes_text = "\n".join(" | ".join(str(v).strip() for v in row if v is not None and str(v).strip()) for row in notes_rows)
-    method_ref = (
-        "Peraturan BNPB No. 7 Tahun 2023"
-        if "Peraturan BNPB No. 7 Tahun 2023" in notes_text
-        else "Juklak BNPB No. 7 Tahun 2023"
-        if "Juklak BNPB No. 7 Tahun 2023" in notes_text
-        else None
-    )
-    assert method_ref is not None
-    diagnostics = {
-        "sheet_name": sheet_name,
-        "header_count": len([v for v in header if v is not None]),
-        "methodology_reference_text": method_ref,
-        "source_note_province_label_swap_present": (
-            "Provinsi | : | Nama Kabupaten yang Mengalami Bencana" in notes_text
-            and "Kabupaten | : | Nama Provinsi yang Mengalami Bencana" in notes_text
-        ),
-    }
-    return sheet_name, values, diagnostics
+def load_snapshot() -> dict:
+    payload = json.loads(RAW.read_text(encoding="utf-8"))
+    assert payload["schema"] == "ranah-observatory/bnpb-observed-impact-source-row-snapshot/v1"
+    scope = payload["scope"]
+    assert scope["province_code"] == 13
+    assert scope["province_name"] == "SUMATERA BARAT"
+    assert scope["years"] == [2024, 2025]
+    assert scope["metrics"] == list(METRICS)
+    assert len(scope["hazards"]) == 9
+    records = payload["records"]
+    assert len(records) == 10
+    assert len({(r["year"], r["metric_id"]) for r in records}) == 10
+    for record in records:
+        assert record["metric_id"] in METRICS
+        assert len(record["workbook_sha256"]) == 64
+        assert record["source_note_province_label_swap_present"] is True
+        assert set(record["values"]) == set(scope["hazards"])
+        for value in record["values"].values():
+            assert value is None or (isinstance(value, int) and value >= 0)
+    return payload
 
 
 def build() -> tuple[str, str]:
+    snapshot = load_snapshot()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     OUT_MANIFEST.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = [
-        "year", "metric_id", "metric_label", "unit", "province_code", "province_name", "hazard", "value",
-        "source_cell_state", "source_package_id", "source_resource_id", "source_file_sha256",
-    ]
+    hazards = snapshot["scope"]["hazards"]
+
     rows: list[dict[str, object]] = []
-    source_manifest: list[dict[str, object]] = []
-    assert RAW_ARCHIVE.exists(), RAW_ARCHIVE
-    archive_sha256 = sha256_file(RAW_ARCHIVE)
-    for year in (2024, 2025):
-        source = SOURCES[year]
-        for metric_id in METRICS:
-            member = f"{year}/{metric_id}.xlsx"
-            raw_bytes = raw_member_bytes(year, metric_id)
-            _, values, diagnostics = extract_sumbar_bytes(raw_bytes, member)
-            digest = sha256_bytes(raw_bytes)
-            resource_id = source["resources"][metric_id]
-            source_manifest.append({
-                "year": year,
-                "metric_id": metric_id,
-                "package_id": source["package_id"],
-                "resource_id": resource_id,
-                "dataset_title": source["dataset_title"],
-                "release_role": source["release_role"],
-                "raw_archive_path": RAW_ARCHIVE.relative_to(ROOT).as_posix(),
-                "raw_archive_sha256": archive_sha256,
-                "raw_member": member,
-                "raw_member_sha256": digest,
-                **diagnostics,
+    for record in sorted(snapshot["records"], key=lambda r: (r["year"], list(METRICS).index(r["metric_id"]))):
+        for hazard in hazards:
+            value = record["values"][hazard]
+            rows.append({
+                "year": record["year"],
+                "metric_id": record["metric_id"],
+                "hazard": hazard,
+                "value": "" if value is None else value,
+                "source_cell_state": "source_blank" if value is None else "reported_numeric",
+                "source_resource_id": record["resource_id"],
             })
-            meta = METRICS[metric_id]
-            for hazard in HAZARDS:
-                value = values[hazard]
-                rows.append({
-                    "year": year,
-                    "metric_id": metric_id,
-                    "metric_label": meta["label"],
-                    "unit": meta["unit"],
-                    "province_code": PROVINCE_CODE,
-                    "province_name": PROVINCE_NAME,
-                    "hazard": hazard,
-                    "value": "" if value is None else value,
-                    "source_cell_state": "source_blank" if value is None else "reported_numeric",
-                    "source_package_id": source["package_id"],
-                    "source_resource_id": resource_id,
-                    "source_file_sha256": digest,
-                })
+
+    fieldnames = ["year", "metric_id", "hazard", "value", "source_cell_state", "source_resource_id"]
     buf = io.StringIO(newline="")
     writer = csv.DictWriter(buf, fieldnames=fieldnames, lineterminator="\n")
     writer.writeheader()
     writer.writerows(rows)
     csv_text = buf.getvalue()
     OUT_CSV.write_text(csv_text, encoding="utf-8", newline="")
+
+    raw_bytes = RAW.read_bytes()
     blank_rows = [r for r in rows if r["source_cell_state"] == "source_blank"]
-    numeric_rows = [r for r in rows if r["source_cell_state"] == "reported_numeric"]
     manifest = {
         "schema": "ranah-observatory/milestone37-bnpb-observed-impact/v1",
         "milestone": 37,
         "title": "BNPB provincial observed-impact context for West Sumatra, 2024-2025",
-        "geography": {"level": "province", "code": PROVINCE_CODE, "name": PROVINCE_NAME},
+        "source_snapshot": {
+            "path": RAW.relative_to(ROOT).as_posix(),
+            "sha256": sha256_bytes(raw_bytes),
+            "record_count": len(snapshot["records"]),
+            "full_workbooks_committed": False,
+            "workbook_sha256_recorded": True,
+        },
         "coverage": {
             "years": [2024, 2025],
             "metric_count": len(METRICS),
-            "hazard_count": len(HAZARDS),
-            "expected_cells": 2 * len(METRICS) * len(HAZARDS),
-            "numeric_cells": len(numeric_rows),
+            "hazard_count": len(hazards),
+            "expected_cells": len(rows),
+            "numeric_cells": len(rows) - len(blank_rows),
             "source_blank_cells": len(blank_rows),
         },
         "metrics": METRICS,
-        "hazards": list(HAZARDS),
-        "raw_archive": {"path": RAW_ARCHIVE.relative_to(ROOT).as_posix(), "sha256": archive_sha256, "member_count": 10},
-        "sources": source_manifest,
+        "workbook_digests": [
+            {"year": r["year"], "metric_id": r["metric_id"], "resource_id": r["resource_id"], "sha256": r["workbook_sha256"]}
+            for r in snapshot["records"]
+        ],
         "normalized_output": {
             "path": OUT_CSV.relative_to(ROOT).as_posix(),
-            "sha256": sha256_bytes(csv_text.encode()),
+            "sha256": sha256_bytes(csv_text.encode("utf-8")),
             "row_count": len(rows),
         },
         "source_blank_cells": [
@@ -314,7 +129,7 @@ def build() -> tuple[str, str]:
         },
     }
     OUT_MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    return manifest["normalized_output"]["sha256"], sha256_file(OUT_MANIFEST)
+    return manifest["normalized_output"]["sha256"], sha256_bytes(OUT_MANIFEST.read_bytes())
 
 
 def main() -> int:
