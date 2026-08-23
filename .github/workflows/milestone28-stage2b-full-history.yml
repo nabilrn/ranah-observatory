@@ -1,64 +1,49 @@
-name: Milestone 28 Stage 2B Bounded Full History
+name: Milestone 28 Stage 2B Frozen History Verification
 
 on:
-  push:
+  pull_request:
     branches:
-      - research/evidence
+      - main
     paths:
+      - data/processed/bps/m28_stage2b_full_history/**
+      - data/analysis/engine/broader_panel_v1/m28-broader-panel-observations.csv
+      - data/analysis/engine/broader_panel_v1/m28-broader-panel-provenance.csv
+      - data/analysis/engine/broader_panel_v1/m28-full-history-audit.csv
+      - data/analysis/engine/broader_panel_v1/m28-indicator-year-coverage.csv
+      - data/manifests/milestone28_stage2b_full_history.json
+      - data/manifests/milestone28_stage2b_full_history_contract.json
+      - scripts/materialize_milestone28_stage2b_full_history.py
       - .github/workflows/milestone28-stage2b-full-history.yml
 
-concurrency:
-  group: milestone28-stage2b-full-history-writer
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  materialize-history:
+  verify-frozen-history:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: research/evidence
-          fetch-depth: 0
-      - name: Compile full-history materializer
-        run: python -m py_compile scripts/materialize_milestone28_stage2b_full_history.py
-      - name: Materialize bounded full history
-        env:
-          BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
-        run: python scripts/materialize_milestone28_stage2b_full_history.py
-      - name: Verify scientific boundaries
+      - name: Verify frozen bounded-history certificate
         run: |
           python - <<'PY'
-          import json
+          import hashlib, json
           from pathlib import Path
           m = json.loads(Path('data/manifests/milestone28_stage2b_full_history.json').read_text(encoding='utf-8'))
           assert m['schema'] == 'ranah-observatory/milestone28-stage2b-full-history/v1'
-          assert m['candidate_count'] == 7
-          assert m['candidate_year_cell_count'] == 56
-          assert m['authorized_request_count'] == 49
+          assert m['full_history_success'] is True
           assert m['executed_request_count'] == 49
+          assert m['qualified_candidate_year_count'] == 49
+          assert m['held_candidate_year_count'] == 0
           assert m['structured_missing_candidate_year_count'] == 7
-          assert m['raw_dynamic_payloads_frozen'] is True
+          assert m['promoted_observation_count'] == 931
+          for item in m['raw_snapshots']:
+              p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
+          for key in ('observations_csv','provenance_csv','audit_csv','coverage_csv'):
+              item = m[key]
+              p = Path(item['path'])
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == item['sha256']
           for key in ('global_window_shortening_performed','imputation_performed','missing_values_coerced_to_zero','cross_year_aggregation_performed','cross_indicator_aggregation_performed','statistical_model_fit','causal_claim_created','monetary_wasted_potential_estimated'):
               assert m[key] is False, key
-          print({'success': m['full_history_success'], 'qualified': m['qualified_candidate_year_count'], 'held': m['held_candidate_year_count'], 'missing': m['structured_missing_candidate_year_count'], 'observations': m['promoted_observation_count']})
+          print({'qualified_candidate_years': 49, 'structured_missing': 7, 'observations': 931})
           PY
-      - name: Commit frozen bounded history
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            data/processed/bps/m28_stage2b_full_history \
-            data/analysis/engine/broader_panel_v1/m28-broader-panel-observations.csv \
-            data/analysis/engine/broader_panel_v1/m28-broader-panel-provenance.csv \
-            data/analysis/engine/broader_panel_v1/m28-full-history-audit.csv \
-            data/analysis/engine/broader_panel_v1/m28-indicator-year-coverage.csv \
-            data/manifests/milestone28_stage2b_full_history.json
-          if git diff --cached --quiet; then
-            echo "No Stage 2B history changes to commit"
-            exit 0
-          fi
-          git commit -m "Freeze M28 bounded full history"
-          git push origin HEAD:research/evidence
