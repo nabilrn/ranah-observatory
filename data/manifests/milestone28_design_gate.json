@@ -1,0 +1,72 @@
+{
+  "schema": "ranah-observatory/milestone28-design-gate/v1",
+  "milestone": 28,
+  "design_locked_before_catalog_discovery": true,
+  "source_id": "bps_webapi",
+  "domain": "1300",
+  "target_geography_regime": "sumbar_current_kabkota_2018_2025_v1",
+  "target_geography_count": 19,
+  "target_start_year": 2018,
+  "target_end_year": 2025,
+  "global_window_shortening_authorized": false,
+  "stage0_metadata_only": true,
+  "dynamic_observation_request_authorized": false,
+  "observed_value_based_candidate_selection_authorized": false,
+  "imputation_authorized": false,
+  "missing_as_zero_authorized": false,
+  "methodology_regime_concatenation_authorized": false,
+  "derived_indicator_materialization_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "seed_candidate_var_ids": [32, 320, 512, 672, 752, 755, 797, 877],
+  "candidate_families": {
+    "economic_level": [
+      "pdrb per kapita",
+      "produk domestik regional bruto per kapita",
+      "pendapatan regional per kapita"
+    ],
+    "health": [
+      "umur harapan hidup",
+      "angka harapan hidup",
+      "angka kematian bayi",
+      "kematian bayi",
+      "morbiditas",
+      "keluhan kesehatan",
+      "jaminan kesehatan",
+      "akses pelayanan kesehatan",
+      "rumah sakit",
+      "puskesmas",
+      "tenaga kesehatan"
+    ],
+    "infrastructure_basic_services": [
+      "akses internet",
+      "mengakses internet",
+      "air minum",
+      "sanitasi",
+      "jamban",
+      "akses listrik",
+      "sumber penerangan",
+      "listrik pln",
+      "jalan",
+      "layak huni"
+    ],
+    "demographic_structure": [
+      "jumlah penduduk",
+      "kepadatan penduduk",
+      "rasio ketergantungan",
+      "dependency ratio",
+      "penduduk perkotaan",
+      "migrasi",
+      "kelompok umur",
+      "usia produktif"
+    ]
+  },
+  "stage0_output_rule": "freeze complete BPS domain-1300 variable catalog metadata plus all title-keyword or seed-ID candidate rows; no dynamic datacontent request",
+  "candidate_status_at_stage0": "metadata_discovery_only",
+  "stage1_requires_period_inventory": true,
+  "stage1_requires_exact_geography_structure": true,
+  "stage1_requires_selector_semantics": true,
+  "stage1_requires_unit_semantics": true,
+  "stage1_requires_methodology_classification": true
+}
