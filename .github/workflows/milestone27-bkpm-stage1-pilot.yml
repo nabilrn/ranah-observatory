@@ -1,0 +1,47 @@
+name: Milestone 27 BKPM Stage 1 Pilot Evidence
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/manifests/milestone27_bkpm_stage1_pilot.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-stage1-pilot-quarterly.csv
+      - data/registries/bkpm_sumbar_geography_contract.csv
+      - scripts/materialize_milestone27_bkpm_stage1_pilot.py
+      - .github/workflows/milestone27-bkpm-stage1-pilot.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-stage1-pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen Stage 1 pilot
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_stage1_pilot.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-stage1-pilot/v1'
+          assert m['pilot_count'] == 3
+          assert m['pilot_success'] is True
+          assert all(r['qualified'] is True and not r['fail_reasons'] for r in m['pilot_results'])
+          assert m['materialized_geography_status_observation_count'] == 70
+          assert m['missing_values_coerced_to_zero'] is False
+          assert m['absent_geography_status_groups_materialized_as_zero'] is False
+          assert m['pma_pmdn_combination_performed'] is False
+          assert m['cross_quarter_addition_performed'] is False
+          assert m['annual_sum_performed'] is False
+          assert m['q4_interpreted_as_annual_total'] is False
+          assert m['external_fx_conversion_performed'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          rows = list(csv.DictReader(Path('data/analysis/engine/investment_realization_v1/m27-bkpm-stage1-pilot-quarterly.csv').open(encoding='utf-8')))
+          assert len(rows) == 70
+          print({'pilot_success': True, 'observations': len(rows)})
+          PY

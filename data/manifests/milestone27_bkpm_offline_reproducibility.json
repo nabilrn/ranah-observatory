@@ -1,0 +1,41 @@
+{
+  "annual_sum_performed": false,
+  "causal_claim_created": false,
+  "cross_quarter_addition_performed": false,
+  "duplicate_diagnostic_sha256": "38f887d30775799e6d08db2cb6a9b5d09a9112888628d2806abbd58fa2ef0f05",
+  "external_fx_conversion_performed": false,
+  "held_quarter_count": 1,
+  "held_quarters": [
+    {
+      "classification": "held_failed_validation",
+      "duplicate_dimension_row_count_after_first": 676,
+      "fail_reasons": [
+        "duplicate_complete_source_dimension_tuple"
+      ],
+      "mapped_geography_count": 19,
+      "qualified": false,
+      "quarter": "I",
+      "source_rows": 1107,
+      "year": 2024
+    }
+  ],
+  "live_manifest_sha256": "9de55390d66c193ac883643b10aefd3f0becac6f5720eced53a0669f0faba8f0",
+  "materialized_observation_count": 1440,
+  "milestone": 27,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "network_requests_performed": false,
+  "offline_only": true,
+  "pma_pmdn_combination_performed": false,
+  "qualification_sha256": "35d99b35a11e69b88574fc0bc4c0d743cf95f171c4db7d025600b6a479df2bc1",
+  "qualified_quarter_count": 63,
+  "quarter_audit_byte_identical": true,
+  "quarter_audit_sha256": "37f242dbc3149eebc604f8fb88941b4e157ae6919c04a709230a9d33c0fd7847",
+  "quarter_count": 64,
+  "quarterly_output_byte_identical": true,
+  "quarterly_output_sha256": "924250402a485f22705f1a52c9bba6213d8009d5bac81d65f59e934fee00b2a4",
+  "rebuild_success": true,
+  "schema": "ranah-observatory/milestone27-bkpm-offline-reproducibility/v1",
+  "stage": "stage1_bounded_history_offline_rebuild",
+  "statistical_model_fit": false
+}

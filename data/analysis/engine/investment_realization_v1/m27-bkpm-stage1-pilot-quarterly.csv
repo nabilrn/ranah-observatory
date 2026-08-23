@@ -1,0 +1,71 @@
+year,quarter,geography_id,canonical_name,status_penanaman_modal,observed_source_row_count,investasi_rp_juta_complete,investasi_rp_juta_missing_rows,investasi_rp_juta_sum,investasi_us_ribu_complete,investasi_us_ribu_missing_rows,investasi_us_ribu_sum,raw_evidence_path,raw_evidence_sha256
+2010,I,idn.13.1303,Solok,PMA,1,true,0,0,true,0,0,data/processed/bkpm/m27_stage1_pilot/2010-qi.json,056fba17eaaec8cf4d275ac6d1bf87ff4bdcb90fedf408ccca42a500546c2110
+2025,II,idn.13.1301,Kepulauan Mentawai,PMA,63,true,0,20813.456904,true,0,1300.841056549,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1301,Kepulauan Mentawai,PMDN,14,true,0,989.8764,true,0,18.161025,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1302,Pesisir Selatan,PMA,10,true,0,4884.220475,true,0,305.26377971,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1302,Pesisir Selatan,PMDN,21,true,0,25435.577414,true,0,1402.72327625,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1303,Solok,PMA,6,true,0,7421.885161,true,0,463.8678226,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1303,Solok,PMDN,26,true,0,18403.466582,true,0,161.291264193,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1304,Sijunjung,PMA,1,true,0,0,true,0,0,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1304,Sijunjung,PMDN,20,true,0,309593.495014,true,0,18761.988722277,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1305,Tanah Datar,PMA,3,true,0,879.550989,true,0,54.97193681,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1305,Tanah Datar,PMDN,23,true,0,11731.582246,true,0,430.809903893,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1306,Padang Pariaman,PMA,13,true,0,9379.977838,true,0,586.248614903,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1306,Padang Pariaman,PMDN,32,true,0,487306.178732,true,0,29785.4455194,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1307,Agam,PMA,9,true,0,7098.167519,true,0,443.63547,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1307,Agam,PMDN,27,true,0,251097.350726,true,0,15365.78130028,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1308,Lima Puluh Kota,PMA,2,true,0,481.71365,true,0,30.10710313,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1308,Lima Puluh Kota,PMDN,25,true,0,115015.141481,true,0,3214.527703934,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1309,Pasaman,PMA,2,true,0,2414.05941,true,0,150.8787131,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1309,Pasaman,PMDN,22,true,0,40784.42512,true,0,2118.52625125,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1310,Solok Selatan,PMA,6,true,0,4207.687897,true,0,262.980493525,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1310,Solok Selatan,PMDN,19,true,0,12106.840753,true,0,749.809422,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1311,Dharmasraya,PMA,8,true,0,27685.522966,true,0,1730.345185128,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1311,Dharmasraya,PMDN,21,true,0,252968.210023,true,0,15701.871880105,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1312,Pasaman Barat,PMA,8,true,0,7650.816778,true,0,478.1760486,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1312,Pasaman Barat,PMDN,16,true,0,40785.22357,true,0,2488.134346011,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1371,Padang,PMA,78,true,0,120238.378812,true,0,7514.898675928,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1371,Padang,PMDN,66,true,0,547399.944116,true,0,29678.728395789,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1372,Solok,PMDN,10,true,0,20530.023761,true,0,1080.454359693,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1373,Sawahlunto,PMA,1,true,0,5,true,0,0.3125,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1373,Sawahlunto,PMDN,27,true,0,62131.763483,true,0,3867.484660698,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1374,Padang Panjang,PMDN,13,true,0,8997.706262,true,0,196.716267141,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1375,Bukittinggi,PMA,4,true,0,11.33704,true,0,0.708565,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1375,Bukittinggi,PMDN,17,true,0,10707.849691,true,0,574.95998065,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1376,Payakumbuh,PMDN,17,true,0,4832.427273,true,0,117.146145195,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,II,idn.13.1377,Pariaman,PMDN,12,true,0,6436.69064,true,0,2.3809775,data/processed/bkpm/m27_stage1_pilot/2025-qii.json,574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70
+2025,IV,idn.13.1301,Kepulauan Mentawai,PMA,53,true,0,29087.746812,true,0,1817.9841758,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1301,Kepulauan Mentawai,PMDN,8,true,0,15016.3877,true,0,938.52423135,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1302,Pesisir Selatan,PMA,13,true,0,12090.410208,true,0,755.6506377,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1302,Pesisir Selatan,PMDN,18,true,0,18355.593201,true,0,1147.22457526,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1303,Solok,PMA,6,true,0,7315.393598,true,0,457.2120998,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1303,Solok,PMDN,18,true,0,4260.646342,true,0,266.290396366,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1304,Sijunjung,PMA,1,true,0,0,true,0,0,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1304,Sijunjung,PMDN,13,true,0,24735.101445,true,0,1545.943840266,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1305,Tanah Datar,PMA,3,true,0,624.593236,true,0,39.03707725,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1305,Tanah Datar,PMDN,13,true,0,1734.199608,true,0,108.3874755,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1306,Padang Pariaman,PMA,11,true,0,11958.519211,true,0,747.407450688,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1306,Padang Pariaman,PMDN,27,true,0,9380773.328025,true,0,586298.333001324,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1307,Agam,PMA,10,true,0,11071.118724,true,0,691.94492027,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1307,Agam,PMDN,13,true,0,16217.815789,true,0,1013.613486795,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1308,Lima Puluh Kota,PMA,3,true,0,946.08375,true,0,59.13023438,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1308,Lima Puluh Kota,PMDN,19,true,0,31250.545886,true,0,1953.159118101,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1309,Pasaman,PMA,2,true,0,1676.15202,true,0,104.7595013,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1309,Pasaman,PMDN,19,true,0,37518.78599,true,0,2344.9241245,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1310,Solok Selatan,PMA,4,true,0,3079.878814,true,0,192.4924259,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1310,Solok Selatan,PMDN,15,true,0,17414.831042,true,0,1088.42694018,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1311,Dharmasraya,PMA,9,true,0,11714.483623,true,0,732.15522641,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1311,Dharmasraya,PMDN,19,true,0,89246.253582,true,0,5577.890848525,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1312,Pasaman Barat,PMA,10,true,0,32876.777904,true,0,2054.798618805,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1312,Pasaman Barat,PMDN,12,true,0,23474.487168,true,0,1467.155448103,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1371,Padang,PMA,64,true,0,148839.112728,true,0,9302.444545785,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1371,Padang,PMDN,59,true,0,389755.128584,true,0,24359.695536938,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1372,Solok,PMDN,10,true,0,8566.230223,true,0,535.389388938,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1373,Sawahlunto,PMA,2,true,0,700,true,0,43.75,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1373,Sawahlunto,PMDN,17,true,0,78757.261033,true,0,4922.32881469,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1374,Padang Panjang,PMDN,7,true,0,20.577694,true,0,1.286105875,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1375,Bukittinggi,PMA,7,true,0,1164.3198,true,0,72.769987505,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1375,Bukittinggi,PMDN,11,true,0,441.897964,true,0,27.618622755,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1376,Payakumbuh,PMDN,11,true,0,6104.094574,true,0,381.50591085,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1377,Pariaman,PMA,1,true,0,0,true,0,0,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c
+2025,IV,idn.13.1377,Pariaman,PMDN,9,true,0,699.571073,true,0,43.723192061,data/processed/bkpm/m27_stage1_pilot/2025-qiv.json,6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c

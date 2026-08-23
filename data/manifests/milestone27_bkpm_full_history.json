@@ -1,0 +1,5111 @@
+{
+  "absent_geography_status_groups_materialized_as_zero": false,
+  "annual_sum_performed": false,
+  "canonical_geography_registry": {
+    "path": "data/registries/geographies.csv",
+    "sha256": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de"
+  },
+  "causal_claim_created": false,
+  "contract": {
+    "path": "data/manifests/milestone27_stage1_full_history_contract.json",
+    "sha256": "3abf882bc530d948bcaf7483e28e3af1f171acc890c31079ef32c22d11d01057"
+  },
+  "cross_quarter_addition_performed": false,
+  "external_fx_conversion_performed": false,
+  "failed_quarter_count": 1,
+  "full_history_success": false,
+  "geography_contract": {
+    "path": "data/registries/bkpm_sumbar_geography_contract.csv",
+    "sha256": "0d2fc549983180e4e7751594964ee2f9cf848f496d613383b053c5a9f837bcac"
+  },
+  "inventory": {
+    "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv",
+    "sha256": "e6a8f1c3a58d9a9edbbc62747f4edfe3f019a34f9cbc57b0a730d9c3b4a79382"
+  },
+  "materialized_geography_quarter_status_observation_count": 1440,
+  "milestone": 27,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "output_csv": {
+    "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-quarterly-history.csv",
+    "sha256": "924250402a485f22705f1a52c9bba6213d8009d5bac81d65f59e934fee00b2a4"
+  },
+  "per_capita_normalization_performed": false,
+  "pilot_prerequisite": {
+    "path": "data/manifests/milestone27_bkpm_stage1_pilot.json",
+    "sha256": "f9eba10f11cdb5c2e6bd2655f07fe80c7e6cdd9902f078d76e04a40c32353de1"
+  },
+  "pma_pmdn_combination_performed": false,
+  "q4_interpreted_as_annual_total": false,
+  "qualified_quarter_count": 63,
+  "quarter_audit_csv": {
+    "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-quarter-audit.csv",
+    "sha256": "37f242dbc3149eebc604f8fb88941b4e157ae6919c04a709230a9d33c0fd7847"
+  },
+  "quarter_count": 64,
+  "quarter_results": [
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 1,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 1,
+      "mapped_geography_ids": [
+        "idn.13.1303"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Solok"
+      ],
+      "observed_source_period_values": [
+        "2010 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 276,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2010/q1/count-schema.json",
+          "sha256": "9f0c241104b498ceb7092a4d3d2d3609c4c16bd09f78f2f67d5ae1fa59dcad20",
+          "start": 0
+        },
+        {
+          "bytes": 665,
+          "length": 1,
+          "path": "data/processed/bkpm/m27_full_history/2010/q1/page-000000.json",
+          "sha256": "056fba17eaaec8cf4d275ac6d1bf87ff4bdcb90fedf408ccca42a500546c2110",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 1,
+      "resource_file_uuid": "0617bee9-adee-48a6-aade-1e546c735bcb",
+      "sumbar_source_row_count": 1,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2010
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2010-YklG0z5",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 9,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 8,
+      "mapped_geography_ids": [
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1308",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2010 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 276,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2010/q2/count-schema.json",
+          "sha256": "3ba66b4a7caa46d34c763e9c4570545b936e86e680366e60acaa72780f9dfa9f",
+          "start": 0
+        },
+        {
+          "bytes": 4146,
+          "length": 9,
+          "path": "data/processed/bkpm/m27_full_history/2010/q2/page-000000.json",
+          "sha256": "7012e1eb778f368779aaad68e0ebfd4e285198e7c905f6916da0b60d407ce9de",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 9,
+      "resource_file_uuid": "0e6570a3-8e1d-48ae-b633-a80909aebb91",
+      "sumbar_source_row_count": 9,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2010
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2010-nVHP1xj",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 10,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 8,
+      "mapped_geography_ids": [
+        "idn.13.1303",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Dharmasraya",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Pasaman",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2010 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2010/q3/count-schema.json",
+          "sha256": "0334326adab7fc1cd2047bdb6e2a5572a9aaf740c8fc2c86cd0423663de54773",
+          "start": 0
+        },
+        {
+          "bytes": 5054,
+          "length": 11,
+          "path": "data/processed/bkpm/m27_full_history/2010/q3/page-000000.json",
+          "sha256": "053c043cad9c1aae1876a09d2b3164ac62dbea7bbfe5ee6c68bfb31af9e1488e",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 11,
+      "resource_file_uuid": "763adb47-9343-416d-841f-1f6b11393892",
+      "sumbar_source_row_count": 11,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2010
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2010-geKW4zP",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 5,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 5,
+      "mapped_geography_ids": [
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1371",
+        "idn.13.1372"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2010 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 276,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2010/q4/count-schema.json",
+          "sha256": "0f48026bfe76f18c3adf642d4a5e75a1f8cabc265ba91e254a7722d03cf17167",
+          "start": 0
+        },
+        {
+          "bytes": 2376,
+          "length": 5,
+          "path": "data/processed/bkpm/m27_full_history/2010/q4/page-000000.json",
+          "sha256": "cba00a89201b0e8fda1fa834ba96a3914ffa1db27b500026c92f61537a2830d8",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 5,
+      "resource_file_uuid": "b257ee62-540f-4286-a6e1-3cda1510a52b",
+      "sumbar_source_row_count": 5,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2010
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2011-mSRN48k",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 1,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 1,
+      "mapped_geography_ids": [
+        "idn.13.1371"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2011 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 276,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2011/q1/count-schema.json",
+          "sha256": "8553be745777bc8d1d2f64732762a9c0df2987e7e452f3f2953d88274acf8aa8",
+          "start": 0
+        },
+        {
+          "bytes": 1548,
+          "length": 3,
+          "path": "data/processed/bkpm/m27_full_history/2011/q1/page-000000.json",
+          "sha256": "ac842f64aef950a3f1e358cb7f12ea013563dbceeedbd1f1e08c26b48bda3fed",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 3,
+      "resource_file_uuid": "d1e6bb28-5055-4bfe-b42d-583a8beaeadf",
+      "sumbar_source_row_count": 3,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2011
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2011-YyoIut5",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 12,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 9,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1371",
+        "idn.13.1372"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Dharmasraya",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2011 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2011/q2/count-schema.json",
+          "sha256": "5e12cbf3495f71002b39e4ddde86d205d76846621afb7b5470a4c93ee3227024",
+          "start": 0
+        },
+        {
+          "bytes": 8483,
+          "length": 19,
+          "path": "data/processed/bkpm/m27_full_history/2011/q2/page-000000.json",
+          "sha256": "19999f9537c05b92c23f17a28a1f2e643adae777f54097effa13462ac014378c",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 19,
+      "resource_file_uuid": "8749aa4c-4f53-41c9-a015-420b61fa0f6f",
+      "sumbar_source_row_count": 19,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2011
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2011-saAyXj3",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 12,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 9,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1371",
+        "idn.13.1372"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2011 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2011/q3/count-schema.json",
+          "sha256": "3b1ead80a0adb4a18ee7a555222f0a4d00708bf64b7a9ad999bbaa72a792cea5",
+          "start": 0
+        },
+        {
+          "bytes": 8937,
+          "length": 20,
+          "path": "data/processed/bkpm/m27_full_history/2011/q3/page-000000.json",
+          "sha256": "dc6b698670692ab556bf64093c4333a5c5b0fd3408997578d1c726e092480b61",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 20,
+      "resource_file_uuid": "45edead2-5d33-4330-a771-e1c5ee27e281",
+      "sumbar_source_row_count": 20,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2011
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2011-pigkn7y",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 13,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 11,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2011 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2011/q4/count-schema.json",
+          "sha256": "fbb1165a3155e36fdf0c7ce9980b21c2865ed48e4cf8746a32739ac297348d51",
+          "start": 0
+        },
+        {
+          "bytes": 10146,
+          "length": 23,
+          "path": "data/processed/bkpm/m27_full_history/2011/q4/page-000000.json",
+          "sha256": "32190ac985432ee5c1e7e09e01fc6daab5346ca9db8fe5f814f91c47424503c7",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 23,
+      "resource_file_uuid": "364b1a7e-7420-4b3c-908a-09bb91cc3ece",
+      "sumbar_source_row_count": 23,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2011
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2012-9ns2Dhf",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 7,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 7,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1309",
+        "idn.13.1371",
+        "idn.13.1373"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kota Padang",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2012 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 276,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2012/q1/count-schema.json",
+          "sha256": "f7c0ebdb78277ea51e1c7758edd6d6e0c0f2b49e0aa120941d36165e47a06a98",
+          "start": 0
+        },
+        {
+          "bytes": 3382,
+          "length": 7,
+          "path": "data/processed/bkpm/m27_full_history/2012/q1/page-000000.json",
+          "sha256": "ac268980ebae9260b9ac49c5263505ff25e4445522bc3ff0d39c8ae9a89739ef",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 7,
+      "resource_file_uuid": "7ee9dfd9-d8c7-4c3b-96f6-d54b4d35d15d",
+      "sumbar_source_row_count": 7,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2012
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2012-KORfoaF",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 11,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 10,
+      "mapped_geography_ids": [
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2012 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2012/q2/count-schema.json",
+          "sha256": "5e12cbf3495f71002b39e4ddde86d205d76846621afb7b5470a4c93ee3227024",
+          "start": 0
+        },
+        {
+          "bytes": 8400,
+          "length": 19,
+          "path": "data/processed/bkpm/m27_full_history/2012/q2/page-000000.json",
+          "sha256": "85c0f20972108c31c9003ff365728a0e95aa6d1660eb89ac0778ee96eb8e67d3",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 19,
+      "resource_file_uuid": "0bc9e9fc-1965-4c91-9ab1-a58494b62324",
+      "sumbar_source_row_count": 19,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2012
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2012-e7Yu1Li",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 8,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 7,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1371"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2012 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 276,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2012/q3/count-schema.json",
+          "sha256": "3ba66b4a7caa46d34c763e9c4570545b936e86e680366e60acaa72780f9dfa9f",
+          "start": 0
+        },
+        {
+          "bytes": 4049,
+          "length": 9,
+          "path": "data/processed/bkpm/m27_full_history/2012/q3/page-000000.json",
+          "sha256": "d090ee09c380fd58b5e36e0ed1a5971293dc33d0c6b43de0fbafe84dbd42117e",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 9,
+      "resource_file_uuid": "dfc764ef-1cc0-4bd9-8e9a-00e9c29ad256",
+      "sumbar_source_row_count": 9,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2012
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2012-yg0KpKS",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 18,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 12,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2012 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2012/q4/count-schema.json",
+          "sha256": "96187e5e2f5c4d57fb2624887fe419bbc7c251a0a9d6f3e990fd6a44d5c2635a",
+          "start": 0
+        },
+        {
+          "bytes": 16772,
+          "length": 38,
+          "path": "data/processed/bkpm/m27_full_history/2012/q4/page-000000.json",
+          "sha256": "369940411d4210914de56839e57cdf972f47e878e8c3f320961219347acb9194",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 38,
+      "resource_file_uuid": "9c260359-3aea-41d5-b257-2aa0d99145b2",
+      "sumbar_source_row_count": 38,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2012
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2013-aZedHow",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 11,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 9,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1373"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kota Padang",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2013 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2013/q1/count-schema.json",
+          "sha256": "3b1ead80a0adb4a18ee7a555222f0a4d00708bf64b7a9ad999bbaa72a792cea5",
+          "start": 0
+        },
+        {
+          "bytes": 8810,
+          "length": 20,
+          "path": "data/processed/bkpm/m27_full_history/2013/q1/page-000000.json",
+          "sha256": "a9a5de55401bc7224502048339ffeb0020271408ea673b04de0994533ff3a008",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 20,
+      "resource_file_uuid": "1ba040ad-c9d0-40f8-aca9-81ca8205c18e",
+      "sumbar_source_row_count": 20,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2013
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2013-DJF0bWL",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 13,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 10,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2013 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2013/q2/count-schema.json",
+          "sha256": "03b1723f8ed92a9342b2b400b52db59a9c906a11068accca73f9dfcacb9e9f76",
+          "start": 0
+        },
+        {
+          "bytes": 14441,
+          "length": 33,
+          "path": "data/processed/bkpm/m27_full_history/2013/q2/page-000000.json",
+          "sha256": "efb9336ef06e1787fb3541b9b37471710b34688e87ed1b75da1850a1a1567543",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 33,
+      "resource_file_uuid": "60920b0e-4a3f-47a1-a8a5-7c15b13189f7",
+      "sumbar_source_row_count": 33,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2013
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2013-RCKorNx",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 10,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 8,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1306",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1373"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2013 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2013/q3/count-schema.json",
+          "sha256": "3b1ead80a0adb4a18ee7a555222f0a4d00708bf64b7a9ad999bbaa72a792cea5",
+          "start": 0
+        },
+        {
+          "bytes": 8851,
+          "length": 20,
+          "path": "data/processed/bkpm/m27_full_history/2013/q3/page-000000.json",
+          "sha256": "f0bc615766fc73cdcd391b0dbdd23ebb2217f8a774ca2dbad95ede45af1939d5",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 20,
+      "resource_file_uuid": "81107105-f144-4eca-bddf-701bfa653a10",
+      "sumbar_source_row_count": 20,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2013
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2013-7gIf8tt",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 13,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 10,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1371",
+        "idn.13.1373"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2013 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2013/q4/count-schema.json",
+          "sha256": "9d6df7b2e81983e340908a2f2496e62c2b23c5c986dd909037a8ceced1b5677d",
+          "start": 0
+        },
+        {
+          "bytes": 15238,
+          "length": 35,
+          "path": "data/processed/bkpm/m27_full_history/2013/q4/page-000000.json",
+          "sha256": "713a9c07251b9d4afc4bb56c6c2a76fd3a3b180ed8b43dc44f0edf6fbc0ae089",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 35,
+      "resource_file_uuid": "7f9fb18a-be6b-4166-b19b-ed6347f38fd8",
+      "sumbar_source_row_count": 35,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2013
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2014-8TD5MiR",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 12,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 11,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2014 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2014/q1/count-schema.json",
+          "sha256": "b61f9a78e0be9b4ccbf2a85a421f64b039d744cac7cb50fdf5816d7f75123c52",
+          "start": 0
+        },
+        {
+          "bytes": 11704,
+          "length": 27,
+          "path": "data/processed/bkpm/m27_full_history/2014/q1/page-000000.json",
+          "sha256": "f376dbde2f4d0d0ed66c63969fbf1166c2bf0b3f76474d620cd2dc10b4e7218d",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 27,
+      "resource_file_uuid": "fb1bb886-b904-4740-8d86-9b943f3390b1",
+      "sumbar_source_row_count": 27,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2014
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2014-nOXDyc9",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 16,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 12,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1374",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2014 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2014/q2/count-schema.json",
+          "sha256": "690b477f0b93cc4091ba6bb15b96606c3224d1df59338c04ea0c12497a8b8498",
+          "start": 0
+        },
+        {
+          "bytes": 16679,
+          "length": 39,
+          "path": "data/processed/bkpm/m27_full_history/2014/q2/page-000000.json",
+          "sha256": "6ab3a4e19dc1a5ebbafb815ff6ac314fe1f55590a6539595cb157897281bac39",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 39,
+      "resource_file_uuid": "ce6fffd1-1b58-4544-af68-3a8b5d66dc34",
+      "sumbar_source_row_count": 39,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2014
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2014-hc9iIYD",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 12,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 10,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1373"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Padang",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2014 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2014/q3/count-schema.json",
+          "sha256": "fb57cd30769efdbeefe3a7f629de549741bea83e042cc00b0b143a3516ac4094",
+          "start": 0
+        },
+        {
+          "bytes": 13024,
+          "length": 30,
+          "path": "data/processed/bkpm/m27_full_history/2014/q3/page-000000.json",
+          "sha256": "48622f83c8c2bdbd900fe11e01b0a6b757f75c384b04b754feb586ceeab91154",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 30,
+      "resource_file_uuid": "7dcc0479-6110-4ce0-83a4-2c839e228a9f",
+      "sumbar_source_row_count": 30,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2014
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2014-aiH3N07",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 20,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 14,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1374",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang"
+      ],
+      "observed_source_period_values": [
+        "2014 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2014/q4/count-schema.json",
+          "sha256": "cdc03c252c720f6cab178cf90d6ab548ad99abcc433bc318a9be2d971186111e",
+          "start": 0
+        },
+        {
+          "bytes": 23267,
+          "length": 54,
+          "path": "data/processed/bkpm/m27_full_history/2014/q4/page-000000.json",
+          "sha256": "022e133acd7ace07338daa83cababf8de0c6aedae22374225b22bf458a573867",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 54,
+      "resource_file_uuid": "4d835497-bf75-4150-bc8e-d0ffc0b7f139",
+      "sumbar_source_row_count": 54,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2014
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2015-Q1DkhJz",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 18,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 13,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2015 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2015/q1/count-schema.json",
+          "sha256": "690b477f0b93cc4091ba6bb15b96606c3224d1df59338c04ea0c12497a8b8498",
+          "start": 0
+        },
+        {
+          "bytes": 16675,
+          "length": 39,
+          "path": "data/processed/bkpm/m27_full_history/2015/q1/page-000000.json",
+          "sha256": "1f9548905faa9e881d62334fefea27cd77805eec19dbf73d1cddd5ca3ac87fb7",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 39,
+      "resource_file_uuid": "9574b2e5-506f-40f5-8bb2-47746e862a34",
+      "sumbar_source_row_count": 39,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2015
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2015-btjb2ta",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 15,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 12,
+      "mapped_geography_ids": [
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2015 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2015/q2/count-schema.json",
+          "sha256": "e2ae27446e6f59dafcd635be6d8e74c307be59cdc39a44bb28371f684400158b",
+          "start": 0
+        },
+        {
+          "bytes": 13400,
+          "length": 31,
+          "path": "data/processed/bkpm/m27_full_history/2015/q2/page-000000.json",
+          "sha256": "d34cd9977e05d0c1f4f74f70f04d367e4fa5500fdd2a830682cd06c2f44e27c2",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 31,
+      "resource_file_uuid": "b64bdf2e-9e12-451f-a3b6-e32b6812e74a",
+      "sumbar_source_row_count": 31,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2015
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2015-Xe6Djkq",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 17,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 13,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2015 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2015/q3/count-schema.json",
+          "sha256": "d78b05843dbced11ee3d4e3ef44311831e3213db9a34ccd7804dd1f7a04ed05d",
+          "start": 0
+        },
+        {
+          "bytes": 20034,
+          "length": 47,
+          "path": "data/processed/bkpm/m27_full_history/2015/q3/page-000000.json",
+          "sha256": "8be16ceac69d8cfa2bf57752b107c7988f2be2ad4dd30ccf5eba9be871bf1fac",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 47,
+      "resource_file_uuid": "879135b3-31f0-42f9-9e4e-ef6bc89fddab",
+      "sumbar_source_row_count": 47,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2015
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2015-sonjzmO",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 20,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 13,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2015 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2015/q4/count-schema.json",
+          "sha256": "f90f1193c7d7999345fbc7e77c1dc6ad27793404db2d7c70b2c69ecbb6d57fd3",
+          "start": 0
+        },
+        {
+          "bytes": 26243,
+          "length": 61,
+          "path": "data/processed/bkpm/m27_full_history/2015/q4/page-000000.json",
+          "sha256": "4c75604814ef907b5ae01712e6e9200a5efa4dd84373f37cf0a86d9956f5235f",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 61,
+      "resource_file_uuid": "02476071-f94a-4fdf-b7c8-ba066b8d5cf5",
+      "sumbar_source_row_count": 61,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2015
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2016-iGR4Qiq",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 18,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 14,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1373",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2016 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2016/q1/count-schema.json",
+          "sha256": "4c6d1b26c8e78b607306900250976db55fe9b702c0c876a72159127c66621f4e",
+          "start": 0
+        },
+        {
+          "bytes": 13679,
+          "length": 32,
+          "path": "data/processed/bkpm/m27_full_history/2016/q1/page-000000.json",
+          "sha256": "d85532c67563b0f17fb157f8e6a936f999daeab59161670515a4510ef40239f3",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 32,
+      "resource_file_uuid": "517cc6b3-5c45-4129-b1ef-5be4c22ca858",
+      "sumbar_source_row_count": 32,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2016
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2016-9viQ5TO",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 24,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 15,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1373",
+        "idn.13.1375",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Pariaman",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2016 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2016/q2/count-schema.json",
+          "sha256": "a5c0ad2d1bc2c571410c3c74481e5175b8424ba97f53e9f678db36db4e2a5286",
+          "start": 0
+        },
+        {
+          "bytes": 39730,
+          "length": 93,
+          "path": "data/processed/bkpm/m27_full_history/2016/q2/page-000000.json",
+          "sha256": "d9bc49f43e1f3c33a6bae05cbd0a0fb2a9ef551daaf0b43d83ae35420308d045",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 93,
+      "resource_file_uuid": "c1144d8c-4e27-4e98-a6b6-bfdef01b2bb3",
+      "sumbar_source_row_count": 93,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2016
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2016-1ECr7jF",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 23,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 14,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2016 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2016/q3/count-schema.json",
+          "sha256": "fcf9da5c35e2573f7a3442d3c49516800bda4d9b2585ad64a174d5bafeff5be6",
+          "start": 0
+        },
+        {
+          "bytes": 24553,
+          "length": 57,
+          "path": "data/processed/bkpm/m27_full_history/2016/q3/page-000000.json",
+          "sha256": "3094b34bdce9424b3cd261cca54aa54c19941fa0d5fc3ed7e13608a112912857",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 57,
+      "resource_file_uuid": "ae2417f7-b899-4127-a476-fdd569aa4cae",
+      "sumbar_source_row_count": 57,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2016
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2016-jwmY1RM",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 25,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 14,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2016 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2016/q4/count-schema.json",
+          "sha256": "05fb6c8c946b5df4bec18644f334f5cd8b734080cb221e85e1f4c7fb5d6de2df",
+          "start": 0
+        },
+        {
+          "bytes": 40237,
+          "length": 94,
+          "path": "data/processed/bkpm/m27_full_history/2016/q4/page-000000.json",
+          "sha256": "5678ce76e3c2efad138c641892e3b6c8e4134b697abbc13fe648449e01c3d02d",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 94,
+      "resource_file_uuid": "050738eb-53fa-4949-b6f3-33dce6f3a5dd",
+      "sumbar_source_row_count": 94,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2016
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2017-LzO8DHT",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 23,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 14,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2017 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2017/q1/count-schema.json",
+          "sha256": "10334f4bca2a4bc0a8fc3a18ee5797caf163f685ccdd88f3d5d9a3d4f284dea5",
+          "start": 0
+        },
+        {
+          "bytes": 25342,
+          "length": 59,
+          "path": "data/processed/bkpm/m27_full_history/2017/q1/page-000000.json",
+          "sha256": "5ff684e5b658471a35a70f7561cc698ee33d4f4f9e42d452cae7c7e858e3630d",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 59,
+      "resource_file_uuid": "46886b84-e4bf-4e70-bec6-cd3efffb6c21",
+      "sumbar_source_row_count": 59,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2017
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2017-ZrFL97N",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 26,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 15,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2017 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2017/q2/count-schema.json",
+          "sha256": "4852e3124c871f13ca091763d15cee5afef0c6666ea86fe75c5a7916f2469b9b",
+          "start": 0
+        },
+        {
+          "bytes": 42591,
+          "length": 100,
+          "path": "data/processed/bkpm/m27_full_history/2017/q2/page-000000.json",
+          "sha256": "589089f1ca33cc18d94eaef68987ee6665f015149aa33d074df38be0c3f24fc1",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 100,
+      "resource_file_uuid": "e9457cf1-3593-4361-bd7f-ef74ee3cc24b",
+      "sumbar_source_row_count": 100,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2017
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2017-8p2TRIL",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 27,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 16,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1373",
+        "idn.13.1375",
+        "idn.13.1376"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto"
+      ],
+      "observed_source_period_values": [
+        "2017 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2017/q3/count-schema.json",
+          "sha256": "b2e7ba649d29e572b56d7fab97999bf39911397e0ae4beb64a1c4c567c1168c7",
+          "start": 0
+        },
+        {
+          "bytes": 36244,
+          "length": 84,
+          "path": "data/processed/bkpm/m27_full_history/2017/q3/page-000000.json",
+          "sha256": "ca70c0412e0ad061a162814c3804ad556291895c9111183a9e67f0cddd71ace8",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 84,
+      "resource_file_uuid": "8644cdc8-23fd-4906-8d6e-5e1de37a6dc0",
+      "sumbar_source_row_count": 84,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2017
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2017-KO8lKPd",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 25,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 14,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2017 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2017/q4/count-schema.json",
+          "sha256": "ac682216b3c8a6016880f7b31fb6bd2ee0671d7c6aee65f390c845b4861bb62e",
+          "start": 0
+        },
+        {
+          "bytes": 44830,
+          "length": 105,
+          "path": "data/processed/bkpm/m27_full_history/2017/q4/page-000000.json",
+          "sha256": "7078b64c1312c8a22ec026f662e3b2d9b0bb3a4e43c8b0bdd166f1bbf32f8537",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 105,
+      "resource_file_uuid": "8c6a1132-9f72-499e-8d1e-7f7e39263322",
+      "sumbar_source_row_count": 105,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2017
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2018-3gA3OjM",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 25,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 14,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang"
+      ],
+      "observed_source_period_values": [
+        "2018 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2018/q1/count-schema.json",
+          "sha256": "093ec818d62e7de3b0c5b235b0363204aa775b21b460b7013d7ab8bda5ecc94c",
+          "start": 0
+        },
+        {
+          "bytes": 37455,
+          "length": 87,
+          "path": "data/processed/bkpm/m27_full_history/2018/q1/page-000000.json",
+          "sha256": "f2d2627afcf28ae04c871d4d0ea542782aa5ab455959163a8418809f711a2115",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 87,
+      "resource_file_uuid": "06defa61-cc22-4960-aa36-7ee0ed962148",
+      "sumbar_source_row_count": 87,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2018
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2018-0iq9kfq",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 31,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 17,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2018 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2018/q2/count-schema.json",
+          "sha256": "294f74bd10be7f1d1b437ec980ebaba3cf434cb99efccf31495df95cc9cc4779",
+          "start": 0
+        },
+        {
+          "bytes": 51067,
+          "length": 119,
+          "path": "data/processed/bkpm/m27_full_history/2018/q2/page-000000.json",
+          "sha256": "0549bae73595c59dd7d9e491c82875297e74dea573b63ce5f19f1bf14cc20d02",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 119,
+      "resource_file_uuid": "234ef0f5-ddd6-4bf1-bc15-23a8dd08b82e",
+      "sumbar_source_row_count": 119,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2018
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2018-Q2PSQlc",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 27,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 15,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2018 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2018/q3/count-schema.json",
+          "sha256": "088949c65b340b0b836c7b0094f4ba114d68afa4a4cdb287a3346673382fac05",
+          "start": 0
+        },
+        {
+          "bytes": 39555,
+          "length": 92,
+          "path": "data/processed/bkpm/m27_full_history/2018/q3/page-000000.json",
+          "sha256": "1b86bfa6499a4b2bcc7e988b32d798714a9b2fa54aa582b6bbb755a82709ed76",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 92,
+      "resource_file_uuid": "5f3c50b3-e100-4bec-94e9-c82a86d03941",
+      "sumbar_source_row_count": 92,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2018
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2018-F9M7bk9",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 25,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 15,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1374",
+        "idn.13.1375"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2018 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2018/q4/count-schema.json",
+          "sha256": "5f3defbb97f5b23b5e998e0b7eeacbfb02bf2ad166ea023179372478e19cd42e",
+          "start": 0
+        },
+        {
+          "bytes": 47903,
+          "length": 112,
+          "path": "data/processed/bkpm/m27_full_history/2018/q4/page-000000.json",
+          "sha256": "99a688e0a784bbfc3d98d9960f830a7067a4fb7b3a68fa8657498619bddfd0b5",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 112,
+      "resource_file_uuid": "0da69a96-3e14-4e6f-88b1-7d93870d82f3",
+      "sumbar_source_row_count": 112,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2018
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2019-D9863Al",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 27,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 17,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Payakumbuh",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2019 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2019/q1/count-schema.json",
+          "sha256": "588d4294f3bf1bf1fcdc29c0acbde4ef8c7a673c7bae478387bf9a8fb020a44c",
+          "start": 0
+        },
+        {
+          "bytes": 51429,
+          "length": 120,
+          "path": "data/processed/bkpm/m27_full_history/2019/q1/page-000000.json",
+          "sha256": "b7bdef187274255a3a9a9c38c26a573abfa77a31616447d821f02edc499f6d99",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 120,
+      "resource_file_uuid": "9cdf7ef9-4d2a-467a-9d30-c4b900f6c1b0",
+      "sumbar_source_row_count": 120,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2019
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2019-pcqR17c",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 29,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 18,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2019 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2019/q2/count-schema.json",
+          "sha256": "00065a4ecc223ead7283c6d57b7406cedcfaabdea496617a9e8f401f6b89b3d2",
+          "start": 0
+        },
+        {
+          "bytes": 55969,
+          "length": 131,
+          "path": "data/processed/bkpm/m27_full_history/2019/q2/page-000000.json",
+          "sha256": "b3b1d4c3f70700b00b80f338cfdba938c55f4a2d45b05690f80388ca10ad6ddc",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 131,
+      "resource_file_uuid": "5ce6e7b8-4f6f-428b-8915-9be958f5ffb6",
+      "sumbar_source_row_count": 131,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2019
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2019-IH9wFIE",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 33,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 18,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2019 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2019/q3/count-schema.json",
+          "sha256": "b41e747cca1e4a60034637c63e278c13f0f587651c7b24a9137131eea13c1741",
+          "start": 0
+        },
+        {
+          "bytes": 63237,
+          "length": 147,
+          "path": "data/processed/bkpm/m27_full_history/2019/q3/page-000000.json",
+          "sha256": "2054a4d9ea027f43ebb69b3124e52076c5b53ca5b930a74ca6890ff1cea77717",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 147,
+      "resource_file_uuid": "556b06b0-5676-4836-b461-b7649ca526e3",
+      "sumbar_source_row_count": 147,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2019
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2019-X5Sqrn9",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 31,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 18,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2019 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2019/q4/count-schema.json",
+          "sha256": "6503f75c094659b2d8d9c224daf20f05ad909eec67147b21d4d1b54d1dd4f7a1",
+          "start": 0
+        },
+        {
+          "bytes": 66002,
+          "length": 155,
+          "path": "data/processed/bkpm/m27_full_history/2019/q4/page-000000.json",
+          "sha256": "e134f3216e25e00150edc8fad61b34ffd08d523e60bb486157a0090e9fd1f882",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 155,
+      "resource_file_uuid": "1178e23a-51c5-473f-bd41-4a853371dba2",
+      "sumbar_source_row_count": 155,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2019
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2020-AOB4ZBB",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 28,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 17,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Payakumbuh",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2020 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 278,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2020/q1/count-schema.json",
+          "sha256": "ba24dff71186a183b68e704442c6d2e9870ec1379be93720d9e06e745b285372",
+          "start": 0
+        },
+        {
+          "bytes": 41834,
+          "length": 97,
+          "path": "data/processed/bkpm/m27_full_history/2020/q1/page-000000.json",
+          "sha256": "0cd07f548a68352895eb477318af38a98b3a3c53ba050108bb6837f61123d788",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 97,
+      "resource_file_uuid": "8b810a61-8715-4c45-9037-5d076829f75b",
+      "sumbar_source_row_count": 97,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2020
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2020-2D2ROx9",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 31,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 18,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2020 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2020/q2/count-schema.json",
+          "sha256": "d74f17bd2ac9d3eb579efb869d4c9c8c16e15a94be871ee70226db5acb86bff5",
+          "start": 0
+        },
+        {
+          "bytes": 57959,
+          "length": 136,
+          "path": "data/processed/bkpm/m27_full_history/2020/q2/page-000000.json",
+          "sha256": "4e28ee5824ab619d311f7ccc7ab6a247bed19e94824f9f3224be5bf45e0eb77d",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 136,
+      "resource_file_uuid": "35da7417-1e61-4ae7-a63d-714f1390b2e2",
+      "sumbar_source_row_count": 136,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2020
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2020-8i2qwNr",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 33,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2020 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2020/q3/count-schema.json",
+          "sha256": "b40943b8d41a1bf46c98c2b1fd07e165d6ad347340ac58db4751e6aa497f98c2",
+          "start": 0
+        },
+        {
+          "bytes": 84669,
+          "length": 199,
+          "path": "data/processed/bkpm/m27_full_history/2020/q3/page-000000.json",
+          "sha256": "acbfda98846570a26f73430fe44219c0e181542027ed7d4601a37f8da8134d26",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 199,
+      "resource_file_uuid": "8385e03e-b64c-4e72-8f08-9fd6c44df87f",
+      "sumbar_source_row_count": 199,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2020
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2020-v3HNqaX",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 33,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2020 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2020/q4/count-schema.json",
+          "sha256": "9b8503a37a931891c48c34f7ed85aacd06650f79f16c398160c92ff2ac0c8b95",
+          "start": 0
+        },
+        {
+          "bytes": 88060,
+          "length": 207,
+          "path": "data/processed/bkpm/m27_full_history/2020/q4/page-000000.json",
+          "sha256": "0894e49d084a9b800b7996f2096ac7d89a73d37fd1b802966955fc1783bcc3cf",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 207,
+      "resource_file_uuid": "77a09464-fdbd-42a7-8b34-ceee5199544c",
+      "sumbar_source_row_count": 207,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2020
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2021-KtsYXpM",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 33,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2021 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2021/q1/count-schema.json",
+          "sha256": "211babb6c0e1451cf5eaedbd2c28d3f65addbd138f420637c400566a46641540",
+          "start": 0
+        },
+        {
+          "bytes": 98343,
+          "length": 231,
+          "path": "data/processed/bkpm/m27_full_history/2021/q1/page-000000.json",
+          "sha256": "9bd966371741118daa8c82f57f70011b38ff0b8dd97f62ee78a7d78ce4f1f7aa",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 231,
+      "resource_file_uuid": "b34f54e5-ac84-40c4-acdc-55b256cfd13c",
+      "sumbar_source_row_count": 231,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2021
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2021-WnE2Dzx",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 30,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2021 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2021/q2/count-schema.json",
+          "sha256": "8180885df178c9fee18a9a9c7ac9f9831f84624646951f59b788f84f78590bb6",
+          "start": 0
+        },
+        {
+          "bytes": 94617,
+          "length": 222,
+          "path": "data/processed/bkpm/m27_full_history/2021/q2/page-000000.json",
+          "sha256": "29aee69175039654fbd2752023f96358507fcdb9f4500972c3891daa9087e28a",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 222,
+      "resource_file_uuid": "86908c6a-0e4e-4b5b-b1ea-ccae79bb3e61",
+      "sumbar_source_row_count": 222,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2021
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2021-kd1FbXw",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 31,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2021 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2021/q3/count-schema.json",
+          "sha256": "4632c53bbd05ccaab59408cd2cf310dfcf9f7140d01561523224eb49bf0489ae",
+          "start": 0
+        },
+        {
+          "bytes": 122940,
+          "length": 289,
+          "path": "data/processed/bkpm/m27_full_history/2021/q3/page-000000.json",
+          "sha256": "68686135730e04138df7608489e1f5f768fdf5fb54a5d28edcf30db0a671c112",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 289,
+      "resource_file_uuid": "56f58a6a-15d3-4f87-bbf2-2b439e17d6d3",
+      "sumbar_source_row_count": 289,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2021
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2021-7ZQkG68",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 31,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2021 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2021/q4/count-schema.json",
+          "sha256": "ef9cb389cb34838ba9c000d2c4fdada57c7aaeb14c2bc92c8af305bbdfcec4e6",
+          "start": 0
+        },
+        {
+          "bytes": 132819,
+          "length": 313,
+          "path": "data/processed/bkpm/m27_full_history/2021/q4/page-000000.json",
+          "sha256": "2e77bba6077de2b95cf6b189ace446a06a7156d56d3466f36c5076cc065f44ba",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 313,
+      "resource_file_uuid": "41102e6d-d1a8-49cb-ade5-a7ff36192f4c",
+      "sumbar_source_row_count": 313,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2021
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2022-wRMSb3X",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 32,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2022 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2022/q1/count-schema.json",
+          "sha256": "dd3bda34030841bf899acad9202c40874c2c9853addcaa727c94c70c43fe1739",
+          "start": 0
+        },
+        {
+          "bytes": 126171,
+          "length": 297,
+          "path": "data/processed/bkpm/m27_full_history/2022/q1/page-000000.json",
+          "sha256": "b5dfcd8c170d21d334e67ce480f5ead38196e259bfd90157d7faef3fa9f728d3",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 297,
+      "resource_file_uuid": "0629f646-33ce-471a-b214-f758aa3aa339",
+      "sumbar_source_row_count": 297,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2022
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2022",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 29,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 18,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2022 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2022/q2/count-schema.json",
+          "sha256": "82ebf90e1d4c1ead7458cff8102b6bea22bdb39e9698dd14e3d7f7c990067afe",
+          "start": 0
+        },
+        {
+          "bytes": 83645,
+          "length": 195,
+          "path": "data/processed/bkpm/m27_full_history/2022/q2/page-000000.json",
+          "sha256": "0f8dd19b5d85d193e018551f9dcefaef0e76607fb1046c9c4ca1041d70d3d6a2",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 195,
+      "resource_file_uuid": "d7c4b90c-ff92-48be-9771-9dac47395ed4",
+      "sumbar_source_row_count": 195,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2022
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2022",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 29,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2022 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2022/q3/count-schema.json",
+          "sha256": "49fc0b7bdf0e558e7ce74874f2d8ac695c73dc43b5dcb0cad9fb69c42a91a0fb",
+          "start": 0
+        },
+        {
+          "bytes": 113049,
+          "length": 265,
+          "path": "data/processed/bkpm/m27_full_history/2022/q3/page-000000.json",
+          "sha256": "ad3dbd453c272af6129e08c6c9e946ad9917a7ca2628272c1183aad460866206",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 265,
+      "resource_file_uuid": "a035311a-3fc2-4496-bd75-fb638382565c",
+      "sumbar_source_row_count": 265,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2022
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2022-n28Sqxg",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 30,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2022 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2022/q4/count-schema.json",
+          "sha256": "0b3d6b851ef0a0a6c8da7ccd7bee82d77eb9b288403f96629a33355663a0b739",
+          "start": 0
+        },
+        {
+          "bytes": 106248,
+          "length": 249,
+          "path": "data/processed/bkpm/m27_full_history/2022/q4/page-000000.json",
+          "sha256": "e47f9635099a4c8621ed4d03fabd14b72180e26a3fda246b2105bbb04d408c5c",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 249,
+      "resource_file_uuid": "e7e32dcf-bf8b-43d0-9825-fa876b65f8dc",
+      "sumbar_source_row_count": 249,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2022
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2023-6pOYjbx",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 32,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2023 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2023/q1/count-schema.json",
+          "sha256": "e41cdb378f085dfe3720f211205913572aed42edb953b9c5e19ed79672fa76d6",
+          "start": 0
+        },
+        {
+          "bytes": 146842,
+          "length": 345,
+          "path": "data/processed/bkpm/m27_full_history/2023/q1/page-000000.json",
+          "sha256": "9183e6a35d20f6b6699aad30307e0715ef0143c7dc372f8d63bf5690eb628154",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 345,
+      "resource_file_uuid": "640cf8f6-f3a2-4e4d-a929-8502b2f60285",
+      "sumbar_source_row_count": 345,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2023
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2023",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 32,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2023 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2023/q2/count-schema.json",
+          "sha256": "e5ba34dae3723cfd53f3883e72a96a9555d25b846472dcfecd51e82d34c899f3",
+          "start": 0
+        },
+        {
+          "bytes": 142915,
+          "length": 335,
+          "path": "data/processed/bkpm/m27_full_history/2023/q2/page-000000.json",
+          "sha256": "5059917aadbadc55f86ab5803c27aba74660404a747207cac595d02ce602092f",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 335,
+      "resource_file_uuid": "fda35853-0eb1-40e0-a045-1cf5e1346f0b",
+      "sumbar_source_row_count": 335,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2023
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2023",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 33,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2023 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2023/q3/count-schema.json",
+          "sha256": "b4e84f56452db753d03788eb8c87387b995925b5bc835a09c7df57306e8e929c",
+          "start": 0
+        },
+        {
+          "bytes": 156820,
+          "length": 367,
+          "path": "data/processed/bkpm/m27_full_history/2023/q3/page-000000.json",
+          "sha256": "45c71db19a1bdc0ff755b5120e1ce1d672eaf46de3095229a383b280286e04b9",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 367,
+      "resource_file_uuid": "abe6d5e8-c968-42d9-96a9-4ea79e672f44",
+      "sumbar_source_row_count": 367,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2023
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2023-EggwcsQ",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 33,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2023 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2023/q4/count-schema.json",
+          "sha256": "28f7f9d339b66117e1f4f4d9fbb3840eac3457a8b840f1bbb507f0cfad0f08e2",
+          "start": 0
+        },
+        {
+          "bytes": 157267,
+          "length": 369,
+          "path": "data/processed/bkpm/m27_full_history/2023/q4/page-000000.json",
+          "sha256": "034ede0654cdc6eeeff73855f4f5101ed275a0ace92b8afc3f6d1ca06328abf9",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 369,
+      "resource_file_uuid": "9581416d-22f5-4d05-bd98-bf6f2c408bad",
+      "sumbar_source_row_count": 369,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2023
+    },
+    {
+      "classification": "held_failed_validation",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2024",
+      "duplicate_source_dimension_tuple_count": 676,
+      "emitted_geography_status_observation_count": 0,
+      "fail_reasons": [
+        "duplicate_complete_source_dimension_tuple"
+      ],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2024 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": false,
+      "quarter": "I",
+      "raw_page_count": 3,
+      "raw_pages": [
+        {
+          "bytes": 282,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2024/q1/count-schema.json",
+          "sha256": "9088391fc2862a4321d4a845459fcf5b765bb55ea403a8dd80837db7aee51011",
+          "start": 0
+        },
+        {
+          "bytes": 424680,
+          "length": 1000,
+          "path": "data/processed/bkpm/m27_full_history/2024/q1/page-000000.json",
+          "sha256": "e73bc9b0a52ecd822751f05ed415a34aba0a0b5a5e520c53bf8d47cbb3a3864c",
+          "start": 0
+        },
+        {
+          "bytes": 46580,
+          "length": 107,
+          "path": "data/processed/bkpm/m27_full_history/2024/q1/page-001000.json",
+          "sha256": "ab8376f5af0f7944156fdd47773826419674d9c338daee2dca9f3854d94a4ae0",
+          "start": 1000
+        }
+      ],
+      "reconstructed_source_row_count": 1107,
+      "resource_file_uuid": "83d65a79-9528-42c7-85a3-fce65dbd5597",
+      "sumbar_source_row_count": 1107,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2024
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2024-UVTkOaI",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 32,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2024 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2024/q2/count-schema.json",
+          "sha256": "6ea81436f257000c2b2a6766f7bcc35bbf515352c4a2d4e11a2b089407f17a29",
+          "start": 0
+        },
+        {
+          "bytes": 186990,
+          "length": 440,
+          "path": "data/processed/bkpm/m27_full_history/2024/q2/page-000000.json",
+          "sha256": "d7c5bb7ffcce70f339e1ff6c617220ff4871bd25b36cb9631583731a44e31867",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 440,
+      "resource_file_uuid": "5a85ce2a-faf4-4fab-9da8-fd44cb8ff6bb",
+      "sumbar_source_row_count": 440,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2024
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2024-oXA2V00",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 34,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2024 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2024/q3/count-schema.json",
+          "sha256": "e30f071bc2b4bcb58c3de861856d62c8201523d3dea39b6c395ce3747d85beb8",
+          "start": 0
+        },
+        {
+          "bytes": 212559,
+          "length": 500,
+          "path": "data/processed/bkpm/m27_full_history/2024/q3/page-000000.json",
+          "sha256": "93fd1132edc6f87dbbaba90b42f09b7ef27f630150e409ddf71c58f701112788",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 500,
+      "resource_file_uuid": "a77fa65f-ae62-4c96-a5de-cc319380d99e",
+      "sumbar_source_row_count": 500,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2024
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2024-nKo1EyF",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 34,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2024 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2024/q4/count-schema.json",
+          "sha256": "178e4dfacdcaeb049d6d3aca0582bf2d62ef5ec12e64bf77835e002c897acb3a",
+          "start": 0
+        },
+        {
+          "bytes": 209313,
+          "length": 492,
+          "path": "data/processed/bkpm/m27_full_history/2024/q4/page-000000.json",
+          "sha256": "8689e655f372e0b4bf707d1767847bc8eda534c5bd16323ca04426761e1b3736",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 492,
+      "resource_file_uuid": "001e2f9d-fd24-4e09-8d42-2330498797c4",
+      "sumbar_source_row_count": 492,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2024
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2025-X4LGYJf",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 33,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2025 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "I",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2025/q1/count-schema.json",
+          "sha256": "03c7203380010aea3cbb160c4589c443c1595a261cb1db9dbdd50bdae819c98c",
+          "start": 0
+        },
+        {
+          "bytes": 225059,
+          "length": 519,
+          "path": "data/processed/bkpm/m27_full_history/2025/q1/page-000000.json",
+          "sha256": "0f265eb361d104eec1640be12be03fc6f13903873a13876d03952bc9c87a6197",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 519,
+      "resource_file_uuid": "b05ea04c-ead4-496b-b899-a3cd90cedd12",
+      "sumbar_source_row_count": 519,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2025
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 34,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2025 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "II",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2025/q2/count-schema.json",
+          "sha256": "0386e0b190ac68cc7f90228ecdd4317e28be0187b07709c7e2260d58a4d55d3f",
+          "start": 0
+        },
+        {
+          "bytes": 275549,
+          "length": 642,
+          "path": "data/processed/bkpm/m27_full_history/2025/q2/page-000000.json",
+          "sha256": "574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 642,
+      "resource_file_uuid": "ab32082f-39ca-485c-bf69-43368eef5be1",
+      "sumbar_source_row_count": 642,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2025
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iii-tahun-2025-hXdFHZK",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 35,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2025 - Triwulan 3"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "III",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2025/q3/count-schema.json",
+          "sha256": "1586cb33d6b9d03f356b2198a8cf39db18dbd3cad688e8654544a789293dc007",
+          "start": 0
+        },
+        {
+          "bytes": 233568,
+          "length": 542,
+          "path": "data/processed/bkpm/m27_full_history/2025/q3/page-000000.json",
+          "sha256": "939736f4661e6e5a1aabb6217ec8af2a3bf2de9b31e494d8ba84e9b51d46e577",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 542,
+      "resource_file_uuid": "01bc3db9-62a5-4f18-8e31-bc4852c666e7",
+      "sumbar_source_row_count": 542,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2025
+    },
+    {
+      "classification": "qualified_numeric_quarter",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 35,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2025 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "qualified": true,
+      "quarter": "IV",
+      "raw_page_count": 2,
+      "raw_pages": [
+        {
+          "bytes": 280,
+          "length": 0,
+          "path": "data/processed/bkpm/m27_full_history/2025/q4/count-schema.json",
+          "sha256": "e24e9c67aae8984aca12fa3ad63049fa3213f180a5491d58b682f00194effaa8",
+          "start": 0
+        },
+        {
+          "bytes": 222125,
+          "length": 517,
+          "path": "data/processed/bkpm/m27_full_history/2025/q4/page-000000.json",
+          "sha256": "6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c",
+          "start": 0
+        }
+      ],
+      "reconstructed_source_row_count": 517,
+      "resource_file_uuid": "625bf941-ad51-4425-ab13-88de84c1bd0e",
+      "sumbar_source_row_count": 517,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2025
+    }
+  ],
+  "ranking_created": false,
+  "raw_filtered_response_persisted": true,
+  "schema": "ranah-observatory/milestone27-bkpm-full-history/v1",
+  "source_row_count_total": 11062,
+  "stage": "stage1_full_quarterly_history",
+  "statistical_model_fit": false,
+  "target_investment_values_inspected": true,
+  "target_investment_values_retrieved": true,
+  "within_quarter_within_status_within_geography_addition_performed": false,
+  "zero_observed_sumbar_quarter_count": 0
+}

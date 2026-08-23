@@ -1,0 +1,69 @@
+name: Milestone 27 BKPM Preview Request Metadata Evidence
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone27-bkpm-preview-request-metadata.yml
+      - data/manifests/milestone27_preview_request_metadata_contract.json
+      - data/manifests/milestone27_bkpm_preview_request_metadata.json
+      - scripts/audit_milestone27_bkpm_preview_request_metadata.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-request-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rebuild request metadata from frozen HTML
+        run: python scripts/audit_milestone27_bkpm_preview_request_metadata.py
+
+      - name: Verify deterministic result and boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          m = json.loads(Path('data/manifests/milestone27_bkpm_preview_request_metadata.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-preview-request-metadata/v1'
+          assert m['pilot_count'] == 3
+          assert m['request_metadata_consistent_across_pilots'] is True
+          assert m['request_metadata_resolved'] is True
+          for r in m['pilot_results']:
+              assert r['target_route_match_count'] == 2
+              assert r['http_methods'] == ['GET']
+              assert r['request_parameter_key_names'] == ['dataset_detail_parent_id']
+              assert r['datatable_flags'] == {'processing': True, 'serverSide': True}
+          for key in (
+              'request_parameter_values_extracted',
+              'csrf_or_token_values_extracted',
+              'table_column_names_extracted',
+              'table_header_extracted',
+              'table_body_extracted',
+              'table_cell_text_extracted',
+              'client_side_data_endpoint_requested',
+              'preview_page_live_requested',
+              'zip_resource_requested',
+              'interactive_disclaimer_form_submitted',
+              'synthetic_personal_information_submitted',
+              'target_investment_values_inspected',
+              'period_column_inspected',
+              'csv_schema_inspected',
+              'investment_value_aggregation_performed',
+              'quarterly_flow_interpretation_authorized',
+              'cross_quarter_additivity_authorized',
+              'annual_sum_authorized',
+              'geography_mapping_authorized',
+              'statistical_model_fit',
+              'causal_claim_created',
+              'monetary_wasted_potential_estimated',
+          ):
+              assert m[key] is False, key
+          PY
+
+      - name: Require byte-identical committed output
+        run: git diff --exit-code -- data/manifests/milestone27_bkpm_preview_request_metadata.json

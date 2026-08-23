@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2022-wRMSb3X",
+  "quarter": "I",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2022-wRMSb3X",
+  "resource_file_requested": false,
+  "response_bytes": 181888,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q1-048.html",
+  "response_sha256": "8d8c6247d7c6afa593167441b157d4c6406b56db1b77be52b173bca7d146852f",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2022
+}

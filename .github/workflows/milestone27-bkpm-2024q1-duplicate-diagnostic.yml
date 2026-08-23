@@ -1,0 +1,44 @@
+name: Milestone 27 BKPM 2024-Q1 Duplicate Evidence
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-2024q1-duplicate-diagnostic.csv
+      - scripts/audit_milestone27_bkpm_2024q1_duplicates.py
+      - .github/workflows/milestone27-bkpm-2024q1-duplicate-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-duplicate-diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild duplicate diagnostic offline
+        run: python scripts/audit_milestone27_bkpm_2024q1_duplicates.py
+      - name: Verify frozen result and boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json').read_text(encoding='utf-8'))
+          assert m['offline_frozen_evidence_only'] is True
+          assert m['network_requests_performed'] is False
+          assert m['classification'] == 'mixed_duplicate_mechanisms'
+          assert m['reconstructed_source_row_count'] == 1107
+          assert m['duplicate_dimension_group_count'] == 174
+          assert m['rows_in_duplicate_dimension_groups'] == 850
+          assert m['exact_full_row_duplicate_group_count'] == 47
+          assert m['dimension_collision_with_distinct_full_rows_group_count'] == 127
+          assert m['exact_full_row_cross_page_duplicate_group_count'] == 2
+          assert m['deduplication_performed'] is False
+          assert m['aggregation_contract_amended'] is False
+          assert m['annual_sum_performed'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          print({'classification': m['classification'], 'duplicate_groups': m['duplicate_dimension_group_count']})
+          PY

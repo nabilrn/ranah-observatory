@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2015-Q1DkhJz",
+  "quarter": "I",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2015-Q1DkhJz",
+  "resource_file_requested": false,
+  "response_bytes": 181899,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q1-020.html",
+  "response_sha256": "6976fb8c37850159eef2b616221a0f89220f52403494e1c77d9390765c97d322",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2015
+}

@@ -1,0 +1,2008 @@
+<style>
+    .btn-selengkpanya {
+        border-radius: 50px !important;
+        padding-block: 0.5rem !important;
+        padding-inline:  0.7rem !important;
+    }
+
+    .title-dataset {
+        word-break: break-word;
+    }
+</style>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+<title>Satu Data Kementerian Investasi dan Hilirisasi / BKPM </title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Satu Data, BKPM, Investasi, Data Penanaman Modal" name="keywords">
+<meta content="Portal Satu Data Kementerian Investasi/BKPM menyediakan data dan informasi penanaman modal yang akurat dan terintegrasi." name="description">
+<meta name="csrf-token" content="TmEKPlgm3QKsDpRlvAPcHjzuwYqeCKy7Tu0bLxrZ">
+<link rel="shortcut icon" href="https://data.bkpm.go.id/storage/image/setting/e40e20af-6d33-4ebf-908b-d1c7ac96f9e8.webp" />
+
+<link href="https://data.bkpm.go.id/front/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://data.bkpm.go.id/front/css/style.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      media="print" onload="this.media='all'; this.onload=null;">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      media="print" onload="this.media='all'; this.onload=null;">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"></noscript>
+
+<link rel="stylesheet" href="https://data.bkpm.go.id/front/lib/owlcarousel/assets/owl.carousel.min.css"
+      media="print" onload="this.media='all'; this.onload=null;">
+<noscript><link rel="stylesheet" href="https://data.bkpm.go.id/front/lib/owlcarousel/assets/owl.carousel.min.css"></noscript>
+
+<link rel="stylesheet" href="https://data.bkpm.go.id/front/lib/lightbox/css/lightbox.min.css"
+      media="print" onload="this.media='all'; this.onload=null;">
+<noscript><link rel="stylesheet" href="https://data.bkpm.go.id/front/lib/lightbox/css/lightbox.min.css"></noscript>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Kementerian Investasi dan Hilirisasi/BKPM","alternateName":"BKPM","url":"https://www.data.bkpm.go.id","logo":"https://data.bkpm.go.id/assets/img/logo_bkpm.png","sameAs":["https://www.instagram.com/baborsehat/","https://twitter.com/ABORSEHAT","https://www.youtube.com/@bkpmri"],"contactPoint":{"@type":"ContactPoint","telephone":"+62-21-5252008","contactType":"customer service","availableLanguage":["Indonesian","English"]}}
+</script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Satu Data BKPM","url":"https://data.bkpm.go.id","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://data.bkpm.go.id/cari-data?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":"id-ID"}
+</script>
+        <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
+            </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar & Hero Start -->
+<div class="container-fluid position-relative p-0">
+    <nav style="box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);"
+        class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="https://data.bkpm.go.id" class="navbar-brand p-0">
+            <img src="https://data.bkpm.go.id/storage/image/setting/233cda5b-67e0-4829-8ed3-a2d8483aa9b7.webp" alt="Logo"
+                style="width: 11rem">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse font-monsterrat" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0 align-items-center" style="gap: 20px;">
+                                                                                                                                    <a href="/home"
+                                class="nav-item nav-link ">
+                                Beranda
+                            </a>
+                                                                                                <div class="nav-item dropdown">
+                                <a href="#"
+                                    class="nav-link dropdown-toggle "
+                                    data-bs-toggle="dropdown">
+                                    Koleksi Data
+                                </a>
+                                <div class="dropdown-menu m-0">
+                                                                                                                    <a href="/data-umum" class="dropdown-item">
+                                            Data Umum
+                                        </a>
+                                                                                                                    <a href="/dataset?status=publik" class="dropdown-item">
+                                            Datasets
+                                        </a>
+                                                                    </div>
+                            </div>
+                                                                                                <div class="nav-item dropdown">
+                                <a href="#"
+                                    class="nav-link dropdown-toggle "
+                                    data-bs-toggle="dropdown">
+                                    Publikasi
+                                </a>
+                                <div class="dropdown-menu m-0">
+                                                                                                                    <a href="/infografis" class="dropdown-item">
+                                            Infografis
+                                        </a>
+                                                                                                                    <a href="/visualisasi" class="dropdown-item">
+                                            Visualisasi
+                                        </a>
+                                                                                                                    <a href="/ebook/all" class="dropdown-item">
+                                            E-Book
+                                        </a>
+                                                                    </div>
+                            </div>
+                                                                                                                            <a href="/tentang"
+                                class="nav-item nav-link ">
+                                Tentang Kami
+                            </a>
+                                                            
+                                    <a href="https://data.bkpm.go.id/login"
+                        class="btn btn-bkpm rounded-pill py-2 px-4 ms-lg-4 img-profile">
+                        Masuk
+                    </a>
+                            </div>
+        </div>
+    </nav>
+</div>
+        <main>
+            <div id="server-status-banner"
+                class="alert text-center mb-0 rounded-0"
+                role="alert"
+                style="display:none; position: fixed; top:0; left:0; width:100%; z-index:1050;">
+            </div>
+                <!-- Header Start -->
+    <div class="container-fluid">
+
+    </div>
+    <!-- Header End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid contact bg-light py-5">
+    <div class="container">
+        <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+            <div class="mx-auto text-center mb-4" style="max-width: 900px;">
+                <h2 class="section-title px-3 font-monsterrat">Datasets</h2>
+            </div>
+            <p class="mb-5">Sekumpulan data dan informasi yang terstruktur dalam angka dan teks dengan format csv, excel, json dan pdf. </p>
+            <div class="position-relative mx-auto">
+                <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" value=""  id="cari" name="cari" placeholder="Cari dataset">
+                <button type="button" onclick="cariDataset()" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Cari</button>
+            </div>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-lg-3" style="line-height: 2rem;font-size:16px !important;">
+                <nav id="sidebar" style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);">
+                <div class="p-4">
+                    <h5 class="font-monsterrat">Satu Data</h5>
+                    <ul class="list-unstyled components mb-5">
+                        <li>
+                            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Kategori</a>
+                            <ul class="list-unstyled collapse kategori-list" id="pageSubmenu1" style="">
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="9" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Data Prioritas (40)
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="1" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Data Penerbitan NIB (0)
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="2" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Data Realisasi Investasi (62)
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="5" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Data Peringkat Realisasi Investasi (0)
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="6" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Data Perkembangan Investasi (0)
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="8" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Berita (0)
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="7" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Artikel (0)
+                                    </a>
+                                </li>
+                                                            <li>
+                                    <a href="javascript:;" class="kategori" kat-id="10" onclick="filterKategori(this)">
+                                        <span class="fa fa-chevron-right mr-2"></span>
+                                        <span class="">Dashboard Realisasi Investasi (0)
+                                    </a>
+                                </li>
+                                                        </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Format</a>
+                            <ul class="list-unstyled collapse format-list" id="pageSubmenu3" style="">
+                                                        <li><a href="javascript:;" class="format " fm-id="0" onclick="filterJenis(this)"><span class="fa fa-chevron-right mr-2"></span> UPLOAD FILE (102)</a></li>
+                                                        <li><a href="javascript:;" class="format " fm-id="1" onclick="filterJenis(this)"><span class="fa fa-chevron-right mr-2"></span> API (0)</a></li>
+                                                        <li><a href="javascript:;" class="format " fm-id="2" onclick="filterJenis(this)"><span class="fa fa-chevron-right mr-2"></span> SPREADSHEET (0)</a></li>
+                                                        </ul>
+                        </li>
+                    </ul>
+                    <div class="mb-5" style="line-height: 1.5rem;">
+                        <h5 class="font-monsterrat">Tags</h5>
+                        <div class="tagcloud">
+                        
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="penanaman modal"   class="tags btn btn-primary tag-cloud-link">penanaman modal (102)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="realisasi"   class="tags btn btn-primary tag-cloud-link">realisasi (102)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="investasi"   class="tags btn btn-primary tag-cloud-link">investasi (102)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="2025"   class="tags btn btn-primary tag-cloud-link">2025 (23)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="prioritas"   class="tags btn btn-primary tag-cloud-link">prioritas (7)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="pmdn"   class="tags btn btn-primary tag-cloud-link">pmdn (6)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="hilirisasi"   class="tags btn btn-primary tag-cloud-link">hilirisasi (4)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="pma"   class="tags btn btn-primary tag-cloud-link">pma (4)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="pariwisata"   class="tags btn btn-primary tag-cloud-link">pariwisata (3)</a>
+                                                                            <a href="javascript:;" onclick="filterTag(this)" tag-id="PMA"   class="tags btn btn-primary tag-cloud-link">PMA (2)</a>
+                                                </div>
+                    </div>
+                </div>
+            </nav>
+            </div>
+                <div class="col-lg-9">
+                    <div class="col-lg-12 dataset-container">
+                        <div class="row g-4">
+    <input type="hidden" value="" name="cari">
+    <input type="hidden" value="" name="kategori">
+                <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/storage/image/dataset/2026/05/a185148b-1485-4cb4-aba1-5aacf047615a_1777967342.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Nilai Realisasi PMA/PMDN Hilirisasi Garam Tahun 2025</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Nilai realisasi pada Laporan Kegiatan Penanaman Modal (LKPM) berdasarkan realisasi kegiatan usaha industri yang menghasilkan produk hilirisasi komoditas Garam.</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Prioritas</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2026</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>investasi, realisasi, penanaman modal</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>3 bulan yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/nilai-realisasi-pmapmdn-hilirisasi-garam-tahun-2025" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/storage/image/dataset/2026/05/db39e5d1-e832-4948-a3ee-3a4dacef6753_1777966218.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Nilai Realisasi PMA/PMDN Hilirisasi Bauksit Tahun 2025</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Nilai realisasi pada Laporan Kegiatan Penanaman Modal (LKPM) berdasarkan realisasi kegiatan usaha industri yang menghasilkan produk hilirisasi dari komoditas Bauksit.</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Prioritas</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2026</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>investasi, realisasi, penanaman modal</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>3 bulan yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/nilai-realisasi-pmapmdn-hilirisasi-bauksit-tahun-2025" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/storage/image/dataset/2026/02/b9305768-a00c-4e00-8b24-c30c4fa5c76b_1770779929.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Data Realisasi Investasi Triwulan IV Tahun 2025</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Data yang disajikan di sini merupakan hasil agregasi dari realisasi investasi sepanjang tahun 2025 triwulan IV. Data ini memberikan gambaran komprehensif tentang penanaman modal di Indonesia dengan mengelompokkan informasi berdasarkan tiga variabel utama, yaitu sektor usaha, lokasi proyek, dan negara...</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Prioritas</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2026</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>investasi, realisasi, penanaman modal</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>6 bulan yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/image/dataset/2025/12/59240f7b-f1e0-46a7-9582-cfc8f1dee081_1766031731.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Data Realisasi Investasi Triwulan III Tahun 2025</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Data yang disajikan di sini merupakan hasil agregasi dari realisasi investasi sepanjang tahun 2025 triwulan III. Data ini memberikan gambaran komprehensif tentang penanaman modal di Indonesia dengan mengelompokkan informasi berdasarkan tiga variabel utama, yaitu sektor usaha, lokasi proyek, dan negara...</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Prioritas</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2025</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>investasi, realisasi, penanaman modal</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>10 bulan yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2025-hXdFHZK" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/image/dataset/2025/08/662d9c27-6744-487a-86e9-a221fdf97c2b_1754273807.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Data Realisasi Investasi Triwulan II Tahun 2025</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Data yang disajikan di sini merupakan hasil agregasi dari realisasi investasi sepanjang tahun 2025 triwulan I. Data ini memberikan gambaran komprehensif tentang penanaman modal di Indonesia dengan mengelompokkan informasi berdasarkan tiga variabel utama, yaitu sektor usaha, lokasi proyek, dan negara...</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Prioritas</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2025</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>investasi, realisasi, penanaman modal</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>1 tahun yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2025" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/image/dataset/2025/05/ee0918b8-f93d-4c07-b65f-94289542ba03_1746525953.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Data Realisasi Investasi Triwulan I Tahun 2025</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Data yang disajikan di sini merupakan hasil agregasi dari realisasi investasi sepanjang tahun 2025 triwulan I. Data ini memberikan gambaran komprehensif tentang penanaman modal di Indonesia dengan mengelompokkan informasi berdasarkan tiga variabel utama, yaitu sektor usaha, lokasi proyek, dan negara...</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Prioritas</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2025</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>investasi, realisasi, penanaman modal</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>1 tahun yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2025-X4LGYJf" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/image/dataset/2025/02/b9d07e41-c975-423c-8ff6-45771dc52cab_1738806604.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Data Realisasi Investasi Triwulan IV Tahun 2024</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Data yang disajikan di sini merupakan hasil agregasi dari realisasi investasi sepanjang tahun 2024 triwulan IV. Data ini memberikan gambaran komprehensif tentang penanaman modal di Indonesia dengan mengelompokkan informasi berdasarkan tiga variabel utama, yaitu sektor usaha, lokasi proyek, dan negara...</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Realisasi Investasi</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2025</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>realisasi, penanaman modal, investasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>1 tahun yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2024-nKo1EyF" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/image/dataset/2024/10/f64bbcc8-b15e-47c7-95c9-eb4488f674b2_1728146215.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Data Realisasi Investasi Triwulan III Tahun 2024</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Data yang disajikan di sini merupakan hasil agregasi dari realisasi investasi sepanjang tahun 2024 triwulan III. Data ini memberikan gambaran komprehensif tentang penanaman modal di Indonesia dengan mengelompokkan informasi berdasarkan tiga variabel utama, yaitu sektor usaha, lokasi proyek, dan negara...</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Realisasi Investasi</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2024</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>triwulan, penanaman modal, investasi, realisasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>1 tahun yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2024-oXA2V00" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-12">
+        <div style="box-shadow: 1px 3px 20px 1px rgba(0,0,0,.1);" class="service-content-inner d-flex bg-white border p-2  ps-0">
+            <div class="service-icon p-2">
+                <img class="img-fluid" style="max-width:100px;" src="https://data.bkpm.go.id/image/dataset/2025/01/30ed85e4-ed6a-4e66-8944-d05311d25ef6_1736066665.webp" alt="Image">
+            </div>
+            <div class="service-content" style="margin-left: 10px;">
+                <h5 class="my-1 mr-content" style="font-size:18px;">Data Realisasi Investasi Triwulan II Tahun 2024</h5>
+                <!-- <p class="mb-2" style="margin-top:-15px;font-size:14px;word-break: break-all;">Data yang disajikan di sini merupakan hasil agregasi dari realisasi investasi sepanjang tahun 2024 triwulan II. Data ini memberikan gambaran komprehensif tentang penanaman modal di Indonesia dengan mengelompokkan informasi berdasarkan tiga variabel utama, yaitu sektor usaha, lokasi proyek, dan negara...</p> -->
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-city"></i>
+                        <span>Direktorat Data dan Informasi</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-list"></i>
+                        <span>Data Realisasi Investasi</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap my-2">
+                    <div class="mr-content">
+                        <i class="fas fa-calendar"></i>
+                        <span>2024</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-tags"></i>
+                        <span>investasi, realisasi, penanaman modal</span>
+                    </div>
+                    <div class="mr-content">
+                        <i class="fas fa-clock"></i>
+                        <span>1 tahun yang lalu</span>
+                    </div>
+                </div>
+                <div class="my-3 mr-content">
+                    <a href="https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2024-UVTkOaI" class="btn-sm btn-primary btn-selengkpanya">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+<div class="row">
+    <div class="col-12">
+    <div class="single-list-pagination mt-3">
+      <ul class="pagination justify-content-center">
+        <!-- Previous Page Link -->
+                <li class="page-item">
+          <a class="page-link" href="https://data.bkpm.go.id/dataset?page=4" rel="prev" aria-label="Sebelumnya">
+         <
+          </a>
+        </li>
+        
+        <!--  Elements -->
+                <!-- "Three Dots" Separator -->
+        
+        <!-- Array Of Links -->
+                                <li class="page-item"><a class="page-link" href="https://data.bkpm.go.id/dataset?page=1">1</a></li>
+                                <li class="page-item"><a class="page-link" href="https://data.bkpm.go.id/dataset?page=2">2</a></li>
+                                        <!-- "Three Dots" Separator -->
+                <li class="page-item disabled" aria-disabled="true"><span class="page-link"><i class="fa-solid fa-ellipsis"></i></span></li>
+        
+        <!-- Array Of Links -->
+                        <!-- "Three Dots" Separator -->
+        
+        <!-- Array Of Links -->
+                                <li class="page-item active" aria-current="page"><span class="page-link">5</span></li>
+                                        <!-- "Three Dots" Separator -->
+                <li class="page-item disabled" aria-disabled="true"><span class="page-link"><i class="fa-solid fa-ellipsis"></i></span></li>
+        
+        <!-- Array Of Links -->
+                        <!-- "Three Dots" Separator -->
+        
+        <!-- Array Of Links -->
+                                <li class="page-item"><a class="page-link" href="https://data.bkpm.go.id/dataset?page=11">11</a></li>
+                                <li class="page-item"><a class="page-link" href="https://data.bkpm.go.id/dataset?page=12">12</a></li>
+                                
+        <!-- Next Page Link -->
+                <li class="page-item">
+          <a class="page-link" href="https://data.bkpm.go.id/dataset?page=6" rel="next" aria-label="Selanjutnya">
+            > 
+          </a>
+        </li>
+              </ul>
+    </div>
+  </div>
+  
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+        </main>
+
+                
+        <!-- Footer Start -->
+<div class="container-fluid footer">
+    <div class="container py-4">
+        <div class="row g-5">
+            <div style="text-align:center;" class="col-md-6 col-lg-6 col-xl-4 pt-1">
+                <img style="max-width:280px;" src="https://data.bkpm.go.id/front/gambar/logo-footer-baru.webp">
+                <img style="max-width:200px;margin-top:25px;" src="https://data.bkpm.go.id/front/gambar/logo-baru-putih.webp">
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-4">
+                <h4 class="mb-4 text-white text-center font-monsterrat">Informasi</h4>
+                <div class="d-flex justify-content-between">
+                    <div class="footer-item d-flex flex-column">
+                        <a href="https://data.bkpm.go.id/dataset"><i class="fas fa-angle-right me-2"></i> Datasets</a>
+                        <a href="https://data.bkpm.go.id/infografis"><i class="fas fa-angle-right me-2"></i> Infografis</a>
+                        <a href="https://data.bkpm.go.id/visualisasi"><i class="fas fa-angle-right me-2"></i> Visualisasi</a>
+                    </div>
+                    <div class="footer-item d-flex flex-column">
+                        <a href="https://data.bkpm.go.id/panduan"><i class="fas fa-angle-right me-2"></i> Panduan</a>
+                        <a href="https://data.bkpm.go.id/faq"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                        <a href="https://data.bkpm.go.id/tentang"><i class="fas fa-angle-right me-2"></i> Tentang Kami</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="footer-item text-center">
+                    <h4 class="mb-4 text-white font-monsterrat">Kontak</h4>
+                    <a href="mailto: satudata@bkpm.go.id"><i
+                            class="fa fa-envelope">&nbsp;</i>satudata@bkpm.go.id</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright text-body py-2">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-12 text-center">
+                <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">2024 Kementerian Investasi dan
+                    Hilirisasi/BKPM <br>Semua Hak Cipta dilindungi Undang-Undang</a>
+                <p class="text-white" style="margin-bottom:0px;">
+                    Jl. Gatot Subroto No. 44, Jakarta 12190</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i
+        class="fa fa-arrow-up"></i></a>
+
+
+<!-- ================= CHATBOT BUBBLE ================= -->
+<style>
+    #chatbot-bubble {
+        position: fixed;
+        bottom: 90px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: #263d93;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        animation: pulse 2s infinite;
+        z-index: 9999;
+    }
+
+    #chatbot-bubble i {
+        color: white;
+        font-size: 28px;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.13);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    #chatbot-popup {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 400px;
+        height: 550px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.30);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 99999;
+        animation: fadeIn .3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .chat-header {
+        background: #263d93;
+        padding: 15px 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .chat-header-avatar {
+        width: 45px;
+        height: 45px;
+        background: #4a5fc1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 3px solid white;
+    }
+
+    .chat-header-avatar i {
+        font-size: 22px;
+        color: white;
+    }
+
+    .chat-header-avatar::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        background: #4ade80;
+        border: 2px solid white;
+        border-radius: 50%;
+    }
+
+    .chat-header-avatar.admin-offline::after {
+        background: #94a3b8;
+    }
+
+    .chat-header-avatar.admin-online::after {
+        background: #4ade80;
+    }
+
+    .chat-header-info {
+        flex: 1;
+    }
+
+    .chat-header-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+
+    .chat-header-status {
+        font-size: 13px;
+        color: #a5d6a7;
+    }
+
+    #chat-close {
+        cursor: pointer;
+        font-size: 24px;
+        color: white;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    #chat-close:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .chat-body {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8f9fb;
+    }
+
+    .welcome-box {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .welcome-avatar {
+        width: 40px;
+        height: 40px;
+        background: #4a5fc1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    .welcome-avatar i {
+        color: white;
+        font-size: 18px;
+    }
+
+    .welcome-text {
+        color: #2d3748;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .quick-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .quick-btn {
+        background: white;
+        border: 1px solid #e2e8f0;
+        padding: 12px 16px;
+        border-radius: 20px;
+        color: #263d93;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+    }
+
+    .quick-btn:hover {
+        background: #f0f4ff;
+        border-color: #263d93;
+        transform: translateX(5px);
+    }
+
+    .chat-input {
+        display: flex;
+        border-top: 1px solid #e2e8f0;
+        background: white;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .chat-input input {
+        flex: 1;
+        padding: 12px 16px;
+        border: 1px solid #e2e8f0;
+        border-radius: 25px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .chat-input input:focus {
+        border-color: #263d93;
+    }
+
+    .chat-input button {
+        background: #263d93;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .chat-input button:hover {
+        background: #1a2d6b;
+    }
+
+    .msg-bot,
+    .msg-user {
+        padding: 12px 16px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        max-width: 80%;
+        display: block;
+        font-size: 14px;
+        line-height: 1.5;
+        clear: both;
+        position: relative;
+    }
+
+    .msg-bot {
+        background: white;
+        color: #2d3748;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        margin-right: auto;
+        border-bottom-left-radius: 4px;
+    }
+
+    .msg-bot::before {
+        content: '';
+        position: absolute;
+        left: -8px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 12px 8px;
+        border-color: transparent transparent white transparent;
+    }
+
+    .msg-user {
+        background: #263d93;
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 4px;
+    }
+
+    .msg-user::before {
+        content: '';
+        position: absolute;
+        right: -8px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 8px 12px 0;
+        border-color: transparent transparent #263d93 transparent;
+    }
+
+    #btn-admin {
+        background: #28a745;
+        border: none;
+        width: calc(100% - 40px);
+        margin: 0 20px 15px;
+        padding: 12px;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        display: none;
+    }
+
+    #btn-admin:hover {
+        background: #218838;
+    }
+
+    .btn-end-chat {
+        background: #dc3545;
+        border: none;
+        width: 100%;
+        margin: 15px 0;
+        padding: 12px;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: all 0.2s;
+    }
+
+    .btn-end-chat:hover {
+        background: #c82333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+    }
+
+    .btn-end-chat i {
+        margin-right: 5px;
+    }
+
+    .bubble-blink {
+        animation: blink 0.4s ease-in-out alternate 3;
+    }
+
+    @keyframes blink {
+        from {
+            transform: scale(1);
+        }
+
+        to {
+            transform: scale(1.15);
+        }
+    }
+</style>
+
+<!-- Bubble Button -->
+
+<!-- Popup Chat -->
+<div id="chatbot-popup">
+    <div class="chat-header">
+        <div class="chat-header-avatar">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="chat-header-info">
+            <div class="chat-header-title">Customer Support</div>
+            <div class="chat-header-status">Online</div>
+        </div>
+        <span id="chat-close">×</span>
+    </div>
+
+    <div class="chat-body" id="chat-body">
+        <div class="welcome-box">
+            <div class="welcome-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="welcome-text">
+                Selamat Datang Di Asisten Virtual BKPM.<br>
+                Saya siap membantu menjawab pertanyaan Anda.
+                <br><br>
+                Silakan pilih salah satu menu cepat di bawah ini untuk memulai.
+                <br>
+                Jika Anda ingin menghubungi admin, pilih menu admin terlebih dahulu.
+            </div>
+
+        </div>
+        
+        <div class="quick-buttons">
+                            <button class="quick-btn" onclick="sendQuickMessage('cara mengajukan pengaduan')">
+                    Cara Mengajukan Pengaduan
+                </button>
+                            <button class="quick-btn" onclick="sendQuickMessage('Ingin mengkontak admin')">
+                    Mau chat admin
+                </button>
+                    </div>
+    </div>
+
+    <button id="btn-admin">Hubungi Admin</button>
+
+    <div class="chat-input">
+        <input id="chat-text" placeholder="Ketik Pesan Anda" disabled>
+        <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<audio id="notif-sound">
+    <source src="https://data.bkpm.go.id/assets/notif.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+    window.CHAT_MODE = 'bot';
+    window.HISTORY_LOADED = false;
+    window.USER_ID = "";
+    window.PUSHER_INITIALIZED = false;
+
+    let pusher = null;
+    let userChannel = null;
+
+    function initPusher() {
+        if (!window.USER_ID) {
+            return;
+        }
+
+        if (window.PUSHER_INITIALIZED) {
+            return;
+        }
+
+        if (typeof Pusher === 'undefined') {
+            return;
+        }
+
+        const authEndpoint = "https://data.bkpm.go.id/pusher/auth";
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
+        try {
+            pusher = new Pusher("3b2dd5d7d9c2c073e2e6", {
+                cluster: "ap1",
+                encrypted: true,
+                forceTLS: true,
+                authEndpoint: authEndpoint,
+                auth: {
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                }
+            });
+
+            window.pusher = pusher;
+            window.PUSHER_INITIALIZED = true;
+
+            pusher.connection.bind('connected', () => {
+                subscribeToChannels();
+                emitUserConnected();
+                loadAdminAvailability();
+                setInterval(emitUserConnected, 60000);
+                setInterval(loadAdminAvailability, 60000);
+            });
+
+            pusher.connection.bind('error', (err) => {
+                // Silent error handling
+            });
+
+        } catch (error) {
+            // Silent error handling
+        }
+    }
+
+    function subscribeToChannels() {
+        if (!window.USER_ID) {
+            return;
+        }
+
+        const channelName = 'private-user.' + window.USER_ID;
+
+        userChannel = pusher.subscribe(channelName);
+        window.userChannel = userChannel;
+
+        userChannel.bind('AdminMessageSent', (data) => {
+            handleAdminMessage(data);
+        });
+
+        const typingChannelName = 'private-user-typing.' + window.USER_ID;
+        const typingChannel = pusher.subscribe(typingChannelName);
+
+        typingChannel.bind('AdminTyping', (data) => {
+            showAdminTypingIndicator(true);
+        });
+
+        typingChannel.bind('AdminStoppedTyping', (data) => {
+            showAdminTypingIndicator(false);
+        });
+
+        const adminStatusChannel = pusher.subscribe('private-chat.admin-status');
+        adminStatusChannel.bind('ChatAdminAvailabilityChanged', (data) => {
+            updateAdminAvailability(!!data.online);
+        });
+    }
+
+    // IMMEDIATE INIT
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPusher);
+    } else {
+        initPusher();
+    }
+
+    // ========================================
+    // DOM ELEMENTS
+    // ========================================
+    const bubble = document.getElementById('chatbot-bubble');
+    const popup = document.getElementById('chatbot-popup');
+    const closeBtn = document.getElementById('chat-close');
+    const chatBody = document.getElementById('chat-body');
+    const sendBtn = document.getElementById('send-btn');
+    const input = document.getElementById('chat-text');
+    const adminBtn = document.getElementById('btn-admin');
+
+    // ========================================
+    // HANDLE ADMIN MESSAGE
+    // ========================================
+    async function handleAdminMessage(data) {
+        if (!data || !data.message) {
+            return;
+        }
+
+        const popupClosed = !popup || popup.style.display === 'none' || popup.style.display === '';
+
+        if (popupClosed) {
+            if (bubble) bubble.style.display = 'flex';
+            if (bubble) bubble.classList.add('bubble-blink');
+            setTimeout(() => {
+                if (bubble) bubble.classList.remove('bubble-blink');
+            }, 1500);
+
+            if (popup) {
+                popup.style.display = 'flex';
+                if (bubble) bubble.style.display = 'none';
+            }
+            await loadHistory();
+        }
+
+        appendMessage(data.message, 'admin');
+
+        if (window.CHAT_MODE !== 'admin') {
+            window.CHAT_MODE = 'admin';
+            if (input) input.placeholder = "Ketik pesan untuk admin...";
+            await loadMode();
+        }
+
+        playNotificationSound();
+    }
+
+    // ========================================
+    // EMIT USER CONNECTED
+    // ========================================
+    async function emitUserConnected() {
+        try {
+            await fetch("https://data.bkpm.go.id/chat/user-connected", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')?.content
+                },
+                body: JSON.stringify({
+                    user_id: window.USER_ID,
+                    timestamp: new Date().toISOString()
+                })
+            });
+        } catch (error) {
+            // Silent fail
+        }
+    }
+
+    async function emitUserDisconnected() {
+        try {
+            await fetch("https://data.bkpm.go.id/chat/user-disconnected", {
+                method: "POST",
+                keepalive: true,
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')?.content
+                },
+                body: JSON.stringify({
+                    timestamp: new Date().toISOString()
+                })
+            });
+        } catch (error) {
+            // Silent fail
+        }
+    }
+
+    async function loadAdminAvailability() {
+        try {
+            const res = await fetch("https://data.bkpm.go.id/chat/admin-status");
+            if (!res.ok) return;
+
+            const data = await res.json();
+            updateAdminAvailability(!!data.online);
+        } catch (error) {
+            // Silent fail
+        }
+    }
+
+    function updateAdminAvailability(online) {
+        const status = document.querySelector('.chat-header-status');
+        const avatar = document.querySelector('.chat-header-avatar');
+
+        if (status) {
+            status.textContent = online ? 'Online' : 'Offline';
+            status.style.color = online ? '#a5d6a7' : '#e2e8f0';
+        }
+
+        if (avatar) {
+            avatar.classList.toggle('admin-online', online);
+            avatar.classList.toggle('admin-offline', !online);
+        }
+    }
+
+    // ========================================
+    // TYPING INDICATOR
+    // ========================================
+    function showAdminTypingIndicator(show) {
+        if (!chatBody) return;
+
+        let indicator = chatBody.querySelector('.typing-indicator');
+
+        if (show && !indicator) {
+            indicator = document.createElement('div');
+            indicator.className = 'msg-bot typing-indicator';
+            indicator.innerHTML = `
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            `;
+            chatBody.appendChild(indicator);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        } else if (!show && indicator) {
+            indicator.remove();
+        }
+    }
+
+    // ========================================
+    // NOTIFICATION SOUND
+    // ========================================
+    function playNotificationSound() {
+        try {
+            const sound = document.getElementById('notif-sound');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play();
+            }
+        } catch (e) {
+            // Silent fail
+        }
+    }
+
+    // ========================================
+    // EVENT LISTENERS
+    // ========================================
+    if (bubble) {
+        bubble.addEventListener('click', () => {
+            if (popup) popup.style.display = 'flex';
+            if (bubble) bubble.style.display = 'none';
+            loadHistory();
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            if (popup) popup.style.display = 'none';
+            if (bubble) bubble.style.display = 'flex';
+        });
+    }
+
+    // ========================================
+    // LOAD HISTORY
+    // ========================================
+    async function loadHistory() {
+        try {
+            const res = await fetch("https://data.bkpm.go.id/chat/history");
+            if (!res.ok) return;
+
+            const history = await res.json();
+            if (chatBody) {
+                chatBody.innerHTML = "";
+
+                if (!window.HISTORY_LOADED) {
+                    chatBody.innerHTML += `
+                        <div class="welcome-box">
+                            <div class="welcome-avatar"><i class="fas fa-user"></i></div>
+                            <div class="welcome-text">
+                                Selamat Datang di Asisten Virtual BKPM.<br>
+                                Saya siap membantu menjawab pertanyaan Anda.
+                            </div>
+                        </div>
+                    `;
+                }
+
+                history.forEach(msg => appendMessage(msg.message, msg.sender));
+                await loadMode();
+
+                chatBody.scrollTop = chatBody.scrollHeight;
+                window.HISTORY_LOADED = true;
+            }
+
+        } catch (e) {
+            // Silent fail
+        }
+    }
+
+    // ========================================
+    // LOAD MODE
+    // ========================================
+    async function loadMode() {
+        try {
+            const modeRes = await fetch("https://data.bkpm.go.id/chat/mode");
+            const mode = await modeRes.json();
+            window.CHAT_MODE = mode.mode;
+
+            if (chatBody) {
+                document.querySelectorAll('.info-admin').forEach(e => e.remove());
+                document.querySelectorAll('.quick-buttons').forEach(e => e.remove());
+                document.querySelectorAll('.btn-end-chat').forEach(e => e.remove());
+            }
+
+            if (mode.is_admin_mode) {
+                if (input) {
+                    input.disabled = false;
+                    input.placeholder = "Ketik pesan untuk admin...";
+                }
+
+                if (chatBody) {
+                    const adminName = mode.admin_name || 'Admin';
+                    chatBody.innerHTML += `
+                    <div class="info-admin" style="text-align:center;color:#28a745;font-size:13px;margin:15px 0;padding:12px;background:#e8f5e9;border-radius:8px;font-weight:600;">
+                        Terhubung dengan dengan Admin :<strong>${adminName}</strong><br>
+                        <small style="color:#666;font-weight:400;">Silakan ketik pesan Anda</small>
+                    </div>
+                    <button class="btn-end-chat" onclick="endChatHandler()">
+                        <i class="fas fa-times-circle"></i> Akhiri Percakapan
+                    </button>
+                `;
+                }
+            } else {
+                if (input) {
+                    input.disabled = true;
+                    input.placeholder = "Ketik pesan...";
+                }
+
+                const btnRes = await fetch("https://data.bkpm.go.id/chat/quick-buttons");
+                const buttons = await btnRes.json();
+
+                if (chatBody) {
+                    let html = `<div class="quick-buttons">`;
+                    buttons.forEach(btn => {
+                        html +=
+                            `<button class="quick-btn" onclick="sendQuickMessage('${btn.message}')">${btn.label}</button>`;
+                    });
+                    html += `</div>`;
+
+                    chatBody.innerHTML += html;
+                    chatBody.innerHTML += `
+                    <div class="info-admin" style="text-align:center;color:#666;font-size:12px;margin-top:10px;padding:10px;background:#f0f4ff;border-radius:8px;">
+                        Ingin menghubungi admin? Pilih menu admin terlebih dahulu.
+                    </div>
+                `;
+                }
+            }
+        } catch (e) {
+            // Silent fail
+        }
+    }
+
+    // ========================================
+    // APPEND MESSAGE (UPDATED - SUPPORT HTML)
+    // ========================================
+    function appendMessage(text, sender = "bot", isHtml = false) {
+        if (!chatBody) {
+            return;
+        }
+
+        let div = document.createElement('div');
+        div.className = sender === "user" ? "msg-user" : (sender === "admin" ? "msg-admin" : "msg-bot");
+
+        // ✅ CEK APAKAH PERLU RENDER HTML ATAU PLAIN TEXT
+        if (isHtml) {
+            div.innerHTML = text;
+        } else {
+            div.textContent = text;
+        }
+
+        div.style.opacity = '0';
+        div.style.transform = 'translateY(10px)';
+
+        chatBody.appendChild(div);
+
+        setTimeout(() => {
+            div.style.transition = 'all 0.3s ease';
+            div.style.opacity = '1';
+            div.style.transform = 'translateY(0)';
+        }, 10);
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // ========================================
+    // END CHAT HANDLER
+    // ========================================
+    async function endChatHandler() {
+        if (!confirm('Apakah Anda yakin ingin mengakhiri percakapan dengan admin?')) return;
+
+        try {
+            const res = await fetch("https://data.bkpm.go.id/chat/end", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content
+                }
+            });
+
+            const out = await res.json();
+            if (out.success) {
+                await loadHistory();
+            }
+        } catch (e) {
+            alert("Gagal mengakhiri percakapan.");
+        }
+    }
+
+    // ========================================
+    // SEND MESSAGE (UPDATED - SUPPORT HTML LINK)
+    // ========================================
+    if (input && sendBtn) {
+        input.addEventListener('keypress', e => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+    }
+
+    async function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
+
+        appendMessage(text, 'user');
+        input.value = '';
+
+        const endpoint = window.CHAT_MODE === 'admin' ?
+            "https://data.bkpm.go.id/chat/admin/send" :
+            "https://data.bkpm.go.id/chat/send";
+
+        try {
+            const payload = {
+                message: text,
+                user_id: window.USER_ID,
+                timestamp: new Date().toISOString()
+            };
+
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+            const out = await res.json();
+
+            if (window.CHAT_MODE !== 'admin' && out.reply) {
+                console.log(out);
+
+                // ✅ SOLUSI SINGKAT: Selalu render sebagai HTML jika reply mengandung tag <a>
+                const hasAnchorTag = out.reply.includes('<a ') || out.reply.includes('<a>');
+
+                if (hasAnchorTag) {
+                    // Pastikan URL dalam tag <a> menggunakan pengaduanUrl jika ada
+                    let finalReply = out.reply;
+                    if (out.pengaduanUrl) {
+                        finalReply = finalReply.replace(
+                            /href=['"][^'"]*['"]/,
+                            `href="${out.pengaduanUrl}"`
+                        );
+                    }
+                    appendMessage(finalReply, 'bot', true);
+                } else {
+                    appendMessage(out.reply, 'bot');
+                }
+            }
+
+            if (out.to_admin === true) {
+                window.CHAT_MODE = 'admin';
+                if (input) input.placeholder = "Ketik pesan untuk admin...";
+                await loadMode();
+            }
+
+        } catch (e) {
+            appendMessage("Terjadi kesalahan. Coba lagi.", "bot");
+        }
+    }
+
+    // ========================================
+    // QUICK MESSAGE
+    // ========================================
+    function sendQuickMessage(text) {
+        if (input) {
+            input.value = text;
+            sendMessage();
+        }
+    }
+
+    if (adminBtn) {
+        adminBtn.addEventListener('click', () => {
+            window.location.href = '/admin/chat';
+        });
+    }
+
+    window.addEventListener('pagehide', emitUserDisconnected);
+
+    // ========================================
+    // STYLES
+    // ========================================
+    const style = document.createElement('style');
+    style.textContent = `
+        .typing-indicator {
+            opacity: 0.7;
+            font-style: italic;
+        }
+        .typing-dots span {
+            animation: blink 1.4s infinite;
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 0 2px;
+            background: #666;
+            border-radius: 50%;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink {
+            0%, 60%, 100% { opacity: 0; }
+            30% { opacity: 1; }
+        }
+        .bubble-blink {
+            animation: blink-bubble 0.5s 3;
+        }
+        @keyframes blink-bubble {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .msg-admin {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px 15px;
+            border-radius: 12px;
+            margin: 8px 0;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        /* ✅ STYLING UNTUK LINK DI CHAT */
+        .chat-link {
+            color: #1976d2;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .chat-link:hover {
+            color: #0d47a1;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script defer src="https://data.bkpm.go.id/front/lib/easing/easing.min.js"></script>
+<script defer src="https://data.bkpm.go.id/front/lib/waypoints/waypoints.min.js"></script>
+<script defer src="https://data.bkpm.go.id/front/lib/owlcarousel/owl.carousel.min.js"></script>
+<script defer src="https://data.bkpm.go.id/front/lib/lightbox/js/lightbox.min.js"></script>
+
+
+<script defer src="https://data.bkpm.go.id/front/js/main.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHHW2BLWYN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HHHW2BLWYN');
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const imgProfile = document.querySelector('.img-profile');
+    if (imgProfile) {
+        imgProfile.addEventListener('click', function(e) {
+            this.classList.toggle('active');
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', function() {
+            imgProfile.classList.remove('active');
+        });
+    }
+
+    if (typeof $.fn.DataTable !== 'undefined' && document.getElementById('TableKu')) {
+        $('#TableKu').DataTable();
+    }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cariInput = document.getElementById('cariInput');
+    if (!cariInput) return;
+
+    let debounceTimerBeranda;
+
+    $('#cariInput').on('keyup', function(event) {
+        let query = $(this).val();
+
+        if (event.keyCode === 13) {
+            cariData();
+            return;
+        }
+
+        clearTimeout(debounceTimerBeranda);
+        debounceTimerBeranda = setTimeout(() => {
+            if (query.length > 2) {
+                $.ajax({
+                    url: 'https://data.bkpm.go.id/autocomplete',
+                    data: { term: query },
+                    success: function(data) {
+                        let html = '';
+
+                        const renderSection = (title, icon, items, color, jenis, route) => {
+                            if (items && items.length > 0) {
+                                const searchUrl = new URL("https://data.bkpm.go.id/cari-data");
+                                searchUrl.searchParams.set('query', $('#cariInput').val());
+                                searchUrl.searchParams.set('jenis', jenis);
+
+                                html += `
+                                    <div class="category-header d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="${icon}" style="color:${color};"></i> ${title}
+                                        </div>
+                                        <a href="${searchUrl}" class="see-all text-primary fw-semibold small" style="text-decoration:none;">
+                                            Lihat semua ›
+                                        </a>
+                                    </div>
+                                `;
+                                items.forEach(item => {
+                                    html += `<a href="${route}/${item.judul_detail}" class="list-group-item list-group-item-action">${item.judul}</a>`;
+                                });
+                            }
+                        };
+                        renderSection('Dataset', 'fas fa-database', data.dataset, '#2563eb', 'Dataset', 'dataset-detail');
+                        renderSection('Infografis', 'fas fa-chart-pie', data.infografis, '#16a34a', 'Infografis', 'infografis-detail');
+                        renderSection('Visualisasi', 'fas fa-chart-line', data.visualisasi, '#f59e0b', 'Visualisasi', 'visualisasi-detail');
+                        renderSection('Data Umum', 'fas fa-chart-line', data.visualisasi_umum, '#f59e0b', 'Data Umum', 'visualisasi-detail');
+                        renderSection('E-Book', 'fas fa-book', data.ebook, '#2563eb', 'E-Book', 'ebook');
+
+                        if (html === '') {
+                            html = '<div class="list-group-item text-muted text-center py-3">Tidak ada hasil</div>';
+                        }
+
+                        $('#suggestions').html(html).show();
+                    }
+                });
+            } else {
+                $('#suggestions').hide();
+            }
+        }, 300);
+    });
+
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('#cariInput, #suggestions').length) {
+            $('#suggestions').hide();
+        }
+    });
+});
+
+const cariData = () => {
+    let cari = $('#cariInput').val();
+    let url = new URL("https://data.bkpm.go.id/cari-data");
+    url.searchParams.set('query', cari);
+    window.location.replace(url);
+};
+</script>
+
+<script>
+    function checkStatusLogin()
+    {
+        Swal.fire({
+            title: "VERIFIKASI",
+            text: "SILAHKAN VERIFIKASI TERLEBIH DAHULU UNTUK MENGAKSES FITUR INI",
+            icon: "info"
+        });
+    }
+</script>
+            <script>
+        let debounceTimer = null;
+        let kategoriId,
+            jenisId,
+            tagId;
+
+        $(document).ready(() => {
+            let cari = $('#cari').val();
+            let kategori = $('.kategori.text-primary').attr('kat-id');
+
+            kategoriId = ''; // Store as string, empty if not set
+            jenisId = ''; // Store as string for consistent comparison
+            tagId = ''; // Store as string
+        })
+
+        $('#cari').on('keyup', function(event) {
+            if (event.keyCode === 13) { // 'enter' key code
+                cariDataset();
+                return;
+            }
+        });
+
+        function deleteParams(type) {
+            // Get the current URL
+            let url = new URL(window.location.href);
+
+            // Remove specific parameters
+            if (type == 'query') {
+                url.searchParams.delete('query');
+            } else if (type == 'kategori') {
+                url.searchParams.delete('kategori');
+            } else if (type == 'jenis') {
+                url.searchParams.delete('jenis');
+            } else if (type == 'tag') {
+                url.searchParams.delete('tag');
+            }
+
+            // Update the URL without reloading the page
+            window.history.replaceState(null, null, url.toString());
+        }
+
+        function getParam(paramName) {
+            let url = new URL(window.location.href);
+            let params = new URLSearchParams(url.search);
+            return params.get(paramName);
+        }
+
+        function filterKategori(el) {
+            let id = $(el).attr('kat-id');
+
+            // remove color blue on kategori name
+            $('.kategori').find('span').removeClass('text-green');
+
+            if (id == kategoriId) {
+                // Deselect - clear kategori filter
+                kategoriId = '';
+            } else {
+                // add color blue on kategori active
+                $(el).find('span:nth-child(2)').addClass('text-green');
+
+                // id kategori
+                kategoriId = id;
+            }
+
+            cariDataset();
+        }
+
+        function filterJenis(el) {
+            let id = $(el).attr('fm-id');
+
+            // remove color blue on format name
+            $('.format').removeClass('text-green');
+
+            if (id == jenisId) {
+                // Deselect - clear jenis filter
+                jenisId = '';
+            } else {
+                // add color blue on format active
+                $(el).addClass('text-green');
+
+                // id jenis
+                jenisId = id;
+            }
+
+            cariDataset();
+        }
+
+        function filterTag(el) {
+            let id = $(el).attr('tag-id');
+
+            // remove color blue on all tags
+            $('.tags').removeAttr('style');
+
+            if (id == tagId) {
+                // Deselect - clear tag filter
+                tagId = '';
+            } else {
+                // add css is active
+                $(el).attr('style', 'background-color: white !important; color: #263D93 !important;');
+
+                // id tag
+                tagId = id;
+            }
+
+            cariDataset();
+        }
+
+        function cariDataset() {
+            let cari = $('#cari').val();
+            let _url = new URL("https://data.bkpm.go.id/dataset/cari");
+
+            if (cari) _url.searchParams.set('query', cari);
+            if (kategoriId) _url.searchParams.set('kategori', kategoriId);
+            if (jenisId) _url.searchParams.set('jenis', jenisId);
+            if (tagId) _url.searchParams.set('tag', tagId);
+            
+            // If all filters are empty, update URL to base dataset route
+            if (!cari && !kategoriId && !jenisId && !tagId) {
+                _url = new URL("https://data.bkpm.go.id/dataset/cari");
+            }
+
+            $.ajax({
+                url: _url,
+                method: 'GET',
+                success: function(data) {
+                    // Render data pencarian ke dalam div konten
+                    $('.dataset-container').html(data.html);
+
+                    $('.kategori-list').empty()
+
+                    $(data.kategoris).map((i, v) => {
+                        let className = '';
+                        if (v.id == kategoriId) {
+                            className = 'text-green';
+                        }
+
+                        $('.kategori-list').append(`
+                            <li>
+                                <a href="javascript:;" class="kategori" kat-id="${v.id}" onclick="filterKategori(this)">
+                                    <span class="fa fa-chevron-right mr-2"></span>
+                                    <span class="${className}">${v.nama} (${v.jml})
+                                </a>
+                            </li>
+                        `)
+                    })
+
+                    $('.format-list').empty()
+
+                    $(data.jenis).map((i, v) => {
+                        let className = '';
+                        if (String(v.id) == jenisId) { // Use loose equality and ensure both are strings
+                            className = 'text-green';
+                        }
+
+                        $('.format-list').append(`
+                            <li><a href="javascript:;" class="format ${className}" fm-id="${v.id}" onclick="filterJenis(this)"><span class="fa fa-chevron-right mr-2"></span> ${v.nama} (${v.jml})</a></li>
+                        `)
+                    })
+
+                    $('.tagcloud').empty();
+
+                    $(data.tags).map((i, v) => {
+                        let style = '';
+
+                        if (v.nama == tagId) {
+                            style = "style=background-color:#f2f2f2!important;color:#263D93;";
+                        }
+
+                        $('.tagcloud').append(`
+                           <a href="javascript:;" onclick="filterTag(this)" tag-id="${v.nama}" ${style} class="tags btn btn-primary tag-cloud-link">${v.nama} (${v.jml})</a>
+                        `);
+                    })
+
+                    window.history.replaceState(null, null, _url);
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    </script>
+        <script src="https://data.bkpm.go.id/assets/js/upload-sanitizer.js?v=1.0.1"></script>
+    </body>
+
+</html>

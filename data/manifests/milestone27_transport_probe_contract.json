@@ -1,0 +1,71 @@
+{
+  "schema": "ranah-observatory/milestone27-transport-probe-contract/v1",
+  "milestone": 27,
+  "stage": "stage0c_transport_route_qualification",
+  "contract_locked_before_live_transport_probe": true,
+  "official_domain": "data.bkpm.go.id",
+  "route_discovery_evidence": "data/processed/bkpm/m27_resource_inventory/detail/2010/q1-000.html",
+  "route_template_from_frozen_official_frontend": "https://data.bkpm.go.id/dataset/generate-download-zip/{file_uuid}/file?upload_file_id={record_id}",
+  "interactive_disclaimer_endpoint_from_frozen_official_frontend": "https://data.bkpm.go.id/unduh/store-disclamer",
+  "interactive_disclaimer_form_submission_authorized": false,
+  "synthetic_personal_information_submission_authorized": false,
+  "disclaimer_bypass_authorized": false,
+  "probe_method": "HEAD",
+  "redirect_following_authorized": false,
+  "response_body_read_authorized": false,
+  "resource_file_download_authorized": false,
+  "resource_header_content_inspection_authorized": false,
+  "response_headers_authorized": [
+    "content-type",
+    "content-length",
+    "content-disposition",
+    "location",
+    "cache-control",
+    "accept-ranges"
+  ],
+  "response_headers_forbidden_to_persist": [
+    "set-cookie",
+    "authorization",
+    "proxy-authorization"
+  ],
+  "pilot_periods_locked_before_probe": [
+    {
+      "year": 2010,
+      "quarter": "I",
+      "role": "earliest_inventory_vintage"
+    },
+    {
+      "year": 2025,
+      "quarter": "II",
+      "role": "held_source_period_identity_conflict"
+    },
+    {
+      "year": 2025,
+      "quarter": "IV",
+      "role": "latest_inventory_vintage"
+    }
+  ],
+  "pilot_selection_uses_target_investment_values": false,
+  "target_investment_values_inspection_authorized": false,
+  "period_column_inspection_authorized": false,
+  "csv_schema_inspection_authorized": false,
+  "quarterly_flow_interpretation_authorized": false,
+  "cross_quarter_additivity_authorized": false,
+  "annual_sum_authorized": false,
+  "pma_pmdn_combination_authorized": false,
+  "external_currency_conversion_authorized": false,
+  "geography_mapping_authorized": false,
+  "numeric_aggregation_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "qualification_rule": {
+    "all_pilots_status_2xx": "head_route_reachable_without_response_body",
+    "any_pilot_status_401_or_403": "access_gate_observed_head_route_not_qualified",
+    "any_pilot_status_3xx": "redirect_gate_observed_head_route_not_qualified",
+    "any_pilot_status_405": "head_method_not_supported_route_not_qualified",
+    "otherwise": "mixed_or_unexpected_transport_state"
+  },
+  "next_gate_if_head_route_reachable": "separately_preregistered_header_only_resource_identity_probe",
+  "next_gate_if_not_qualified": "hold_numeric_materialization_until_public_reproducible_transport_is_available"
+}

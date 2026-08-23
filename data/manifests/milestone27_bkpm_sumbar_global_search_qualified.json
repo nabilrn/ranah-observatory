@@ -1,0 +1,71 @@
+{
+  "amendment": {
+    "path": "data/manifests/milestone27_sumbar_global_search_representation_amendment.json",
+    "sha256": "91f7c1fb48b7f289b4e7b3b43e243f6174d1d0ffc4b80637ad8e5711a1f9220e"
+  },
+  "annual_sum_authorized": false,
+  "causal_claim_created": false,
+  "cross_quarter_additivity_authorized": false,
+  "data_array_elements_inspected": false,
+  "geography_mapping_authorized": false,
+  "global_search_transport_qualified_all_pilots": true,
+  "milestone": 27,
+  "monetary_wasted_potential_estimated": false,
+  "numeric_materialization_authorized": false,
+  "original_probe_result_preserved": true,
+  "pilot_count": 3,
+  "pilot_results": [
+    {
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "global_search_transport_qualified": true,
+      "negative_data_array_empty": true,
+      "negative_records_filtered": 0,
+      "negative_records_total": 0,
+      "positive_data_array_empty": true,
+      "positive_records_filtered": 1,
+      "positive_records_total": 1,
+      "quarter": "I",
+      "sumbar_post_search_count": 1,
+      "unfiltered_baseline_records_total": 457,
+      "year": 2010
+    },
+    {
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "global_search_transport_qualified": true,
+      "negative_data_array_empty": true,
+      "negative_records_filtered": 0,
+      "negative_records_total": 0,
+      "positive_data_array_empty": true,
+      "positive_records_filtered": 642,
+      "positive_records_total": 642,
+      "quarter": "II",
+      "sumbar_post_search_count": 642,
+      "unfiltered_baseline_records_total": 35003,
+      "year": 2025
+    },
+    {
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "global_search_transport_qualified": true,
+      "negative_data_array_empty": true,
+      "negative_records_filtered": 0,
+      "negative_records_total": 0,
+      "positive_data_array_empty": true,
+      "positive_records_filtered": 517,
+      "positive_records_total": 517,
+      "quarter": "IV",
+      "sumbar_post_search_count": 517,
+      "unfiltered_baseline_records_total": 30013,
+      "year": 2025
+    }
+  ],
+  "probe": {
+    "path": "data/manifests/milestone27_bkpm_sumbar_global_search_probe.json",
+    "sha256": "d6b2c03a3fff944b49ef6f0374116657ce45eabdec49bd113aee3b16635360f1"
+  },
+  "quarterly_flow_interpretation_authorized": false,
+  "schema": "ranah-observatory/milestone27-bkpm-sumbar-global-search-qualified/v1",
+  "server_count_semantics": "recordsTotal_and_recordsFiltered_are_post_search_counts_on_the_observed_BKPM_route",
+  "stage": "stage0k_representation_amended_qualification",
+  "statistical_model_fit": false,
+  "target_investment_values_inspected": false
+}

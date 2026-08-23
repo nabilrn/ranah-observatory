@@ -1,0 +1,55 @@
+name: Milestone 27 BKPM Offline Reproducibility
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - data/manifests/milestone27_bkpm_offline_reproducibility.json
+      - data/manifests/milestone27_bkpm_stage1_qualification.json
+      - data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json
+      - data/processed/bkpm/m27_full_history/**
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-quarterly-history.csv
+      - data/analysis/engine/investment_realization_v1/m27-bkpm-quarter-audit.csv
+      - scripts/audit_milestone27_bkpm_full_history_offline.py
+      - .github/workflows/milestone27-bkpm-offline-reproducibility.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile offline rebuild
+        run: python -m py_compile scripts/audit_milestone27_bkpm_full_history_offline.py
+      - name: Rebuild frozen quarterly history without network
+        run: python -m scripts.audit_milestone27_bkpm_full_history_offline
+      - name: Verify byte-identical bounded history
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_offline_reproducibility.json').read_text(encoding='utf-8'))
+          assert m['offline_only'] is True
+          assert m['network_requests_performed'] is False
+          assert m['rebuild_success'] is True
+          assert m['quarter_count'] == 64
+          assert m['qualified_quarter_count'] == 63
+          assert m['held_quarter_count'] == 1
+          assert m['materialized_observation_count'] == 1440
+          assert m['quarterly_output_byte_identical'] is True
+          assert m['quarter_audit_byte_identical'] is True
+          assert m['held_quarters'][0]['year'] == 2024 and m['held_quarters'][0]['quarter'] == 'I'
+          assert m['missing_values_coerced_to_zero'] is False
+          assert m['pma_pmdn_combination_performed'] is False
+          assert m['cross_quarter_addition_performed'] is False
+          assert m['annual_sum_performed'] is False
+          assert m['external_fx_conversion_performed'] is False
+          assert m['statistical_model_fit'] is False
+          assert m['causal_claim_created'] is False
+          assert m['monetary_wasted_potential_estimated'] is False
+          print({'offline_rebuild': 'byte-identical', 'qualified_quarters': 63, 'held': '2024-Q1', 'observations': 1440})
+          PY

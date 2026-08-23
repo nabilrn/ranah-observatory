@@ -1,0 +1,38 @@
+name: Milestone 27 BKPM Period Identity Prefix Evidence
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone27-bkpm-period-identity-prefix.yml
+      - data/manifests/milestone27_period_identity_prefix_contract.json
+      - data/manifests/milestone27_bkpm_period_identity_prefix_probe.json
+      - scripts/probe_milestone27_bkpm_period_identity_prefix.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-period-prefix-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify frozen prefix evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_period_identity_prefix_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-period-identity-prefix-probe/v1'
+          assert m['pilot_count'] == 3
+          assert m['all_pilot_period_identities_match'] is True
+          assert m['source_2025_q2_period_identity_matches_q2'] is True
+          assert m['source_2025_q2_period_value'] == '2025 - Triwulan 2'
+          assert all(r['stream_stopped_immediately_after_period_closing_quote'] is True for r in m['pilot_results'])
+          assert all(r['response_remainder_read'] is False for r in m['pilot_results'])
+          assert all(r['subsequent_observation_field_read'] is False for r in m['pilot_results'])
+          assert m['target_investment_values_inspected'] is False
+          assert m['non_period_observation_values_inspected'] is False
+          PY

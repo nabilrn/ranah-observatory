@@ -1,0 +1,33 @@
+{
+  "schema": "ranah-observatory/milestone27-semantic-representation-amendment/v1",
+  "milestone": 27,
+  "amendment_type": "punctuation_only_period_field_representation_tolerance",
+  "evidence_inspected": "frozen_official_metadata_text_only",
+  "target_investment_values_inspected_before_amendment": false,
+  "resource_file_downloaded_before_amendment": false,
+  "affected_period": "2024-Q4",
+  "original_expected_concept": "periode : Periode dari data yang disajikan (sudah dikelompokan berdasarkan tahun dan triwulan)",
+  "observed_source_text": "periode : Periode dari data yang disajikan sudah dikelompokan berdasarkan tahun dan triwulan",
+  "substantive_semantic_difference_observed": false,
+  "parser_change": "accept the same locked concept with or without surrounding parentheses only",
+  "unaffected_source_conflict": {
+    "period": "2025-Q2",
+    "title_period": "2025-Q2",
+    "description_period": "2025-Q1",
+    "status": "held_period_identity_conflict",
+    "automatically_resolved_by_this_amendment": false
+  },
+  "source_family_changed": false,
+  "target_period_changed": false,
+  "field_set_changed": false,
+  "quarterly_flow_interpretation_authorized": false,
+  "cross_quarter_additivity_authorized": false,
+  "annual_sum_authorized": false,
+  "resource_transport_qualified": false,
+  "resource_header_retrieval_authorized": false,
+  "numeric_value_inspection_authorized": false,
+  "numeric_aggregation_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false
+}

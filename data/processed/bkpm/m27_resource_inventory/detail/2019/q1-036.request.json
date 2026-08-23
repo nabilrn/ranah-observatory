@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2019-D9863Al",
+  "quarter": "I",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2019-D9863Al",
+  "resource_file_requested": false,
+  "response_bytes": 181899,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q1-036.html",
+  "response_sha256": "ab1e9ab77325a84e0102c36e68ab7113c4eb61133951999c75572bb7d5250911",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2019
+}

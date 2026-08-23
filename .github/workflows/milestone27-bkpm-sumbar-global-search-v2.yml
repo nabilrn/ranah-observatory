@@ -1,0 +1,37 @@
+name: Milestone 27 BKPM Sumbar Search Qualification
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone27-bkpm-sumbar-global-search-v2.yml
+      - data/manifests/milestone27_sumbar_global_search_representation_amendment.json
+      - data/manifests/milestone27_bkpm_sumbar_global_search_probe.json
+      - data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json
+      - scripts/audit_milestone27_bkpm_sumbar_global_search_v2.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-search-qualification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rebuild qualification offline
+        run: python scripts/audit_milestone27_bkpm_sumbar_global_search_v2.py
+
+      - name: Verify byte-identical qualification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json').read_text(encoding='utf-8'))
+          assert m['global_search_transport_qualified_all_pilots'] is True
+          assert [r['sumbar_post_search_count'] for r in m['pilot_results']] == [1, 642, 517]
+          assert m['target_investment_values_inspected'] is False
+          assert m['numeric_materialization_authorized'] is False
+          PY
+          git diff --exit-code -- data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json

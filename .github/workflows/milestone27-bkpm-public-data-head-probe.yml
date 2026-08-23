@@ -1,0 +1,38 @@
+name: Milestone 27 BKPM Public Data HEAD Evidence
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone27-bkpm-public-data-head-probe.yml
+      - data/manifests/milestone27_public_data_head_probe_contract.json
+      - data/manifests/milestone27_bkpm_public_data_head_probe.json
+      - scripts/probe_milestone27_bkpm_public_data_head.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-head-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify frozen HEAD evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_public_data_head_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-public-data-head-probe/v1'
+          assert m['pilot_count'] == 3
+          assert m['status_codes'] == [200, 200, 200]
+          assert m['head_supported_all_pilots'] is True
+          assert all(r['content_type'].lower().startswith('application/json') for r in m['pilot_results'])
+          assert all(r['response_body_read'] is False for r in m['pilot_results'])
+          assert all(r['response_body_persisted'] is False for r in m['pilot_results'])
+          assert m['get_request_performed'] is False
+          assert m['post_request_performed'] is False
+          assert m['target_investment_values_inspected'] is False
+          PY

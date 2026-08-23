@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2025-X4LGYJf",
+  "quarter": "I",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2025-X4LGYJf",
+  "resource_file_requested": false,
+  "response_bytes": 181800,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q1-060.html",
+  "response_sha256": "7f6b58d91e0166bc0956154a323e6c1fe3221113d435982d7fa9b435e9826445",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2025
+}

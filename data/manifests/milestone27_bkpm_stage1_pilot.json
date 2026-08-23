@@ -1,0 +1,251 @@
+{
+  "absent_geography_status_groups_materialized_as_zero": false,
+  "annual_sum_performed": false,
+  "binding_prerequisite": {
+    "path": "data/manifests/milestone27_bkpm_preview_parameter_binding.json",
+    "sha256": "ac57e004b22a1181a7c619ca245704e5c618e58653fee1aeba892c54c77b17af"
+  },
+  "canonical_geography_registry": {
+    "path": "data/registries/geographies.csv",
+    "sha256": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de"
+  },
+  "causal_claim_created": false,
+  "contract": {
+    "path": "data/manifests/milestone27_stage1_pilot_contract.json",
+    "sha256": "7572aa9df1638cc7016905e32607a07eb201627e930fc37f11d37948df1b90a1"
+  },
+  "cross_quarter_addition_performed": false,
+  "external_fx_conversion_performed": false,
+  "geography_contract": {
+    "path": "data/registries/bkpm_sumbar_geography_contract.csv",
+    "sha256": "0d2fc549983180e4e7751594964ee2f9cf848f496d613383b053c5a9f837bcac"
+  },
+  "materialized_geography_status_observation_count": 70,
+  "milestone": 27,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "output_csv": {
+    "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-stage1-pilot-quarterly.csv",
+    "sha256": "04f91d2cea069ec2f453b112fce04fcff3f8d385ca7de62e76f5688124c140eb"
+  },
+  "per_capita_normalization_performed": false,
+  "pilot_count": 3,
+  "pilot_results": [
+    {
+      "content_type": "application/json",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 1,
+      "expected_sumbar_search_count": 1,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 1,
+      "mapped_geography_ids": [
+        "idn.13.1303"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Solok"
+      ],
+      "observed_source_period_values": [
+        "2010 - Triwulan 1"
+      ],
+      "observed_source_status_values": [
+        "PMA"
+      ],
+      "period_mismatch_row_count": 0,
+      "pilot_role": "earliest_control",
+      "qualified": true,
+      "quarter": "I",
+      "raw_evidence_bytes": 665,
+      "raw_evidence_path": "data/processed/bkpm/m27_stage1_pilot/2010-qi.json",
+      "raw_evidence_sha256": "056fba17eaaec8cf4d275ac6d1bf87ff4bdcb90fedf408ccca42a500546c2110",
+      "request_url": "https://data.bkpm.go.id/data?dataset_detail_parent_id=0617bee9-adee-48a6-aade-1e546c735bcb&draw=1&start=0&length=1000&search%5Bregex%5D=false&search%5Bvalue%5D=Sumatera+Barat",
+      "response_data_row_count": 1,
+      "response_records_filtered": 1,
+      "response_records_total": 1,
+      "status": 200,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2010
+    },
+    {
+      "content_type": "application/json",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 34,
+      "expected_sumbar_search_count": 642,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2025 - Triwulan 2"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "pilot_role": "resolved_page_description_conflict",
+      "qualified": true,
+      "quarter": "II",
+      "raw_evidence_bytes": 275549,
+      "raw_evidence_path": "data/processed/bkpm/m27_stage1_pilot/2025-qii.json",
+      "raw_evidence_sha256": "574debc2ac1f31434e22214f8fc4ff36c109faea18476ec094a88b497d635c70",
+      "request_url": "https://data.bkpm.go.id/data?dataset_detail_parent_id=ab32082f-39ca-485c-bf69-43368eef5be1&draw=1&start=0&length=1000&search%5Bregex%5D=false&search%5Bvalue%5D=Sumatera+Barat",
+      "response_data_row_count": 642,
+      "response_records_filtered": 642,
+      "response_records_total": 642,
+      "status": 200,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2025
+    },
+    {
+      "content_type": "application/json",
+      "dataset_identifier": "Data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "duplicate_source_dimension_tuple_count": 0,
+      "emitted_geography_status_observation_count": 35,
+      "expected_sumbar_search_count": 517,
+      "fail_reasons": [],
+      "false_positive_province_row_count": 0,
+      "mapped_geography_count": 19,
+      "mapped_geography_ids": [
+        "idn.13.1301",
+        "idn.13.1302",
+        "idn.13.1303",
+        "idn.13.1304",
+        "idn.13.1305",
+        "idn.13.1306",
+        "idn.13.1307",
+        "idn.13.1308",
+        "idn.13.1309",
+        "idn.13.1310",
+        "idn.13.1311",
+        "idn.13.1312",
+        "idn.13.1371",
+        "idn.13.1372",
+        "idn.13.1373",
+        "idn.13.1374",
+        "idn.13.1375",
+        "idn.13.1376",
+        "idn.13.1377"
+      ],
+      "negative_metric_row_counts": {
+        "investasi_rp_juta": 0,
+        "investasi_us_ribu": 0
+      },
+      "observed_source_geography_labels": [
+        "Kabupaten Agam",
+        "Kabupaten Dharmasraya",
+        "Kabupaten Kepulauan Mentawai",
+        "Kabupaten Lima Puluh Kota",
+        "Kabupaten Padang Pariaman",
+        "Kabupaten Pasaman",
+        "Kabupaten Pasaman Barat",
+        "Kabupaten Pesisir Selatan",
+        "Kabupaten Sijunjung",
+        "Kabupaten Solok",
+        "Kabupaten Solok Selatan",
+        "Kabupaten Tanah Datar",
+        "Kota Bukittinggi",
+        "Kota Padang",
+        "Kota Padang Panjang",
+        "Kota Pariaman",
+        "Kota Payakumbuh",
+        "Kota Sawah Lunto",
+        "Kota Solok"
+      ],
+      "observed_source_period_values": [
+        "2025 - Triwulan 4"
+      ],
+      "observed_source_status_values": [
+        "PMA",
+        "PMDN"
+      ],
+      "period_mismatch_row_count": 0,
+      "pilot_role": "latest_control",
+      "qualified": true,
+      "quarter": "IV",
+      "raw_evidence_bytes": 222125,
+      "raw_evidence_path": "data/processed/bkpm/m27_stage1_pilot/2025-qiv.json",
+      "raw_evidence_sha256": "6855561d9fea7020f8e6fbf2732c37d5224297d8dd8a84c86fddeb363335e52c",
+      "request_url": "https://data.bkpm.go.id/data?dataset_detail_parent_id=625bf941-ad51-4425-ab13-88de84c1bd0e&draw=1&start=0&length=1000&search%5Bregex%5D=false&search%5Bvalue%5D=Sumatera+Barat",
+      "response_data_row_count": 517,
+      "response_records_filtered": 517,
+      "response_records_total": 517,
+      "status": 200,
+      "unexpected_status_row_count": 0,
+      "unmapped_geography_labels": [],
+      "year": 2025
+    }
+  ],
+  "pilot_success": true,
+  "pma_pmdn_combination_performed": false,
+  "q4_interpreted_as_annual_total": false,
+  "ranking_created": false,
+  "raw_filtered_response_persisted": true,
+  "schema": "ranah-observatory/milestone27-bkpm-stage1-pilot/v1",
+  "schema_prerequisite": {
+    "path": "data/manifests/milestone27_bkpm_public_data_zero_row_probe.json",
+    "sha256": "a4c7a643c6dc9d8feeeff12f9dbd500d53e3b8b79a1ef0c1e08292e509ee9a46"
+  },
+  "search_prerequisite": {
+    "path": "data/manifests/milestone27_bkpm_sumbar_global_search_qualified.json",
+    "sha256": "909eec07ab83ab0a2ade17d62a4ae9aa67a1d64c9ee45d9152b873967a310a1f"
+  },
+  "stage": "stage1_numeric_pilot",
+  "statistical_model_fit": false,
+  "target_investment_values_inspected": true,
+  "target_investment_values_retrieved": true,
+  "within_quarter_within_status_within_geography_addition_performed": true
+}

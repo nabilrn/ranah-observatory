@@ -1,0 +1,44 @@
+name: Milestone 27 BKPM Public Data Zero-Row Evidence
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/milestone27-bkpm-public-data-zero-row.yml
+      - data/manifests/milestone27_public_data_zero_row_contract.json
+      - data/manifests/milestone27_bkpm_public_data_zero_row_probe.json
+      - scripts/probe_milestone27_bkpm_public_data_zero_row.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-frozen-zero-row-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify frozen zero-row schema evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_public_data_zero_row_probe.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-public-data-zero-row-probe/v1'
+          assert m['pilot_count'] == 3
+          assert m['all_pilots_zero_row_honored'] is True
+          assert m['identical_declared_schema_across_pilots'] is True
+          assert m['schema_qualified'] is True
+          assert m['qualified_declared_column_count'] == 14
+          assert m['qualified_declared_columns'] == [
+              'periode','status_penanaman_modal','regional','negara','sektor_utama',
+              'nama_sektor','deskripsi_kbli_2digit','provinsi','kabupaten_kota',
+              'jawa_luar_jawa','pulau','investasi_rp_juta','investasi_us_ribu','tki'
+          ]
+          assert all(r['data_array_empty'] is True for r in m['pilot_results'])
+          assert m['raw_json_persisted'] is False
+          assert m['data_array_elements_inspected'] is False
+          assert m['target_investment_values_inspected'] is False
+          assert m['period_values_inspected'] is False
+          PY

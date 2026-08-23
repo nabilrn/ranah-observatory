@@ -1,0 +1,13 @@
+{
+  "content_type": "text/html; charset=UTF-8",
+  "final_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2011-saAyXj3",
+  "quarter": "III",
+  "requested_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2011-saAyXj3",
+  "resource_file_requested": false,
+  "response_bytes": 181921,
+  "response_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q3-006.html",
+  "response_sha256": "a37145fe85d69d4209adb635d90ac4b5022f9724f7b84e6423721ff61afc4c29",
+  "schema": "ranah-observatory/milestone27-bkpm-detail-request/v1",
+  "target_investment_values_inspected": false,
+  "year": 2011
+}

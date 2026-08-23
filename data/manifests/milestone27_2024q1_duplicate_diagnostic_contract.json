@@ -1,0 +1,58 @@
+{
+  "schema": "ranah-observatory/milestone27-2024q1-duplicate-diagnostic-contract/v1",
+  "milestone": 27,
+  "stage": "stage1_full_history_2024q1_duplicate_diagnostic",
+  "diagnostic_locked_before_analysis": true,
+  "network_requests_authorized": false,
+  "source_quarter": "2024-Q1",
+  "frozen_raw_evidence_directory": "data/processed/bkpm/m27_full_history/2024/q1",
+  "expected_source_row_count": 1107,
+  "dimension_fields": [
+    "periode",
+    "status_penanaman_modal",
+    "regional",
+    "negara",
+    "sektor_utama",
+    "nama_sektor",
+    "deskripsi_kbli_2digit",
+    "provinsi",
+    "kabupaten_kota",
+    "jawa_luar_jawa",
+    "pulau"
+  ],
+  "non_dimension_fields": ["investasi_rp_juta", "investasi_us_ribu", "tki"],
+  "diagnostic_questions": [
+    "how many complete-dimension duplicate groups and rows exist",
+    "whether duplicate groups are exact full-row duplicates or differ only in non-dimension fields",
+    "whether duplicate groups cross deterministic pagination boundaries",
+    "whether exact full-row duplicates cross pagination boundaries",
+    "which non-dimension field names differ within dimension-colliding groups"
+  ],
+  "allowed_outputs": [
+    "group multiplicities",
+    "page membership",
+    "dimension tuple hashes",
+    "full row hashes",
+    "differing non-dimension field names",
+    "aggregate counts and classification"
+  ],
+  "raw_target_metric_values_in_diagnostic_outputs_authorized": false,
+  "deduplication_authorized": false,
+  "aggregation_contract_amendment_authorized": false,
+  "source_row_deletion_authorized": false,
+  "annual_sum_authorized": false,
+  "cross_quarter_additivity_authorized": false,
+  "pma_pmdn_combination_authorized": false,
+  "external_fx_conversion_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "classification_rules": {
+    "pagination_overlap_candidate": "at least one exact full-row duplicate group spans more than one frozen page",
+    "source_exact_duplicate_candidate": "exact full-row duplicate groups exist but none span pages",
+    "public_dimension_key_incomplete_candidate": "dimension-colliding groups contain multiple distinct full-row hashes and differ in one or more non-dimension fields",
+    "mixed_duplicate_mechanisms": "both exact full-row duplicates and dimension-colliding distinct full rows are observed",
+    "no_duplicate_reproduced": "no dimension tuple occurs more than once"
+  },
+  "next_gate": "freeze diagnostic result first; any pagination or aggregation amendment must be separately preregistered and must preserve the original failed 2024-Q1 result"
+}

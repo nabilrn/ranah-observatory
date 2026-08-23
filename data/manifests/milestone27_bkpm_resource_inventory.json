@@ -1,0 +1,791 @@
+{
+  "annual_sum_authorized": false,
+  "annual_sum_performed": false,
+  "candidate_detail_count": 64,
+  "causal_claim_created": false,
+  "cross_quarter_additivity_authorized": false,
+  "declared_expected_schema_complete_period_count": 64,
+  "design_gate": {
+    "path": "data/manifests/milestone27_design_gate.json",
+    "sha256": "5147c45d1873540ba1503ab34b2aa6b958aab421603ba18d0816d9d15819e232"
+  },
+  "detail_evidence": [
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2010-4BkVd0G",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q1-000.html",
+      "raw_sha256": "a1e710499597733e5afbee491a7b70eb402e36d79d56b650b92618f43a2c2dc1",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q1-000.request.json",
+      "request_sidecar_sha256": "bdfede2bb78064168297126c6ce1c078cc05a5f50b5ef2c7047661580e79f63b",
+      "year": 2010
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2010-YklG0z5",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q2-001.html",
+      "raw_sha256": "4874aca8fa0a0d60dd617e3edbeeb36da8e98cead3e7830def4384451e2cac3c",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q2-001.request.json",
+      "request_sidecar_sha256": "209fbfe5f246de48b76f725fb6aa139344d5719da695cf5aaebccb486f44bf08",
+      "year": 2010
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2010-nVHP1xj",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q3-002.html",
+      "raw_sha256": "90dbbc18e8157c69713b58b03a5a126660aebcac2cdbbb40a351812f21556576",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q3-002.request.json",
+      "request_sidecar_sha256": "b277bec8b8fc68634f34afe27e4a2cc36a28e114b676d1939db7f2e62a45e078",
+      "year": 2010
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2010-geKW4zP",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q4-003.html",
+      "raw_sha256": "5960641077a19bd84d847ca7211858da9f19ee1dd888082abc7152423d1d8f30",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2010/q4-003.request.json",
+      "request_sidecar_sha256": "6ad3b1c8a609242c0a0d6d01f625380f9085e2f97cbf0529d8d2080c938afedc",
+      "year": 2010
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2011-mSRN48k",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q1-004.html",
+      "raw_sha256": "10b41b2fa05c883514b73cb5887fa75a8d84adec9f924fb3170abaddfc5a7e6d",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q1-004.request.json",
+      "request_sidecar_sha256": "5da45f0dbc704d0d5fb393eaf0499da53ba4fad8f86509348e36f68a9f28896b",
+      "year": 2011
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2011-YyoIut5",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q2-005.html",
+      "raw_sha256": "1361590cce0c5a109b4c31054cb530b96c26993afbcdc08d69c24f76e40c0454",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q2-005.request.json",
+      "request_sidecar_sha256": "46be23187d1df28e438232c1ab3cea2e37c8da59c3333ad707a6a33e33967ae8",
+      "year": 2011
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2011-saAyXj3",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q3-006.html",
+      "raw_sha256": "a37145fe85d69d4209adb635d90ac4b5022f9724f7b84e6423721ff61afc4c29",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q3-006.request.json",
+      "request_sidecar_sha256": "7d549069a78219059afdb71232d4b8012c6454a1fd046c157e98d24a10256d73",
+      "year": 2011
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2011-pigkn7y",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q4-007.html",
+      "raw_sha256": "e7093877be9caea12192d454720499b5e08441748bb4ece4b9befff697706a47",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2011/q4-007.request.json",
+      "request_sidecar_sha256": "33aaa5599ed671cffa2db7fa53a8c3b18b4fb5314445a8914d73609708d41e7e",
+      "year": 2011
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2012-9ns2Dhf",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q1-008.html",
+      "raw_sha256": "b96fd204e4ec4e5f9ef6cc62931ace2e3c504a763991900ec5d63f789e2091e4",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q1-008.request.json",
+      "request_sidecar_sha256": "7fb8c98a5a2d564bd2be074d4d6bb4734d420d0a69ff676b9d00f4c17ae5edb4",
+      "year": 2012
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2012-KORfoaF",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q2-009.html",
+      "raw_sha256": "7ba1d2fd6987cd5eeb7c5d3733aff424e989e755c8dbeffa6af78111a050e401",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q2-009.request.json",
+      "request_sidecar_sha256": "90e90d972387c6cbb9320aa635daeecff4e3abf9b4dfdd6420687a18b1364f02",
+      "year": 2012
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2012-e7Yu1Li",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q3-010.html",
+      "raw_sha256": "f93a0c570602b33eb7227c9ab0f58898b62a75c66234e315f7bbd03fbdf73928",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q3-010.request.json",
+      "request_sidecar_sha256": "e94cd34b4c9ad3d8e1d491b6fad66b64d9fd1c968e6daf3e4c35d94c5df4defa",
+      "year": 2012
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2012-yg0KpKS",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q4-011.html",
+      "raw_sha256": "e4681f66cbd841ee656e56ab9425e3ce577e29a6f169980c00cb86d713eb5bc6",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2012/q4-011.request.json",
+      "request_sidecar_sha256": "36acea29e2b41ecb2d6960831ef16833cdd0dbf1b2d27b543a137d92ae3e1c48",
+      "year": 2012
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2013-aZedHow",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q1-012.html",
+      "raw_sha256": "6ceef0aa45c04baf16f400af9cab55637d8fa136d106a9b055dc28aa79cf96f5",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q1-012.request.json",
+      "request_sidecar_sha256": "2dbf44d0a78f8857341b3653289a6ef2ac9b9de56f62a99391da76270309b721",
+      "year": 2013
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2013-DJF0bWL",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q2-013.html",
+      "raw_sha256": "8e6511da99718758ffea542d3ba108425f75ea236b1558d20c4b81b54259c4bb",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q2-013.request.json",
+      "request_sidecar_sha256": "60b7e1eb7c47bc9aca33918c8af8d6a2bbfb77f0d544d01f8ff5f40b68e28a8a",
+      "year": 2013
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2013-RCKorNx",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q3-014.html",
+      "raw_sha256": "abe4520e6cd9d73deeb25fc866504b44dac3eaa8240bf1f418737924689bf443",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q3-014.request.json",
+      "request_sidecar_sha256": "88e2b6495213471b55cb3f86416543191e6e0312f6eee9beb4b37275981665a3",
+      "year": 2013
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2013-7gIf8tt",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q4-015.html",
+      "raw_sha256": "0bd195032d02df5ee9ec1c10e1ba3828df0a7a9c5fc57ee0e9d9d103dece0bcb",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2013/q4-015.request.json",
+      "request_sidecar_sha256": "96e76b693f2cd061c701f759cc3ad7e98fe8b52a5e0ab6078faeed568be99624",
+      "year": 2013
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2014-8TD5MiR",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q1-016.html",
+      "raw_sha256": "228161b2eb9676dc9d2d0d09b3ad8195136b4ff709f9011eee99708343866ef9",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q1-016.request.json",
+      "request_sidecar_sha256": "3b8b42a08c2bdd295e1172092f6cd9d903f368335b1d69c6e03fc7f1a467f7c2",
+      "year": 2014
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2014-nOXDyc9",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q2-017.html",
+      "raw_sha256": "d60e2bc1f5c593742a8f54ea5b48b17cdb1a19c546f8d7a47e0d667dc80b83ec",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q2-017.request.json",
+      "request_sidecar_sha256": "c3dff7d01bda28d26c93fae5f1972b6d575d3c5538cbb9a55ee513f97daf48b3",
+      "year": 2014
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2014-hc9iIYD",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q3-018.html",
+      "raw_sha256": "e0b1f4a8d6d55e27fd9986a45d00602f4092734ca59790764e31e09e5336c423",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q3-018.request.json",
+      "request_sidecar_sha256": "385497c1d78833f10e75efc747e88d411b096eb955e4481b5963a8b10c092369",
+      "year": 2014
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2014-aiH3N07",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q4-019.html",
+      "raw_sha256": "eadadca658f94056666ea25af90a278492062b2356cd3012d59e0d0739c9e6e3",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2014/q4-019.request.json",
+      "request_sidecar_sha256": "5a3a59ef26aae384ac21cc0a6c3b9f567e3958ff4766c5f2a2831888fba46f70",
+      "year": 2014
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2015-Q1DkhJz",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q1-020.html",
+      "raw_sha256": "6976fb8c37850159eef2b616221a0f89220f52403494e1c77d9390765c97d322",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q1-020.request.json",
+      "request_sidecar_sha256": "0d5c9ee654f2ee97dc7ac0c9ef8ac8ea5c9ca12af8ea79026bb54845b12bff0f",
+      "year": 2015
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2015-btjb2ta",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q2-021.html",
+      "raw_sha256": "c9224e2cf7685536c75b3f4f739197bfe24b8579ffdb0d38fc7a00cb9fabb139",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q2-021.request.json",
+      "request_sidecar_sha256": "a450d0e133ec4e4c43b8da1986485521e2a51888953ac3e72c1ad474a5fad94d",
+      "year": 2015
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2015-Xe6Djkq",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q3-022.html",
+      "raw_sha256": "d4d84fc97158825bfafb7dff8fc811b103d95260fe1858c052d44dc2bff3933f",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q3-022.request.json",
+      "request_sidecar_sha256": "0bff95b31ce434aea3472a70d7f0a31941ab2ca3c33ee94ee0ab382ecdc9eb49",
+      "year": 2015
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2015-sonjzmO",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q4-023.html",
+      "raw_sha256": "30da8990e76b6da2663d57e8db42d3ad4b7f464fd7d5b9601e64b3375e1ec1bf",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2015/q4-023.request.json",
+      "request_sidecar_sha256": "0fd79da669f15d850293b64f7d98fecdf6840f356c0ebe7574e136a1d7933b84",
+      "year": 2015
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2016-iGR4Qiq",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q1-024.html",
+      "raw_sha256": "057e037a52dffffd4331c8de9ce5997188ec4eb42b4ec7f27b0e134ce42f1f59",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q1-024.request.json",
+      "request_sidecar_sha256": "bf33216c58fb1ff267f3312df88b30ef5f94c2909dbb0286ec8b9e2511bf74ae",
+      "year": 2016
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2016-9viQ5TO",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q2-025.html",
+      "raw_sha256": "ffeff049c7694a895235d1d47c5615537c3c240d3c81158f46c19e1dbc9f9d83",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q2-025.request.json",
+      "request_sidecar_sha256": "e528be17f3d5e9f8b5d254b922f994d9335ae7f0e88511ba77687df046a98c19",
+      "year": 2016
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2016-1ECr7jF",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q3-026.html",
+      "raw_sha256": "7ee88ddbb9c09ab0a37f66a229a7e409174e989a95d3ec3dfcd408cc5d457113",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q3-026.request.json",
+      "request_sidecar_sha256": "925fedac8420a23ec3fec82b7ddadecf7d12cab236c3f66a7fbc824b2d47af36",
+      "year": 2016
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2016-jwmY1RM",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q4-027.html",
+      "raw_sha256": "33cf9c2fad322cb5280b7fc71dcf27251e35ae96f31afebfd99a09e9b3fe307a",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2016/q4-027.request.json",
+      "request_sidecar_sha256": "dad1251e9270a58d0aec9696cd773606997f3c9a458e61a92989db008fc4d9f7",
+      "year": 2016
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2017-LzO8DHT",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q1-028.html",
+      "raw_sha256": "4c6bb84a86d13d5a5d280b260fbc892af5eb5e0cbdda79f9be5c1048af1c574e",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q1-028.request.json",
+      "request_sidecar_sha256": "7871b105addfeba3e67a9cce66d74af61a641fe004abfd06790ad027437d8b54",
+      "year": 2017
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2017-ZrFL97N",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q2-029.html",
+      "raw_sha256": "253e7d657a67990432ad3defccae24e1e01a92be7336a575acc84f675f0d9efa",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q2-029.request.json",
+      "request_sidecar_sha256": "f6f1f3e2545d7ee6b35d0fc3669ab3fb215d72839c3108f8a5431dffcab22cc8",
+      "year": 2017
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2017-8p2TRIL",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q3-030.html",
+      "raw_sha256": "e6f79a88dca41122d5f97f5dcc38c8f56bf279e21da8dd9f1e7c34883cdcf853",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q3-030.request.json",
+      "request_sidecar_sha256": "a504984b231bb9166df05bda0e77ecea1d423b80c3de023043ed41cea53f2a21",
+      "year": 2017
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2017-KO8lKPd",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q4-031.html",
+      "raw_sha256": "a21864eb52b28ba18c550ebca3a6d7b5f7f64905107aded3dc1ea3167223a3f4",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2017/q4-031.request.json",
+      "request_sidecar_sha256": "936882adbd41c78a9ffb3fa1020430342f4035af8a9dcfd2b86937cd26c5c510",
+      "year": 2017
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2018-3gA3OjM",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q1-032.html",
+      "raw_sha256": "bf2a5fdef47ae72ef386eea7bea08a7bfc1624c772e7a10f7b9edff9680be823",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q1-032.request.json",
+      "request_sidecar_sha256": "768aa2054bf2870166cdec21c6851aeb3f0cd24639e04ec0f8e191586c67aa40",
+      "year": 2018
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2018-0iq9kfq",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q2-033.html",
+      "raw_sha256": "0b860c4a9e107256d764e5a133f8b8553ca812104c2d4b93c412564cd189f651",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q2-033.request.json",
+      "request_sidecar_sha256": "b8700d79ee236b62424deecdcd2aadfd16a7819c69b65deb87671eecf0ad1472",
+      "year": 2018
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2018-Q2PSQlc",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q3-034.html",
+      "raw_sha256": "87fca0028d3ce0a8ad13d926dd17fa52671c42d59cb252f1b09ff5f03b2dd25f",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q3-034.request.json",
+      "request_sidecar_sha256": "d8bfdd575bfbfff07a48129cc2d5dce21abbddbbe7b391f90cfc313d40444701",
+      "year": 2018
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2018-F9M7bk9",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q4-035.html",
+      "raw_sha256": "a2a7900e1835ea95b1896b728103fc246f916f21ca429082417049c93fb672ec",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2018/q4-035.request.json",
+      "request_sidecar_sha256": "1835fe7b5cd03e2dbbfd6b9d4bc90de0daabf94cd621d670f5773346f38fb68b",
+      "year": 2018
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2019-D9863Al",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q1-036.html",
+      "raw_sha256": "ab1e9ab77325a84e0102c36e68ab7113c4eb61133951999c75572bb7d5250911",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q1-036.request.json",
+      "request_sidecar_sha256": "aee612c6556d325c1c3c03415e29efb0658f053201b8720ab1c1317993254f2a",
+      "year": 2019
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2019-pcqR17c",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q2-037.html",
+      "raw_sha256": "f664823e95421299d1fbdd4a1e8dffcdc1608adc91180a50386bd62cd5c7bd39",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q2-037.request.json",
+      "request_sidecar_sha256": "bf714bd4dba8ca1315ed831df89ebea794d887ed403fc210099e8390f25dc2fa",
+      "year": 2019
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2019-IH9wFIE",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q3-038.html",
+      "raw_sha256": "6125d75b4cbd825d3a0331882ff71d127a803f8a5602a84735e829e4f22b4bcd",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q3-038.request.json",
+      "request_sidecar_sha256": "c3cf419c0cb879d739e62d9f8a163faf536dc1cd317ff6db0cef3214a487b8a5",
+      "year": 2019
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2019-X5Sqrn9",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q4-039.html",
+      "raw_sha256": "e6497de09aea27808e865f8276696c40b31ef96b010c8364d23524b57a4c0e3c",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2019/q4-039.request.json",
+      "request_sidecar_sha256": "334a91e13265f7857eefaf1c67602b6c9f591630d14a0095042fc01586683707",
+      "year": 2019
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2020-AOB4ZBB",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q1-040.html",
+      "raw_sha256": "b9adb8c3d55dbdfb1f030ae637c4bd6a094998a9c6f3e1fdd74379027ee89164",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q1-040.request.json",
+      "request_sidecar_sha256": "fefa1bdcc486eef958a7e5352c2a861eaa4c4fed20cb1ca62b66ade5e5695e40",
+      "year": 2020
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2020-2D2ROx9",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q2-041.html",
+      "raw_sha256": "c4c5205a7ce151d7276251fb50841b5b5e95f7fa6185df98b565bb2f485fd545",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q2-041.request.json",
+      "request_sidecar_sha256": "5e728668a7d0b7eab0e56ba06d9945ed4066bcf0d63619c7968e94648bbfc8aa",
+      "year": 2020
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2020-8i2qwNr",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q3-042.html",
+      "raw_sha256": "788fa5555fa1e6adcc4c4789fa318e571beb5e469ac572f68b3647db834912a3",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q3-042.request.json",
+      "request_sidecar_sha256": "78cd0b3112ecbd77f13df67a5317be987ccd4a85659e4500eb4f8cec5c3d3992",
+      "year": 2020
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2020-v3HNqaX",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q4-043.html",
+      "raw_sha256": "57381f6b6b0e33b48a3ba584687046fd53c1625bd7f330224277ce9e9a87c526",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2020/q4-043.request.json",
+      "request_sidecar_sha256": "2780fdcb5496e536de540b320b5a295aaf2f8efe293e259f70ff9197de18526a",
+      "year": 2020
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2021-KtsYXpM",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q1-044.html",
+      "raw_sha256": "8650f05bdf9ff1741fe6a316ef0af3786f722d9d4c92a64833dcbf5c4ae9f195",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q1-044.request.json",
+      "request_sidecar_sha256": "bd8d0741727c9a1dddd4bfb04506536551f8ff52f7ae5644e12a70b9cf41fe4e",
+      "year": 2021
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2021-WnE2Dzx",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q2-045.html",
+      "raw_sha256": "42285d754da07407614e401142b075e14352ac6cf84c64e0935003fc928b7dbc",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q2-045.request.json",
+      "request_sidecar_sha256": "fad6f5824f1c79dce188dae03249826a046bd02553dff30ad5e60de7f030b2e4",
+      "year": 2021
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2021-kd1FbXw",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q3-046.html",
+      "raw_sha256": "c5e2bc61b78d1e8fef1250221a0c7e16a9fe74eff86e846df5c44ec9e1854b95",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q3-046.request.json",
+      "request_sidecar_sha256": "364ad74cfbb2f01aed850692b2f348af90cdb17ce045e883d375eea4a2c1e9f6",
+      "year": 2021
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2021-7ZQkG68",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q4-047.html",
+      "raw_sha256": "294839455ff59e93e999891c14b8bdc586cfdf30fe4a697e41ff6d9e09ed98c0",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2021/q4-047.request.json",
+      "request_sidecar_sha256": "93a2d9eff4dde31d6f802a8d52b34338efeddb93da4ee735546a27fb001617ed",
+      "year": 2021
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2022-wRMSb3X",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q1-048.html",
+      "raw_sha256": "8d8c6247d7c6afa593167441b157d4c6406b56db1b77be52b173bca7d146852f",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q1-048.request.json",
+      "request_sidecar_sha256": "bd9745e606ed396257cb830e3c5204f81b8f0f49367e77cf5c3d24655d94bd81",
+      "year": 2022
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2022",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q2-049.html",
+      "raw_sha256": "79008b5f6f703c8e228755663907c73ead935396e239bed333c8779be8f27cf8",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q2-049.request.json",
+      "request_sidecar_sha256": "46ed2ca00de88408ff5f058b34f1aa27fa11a57b19644eb9be6af36ee1dd5335",
+      "year": 2022
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2022",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q3-050.html",
+      "raw_sha256": "25e6a7be83740d76a36f60e7161e1f009617732709f761cc8b0933c2b5c297f5",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q3-050.request.json",
+      "request_sidecar_sha256": "af70db450bc0c4dc7003e354b846818214e37bf359e038195cba1343038fc159",
+      "year": 2022
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2022-n28Sqxg",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q4-051.html",
+      "raw_sha256": "fea1396c43e4700ef2e9e2a5cda0c2b4d25df36d957eee3fb753a3eeaad0542f",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2022/q4-051.request.json",
+      "request_sidecar_sha256": "15af259ae3f092fc9cacb063f0e1398e295bf316250511d9db013a4af0614008",
+      "year": 2022
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2023-6pOYjbx",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q1-052.html",
+      "raw_sha256": "3a31f5bc72c844d5a31b6ac52ea12fc352e2f051516f31dc9c296ed3dfa67fab",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q1-052.request.json",
+      "request_sidecar_sha256": "a3f6da004513808e24b1d54157798e687a9952d25c7850ca591443dea9eec768",
+      "year": 2023
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2023",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q2-053.html",
+      "raw_sha256": "8ac0431c70a89de54a416b89fe406e047c50f5138adc09f8c983e845431d5d77",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q2-053.request.json",
+      "request_sidecar_sha256": "fe51098496ed4dae2be0ff2d1d12b51b91b3d243488b744e4f918b3283263701",
+      "year": 2023
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2023",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q3-054.html",
+      "raw_sha256": "42611140d5a75ad2333112a083f2815df9fce85a9b7538839cb294092c76401e",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q3-054.request.json",
+      "request_sidecar_sha256": "2ee81e1c739ea09cd8df6a55cf0ef243e9a87abca65646c344c4756af43b8b36",
+      "year": 2023
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2023-EggwcsQ",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q4-055.html",
+      "raw_sha256": "0173f120eb94f988adc81b934142bc3955423d57b17f7800ab24bd719517c466",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2023/q4-055.request.json",
+      "request_sidecar_sha256": "42ec4c80691554bb41376d9ccbe81150bf0d9cf868b158859581ad7a3bcec807",
+      "year": 2023
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2024",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q1-056.html",
+      "raw_sha256": "85a98e24cca5878110bd75e2fa2c8b016d5af5343fa6e0bd565e8f3ff43f5e72",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q1-056.request.json",
+      "request_sidecar_sha256": "8846ddf92ce182f31f8daffb190a12399bdac4918d5006afb06f8d839ead4abb",
+      "year": 2024
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2024-UVTkOaI",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q2-057.html",
+      "raw_sha256": "ad375f1058b9e1a5e6012ae38d1220dbafa8201ab53b50a1db8b04a512e3e150",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q2-057.request.json",
+      "request_sidecar_sha256": "29d72ce98df75c1284e1e705f5ad06bdd7a2881758d28099bb809e3c5f57a5d8",
+      "year": 2024
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2024-oXA2V00",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q3-058.html",
+      "raw_sha256": "c8e864a34706fa81d5def6730af34b0f4f454538b77fdae72fbe8fbbcb2a87e0",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q3-058.request.json",
+      "request_sidecar_sha256": "ff5f6b95374deab2630b81dc886ef83bfbe779b5253b9f66d7a38232bd0c2f64",
+      "year": 2024
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2024-nKo1EyF",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q4-059.html",
+      "raw_sha256": "4ef3df419529de0651d4b5a749d91891a542c95da7bc0ae84bb3e5180bad6d6a",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q4-059.request.json",
+      "request_sidecar_sha256": "ea84ac5b8c20b2e127c3f9b4c6c7e7c6652cb1c3373d788751e1e3b47544cf82",
+      "year": 2024
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-i-tahun-2025-X4LGYJf",
+      "quarter": "I",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q1-060.html",
+      "raw_sha256": "7f6b58d91e0166bc0956154a323e6c1fe3221113d435982d7fa9b435e9826445",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q1-060.request.json",
+      "request_sidecar_sha256": "327cd42011d219314f4a58a671a8c43034eaaa1c77dcc325bd503daede16017a",
+      "year": 2025
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2025",
+      "quarter": "II",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q2-061.html",
+      "raw_sha256": "2113acd3e0d3c3626e3444542b9a537568b5028e08d1d6a73f5c281b5b5d0275",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q2-061.request.json",
+      "request_sidecar_sha256": "202157e240d2c19a7c595322354d3621975b546188f61c7a387c8499858f5668",
+      "year": 2025
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iii-tahun-2025-hXdFHZK",
+      "quarter": "III",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q3-062.html",
+      "raw_sha256": "805a2a3f1e423f9f56ce39f1779a8a65738603406aa621f549b3ee375577a82b",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q3-062.request.json",
+      "request_sidecar_sha256": "ad71fcff34530684578b98eca5ff077043ca8785bd8ca3cbc83a049a58597784",
+      "year": 2025
+    },
+    {
+      "detail_url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-iv-tahun-2025-szexEQe",
+      "quarter": "IV",
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q4-063.html",
+      "raw_sha256": "1622f0513281757cdcd112382a9655965e2a3c90d685ede91b9ba8397e1dd106",
+      "request_sidecar_path": "data/processed/bkpm/m27_resource_inventory/detail/2025/q4-063.request.json",
+      "request_sidecar_sha256": "f403636513d719677d76607489f9093f39a708b7677bf5b6f6f65afdf02d99f6",
+      "year": 2025
+    }
+  ],
+  "direct_resource_transport_period_count": 0,
+  "direct_resource_url_count": 0,
+  "distinct_period_count": 64,
+  "duplicate_period_count": 0,
+  "duplicate_periods": {},
+  "external_currency_conversion_performed": false,
+  "false_positive_locator_class": "shared_storage_image_assets",
+  "historical_boundary_reconstruction_performed": false,
+  "incremental_reported_realization_semantics_supported_by_page_text": false,
+  "inventory_parser_transport_false_positive_corrected": true,
+  "investment_value_aggregation_performed": false,
+  "listing_empty_page_seen": true,
+  "listing_evidence": [
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=1",
+      "page": 1,
+      "raw_bytes": 82768,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-01.html",
+      "raw_sha256": "a79ba84a2c755c8f556fd048aa660820419cb039cb9eacac4bd84bb67c28a1a0",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=1"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=2",
+      "page": 2,
+      "raw_bytes": 82509,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-02.html",
+      "raw_sha256": "c347e87a8c976e826a74335339ca471ada5dcc1b63b2f36ad065607d410d2a26",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=2"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=3",
+      "page": 3,
+      "raw_bytes": 82369,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-03.html",
+      "raw_sha256": "55b07af4450c247dd2faa295e5364c45a971e684b5af2b80739d14057b8c18e9",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=3"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=4",
+      "page": 4,
+      "raw_bytes": 82100,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-04.html",
+      "raw_sha256": "8bd3ecb305941d1d227089259f58b96a29742d99c448e101e5ceac9a04a63d30",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=4"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=5",
+      "page": 5,
+      "raw_bytes": 83102,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-05.html",
+      "raw_sha256": "6accca226fbd706fbddf1c4c2f1a6acfd617db3fbcf3bac468f96c41905c1033",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=5"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=6",
+      "page": 6,
+      "raw_bytes": 83377,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-06.html",
+      "raw_sha256": "90a84f6433d9c46202f7565188a80570d25b09203f83e26712792de2406d72a9",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=6"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=7",
+      "page": 7,
+      "raw_bytes": 83410,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-07.html",
+      "raw_sha256": "3f5d8a3b127f4446d105e7c13d1096867b76a49ca235e9044ea3b7d09315acdd",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=7"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=8",
+      "page": 8,
+      "raw_bytes": 83413,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-08.html",
+      "raw_sha256": "b00ca834585c8f21dfe901330ede68f52c68422b554af4ac7479f5a704892c9f",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=8"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=9",
+      "page": 9,
+      "raw_bytes": 83194,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-09.html",
+      "raw_sha256": "a40e0961f73f4cbb86c6369ff1075f912138f5ee4a9654d69f906d630c47defe",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=9"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=10",
+      "page": 10,
+      "raw_bytes": 83190,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-10.html",
+      "raw_sha256": "29287d005937162ddd8e490333c55e87ddb59b59975231950974ca8c519b9664",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=10"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 9,
+      "final_url": "https://data.bkpm.go.id/dataset?page=11",
+      "page": 11,
+      "raw_bytes": 83194,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-11.html",
+      "raw_sha256": "918323d3667e4933f327e0f7b77fb2f0e8140df5d30de1e98cea6c41d1954c44",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=11"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 3,
+      "final_url": "https://data.bkpm.go.id/dataset?page=12",
+      "page": 12,
+      "raw_bytes": 68874,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-12.html",
+      "raw_sha256": "136604a1af41898910ccc26084ed0eb33d6e869110b52dde1d81ae29ba145aa0",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=12"
+    },
+    {
+      "content_type": "text/html; charset=UTF-8",
+      "detail_link_count": 0,
+      "final_url": "https://data.bkpm.go.id/dataset?page=13",
+      "page": 13,
+      "raw_bytes": 62076,
+      "raw_path": "data/processed/bkpm/m27_resource_inventory/listing/page-13.html",
+      "raw_sha256": "3ec81eb5d3d356d3df30a4522ca86642abff1f69cb2f91664dd189713c013bb9",
+      "requested_url": "https://data.bkpm.go.id/dataset?page=13"
+    }
+  ],
+  "listing_pages_fetched": 13,
+  "milestone": 27,
+  "missing_period_count": 0,
+  "missing_periods": [],
+  "missing_row_interpreted_as_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "official_surface": "https://data.bkpm.go.id/",
+  "outputs": {
+    "inventory": "data/analysis/engine/investment_realization_v1/m27-bkpm-resource-inventory.csv",
+    "inventory_sha256": "e6a8f1c3a58d9a9edbbc62747f4edfe3f019a34f9cbc57b0a730d9c3b4a79382",
+    "semantic_audit": "data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv",
+    "semantic_audit_sha256": "60bf19c855a43e2ab3213379f4fc1f66cdcb5190cbbdbfaab9202ba9225acba4"
+  },
+  "per_capita_normalization_performed": false,
+  "period_coverage_inferred_from_adjacent_periods": false,
+  "pma_pmdn_combination_performed": false,
+  "possible_period_count": 64,
+  "quarter_specific_period_semantics_supported_by_page_text": false,
+  "quarterly_flow_interpretation_authorized": false,
+  "ranking_performed": false,
+  "resource_download_action_period_count": 64,
+  "resource_download_action_unique_pair_count": 64,
+  "resource_file_download_performed": false,
+  "resource_header_retrieval_authorized": false,
+  "resource_header_retrieval_performed": false,
+  "resource_transport_endpoint_qualified": false,
+  "resource_transport_endpoint_resolved_period_count": 0,
+  "schema": "ranah-observatory/milestone27-bkpm-resource-inventory/v2",
+  "semantic_audit": {
+    "path": "data/analysis/engine/investment_realization_v1/m27-bkpm-semantic-audit.csv",
+    "sha256": "60bf19c855a43e2ab3213379f4fc1f66cdcb5190cbbdbfaab9202ba9225acba4"
+  },
+  "semantic_contract": {
+    "path": "data/manifests/milestone27_quarter_semantics_contract.json",
+    "sha256": "b9e2b55a727acad58b3e7f463ba393c1f2db97c9b66e84d8c209f688dbd03e1b"
+  },
+  "semantic_family_hold_period_count": 1,
+  "semantic_family_match_period_count": 63,
+  "source_candidate_id": "bkpm_satudata_investment",
+  "source_selection_uses_target_investment_values": false,
+  "stage": "stage0_inventory_and_semantic_continuity_qualified_transport_pending",
+  "stage0_complete": false,
+  "statistical_model_fit": false,
+  "target_investment_values_inspected": false,
+  "target_period": {
+    "end_year": 2025,
+    "missing_period_inference_authorized": false,
+    "possible_year_quarter_cells": 64,
+    "quarters": [
+      "I",
+      "II",
+      "III",
+      "IV"
+    ],
+    "start_year": 2010
+  },
+  "value_based_deduplication_performed": false
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "ranah-observatory/milestone27-bkpm-stage1-qualification/v1",
+  "milestone": 27,
+  "stage": "stage1_bounded_quarterly_history_qualification",
+  "decision": "bounded_quarterly_history_qualified_with_one_held_source_grain_anomaly",
+  "bounded_quarterly_history_qualified": true,
+  "continuous_64_quarter_history_qualified": false,
+  "target_period_start": "2010-Q1",
+  "target_period_end": "2025-Q4",
+  "inventory_quarter_count": 64,
+  "numeric_qualified_quarter_count": 63,
+  "held_quarter_count": 1,
+  "held_quarters": [
+    {
+      "period": "2024-Q1",
+      "promotion_state": "held_methodology_or_coverage_discontinuity",
+      "reason": "source_grain_anomaly_mixed_duplicate_mechanisms",
+      "sumbar_source_row_count": 1107,
+      "mapped_geography_count": 19,
+      "duplicate_dimension_group_count": 174,
+      "rows_in_duplicate_dimension_groups": 850,
+      "exact_full_row_duplicate_group_count": 47,
+      "dimension_collision_with_distinct_full_rows_group_count": 127,
+      "exact_full_row_cross_page_duplicate_group_count": 2,
+      "deduplication_authorized": false,
+      "numeric_promotion_authorized": false
+    }
+  ],
+  "materialized_geography_quarter_status_observation_count": 1440,
+  "quarter_specific_period_identity_qualified_for_promoted_quarters": true,
+  "source_metric_semantics": {
+    "investasi_rp_juta": "nilai tambahan realisasi dari laporan LKPM, satuan juta rupiah",
+    "investasi_us_ribu": "nilai tambahan realisasi dari laporan LKPM, satuan ribu US dolar"
+  },
+  "source_aggregation_description": "official BKPM metadata describes the dataset as an aggregation of investment realization grouped principally by business sector, project location, and investor country",
+  "source_semantics_evidence": {
+    "frozen_2024_q1_metadata_path": "data/processed/bkpm/m27_resource_inventory/detail/2024/q1-056.html",
+    "frozen_2024_q1_metadata_blob_sha": "c0913f3a7cd771388b959e41c02997dac571a050"
+  },
+  "full_history_first_pass": {
+    "path": "data/manifests/milestone27_bkpm_full_history.json",
+    "qualified_quarter_count": 63,
+    "failed_quarter_count": 1
+  },
+  "duplicate_diagnostic": {
+    "path": "data/manifests/milestone27_bkpm_2024q1_duplicate_diagnostic.json",
+    "classification": "mixed_duplicate_mechanisms"
+  },
+  "quarterly_numeric_use_authorized_only_for_qualified_quarters": true,
+  "2024_q1_exclusion_must_remain_explicit": true,
+  "missing_quarter_or_group_as_zero_authorized": false,
+  "pma_pmdn_combination_authorized": false,
+  "cross_quarter_additivity_authorized": false,
+  "annual_sum_authorized": false,
+  "q4_as_annual_total_authorized": false,
+  "external_fx_conversion_authorized": false,
+  "per_capita_normalization_authorized": false,
+  "ranking_authorized": false,
+  "statistical_model_fit_authorized": false,
+  "causal_claim_authorized": false,
+  "monetary_wasted_potential_estimate_authorized": false,
+  "scientific_interpretation": "M27 supports a bounded quarterly investment-realization history for 63 explicitly qualified quarters. 2024-Q1 is not imputed, deduplicated, or numerically promoted because its frozen public representation contains both exact full-row duplication and dimension-colliding rows with differing metrics/TKI. No continuous-history or annual-total claim is created.",
+  "next_gate": "install permanent offline reconstruction of all frozen quarterly evidence and qualified outputs; cross-quarter additivity and methodology continuity remain separate future gates"
+}
