@@ -1,16 +1,19 @@
 {
   "asset_count": 13,
-  "builder": "publication/v0.1/tools/build_submission.py",
+  "author_record_status": "confirmed",
+  "builder": "publication/v0.1/tools/finalize_submission_metadata.py",
   "claim_upgrade_performed": false,
   "figure_count": 6,
   "new_source_acquisition": false,
   "new_statistical_or_ml_model_fit": false,
   "output_sha256": {
-    "publication/v0.1/submission/README.md": "097ff8197ce53acb4566796a48ba8b3c8b1293903ac5f85997b8b76afbbcd9c2",
+    "publication/v0.1/submission/README.md": "2eee8d7eadd3b97b1f4ab2a474f4b15d656f32e38ec06f55aa30be72c178e066",
     "publication/v0.1/submission/asset-index.csv": "c9f219293b1fe639f7e738c876f1ad53caad601b339de8b58310222e87c338f8",
     "publication/v0.1/submission/manuscript-with-assets.md": "35c5eafb883e4dd4638980c404d2f8069cc92aa4878f759867df0b1bb5423f9e",
-    "publication/v0.1/submission/metadata.json": "a3e672d7a2d979be77151f40858a1078f5393e397eb8746d9f682a2c5fed11e4"
+    "publication/v0.1/submission/metadata.json": "532d97ac49f11bc3980e5704b7c2bf747d9f30b8a6f15203a6e33a4fb0b7989c",
+    "publication/v0.1/submission/zenodo-deposit.json": "ea3041d4ed2f864be73a55486cd286a9b98f0e8b1c7fd5cca3253032b1dc9c9f"
   },
+  "publication_license": "CC-BY-4.0",
   "release": "v0.1",
   "schema": "ranah-observatory/publication-v0.1-submission-manifest/v1",
   "source_sha256": {
@@ -19,7 +22,9 @@
     "publication/v0.1/manuscript.md": "5eaf620657709d1b7c5a3131f8a7c050b879db77952e011edd434ff4ec01574b",
     "publication/v0.1/release-manifest.json": "2b05cb64c25935f02ea713a6f18d0ecaf4e1f4c0c154cc5f8270960512cd380b",
     "publication/v0.1/rendered/render-manifest.json": "d70b19fde4534aedce8fdd190e241d96720249fd97b8a177e1970942d309314e",
-    "publication/v0.1/table-plan.csv": "3d6a2cc2712b13f092516e13831ed7c7139421b2e5f29baa5d919d07ff69894f"
+    "publication/v0.1/table-plan.csv": "3d6a2cc2712b13f092516e13831ed7c7139421b2e5f29baa5d919d07ff69894f",
+    "publication/v0.1/tools/finalize_submission_metadata.py": "77b26109317fcdf713519973bd1d3cfc324ff3761cd56eee39577b66ddd8ce92"
   },
-  "table_count": 7
+  "table_count": 7,
+  "target_repository": "Zenodo"
 }

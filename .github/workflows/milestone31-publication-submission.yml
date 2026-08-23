@@ -6,8 +6,11 @@ on:
       - main
     paths:
       - .github/workflows/milestone31-publication-submission.yml
+      - publication/v0.1/AUTHORSHIP.md
       - publication/v0.1/MILESTONE31_SUBMISSION_PACKAGE.md
+      - publication/v0.1/MILESTONE32_AUTHOR_DEPOSIT_METADATA.md
       - publication/v0.1/tools/build_submission.py
+      - publication/v0.1/tools/finalize_submission_metadata.py
       - publication/v0.1/submission/**
 
 permissions:
@@ -28,8 +31,11 @@ jobs:
           allowed = {
               '.github/workflows/milestone29-publication-v0.1.yml',
               '.github/workflows/milestone31-publication-submission.yml',
+              'publication/v0.1/AUTHORSHIP.md',
               'publication/v0.1/MILESTONE31_SUBMISSION_PACKAGE.md',
+              'publication/v0.1/MILESTONE32_AUTHOR_DEPOSIT_METADATA.md',
               'publication/v0.1/tools/build_submission.py',
+              'publication/v0.1/tools/finalize_submission_metadata.py',
           }
           changed = subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'], text=True).splitlines()
           offenders = [p for p in changed if p not in allowed and not p.startswith('publication/v0.1/submission/')]
@@ -46,16 +52,16 @@ jobs:
           git diff --exit-code -- publication/v0.1/rendered
           test -z "$(git status --porcelain -- publication/v0.1/rendered)"
 
-      - name: Rebuild submission package
-        run: python publication/v0.1/tools/build_submission.py
+      - name: Rebuild finalized submission package
+        run: python publication/v0.1/tools/finalize_submission_metadata.py
 
-      - name: Validate submission contract
+      - name: Validate submission contract and authorship
         run: |
           python - <<'PY'
           import csv, json
           from pathlib import Path
           sub = Path('publication/v0.1/submission')
-          required = {'README.md','asset-index.csv','manuscript-with-assets.md','metadata.json','submission-manifest.json'}
+          required = {'README.md','asset-index.csv','manuscript-with-assets.md','metadata.json','submission-manifest.json','zenodo-deposit.json'}
           assert {p.name for p in sub.iterdir() if p.is_file()} == required
           with (sub/'asset-index.csv').open(encoding='utf-8', newline='') as h:
               assets = list(csv.DictReader(h))
@@ -63,31 +69,51 @@ jobs:
           assert sum(r['asset_type']=='table_csv' for r in assets) == 7
           assert sum(r['asset_type']=='figure_svg' for r in assets) == 6
           assert all(r['status']=='materialized' for r in assets)
+
           meta = json.loads((sub/'metadata.json').read_text(encoding='utf-8'))
           assert meta['new_source_acquisition'] is False
           assert meta['new_statistical_or_ml_model_fit'] is False
           assert meta['claim_upgrade_performed'] is False
-          assert meta['author_record_status'] == 'pending_final_confirmation'
+          assert meta['author_record_status'] == 'confirmed'
+          assert meta['authors'] == [{'name':'Nabil Rizki Navisa','affiliation':'Independent Researcher','role':'author'}]
+          assert meta['corresponding_author_name'] == 'Nabil Rizki Navisa'
+          assert meta['publication_license'] == 'CC-BY-4.0'
+          assert meta['target_repository'] == 'Zenodo'
+          assert meta['venue'] == 'Zenodo'
+          assert meta['orcid'] is None
+          assert meta['doi'] is None
+
+          zenodo = json.loads((sub/'zenodo-deposit.json').read_text(encoding='utf-8'))['metadata']
+          assert zenodo['upload_type'] == 'publication'
+          assert zenodo['publication_type'] == 'preprint'
+          assert zenodo['creators'] == [{'name':'Navisa, Nabil Rizki','affiliation':'Independent Researcher'}]
+          assert zenodo['access_right'] == 'open'
+          assert zenodo['license'] == 'cc-by-4.0'
+
           manifest = json.loads((sub/'submission-manifest.json').read_text(encoding='utf-8'))
           assert manifest['asset_count'] == 13
           assert manifest['table_count'] == 7 and manifest['figure_count'] == 6
+          assert manifest['author_record_status'] == 'confirmed'
+          assert manifest['publication_license'] == 'CC-BY-4.0'
+          assert manifest['target_repository'] == 'Zenodo'
+
           manuscript = (sub/'manuscript-with-assets.md').read_text(encoding='utf-8')
           for asset_id in [f'T{i:02d}' for i in range(1,8)] + [f'F{i:02d}' for i in range(1,7)]:
               assert asset_id in manuscript, asset_id
-          print({'submission_outputs': 5, 'indexed_assets': 13, 'claim_upgrade': False})
+          print({'submission_outputs': 6, 'indexed_assets': 13, 'author': 'Nabil Rizki Navisa', 'target': 'Zenodo', 'claim_upgrade': False})
           PY
 
-      - name: Require byte-identical canonical submission package
-        run: |
-          git diff --exit-code -- publication/v0.1/submission
-          test -z "$(git status --porcelain -- publication/v0.1/submission)"
-
-      - name: Upload verified submission package
+      - name: Upload candidate submission package
         uses: actions/upload-artifact@v4
         with:
           name: publication-v0.1-submission
           path: publication/v0.1/submission
           retention-days: 7
+
+      - name: Require byte-identical canonical submission package
+        run: |
+          git diff --exit-code -- publication/v0.1/submission
+          test -z "$(git status --porcelain -- publication/v0.1/submission)"
 
       - name: Require no upstream science changes
         run: |

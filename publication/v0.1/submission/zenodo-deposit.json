@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "access_right": "open",
+    "creators": [
+      {
+        "affiliation": "Independent Researcher",
+        "name": "Navisa, Nabil Rizki"
+      }
+    ],
+    "description": "Ranah Observatory is a reproducible evidence framework for studying development outcomes in West Sumatra while separating descriptive evidence, predictive comparison, empirical favorable references, association, causal identification, scenario sensitivity, and policy readiness. In the qualified modern regime, cross-fitted models for poverty, unemployment, and real-GRDP growth generated 342 geography-out predictions and beat the preregistered same-year peer-mean benchmark on both RMSE and MAE, permitting bounded expected-performance comparisons but not causal interpretation. The corresponding development-gap layer contains 342 geography-year-target rows, of which 15 are materially less favorable than expected, 313 lie within expected intervals, and 14 are materially more favorable; stronger gap interpretation is support-authorized for 243 rows and blocked for 99. The framework also retains results that fail qualification. None of three one-year-ahead dynamic forecast targets beats own-lag persistence on both RMSE and MAE, so substantive 2026 forecasts remain blocked. Across 19 current-boundary geographies, zero pass the preregistered robust monotonic CHIRPS rainfall-trend gate for 1981-2025, and a candidate 1998 rainfall break fails the separate predictive and breakpoint-stability criteria for a qualified regime shift. A hierarchical trajectory model qualifies for four of seven modern socioeconomic indicators, while schooling and poverty trajectory classifications fail the locked benchmark. The report therefore does not estimate a definitive monetary value of West Sumatra's \u201cwasted potential,\u201d treat empirical favorable references as theoretical maxima, convert predictive residuals into causal underperformance, or rank policies by expected return. Its contribution is instead an auditable claim-gated research substrate that makes positive evidence, negative results, unresolved components, and prohibited inference visible in the same publication package.",
+    "keywords": [
+      "West Sumatra",
+      "development gaps",
+      "reproducible research",
+      "socioeconomic trajectories",
+      "empirical benchmarking",
+      "climate variability",
+      "disaster risk",
+      "negative results"
+    ],
+    "language": "eng",
+    "license": "cc-by-4.0",
+    "publication_date": "2026-08-23",
+    "publication_type": "preprint",
+    "title": "Ranah Observatory: A Reproducible Evidence Framework for Development Gaps, Socioeconomic Trajectories, and Climate-Disaster Constraints in West Sumatra",
+    "upload_type": "publication",
+    "version": "v0.1"
+  }
+}
