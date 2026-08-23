@@ -1,0 +1,178 @@
+name: Milestone 34 PDF Distribution Bundle
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/milestone29-publication-v0.1.yml
+      - .github/workflows/milestone33-preprint-citation.yml
+      - .github/workflows/milestone34-pdf-release.yml
+      - publication/v0.1/MILESTONE34_PDF_RELEASE_BUNDLE.md
+      - publication/v0.1/tools/build_pdf_release.py
+      - publication/v0.1/distribution/**
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_DATE_EPOCH: "1787490000"
+  PANDOC_VERSION: "3.1.11.1"
+  WEASYPRINT_VERSION: "68.0"
+
+jobs:
+  certify-pdf-distribution:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require M34 publication-distribution-only scope
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              '.github/workflows/milestone29-publication-v0.1.yml',
+              '.github/workflows/milestone33-preprint-citation.yml',
+              '.github/workflows/milestone34-pdf-release.yml',
+              'publication/v0.1/MILESTONE34_PDF_RELEASE_BUNDLE.md',
+              'publication/v0.1/tools/build_pdf_release.py',
+          }
+          changed = subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'], text=True).splitlines()
+          offenders = [p for p in changed if p not in allowed and not p.startswith('publication/v0.1/distribution/')]
+          assert not offenders, offenders
+          print({'changed_files': len(changed), 'unauthorized_paths': 0})
+          PY
+
+      - name: Preserve M29 scientific publication freeze
+        run: python scripts/audit_milestone29_publication_v0_1.py
+
+      - name: Rebuild and verify M30 canonical assets
+        run: |
+          python publication/v0.1/tools/build_assets.py
+          git diff --exit-code -- publication/v0.1/rendered
+          test -z "$(git status --porcelain -- publication/v0.1/rendered)"
+
+      - name: Rebuild and verify M31 finalized submission package
+        run: |
+          python publication/v0.1/tools/finalize_submission_metadata.py
+          git diff --exit-code -- publication/v0.1/submission
+          test -z "$(git status --porcelain -- publication/v0.1/submission)"
+
+      - name: Rebuild and verify M33 citation-ready preprint
+        run: |
+          python publication/v0.1/tools/build_preprint.py
+          git diff --exit-code -- publication/v0.1/preprint
+          test -z "$(git status --porcelain -- publication/v0.1/preprint)"
+
+      - name: Install pinned PDF renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            curl \
+            fonts-dejavu-core \
+            libcairo2 \
+            libffi-dev \
+            libgdk-pixbuf-2.0-0 \
+            libpango-1.0-0 \
+            libpangoft2-1.0-0 \
+            poppler-utils \
+            shared-mime-info
+          curl -fsSL -o /tmp/pandoc.deb \
+            "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          sudo dpkg -i /tmp/pandoc.deb
+          python -m pip install --disable-pip-version-check "weasyprint==${WEASYPRINT_VERSION}"
+          pandoc --version | head -1 | grep -F "pandoc ${PANDOC_VERSION}"
+          python - <<'PY'
+          import weasyprint
+          assert weasyprint.__version__ == '68.0'
+          print({'weasyprint': weasyprint.__version__})
+          PY
+
+      - name: Build M34 PDF distribution
+        run: python publication/v0.1/tools/build_pdf_release.py
+
+      - name: Validate distribution and PDF contract
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          dist = Path('publication/v0.1/distribution')
+          pdf = dist/'Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf'
+          required = {pdf.name, 'README.md', 'SHA256SUMS.txt', 'distribution-manifest.json'}
+          assert {p.name for p in dist.iterdir() if p.is_file()} == required
+
+          manifest = json.loads((dist/'distribution-manifest.json').read_text(encoding='utf-8'))
+          blocked = {
+              'B01_MONETARY_WASTED_POTENTIAL','B02_THEORETICAL_MAXIMUM','B03_CAUSAL_RESIDUAL',
+              'B04_GUARANTEED_POLICY_GAIN','B05_CAUSAL_RAINFALL_UNEMPLOYMENT','B06_EVENT_COUNTS_AS_IMPACT',
+              'B07_COMPOSITE_DISASTER_RISK','B08_SENSITIVITY_AS_POLICY_EFFECT','B09_POLICY_RANKING'
+          }
+          assert manifest['author'] == 'Nabil Rizki Navisa'
+          assert manifest['affiliation'] == 'Independent Researcher'
+          assert manifest['publication_license'] == 'CC-BY-4.0'
+          assert manifest['target_repository'] == 'Zenodo'
+          assert manifest['canonical_table_count'] == 7
+          assert manifest['canonical_figure_count'] == 6
+          assert manifest['new_analytical_source_acquisition'] is False
+          assert manifest['new_statistical_or_ml_model_fit'] is False
+          assert manifest['claim_upgrade_performed'] is False
+          assert set(manifest['blocked_claims_retained']) == blocked
+
+          info = subprocess.check_output(['pdfinfo', str(pdf)], text=True)
+          fields = {}
+          for line in info.splitlines():
+              if ':' in line:
+                  key, value = line.split(':', 1)
+                  fields[key.strip()] = value.strip()
+          assert int(fields['Pages']) >= 20
+          assert fields.get('Encrypted', '').lower().startswith('no')
+          assert fields.get('Page size', '').startswith('595.276 x 841.89 pts')
+
+          text_path = Path('/tmp/ranah-preprint.txt')
+          subprocess.run(['pdftotext', str(pdf), str(text_path)], check=True)
+          text = text_path.read_text(encoding='utf-8')
+          required_text = [
+              'Nabil Rizki Navisa', 'Independent Researcher',
+              'Ranah Observatory: A Reproducible Evidence Framework',
+              *[f'Figure F{i:02d}' for i in range(1,7)],
+              *[f'Table T{i:02d}' for i in range(1,8)],
+              *blocked,
+          ]
+          for token in required_text:
+              assert token in text, token
+          for ref_id in [
+              'CHIRPS3_DATA_2025','FUNK_ET_AL_2026_CHIRPS3','BPS_WEBAPI','BIG_BOUNDARIES',
+              'DJPK_SIKD_APBD','BKPM_REALIZATION_REPORTS','BKPM_SATUDATA','BNPB_INARISK_METHOD',
+              'BNPB_DIBI_2012','USGS_PADANG_2009','MANN1945','THEIL1950','SEN1968',
+              'HAMED_RAO1998','HOLM1979','PETTITT1979'
+          ]:
+              assert ref_id in text, ref_id
+          print({'pages': fields['Pages'], 'encrypted': fields['Encrypted'], 'blocked_claims': 9, 'references': 16})
+          PY
+          cd publication/v0.1/distribution
+          sha256sum -c SHA256SUMS.txt
+
+      - name: Upload candidate PDF distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: ranah-observatory-v0.1-pdf-distribution
+          path: publication/v0.1/distribution
+          retention-days: 7
+
+      - name: Require byte-identical canonical distribution
+        run: |
+          git diff --exit-code -- publication/v0.1/distribution
+          test -z "$(git status --porcelain -- publication/v0.1/distribution)"
+
+      - name: Require no upstream scientific changes
+        run: |
+          git diff --exit-code origin/main...HEAD -- \
+            data \
+            docs \
+            research/MILESTONE0* \
+            research/MILESTONE1* \
+            research/MILESTONE2* \
+            scripts/build_milestone* \
+            scripts/finalize_milestone*
