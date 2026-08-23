@@ -1,0 +1,6 @@
+analysis,target_or_series,qualification_rule,qualified,primary_diagnostic,public_state
+M19 one-year-ahead forecast,poverty_rate,dynamic_ridge_rmse_and_mae_both_strictly_lower_than_persistence,False,dynamic RMSE 0.494549 vs persistence 0.464907; dynamic MAE 0.405122 vs persistence 0.363579,forecast blocked
+M19 one-year-ahead forecast,unemployment_rate,dynamic_ridge_rmse_and_mae_both_strictly_lower_than_persistence,False,dynamic RMSE 0.901583 vs persistence 0.830794; dynamic MAE 0.65993 vs persistence 0.568842,forecast blocked
+M19 one-year-ahead forecast,real_grdp_growth,dynamic_ridge_rmse_and_mae_both_strictly_lower_than_persistence,False,dynamic RMSE 12.762259 vs persistence 2.576326; dynamic MAE 6.596796 vs persistence 1.571263,forecast blocked
+M20 robust monotonic rainfall trend,19 current-boundary geographies,adjusted trend + Holm + split-direction + leave-one-year-out stability,False,0/19 geographies qualified,no_robust_monotonic_trend
+M21 single-break rainfall regime,regional unweighted mean rainfall,rolling-origin predictive performance + breakpoint stability,False,full break 1998; predictive pass=False; stability pass=False,regime_shift_not_qualified

@@ -1,0 +1,6 @@
+milestone,evidence_family,period,geographies,observations,held_or_boundary,claim_state
+M24,BPS stable-32 province comparator,2018-2025,32,1536,6 current Papua-region provinces excluded; no backcasting,context_only
+M25,DJPK annual-final public finance,2018-2025,19,608,central_transfer_revenue held; no derived ratios,context_only
+M26,disaster-risk component evidence,mixed component vintages,19,57,observed impact and hazard/vulnerability numeric promotion held; no composite risk,context_only
+M27,BKPM quarterly investment history,2010-Q1-2025-Q4,19,1440,2024-Q1 held; PMA/PMDN and source currencies remain separate,context_only
+M28,"broader BPS outcome, infrastructure, health and demographic panel",2018-2025,19,931,electricity-access candidate held at structure stage; methodology-specific missingness retained,context_only

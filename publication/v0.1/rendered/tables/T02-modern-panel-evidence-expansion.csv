@@ -1,0 +1,3 @@
+panel,geographies,period,indicators,present_observations,missing_cells,complete_indicators,interpretation
+M10 base panel,19,2018-2025,15,1748,532,8,Frozen analytical panel; explicit missingness; no imputation.
+M28 panel v2,19,2018-2025,22,2679,665,10,Context expansion only; M10 rows preserved; source methodology states retained.

@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="600" viewBox="0 0 1260 600">
+<title>F03 Modern trajectory classification matrix</title>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111">
+<text x="30.0" y="34.0" font-size="22" font-weight="bold" text-anchor="start">F03. Modern trajectory classification matrix</text>
+<text x="298.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 298 150)">Kepulauan Mentawai</text>
+<text x="343.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 343 150)">Pesisir Selatan</text>
+<text x="388.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 388 150)">Solok</text>
+<text x="433.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 433 150)">Sijunjung</text>
+<text x="478.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 478 150)">Tanah Datar</text>
+<text x="523.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 523 150)">Padang Pariaman</text>
+<text x="568.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 568 150)">Agam</text>
+<text x="613.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 613 150)">Lima Puluh Kota</text>
+<text x="658.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 658 150)">Pasaman</text>
+<text x="703.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 703 150)">Solok Selatan</text>
+<text x="748.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 748 150)">Dharmasraya</text>
+<text x="793.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 793 150)">Pasaman Barat</text>
+<text x="838.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 838 150)">Padang</text>
+<text x="883.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 883 150)">Solok</text>
+<text x="928.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 928 150)">Sawahlunto</text>
+<text x="973.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 973 150)">Padang Panjang</text>
+<text x="1018.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 1018 150)">Bukittinggi</text>
+<text x="1063.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 1063 150)">Payakumbuh</text>
+<text x="1108.0" y="150.0" font-size="9" font-weight="normal" text-anchor="end" transform="rotate(-60 1108 150)">Pariaman</text>
+<text x="25.0" y="184.0" font-size="12" font-weight="normal" text-anchor="start">expected_years_schooling</text>
+<text x="215.0" y="184.0" font-size="10" font-weight="normal" text-anchor="end">failed gate</text>
+<rect x="280.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="301.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="325.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="346.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="370.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="391.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="415.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="436.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="460.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="481.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="505.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="526.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="550.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="571.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="595.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="616.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="640.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="661.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="685.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="706.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="730.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="751.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="775.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="796.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="820.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="841.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="865.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="886.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="910.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="931.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="955.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="976.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1000.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1021.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1045.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1066.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1090.0" y="160.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1111.0" y="186.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<text x="25.0" y="226.0" font-size="12" font-weight="normal" text-anchor="start">mean_years_schooling</text>
+<text x="215.0" y="226.0" font-size="10" font-weight="normal" text-anchor="end">failed gate</text>
+<rect x="280.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="301.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="325.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="346.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="370.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="391.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="415.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="436.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="460.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="481.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="505.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="526.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="550.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="571.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="595.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="616.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="640.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="661.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="685.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="706.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="730.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="751.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="775.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="796.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="820.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="841.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="865.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="886.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="910.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="931.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="955.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="976.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1000.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1021.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1045.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1066.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1090.0" y="202.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1111.0" y="228.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<text x="25.0" y="268.0" font-size="12" font-weight="bold" text-anchor="start">labor_force_participation</text>
+<text x="215.0" y="268.0" font-size="10" font-weight="normal" text-anchor="end">qualified</text>
+<rect x="280.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="325.0" y="244.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="370.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="415.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="460.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="505.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="550.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="595.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="640.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="685.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="730.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="775.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="820.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="865.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="910.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="955.0" y="244.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1000.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1045.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1090.0" y="244.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<text x="25.0" y="310.0" font-size="12" font-weight="bold" text-anchor="start">unemployment_rate</text>
+<text x="215.0" y="310.0" font-size="10" font-weight="normal" text-anchor="end">qualified</text>
+<rect x="280.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="325.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="370.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="415.0" y="286.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="460.0" y="286.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="505.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="550.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="595.0" y="286.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="640.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="685.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="730.0" y="286.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="775.0" y="286.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="820.0" y="286.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="865.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="910.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="955.0" y="286.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1000.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1045.0" y="286.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1090.0" y="286.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<text x="25.0" y="352.0" font-size="12" font-weight="normal" text-anchor="start">poverty_rate</text>
+<text x="215.0" y="352.0" font-size="10" font-weight="normal" text-anchor="end">failed gate</text>
+<rect x="280.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="301.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="325.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="346.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="370.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="391.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="415.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="436.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="460.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="481.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="505.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="526.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="550.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="571.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="595.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="616.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="640.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="661.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="685.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="706.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="730.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="751.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="775.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="796.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="820.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="841.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="865.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="886.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="910.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="931.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="955.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="976.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1000.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1021.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1045.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1066.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<rect x="1090.0" y="328.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="1111.0" y="354.0" font-size="16" font-weight="bold" text-anchor="middle">×</text>
+<text x="25.0" y="394.0" font-size="12" font-weight="bold" text-anchor="start">real_grdp_growth</text>
+<text x="215.0" y="394.0" font-size="10" font-weight="normal" text-anchor="end">qualified</text>
+<rect x="280.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="325.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="370.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="415.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="460.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="505.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="550.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="595.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="640.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="685.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="730.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="775.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="820.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="865.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="910.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="955.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1000.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1045.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1090.0" y="370.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<text x="25.0" y="436.0" font-size="12" font-weight="bold" text-anchor="start">rice_yield</text>
+<text x="215.0" y="436.0" font-size="10" font-weight="normal" text-anchor="end">qualified</text>
+<rect x="280.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="325.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="370.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="415.0" y="412.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="460.0" y="412.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="505.0" y="412.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="550.0" y="412.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="595.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="640.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="685.0" y="412.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="730.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="775.0" y="412.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="820.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="865.0" y="412.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="910.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="955.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1000.0" y="412.0" width="42.0" height="38.0" fill="#fff" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1045.0" y="412.0" width="42.0" height="38.0" fill="#222" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="1090.0" y="412.0" width="42.0" height="38.0" fill="#999" stroke="#555" stroke-width="1" rx="0"/>
+<rect x="30.0" y="489.0" width="24.0" height="18.0" fill="#222" stroke="#111" stroke-width="1" rx="0"/>
+<text x="62.0" y="503.0" font-size="11" font-weight="normal" text-anchor="start">persistent increase</text>
+<rect x="200.0" y="489.0" width="24.0" height="18.0" fill="#999" stroke="#111" stroke-width="1" rx="0"/>
+<text x="232.0" y="503.0" font-size="11" font-weight="normal" text-anchor="start">persistent decrease</text>
+<rect x="380.0" y="489.0" width="24.0" height="18.0" fill="#fff" stroke="#111" stroke-width="1" rx="0"/>
+<text x="412.0" y="503.0" font-size="11" font-weight="normal" text-anchor="start">not robust</text>
+<text x="530.0" y="503.0" font-size="11" font-weight="normal" text-anchor="start">× = indicator failed benchmark; geography classifications are not authorized</text>
+</g>
+</svg>
