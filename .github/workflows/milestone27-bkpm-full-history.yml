@@ -1,0 +1,79 @@
+name: Milestone 27 BKPM Full Quarterly History
+
+on:
+  push:
+    branches:
+      - agent/milestone27-bkpm-investment-history
+    paths:
+      - .github/workflows/milestone27-bkpm-full-history.yml
+
+concurrency:
+  group: milestone27-bkpm-full-history-writer
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-full-history:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/milestone27-bkpm-investment-history
+          fetch-depth: 0
+
+      - name: Compile materializer
+        run: python -m py_compile scripts/materialize_milestone27_bkpm_full_history.py
+
+      - name: Materialize locked 64-quarter history
+        run: python scripts/materialize_milestone27_bkpm_full_history.py
+
+      - name: Verify fail-closed boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('data/manifests/milestone27_bkpm_full_history.json').read_text(encoding='utf-8'))
+          assert m['schema'] == 'ranah-observatory/milestone27-bkpm-full-history/v1'
+          assert m['quarter_count'] == 64
+          assert len(m['quarter_results']) == 64
+          assert m['target_investment_values_retrieved'] is True
+          assert m['target_investment_values_inspected'] is True
+          assert m['raw_filtered_response_persisted'] is True
+          assert m['missing_values_coerced_to_zero'] is False
+          assert m['absent_geography_status_groups_materialized_as_zero'] is False
+          for key in (
+              'pma_pmdn_combination_performed', 'cross_quarter_addition_performed', 'annual_sum_performed',
+              'q4_interpreted_as_annual_total', 'external_fx_conversion_performed', 'per_capita_normalization_performed',
+              'ranking_created', 'statistical_model_fit', 'causal_claim_created', 'monetary_wasted_potential_estimated',
+          ):
+              assert m[key] is False, key
+          assert m['qualified_quarter_count'] + m['failed_quarter_count'] == 64
+          print({
+              'success': m['full_history_success'],
+              'qualified_quarters': m['qualified_quarter_count'],
+              'failed_quarters': m['failed_quarter_count'],
+              'zero_observed_quarters': m['zero_observed_sumbar_quarter_count'],
+              'source_rows': m['source_row_count_total'],
+              'observations': m['materialized_geography_quarter_status_observation_count'],
+              'failures': {f"{r['year']}-{r['quarter']}": r['fail_reasons'] for r in m['quarter_results'] if not r['qualified']},
+          })
+          PY
+
+      - name: Commit frozen full-history evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/processed/bkpm/m27_full_history \
+            data/analysis/engine/investment_realization_v1/m27-bkpm-quarterly-history.csv \
+            data/analysis/engine/investment_realization_v1/m27-bkpm-quarter-audit.csv \
+            data/manifests/milestone27_bkpm_full_history.json
+          if git diff --cached --quiet; then
+            echo "No full-history changes to commit"
+            exit 0
+          fi
+          git commit -m "Freeze M27 BKPM full quarterly history"
+          git push origin HEAD:agent/milestone27-bkpm-investment-history
