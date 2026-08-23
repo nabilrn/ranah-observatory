@@ -1,0 +1,137 @@
+name: Milestone 35 External Deposit Handoff
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/milestone29-publication-v0.1.yml
+      - .github/workflows/milestone33-preprint-citation.yml
+      - .github/workflows/milestone34-pdf-release.yml
+      - .github/workflows/milestone35-deposit-handoff.yml
+      - publication/v0.1/MILESTONE35_EXTERNAL_DEPOSIT_HANDOFF.md
+      - publication/v0.1/tools/build_deposit_handoff.py
+      - publication/v0.1/deposit/**
+
+permissions:
+  contents: read
+
+jobs:
+  certify-deposit-handoff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require M35 handoff-only scope
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              '.github/workflows/milestone29-publication-v0.1.yml',
+              '.github/workflows/milestone33-preprint-citation.yml',
+              '.github/workflows/milestone34-pdf-release.yml',
+              '.github/workflows/milestone35-deposit-handoff.yml',
+              'publication/v0.1/MILESTONE35_EXTERNAL_DEPOSIT_HANDOFF.md',
+              'publication/v0.1/tools/build_deposit_handoff.py',
+          }
+          changed = subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'], text=True).splitlines()
+          offenders = [p for p in changed if p not in allowed and not p.startswith('publication/v0.1/deposit/')]
+          assert not offenders, offenders
+          print({'changed_files': len(changed), 'unauthorized_paths': 0})
+          PY
+
+      - name: Preserve M29 scientific publication freeze
+        run: python scripts/audit_milestone29_publication_v0_1.py
+
+      - name: Verify frozen M34 distribution identity
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('publication/v0.1')
+          dist = json.loads((root/'distribution/distribution-manifest.json').read_text(encoding='utf-8'))
+          pdf_rel = 'publication/v0.1/distribution/Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf'
+          pdf = Path(pdf_rel)
+          h = hashlib.sha256(pdf.read_bytes()).hexdigest()
+          assert h == dist['output_sha256'][pdf_rel]
+          assert h == '5325b209acb37d622151fe2ce898edd28e5d25bf4176d660e50754cae06e888a'
+          assert dist['author'] == 'Nabil Rizki Navisa'
+          assert dist['affiliation'] == 'Independent Researcher'
+          assert dist['publication_license'] == 'CC-BY-4.0'
+          assert dist['target_repository'] == 'Zenodo'
+          assert dist['claim_upgrade_performed'] is False
+          assert dist['new_analytical_source_acquisition'] is False
+          assert dist['new_statistical_or_ml_model_fit'] is False
+          assert len(dist['blocked_claims_retained']) == 9
+          print({'canonical_pdf_sha256': h, 'blocked_claims': 9, 'claim_upgrade': False})
+          PY
+
+      - name: Rebuild M35 deposit handoff
+        run: python publication/v0.1/tools/build_deposit_handoff.py
+
+      - name: Validate fail-closed handoff contract
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          dep = Path('publication/v0.1/deposit')
+          required = {'README.md','CHECKLIST.md','release-notes.md','deposit-handoff.json'}
+          assert {p.name for p in dep.iterdir() if p.is_file()} == required
+          handoff = json.loads((dep/'deposit-handoff.json').read_text(encoding='utf-8'))
+          assert handoff['schema'] == 'ranah-observatory/publication-v0.1-external-deposit-handoff/v1'
+          assert handoff['release'] == 'v0.1'
+          assert handoff['status'] == 'awaiting_explicit_external_authorization'
+          assert handoff['distribution_freeze_commit'] == 'cbdadc11de3e37995ad5ebeb97727edd5824401d'
+          assert handoff['external_publish_authorized'] is False
+          assert handoff['external_deposit_performed'] is False
+          assert handoff['github_release_performed'] is False
+          assert handoff['corresponding_author_contact'] is None
+          assert handoff['doi'] is None
+          assert handoff['target_repository'] == 'Zenodo'
+          assert handoff['canonical_pdf']['sha256'] == '5325b209acb37d622151fe2ce898edd28e5d25bf4176d660e50754cae06e888a'
+          blockers = {b['id']: b['status'] for b in handoff['hard_blockers']}
+          assert blockers == {
+              'explicit_external_publish_authorization': 'pending',
+              'corresponding_author_contact': 'pending',
+          }
+          assert handoff['science_boundary'] == {
+              'blocked_claim_count_retained': 9,
+              'claim_upgrade_performed': False,
+              'new_analytical_source_acquisition': False,
+              'new_statistical_or_ml_model_fit': False,
+          }
+          for record in ['submission_metadata','zenodo_metadata','distribution_manifest']:
+              path = Path(handoff[record]['path'])
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == handoff[record]['sha256'], record
+          checklist = (dep/'CHECKLIST.md').read_text(encoding='utf-8')
+          assert 'explicit author instruction' in checklist
+          assert 'corresponding-author contact' in checklist
+          assert 'does not authorize a GitHub Release, Zenodo publication, DOI claim' in checklist
+          notes = (dep/'release-notes.md').read_text(encoding='utf-8')
+          assert 'not externally published by M35' in notes
+          print({'outputs': 4, 'hard_blockers': 2, 'external_publish_authorized': False})
+          PY
+
+      - name: Require byte-identical canonical handoff
+        run: |
+          git diff --exit-code -- publication/v0.1/deposit
+          test -z "$(git status --porcelain -- publication/v0.1/deposit)"
+
+      - name: Require no upstream scientific or distribution changes
+        run: |
+          git diff --exit-code origin/main...HEAD -- \
+            data \
+            docs \
+            publication/v0.1/claim-ledger.csv \
+            publication/v0.1/manuscript.md \
+            publication/v0.1/rendered \
+            publication/v0.1/submission \
+            publication/v0.1/preprint \
+            publication/v0.1/distribution \
+            research/MILESTONE0* \
+            research/MILESTONE1* \
+            research/MILESTONE2* \
+            scripts/build_milestone* \
+            scripts/finalize_milestone*
