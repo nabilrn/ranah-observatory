@@ -1,0 +1,39 @@
+{
+  "canonical_station_representation": "ncei_gsod_96163099999",
+  "causal_claim_authorized": false,
+  "chirps_baseline_modified": false,
+  "classification": "station_overlap_directionally_supportive",
+  "evidence_scope": "independent_historical_station_directional_overlap",
+  "files": {
+    "annual-summary.csv": {
+      "bytes": 415,
+      "sha256": "e122744c482a67574c89563c777ee62fe0291c65b85b3ceb8d85c725923c3adc"
+    },
+    "source/ncei_gsod_96163099999_1997.csv": {
+      "bytes": 77589,
+      "sha256": "1c993277916d7b749b0eb87e51aa8a858860ee947b9a820cfeaa02a5a583f649"
+    },
+    "source/ncei_gsod_96163099999_1998.csv": {
+      "bytes": 76917,
+      "sha256": "b869dd6289889bb9725bf3bd3cac2c38a4d081ff4840e4ea5cb20c99232b1f75"
+    },
+    "stage0-qualification.json": {
+      "bytes": 2167,
+      "sha256": "3dfe0e3c5d1007a16c0f7cdf994b6201f55daa5c59fc0131cd767b74088f0c55"
+    },
+    "station-overlap.json": {
+      "bytes": 5553,
+      "sha256": "b38c3d1bc68a4d093aea6b4b401316f0cd753464e001a12f94a651aaacd6d635"
+    }
+  },
+  "milestone": 36,
+  "offline_rebuild_supported": true,
+  "publication_package_modified": false,
+  "raw_source_files_frozen": true,
+  "schema": "ranah-observatory/milestone36-station-evidence-manifest/v1",
+  "source_is_third_party_observation_summary": true,
+  "target_years": [
+    1997,
+    1998
+  ]
+}

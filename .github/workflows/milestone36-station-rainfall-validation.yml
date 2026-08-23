@@ -1,0 +1,141 @@
+name: Milestone 36 Station Rainfall Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - research/MILESTONE36_STATION_RAINFALL_VALIDATION_SPEC.md
+      - scripts/probe_milestone36_station_archive.py
+      - scripts/build_milestone36_station_overlap.py
+      - scripts/finalize_milestone36_station_evidence.py
+      - tests/test_milestone36_station_archive.py
+      - tests/test_milestone36_station_overlap.py
+      - data/validation/climate/station/m36/**
+      - docs/MILESTONE36_STATION_RAINFALL_VALIDATION.md
+      - .github/workflows/milestone36-station-rainfall-validation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-evidence-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require M36 evidence-validation-only scope
+        if: github.event_name == 'pull_request'
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed_exact = {
+              '.github/workflows/milestone36-station-rainfall-validation.yml',
+              'research/MILESTONE36_STATION_RAINFALL_VALIDATION_SPEC.md',
+              'scripts/probe_milestone36_station_archive.py',
+              'scripts/build_milestone36_station_overlap.py',
+              'scripts/finalize_milestone36_station_evidence.py',
+              'tests/test_milestone36_station_archive.py',
+              'tests/test_milestone36_station_overlap.py',
+              'docs/MILESTONE36_STATION_RAINFALL_VALIDATION.md',
+          }
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'origin/main...HEAD'], text=True
+          ).splitlines()
+          offenders = [
+              path for path in changed
+              if path not in allowed_exact
+              and not path.startswith('data/validation/climate/station/m36/')
+          ]
+          assert not offenders, offenders
+          print({'changed_files': len(changed), 'unauthorized_paths': 0})
+          PY
+
+      - name: Run offline M36 contract tests
+        run: |
+          python -m unittest tests.test_milestone36_station_archive -v
+          python -m unittest tests.test_milestone36_station_overlap -v
+
+      - name: Verify frozen manifest and scientific boundaries
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path('data/validation/climate/station/m36')
+          manifest = json.loads((root / 'manifest.json').read_text(encoding='utf-8'))
+          assert manifest['schema'] == 'ranah-observatory/milestone36-station-evidence-manifest/v1'
+          assert manifest['classification'] == 'station_overlap_directionally_supportive'
+          assert manifest['canonical_station_representation'] == 'ncei_gsod_96163099999'
+          assert manifest['target_years'] == [1997, 1998]
+          assert manifest['offline_rebuild_supported'] is True
+          assert manifest['raw_source_files_frozen'] is True
+          assert manifest['chirps_baseline_modified'] is False
+          assert manifest['publication_package_modified'] is False
+          assert manifest['causal_claim_authorized'] is False
+
+          for rel, meta in manifest['files'].items():
+              path = root / rel
+              assert path.is_file(), rel
+              assert path.stat().st_size == meta['bytes'], rel
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == meta['sha256'], rel
+
+          overlap = json.loads((root / 'station-overlap.json').read_text(encoding='utf-8'))
+          annual = {row['year']: row for row in overlap['annual']}
+          assert annual[1997]['valid_prcp_days'] == 345
+          assert annual[1998]['valid_prcp_days'] == 340
+          assert annual[1997]['valid_prcp_fraction'] >= 0.90
+          assert annual[1998]['valid_prcp_fraction'] >= 0.90
+          assert annual[1997]['maximum_consecutive_days_without_valid_prcp'] == 4
+          assert annual[1998]['maximum_consecutive_days_without_valid_prcp'] == 4
+          assert annual[1997]['annual_prcp_mm'] == 774.192
+          assert annual[1998]['annual_prcp_mm'] == 2730.5
+          assert overlap['comparison']['classification'] == 'station_overlap_directionally_supportive'
+          assert overlap['comparison']['comparison_scope'] == 'directional_independent_overlap_only'
+          assert overlap['conclusions']['safe_to_relabel_chirps_as_observed'] is False
+          assert overlap['conclusions']['safe_to_mark_global_chirps_station_validation_complete'] is False
+          assert overlap['conclusions']['safe_to_merge_96163_across_station_history'] is False
+          assert overlap['conclusions']['causal_claim_authorized'] is False
+
+          stage0 = json.loads((root / 'stage0-qualification.json').read_text(encoding='utf-8'))
+          assert stage0['accepted_stage1_representation'] == 'ncei_gsod_96163099999'
+          assert stage0['precipitation_values_inspected_during_stage0'] is False
+          assert stage0['stage1_numeric_inspection_authorized'] is True
+          assert stage0['station_history_guard']['safe_to_merge_96163_across_station_history'] is False
+
+          print({
+              'classification': manifest['classification'],
+              '1997_mm': annual[1997]['annual_prcp_mm'],
+              '1998_mm': annual[1998]['annual_prcp_mm'],
+              'offline_rebuild_supported': True,
+          })
+          PY
+
+      - name: Rebuild station overlap from frozen NCEI source only
+        run: |
+          rm -rf artifacts/m36/rebuild
+          python scripts/build_milestone36_station_overlap.py \
+            --source-dir data/validation/climate/station/m36/source \
+            --output-dir artifacts/m36/rebuild
+          diff -u \
+            data/validation/climate/station/m36/annual-summary.csv \
+            artifacts/m36/rebuild/annual-summary.csv
+          diff -u \
+            data/validation/climate/station/m36/station-overlap.json \
+            artifacts/m36/rebuild/station-overlap.json
+
+      - name: Require no change to frozen CHIRPS or publication outputs
+        if: github.event_name == 'pull_request'
+        run: |
+          git diff --exit-code origin/main...HEAD -- \
+            data/processed/climate/rainfall \
+            publication/v0.1
