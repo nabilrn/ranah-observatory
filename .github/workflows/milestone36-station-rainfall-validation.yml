@@ -11,24 +11,22 @@ on:
       - scripts/finalize_milestone36_station_evidence.py
       - tests/test_milestone36_station_archive.py
       - tests/test_milestone36_station_overlap.py
-      - data/validation/climate/station/**
-      - data/manifests/milestone36_*.json
+      - data/validation/climate/station/m36/**
       - docs/MILESTONE36_STATION_RAINFALL_VALIDATION.md
       - .github/workflows/milestone36-station-rainfall-validation.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  station-overlap-qualification:
+  frozen-evidence-validation:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
 
       - uses: actions/setup-python@v5
         with:
@@ -49,12 +47,13 @@ jobs:
               'tests/test_milestone36_station_overlap.py',
               'docs/MILESTONE36_STATION_RAINFALL_VALIDATION.md',
           }
-          changed = subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'], text=True).splitlines()
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', 'origin/main...HEAD'], text=True
+          ).splitlines()
           offenders = [
-              p for p in changed
-              if p not in allowed_exact
-              and not p.startswith('data/validation/climate/station/')
-              and not p.startswith('data/manifests/milestone36_')
+              path for path in changed
+              if path not in allowed_exact
+              and not path.startswith('data/validation/climate/station/m36/')
           ]
           assert not offenders, offenders
           print({'changed_files': len(changed), 'unauthorized_paths': 0})
@@ -65,170 +64,74 @@ jobs:
           python -m unittest tests.test_milestone36_station_archive -v
           python -m unittest tests.test_milestone36_station_overlap -v
 
-      - name: Probe BMKG station history guard and NCEI archive representations
-        run: |
-          mkdir -p artifacts/m36
-          python scripts/probe_milestone36_station_archive.py --output artifacts/m36/stage0-station-archive-probe.json
-
-      - name: Enforce Stage 0 fail-closed contract and authorize only locked GSOD fallback
+      - name: Verify frozen manifest and scientific boundaries
         run: |
           python - <<'PY'
+          import hashlib
           import json
           from pathlib import Path
-          p = json.loads(Path('artifacts/m36/stage0-station-archive-probe.json').read_text(encoding='utf-8'))
-          c = p['conclusions']
-          assert p['locked_candidate_order'] == ['IDM00096163', '96163099999']
-          assert p['target_station']['traditional_wmo_identifier'] == '96163'
-          assert p['target_station']['target_years'] == [1997, 1998]
-          assert c['station_history_break_guard_triggered'] is True, p['bmkg_current_station']
-          assert c['precipitation_values_inspected_in_stage0'] is False
-          assert c['safe_to_mark_chirps_station_validation_complete'] is False
-          assert c['safe_to_merge_96163_across_station_history'] is False
-          assert c['ghcn_historical_identity_qualified'] is False
-          assert c['ghcn_1997_1998_coverage_metadata_available'] is False
-          assert c['gsod_historical_identity_qualified_both_years'] is True
-          assert c['accepted_stage1_representation'] == 'ncei_gsod_96163099999'
-          assert c['stage1_numeric_inspection_authorized'] is True
-          print({
-              'locked_fallback': c['accepted_stage1_representation'],
-              'live_bmkg_recheck': c['live_bmkg_current_identity_recheck_qualified'],
-              'numeric_inspection_authorized': True,
-          })
-          PY
 
-      - name: Build preregistered Stage 1 numeric candidate
-        run: python scripts/build_milestone36_station_overlap.py --output-dir artifacts/m36/stage1
-
-      - name: Validate Stage 1 classification contract
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p = json.loads(Path('artifacts/m36/stage1/station-overlap.json').read_text(encoding='utf-8'))
-          assert p['schema'] == 'ranah-observatory/milestone36-station-overlap/v1'
-          assert p['station']['gsod_station_identifier'] == '96163099999'
-          assert p['station']['stage1_representation'] == 'ncei_gsod_96163099999'
-          rules = p['locked_rules']
-          assert rules['minimum_valid_fraction'] == 0.90
-          assert rules['minimum_valid_days_each_target_year'] == 329
-          assert rules['maximum_missing_streak_days'] == 31
-          assert rules['missing_as_zero'] is False
-          assert rules['primary_comparison'] == 'sign(total_1998 - total_1997)'
-          annual = {row['year']: row for row in p['annual']}
-          assert set(annual) == {1997, 1998}
-          for year, row in annual.items():
-              assert row['identity_valid'] is True, (year, row)
-              assert row['source_row_count'] > 0
-              assert row['valid_prcp_days'] <= row['calendar_days']
-              if row['completeness_pass']:
-                  assert row['valid_prcp_days'] >= 329
-                  assert row['maximum_consecutive_days_without_valid_prcp'] <= 31
-                  assert row['annual_prcp_inches'] is not None
-                  assert row['annual_prcp_mm'] is not None
-              else:
-                  assert row['annual_prcp_inches'] is None
-                  assert row['annual_prcp_mm'] is None
-          classification = p['comparison']['classification']
-          assert classification in {
-              'station_overlap_directionally_supportive',
-              'station_overlap_directionally_discordant',
-              'station_overlap_incomplete_or_noncomparable',
-          }
-          assert p['comparison']['chirps_finding_id'] == 'm6_climate_1997_1998_signal'
-          assert p['comparison']['chirps_claim_class'] == 'model_estimate'
-          assert p['comparison']['chirps_status_before_m36'] == 'descriptive_signal_pending_station_validation'
-          assert p['conclusions']['safe_to_relabel_chirps_as_observed'] is False
-          assert p['conclusions']['safe_to_mark_global_chirps_station_validation_complete'] is False
-          assert p['conclusions']['safe_to_merge_96163_across_station_history'] is False
-          assert p['conclusions']['causal_claim_authorized'] is False
-          print({
-              'classification': classification,
-              'both_years_completeness_pass': p['conclusions']['both_years_completeness_pass'],
-              'annual': [
-                  {
-                      'year': row['year'],
-                      'valid_prcp_days': row['valid_prcp_days'],
-                      'coverage': row['valid_prcp_fraction'],
-                      'max_missing_streak': row['maximum_consecutive_days_without_valid_prcp'],
-                      'annual_prcp_mm': row['annual_prcp_mm'],
-                  }
-                  for row in p['annual']
-              ],
-          })
-          PY
-
-      - name: Build deterministic canonical-form evidence candidate offline
-        run: |
-          python scripts/finalize_milestone36_station_evidence.py \
-            --candidate-dir artifacts/m36/stage1 \
-            --output-dir artifacts/m36/finalized
-
-      - name: Validate finalized evidence manifest
-        run: |
-          python - <<'PY'
-          import hashlib, json
-          from pathlib import Path
-          root = Path('artifacts/m36/finalized')
-          manifest = json.loads((root/'manifest.json').read_text(encoding='utf-8'))
+          root = Path('data/validation/climate/station/m36')
+          manifest = json.loads((root / 'manifest.json').read_text(encoding='utf-8'))
           assert manifest['schema'] == 'ranah-observatory/milestone36-station-evidence-manifest/v1'
           assert manifest['classification'] == 'station_overlap_directionally_supportive'
+          assert manifest['canonical_station_representation'] == 'ncei_gsod_96163099999'
+          assert manifest['target_years'] == [1997, 1998]
           assert manifest['offline_rebuild_supported'] is True
           assert manifest['raw_source_files_frozen'] is True
           assert manifest['chirps_baseline_modified'] is False
           assert manifest['publication_package_modified'] is False
           assert manifest['causal_claim_authorized'] is False
+
           for rel, meta in manifest['files'].items():
-              path = root/rel
+              path = root / rel
               assert path.is_file(), rel
-              assert hashlib.sha256(path.read_bytes()).hexdigest() == meta['sha256'], rel
               assert path.stat().st_size == meta['bytes'], rel
-          overlap = json.loads((root/'station-overlap.json').read_text(encoding='utf-8'))
-          assert overlap['source_mode'] == ['frozen_offline_source']
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == meta['sha256'], rel
+
+          overlap = json.loads((root / 'station-overlap.json').read_text(encoding='utf-8'))
+          annual = {row['year']: row for row in overlap['annual']}
+          assert annual[1997]['valid_prcp_days'] == 345
+          assert annual[1998]['valid_prcp_days'] == 340
+          assert annual[1997]['valid_prcp_fraction'] >= 0.90
+          assert annual[1998]['valid_prcp_fraction'] >= 0.90
+          assert annual[1997]['maximum_consecutive_days_without_valid_prcp'] == 4
+          assert annual[1998]['maximum_consecutive_days_without_valid_prcp'] == 4
+          assert annual[1997]['annual_prcp_mm'] == 774.192
+          assert annual[1998]['annual_prcp_mm'] == 2730.5
           assert overlap['comparison']['classification'] == 'station_overlap_directionally_supportive'
-          assert overlap['annual'][0]['valid_prcp_days'] == 345
-          assert overlap['annual'][1]['valid_prcp_days'] == 340
-          assert overlap['annual'][0]['annual_prcp_mm'] == 774.192
-          assert overlap['annual'][1]['annual_prcp_mm'] == 2730.5
-          stage0 = json.loads((root/'stage0-qualification.json').read_text(encoding='utf-8'))
+          assert overlap['comparison']['comparison_scope'] == 'directional_independent_overlap_only'
+          assert overlap['conclusions']['safe_to_relabel_chirps_as_observed'] is False
+          assert overlap['conclusions']['safe_to_mark_global_chirps_station_validation_complete'] is False
+          assert overlap['conclusions']['safe_to_merge_96163_across_station_history'] is False
+          assert overlap['conclusions']['causal_claim_authorized'] is False
+
+          stage0 = json.loads((root / 'stage0-qualification.json').read_text(encoding='utf-8'))
           assert stage0['accepted_stage1_representation'] == 'ncei_gsod_96163099999'
           assert stage0['precipitation_values_inspected_during_stage0'] is False
           assert stage0['stage1_numeric_inspection_authorized'] is True
           assert stage0['station_history_guard']['safe_to_merge_96163_across_station_history'] is False
+
           print({
               'classification': manifest['classification'],
-              'manifest_files': len(manifest['files']),
+              '1997_mm': annual[1997]['annual_prcp_mm'],
+              '1998_mm': annual[1998]['annual_prcp_mm'],
               'offline_rebuild_supported': True,
           })
           PY
 
-      - name: Upload finalized canonical-form evidence candidate
-        uses: actions/upload-artifact@v4
-        with:
-          name: milestone36-finalized-evidence-candidate
-          path: artifacts/m36/finalized
-          retention-days: 7
-
-      - name: One-time freeze validated M36 evidence
+      - name: Rebuild station overlap from frozen NCEI source only
         run: |
-          rm -rf data/validation/climate/station/m36
-          mkdir -p data/validation/climate/station/m36
-          cp -a artifacts/m36/finalized/. data/validation/climate/station/m36/
-          git add data/validation/climate/station/m36
-          if git diff --cached --quiet; then
-            echo "canonical M36 evidence already frozen"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Freeze validated M36 station rainfall evidence"
-          git push origin "HEAD:${GITHUB_HEAD_REF}"
-
-      - name: Require byte-identical canonical M36 evidence
-        run: |
-          test -d data/validation/climate/station/m36
-          diff -qr artifacts/m36/finalized data/validation/climate/station/m36
-          git diff --exit-code -- data/validation/climate/station/m36
-          test -z "$(git status --porcelain -- data/validation/climate/station/m36)"
+          rm -rf artifacts/m36/rebuild
+          python scripts/build_milestone36_station_overlap.py \
+            --source-dir data/validation/climate/station/m36/source \
+            --output-dir artifacts/m36/rebuild
+          diff -u \
+            data/validation/climate/station/m36/annual-summary.csv \
+            artifacts/m36/rebuild/annual-summary.csv
+          diff -u \
+            data/validation/climate/station/m36/station-overlap.json \
+            artifacts/m36/rebuild/station-overlap.json
 
       - name: Require no change to frozen CHIRPS or publication outputs
         if: github.event_name == 'pull_request'
@@ -236,21 +139,3 @@ jobs:
           git diff --exit-code origin/main...HEAD -- \
             data/processed/climate/rainfall \
             publication/v0.1
-
-      - name: Upload Stage 0 qualification artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: milestone36-stage0-station-archive-probe
-          path: artifacts/m36/stage0-station-archive-probe.json
-          if-no-files-found: ignore
-          retention-days: 7
-
-      - name: Upload Stage 1 candidate with exact NCEI source snapshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: milestone36-stage1-station-overlap-candidate
-          path: artifacts/m36/stage1
-          if-no-files-found: ignore
-          retention-days: 7
