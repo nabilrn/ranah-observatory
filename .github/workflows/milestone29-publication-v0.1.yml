@@ -12,7 +12,7 @@ on:
       - scripts/audit_milestone29_publication_v0_1.py
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   certify-publication-v0-1:
@@ -21,6 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - name: Require publication-only branch scope
         shell: bash
@@ -67,6 +68,19 @@ jobs:
           assert len(list((root/'figures').glob('F*.svg'))) == 6
           print({'tables': 7, 'figures': 6, 'asset_generation': 'passed'})
           PY
+
+      - name: Commit canonical generated assets
+        shell: bash
+        run: |
+          if git diff --quiet -- publication/v0.1/rendered && git ls-files --error-unmatch publication/v0.1/rendered/render-manifest.json >/dev/null 2>&1; then
+            echo "canonical assets already committed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add publication/v0.1/rendered
+          git commit -m "Materialize v0.1 publication assets"
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Upload rendered publication assets
         uses: actions/upload-artifact@v4
