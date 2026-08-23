@@ -1,0 +1,163 @@
+{
+  "domain": "1300",
+  "request": {
+    "th": "121",
+    "turth": 0,
+    "turvar": 31,
+    "var": 169
+  },
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "10169311210": 21992.13,
+      "11169311210": 33285.62,
+      "1169311210": 34279.12,
+      "12169311210": 26725.88,
+      "13169311210": 49185.54,
+      "14169311210": 39373.94,
+      "15169311210": 42994.67,
+      "16169311210": 46214.8,
+      "17169311210": 51345.23,
+      "18169311210": 32438.39,
+      "19169311210": 38661.12,
+      "20169311210": 31478.41,
+      "21169311210": 31264.98,
+      "2169311210": 19193.36,
+      "3169311210": 25595.64,
+      "4169311210": 29031.31,
+      "5169311210": 26403.64,
+      "6169311210": 27962.86,
+      "7169311210": 27815.28,
+      "8169311210": 29533.39,
+      "9169311210": 20857.33
+    },
+    "labelvervar": "Kabupaten/ Kota_",
+    "last_update": "2025-02-28 05:26:10",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Neraca Ekonomi",
+        "val": 531
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2021",
+        "val": 121
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Harga Konstan 2010",
+        "val": 31
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "",
+        "label": "[Seri 2010] Produk Domestik Regional Bruto per Kapita Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+        "note": "2023: angka sangat sementara\n<br/>\n2024: angka sangat-sangat sementara",
+        "subj": "Produk Domestik Regional Bruto (Kabupaten/Kota)",
+        "unit": "Ribu Rupiah",
+        "val": 169
+      }
+    ],
+    "vervar": [
+      {
+        "label": "Kab. Kep. Mentawai",
+        "val": 1
+      },
+      {
+        "label": "Kab. Pesisir Selatan",
+        "val": 2
+      },
+      {
+        "label": "Kab. Solok",
+        "val": 3
+      },
+      {
+        "label": "Kab. Sijunjung",
+        "val": 4
+      },
+      {
+        "label": "Kab. Tanah datar",
+        "val": 5
+      },
+      {
+        "label": "Kab. Padang Pariaman",
+        "val": 6
+      },
+      {
+        "label": "Kab. Agam",
+        "val": 7
+      },
+      {
+        "label": "Kab. Lima Puluh Kota",
+        "val": 8
+      },
+      {
+        "label": "Kab. Pasaman",
+        "val": 9
+      },
+      {
+        "label": "Kab. Solok Selatan",
+        "val": 10
+      },
+      {
+        "label": "Kab. Dharmasraya",
+        "val": 11
+      },
+      {
+        "label": "Kab. Pasaman Barat",
+        "val": 12
+      },
+      {
+        "label": "Kota Padang",
+        "val": 13
+      },
+      {
+        "label": "Kota Solok",
+        "val": 14
+      },
+      {
+        "label": "Kota Sawahlunto",
+        "val": 15
+      },
+      {
+        "label": "Kota Padang Panjang",
+        "val": 16
+      },
+      {
+        "label": "Kota Bukittinggi",
+        "val": 17
+      },
+      {
+        "label": "Kota Payakumbuh",
+        "val": 18
+      },
+      {
+        "label": "Kota Pariaman",
+        "val": 19
+      },
+      {
+        "label": "Jumlah",
+        "val": 20
+      },
+      {
+        "label": "Provinsi Sumatera Barat",
+        "val": 21
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-23T07:44:54+00:00",
+  "snapshot_schema": "ranah-observatory/milestone28-bps-dynamic-snapshot/v1",
+  "source_id": "bps_webapi"
+}

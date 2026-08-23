@@ -1,0 +1,158 @@
+{
+  "domain": "1300",
+  "request": {
+    "th": "122",
+    "turth": 0,
+    "turvar": 0,
+    "var": 547
+  },
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "130154701220": 12.51,
+      "130254701220": 25.41,
+      "130354701220": 11.39,
+      "130454701220": 18.35,
+      "130554701220": 13.68,
+      "130654701220": 13.98,
+      "130754701220": 10.38,
+      "130854701220": 18.96,
+      "130954701220": 17.42,
+      "131054701220": 24.27,
+      "131154701220": 23.16,
+      "131254701220": 11.42,
+      "137154701220": 3.81,
+      "137254701220": 10.42,
+      "137354701220": 13.38,
+      "137454701220": 11.03,
+      "137554701220": 17,
+      "137654701220": 15.31,
+      "137754701220": 18.61,
+      "137854701220": 13.99
+    },
+    "labelvervar": "Kabupaten/Kota",
+    "last_update": "2024-12-19 03:14:37",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Kesehatan",
+        "val": 522
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2022",
+        "val": 122
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "Sumber: Survei Sosial Ekonomi Nasional (Susenas)",
+        "label": "Angka Kesakitan/Morbiditas Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+        "note": "Data Dikutip dari Publikasi Statistik Kesejahteraan Rakyat Provinsi Sumatera Barat",
+        "subj": "Kesehatan",
+        "unit": "Persen",
+        "val": 547
+      }
+    ],
+    "vervar": [
+      {
+        "label": "Kab. Kepulauan Mentawai",
+        "val": 1301
+      },
+      {
+        "label": "Kab. Pesisir Selatan",
+        "val": 1302
+      },
+      {
+        "label": "Kab. Solok",
+        "val": 1303
+      },
+      {
+        "label": "Kab. Sijunjung",
+        "val": 1304
+      },
+      {
+        "label": "Kab. Tanah Datar",
+        "val": 1305
+      },
+      {
+        "label": "Kab. Padang Pariaman",
+        "val": 1306
+      },
+      {
+        "label": "Kab. Agam",
+        "val": 1307
+      },
+      {
+        "label": "Kab. Lima Puluh Kota",
+        "val": 1308
+      },
+      {
+        "label": "Kab. Pasaman",
+        "val": 1309
+      },
+      {
+        "label": "Kab. Solok Selatan",
+        "val": 1310
+      },
+      {
+        "label": "Kab. Dharmasraya",
+        "val": 1311
+      },
+      {
+        "label": "Kab. Pasaman Barat",
+        "val": 1312
+      },
+      {
+        "label": "Kota Padang",
+        "val": 1371
+      },
+      {
+        "label": "Kota Solok",
+        "val": 1372
+      },
+      {
+        "label": "Kota Sawahlunto",
+        "val": 1373
+      },
+      {
+        "label": "Kota Padang Panjang",
+        "val": 1374
+      },
+      {
+        "label": "Kota Bukittinggi",
+        "val": 1375
+      },
+      {
+        "label": "Kota Payakumbuh",
+        "val": 1376
+      },
+      {
+        "label": "Kota Pariaman",
+        "val": 1377
+      },
+      {
+        "label": "Provinsi Sumatera Barat ",
+        "val": 1378
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-23T07:45:04+00:00",
+  "snapshot_schema": "ranah-observatory/milestone28-bps-dynamic-snapshot/v1",
+  "source_id": "bps_webapi"
+}

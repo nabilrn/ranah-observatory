@@ -1,0 +1,336 @@
+{
+  "audit_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-full-history-audit.csv",
+    "sha256": "33f45bf27d06058d61c714f83a1f0865f62ae84eb160f516aeae18a0c7be362b"
+  },
+  "authorized_request_count": 49,
+  "candidate_count": 7,
+  "candidate_year_cell_count": 56,
+  "causal_claim_created": false,
+  "coverage_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-indicator-year-coverage.csv",
+    "sha256": "d2da74a57f71b858892fa47812d1bddcb1cbf7014ee493d8275589628b211ae2"
+  },
+  "cross_indicator_aggregation_performed": false,
+  "cross_year_aggregation_performed": false,
+  "executed_request_count": 49,
+  "full_history_success": true,
+  "global_window_shortening_performed": false,
+  "held_candidate_year_count": 0,
+  "imputation_performed": false,
+  "milestone": 28,
+  "missing_values_coerced_to_zero": false,
+  "monetary_wasted_potential_estimated": false,
+  "next_gate": "install an offline byte-identical rebuild from frozen Stage 2B snapshots and then join the promoted evidence to the existing 19-geography 2018-2025 analytical regime without filling structured missingness",
+  "observations_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-broader-panel-observations.csv",
+    "sha256": "c4db280bfc4348ebf4830107f5effd3d8d7197a50511e95da166e59ec75c495f"
+  },
+  "promoted_observation_count": 931,
+  "provenance_csv": {
+    "path": "data/analysis/engine/broader_panel_v1/m28-broader-panel-provenance.csv",
+    "sha256": "50d6fe7d080388af62100c937f1f9c31527ba61314e53e95df2bd4227043537e"
+  },
+  "qualified_candidate_year_count": 49,
+  "raw_dynamic_payloads_frozen": true,
+  "raw_snapshots": [
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-169/2018.json",
+      "sha256": "c0871001bae5ce013575f2da0b72c38bec5390635b4b2a92f9c9ab718027dd6f",
+      "year": 2018
+    },
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-169/2019.json",
+      "sha256": "e71a5ecadd2bab625a1b54f38d8c48b8b570baf05cbfa560be9b80473ba96fbf",
+      "year": 2019
+    },
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-169/2020.json",
+      "sha256": "1b7a1c6d4e188ad6bb3daf9fff14765e12db9dd10de30e2b928784b768459347",
+      "year": 2020
+    },
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-169/2021.json",
+      "sha256": "71045bff320de9be37accddd46195049f1f823c40f26dcf0babc79fd0b457621",
+      "year": 2021
+    },
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-169/2022.json",
+      "sha256": "a63e112cb56a28f329b7719820cfdc3bd064255731e3ae41daa9f6408f559adf",
+      "year": 2022
+    },
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-169/2023.json",
+      "sha256": "0cd8986306321352cf202673a1da0fa327f5705f1a4b4b61fd4fa7a91f608e8f",
+      "year": 2023
+    },
+    {
+      "bps_var_id": 169,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-169/2024.json",
+      "sha256": "8ef4c9839834c6e1a6670b24ed4afef3428aac36d5ad9c7854c47709cdf4f9c7",
+      "year": 2024
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-547/2018.json",
+      "sha256": "db3e2c63281d3da2ad63217d2dca82bd2902af577da8b549b83e0954eec197b5",
+      "year": 2018
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-547/2019.json",
+      "sha256": "33316cd0cc37ec622e0b154b62cf745db6c2c6c66c676fcc3cfeb349128e418f",
+      "year": 2019
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-547/2020.json",
+      "sha256": "2ece435597a190e290c4deb53eaf00e20fbfbd0b95c869c99e9597f51b4d0825",
+      "year": 2020
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-547/2021.json",
+      "sha256": "3b724a6805737f12e6f1e74572933853715a0f0413f4aece7f51994738f3e086",
+      "year": 2021
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-547/2022.json",
+      "sha256": "9564a62daa105738f95982dcaeb1f80dca9795ce00a3547060e26e067bd3e2f3",
+      "year": 2022
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-547/2023.json",
+      "sha256": "59dc488d933a3457e8f00c761b2c4d8c90f2c1b27cb59382c8b9a6514cfe89ef",
+      "year": 2023
+    },
+    {
+      "bps_var_id": 547,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-547/2024.json",
+      "sha256": "96b617a50b543612ec4d5c5d3675ca39991de5c860eaa708ae7c63e26b9a15b1",
+      "year": 2024
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-763/2019.json",
+      "sha256": "4b6aec1611587c4f17c89888dcb357addaedb10ecfb9eb151fa4be20444f1627",
+      "year": 2019
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-763/2020.json",
+      "sha256": "be86bad1dd1c62f9a6120d1a12a4bd9163a8ad0264d5ed09b0dd287612d0b222",
+      "year": 2020
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-763/2021.json",
+      "sha256": "c37c9297faa13769e17b0210020a179da2a65df98ff1e5407691b2a1e55aecd9",
+      "year": 2021
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-763/2022.json",
+      "sha256": "8f0ad455bdfbda58f5570bb79cb0dace9e19a4edbcbee06914390466ab68063e",
+      "year": 2022
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-763/2023.json",
+      "sha256": "731c49d1e47bc3aea177f254162c39dc0189d320ed4f8a174d208e1a0904f1d8",
+      "year": 2023
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-763/2024.json",
+      "sha256": "ddd3fc6a7a963c6574ae9ea5a6754325fd6f2e8939f599a1f5fa04bc8589e0ec",
+      "year": 2024
+    },
+    {
+      "bps_var_id": 763,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-763/2025.json",
+      "sha256": "3b4203c293b5a9b1e0b789feb339b66be07723115793b2cfe22c53bd15ff22b6",
+      "year": 2025
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2018.json",
+      "sha256": "1ba6621526787fc983c8d0ad96198cf8d6c205fa0255620e699cdbca405bf696",
+      "year": 2018
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2019.json",
+      "sha256": "62a1d61236eb81510a499ee9312b91b5599fa6631fc43a96bfd8d81413936fbb",
+      "year": 2019
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2020.json",
+      "sha256": "4437854bd8c031022dc99dcc525a305b13e74604f8a311bf893701272e252896",
+      "year": 2020
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2021.json",
+      "sha256": "6997dae51a270abb1f8e7f498f4fb967e86a7b4e0d0955026ab1f947490a7725",
+      "year": 2021
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2022.json",
+      "sha256": "2a30b0d513b8c3aedaa2d75036778532d233f4f72f99efbcaf5d406c7f42e054",
+      "year": 2022
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2023.json",
+      "sha256": "aac32e0a7956c02ed9b6eee1fe9d819c549f3d8bd3b5a43fb3b3df174c88bc42",
+      "year": 2023
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2024.json",
+      "sha256": "357359e7c921f6624a0a4bbb8866178be9645b6ea2092fa870f3d0eb6e13ac3e",
+      "year": 2024
+    },
+    {
+      "bps_var_id": 320,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-320/2025.json",
+      "sha256": "0f1e390c2d1c640d45307815334253420897523103371cbf517cc98bdd117814",
+      "year": 2025
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2018.json",
+      "sha256": "ac98508798803ef69933b8c1cf2a2e6a7e21f35ddf7477d1e5d915818eefd6ae",
+      "year": 2018
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2019.json",
+      "sha256": "07211ee6f1d98669f2002ce31975ea070672e62b98b0b8cb770cd5e1cbb5e70e",
+      "year": 2019
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2020.json",
+      "sha256": "fb8b810900fc299d286bc7c85ac8a5de0d05e71cba5150440466f6e8014d26d9",
+      "year": 2020
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2021.json",
+      "sha256": "cbf6c51e5b84f28e5a90c675de29e589ff67c987b5f149684fc72e58a9d9b661",
+      "year": 2021
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2022.json",
+      "sha256": "be06ae2fd260462ee62af7f4e36f16945a5c5cd68d1ec4434f3c2e87a29ca98d",
+      "year": 2022
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2023.json",
+      "sha256": "e2844266cd7ccc80f29f4a84271f1894103d4fd5dfeb8d86781bb03f61f4475e",
+      "year": 2023
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2024.json",
+      "sha256": "8723ff0e56e66fa8be3c0450a0363d18b60b6d35b9600b943f0235faa1965e64",
+      "year": 2024
+    },
+    {
+      "bps_var_id": 341,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-341/2025.json",
+      "sha256": "567ce60d150b455ef4a2e4a483b2ff223be570ac3ba2194913f324e6c7e37556",
+      "year": 2025
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-352/2019.json",
+      "sha256": "a2cfad08833335161985bcbbdd5ac25ba69b1ff31c471455efe26c6219c07edf",
+      "year": 2019
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-352/2020.json",
+      "sha256": "498c4a6551ac55df9f8f7a5b83736dc6f19450cd2a76b73e67c8e0f7a2714032",
+      "year": 2020
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-352/2021.json",
+      "sha256": "528887b3e18c52ac92404edf089757f0316bfd5ec316a8032131e0583f134621",
+      "year": 2021
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-352/2022.json",
+      "sha256": "c15f2ec8dce10b39ffe4c71077e5d1b65dced253a1371c621183803afb1c9070",
+      "year": 2022
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-352/2023.json",
+      "sha256": "a0158af4ca462ff7912af5bc72e8034e3edc8e9393b62fd02740d86422d0965d",
+      "year": 2023
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-352/2024.json",
+      "sha256": "a47b19d1c2b1b55347bda3c583dc82ac46325ca3c7fc8c4ffc1ff664c4e19f38",
+      "year": 2024
+    },
+    {
+      "bps_var_id": 352,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-352/2025.json",
+      "sha256": "3062e47a97c37944712202224a9da1cba91ba03c20529f4182d2b5134383d5f4",
+      "year": 2025
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-756/2020.json",
+      "sha256": "18831ad7b3e8bc22f0aa48ce863948a9c55694e382a366febee4f0d3984469ef",
+      "year": 2020
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-756/2021.json",
+      "sha256": "7b92a628fa7468022ff91dd08913cdefec9e49e7efd35a917d51c9531702dc1b",
+      "year": 2021
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-756/2022.json",
+      "sha256": "a12330dc0043abfad58f601d254a8ed59e02a7979a65fd527eedc41abab1c4ff",
+      "year": 2022
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-756/2023.json",
+      "sha256": "8e31d41220eadffb802d82e76ad37f2c6dbdc5b9736fc2883d6d7cb3eb3c9fc9",
+      "year": 2023
+    },
+    {
+      "bps_var_id": 756,
+      "path": "data/processed/bps/m28_stage2b_full_history/var-756/2024.json",
+      "sha256": "cd9033f1546be0bd65e710179af80f302d5bc5c53045ea9622f5f2efbdc31a65",
+      "year": 2024
+    }
+  ],
+  "regime_year_count": 8,
+  "schema": "ranah-observatory/milestone28-stage2b-full-history/v1",
+  "statistical_model_fit": false,
+  "structured_missing_candidate_year_count": 7
+}

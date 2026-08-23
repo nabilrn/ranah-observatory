@@ -1,0 +1,158 @@
+{
+  "domain": "1300",
+  "request": {
+    "th": "122",
+    "turth": 0,
+    "turvar": 0,
+    "var": 756
+  },
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "130175601220": 46.06,
+      "130275601220": 48.09,
+      "130375601220": 46.88,
+      "130475601220": 47.02,
+      "130575601220": 46.47,
+      "130675601220": 49.91,
+      "130775601220": 48.48,
+      "130875601220": 47.55,
+      "130975601220": 47.8,
+      "131075601220": 45.51,
+      "131175601220": 45.71,
+      "131275601220": 47.42,
+      "137175601220": 44.92,
+      "137275601220": 47.32,
+      "137375601220": 47.47,
+      "137475601220": 48.3,
+      "137575601220": 47.01,
+      "137675601220": 48,
+      "137775601220": 47.38,
+      "137875601220": 47.12
+    },
+    "labelvervar": "Kabupaten/Kota",
+    "last_update": "2025-04-28 11:21:27",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Kependudukan dan Migrasi",
+        "val": 519
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2022",
+        "val": 122
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "",
+        "label": "[Proyeksi 2020-2035] Dependency Ratio Penduduk Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+        "note": "Sumber: Tahun 2020 merupakan Hasil Long Form Sensus Penduduk 2020 (LF SP2020), Tahun 2021-2024 Hasil Proyeksi Penduduk Kabupaten/Kota Provinsi Sumatera Barat 2020-2035-Hasil Sensusu Penduduk 2020",
+        "subj": "Kependudukan",
+        "unit": "",
+        "val": 756
+      }
+    ],
+    "vervar": [
+      {
+        "label": "Kab. Kepulauan Mentawai",
+        "val": 1301
+      },
+      {
+        "label": "Kab. Pesisir Selatan",
+        "val": 1302
+      },
+      {
+        "label": "Kab. Solok",
+        "val": 1303
+      },
+      {
+        "label": "Kab. Sijunjung",
+        "val": 1304
+      },
+      {
+        "label": "Kab. Tanah Datar",
+        "val": 1305
+      },
+      {
+        "label": "Kab. Padang Pariaman",
+        "val": 1306
+      },
+      {
+        "label": "Kab. Agam",
+        "val": 1307
+      },
+      {
+        "label": "Kab. Lima Puluh Kota",
+        "val": 1308
+      },
+      {
+        "label": "Kab. Pasaman",
+        "val": 1309
+      },
+      {
+        "label": "Kab. Solok Selatan",
+        "val": 1310
+      },
+      {
+        "label": "Kab. Dharmasraya",
+        "val": 1311
+      },
+      {
+        "label": "Kab. Pasaman Barat",
+        "val": 1312
+      },
+      {
+        "label": "Kota Padang",
+        "val": 1371
+      },
+      {
+        "label": "Kota Solok",
+        "val": 1372
+      },
+      {
+        "label": "Kota Sawahlunto",
+        "val": 1373
+      },
+      {
+        "label": "Kota Padang Panjang",
+        "val": 1374
+      },
+      {
+        "label": "Kota Bukittinggi",
+        "val": 1375
+      },
+      {
+        "label": "Kota Payakumbuh",
+        "val": 1376
+      },
+      {
+        "label": "Kota Pariaman",
+        "val": 1377
+      },
+      {
+        "label": "Provinsi Sumatera Barat ",
+        "val": 1378
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-23T07:45:46+00:00",
+  "snapshot_schema": "ranah-observatory/milestone28-bps-dynamic-snapshot/v1",
+  "source_id": "bps_webapi"
+}

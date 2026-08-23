@@ -1,0 +1,158 @@
+{
+  "domain": "1300",
+  "request": {
+    "th": "120",
+    "turth": 0,
+    "turvar": 0,
+    "var": 341
+  },
+  "result": {
+    "data-availability": "available",
+    "datacontent": {
+      "130134101200": 61.73,
+      "130234101200": 71.51,
+      "130334101200": 50.36,
+      "130434101200": 64.95,
+      "130534101200": 62.86,
+      "130634101200": 59.72,
+      "130734101200": 71.58,
+      "130834101200": 53.86,
+      "130934101200": 40.9,
+      "131034101200": 59.17,
+      "131134101200": 84.16,
+      "131234101200": 63.65,
+      "137134101200": 82.5,
+      "137234101200": 89.19,
+      "137334101200": 80.77,
+      "137434101200": 72.15,
+      "137534101200": 90.25,
+      "137634101200": 87.75,
+      "137734101200": 81.81,
+      "137834101200": 68.11
+    },
+    "labelvervar": "Kabupaten/Kota",
+    "last_update": "2026-04-07 01:43:31",
+    "related": [],
+    "status": "OK",
+    "subject": [
+      {
+        "label": "Pemukiman dan Perumahan",
+        "val": 525
+      }
+    ],
+    "tahun": [
+      {
+        "label": "2020",
+        "val": 120
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Tidak ada",
+        "val": "0"
+      }
+    ],
+    "var": [
+      {
+        "decimal": 2,
+        "def": "Sumber : BPS,  Survei Sosial Ekonomi Nasional (Susenas)",
+        "label": "Persentase Rumah Tangga yang Memiliki Akses Terhadap Sanitasi Layak Menurut Kabupaten/Kota",
+        "note": "Data dikutip dari Publikasi Provinsi Sumatera Barat dalam Angka",
+        "subj": "Perumahan",
+        "unit": "Persen",
+        "val": 341
+      }
+    ],
+    "vervar": [
+      {
+        "label": "Kab. Kepulauan Mentawai",
+        "val": 1301
+      },
+      {
+        "label": "Kab. Pesisir Selatan",
+        "val": 1302
+      },
+      {
+        "label": "Kab. Solok",
+        "val": 1303
+      },
+      {
+        "label": "Kab. Sijunjung",
+        "val": 1304
+      },
+      {
+        "label": "Kab. Tanah Datar",
+        "val": 1305
+      },
+      {
+        "label": "Kab. Padang Pariaman",
+        "val": 1306
+      },
+      {
+        "label": "Kab. Agam",
+        "val": 1307
+      },
+      {
+        "label": "Kab. Lima Puluh Kota",
+        "val": 1308
+      },
+      {
+        "label": "Kab. Pasaman",
+        "val": 1309
+      },
+      {
+        "label": "Kab. Solok Selatan",
+        "val": 1310
+      },
+      {
+        "label": "Kab. Dharmasraya",
+        "val": 1311
+      },
+      {
+        "label": "Kab. Pasaman Barat",
+        "val": 1312
+      },
+      {
+        "label": "Kota Padang",
+        "val": 1371
+      },
+      {
+        "label": "Kota Solok",
+        "val": 1372
+      },
+      {
+        "label": "Kota Sawahlunto",
+        "val": 1373
+      },
+      {
+        "label": "Kota Padang Panjang",
+        "val": 1374
+      },
+      {
+        "label": "Kota Bukittinggi",
+        "val": 1375
+      },
+      {
+        "label": "Kota Payakumbuh",
+        "val": 1376
+      },
+      {
+        "label": "Kota Pariaman",
+        "val": 1377
+      },
+      {
+        "label": "Provinsi Sumatera Barat ",
+        "val": 1378
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-08-23T07:45:28+00:00",
+  "snapshot_schema": "ranah-observatory/milestone28-bps-dynamic-snapshot/v1",
+  "source_id": "bps_webapi"
+}
