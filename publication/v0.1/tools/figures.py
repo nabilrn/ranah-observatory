@@ -2,14 +2,14 @@ import csv
 from common import FIGURES, TABLES, fmt, svg_open, svg_close, text, rect, line, polyline
 
 SHORT={
-'observed_trajectory_foundation':'Observed trajectory','expected_performance':'Expected performance','attainable_reference':'Empirical reference','development_gaps':'Development gaps','associated_bottlenecks':'Association screen','causal_evidence':'Identification evidence','spatial_climate_constraints':'Spatial/climate constraints','intervention_scenarios':'Predictive sensitivities','uncertainty_evidence_strength':'Uncertainty & claim boundaries'}
+'observed_trajectory_foundation':'Observed trajectory','expected_performance':'Expected performance','attainable_reference':'Empirical reference','development_gaps':'Development gaps','associated_bottlenecks':'Association screen','causal_evidence':'Identification evidence','spatial_climate_constraints':'Spatial/climate','intervention_scenarios':'Predictive sensitivities','uncertainty_evidence_strength':'Uncertainty & claim boundaries'}
 
 def f01(d):
     nodes=sorted(d['nodes'],key=lambda r:int(r['stage_order'])); edges=d['edges']; W,H=1320,500; s=svg_open(W,H,'F01 Ranah Observatory evidence chain')
     text(s,40,38,'F01. Ranah Observatory evidence chain',22,'bold'); text(s,40,62,'All arrows are analytical/evidence relationships; none are causal.',13)
     pos={}; main=[n for n in nodes if n['node_id']!='uncertainty_evidence_strength']
     for i,n in enumerate(main):
-        x=30+i*158; y=140 if i%2==0 else 260; pos[n['node_id']]=(x,y); rect(s,x,y,135,70,'#f7f7f7','#111',1,6); text(s,x+67.5,y+28,SHORT[n['node_id']],12,'bold','middle'); text(s,x+67.5,y+50,'M'+n['upstream'],10,'normal','middle')
+        x=30+i*158; y=140 if i%2==0 else 260; pos[n['node_id']]=(x,y); rect(s,x,y,135,70,'#f7f7f7','#111',1,6); text(s,x+67.5,y+28,SHORT[n['node_id']],12,'bold','middle'); text(s,x+67.5,y+50,n['upstream'],10,'normal','middle')
     ux,uy,uw=330,405,660; pos['uncertainty_evidence_strength']=(ux,uy); rect(s,ux,uy,uw,52,'#ededed','#111',1,6); text(s,ux+uw/2,uy+31,SHORT['uncertainty_evidence_strength'],14,'bold','middle')
     for e in edges:
         a,b=e['from_node'],e['to_node']
@@ -65,7 +65,12 @@ def f06(d):
     W,H=1180,500; s=svg_open(W,H,'F06 Post-M18 evidence coverage expansion'); text(s,35,38,'F06. Post-M18 evidence coverage expansion',22,'bold'); text(s,35,62,'Cards show source-native coverage. Counts are not compared on a common magnitude axis.',12)
     with (TABLES/'T06-post-M18-evidence-expansion.csv').open(encoding='utf-8') as h: rows=list(csv.DictReader(h))
     for i,r in enumerate(rows):
-        x=35+i*225; rect(s,x,110,205,300,'#f8f8f8','#111',1,8); text(s,x+16,140,r['milestone'],18,'bold'); text(s,x+16,165,r['evidence_family'],10,'bold'); text(s,x+16,202,'Period: '+r['period'],11); text(s,x+16,224,'Geographies: '+r['geographies'],11); text(s,x+16,246,'Observations: '+r['observations'],11); words=r['held_or_boundary'].split(); cur=[]; yy=282
+        x=35+i*225; rect(s,x,110,205,300,'#f8f8f8','#111',1,8); text(s,x+16,140,r['milestone'],18,'bold'); fam=r['evidence_family'].split(); cur=[]; fy=165
+        for word in fam:
+            if len(' '.join(cur+[word]))>28: text(s,x+16,fy,' '.join(cur),10,'bold'); fy+=15; cur=[word]
+            else: cur.append(word)
+        if cur: text(s,x+16,fy,' '.join(cur),10,'bold')
+        text(s,x+16,212,'Period: '+r['period'],11); text(s,x+16,234,'Geographies: '+r['geographies'],11); text(s,x+16,256,'Observations: '+r['observations'],11); words=r['held_or_boundary'].split(); cur=[]; yy=292
         for word in words:
             if len(' '.join(cur+[word]))>28: text(s,x+16,yy,' '.join(cur),10); yy+=17; cur=[word]
             else: cur.append(word)
