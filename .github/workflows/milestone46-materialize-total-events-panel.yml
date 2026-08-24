@@ -1,5 +1,5 @@
 name: Materialize Milestone 46 Total-Event Panel v3
-# Stable-head materialization: keep branch unchanged until the writer commit lands.
+# Final stable-head trigger after reviewed artifact 9531092814 passed read-only verification.
 
 on:
   push:
