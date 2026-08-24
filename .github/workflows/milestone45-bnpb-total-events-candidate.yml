@@ -1,0 +1,103 @@
+name: Verify Milestone 45 BNPB Total-Event Candidate
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone45-bnpb-total-events-candidate.yml"
+      - "scripts/build_milestone45_bnpb_total_events_candidate.py"
+      - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
+      - "data/processed/bnpb/m26_stage2_ckan_discovery/package-metadata.json"
+      - "data/manifests/milestone44_bnpb_event_overlap_reconciliation.json"
+      - "data/registries/geographies.csv"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone45-bnpb-total-events-candidate.yml"
+      - "scripts/build_milestone45_bnpb_total_events_candidate.py"
+      - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
+      - "data/processed/bnpb/m26_stage2_ckan_discovery/package-metadata.json"
+      - "data/manifests/milestone44_bnpb_event_overlap_reconciliation.json"
+      - "data/registries/geographies.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build M45 candidate artifacts
+        run: >-
+          python scripts/build_milestone45_bnpb_total_events_candidate.py
+          --output /tmp/m45-total-events-canonical-candidate.csv
+          --provenance-output /tmp/m45-total-events-provenance.json
+          --summary-output /tmp/m45-total-events-summary.json
+
+      - name: Validate M45 qualification boundary
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          summary = json.loads(Path('/tmp/m45-total-events-summary.json').read_text(encoding='utf-8'))
+          rows = list(csv.DictReader(Path('/tmp/m45-total-events-canonical-candidate.csv').open(encoding='utf-8', newline='')))
+
+          assert summary['milestone'] == 45
+          assert summary['indicator_id'] == 'total_disaster_events'
+          assert summary['period'] == [2010, 2024]
+          assert summary['observation_count'] == 285
+          assert summary['geography_count'] == 19
+          assert summary['years_count'] == 15
+          assert summary['complete_geography_year_matrix'] is True
+          assert len(rows) == 285
+          assert {row['indicator_id'] for row in rows} == {'total_disaster_events'}
+          assert {row['unit'] for row in rows} == {'count'}
+          assert {row['claim_type'] for row in rows} == {'observed'}
+          assert {row['suppressed'] for row in rows} == {'false'}
+          assert {row['comparable'] for row in rows} == {''}
+
+          q = summary['qualification']
+          assert q['source_release_matrix_complete'] is True
+          assert q['entity_identity_continuity_2010_2024_qualified'] is True
+          assert q['exact_polygon_harmonization_proven'] is False
+          assert q['within_source_longitudinal_use_authorized_with_caveat'] is True
+          assert q['historical_release_revisions_explicit'] is True
+          assert q['type_specific_interpretation_forbidden'] is True
+          assert q['true_incidence_claim_forbidden'] is True
+          assert q['global_panel_integration_authorized'] is False
+          PY
+
+      - name: Upload candidate artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: m45-bnpb-total-events-candidate
+          path: |
+            /tmp/m45-total-events-canonical-candidate.csv
+            /tmp/m45-total-events-provenance.json
+            /tmp/m45-total-events-summary.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone45-bnpb-total-events-candidate.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY
