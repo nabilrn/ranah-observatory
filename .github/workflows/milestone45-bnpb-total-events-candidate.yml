@@ -7,6 +7,10 @@ on:
     paths:
       - ".github/workflows/milestone45-bnpb-total-events-candidate.yml"
       - "scripts/build_milestone45_bnpb_total_events_candidate.py"
+      - "tests/test_milestone45_bnpb_total_events_candidate.py"
+      - "data/manifests/milestone45_bnpb_total_events_candidate_contract.json"
+      - "data/manifests/milestone45_bnpb_total_events_candidate.json"
+      - "research/MILESTONE45_BNPB_TOTAL_EVENTS_CANONICAL_CANDIDATE.md"
       - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
       - "data/processed/bnpb/m26_stage2_ckan_discovery/package-metadata.json"
       - "data/manifests/milestone44_bnpb_event_overlap_reconciliation.json"
@@ -17,6 +21,10 @@ on:
     paths:
       - ".github/workflows/milestone45-bnpb-total-events-candidate.yml"
       - "scripts/build_milestone45_bnpb_total_events_candidate.py"
+      - "tests/test_milestone45_bnpb_total_events_candidate.py"
+      - "data/manifests/milestone45_bnpb_total_events_candidate_contract.json"
+      - "data/manifests/milestone45_bnpb_total_events_candidate.json"
+      - "research/MILESTONE45_BNPB_TOTAL_EVENTS_CANONICAL_CANDIDATE.md"
       - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
       - "data/processed/bnpb/m26_stage2_ckan_discovery/package-metadata.json"
       - "data/manifests/milestone44_bnpb_event_overlap_reconciliation.json"
@@ -37,6 +45,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Run focused M45 regression tests
+        run: python -m unittest tests.test_milestone45_bnpb_total_events_candidate -v
+
       - name: Build M45 candidate artifacts
         run: >-
           python scripts/build_milestone45_bnpb_total_events_candidate.py
@@ -44,7 +55,7 @@ jobs:
           --provenance-output /tmp/m45-total-events-provenance.json
           --summary-output /tmp/m45-total-events-summary.json
 
-      - name: Validate M45 qualification boundary
+      - name: Validate frozen M45 qualification boundary
         run: |
           python - <<'PY'
           import csv
@@ -52,15 +63,22 @@ jobs:
           from pathlib import Path
 
           summary = json.loads(Path('/tmp/m45-total-events-summary.json').read_text(encoding='utf-8'))
+          manifest = json.loads(Path('data/manifests/milestone45_bnpb_total_events_candidate.json').read_text(encoding='utf-8'))
           rows = list(csv.DictReader(Path('/tmp/m45-total-events-canonical-candidate.csv').open(encoding='utf-8', newline='')))
 
           assert summary['milestone'] == 45
           assert summary['indicator_id'] == 'total_disaster_events'
           assert summary['period'] == [2010, 2024]
-          assert summary['observation_count'] == 285
-          assert summary['geography_count'] == 19
-          assert summary['years_count'] == 15
+          assert summary['observation_count'] == manifest['observation_count'] == 285
+          assert summary['geography_count'] == manifest['geography_count'] == 19
+          assert summary['years_count'] == manifest['years_count'] == 15
           assert summary['complete_geography_year_matrix'] is True
+          assert summary['year_sums'] == manifest['year_sums']
+          assert sum(summary['year_sums'].values()) == manifest['all_year_sum'] == 1498
+          assert summary['candidate_artifact']['sha256'] == manifest['candidate_artifact']['sha256']
+          assert summary['candidate_provenance_artifact']['sha256'] == manifest['candidate_artifact']['provenance_sha256']
+          assert summary['provenance']['source_snapshot_sha256'] == manifest['source']['source_snapshot_sha256']
+          assert summary['provenance']['frozen_processed_source_sha256'] == manifest['source']['frozen_processed_source_sha256']
           assert len(rows) == 285
           assert {row['indicator_id'] for row in rows} == {'total_disaster_events'}
           assert {row['unit'] for row in rows} == {'count'}
