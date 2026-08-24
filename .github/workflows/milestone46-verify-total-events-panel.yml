@@ -55,7 +55,7 @@ jobs:
           python scripts/validate_climate_disaster_foundation.py
 
       - name: Rebuild M46 into temporary root
-        run: python scripts/build_milestone46_total_events_panel.py --output-root /tmp/m46
+        run: python -m scripts.build_milestone46_total_events_panel --output-root /tmp/m46
 
       - name: Validate rebuilt product contract
         run: |
