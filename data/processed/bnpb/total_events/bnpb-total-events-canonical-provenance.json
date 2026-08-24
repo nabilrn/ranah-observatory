@@ -1,0 +1,16 @@
+{
+  "frozen_processed_source": "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv",
+  "frozen_processed_source_sha256": "f95e8491066962eb8499fb28d68ba1704aca477a480a3dbe599587bb047cb846",
+  "geography_interpretation": "Canonical IDs identify the stable 19 district/city entities represented by the release. M45 does not claim that historical values were recomputed on exact 2024 polygons.",
+  "m44_exact_match_rate": 0.9495798319327731,
+  "m44_manifest": "data/manifests/milestone44_bnpb_event_overlap_reconciliation.json",
+  "provenance_id": "bnpbprov_total_2c685281d98ff22015683a15",
+  "resource_id": "21044ffd-c397-4b3c-acbd-5adaa03d79e3",
+  "resource_last_modified": "2025-03-19T01:14:13.129781",
+  "resource_metadata_modified": "2025-03-19T01:15:22.437768",
+  "resource_name": "Jumlah Kejadian Bencana Menurut Kabupaten Tahun 2010-2024",
+  "resource_url": "https://data.bnpb.go.id/dataset/f61d78e5-04c6-4ce8-9acf-e425dadc1f4d/resource/21044ffd-c397-4b3c-acbd-5adaa03d79e3/download/jumlah-kejadian-bencana-menurut-kabupaten-tahun-2010-2024.xlsx",
+  "source_id": "bnpb_satu_data",
+  "source_record_id": "bnpb_total_events_kab_2010_2024",
+  "source_snapshot_sha256": "89f64b773892f00ea420f5b3b6a6d4ceb79bd533848d8c49925bb7478a16a5c0"
+}
