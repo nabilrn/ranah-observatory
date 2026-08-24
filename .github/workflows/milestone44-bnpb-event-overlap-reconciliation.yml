@@ -1,0 +1,68 @@
+name: Analyze Milestone 44 BNPB Event Overlap Reconciliation
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone44-bnpb-event-overlap-reconciliation.yml"
+      - "scripts/analyze_milestone44_bnpb_event_overlap.py"
+      - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
+      - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build M44 event overlap report
+        run: >-
+          python scripts/analyze_milestone44_bnpb_event_overlap.py
+          --output /tmp/m44-event-overlap.json
+          --summary-only
+
+      - name: Validate report contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path('/tmp/m44-event-overlap.json').read_text(encoding='utf-8'))
+          assert report['milestone'] == 44
+          assert report['phase'] == 'event_count_overlap_2010_2017'
+          assert report['comparison_contract']['years'] == [2010, 2017]
+          assert report['comparison_contract']['historical_missing_rows_zero_filled'] is False
+          assert report['summary']['missing_current_rows'] == 0
+          assert report['summary']['compared_rows'] == report['summary']['historical_explicit_overlap_rows']
+          assert len(report['by_year']) == 8
+          PY
+
+      - name: Upload full reconciliation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: m44-bnpb-event-overlap-reconciliation
+          path: /tmp/m44-event-overlap.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone44-bnpb-event-overlap-reconciliation.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY
