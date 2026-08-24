@@ -89,18 +89,20 @@ def validate_m44(path: Path) -> dict:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if payload.get("milestone") != 44:
         raise ValueError("M45 requires the frozen M44 reconciliation manifest")
-    summary = payload.get("summary", {})
+    result = payload.get("result", {})
     expected = {
         "historical_explicit_overlap_rows": 119,
         "compared_rows": 119,
         "exact_matches": 113,
         "value_disagreements": 6,
-        "current_rows_without_historical_explicit_row": 33,
-        "current_positive_where_historical_row_absent": 0,
+        "modern_rows_without_historical_explicit_row": 33,
+        "modern_positive_where_historical_row_absent": 0,
     }
     for key, value in expected.items():
-        if summary.get(key) != value:
-            raise ValueError(f"unexpected M44 {key}: {summary.get(key)!r} != {value!r}")
+        if result.get(key) != value:
+            raise ValueError(f"unexpected M44 {key}: {result.get(key)!r} != {value!r}")
+    if payload.get("qualification", {}).get("event_count_overlap_reconciled") is not True:
+        raise ValueError("M44 overlap reconciliation is not frozen as qualified")
     return payload
 
 
@@ -199,7 +201,7 @@ def build(source: Path, geographies: Path, package_metadata: Path, m44_path: Pat
         "frozen_processed_source": str(source.relative_to(ROOT)),
         "frozen_processed_source_sha256": sha256_file(source),
         "m44_manifest": str(m44_path.relative_to(ROOT)),
-        "m44_exact_match_rate": m44["summary"]["exact_match_rate"],
+        "m44_exact_match_rate": m44["result"]["exact_match_rate"],
         "geography_interpretation": (
             "Canonical IDs identify the stable 19 district/city entities represented by the release. "
             "M45 does not claim that historical values were recomputed on exact 2024 polygons."
