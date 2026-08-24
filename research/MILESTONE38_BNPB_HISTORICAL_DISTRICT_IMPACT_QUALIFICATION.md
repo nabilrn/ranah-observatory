@@ -44,6 +44,14 @@ Sampled later years do not show the same direct XLSX pattern in the public page.
 
 This heterogeneity is the reason M38 begins with metadata and transport qualification rather than immediately downloading and concatenating annual values.
 
+### National portal provenance cross-check
+
+The Indonesian national data portal currently mirrors the BNPB 2000 package with the same dataset ID `b40b63a8-30dc-49b1-9b63-4f285270bbd3` and the same direct resource naming pattern, including `stat_by_wil_13_2000.xlsx`:
+
+- <https://data.go.id/dataset/dataset/datakejadian2000>
+
+This is only a provenance cross-check. BNPB Satu Data remains the source endpoint for M38; the national portal mirror is not used to replace BNPB metadata or values.
+
 ## CI probe contract
 
 The workflow `.github/workflows/milestone38-bnpb-historical-district-impact-probe.yml` runs a read-only metadata probe against the official BNPB CKAN API.
