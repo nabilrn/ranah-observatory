@@ -119,7 +119,9 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           text = Path('.github/workflows/milestone46-verify-total-events-panel.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
           assert 'contents: read' in text
-          assert 'contents: write' not in text
-          assert ('git ' + 'push') not in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
           PY
