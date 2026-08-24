@@ -1,4 +1,5 @@
 name: Materialize Milestone 46 Total-Event Panel v3
+# Stable-head materialization: keep branch unchanged until the writer commit lands.
 
 on:
   push:
