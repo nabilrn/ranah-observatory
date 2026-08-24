@@ -8,6 +8,7 @@ on:
       - ".github/workflows/milestone38-bnpb-historical-district-impact-probe.yml"
       - "scripts/probe_milestone38_bnpb_historical_district_impact.py"
       - "tests/test_milestone38_bnpb_historical_district_impact.py"
+      - "data/manifests/milestone38_bnpb_historical_district_impact_transport.json"
       - "research/MILESTONE38_BNPB_HISTORICAL_DISTRICT_IMPACT_QUALIFICATION.md"
   pull_request:
     branches:
@@ -16,6 +17,7 @@ on:
       - ".github/workflows/milestone38-bnpb-historical-district-impact-probe.yml"
       - "scripts/probe_milestone38_bnpb_historical_district_impact.py"
       - "tests/test_milestone38_bnpb_historical_district_impact.py"
+      - "data/manifests/milestone38_bnpb_historical_district_impact_transport.json"
       - "research/MILESTONE38_BNPB_HISTORICAL_DISTRICT_IMPACT_QUALIFICATION.md"
   workflow_dispatch:
 
@@ -45,20 +47,43 @@ jobs:
           import json
           from pathlib import Path
 
-          p = Path('artifacts/m38_bnpb_historical_district_impact_transport.json')
-          m = json.loads(p.read_text(encoding='utf-8'))
-          assert m['scope'] == 'metadata-and-resource-transport-only'
-          assert m['numeric_values_requested'] is False
-          assert m['numeric_values_downloaded'] is False
-          assert m['numeric_values_promoted'] is False
-          assert m['district_impact_panel_authorized'] is False
-          assert m['event_level_gate_resolved'] is False
-          assert m['found_years'] == list(range(2000, 2018))
-          assert m['missing_years'] == []
-          assert m['direct_file_years'] == [2000, 2001]
-          assert m['sumbar_direct_filename_years'] == [2000, 2001]
-          assert m['link_only_years'] == list(range(2002, 2018))
-          assert m['duplicate_year_candidates'] == {}
+          live = json.loads(Path('artifacts/m38_bnpb_historical_district_impact_transport.json').read_text(encoding='utf-8'))
+          frozen = json.loads(Path('data/manifests/milestone38_bnpb_historical_district_impact_transport.json').read_text(encoding='utf-8'))
+
+          assert live['scope'] == 'metadata-and-resource-transport-only'
+          assert live['numeric_values_requested'] is False
+          assert live['numeric_values_downloaded'] is False
+          assert live['numeric_values_promoted'] is False
+          assert live['district_impact_panel_authorized'] is False
+          assert live['event_level_gate_resolved'] is False
+          assert live['found_years'] == list(range(2000, 2018))
+          assert live['missing_years'] == []
+          assert live['direct_file_years'] == [2000, 2001]
+          assert live['sumbar_direct_filename_years'] == [2000, 2001]
+          assert live['link_only_years'] == list(range(2002, 2018))
+          assert live['duplicate_year_candidates'] == {}
+
+          assert frozen['coverage']['found_year_count'] == 18
+          assert frozen['coverage']['direct_file_years'] == live['direct_file_years']
+          assert frozen['coverage']['link_only_years'] == live['link_only_years']
+          assert frozen['coverage']['sumbar_direct_filename_years'] == live['sumbar_direct_filename_years']
+          assert frozen['qualification']['numeric_values_promoted'] is False
+          assert frozen['qualification']['district_city_observed_impact_authorized'] is False
+          assert frozen['qualification']['event_level_observed_impact_authorized'] is False
+
+          live_by_year = {row['year']: row for row in live['years']}
+          for candidate in frozen['direct_sumbar_candidates']:
+              row = live_by_year[candidate['year']]
+              matches = [r for r in row['resources'] if r['sumbar_filename_candidate']]
+              assert len(matches) == 1
+              assert matches[0]['id'] == candidate['resource_id']
+              assert matches[0]['name'] == candidate['name']
+              assert matches[0]['url'] == candidate['url']
+
+          for external in frozen['external_folder_transport']:
+              row = live_by_year[external['year']]
+              urls = {r['url'] for r in row['resources'] if r['url']}
+              assert external['url'] in urls
           PY
 
       - name: Upload transport audit artifact
