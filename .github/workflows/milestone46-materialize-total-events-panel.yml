@@ -1,5 +1,5 @@
 name: Materialize Milestone 46 Total-Event Panel v3
-# Final stable-head trigger after reviewed artifact 9531092814 passed read-only verification.
+# Retrigger reviewed M46 materialization after read-only verification passed.
 
 on:
   push:
