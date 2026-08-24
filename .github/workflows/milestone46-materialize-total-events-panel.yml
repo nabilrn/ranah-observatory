@@ -42,7 +42,7 @@ jobs:
           python scripts/validate_climate_disaster_foundation.py
 
       - name: Build committed canonical layer and Panel v3
-        run: python scripts/build_milestone46_total_events_panel.py
+        run: python -m scripts.build_milestone46_total_events_panel
 
       - name: Verify M46 materialization contract
         run: |
