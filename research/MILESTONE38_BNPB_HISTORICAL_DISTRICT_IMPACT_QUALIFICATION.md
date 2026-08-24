@@ -2,103 +2,139 @@
 
 ## Status
 
-**Transport qualification in progress. Numeric promotion is not authorized.**
+**Transport metadata qualified. Numeric district/city impact promotion is not authorized.**
 
-Milestone 38 investigates a separate source-native historical evidence lane from the M37 provincial 2024–2025 observed-impact compilation: BNPB Satu Data annual datasets titled `Jumlah kejadian dan Dampak Bencana Tahun YYYY`.
+Milestone 38 qualifies a separate source-native historical evidence lane from the M37 provincial 2024–2025 observed-impact compilation: BNPB Satu Data annual datasets titled `Jumlah kejadian dan Dampak Bencana Tahun YYYY`.
 
-The official dataset descriptions state that these datasets contain disaster occurrence and impact data by `kabupaten/kota` for the named year. Portal discovery currently exposes the annual series across at least 2000–2017. This is potentially high-value historical evidence for Ranah Observatory because it can provide an observed-impact context at finer geography and much earlier dates than M37.
+The official dataset descriptions state that the annual packages contain disaster occurrence and impact data by `kabupaten/kota` for the named year. The read-only CKAN probe confirms a continuous catalogue series for **2000–2017** with no missing annual package in that interval.
 
-However, the portal does not expose a uniform resource transport contract across sampled years. Therefore no historical district/city impact number is promoted in this milestone until the transport and schema boundary are frozen.
+This milestone freezes source identity and transport behavior only. It does not promote historical impact values.
 
 ## Why this lane matters
 
 M37 added bounded, source-native **provincial** observed-impact context for Sumatera Barat in 2024–2025. It explicitly did not infer district/city values and did not resolve the M26 event-level retrieval gate.
 
-M38 does not reinterpret M37 and does not claim to resolve the event-level gate. Instead, it asks a narrower question:
+M38 asks a narrower question:
 
 > Does BNPB provide a deterministic, source-native annual district/city impact archive for Sumatera Barat that can be qualified independently of event-level reconstruction?
 
-If yes, this can later support a historical district/city observed-impact panel without allocating provincial totals downward and without inventing event records.
+The answer is **partly yes**: the annual package series is deterministic and complete at catalogue level for 2000–2017, but its resource transport changes after 2001 and the later archive still needs source-file/schema qualification before numeric ingestion.
 
-## Official portal evidence discovered before the CI probe
+## Qualified transport finding
 
-### Annual series exists
+The live BNPB CKAN probe found all 18 annual packages from 2000 through 2017.
 
-BNPB Satu Data exposes datasets named `Jumlah kejadian dan Dampak Bencana Tahun YYYY` for years spanning at least 2000 through 2017 in the portal catalogue.
+- **2000–2001:** direct BNPB-hosted XLSX resources partitioned by province-style filename.
+- **2002–2017:** package resources resolve to external Google Drive folders rather than direct BNPB-hosted tabular files.
+- **2014:** two resource records point to the same Google Drive folder, so resource-record count must not be interpreted as two distinct annual archives.
+- No duplicate annual package candidate was found for the exact title pattern.
 
-Examples:
+The frozen transport evidence is committed at:
 
-- 2000: <https://data.bnpb.go.id/dataset/datakejadian2000>
-- 2001: <https://data.bnpb.go.id/dataset/jumlah-kejadian-dan-dampak-bencana-tahun-2001>
-- 2002: <https://data.bnpb.go.id/dataset/jumlah-kejadian-dan-dampak-bencana-tahun-2002>
-- 2005: <https://data.bnpb.go.id/dataset/jumlah-kejadian-dan-dampak-bencana-tahun-2005>
-- 2017: <https://data.bnpb.go.id/dataset/jumlah-kejadian-dan-dampak-bencana-tahun-2017>
+`data/manifests/milestone38_bnpb_historical_district_impact_transport.json`
 
-The portal descriptions characterize the content as disaster occurrence and impact data according to `kabupaten/kota` for the corresponding year. The source field points to DIBI/BNPB.
+## Direct Sumatera Barat workbook audit
 
-### Transport is visibly heterogeneous
+The `stat_by_wil_13_YYYY.xlsx` filename candidate was downloaded only for the two direct-file years and inspected for geography/schema qualification. Full workbooks are **not** committed; source SHA-256 digests are frozen in the M38 manifest.
 
-The 2000 and 2001 dataset pages expose direct XLSX files partitioned by province code. In both years, a resource named `stat_by_wil_13_YYYY.xlsx` is visible, making code `13` a concrete **filename candidate** for the Sumatera Barat resource. Filename identity alone is not enough to promote its contents; the workbook schema and geography semantics still require validation.
+### 2000
 
-Sampled later years do not show the same direct XLSX pattern in the public page. The 2002, 2005, and 2017 pages expose a resource labelled `Jumlah Kejadian Bencana Tahun YYYY` with `Go to resource`, indicating a different link/external-resource transport path.
+Resource:
 
-This heterogeneity is the reason M38 begins with metadata and transport qualification rather than immediately downloading and concatenating annual values.
+`stat_by_wil_13_2000.xlsx`
 
-### National portal provenance cross-check
+The workbook itself states:
 
-The Indonesian national data portal currently mirrors the BNPB 2000 package with the same dataset ID `b40b63a8-30dc-49b1-9b63-4f285270bbd3` and the same direct resource naming pattern, including `stat_by_wil_13_2000.xlsx`:
+`Propinsi : 13. Sumatera Barat, 2000`
 
-- <https://data.go.id/dataset/dataset/datakejadian2000>
+This upgrades code `13` from a filename-only clue to source-native workbook geography evidence for the direct 2000 resource.
 
-This is only a provenance cross-check. BNPB Satu Data remains the source endpoint for M38; the national portal mirror is not used to replace BNPB metadata or values.
+The workbook uses sheet `statistik`, range `A1:P12`, with 16 source columns covering:
 
-## CI probe contract
+- `No`
+- `Wilayah`
+- `Jumlah Kejadian`
+- victim fields: `Meninggal`, `Hilang`, `Terluka`, `Menderita`, `Mengungsi`
+- house-damage fields: `Rusak Berat`, `Rusak Sedang`, `Rusak Ringan`, `Terendam`
+- facility fields: `Pendidikan`, `Kesehatan`, `Peribadatan`, `Umum`
 
-The workflow `.github/workflows/milestone38-bnpb-historical-district-impact-probe.yml` runs a read-only metadata probe against the official BNPB CKAN API.
+There are three source body rows plus a total row. M38 intentionally does not promote the impact values from those rows.
 
-The probe must:
+Frozen workbook digest:
 
-1. discover packages matching the exact annual title pattern for 2000–2017;
-2. freeze package IDs, names, titles, metadata timestamps, organization, and source metadata;
-3. enumerate resource IDs, names, formats, URLs, datastore flags, and transport classes;
-4. identify `stat_by_wil_13_YYYY` only as a Sumatera Barat **filename candidate**;
-5. separate direct-file years from external/link-only years;
-6. report missing or duplicate annual package candidates;
-7. upload only a metadata/transport manifest as a CI artifact.
+`c9ecfe81673f1680c4a6d4d257a1c26b24005152e72820d4c01c206ec1a904fe`
 
-The probe must not download or parse impact values.
+### 2001
+
+Resource:
+
+`stat_by_wil_13_2001.xlsx`
+
+The workbook states:
+
+`Propinsi : 13. Sumatera Barat, 2001`
+
+The same 16-column header contract is present on sheet `statistik`, but the used range ends at `A1:P8`: there are **no body rows and no total row**.
+
+This empty body is deliberately treated as **unresolved missingness semantics**, not as proof of zero disasters or zero impact. A future numeric milestone must resolve whether the empty body means no recorded rows, unavailable data, an export defect, or another source-native state.
+
+Frozen workbook digest:
+
+`00d9ceac4fde0febf17f02cda92c60d10d297f0d2b413354e56ce5adb168ba01`
+
+## Later-year archive boundary
+
+For 2002–2017 the BNPB package metadata points to year-specific Google Drive folders. That is official BNPB catalogue provenance, but it is not yet a frozen tabular transport contract.
+
+Before those years can be ingested numerically, a follow-up milestone must qualify each folder/file layer for:
+
+- deterministic public file retrieval;
+- exact Sumatera Barat file identity;
+- workbook/CSV schema and schema changes across years;
+- geography coding and administrative-boundary changes;
+- metric definitions and units;
+- blank/zero/missing semantics;
+- duplicate and aggregation semantics;
+- reproducible source-file digests.
+
+## Reproducibility contract
+
+`.github/workflows/milestone38-bnpb-historical-district-impact-probe.yml` runs a read-only live CKAN probe and verifies the live source against the committed transport freeze.
+
+The workflow asserts:
+
+1. all annual packages 2000–2017 remain discoverable;
+2. only 2000–2001 expose direct files under the observed contract;
+3. 2002–2017 remain link/external-resource years;
+4. direct Sumatera Barat resource IDs, names, and URLs match the freeze;
+5. external folder URLs match the freeze;
+6. no numeric values are requested, downloaded by the metadata probe, or promoted;
+7. the workflow has no repository writer permission.
+
+The initial live transport artifact was produced by GitHub Actions run `32729125584` and frozen with artifact digest:
+
+`sha256:64e54a6a3c94521202ed5bba8eedfbb5d24e094274363c8781e281755a121611`
 
 ## Research boundary
 
-Until a follow-up freeze explicitly authorizes numeric ingestion, M38 prohibits:
+M38 prohibits:
 
-- treating a filename containing province code `13` as sufficient geography proof;
+- interpreting the 2001 empty workbook body as numeric zero;
 - treating link-only resources as equivalent to direct files;
-- concatenating annual workbooks without schema-version checks;
-- converting blank cells to zero without source-native missing-value semantics;
+- concatenating annual archives without schema-version checks;
+- converting blank cells to zero without source-native semantics;
 - summing affected/displaced/injured categories as unique people;
 - reconstructing event-level rows from annual aggregates;
 - allocating M37 provincial values to districts/cities;
 - merging annual district/city aggregates with DIBI occurrence layers as if they share event identity;
 - causal, monetary-loss, avoided-loss, composite-risk, or policy-ranking claims from this source alone.
 
-## Decision gate after transport probe
-
-M38 can advance to numeric qualification only if the CI artifact establishes a deterministic path for at least one Sumatera Barat annual source and allows us to freeze:
-
-- source/resource identity;
-- exact geography meaning;
-- workbook or response schema;
-- metric definitions and units;
-- missing-value semantics;
-- duplicate/aggregation semantics;
-- temporal coverage and version boundary;
-- reproducible raw-evidence checksums or source-row snapshots.
-
-If those conditions are not met, the annual series remains a discovered source registry entry rather than an analytical panel.
-
 ## Relationship to earlier milestones
 
-- **M26 event-level gate:** remains unresolved unless a future milestone independently freezes deterministic event-level retrieval and event identity.
+- **M26 event-level gate:** remains unresolved. M38 annual aggregates do not create event identity.
 - **M37 provincial observed-impact context:** remains valid and unchanged for its bounded 2024–2025 scope.
-- **M38:** is a historical district/city source-qualification lane and cannot silently upgrade either M26 or M37 claims.
+- **M38:** qualifies historical annual-package transport and direct 2000–2001 Sumatera Barat workbook geography/schema, while keeping numeric historical district/city impact blocked.
+
+## Next evidence gate
+
+The highest-value next step is to qualify the **2002–2017 Google Drive archive layer** without manual user work if deterministic public retrieval can be established. If that transport cannot be made reproducible, the fallback is to promote only independently qualified direct-file years rather than silently mixing source contracts.
