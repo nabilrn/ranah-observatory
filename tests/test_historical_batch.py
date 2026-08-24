@@ -13,7 +13,12 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from historical_batch_collect import newest_changed_pdf, official_bps_url  # noqa: E402
 from historical_batch_ingest import inspect_batch, write_manifest  # noqa: E402
-from validate_historical_batch import REQUIRED_P0, validate  # noqa: E402
+from validate_historical_batch import (  # noqa: E402
+    ALLOWED_COMMITTED_PDFS,
+    REQUIRED_P0,
+    find_disallowed_committed_pdfs,
+    validate,
+)
 
 
 PDF_BYTES = b"%PDF-1.4\n1 0 obj\n<< /Type /Catalog >>\nendobj\n%%EOF\n"
@@ -25,6 +30,26 @@ class HistoricalBatchTests(unittest.TestCase):
         self.assertEqual([], errors, "\n".join(errors))
         self.assertGreaterEqual(counts["queue"], 13)
         self.assertEqual(8, counts["p0"])
+
+    def test_committed_pdf_guard_allows_only_explicit_distribution_pdf(self) -> None:
+        canonical_path = (
+            "publication/v0.1/distribution/"
+            "Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf"
+        )
+        self.assertIn(canonical_path, ALLOWED_COMMITTED_PDFS)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            canonical = root / canonical_path
+            canonical.parent.mkdir(parents=True)
+            canonical.write_bytes(PDF_BYTES)
+            self.assertEqual([], find_disallowed_committed_pdfs(root))
+
+            rogue = root / "publication" / "scratch.pdf"
+            rogue.write_bytes(PDF_BYTES)
+            self.assertEqual(
+                ["publication/scratch.pdf"],
+                find_disallowed_committed_pdfs(root),
+            )
 
     def test_anchor_strategy_is_present(self) -> None:
         queue_path = ROOT / "data" / "acquisition_requests" / "bps_publications.csv"
