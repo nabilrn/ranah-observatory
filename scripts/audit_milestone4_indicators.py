@@ -17,6 +17,53 @@ MAX_INDICATORS = 60
 
 OBS_REQUIRED = {"observation_id", "indicator_id", "geography_id", "provenance_id", "claim_type"}
 PROV_REQUIRED = {"provenance_id", "source_id", "artifact_locator", "extraction_method"}
+JSON_PROV_REQUIRED = {"provenance_id", "source_id", "resource_url", "frozen_processed_source"}
+
+# Milestone 4 is a frozen historical completion gate. Later qualified indicators are
+# audited for IDs/provenance but do not retroactively change the original 40-indicator
+# cohort that satisfied the charter criterion.
+MILESTONE4_FROZEN_INDICATORS = {
+    "agriculture_share_grdp",
+    "annual_rainfall",
+    "average_employee_wage",
+    "child_mortality_rate",
+    "dependency_ratio",
+    "domestic_investment_realization",
+    "elderly_population_share",
+    "employed_population",
+    "expected_years_schooling",
+    "export_value",
+    "flood_events",
+    "food_inadequacy_prevalence",
+    "foreign_investment_realization",
+    "gini_ratio",
+    "household_expenditure_per_capita_monthly",
+    "infant_mortality_rate",
+    "internet_access",
+    "labor_force_count",
+    "labor_force_participation",
+    "landslide_events",
+    "large_medium_industry_employment",
+    "life_expectancy",
+    "manufacturing_share_grdp",
+    "mean_years_schooling",
+    "mobile_phone_use",
+    "neet_rate",
+    "net_migration_rate",
+    "population_growth",
+    "population_total",
+    "poverty_rate",
+    "provincial_road_length",
+    "real_grdp_growth",
+    "rice_yield",
+    "road_condition_good",
+    "total_fertility_rate",
+    "under_five_mortality_rate",
+    "underemployment_rate",
+    "unemployed_population",
+    "unemployment_rate",
+    "urban_population_share",
+}
 
 
 def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -25,6 +72,17 @@ def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
         fields = list(reader.fieldnames or [])
         rows = [{key: (value or "").strip() for key, value in row.items()} for row in reader]
     return fields, rows
+
+
+def _json_provenance_rows(path: Path) -> list[dict[str, Any]]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(payload, dict):
+        candidates = [payload]
+    elif isinstance(payload, list):
+        candidates = [item for item in payload if isinstance(item, dict)]
+    else:
+        return []
+    return [row for row in candidates if JSON_PROV_REQUIRED.issubset(row)]
 
 
 def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
@@ -54,6 +112,22 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
                 pid = row.get("provenance_id", "")
                 if pid:
                     provenance_ids.add(pid)
+
+    # M45/M46 use a frozen canonical JSON provenance object rather than the
+    # legacy canonical-provenance CSV schema. Discover only provenance-named
+    # JSON files and require the narrow M45/M46 fields before accepting an ID.
+    for path in sorted(processed_root.rglob("*provenance.json")):
+        try:
+            rows = _json_provenance_rows(path)
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            continue
+        if not rows:
+            continue
+        provenance_files.append(path.relative_to(ROOT).as_posix())
+        for row in rows:
+            pid = str(row.get("provenance_id", "")).strip()
+            if pid:
+                provenance_ids.add(pid)
 
     by_indicator: dict[str, dict[str, Any]] = {}
     seen_observation_ids: set[str] = set()
@@ -113,7 +187,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
     for indicator_id in sorted(by_indicator):
         entry = by_indicator[indicator_id]
         unresolved_count = sum(1 for item in unresolved_provenance if item["indicator_id"] == indicator_id)
-        qualified = (
+        evidence_qualified = (
             bool(indicator_id)
             and entry["registered"]
             and entry["observation_count"] > 0
@@ -121,7 +195,8 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
             and len(entry["provenance_ids"]) > 0
             and unresolved_count == 0
         )
-        if qualified:
+        counts_toward_milestone4 = evidence_qualified and indicator_id in MILESTONE4_FROZEN_INDICATORS
+        if counts_toward_milestone4:
             qualified_ids.append(indicator_id)
         inventory.append(
             {
@@ -134,7 +209,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
                 "missing_observation_id_count": entry["missing_observation_id_count"],
                 "unresolved_provenance_count": unresolved_count,
                 "files": sorted(entry["files"]),
-                "counts_toward_milestone4": qualified,
+                "counts_toward_milestone4": counts_toward_milestone4,
             }
         )
 
@@ -171,7 +246,7 @@ def main() -> int:
     args = parser.parse_args()
     try:
         report = audit(args.processed_root, args.indicator_registry)
-    except (OSError, ValueError, csv.Error) as exc:
+    except (OSError, ValueError, csv.Error, json.JSONDecodeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
