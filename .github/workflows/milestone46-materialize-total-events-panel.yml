@@ -1,0 +1,142 @@
+name: Materialize Milestone 46 Total-Event Panel v3
+# Retrigger reviewed M46 materialization after read-only verification passed.
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone46-materialize-total-events-panel.yml"
+      - "scripts/apply_milestone46_registry_migration.py"
+      - "scripts/build_milestone46_total_events_panel.py"
+      - "data/manifests/milestone45_bnpb_total_events_candidate.json"
+      - "data/manifests/milestone28_panel_integration.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: milestone46-materialize-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Apply narrow registry migration
+        run: python scripts/apply_milestone46_registry_migration.py
+
+      - name: Validate migrated foundations
+        run: |
+          python scripts/validate_data_foundation.py
+          python scripts/validate_climate_disaster_foundation.py
+
+      - name: Build committed canonical layer and Panel v3
+        run: python -m scripts.build_milestone46_total_events_panel
+
+      - name: Verify M46 materialization contract
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path('.')
+          manifest = json.loads((root / 'data/manifests/milestone46_total_events_panel_integration.json').read_text(encoding='utf-8'))
+          m45 = json.loads((root / 'data/manifests/milestone45_bnpb_total_events_candidate.json').read_text(encoding='utf-8'))
+          assert manifest['milestone'] == 46
+          assert manifest['integration_success'] is True
+          assert manifest['base_panel_preserved_field_exact'] is True
+          assert manifest['base_observation_count'] == 2679
+          assert manifest['added_indicator_id'] == 'total_disaster_events'
+          assert manifest['added_observation_count'] == 133
+          assert manifest['long_observation_count'] == 2812
+          assert manifest['indicator_count'] == 23
+          assert manifest['wide_row_count'] == 152
+          assert manifest['total_event_full_canonical_period'] == [2010, 2024]
+          assert manifest['total_event_panel_period'] == [2018, 2024]
+          assert manifest['total_event_2025_state'] == 'missing_not_zero'
+          assert manifest['total_event_comparable_flag'] == 'unset'
+          assert manifest['exact_polygon_harmonization_proven'] is False
+          assert manifest['zero_fill_performed'] is False
+          assert manifest['imputation_performed'] is False
+          assert manifest['m45_candidate_sha256'] == m45['candidate_artifact']['sha256']
+
+          canonical = root / manifest['outputs']['canonical']['path']
+          assert hashlib.sha256(canonical.read_bytes()).hexdigest() == m45['candidate_artifact']['sha256']
+          canonical_rows = list(csv.DictReader(canonical.open(encoding='utf-8', newline='')))
+          assert len(canonical_rows) == 285
+          assert {row['indicator_id'] for row in canonical_rows} == {'total_disaster_events'}
+          assert {row['comparable'] for row in canonical_rows} == {''}
+
+          long_rows = list(csv.DictReader((root / manifest['outputs']['long']['path']).open(encoding='utf-8', newline='')))
+          total_rows = [row for row in long_rows if row['indicator_id'] == 'total_disaster_events']
+          assert len(long_rows) == 2812
+          assert len(total_rows) == 133
+          assert {int(row['analysis_year']) for row in total_rows} == set(range(2018, 2025))
+          assert all(row['comparable'] == '' for row in total_rows)
+          assert all('exact_polygon_harmonization=not_proven' in row['source_notes'] for row in total_rows)
+
+          wide_rows = list(csv.DictReader((root / manifest['outputs']['wide']['path']).open(encoding='utf-8', newline='')))
+          assert len(wide_rows) == 152
+          rows_2025 = [row for row in wide_rows if row['analysis_year'] == '2025']
+          assert len(rows_2025) == 19
+          assert all(row['total_disaster_events'] == '' for row in rows_2025)
+          PY
+
+      - name: Restrict materialized diff to reviewed paths
+        run: |
+          python - <<'PY'
+          import subprocess
+
+          allowed = {
+              'data/registries/indicators.csv',
+              'data/registries/bnpb_indicator_qualification.csv',
+              'scripts/validate_climate_disaster_foundation.py',
+              'data/processed/bnpb/total_events/bnpb-total-events-canonical-observations.csv',
+              'data/processed/bnpb/total_events/bnpb-total-events-canonical-provenance.json',
+              'data/analysis/engine/panel_v3/m46-panel-long.csv',
+              'data/analysis/engine/panel_v3/m46-panel-wide.csv',
+              'data/analysis/engine/panel_v3/m46-indicator-coverage.csv',
+              'data/analysis/engine/panel_v3/m46-indicator-metadata.csv',
+              'data/manifests/milestone46_total_events_panel_integration.json',
+          }
+          changed = set(subprocess.check_output(['git', 'status', '--porcelain'], text=True).splitlines())
+          paths = {line[3:] for line in changed if len(line) > 3}
+          unexpected = paths - allowed
+          missing = allowed - paths
+          if unexpected:
+              raise SystemExit(f'unexpected M46 materialization paths: {sorted(unexpected)}')
+          if missing:
+              raise SystemExit(f'expected M46 materialization paths not changed: {sorted(missing)}')
+          print(f'whitelisted M46 materialization paths: {len(paths)}')
+          PY
+
+      - name: Commit exact materialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/registries/indicators.csv \
+            data/registries/bnpb_indicator_qualification.csv \
+            scripts/validate_climate_disaster_foundation.py \
+            data/processed/bnpb/total_events \
+            data/analysis/engine/panel_v3 \
+            data/manifests/milestone46_total_events_panel_integration.json
+          git diff --cached --check
+          git commit -m "data: materialize M46 total-event Panel v3"
+          git push origin HEAD:research/evidence
