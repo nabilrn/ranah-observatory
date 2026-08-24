@@ -1,19 +1,10 @@
 name: Materialize Milestone 46 Total-Event Panel v3
-# Trigger guarded M46 materialization with file-level untracked enumeration.
+# Push-only writer; reviewed paths are enumerated at file level before commit.
 
 on:
   push:
     branches:
       - research/evidence
-    paths:
-      - ".github/workflows/milestone46-materialize-total-events-panel.yml"
-      - "scripts/apply_milestone46_registry_migration.py"
-      - "scripts/build_milestone46_total_events_panel.py"
-      - "data/manifests/milestone45_bnpb_total_events_candidate.json"
-      - "data/manifests/milestone28_panel_integration.json"
-  pull_request:
-    branches:
-      - main
     paths:
       - ".github/workflows/milestone46-materialize-total-events-panel.yml"
       - "scripts/apply_milestone46_registry_migration.py"
@@ -31,11 +22,6 @@ concurrency:
 
 jobs:
   materialize:
-    if: >-
-      github.event_name == 'push' ||
-      (github.event_name == 'pull_request' &&
-       github.event.pull_request.head.repo.full_name == github.repository &&
-       github.head_ref == 'research/evidence')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
