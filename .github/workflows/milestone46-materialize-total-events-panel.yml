@@ -1,5 +1,5 @@
 name: Materialize Milestone 46 Total-Event Panel v3
-# Temporary same-repo PR trigger permits connector-driven materialization review.
+# Trigger guarded same-repo PR materialization after base synchronization.
 
 on:
   push:
