@@ -127,7 +127,7 @@ jobs:
               'data/analysis/engine/panel_v3/m46-indicator-metadata.csv',
               'data/manifests/milestone46_total_events_panel_integration.json',
           }
-          changed = set(subprocess.check_output(['git', 'status', '--porcelain'], text=True).splitlines())
+          changed = set(subprocess.check_output(['git', 'status', '--porcelain', '-uall'], text=True).splitlines())
           paths = {line[3:] for line in changed if len(line) > 3}
           unexpected = paths - allowed
           missing = allowed - paths
