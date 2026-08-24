@@ -1,0 +1,128 @@
+{
+  "schema": "ranah-observatory/milestone40-bnpb-drive-archive-complete/v1",
+  "milestone": 40,
+  "title": "Complete BNPB historical Drive archive file-identity qualification for Sumatera Barat, 2002-2017",
+  "source_chain": {
+    "catalogue": "BNPB Satu Data",
+    "catalogue_base": "https://data.bnpb.go.id",
+    "resource_transport": "BNPB-catalogued public Google Drive folders",
+    "provenance_rule": "A Drive file is qualified only when reached from the year-specific folder URL frozen by M38. Arbitrary Drive search results are not sufficient provenance."
+  },
+  "coverage": {
+    "drive_years": [2002, 2017],
+    "qualified_year_count": 16,
+    "qualified_years": [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017],
+    "folder_listing_file_count_per_year": 38,
+    "sumbar_candidate_count_per_year": 1,
+    "schema_audited_years": [2002, 2003, 2012, 2017],
+    "schema_span": "start-early-mid-end",
+    "missing_drive_years": []
+  },
+  "qualification": {
+    "transport_file_identity_gate_closed": true,
+    "all_year_folders_listable": true,
+    "all_years_have_one_sumbar_candidate": true,
+    "all_sumbar_candidates_downloadable": true,
+    "source_native_sumbar_label_confirmed_for_schema_samples": true,
+    "sixteen_column_layout_confirmed_for_schema_samples": true,
+    "full_per_year_schema_identity_proven": false,
+    "numeric_values_promoted": false,
+    "district_city_panel_authorized": false,
+    "event_level_panel_authorized": false,
+    "interpretation": "The BNPB-catalogued Drive archive now has deterministic file identity for every year 2002-2017. Source-native workbook audits at the beginning, midpoint, and endpoint show the same 16-column layout and explicit province-13 Sumatera Barat labels. This closes the archive transport/file-identity gate only. Numeric normalization remains blocked pending missingness, administrative-geography versioning, metric-definition stability, and row/total semantics."
+  },
+  "expected_source_columns": [
+    "No",
+    "Wilayah",
+    "Jumlah Kejadian",
+    "Meninggal",
+    "Hilang",
+    "Terluka",
+    "Menderita",
+    "Mengungsi",
+    "Rumah Rusak Berat",
+    "Rumah Rusak Sedang",
+    "Rumah Rusak Ringan",
+    "Rumah Terendam",
+    "Fasilitas Pendidikan",
+    "Fasilitas Kesehatan",
+    "Fasilitas Peribadatan",
+    "Fasilitas Umum"
+  ],
+  "schema_samples": [
+    {
+      "year": 2002,
+      "sha256": "6d9c2766f44648a2383dc7fbe02378c413cb93ad361d0972060b1421de21baae",
+      "sheet": "statistik",
+      "used_range": "A1:P12",
+      "province_label": "Propinsi : 13. Sumatera Barat, 2002",
+      "body_row_count": 3,
+      "total_row_present": true,
+      "impact_values_promoted": false
+    },
+    {
+      "year": 2003,
+      "sha256": "e3263203c3f791d79d14d9100fd50b878f571e0f53d187800d5b65fc921b7a78",
+      "sheet": "statistik",
+      "used_range": "A1:P13",
+      "province_label": "Propinsi : 13. Sumatera Barat, 2003",
+      "body_row_count": 4,
+      "total_row_present": true,
+      "impact_values_promoted": false
+    },
+    {
+      "year": 2012,
+      "sha256": "f6b8388cba8cd8e471bb0703226a7f02abbeba5a83944fbf53909bc2ec46b081",
+      "sheet": "statistik",
+      "used_range": "A1:P24",
+      "province_label": "Propinsi : 13. Sumatera Barat, 2012",
+      "body_row_count": 15,
+      "total_row_present": true,
+      "impact_values_promoted": false
+    },
+    {
+      "year": 2017,
+      "sha256": "de218de3da3c16db20442a5e9fbedac1f6b6906128160b43c3400bf5a63f266d",
+      "sheet": "statistik",
+      "used_range": "A1:P23",
+      "province_label": "Propinsi : 13. Sumatera Barat, 2017",
+      "body_row_count": 14,
+      "total_row_present": true,
+      "impact_values_promoted": false
+    }
+  ],
+  "years": [
+    {"year": 2002, "folder_id": "1cB1h3gjrTonMPsj49pb4aIc8UUDBB554", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2002.xlsx", "sumbar_file_id": "1h_788IN5OfiRIG2QIwsffRSoaXlk80ye", "size_bytes": 27046, "downloadable": true},
+    {"year": 2003, "folder_id": "1xMh5ByqtLZpp8gQomQE9hAdBRAS8QXv6", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2003.xlsx", "sumbar_file_id": "1YOlUQzvh3Bk3HOX_LXyN2BPdi3VgthLW", "size_bytes": 27120, "downloadable": true},
+    {"year": 2004, "folder_id": "1_KqSlahI4QbUiYtrxDaqf26K-b1X41Xg", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2004.xlsx", "sumbar_file_id": "1G1KdFLpFqqhU7MESZklg5AjMiAOSJXVA", "size_bytes": 27448, "downloadable": true},
+    {"year": 2005, "folder_id": "1IxqI09TnYEVLyrUYFhPV1Izap0eCfaGn", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2005.xlsx", "sumbar_file_id": "1IjSA3FYXm-8CnzaeusARlEeX4KgXeT6j", "size_bytes": 27797, "downloadable": true},
+    {"year": 2006, "folder_id": "16ESrYQPqMwBmxSzQk1y0QW-KTwkucyy8", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2006.xlsx", "sumbar_file_id": "1qOv0DiVsdEPChJ3RFzP8NO0P7FKBSVd3", "size_bytes": 27766, "downloadable": true},
+    {"year": 2007, "folder_id": "1h9mIoEwnWh1rsDErYmLuVEZbZAuXS5je", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2007.xlsx", "sumbar_file_id": "1qs_cgQUIdgF6ktysHP56F_n4f6unlqsC", "size_bytes": 28510, "downloadable": true},
+    {"year": 2008, "folder_id": "11RcBlfjdPOCViFzLbXxdrzdwOwGkFfcM", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2008.xlsx", "sumbar_file_id": "1AlZP0q2j7JmPNR9nMDCOJoTTgMbRmIS9", "size_bytes": 27511, "downloadable": true},
+    {"year": 2009, "folder_id": "1dEmB9elGrudc_N7EzfVC6iXR7XscMXkV", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2009.xlsx", "sumbar_file_id": "14wgWzsmUjvf1Xex-59yVIk3BMzwpMyu2", "size_bytes": 28442, "downloadable": true},
+    {"year": 2010, "folder_id": "1HuADXppt6XVdfCt8FZ4Cobw1uAl8QO9F", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2010.xlsx", "sumbar_file_id": "1grzKv-JYqXh8iLRXwztFOtSQL3vqiG0G", "size_bytes": 28112, "downloadable": true},
+    {"year": 2011, "folder_id": "1AsFCoVXTcx_gKbLeWSTXZdvPyzS_b58y", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2011.xlsx", "sumbar_file_id": "1aiyS3evqAIdS_qvAIMXkPcT6ZHsYJcEJ", "size_bytes": 27987, "downloadable": true},
+    {"year": 2012, "folder_id": "1iAhPmnbQ6ymdRnUqGUuUhApmymWHjfg3", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2012.xlsx", "sumbar_file_id": "1bH89AFGZ3-lSFyhM0uD-D58MhCF_Xq_F", "size_bytes": 28150, "downloadable": true},
+    {"year": 2013, "folder_id": "1P6aH3hmMQ8K3A6J0ABtT-uM4bfLeYFdr", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2013.xlsx", "sumbar_file_id": "16xTOHKIcvm6-35MouBc5SAhWzHCFMfAJ", "size_bytes": 28150, "downloadable": true},
+    {"year": 2014, "folder_id": "1NsN2l293L8vyxPq0wxRbmvRyqBQvVq-Z", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2014.xlsx", "sumbar_file_id": "1iX-fioBCs0ucwYWdJcPauWrBBNPfeT0g", "size_bytes": 28030, "downloadable": true, "catalogue_resource_note": "M38 observed two resource records pointing to this same folder; the folder/file archive is counted once."},
+    {"year": 2015, "folder_id": "1iJ3br2AAf2y92CrODRa_q_5YzevneOa6", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2015.xlsx", "sumbar_file_id": "1vRof8V29l81XhKfA0ERodnV8AzBChwCe", "size_bytes": 28032, "downloadable": true},
+    {"year": 2016, "folder_id": "19q72ocka_qm4cA0VYp0fFKYL4cgh4dLS", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2016.xlsx", "sumbar_file_id": "14TV7RFzAJwFHYTzbkfOEvFcYbSbueNJY", "size_bytes": 28312, "downloadable": true},
+    {"year": 2017, "folder_id": "1tuz5clbQ3r65MSj25SPuNLzqszlrkMzb", "folder_listing_file_count": 38, "sumbar_file_name": "stat_by_wil_13_2017.xlsx", "sumbar_file_id": "1qRNz3QLxm0UERt1L_qiZNcP25tSZ25YN", "size_bytes": 28058, "downloadable": true}
+  ],
+  "remaining_normalization_gates": [
+    "Resolve the 2001 direct workbook empty-body semantics without inferring zero.",
+    "Freeze administrative-geography version handling across historical district/city rows.",
+    "Confirm metric-definition stability and source aggregation semantics across archive years.",
+    "Distinguish body rows from source total rows and define blank/zero/missing handling.",
+    "Preserve source-native row identity before any cross-year geography harmonization.",
+    "Keep annual aggregates separate from event-level evidence because event identity is absent."
+  ],
+  "research_boundaries": [
+    "Do not promote disaster-impact values from M40.",
+    "Do not infer zero from absent district/city rows or blank cells.",
+    "Do not reconstruct event-level records from annual aggregates.",
+    "Do not assume administrative codes or boundaries are temporally stable.",
+    "Do not sum victim categories as unique people.",
+    "Do not derive causal, monetary-loss, avoided-loss, composite-risk, or policy-ranking claims from this archive alone."
+  ]
+}
