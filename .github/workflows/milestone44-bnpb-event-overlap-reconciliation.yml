@@ -9,6 +9,14 @@ on:
       - "scripts/analyze_milestone44_bnpb_event_overlap.py"
       - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
       - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone44-bnpb-event-overlap-reconciliation.yml"
+      - "scripts/analyze_milestone44_bnpb_event_overlap.py"
+      - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
+      - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
   workflow_dispatch:
 
 permissions:
