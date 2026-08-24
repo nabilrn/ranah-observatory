@@ -114,6 +114,23 @@ jobs:
               assert committed_path.read_bytes() == rebuilt_path.read_bytes()
           PY
 
+      - name: Stage reviewed artifact payload
+        run: |
+          mkdir -p /tmp/m46-review/workspace/data/registries
+          mkdir -p /tmp/m46-review/workspace/scripts
+          cp data/registries/indicators.csv /tmp/m46-review/workspace/data/registries/indicators.csv
+          cp data/registries/bnpb_indicator_qualification.csv /tmp/m46-review/workspace/data/registries/bnpb_indicator_qualification.csv
+          cp scripts/validate_climate_disaster_foundation.py /tmp/m46-review/workspace/scripts/validate_climate_disaster_foundation.py
+          cp -R /tmp/m46/data /tmp/m46-review/generated-data
+
+      - name: Upload reviewed M46 materialization
+        uses: actions/upload-artifact@v4
+        with:
+          name: m46-reviewed-materialization
+          path: /tmp/m46-review/
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Assert verifier is read-only
         run: |
           python - <<'PY'
