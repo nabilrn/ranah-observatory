@@ -1,0 +1,68 @@
+{
+  "schema": "ranah-observatory/milestone45-bnpb-total-events-candidate-contract/v1",
+  "milestone": 45,
+  "title": "BNPB total disaster events 2010-2024 canonical candidate contract",
+  "candidate_indicator": {
+    "indicator_id": "total_disaster_events",
+    "name": "Recorded total disaster events",
+    "definition": "Count of all disaster events recorded by BNPB for the stated district/city and calendar year under the qualified source release.",
+    "unit": "count",
+    "frequency": "annual",
+    "claim_type": "observed",
+    "source_record_id": "bnpb_total_events_kab_2010_2024",
+    "resource_id": "21044ffd-c397-4b3c-acbd-5adaa03d79e3"
+  },
+  "required_matrix": {
+    "period": [2010, 2024],
+    "years": 15,
+    "geographies": 19,
+    "observations": 285,
+    "complete_geography_year_matrix_required": true,
+    "non_negative_integer_values_required": true
+  },
+  "m44_dependency": {
+    "historical_explicit_overlap_rows": 119,
+    "exact_matches": 113,
+    "value_disagreements": 6,
+    "current_rows_without_historical_explicit_row": 33,
+    "current_positive_where_historical_row_absent": 0,
+    "interpretation": "Modern release is the preferred complete source-defined matrix; M42 remains historical-release crosscheck and revision evidence."
+  },
+  "geography_contract": {
+    "canonical_mapping": "explicit current Permendagri entity crosswalk",
+    "entity_identity_continuity_2010_2024": "qualified",
+    "exact_polygon_harmonization": "not_proven",
+    "generic_comparable_flag": "unset",
+    "within_source_longitudinal_use": "authorized_with_boundary_caveat",
+    "source_geography_identity_preserved_in_notes": true
+  },
+  "qualification": {
+    "candidate_artifact_generation_authorized": true,
+    "global_indicator_registry_update_authorized": false,
+    "global_panel_integration_authorized": false,
+    "type_specific_relabeling_authorized": false,
+    "true_incidence_claim_authorized": false,
+    "causal_claim_authorized": false
+  },
+  "external_evidence": [
+    {
+      "source": "BPS Sensus Penduduk 2010",
+      "url": "https://sensus.bps.go.id/topik/tabular/sp2010/10/91625/0",
+      "supports": "Modern Sumatera Barat district/city entity set is present in 2010."
+    },
+    {
+      "source": "BPS Statistical Yearbook of Indonesia 2014",
+      "supports": "Sumatera Barat retains 12 regencies through 2009-2013."
+    },
+    {
+      "source": "Permendagri No. 72 Tahun 2019",
+      "supports": "Sumatera Barat administrative structure is 12 regencies and 7 cities in the 2019 national administrative code register."
+    },
+    {
+      "source": "BPS Master Wilayah Administrasi Provinsi Sumatera Barat 2025",
+      "url": "https://sumbar.bps.go.id/id/publication/2026/05/29/1b5bc784c2c0a128be036ef3/master-wilayah-adminisitrasi-provinsi-sumatera-barat-2025.html",
+      "supports": "Current administrative registry remains a dynamic reference and must not be mistaken for historical polygon proof."
+    }
+  ],
+  "next_gate": "Execute the candidate builder in CI, freeze the generated artifact fingerprint and year sums, then decide separate global registry/panel integration."
+}
