@@ -39,7 +39,7 @@ jobs:
       - name: Probe official BNPB CKAN metadata and resource transport
         run: python scripts/probe_milestone38_bnpb_historical_district_impact.py
 
-      - name: Assert metadata-only research boundary
+      - name: Assert metadata-only research boundary and frozen transport observation
         run: |
           python - <<'PY'
           import json
@@ -53,8 +53,12 @@ jobs:
           assert m['numeric_values_promoted'] is False
           assert m['district_impact_panel_authorized'] is False
           assert m['event_level_gate_resolved'] is False
-          assert 2000 in m['found_years']
-          assert 2001 in m['found_years']
+          assert m['found_years'] == list(range(2000, 2018))
+          assert m['missing_years'] == []
+          assert m['direct_file_years'] == [2000, 2001]
+          assert m['sumbar_direct_filename_years'] == [2000, 2001]
+          assert m['link_only_years'] == list(range(2002, 2018))
+          assert m['duplicate_year_candidates'] == {}
           PY
 
       - name: Upload transport audit artifact
@@ -70,7 +74,9 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           text = Path('.github/workflows/milestone38-bnpb-historical-district-impact-probe.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
           assert 'contents: read' in text
-          assert 'contents: write' not in text
-          assert 'git push' not in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
           PY
