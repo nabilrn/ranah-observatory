@@ -1,0 +1,87 @@
+name: Verify Milestone 43 BNPB Historical Semantics Geography Gate
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone43-bnpb-historical-semantics-geography-gate.yml"
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "research/MILESTONE43_BNPB_HISTORICAL_SEMANTICS_GEOGRAPHY_GATE.md"
+      - "tests/test_milestone43_bnpb_historical_semantics_geography_gate.py"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone43-bnpb-historical-semantics-geography-gate.yml"
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "research/MILESTONE43_BNPB_HISTORICAL_SEMANTICS_GEOGRAPHY_GATE.md"
+      - "tests/test_milestone43_bnpb_historical_semantics_geography_gate.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused M43 tests
+        run: python -m unittest tests.test_milestone43_bnpb_historical_semantics_geography_gate -v
+
+      - name: Assert frozen semantic and geography boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(
+              Path('data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json').read_text(encoding='utf-8')
+          )
+          q = manifest['qualification']
+          assert q['metric_semantics_gate_frozen'] is True
+          assert q['temporal_geography_gate_frozen'] is True
+          assert q['structural_schema_continuity_proven'] is True
+          assert q['semantic_identity_all_metrics_all_years_proven'] is False
+          assert q['current_boundary_equivalence_all_rows_proven'] is False
+          assert q['canonical_historical_panel_promotion_authorized'] is False
+          assert q['direct_current_era_comparison_authorized'] is False
+          assert q['unique_person_aggregation_authorized'] is False
+          assert q['parent_successor_allocation_authorized'] is False
+          assert q['absent_row_zero_inference_authorized'] is False
+          assert q['facility_category_arithmetic_authorized'] is False
+
+          metrics = {item['metric']: item for item in manifest['metric_qualification']}
+          assert len(metrics) == 14
+          assert metrics['menderita']['current_concept_successor'] == 'Terdampak'
+          assert metrics['menderita']['semantic_state'] == 'candidate_successor_mapping_not_proven'
+          assert metrics['fasilitas_umum']['semantic_state'] == 'aggregation_role_ambiguous'
+          assert metrics['fasilitas_umum']['current_concept_successor'] is None
+
+          transitions = {
+              item['year']: item for item in manifest['geography_qualification']['transition_years']
+          }
+          assert set(transitions) == {2002, 2003, 2008}
+          assert transitions[2002]['current_boundary_comparison'] == 'blocked'
+          assert transitions[2003]['current_boundary_comparison'] == 'blocked'
+          assert manifest['next_gate']['milestone'] == 44
+          PY
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone43-bnpb-historical-semantics-geography-gate.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY
