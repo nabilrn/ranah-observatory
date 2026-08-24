@@ -1,5 +1,5 @@
 name: Materialize Milestone 46 Total-Event Panel v3
-# Retrigger reviewed M46 materialization after read-only verification passed.
+# Trigger M46 materialization after workflow landed on default branch.
 
 on:
   push:
