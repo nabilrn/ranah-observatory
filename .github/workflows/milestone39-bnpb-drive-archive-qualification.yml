@@ -1,0 +1,67 @@
+name: Verify Milestone 39 BNPB Drive Archive Qualification
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone39-bnpb-drive-archive-qualification.yml"
+      - "data/manifests/milestone39_bnpb_drive_archive_qualification.json"
+      - "research/MILESTONE39_BNPB_DRIVE_ARCHIVE_QUALIFICATION.md"
+      - "tests/test_milestone39_bnpb_drive_archive_qualification.py"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone39-bnpb-drive-archive-qualification.yml"
+      - "data/manifests/milestone39_bnpb_drive_archive_qualification.json"
+      - "research/MILESTONE39_BNPB_DRIVE_ARCHIVE_QUALIFICATION.md"
+      - "tests/test_milestone39_bnpb_drive_archive_qualification.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused M39 tests
+        run: python -m unittest tests.test_milestone39_bnpb_drive_archive_qualification -v
+
+      - name: Assert frozen qualification boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          m = json.loads(Path('data/manifests/milestone39_bnpb_drive_archive_qualification.json').read_text(encoding='utf-8'))
+          assert m['coverage']['qualified_folder_listing_years'] == [2002, 2003, 2004, 2005, 2006]
+          assert m['coverage']['schema_audited_years'] == [2002, 2003]
+          assert m['qualification']['drive_folder_listing_deterministic_for_qualified_years'] is True
+          assert m['qualification']['exactly_one_sumbar_filename_candidate_per_qualified_folder'] is True
+          assert m['qualification']['numeric_values_promoted'] is False
+          assert m['qualification']['district_city_panel_authorized'] is False
+          assert m['qualification']['event_level_panel_authorized'] is False
+          assert all(row['folder_listing_file_count'] == 38 for row in m['years'])
+          assert all(row['sumbar_file']['name'] == f"stat_by_wil_13_{row['year']}.xlsx" for row in m['years'])
+          PY
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone39-bnpb-drive-archive-qualification.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY
