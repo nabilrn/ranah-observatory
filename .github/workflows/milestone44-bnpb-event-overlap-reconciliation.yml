@@ -1,4 +1,4 @@
-name: Analyze Milestone 44 BNPB Event Overlap Reconciliation
+name: Verify Milestone 44 BNPB Event Overlap Reconciliation
 
 on:
   push:
@@ -7,23 +7,29 @@ on:
     paths:
       - ".github/workflows/milestone44-bnpb-event-overlap-reconciliation.yml"
       - "scripts/analyze_milestone44_bnpb_event_overlap.py"
+      - "data/manifests/milestone44_bnpb_event_overlap_reconciliation.json"
       - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
       - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
+      - "research/MILESTONE44_BNPB_EVENT_OVERLAP_RECONCILIATION.md"
+      - "tests/test_milestone44_bnpb_event_overlap_reconciliation.py"
   pull_request:
     branches:
       - main
     paths:
       - ".github/workflows/milestone44-bnpb-event-overlap-reconciliation.yml"
       - "scripts/analyze_milestone44_bnpb_event_overlap.py"
+      - "data/manifests/milestone44_bnpb_event_overlap_reconciliation.json"
       - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
       - "data/processed/bnpb/disaster/bnpb-disaster-source-native.csv"
+      - "research/MILESTONE44_BNPB_EVENT_OVERLAP_RECONCILIATION.md"
+      - "tests/test_milestone44_bnpb_event_overlap_reconciliation.py"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  analyze:
+  verify:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -33,26 +39,43 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build M44 event overlap report
+      - name: Run focused M44 tests
+        run: python -m unittest tests.test_milestone44_bnpb_event_overlap_reconciliation -v
+
+      - name: Rebuild M44 event overlap report
         run: >-
           python scripts/analyze_milestone44_bnpb_event_overlap.py
           --output /tmp/m44-event-overlap.json
           --summary-only
 
-      - name: Validate report contract
+      - name: Validate frozen reconciliation contract
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
           report = json.loads(Path('/tmp/m44-event-overlap.json').read_text(encoding='utf-8'))
+          frozen = json.loads(Path('data/manifests/milestone44_bnpb_event_overlap_reconciliation.json').read_text(encoding='utf-8'))
+
           assert report['milestone'] == 44
           assert report['phase'] == 'event_count_overlap_2010_2017'
           assert report['comparison_contract']['years'] == [2010, 2017]
           assert report['comparison_contract']['historical_missing_rows_zero_filled'] is False
-          assert report['summary']['missing_current_rows'] == 0
-          assert report['summary']['compared_rows'] == report['summary']['historical_explicit_overlap_rows']
-          assert len(report['by_year']) == 8
+          assert report['comparison_contract']['modern_zero_backfills_historical_missingness'] is False
+
+          expected = frozen['result']
+          summary = report['summary']
+          assert summary['historical_explicit_overlap_rows'] == expected['historical_explicit_overlap_rows'] == 119
+          assert summary['current_overlap_rows'] == expected['modern_overlap_rows'] == 152
+          assert summary['compared_rows'] == expected['compared_rows'] == 119
+          assert summary['missing_current_rows'] == expected['missing_modern_counterparts'] == 0
+          assert summary['exact_matches'] == expected['exact_matches'] == 113
+          assert summary['value_disagreements'] == expected['value_disagreements'] == 6
+          assert summary['current_rows_without_historical_explicit_row'] == expected['modern_rows_without_historical_explicit_row'] == 33
+          assert summary['current_zero_where_historical_row_absent'] == expected['modern_zero_where_historical_row_absent'] == 33
+          assert summary['current_positive_where_historical_row_absent'] == expected['modern_positive_where_historical_row_absent'] == 0
+          assert {row['delta_current_minus_historical'] for row in report['disagreements']} == {1}
+          assert frozen['qualification']['canonical_total_event_panel_promotion_authorized'] is False
           PY
 
       - name: Upload full reconciliation report
