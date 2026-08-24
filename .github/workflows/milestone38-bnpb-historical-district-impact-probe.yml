@@ -1,0 +1,76 @@
+name: Probe Milestone 38 BNPB Historical District Impact
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone38-bnpb-historical-district-impact-probe.yml"
+      - "scripts/probe_milestone38_bnpb_historical_district_impact.py"
+      - "tests/test_milestone38_bnpb_historical_district_impact.py"
+      - "research/MILESTONE38_BNPB_HISTORICAL_DISTRICT_IMPACT_QUALIFICATION.md"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone38-bnpb-historical-district-impact-probe.yml"
+      - "scripts/probe_milestone38_bnpb_historical_district_impact.py"
+      - "tests/test_milestone38_bnpb_historical_district_impact.py"
+      - "research/MILESTONE38_BNPB_HISTORICAL_DISTRICT_IMPACT_QUALIFICATION.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused M38 unit tests
+        run: python -m unittest tests.test_milestone38_bnpb_historical_district_impact -v
+
+      - name: Probe official BNPB CKAN metadata and resource transport
+        run: python scripts/probe_milestone38_bnpb_historical_district_impact.py
+
+      - name: Assert metadata-only research boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path('artifacts/m38_bnpb_historical_district_impact_transport.json')
+          m = json.loads(p.read_text(encoding='utf-8'))
+          assert m['scope'] == 'metadata-and-resource-transport-only'
+          assert m['numeric_values_requested'] is False
+          assert m['numeric_values_downloaded'] is False
+          assert m['numeric_values_promoted'] is False
+          assert m['district_impact_panel_authorized'] is False
+          assert m['event_level_gate_resolved'] is False
+          assert 2000 in m['found_years']
+          assert 2001 in m['found_years']
+          PY
+
+      - name: Upload transport audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: m38-bnpb-historical-district-impact-transport
+          path: artifacts/m38_bnpb_historical_district_impact_transport.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone38-bnpb-historical-district-impact-probe.yml').read_text(encoding='utf-8')
+          assert 'contents: read' in text
+          assert 'contents: write' not in text
+          assert 'git push' not in text
+          PY
