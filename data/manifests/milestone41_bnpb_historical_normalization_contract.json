@@ -1,0 +1,113 @@
+{
+  "schema": "ranah-observatory/milestone41-bnpb-historical-normalization-contract/v1",
+  "milestone": 41,
+  "title": "BNPB historical district/city annual-impact normalization contract for Sumatera Barat",
+  "source_basis": {
+    "prior_milestones": [38, 39, 40],
+    "archive_coverage": [2000, 2017],
+    "current_bnpb_geography_registry": "data/registries/bnpb_geography_map.csv",
+    "current_registry_scope": "2024 only; never reuse as a historical raw-code crosswalk",
+    "historical_legal_lineage_registry": "data/registries/bnpb_historical_geography_lineage.csv"
+  },
+  "qualification": {
+    "normalization_contract_frozen": true,
+    "raw_source_row_identity_required": true,
+    "empty_workbook_zero_inference_forbidden": true,
+    "absent_row_zero_inference_forbidden": true,
+    "source_total_is_geography_observation": false,
+    "source_total_reconciliation_required_when_present": true,
+    "raw_code_cross_era_mapping_forbidden": true,
+    "source_label_contemporaneous_legal_name_assumption_forbidden": true,
+    "source_native_integer_parsing_authorized_for_staging": true,
+    "historical_numeric_values_promoted": false,
+    "district_city_panel_authorized": false,
+    "event_level_panel_authorized": false
+  },
+  "states": {
+    "workbook": ["observed_body", "empty_body", "unavailable", "parse_error"],
+    "row": ["observed_geography", "source_total"],
+    "derived_presence": [
+      "observed_row",
+      "absent_entity_active_full_year",
+      "absent_entity_active_partial_year",
+      "entity_not_active_during_year",
+      "transition_year_unresolved"
+    ],
+    "cell": ["observed_zero", "observed_positive", "source_blank", "source_non_numeric", "parse_error"]
+  },
+  "parse_contract": {
+    "metric_column_count": 14,
+    "raw_value_preserved": true,
+    "thousands_separator": ",",
+    "normalized_type": "non-negative integer count",
+    "negative_values_allowed": false,
+    "explicit_zero_rule": "Zero is valid only when an explicit metric cell on an observed geography row parses to numeric 0.",
+    "blank_rule": "Blank remains missing/unknown.",
+    "absent_row_rule": "Never synthesize zero-valued rows for absent geographies.",
+    "empty_workbook_rule": "The 2001 empty body remains empty_body, not a zero grid.",
+    "total_row_rule": "Wilayah=Jumlah is reconciliation-only and never a geography observation."
+  },
+  "audited_workbooks": [
+    {"year": 2002, "sha256": "6d9c2766f44648a2383dc7fbe02378c413cb93ad361d0972060b1421de21baae", "used_range": "A1:P12", "body_row_count": 3, "total_row_present": true, "all_14_metrics_total_reconcile": true},
+    {"year": 2003, "sha256": "e3263203c3f791d79d14d9100fd50b878f571e0f53d187800d5b65fc921b7a78", "used_range": "A1:P13", "body_row_count": 4, "total_row_present": true, "all_14_metrics_total_reconcile": true},
+    {"year": 2004, "sha256": "1eadbcf790da1a1ac24d2a908309942250f10dccb5d41cedcbd410b093f0f908", "used_range": "A1:P16", "body_row_count": 7, "total_row_present": true, "all_14_metrics_total_reconcile": true},
+    {"year": 2005, "sha256": "4c15057c99ff576a94bd16f5757e286261646d37a0bddc5838ffbb85954e6aae", "used_range": "A1:P20", "body_row_count": 11, "total_row_present": true, "all_14_metrics_total_reconcile": true},
+    {"year": 2006, "sha256": "d0e71b6afa41ccb5d008428cc5889f0f9644c6c7197eea7638eabde4765c7d1c", "used_range": "A1:P21", "body_row_count": 12, "total_row_present": true, "all_14_metrics_total_reconcile": true},
+    {"year": 2012, "sha256": "f6b8388cba8cd8e471bb0703226a7f02abbeba5a83944fbf53909bc2ec46b081", "used_range": "A1:P24", "body_row_count": 15, "total_row_present": true, "all_14_metrics_total_reconcile": true},
+    {"year": 2017, "sha256": "de218de3da3c16db20442a5e9fbedac1f6b6906128160b43c3400bf5a63f266d", "used_range": "A1:P23", "body_row_count": 14, "total_row_present": true, "all_14_metrics_total_reconcile": true}
+  ],
+  "semantic_counterexamples": {
+    "absent_row_not_zero": {
+      "year": 2004,
+      "legally_active_full_year_entities": ["Solok Selatan", "Dharmasraya", "Pasaman Barat"],
+      "legal_effective_date": "2003-12-18",
+      "observed_source_rows": [],
+      "finding": "All three were legally active for full calendar year 2004 but absent from the workbook; absence cannot encode nonexistence or zero."
+    },
+    "source_label_not_contemporaneous_legal_name": {
+      "source_year": 2003,
+      "source_label": "1304. SIJUNJUNG",
+      "legal_rename_effective_date": "2008-03-10",
+      "finding": "The archive uses SIJUNJUNG before the legal rename from Sawahlunto/Sijunjung, so source labels may be retrospective or source-system-normalized."
+    },
+    "raw_code_regime_shift_examples": [
+      {"entity": "Kepulauan Mentawai", "historical_year": 2012, "historical_code": "1301", "current_2024_bnpb_code": "1309"},
+      {"entity": "Pesisir Selatan", "historical_year": 2012, "historical_code": "1302", "current_2024_bnpb_code": "1301"},
+      {"entity": "Solok", "historical_year": 2012, "historical_code": "1303", "current_2024_bnpb_code": "1302"}
+    ]
+  },
+  "geography_contract": {
+    "mapping_key": ["source_era", "source_year", "source_code_raw", "source_name_raw", "legal_lineage"],
+    "reuse_2024_raw_code_crosswalk_for_2000_2017": false,
+    "allocate_pre_split_parent_to_successors": false,
+    "transition_years": [
+      {"year": 2002, "effective_date": "2002-04-10", "affected": ["Padang Pariaman", "Kota Pariaman"], "effect": "boundary_split", "rule": "flag transition year; no silent current-boundary comparison"},
+      {"year": 2003, "effective_date": "2003-12-18", "affected": ["Sawahlunto/Sijunjung", "Dharmasraya", "Solok", "Solok Selatan", "Pasaman", "Pasaman Barat"], "effect": "boundary_split", "rule": "flag transition year; no allocation of annual parent values to successors"},
+      {"year": 2008, "effective_date": "2008-03-10", "affected": ["Sawahlunto/Sijunjung", "Sijunjung"], "effect": "rename_same_entity", "rule": "version legal name separately from source label"}
+    ]
+  },
+  "metric_semantics": {
+    "structural_labels_observed_stable_in_audits": true,
+    "semantic_definition_identity_all_years_proven": false,
+    "victim_categories_unique_person_additivity_authorized": false,
+    "monetary_loss_interpretation_authorized": false,
+    "cross_source_event_identity_authorized": false
+  },
+  "remaining_promotion_gates": [
+    "Audit parser/schema behavior for every annual workbook.",
+    "Apply temporal geography lineage and transition-year flags to every observed source row.",
+    "Reconcile every non-empty workbook against its source total across all 14 metric columns.",
+    "Resolve blank/non-numeric cells without zero coercion.",
+    "Freeze metric-definition provenance and semantic changes across years.",
+    "Keep annual aggregates separate from event-level evidence."
+  ],
+  "research_boundaries": [
+    "No historical disaster-impact values are promoted by M41.",
+    "No absent row or empty workbook is interpreted as zero.",
+    "No 2024 BNPB raw code is assumed to identify the same historical raw code.",
+    "No pre-split annual parent observation is allocated to successor geographies.",
+    "No source total row becomes a district/city observation.",
+    "No victim categories are summed as unique persons.",
+    "No event-level reconstruction, causal attribution, monetary-loss estimation, composite-risk scoring, or policy ranking is authorized."
+  ]
+}
