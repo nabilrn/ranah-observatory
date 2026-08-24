@@ -1,0 +1,111 @@
+name: Verify Milestone 42 BNPB Historical Source-Native Staging
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone42-bnpb-historical-source-native-staging.yml"
+      - "data/manifests/milestone42_bnpb_historical_source_native_staging.json"
+      - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
+      - "research/MILESTONE42_BNPB_HISTORICAL_SOURCE_NATIVE_STAGING.md"
+      - "scripts/build_milestone42_bnpb_historical_staging.py"
+      - "tests/test_milestone42_bnpb_historical_source_native_staging.py"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone42-bnpb-historical-source-native-staging.yml"
+      - "data/manifests/milestone42_bnpb_historical_source_native_staging.json"
+      - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
+      - "research/MILESTONE42_BNPB_HISTORICAL_SOURCE_NATIVE_STAGING.md"
+      - "scripts/build_milestone42_bnpb_historical_staging.py"
+      - "tests/test_milestone42_bnpb_historical_source_native_staging.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused M42 tests
+        run: python -m unittest tests.test_milestone42_bnpb_historical_source_native_staging -v
+
+      - name: Assert frozen staging gate
+        run: |
+          python - <<'PY'
+          import csv
+          import gzip
+          import hashlib
+          import io
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path('data/manifests/milestone42_bnpb_historical_source_native_staging.json').read_text(encoding='utf-8'))
+          artifact = Path(manifest['staging_artifact']['path'])
+          compressed = artifact.read_bytes()
+          uncompressed = gzip.decompress(compressed)
+          rows = list(csv.DictReader(io.StringIO(uncompressed.decode('utf-8'))))
+
+          assert manifest['coverage'] == {
+              'years': [2000, 2017],
+              'workbooks': 18,
+              'non_empty': 17,
+              'empty_body_years': [2001],
+              'source_rows': 202,
+              'metric_cells': 2828,
+              'distinct_geographies': 19,
+          }
+          assert len(rows) == 202
+          assert hashlib.sha256(compressed).hexdigest() == manifest['staging_artifact']['compressed_sha256']
+          assert hashlib.sha256(uncompressed).hexdigest() == manifest['staging_artifact']['uncompressed_sha256']
+          assert all(row['current_boundary_comparability'] == 'not_proven' for row in rows)
+          assert all(int(row['source_year']) != 2001 for row in rows)
+
+          q = manifest['qualification']
+          assert q['all_workbooks_audited'] is True
+          assert q['all_non_empty_total_rows_reconcile_all_14_metrics'] is True
+          assert q['source_native_staging_materialized'] is True
+          assert q['canonical_historical_panel_authorized'] is False
+          assert q['event_level_panel_authorized'] is False
+
+          workbooks = manifest['workbooks']
+          assert [item['year'] for item in workbooks] == list(range(2000, 2018))
+          assert all(item['blank_cells'] == 0 for item in workbooks)
+          assert all(item['nonnumeric_cells'] == 0 for item in workbooks)
+          assert all(item['reconcile14'] is True for item in workbooks if item['year'] != 2001)
+          assert next(item for item in workbooks if item['year'] == 2001)['state'] == 'empty_body'
+          PY
+
+      - name: Assert builder does not use current BNPB raw codes as historical join keys
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('scripts/build_milestone42_bnpb_historical_staging.py').read_text(encoding='utf-8')
+          assert 'source_name_expected' in text
+          assert 'canonical_geography_id' in text
+          assert 'current_boundary_comparability' in text
+          assert 'not_proven' in text
+          assert 'source_code_normalized' not in text
+          PY
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone42-bnpb-historical-source-native-staging.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY

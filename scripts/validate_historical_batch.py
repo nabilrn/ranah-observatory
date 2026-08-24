@@ -14,6 +14,11 @@ CATALOG = ROOT / "catalog" / "data-catalog.csv"
 
 ALLOWED_PRIORITY = {"P0", "P1", "P2"}
 ALLOWED_GATE = {"yes", "no"}
+ALLOWED_COMMITTED_PDFS = frozenset(
+    {
+        "publication/v0.1/distribution/Ranah_Observatory_v0.1_Preprint_Nabil_Rizki_Navisa.pdf",
+    }
+)
 SAFE_FILENAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*\.pdf$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 REQUIRED_P0 = {
@@ -37,6 +42,20 @@ def official_bps_url(url: str) -> bool:
     parsed = urlparse(url)
     host = (parsed.hostname or "").lower()
     return parsed.scheme == "https" and (host == "bps.go.id" or host.endswith(".bps.go.id"))
+
+
+def find_disallowed_committed_pdfs(root: Path = ROOT) -> list[str]:
+    disallowed: list[str] = []
+    for path in root.rglob("*.pdf"):
+        if ".git" in path.parts:
+            continue
+        relative_path = path.relative_to(root).as_posix()
+        if relative_path.startswith("data/raw/"):
+            continue
+        if relative_path in ALLOWED_COMMITTED_PDFS:
+            continue
+        disallowed.append(relative_path)
+    return sorted(disallowed)
 
 
 def validate() -> tuple[list[str], dict[str, int]]:
@@ -128,13 +147,12 @@ def validate() -> tuple[list[str], dict[str, int]]:
         except ValueError:
             errors.append(f"manifest row {row_number}: acquired_at_utc must be ISO-8601")
 
-    tracked_pdfs = [
-        path.relative_to(ROOT).as_posix()
-        for path in ROOT.rglob("*.pdf")
-        if ".git" not in path.parts and "data/raw" not in path.as_posix()
-    ]
-    if tracked_pdfs:
-        errors.append("raw PDF artifacts must not be committed to Git: " + ", ".join(tracked_pdfs))
+    disallowed_pdfs = find_disallowed_committed_pdfs()
+    if disallowed_pdfs:
+        errors.append(
+            "PDF artifacts outside the explicit committed allowlist must not be committed to Git: "
+            + ", ".join(disallowed_pdfs)
+        )
 
     counts = {
         "queue": len(queue),
