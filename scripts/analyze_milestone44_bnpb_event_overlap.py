@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Reconcile M42 historical BNPB event counts against the qualified 2010-2024 district matrix.
 
-M44 phase 1 is deliberately narrow: it compares only explicit 2010-2017
-`Jumlah Kejadian` rows from the historical archive with the already-qualified
+M44 phase 1 is deliberately narrow: it compares only 2010-2017 `Jumlah
+Kejadian` observations from the historical archive with the already-qualified
 BNPB district/city total-event resource. Missing historical rows are never
 coerced to zero and the script does not promote any other historical metric.
 """
@@ -101,9 +101,37 @@ def build_report(historical_path: Path, current_path: Path) -> dict:
             }
         )
 
+    current_without_historical_explicit_row = []
+    for key, row in sorted(current_by_key.items()):
+        if key in historical_keys:
+            continue
+        current_value = int(float(row["value_numeric"]))
+        current_without_historical_explicit_row.append(
+            {
+                "year": key[0],
+                "canonical_geography_id": key[1],
+                "current_source_name": row["source_geography_name"],
+                "current_value": current_value,
+                "current_value_state": (
+                    "current_zero" if current_value == 0 else "current_positive"
+                ),
+                "interpretation": (
+                    "historical row remains absent; modern zero does not retroactively convert M42 missingness to observed_zero"
+                    if current_value == 0
+                    else "modern release contains a positive event count where M42 has no explicit historical row"
+                ),
+            }
+        )
+
     by_year = []
     for year in OVERLAP_YEARS:
         year_rows = [row for row in comparisons if row["year"] == year]
+        year_current_rows = [row for row in current_rows if int(row["year"]) == year]
+        year_absent_rows = [
+            row
+            for row in current_without_historical_explicit_row
+            if row["year"] == year
+        ]
         exact = sum(row["comparison_state"] == "exact_match" for row in year_rows)
         disagree = len(year_rows) - exact
         historical_explicit = sum(int(row["source_year"]) == year for row in historical_rows)
@@ -113,9 +141,14 @@ def build_report(historical_path: Path, current_path: Path) -> dict:
             for row in historical_rows
             if int(row["source_year"]) == year
         )
-        current_on_historical_geographies = sum(
-            row["current_value"] for row in year_rows
+        current_on_historical_geographies = sum(row["current_value"] for row in year_rows)
+        current_full_matrix_sum = sum(
+            int(float(row["value_numeric"])) for row in year_current_rows
         )
+        absent_current_positive = sum(
+            row["current_value_state"] == "current_positive" for row in year_absent_rows
+        )
+        absent_current_zero = len(year_absent_rows) - absent_current_positive
         by_year.append(
             {
                 "year": year,
@@ -129,6 +162,15 @@ def build_report(historical_path: Path, current_path: Path) -> dict:
                 "sum_delta_current_minus_historical": (
                     current_on_historical_geographies - historical_total
                 ),
+                "current_full_matrix_sum": current_full_matrix_sum,
+                "current_rows_without_historical_explicit_row": len(year_absent_rows),
+                "current_zero_where_historical_row_absent": absent_current_zero,
+                "current_positive_where_historical_row_absent": absent_current_positive,
+                "current_positive_sum_where_historical_row_absent": sum(
+                    row["current_value"]
+                    for row in year_absent_rows
+                    if row["current_value_state"] == "current_positive"
+                ),
             }
         )
 
@@ -137,6 +179,9 @@ def build_report(historical_path: Path, current_path: Path) -> dict:
         row for row in comparisons if row["comparison_state"] == "value_disagreement"
     ]
     disagreement_deltas = Counter(row["delta_current_minus_historical"] for row in disagreements)
+    absent_state_counts = Counter(
+        row["current_value_state"] for row in current_without_historical_explicit_row
+    )
 
     return {
         "schema": "ranah-observatory/milestone44-bnpb-event-overlap-reconciliation/v1",
@@ -153,6 +198,7 @@ def build_report(historical_path: Path, current_path: Path) -> dict:
             "historical_metric": "jumlah_kejadian",
             "current_metric_family": "recorded_disaster_events_total",
             "comparison_meaning": "value-level source-release reconciliation, not proof of true incidence",
+            "modern_zero_backfills_historical_missingness": False,
         },
         "summary": {
             "historical_explicit_overlap_rows": len(historical_rows),
@@ -165,9 +211,24 @@ def build_report(historical_path: Path, current_path: Path) -> dict:
                 state_counts["exact_match"] / len(comparisons) if comparisons else None
             ),
             "distinct_disagreement_deltas": len(disagreement_deltas),
+            "current_rows_without_historical_explicit_row": len(
+                current_without_historical_explicit_row
+            ),
+            "current_zero_where_historical_row_absent": absent_state_counts[
+                "current_zero"
+            ],
+            "current_positive_where_historical_row_absent": absent_state_counts[
+                "current_positive"
+            ],
+            "current_positive_sum_where_historical_row_absent": sum(
+                row["current_value"]
+                for row in current_without_historical_explicit_row
+                if row["current_value_state"] == "current_positive"
+            ),
         },
         "by_year": by_year,
         "missing_current": missing_current,
+        "current_without_historical_explicit_row": current_without_historical_explicit_row,
         "disagreements": disagreements,
         "comparisons": comparisons,
     }
@@ -193,6 +254,11 @@ def main() -> int:
             "summary": report["summary"],
             "by_year": report["by_year"],
             "disagreements": report["disagreements"],
+            "current_positive_where_historical_row_absent": [
+                row
+                for row in report["current_without_historical_explicit_row"]
+                if row["current_value_state"] == "current_positive"
+            ],
         }
     else:
         printable = report
