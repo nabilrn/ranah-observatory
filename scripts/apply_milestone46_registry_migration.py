@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INDICATORS = ROOT / "data/registries/indicators.csv"
 QUALIFICATIONS = ROOT / "data/registries/bnpb_indicator_qualification.csv"
+BPS_COVERAGE = ROOT / "data/registries/bps_indicator_coverage.csv"
 CLIMATE_VALIDATOR = ROOT / "scripts/validate_climate_disaster_foundation.py"
 
 OLD_LANDSLIDE_LINE = (
@@ -26,6 +27,13 @@ OLD_QUALIFICATION_LINE = (
 )
 NEW_QUALIFICATION_LINE = (
     "q_bnpb_total_events_context,total_disaster_events_2010_2024,total_disaster_events,bnpb_total_events_kab_2010_2024,year_columns_2010_2024,2010,2024,count,observed,canonical_ready_separate_layer,current_entity_identity_2010_2024_exact_polygon_not_proven,require_m44_reconciliation_and_m45_fingerprint;never_relabel_as_type_specific,Qualified canonical separate-layer recorded-event series; global panel uses only 2018-2024 and leaves comparability unset"
+)
+
+BPS_COVERAGE_ANCHOR = (
+    "landslide_events,not_primary,defer,longsor tanah longsor kejadian bencana,defer_non_bps,BNPB is primary disaster-event source"
+)
+NEW_BPS_COVERAGE_LINE = (
+    "total_disaster_events,not_primary,defer,jumlah kejadian bencana total kejadian bencana,defer_non_bps,BNPB is primary all-disaster recorded-event source"
 )
 
 OLD_REQUIRED_INDICATORS = (
@@ -84,6 +92,22 @@ def migrate() -> dict[str, bool]:
     if qualifications_changed:
         QUALIFICATIONS.write_text(migrated_qualifications, encoding="utf-8", newline="")
 
+    bps_coverage = BPS_COVERAGE.read_text(encoding="utf-8")
+    if NEW_BPS_COVERAGE_LINE not in bps_coverage:
+        if bps_coverage.count(BPS_COVERAGE_ANCHOR) != 1:
+            raise RuntimeError("BPS coverage landslide anchor drift")
+        bps_coverage = bps_coverage.replace(
+            BPS_COVERAGE_ANCHOR,
+            BPS_COVERAGE_ANCHOR + "\n" + NEW_BPS_COVERAGE_LINE,
+            1,
+        )
+        BPS_COVERAGE.write_text(bps_coverage, encoding="utf-8", newline="")
+        bps_coverage_changed = True
+    else:
+        if bps_coverage.count(NEW_BPS_COVERAGE_LINE) != 1:
+            raise RuntimeError("total_disaster_events BPS coverage row must exist exactly once")
+        bps_coverage_changed = False
+
     validator = CLIMATE_VALIDATOR.read_text(encoding="utf-8")
     migrated_validator = replace_once(
         validator,
@@ -104,6 +128,7 @@ def migrate() -> dict[str, bool]:
     return {
         "indicators_changed": indicators_changed,
         "qualifications_changed": qualifications_changed,
+        "bps_coverage_changed": bps_coverage_changed,
         "validator_changed": validator_changed,
     }
 
