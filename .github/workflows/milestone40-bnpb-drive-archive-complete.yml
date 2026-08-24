@@ -1,0 +1,79 @@
+name: Verify Milestone 40 BNPB Drive Archive Completion
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone40-bnpb-drive-archive-complete.yml"
+      - "data/manifests/milestone40_bnpb_drive_archive_complete.json"
+      - "research/MILESTONE40_BNPB_DRIVE_ARCHIVE_COMPLETION.md"
+      - "tests/test_milestone40_bnpb_drive_archive_complete.py"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone40-bnpb-drive-archive-complete.yml"
+      - "data/manifests/milestone40_bnpb_drive_archive_complete.json"
+      - "research/MILESTONE40_BNPB_DRIVE_ARCHIVE_COMPLETION.md"
+      - "tests/test_milestone40_bnpb_drive_archive_complete.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused M40 tests
+        run: python -m unittest tests.test_milestone40_bnpb_drive_archive_complete -v
+
+      - name: Assert complete file-identity freeze and bounded interpretation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          m = json.loads(Path('data/manifests/milestone40_bnpb_drive_archive_complete.json').read_text(encoding='utf-8'))
+          years = m['years']
+          q = m['qualification']
+
+          assert [row['year'] for row in years] == list(range(2002, 2018))
+          assert len({row['folder_id'] for row in years}) == 16
+          assert len({row['sumbar_file_id'] for row in years}) == 16
+          assert all(row['folder_listing_file_count'] == 38 for row in years)
+          assert all(row['sumbar_file_name'] == f"stat_by_wil_13_{row['year']}.xlsx" for row in years)
+          assert all(row['downloadable'] is True for row in years)
+
+          assert q['transport_file_identity_gate_closed'] is True
+          assert q['source_native_sumbar_label_confirmed_for_schema_samples'] is True
+          assert q['sixteen_column_layout_confirmed_for_schema_samples'] is True
+          assert q['full_per_year_schema_identity_proven'] is False
+          assert q['numeric_values_promoted'] is False
+          assert q['district_city_panel_authorized'] is False
+          assert q['event_level_panel_authorized'] is False
+
+          samples = m['schema_samples']
+          assert [row['year'] for row in samples] == [2002, 2003, 2012, 2017]
+          assert len(m['expected_source_columns']) == 16
+          PY
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone40-bnpb-drive-archive-complete.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY
