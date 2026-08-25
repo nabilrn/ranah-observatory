@@ -1,0 +1,102 @@
+{
+  "added_indicator_id": "total_disaster_events",
+  "added_observation_count": 133,
+  "base_observation_count": 2679,
+  "base_panel": "M28 Panel v2",
+  "base_panel_preserved_field_exact": true,
+  "causal_analysis_performed": false,
+  "cross_indicator_aggregation_performed": false,
+  "end_year": 2025,
+  "exact_polygon_harmonization_proven": false,
+  "geography_count": 19,
+  "imputation_performed": false,
+  "indicator_count": 23,
+  "indicator_ids": [
+    "expected_years_schooling",
+    "mean_years_schooling",
+    "life_expectancy",
+    "labor_force_participation",
+    "unemployment_rate",
+    "poverty_rate",
+    "real_grdp_growth",
+    "agriculture_share_grdp",
+    "manufacturing_share_grdp",
+    "rice_yield",
+    "underemployment_rate",
+    "population_total",
+    "annual_rainfall",
+    "flood_events",
+    "landslide_events",
+    "real_grdp_per_capita",
+    "morbidity_rate",
+    "jkn_membership_coverage",
+    "internet_access_age5plus",
+    "adequate_sanitation_access",
+    "adequate_drinking_water_access",
+    "dependency_ratio",
+    "total_disaster_events"
+  ],
+  "integration_success": true,
+  "long_observation_count": 2812,
+  "m45_candidate_sha256": "7f6c69d1e2f1b640c13dd1bf3321e1a395ecdab7263e83607dd040a9d0dd31c8",
+  "m45_candidate_year_sums": {
+    "2010": 60,
+    "2011": 46,
+    "2012": 91,
+    "2013": 52,
+    "2014": 59,
+    "2015": 89,
+    "2016": 70,
+    "2017": 62,
+    "2018": 96,
+    "2019": 103,
+    "2020": 241,
+    "2021": 212,
+    "2022": 82,
+    "2023": 137,
+    "2024": 98
+  },
+  "milestone": 46,
+  "outputs": {
+    "canonical": {
+      "path": "data/processed/bnpb/total_events/bnpb-total-events-canonical-observations.csv",
+      "sha256": "7f6c69d1e2f1b640c13dd1bf3321e1a395ecdab7263e83607dd040a9d0dd31c8"
+    },
+    "canonical_provenance": {
+      "path": "data/processed/bnpb/total_events/bnpb-total-events-canonical-provenance.json",
+      "sha256": "57ffd3a429336aaedfeeebbb46dfd5de0f885e78d41c2032b48cbad459c8f1f8"
+    },
+    "coverage": {
+      "path": "data/analysis/engine/panel_v3/m46-indicator-coverage.csv",
+      "sha256": "78520bc4f3832ee0fb533aa2d9ae44db833ed590ff4184da9b195f71ca250fc7"
+    },
+    "long": {
+      "path": "data/analysis/engine/panel_v3/m46-panel-long.csv",
+      "sha256": "fea158be74baf9de5bd3f9f25fe09cce1d54bb6c7f349db2ef5ab0de273d89b9"
+    },
+    "metadata": {
+      "path": "data/analysis/engine/panel_v3/m46-indicator-metadata.csv",
+      "sha256": "3b1388e0081077f5aed7321105fb278889e38fbee7b22a2f8e1ca71aae0282e2"
+    },
+    "wide": {
+      "path": "data/analysis/engine/panel_v3/m46-panel-wide.csv",
+      "sha256": "4aa7549d6854c9e9fbbe467d33d884c3c82a5e88660fcd13b21c89470664c242"
+    }
+  },
+  "regime_id": "sumbar_current_kabkota_2018_2025_v1",
+  "schema": "ranah-observatory/milestone46-total-events-panel-integration/v1",
+  "start_year": 2018,
+  "total_event_2025_state": "missing_not_zero",
+  "total_event_comparable_flag": "unset",
+  "total_event_full_canonical_period": [
+    2010,
+    2024
+  ],
+  "total_event_panel_period": [
+    2018,
+    2024
+  ],
+  "wide_row_count": 152,
+  "year_count": 8,
+  "zero_fill_performed": false
+}

@@ -18,6 +18,71 @@ MAX_INDICATORS = 60
 OBS_REQUIRED = {"observation_id", "indicator_id", "geography_id", "provenance_id", "claim_type"}
 PROV_REQUIRED = {"provenance_id", "source_id", "artifact_locator", "extraction_method"}
 
+# Milestone 4 is a historical completion gate. Freeze both its 40-indicator
+# cohort and the exact evidence surfaces that originally closed the criterion.
+# Later milestones remain independently auditable without retroactively
+# rewriting the M4 snapshot whenever new processed datasets are added.
+MILESTONE4_FROZEN_INDICATORS = {
+    "agriculture_share_grdp",
+    "annual_rainfall",
+    "average_employee_wage",
+    "child_mortality_rate",
+    "dependency_ratio",
+    "domestic_investment_realization",
+    "elderly_population_share",
+    "employed_population",
+    "expected_years_schooling",
+    "export_value",
+    "flood_events",
+    "food_inadequacy_prevalence",
+    "foreign_investment_realization",
+    "gini_ratio",
+    "household_expenditure_per_capita_monthly",
+    "infant_mortality_rate",
+    "internet_access",
+    "labor_force_count",
+    "labor_force_participation",
+    "landslide_events",
+    "large_medium_industry_employment",
+    "life_expectancy",
+    "manufacturing_share_grdp",
+    "mean_years_schooling",
+    "mobile_phone_use",
+    "neet_rate",
+    "net_migration_rate",
+    "population_growth",
+    "population_total",
+    "poverty_rate",
+    "provincial_road_length",
+    "real_grdp_growth",
+    "rice_yield",
+    "road_condition_good",
+    "total_fertility_rate",
+    "under_five_mortality_rate",
+    "underemployment_rate",
+    "unemployed_population",
+    "unemployment_rate",
+    "urban_population_share",
+}
+
+MILESTONE4_FROZEN_OBSERVATION_PATHS = (
+    "bnpb/disaster/bnpb-disaster-canonical-observations.csv",
+    "bps/demography/population-growth-2010-2020-observations.csv",
+    "bps/expansion/bps-expansion-canonical-observations.csv",
+    "bps/milestone4/bps-milestone4-batch1-observations.csv",
+    "bps/panel/bps-canonical-observations.csv",
+    "climate/rainfall/chirps-annual-rainfall-observations.csv",
+)
+
+MILESTONE4_FROZEN_PROVENANCE_PATHS = (
+    "bnpb/disaster/bnpb-disaster-canonical-provenance.csv",
+    "bps/demography/population-growth-2010-2020-provenance.csv",
+    "bps/expansion/bps-expansion-canonical-provenance.csv",
+    "bps/milestone4/bps-milestone4-batch1-provenance.csv",
+    "bps/panel/bps-canonical-provenance.csv",
+    "climate/rainfall/chirps-annual-rainfall-provenance.csv",
+)
+
 
 def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
     with path.open("r", encoding="utf-8", newline="") as handle:
@@ -38,22 +103,27 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
     observations: list[tuple[Path, dict[str, str]]] = []
     provenance_ids: set[str] = set()
 
-    for path in sorted(processed_root.rglob("*.csv")):
-        try:
-            fields, rows = _read_csv(path)
-        except (OSError, UnicodeDecodeError, csv.Error):
-            continue
-        field_set = set(fields)
-        rel = path.relative_to(ROOT).as_posix()
-        if OBS_REQUIRED.issubset(field_set):
-            observation_files.append(rel)
-            observations.extend((path, row) for row in rows)
-        if PROV_REQUIRED.issubset(field_set):
-            provenance_files.append(rel)
-            for row in rows:
-                pid = row.get("provenance_id", "")
-                if pid:
-                    provenance_ids.add(pid)
+    for relative_path in MILESTONE4_FROZEN_OBSERVATION_PATHS:
+        path = processed_root / relative_path
+        fields, rows = _read_csv(path)
+        if not OBS_REQUIRED.issubset(set(fields)):
+            raise ValueError(f"frozen observation file has incompatible schema: {path}")
+        frozen_rows = [row for row in rows if row.get("indicator_id", "") in MILESTONE4_FROZEN_INDICATORS]
+        if not frozen_rows:
+            raise ValueError(f"frozen observation file has no M4 cohort rows: {path}")
+        observation_files.append(path.relative_to(ROOT).as_posix())
+        observations.extend((path, row) for row in frozen_rows)
+
+    for relative_path in MILESTONE4_FROZEN_PROVENANCE_PATHS:
+        path = processed_root / relative_path
+        fields, rows = _read_csv(path)
+        if not PROV_REQUIRED.issubset(set(fields)):
+            raise ValueError(f"frozen provenance file has incompatible schema: {path}")
+        provenance_files.append(path.relative_to(ROOT).as_posix())
+        for row in rows:
+            pid = row.get("provenance_id", "")
+            if pid:
+                provenance_ids.add(pid)
 
     by_indicator: dict[str, dict[str, Any]] = {}
     seen_observation_ids: set[str] = set()
@@ -115,6 +185,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
         unresolved_count = sum(1 for item in unresolved_provenance if item["indicator_id"] == indicator_id)
         qualified = (
             bool(indicator_id)
+            and indicator_id in MILESTONE4_FROZEN_INDICATORS
             and entry["registered"]
             and entry["observation_count"] > 0
             and entry["missing_observation_id_count"] == 0
@@ -163,7 +234,7 @@ def audit(processed_root: Path, indicator_registry: Path) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Audit the Ranah Observatory Milestone 4 indicator-with-provenance gate.")
+    parser = argparse.ArgumentParser(description="Audit the frozen Ranah Observatory Milestone 4 evidence cohort.")
     parser.add_argument("--processed-root", type=Path, default=DEFAULT_PROCESSED)
     parser.add_argument("--indicator-registry", type=Path, default=DEFAULT_INDICATORS)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)

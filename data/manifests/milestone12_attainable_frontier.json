@@ -89,7 +89,7 @@
     "data/analysis/engine/expected_performance_v2/m11-model-frame.csv": "e53b3162a6ee732cc5f70a88c2ac6f3603ba7007ced81d1f7759da2aa7e5df0a",
     "data/analysis/expected_performance/m7-ridge-selected-loocv-predictions.csv": "7848d476f59b3bf0e23e13fcbf26dc0533760699dafff40387a655d3e058b431",
     "data/analysis/expected_performance/m7-west-sumatra-expected-performance.json": "1e3c39fbed0725809844696fd95518fd5455de15c1cfdfdece945514c4927c6f",
-    "data/manifests/milestone11_expected_performance_v2.json": "faf3da7549b7d4cca2633d1d407fd682f7e7ad154d9c98839a064bc14c451936",
+    "data/manifests/milestone11_expected_performance_v2.json": "159a5e76f3f95c7f64d2177f6411d0740c23784b509bf4117d2ee73c02bb9be7",
     "data/manifests/milestone12_design_gate.json": "ea94b5686f8cae36fa14c4bccc35882fe36b1e2905db3db85a5cbd4980d5f6c9",
     "data/manifests/milestone7_expected_performance_audit.json": "525f6e2391994bfcf6a3ba1dac01afa1e1c34a683e1672cf36019b9adac3b8dd",
     "data/registries/milestone12_frontier_method_qualification.csv": "0423b7146c35e1054edef418e96d0c1d5cad5220bd2c475becf1a4464cc5485e",

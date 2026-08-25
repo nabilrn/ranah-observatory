@@ -40,6 +40,7 @@ mean_temperature,crosscheck,publication_or_static,suhu rata-rata temperatur,cand
 forest_cover_share,not_primary,defer,tutupan hutan luas hutan,defer_non_bps,KLHK or BIG is preferred primary source
 flood_events,not_primary,defer,banjir kejadian bencana,defer_non_bps,BNPB is primary disaster-event source
 landslide_events,not_primary,defer,longsor tanah longsor kejadian bencana,defer_non_bps,BNPB is primary disaster-event source
+total_disaster_events,not_primary,defer,jumlah kejadian bencana total kejadian bencana,defer_non_bps,BNPB is primary all-disaster recorded-event source
 disaster_affected_population,not_primary,defer,penduduk terdampak bencana,defer_non_bps,BNPB is primary disaster-impact source
 disaster_direct_loss,not_primary,defer,kerugian bencana nilai kerusakan,defer_non_bps,BNPB or regional government is preferred primary source
 elevation_mean,not_primary,defer,ketinggian elevasi,defer_non_bps,BIG DEM is required for area-weighted derivation

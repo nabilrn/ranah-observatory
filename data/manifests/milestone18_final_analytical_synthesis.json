@@ -9,19 +9,19 @@
   "inputs": {
     "m10_panel": {
       "path": "data/manifests/milestone10_analytical_panel.json",
-      "sha256": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433"
+      "sha256": "247d56475f514cdc8ea1ed1c7f46fb31dbbc75abe0a68a8682762b2d8de7b853"
     },
     "m11_expected": {
       "path": "data/manifests/milestone11_expected_performance_v2.json",
-      "sha256": "faf3da7549b7d4cca2633d1d407fd682f7e7ad154d9c98839a064bc14c451936"
+      "sha256": "159a5e76f3f95c7f64d2177f6411d0740c23784b509bf4117d2ee73c02bb9be7"
     },
     "m12_frontier": {
       "path": "data/manifests/milestone12_attainable_frontier.json",
-      "sha256": "645f56dffb6439b2041798223d0437b8120122414150e42a23699b471aaf60a7"
+      "sha256": "12af14774b1d6357148ac3c8e25cbace30445a608f7a02d9948087b339753d2c"
     },
     "m13_gaps": {
       "path": "data/manifests/milestone13_development_gap_decomposition.json",
-      "sha256": "4b2099ab2b50e68dd98b7bee00bd5a4a48eeb2930fb79ce7ea6fdc27ed3dd0c6"
+      "sha256": "b40f00d1386ffc65bd246c65fe7f31867b3ae22e9000b4264c8eda378b527b51"
     },
     "m14_association": {
       "path": "data/manifests/milestone14_bottleneck_association.json",
@@ -41,7 +41,7 @@
     },
     "m17_scenarios": {
       "path": "data/manifests/milestone17_scenario_intervention.json",
-      "sha256": "8babae00f8e2b442a8a908fbe2be9b8e331f2c6e68787105cd5f7df3f2a33bbb"
+      "sha256": "e5a926e69c4e4d669a2848bd74ef53f2be16618288d49c8ce9e801d94965124b"
     },
     "m6_historical": {
       "path": "data/manifests/milestone6_historical_eda_audit.json",
@@ -65,7 +65,7 @@
     },
     "research_foundation": {
       "path": "data/manifests/research_foundation_complete.json",
-      "sha256": "ce593952fe74ae13ea2ba63059614c4d60380e10d9706cb8ec7144e57419fd34"
+      "sha256": "3b624cd627bd6a4ef8413e9fe07b2948949fdf4fbbcbcf82adb9ea673b87ad86"
     }
   },
   "m13_frontier_gap_sign_disagreement_count": 50,

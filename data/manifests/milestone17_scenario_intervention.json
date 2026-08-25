@@ -11,7 +11,7 @@
   "inputs": {
     "m11_manifest": {
       "path": "data/manifests/milestone11_expected_performance_v2.json",
-      "sha256": "faf3da7549b7d4cca2633d1d407fd682f7e7ad154d9c98839a064bc14c451936"
+      "sha256": "159a5e76f3f95c7f64d2177f6411d0740c23784b509bf4117d2ee73c02bb9be7"
     },
     "m11_outer_fold_coefficients": {
       "path": "data/analysis/engine/expected_performance_v2/m11-outer-fold-coefficients.csv",
