@@ -1,0 +1,77 @@
+{
+  "schema": "ranah-observatory/milestone47-bnpb-impact-overlap-eligibility/v1",
+  "milestone": 47,
+  "title": "BNPB historical victim-impact overlap eligibility gate",
+  "depends_on": [
+    43,
+    44,
+    45,
+    46
+  ],
+  "decision_date": "2026-08-25",
+  "research_question": "Can source-native 2000-2017 district/city victim-impact metrics be reconciled value-for-value against official BNPB 2010-2024 retrospective releases at the same geography grain?",
+  "archive_contract": {
+    "source": "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz",
+    "geography_grain": "district_city_source_native",
+    "candidate_overlap_years": [
+      2010,
+      2017
+    ],
+    "candidate_metrics": [
+      "meninggal",
+      "hilang",
+      "terluka",
+      "menderita",
+      "mengungsi"
+    ],
+    "missing_rows_zero_filled": false
+  },
+  "current_release_contract": {
+    "package_id": "f61d78e5-04c6-4ce8-9acf-e425dadc1f4d",
+    "package_url": "https://data.bnpb.go.id/dataset/data-bencana-indonesia",
+    "package_title": "Kompilasi Data Kejadian dan Dampak Bencana",
+    "package_metadata_observed_modified_date": "2026-04-16",
+    "retrospective_resource_count_reviewed": 5,
+    "reviewed_resources_key": "JENIS BENCANA",
+    "reviewed_resources_temporal_scope": "2010-2024",
+    "reviewed_resources_geography_grain": "national_by_disaster_type",
+    "district_dimension_present_in_reviewed_retrospective_resources": false,
+    "separate_2024_district_affected_resource": {
+      "source_record_id": "bnpb_affected_by_type_kab_2024",
+      "resource_id": "89eb9dac-a891-477e-b264-2265f72f4e56",
+      "title": "Jumlah Korban Terdampak Akibat Bencana Menurut Kabupaten 2024",
+      "overlap_sufficient_for_2010_2017_reconciliation": false
+    }
+  },
+  "candidate_registry": "data/registries/bnpb_impact_overlap_candidates.csv",
+  "result": {
+    "candidate_metric_count": 5,
+    "district_overlap_eligible_metric_count": 0,
+    "district_overlap_eligible_metrics": [],
+    "blocked_metric_count": 5,
+    "blocking_reason": "The reviewed official 2010-2024 victim-impact resources are national disaster-type-by-year matrices, while the historical archive is district/city-by-year. A value-level reconciliation requires the same geography grain; aggregation or synthetic allocation is not authorized.",
+    "national_hazard_totals_may_be_joined_to_district_archive": false,
+    "district_values_may_be_allocated_from_national_hazard_totals": false,
+    "menderita_may_be_silently_relabelled_terdampak": false,
+    "canonical_district_impact_promotion_authorized": false
+  },
+  "qualification": {
+    "official_retrospective_resources_identified": true,
+    "retrospective_resource_schema_grain_frozen": true,
+    "same_grain_overlap_counterpart_found": false,
+    "value_level_reconciliation_performed": false,
+    "historical_source_native_display_remains_authorized": true,
+    "historical_missingness_contract_preserved": true,
+    "promotion_gate_fail_closed": true
+  },
+  "next_gate": {
+    "milestone": 48,
+    "title": "BNPB district/city victim-impact counterpart discovery",
+    "tasks": [
+      "Search official BNPB/DIBI holdings for district/city victim-impact observations covering at least part of 2010-2017.",
+      "Prefer immutable source-native district/city records or event-level records that can be aggregated without person deduplication claims.",
+      "If a same-grain counterpart is found, reconcile each metric separately and retain release-level revision flags.",
+      "Do not infer district values from national hazard totals and do not use the 2024-only district affected resource as evidence for 2010-2017 equality."
+    ]
+  }
+}
