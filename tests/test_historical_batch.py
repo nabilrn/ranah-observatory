@@ -11,7 +11,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from historical_batch_collect import newest_changed_pdf, official_bps_url  # noqa: E402
+from historical_batch_collect import (  # noqa: E402
+    newest_changed_pdf,
+    official_bps_url,
+    official_source_url,
+    queue_allowed_host,
+    read_queue,
+)
 from historical_batch_ingest import inspect_batch, write_manifest  # noqa: E402
 from validate_historical_batch import (  # noqa: E402
     ALLOWED_COMMITTED_PDFS,
@@ -64,6 +70,39 @@ class HistoricalBatchTests(unittest.TestCase):
         self.assertTrue(official_bps_url("https://perpustakaan.bps.go.id/opac/search"))
         self.assertFalse(official_bps_url("https://bps.go.id.evil.example/publication"))
         self.assertFalse(official_bps_url("http://sumbar.bps.go.id/publication"))
+
+    def test_generic_official_host_validation_supports_bpbd_queue_safely(self) -> None:
+        self.assertTrue(
+            official_source_url("https://bpbd.sumbarprov.go.id/ppid", "sumbarprov.go.id")
+        )
+        self.assertTrue(
+            official_source_url("https://www.sumbarprov.go.id/images/report.pdf", "sumbarprov.go.id")
+        )
+        self.assertFalse(
+            official_source_url("https://sumbarprov.go.id.evil.example/report.pdf", "sumbarprov.go.id")
+        )
+        self.assertFalse(
+            official_source_url("http://bpbd.sumbarprov.go.id/ppid", "sumbarprov.go.id")
+        )
+        self.assertFalse(
+            official_source_url("https://bpbd.sumbarprov.go.id/ppid", "https://sumbarprov.go.id")
+        )
+
+    def test_bpbd_acquisition_queue_is_allowlisted_and_has_2017_exit_gate(self) -> None:
+        queue_path = ROOT / "data" / "acquisition_requests" / "bpbd_publications.csv"
+        rows = read_queue(queue_path)
+        self.assertEqual(3, len(rows))
+        by_id = {row["request_id"]: row for row in rows}
+        target = by_id["bpbd_pusdalops_2017"]
+        self.assertEqual("P0", target["priority"])
+        self.assertEqual("2017", target["anchor_year"])
+        self.assertEqual("yes", target["exit_gate_candidate"])
+        self.assertEqual("sumbarprov.go.id", queue_allowed_host(target))
+        for row in rows:
+            self.assertTrue(
+                official_source_url(row["official_page_url"], queue_allowed_host(row)),
+                row["request_id"],
+            )
 
     def test_newest_changed_pdf_detects_browser_download(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
