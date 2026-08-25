@@ -34,6 +34,15 @@
       "label": "cross-check stasiun historis independen untuk sinyal hujan 1997→1998",
       "detail": "Catatan historis Tabing bergerak ke arah yang sama dengan CHIRPS: 1998 lebih basah daripada 1997. Ini hanya validasi arah, bukan validasi seluruh besaran CHIRPS.",
       "source_paths": ["data/validation/climate/station/m36/manifest.json"]
+    },
+    {
+      "value": "285",
+      "label": "observasi kabupaten/kota-tahun untuk jumlah kejadian bencana tercatat 2010–2024",
+      "detail": "Matriks BNPB mencakup 19 kabupaten/kota × 15 tahun. Panel analitis v3 memakai irisan 2018–2024; nilai 2025 tetap missing, bukan nol.",
+      "source_paths": [
+        "data/manifests/milestone45_bnpb_total_events_candidate.json",
+        "data/manifests/milestone46_total_events_panel_integration.json"
+      ]
     }
   ],
   "stories": [
@@ -114,11 +123,14 @@
       "id": "disaster-components",
       "category": "Bencana",
       "evidence_state": "context",
-      "title": "Komponen risiko bencana tersedia, tetapi belum boleh dipadatkan menjadi satu skor risiko.",
-      "plain_language": "Riset memiliki 57 observasi pada tiga kelas komponen yang qualified: proxy paparan penduduk 2020, kapasitas 2021, dan konteks kejadian hidrometeorologi tercatat 2015–2024. Dampak event-level dan agregasi hazard/vulnerability raster masih ditahan.",
-      "why_it_matters": "Paparan, kapasitas, kejadian, hazard, vulnerability, dan impact adalah konsep berbeda dan terjadi pada periode yang berbeda.",
-      "caveat": "Jumlah kejadian tidak boleh disebut sebagai korban, kerusakan, kerugian, atau dampak ekonomi; komponen juga tidak boleh dijumlahkan menjadi composite risk score.",
-      "source_claim_ids": ["X26_DISASTER_COMPONENTS"]
+      "title": "Deret kejadian bencana kabupaten/kota kini lengkap 2010–2024, tetapi tetap bukan ukuran dampak.",
+      "plain_language": "Setelah qualification M45/M46, jumlah kejadian bencana tercatat tersedia sebagai 285 observasi kabupaten/kota-tahun: 19 daerah × 15 tahun dari 2010 sampai 2024. Panel v3 memakai irisan 2018–2024 dan menambahkan 133 observasi; 2025 sengaja tetap missing, bukan nol.",
+      "why_it_matters": "Konteks frekuensi kejadian sekarang dapat dibaca lintas daerah dan tahun di dalam satu source release tanpa menyamakan jumlah kejadian dengan korban atau kerugian.",
+      "caveat": "Exact polygon harmonization 2010–2024 belum terbukti dan comparable flag tetap unset. Ini adalah recorded events, bukan true incidence, korban, kerusakan, kerugian, atau dampak ekonomi.",
+      "source_paths": [
+        "data/manifests/milestone45_bnpb_total_events_candidate.json",
+        "data/manifests/milestone46_total_events_panel_integration.json"
+      ]
     },
     {
       "id": "investment-history",
