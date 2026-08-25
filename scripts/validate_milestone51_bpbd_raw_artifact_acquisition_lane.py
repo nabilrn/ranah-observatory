@@ -45,11 +45,13 @@ def validate() -> dict[str, Any]:
     assert official_bps_url("https://sumbar.bps.go.id/id/publication/example")
     assert not official_bps_url("https://bps.go.id.evil.example/publication")
 
-    assert len(rows) == 3
+    assert len(rows) == 5
     by_id = {row["request_id"].strip(): row for row in rows}
     assert set(by_id) == {
         "bpbd_pusdalops_2015",
         "bpbd_pusdalops_2017",
+        "bpbd_data_kebencanaan_2015_2016",
+        "bpbd_lakip_2017",
         "bpbd_pusdalops_2018",
     }
 
@@ -67,18 +69,42 @@ def validate() -> dict[str, Any]:
     assert p0["exit_gate_candidate"].strip().lower() == "yes"
     assert p0["output_filename"].strip() == "bpbd-pusdalops-sumbar-2017.pdf"
 
+    companion_ids = {
+        "bpbd_pusdalops_2015",
+        "bpbd_data_kebencanaan_2015_2016",
+        "bpbd_lakip_2017",
+        "bpbd_pusdalops_2018",
+    }
+    assert all(by_id[item]["exit_gate_candidate"].strip().lower() == "no" for item in companion_ids)
     assert by_id["bpbd_pusdalops_2015"]["priority"].strip() == "P1"
+    assert by_id["bpbd_data_kebencanaan_2015_2016"]["priority"].strip() == "P1"
+    assert by_id["bpbd_lakip_2017"]["priority"].strip() == "P1"
     assert by_id["bpbd_pusdalops_2018"]["priority"].strip() == "P2"
+
+    assert by_id["bpbd_data_kebencanaan_2015_2016"]["official_page_url"].strip().endswith("/2017_90.pdf")
+    assert "LAKIP%20BPBD%20Prov%20Sumbar%20Tahun%202017.pdf" in by_id["bpbd_lakip_2017"]["official_page_url"]
 
     assert official_source_url("https://bpbd.sumbarprov.go.id/ppid", "sumbarprov.go.id")
     assert official_source_url("https://www.sumbarprov.go.id/file.pdf", "sumbarprov.go.id")
     assert not official_source_url("https://sumbarprov.go.id.evil.example/file.pdf", "sumbarprov.go.id")
     assert not official_source_url("http://bpbd.sumbarprov.go.id/ppid", "sumbarprov.go.id")
 
+    queue_manifest = manifest["queue"]
+    assert queue_manifest["request_count"] == 5
+    assert queue_manifest["p0_request_id"] == "bpbd_pusdalops_2017"
+    assert queue_manifest["p0_exit_gate_candidate"] is True
+    assert queue_manifest["companion_requests_may_satisfy_2017_exit_gate"] is False
+    assert set(queue_manifest["companion_requests"]) == companion_ids
+
+    companions = manifest["companion_evidence"]
+    assert companions["bpbd_data_kebencanaan_2015_2016"]["substitutes_for_2017_annual_report"] is False
+    assert companions["bpbd_lakip_2017"]["substitutes_for_2017_annual_report"] is False
+
     result = manifest["result"]
     assert result["bpbd_acquisition_queue_materialized"] is True
     assert result["collector_generalized_without_removing_bps_wrapper"] is True
     assert result["bpbd_official_host_allowlisted"] is True
+    assert result["official_companion_surfaces_added"] == 2
     assert result["raw_2017_artifact_acquired"] is False
     assert result["raw_2017_checksum_frozen"] is False
     assert result["source_native_2017_extraction_authorized"] is False
@@ -88,6 +114,9 @@ def validate() -> dict[str, Any]:
     assert qualification["external_artifact_blocker_converted_to_executable_queue"] is True
     assert qualification["bps_default_security_behavior_preserved"] is True
     assert qualification["host_suffix_spoofing_rejected"] is True
+    assert qualification["official_2017_lakip_companion_available"] is True
+    assert qualification["official_2015_2016_data_companion_available"] is True
+    assert qualification["companions_do_not_replace_p0_exit_gate"] is True
     assert qualification["raw_official_artifact_still_required"] is True
     assert qualification["promotion_gate_fail_closed"] is True
 
@@ -95,9 +124,10 @@ def validate() -> dict[str, Any]:
     assert m50["qualification"]["raw_official_artifact_required_for_source_native_ingestion"] is True
 
     return {
-        "schema": "ranah-observatory/milestone51-bpbd-raw-artifact-acquisition-lane-audit/v1",
+        "schema": "ranah-observatory/milestone51-bpbd-raw-artifact-acquisition-lane-audit/v2",
         "milestone": 51,
         "queue_rows": len(rows),
+        "companion_rows": len(companion_ids),
         "p0_exit_gate_request": "bpbd_pusdalops_2017",
         "allowed_host": "sumbarprov.go.id",
         "legacy_bps_default_host": DEFAULT_ALLOWED_HOST,

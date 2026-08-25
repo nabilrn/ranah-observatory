@@ -91,18 +91,30 @@ class HistoricalBatchTests(unittest.TestCase):
     def test_bpbd_acquisition_queue_is_allowlisted_and_has_2017_exit_gate(self) -> None:
         queue_path = ROOT / "data" / "acquisition_requests" / "bpbd_publications.csv"
         rows = read_queue(queue_path)
-        self.assertEqual(3, len(rows))
+        self.assertEqual(5, len(rows))
         by_id = {row["request_id"]: row for row in rows}
+        self.assertEqual(
+            {
+                "bpbd_pusdalops_2015",
+                "bpbd_pusdalops_2017",
+                "bpbd_data_kebencanaan_2015_2016",
+                "bpbd_lakip_2017",
+                "bpbd_pusdalops_2018",
+            },
+            set(by_id),
+        )
         target = by_id["bpbd_pusdalops_2017"]
         self.assertEqual("P0", target["priority"])
         self.assertEqual("2017", target["anchor_year"])
         self.assertEqual("yes", target["exit_gate_candidate"])
         self.assertEqual("sumbarprov.go.id", queue_allowed_host(target))
-        for row in rows:
+        for request_id, row in by_id.items():
             self.assertTrue(
                 official_source_url(row["official_page_url"], queue_allowed_host(row)),
-                row["request_id"],
+                request_id,
             )
+            if request_id != "bpbd_pusdalops_2017":
+                self.assertEqual("no", row["exit_gate_candidate"])
 
     def test_newest_changed_pdf_detects_browser_download(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
