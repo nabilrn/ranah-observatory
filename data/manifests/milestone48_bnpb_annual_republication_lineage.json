@@ -1,0 +1,80 @@
+{
+  "schema": "ranah-observatory/milestone48-bnpb-annual-republication-lineage/v1",
+  "milestone": 48,
+  "title": "BNPB annual district/city portal republication lineage and evidence-independence gate",
+  "depends_on": [
+    42,
+    43,
+    47
+  ],
+  "decision_date": "2026-08-25",
+  "research_question": "Do the official BNPB annual 2010-2017 district/city portal datasets provide an independent same-grain crosscheck for the M42 historical victim-impact workbooks, or are they republications of the same source objects?",
+  "review_scope": {
+    "years": [
+      2010,
+      2017
+    ],
+    "portal_dataset_pages_reviewed": 8,
+    "portal_family_title_pattern": "Jumlah kejadian dan Dampak Bencana Tahun <year>",
+    "portal_geography_description": "kabupaten/kota",
+    "portal_declared_source": "https://dibi.bnpb.go.id",
+    "sumatera_barat_file_pattern": "stat_by_wil_13_<year>.xlsx",
+    "lineage_registry": "data/registries/bnpb_annual_portal_republication_lineage.csv",
+    "m42_manifest": "data/manifests/milestone42_bnpb_historical_source_native_staging.json"
+  },
+  "evidence_method": {
+    "portal_page_check": "Verify each annual BNPB page describes district/city disaster occurrence and impact data and declares DIBI as source.",
+    "folder_check": "Follow each official portal resource to its annual Google Drive folder and locate the Sumatera Barat workbook by province code 13.",
+    "locator_check": "Compare each current portal Google Drive file ID with the locator_id frozen in M42.",
+    "byte_size_check": "Download the current raw workbook and compare byte size with the M42 frozen workbook metadata.",
+    "sha256_check": "Hash the current raw workbook bytes and compare with the M42 frozen SHA256.",
+    "independence_rule": "A portal entry pointing to the same Google Drive source object with the same bytes cannot count as an independent cross-source validation, even though the portal page itself is an official access/provenance surface."
+  },
+  "result": {
+    "annual_dataset_pages_reviewed": 8,
+    "annual_pages_claiming_district_city_grain": 8,
+    "annual_pages_declaring_dibi_source": 8,
+    "sumbar_workbooks_located": 8,
+    "exact_drive_locator_matches_to_m42": 8,
+    "exact_byte_size_matches_to_m42": 8,
+    "exact_sha256_matches_to_m42": 8,
+    "same_grain_portal_counterpart_found": true,
+    "independent_same_grain_counterpart_found": false,
+    "new_independent_source_object_count": 0,
+    "portal_family_role": "official_republication_and_access_provenance_for_m42_source_objects",
+    "portal_family_may_count_as_independent_crosscheck": false,
+    "value_level_reconciliation_as_independent_crosscheck_authorized": false,
+    "canonical_historical_impact_promotion_authorized": false
+  },
+  "qualification": {
+    "annual_portal_family_discovered": true,
+    "annual_portal_geography_grain_confirmed": true,
+    "annual_portal_declared_dibi_lineage_confirmed": true,
+    "sumbar_source_object_identity_confirmed_all_years": true,
+    "raw_byte_identity_reconfirmed_all_years": true,
+    "evidence_independence_gate_frozen": true,
+    "m42_source_native_staging_remains_authoritative_archive_snapshot": true,
+    "m43_metric_semantics_gate_unchanged": true,
+    "historical_missingness_contract_unchanged": true,
+    "current_boundary_comparability_promoted": false,
+    "canonical_historical_panel_promotion_authorized": false,
+    "promotion_gate_fail_closed": true
+  },
+  "claim_boundaries": [
+    "The annual portal pages strengthen official provenance and discoverability of the M42 files but do not add an independent observation source.",
+    "Byte identity does not prove unchanged historical counting semantics, unique-person semantics, or current-boundary geography comparability.",
+    "The national disaster-type retrospective resources reviewed in M47 remain ineligible for district-level reconciliation.",
+    "No absent historical row is converted to zero and no district value is synthesized or allocated.",
+    "Menderita is not silently relabelled Terdampak."
+  ],
+  "next_gate": {
+    "milestone": 49,
+    "title": "BNPB independent district/event-level impact evidence discovery",
+    "tasks": [
+      "Search for a genuinely independent BNPB/DIBI district/city or event-level source covering at least part of 2010-2017 rather than another access path to the same annual workbook objects.",
+      "Prioritize contemporaneous event-level records, official reports, or separately generated district aggregates with independently traceable lineage.",
+      "If an independent counterpart is found, reconcile each victim/damage metric separately and preserve release-level disagreement flags.",
+      "Keep canonical historical impact promotion blocked until both evidence independence and M43 semantic/geography constraints are satisfied."
+    ]
+  }
+}
