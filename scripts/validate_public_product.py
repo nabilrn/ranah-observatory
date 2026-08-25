@@ -11,6 +11,11 @@ DEFAULT_OVERVIEW = ROOT / "site" / "data" / "overview.json"
 DEFAULT_LEDGER = ROOT / "publication" / "v0.1" / "claim-ledger.csv"
 M36_MANIFEST = ROOT / "data" / "validation" / "climate" / "station" / "m36" / "manifest.json"
 M36_OVERLAP = ROOT / "data" / "validation" / "climate" / "station" / "m36" / "station-overlap.json"
+M45_MANIFEST = ROOT / "data" / "manifests" / "milestone45_bnpb_total_events_candidate.json"
+M46_MANIFEST = ROOT / "data" / "manifests" / "milestone46_total_events_panel_integration.json"
+M45_PATH = "data/manifests/milestone45_bnpb_total_events_candidate.json"
+M46_PATH = "data/manifests/milestone46_total_events_panel_integration.json"
+DISASTER_SOURCE_PATHS = {M45_PATH, M46_PATH}
 
 STATE_MAP = {
     "supported": "publishable_bounded",
@@ -110,6 +115,64 @@ def validate_m36_story(story: dict[str, Any]) -> None:
         assert token in copy, f"M36 public copy lost frozen fact {token}"
 
 
+def validate_m45_m46_disaster_story(story: dict[str, Any]) -> None:
+    assert story.get("source_claim_ids") in (None, []), (
+        "post-v0.1 M45/M46 disaster story must use frozen evidence paths, not the v0.1 claim ledger"
+    )
+    assert set(story.get("source_paths") or []) == DISASTER_SOURCE_PATHS, (
+        "M45/M46 disaster story must cite the exact frozen milestone manifests"
+    )
+
+    m45 = load_json(M45_MANIFEST)
+    m46 = load_json(M46_MANIFEST)
+    assert m45["indicator_id"] == "total_disaster_events"
+    assert m45["period"] == [2010, 2024]
+    assert m45["observation_count"] == 285
+    assert m45["geography_count"] == 19
+    assert m45["years_count"] == 15
+    assert m45["complete_geography_year_matrix"] is True
+    assert m45["geography_contract"]["exact_polygon_harmonization"] == "not_proven"
+    assert m45["geography_contract"]["generic_comparable_flag"] == "unset"
+    assert m45["qualification"]["within_source_longitudinal_use_authorized_with_caveat"] is True
+    assert m45["qualification"]["type_specific_interpretation_forbidden"] is True
+    assert m45["qualification"]["true_incidence_claim_forbidden"] is True
+
+    assert m46["integration_success"] is True
+    assert m46["added_indicator_id"] == "total_disaster_events"
+    assert m46["added_observation_count"] == 133
+    assert m46["base_observation_count"] == 2679
+    assert m46["long_observation_count"] == 2812
+    assert m46["indicator_count"] == 23
+    assert m46["total_event_full_canonical_period"] == [2010, 2024]
+    assert m46["total_event_panel_period"] == [2018, 2024]
+    assert m46["total_event_2025_state"] == "missing_not_zero"
+    assert m46["total_event_comparable_flag"] == "unset"
+    assert m46["exact_polygon_harmonization_proven"] is False
+    assert m46["causal_analysis_performed"] is False
+    assert m46["cross_indicator_aggregation_performed"] is False
+    assert m46["imputation_performed"] is False
+    assert m46["zero_fill_performed"] is False
+
+    copy = " ".join(
+        str(story.get(key, ""))
+        for key in ("title", "plain_language", "why_it_matters", "caveat")
+    ).casefold()
+    for token in ("285", "19", "15", "133", "2025"):
+        assert token in copy, f"M45/M46 public copy lost frozen fact {token}"
+    assert "missing" in copy and "bukan nol" in copy
+    assert "bukan" in copy and "kerugian" in copy
+
+
+def validate_disaster_headline_stat(stat: dict[str, Any]) -> None:
+    assert set(stat.get("source_paths") or []) == DISASTER_SOURCE_PATHS
+    assert stat.get("source_claim_ids") in (None, [])
+    assert str(stat.get("value")) == "285"
+    text = " ".join(str(stat.get(field, "")) for field in ("label", "detail")).casefold()
+    for token in ("19", "15", "2010", "2024", "2025"):
+        assert token in text, f"disaster headline stat lost frozen fact {token}"
+    assert "missing" in text and "bukan nol" in text
+
+
 def validate(overview_path: Path = DEFAULT_OVERVIEW, ledger_path: Path = DEFAULT_LEDGER) -> dict[str, int]:
     overview = load_json(overview_path)
     ledger = load_ledger(ledger_path)
@@ -127,6 +190,7 @@ def validate(overview_path: Path = DEFAULT_OVERVIEW, ledger_path: Path = DEFAULT
 
     story_ids: set[str] = set()
     m36_count = 0
+    m45_m46_count = 0
     for story in stories:
         assert isinstance(story, dict)
         story_id = str(story.get("id", "")).strip()
@@ -149,6 +213,12 @@ def validate(overview_path: Path = DEFAULT_OVERVIEW, ledger_path: Path = DEFAULT
             m36_count += 1
             continue
 
+        if story_id == "disaster-components":
+            assert state == "context", "M45/M46 disaster story must remain context, not a positive impact claim"
+            validate_m45_m46_disaster_story(story)
+            m45_m46_count += 1
+            continue
+
         expected_ledger_state = STATE_MAP[state]
         require_claims(
             list(story.get("source_claim_ids") or []),
@@ -161,7 +231,9 @@ def validate(overview_path: Path = DEFAULT_OVERVIEW, ledger_path: Path = DEFAULT
         )
 
     assert m36_count == 1, "public overview must contain exactly one bounded post-v0.1 M36 story"
+    assert m45_m46_count == 1, "public overview must contain exactly one bounded M45/M46 disaster context story"
 
+    disaster_stat_count = 0
     for index, stat in enumerate(stats):
         assert isinstance(stat, dict)
         for field in ("value", "label", "detail"):
@@ -173,10 +245,15 @@ def validate(overview_path: Path = DEFAULT_OVERVIEW, ledger_path: Path = DEFAULT
         )
         if claim_ids:
             require_claims(claim_ids, ledger, context=f"headline stat {index}")
+        elif set(source_paths) == DISASTER_SOURCE_PATHS:
+            validate_disaster_headline_stat(stat)
+            disaster_stat_count += 1
         else:
             assert source_paths == ["data/validation/climate/station/m36/manifest.json"], (
                 f"headline stat {index}: unsupported direct evidence path"
             )
+
+    assert disaster_stat_count == 1, "public overview must contain exactly one M45/M46 disaster coverage headline stat"
 
     boundary_ids: set[str] = set()
     for boundary in boundaries:
