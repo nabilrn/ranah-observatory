@@ -1,0 +1,22 @@
+incident_category,reported_count,reported_share_percent,source_year,source_table,source_role,comparison_to_m42
+Abrasi Pantai,2,0.29,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Abrasi Sungai,3,0.44,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Angin Kencang,116,16.91,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Banjir,68,9.91,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Banjir Bandang,9,1.31,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Gempa Bumi,5,0.73,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Gunung Meletus,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Hanyut/Tenggelam,22,3.21,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Jebolnya Irigasi,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Kapal Pesiar Hanyut,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Kebakaran,285,41.55,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Kebakaran Lahan,7,1.02,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Longsor,130,18.95,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Longsor Tambang,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Masuk Sumur,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Orang Gantung Diri,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Orang Hilang,24,3.50,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Orang Tenggelam,2,0.29,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Patahnya Bendungan,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Penemuan Mayat,1,0.15,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
+Tersambar Petir,5,0.73,2015,Table 4.2,local_operational_incident_class,not_directly_comparable
