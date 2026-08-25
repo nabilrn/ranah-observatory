@@ -86,7 +86,7 @@
   "sensitivity_selected_before_model_fit": true,
   "source_inputs": {
     "data/analysis/engine/panel_v1/m10-panel-wide.csv": "855fcdbbbacde2b88188c3139705462db08c391d17f37dcf20214fb674a23bde",
-    "data/manifests/milestone10_analytical_panel.json": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433",
+    "data/manifests/milestone10_analytical_panel.json": "247d56475f514cdc8ea1ed1c7f46fb31dbbc75abe0a68a8682762b2d8de7b853",
     "data/manifests/milestone11_design_gate.json": "b45394319444ca86661446b19335894f80ac457527a9b3ea317388cd79f13ac3",
     "research/MILESTONE11_EXPECTED_PERFORMANCE_V2_SPEC.md": "8a583c09fc63b99ad84196481f266f8edea9b835a2754828ba17599ead8e953b"
   },
