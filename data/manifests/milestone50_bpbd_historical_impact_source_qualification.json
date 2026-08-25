@@ -1,0 +1,103 @@
+{
+  "schema": "ranah-observatory/milestone50-bpbd-historical-impact-source-qualification/v1",
+  "milestone": 50,
+  "title": "BPBD/Pusdalops historical impact-source qualification and acquisition gate",
+  "depends_on": [43, 48, 49],
+  "decision_date": "2026-08-25",
+  "research_question": "Do 2014-2017 BPBD/Pusdalops materials provide a sufficiently traceable local victim/physical-impact source for source-native acquisition or independent reconciliation against BNPB/DIBI?",
+  "candidate_registry": "data/registries/bpbd_historical_impact_source_candidates.csv",
+  "evidence": {
+    "bpbd_2015": {
+      "official_url": "https://www.sumbarprov.go.id/images/1456451857-Laporan%20Kegiatan%20Pusdalops%20PB%20BPBD%20Sumbar%20Th%202015.pdf",
+      "official_pdf_search_indexed": true,
+      "direct_raw_retrieval_succeeded_this_session": false,
+      "direct_raw_retrieval_failure": "503_service_unavailable",
+      "table_4_1_year_label": 2015,
+      "table_4_1_reported_event_total": 686,
+      "following_graph_year_label": 2015,
+      "following_narrative_year_label": 2015,
+      "preceding_narrative_conflicting_year_label": 2014,
+      "internal_year_label_inconsistency": true,
+      "interpretation_rule": "Use explicit table/graph labels to retain the 2015 report-year assignment while preserving the conflicting 2014 narrative sentence as a quality flag; do not silently erase the contradiction.",
+      "methodology_observed": {
+        "same_event_same_date_counted_once": true,
+        "impact_and_loss_accumulated_for_event": true,
+        "district_city_reports_are_inputs": true,
+        "reporting_volume_depends_on_district_city_supply": true
+      },
+      "completeness_observed": {
+        "2015_recap_complete_as_of_january_2016": false,
+        "report_explicitly_says_revision_needed": true
+      }
+    },
+    "bpbd_2017": {
+      "official_ppid_catalog_url": "https://ppid.sumbarprov.go.id/images/2024/10/file/download_tahunan2024-09_47_14.pdf",
+      "official_ppid_catalog_record_id": 8604,
+      "official_ppid_title": "Laporan Tahunan Data Kebencanaan Pusdalops PB Sumatera Barat Tahun 2017",
+      "official_raw_artifact_acquired": false,
+      "indexed_mirror_url": "https://id.scribd.com/document/373794571/Laporan-Tahunan-Pusdalops-PB-BPBD-Prov-Sumbar-Tahun-2017",
+      "mirror_evidentiary_role": "schema_discovery_and_future_raw_verification_target_only",
+      "indexed_report_scope": "19 kabupaten/kota",
+      "indexed_sections": [
+        "Jumlah Kejadian Bencana",
+        "Jumlah Kejadian Pada Masing-Masing Bencana",
+        "Dampak Kejadian Pada Manusia",
+        "Dampak Kejadian Pada Fasilitas Umum"
+      ],
+      "indexed_human_impact_fields": ["meninggal", "hilang", "mengungsi", "luka_sakit"],
+      "indexed_expected_values_not_canonical": {
+        "jumlah_kejadian": 725,
+        "meninggal": 40,
+        "hilang": 8,
+        "mengungsi": 9387,
+        "luka_sakit": 17,
+        "taksiran_kerugian_rupiah": 20647693425
+      },
+      "indexed_event_counting_description": "same event on same date counted once; detailed geography, impact and loss accumulated for the event",
+      "raw_verification_required_before_source_native_ingestion": true
+    }
+  },
+  "result": {
+    "local_report_family_is_impact_capable": true,
+    "official_2015_source_surface_found": true,
+    "official_2017_archive_record_found": true,
+    "official_2017_raw_artifact_acquired": false,
+    "2015_internal_year_label_conflict_frozen": true,
+    "2015_incomplete_recap_warning_frozen": true,
+    "source_independence_from_dibi_proven": false,
+    "taxonomy_equivalence_with_m42_proven": false,
+    "impact_metric_semantic_equivalence_with_m42_proven": false,
+    "direct_bpbd_to_bnpb_value_reconciliation_authorized": false,
+    "bpbd_source_native_impact_ingestion_authorized": false,
+    "canonical_historical_impact_promotion_authorized": false
+  },
+  "qualification": {
+    "m49_2015_year_assignment_retained": true,
+    "m49_686_total_retained": true,
+    "m49_decision_invalidated": false,
+    "internal_source_contradictions_must_be_preserved": true,
+    "mirror_values_may_be_used_as_future_raw_verification_targets": true,
+    "mirror_values_may_be_published_as_canonical_observations": false,
+    "raw_official_artifact_required_for_source_native_ingestion": true,
+    "bpbd_operational_layer_remains_separate_from_bnpb_dibi": true,
+    "m43_semantics_and_geography_gate_unchanged": true,
+    "promotion_gate_fail_closed": true
+  },
+  "claim_boundaries": [
+    "The explicit 2015 table and graph support retaining 686 as a 2015 local operational count, but the report's conflicting 2014 narrative sentence remains a source-quality flag.",
+    "The 2015 report explicitly warns that the 2015 district/city recap was incomplete as of January 2016 and should be revised when additional reports arrive.",
+    "PPID record 8604 proves the 2017 annual report exists in the official archive; it does not provide the raw report bytes in this milestone.",
+    "The indexed 2017 mirror establishes a plausible impact-capable schema and verification targets, not an authoritative raw observation snapshot.",
+    "No local BPBD victim, damage, event or loss value is inserted into the canonical BNPB/DIBI panel by M50."
+  ],
+  "next_gate": {
+    "milestone": 51,
+    "title": "BPBD 2017 raw artifact acquisition and source-native extraction",
+    "tasks": [
+      "Obtain the official raw 2017 Pusdalops annual report from PPID/BPBD or another government-hosted archival surface.",
+      "Freeze raw bytes, checksum, page/table locators and extraction provenance before ingesting any values.",
+      "Compare raw 2017 values against the indexed expected values and record every disagreement rather than correcting either source silently.",
+      "If raw acquisition succeeds, materialize a separate BPBD source-native impact layer; keep BNPB/DIBI reconciliation blocked until taxonomy, independence and metric semantics are qualified."
+    ]
+  }
+}
