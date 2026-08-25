@@ -1,0 +1,58 @@
+name: Milestone 48 BNPB Annual Republication Lineage
+
+on:
+  pull_request:
+    paths:
+      - "data/manifests/milestone42_bnpb_historical_source_native_staging.json"
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "data/manifests/milestone47_bnpb_impact_overlap_eligibility.json"
+      - "data/manifests/milestone48_bnpb_annual_republication_lineage.json"
+      - "data/registries/bnpb_annual_portal_republication_lineage.csv"
+      - "research/MILESTONE48_BNPB_ANNUAL_REPUBLICATION_LINEAGE.md"
+      - "scripts/validate_milestone48_bnpb_annual_republication_lineage.py"
+      - "tests/test_milestone48_bnpb_annual_republication_lineage.py"
+      - ".github/workflows/milestone48-bnpb-annual-republication-lineage.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/manifests/milestone42_bnpb_historical_source_native_staging.json"
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "data/manifests/milestone47_bnpb_impact_overlap_eligibility.json"
+      - "data/manifests/milestone48_bnpb_annual_republication_lineage.json"
+      - "data/registries/bnpb_annual_portal_republication_lineage.csv"
+      - "research/MILESTONE48_BNPB_ANNUAL_REPUBLICATION_LINEAGE.md"
+      - "scripts/validate_milestone48_bnpb_annual_republication_lineage.py"
+      - "tests/test_milestone48_bnpb_annual_republication_lineage.py"
+      - ".github/workflows/milestone48-bnpb-annual-republication-lineage.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M48 evidence-independence gate
+        run: python scripts/validate_milestone48_bnpb_annual_republication_lineage.py
+
+      - name: Run M48 focused tests
+        run: python -m unittest tests.test_milestone48_bnpb_annual_republication_lineage -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py
