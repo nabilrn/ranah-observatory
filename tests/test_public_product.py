@@ -4,7 +4,12 @@ import json
 import unittest
 from pathlib import Path
 
-from scripts.validate_public_product import DEFAULT_OVERVIEW, EXPECTED_BLOCKED, validate
+from scripts.validate_public_product import (
+    DEFAULT_OVERVIEW,
+    DISASTER_SOURCE_PATHS,
+    EXPECTED_BLOCKED,
+    validate,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -14,7 +19,7 @@ class PublicProductTests(unittest.TestCase):
         result = validate()
         self.assertEqual(result["blocked_boundaries"], 9)
         self.assertGreaterEqual(result["stories"], 8)
-        self.assertGreaterEqual(result["headline_stats"], 4)
+        self.assertGreaterEqual(result["headline_stats"], 5)
 
     def test_all_blocked_claims_are_visible(self) -> None:
         payload = json.loads(DEFAULT_OVERVIEW.read_text(encoding="utf-8"))
@@ -41,6 +46,32 @@ class PublicProductTests(unittest.TestCase):
         )
         self.assertIn("belum", monetary["title"].casefold())
         self.assertIn("rupiah", monetary["title"].casefold())
+
+    def test_disaster_public_context_uses_m45_m46_and_keeps_impact_boundary(self) -> None:
+        payload = json.loads(DEFAULT_OVERVIEW.read_text(encoding="utf-8"))
+        story = next(row for row in payload["stories"] if row["id"] == "disaster-components")
+        self.assertEqual("context", story["evidence_state"])
+        self.assertEqual(DISASTER_SOURCE_PATHS, set(story["source_paths"]))
+        self.assertNotIn("source_claim_ids", story)
+        copy = " ".join(
+            story[field] for field in ("title", "plain_language", "why_it_matters", "caveat")
+        ).casefold()
+        self.assertIn("285", copy)
+        self.assertIn("133", copy)
+        self.assertIn("2025", copy)
+        self.assertIn("bukan nol", copy)
+        self.assertIn("bukan", copy)
+        self.assertIn("kerugian", copy)
+
+        stat = next(
+            row for row in payload["headline_stats"]
+            if set(row.get("source_paths", [])) == DISASTER_SOURCE_PATHS
+        )
+        self.assertEqual("285", stat["value"])
+        self.assertIn("19", stat["detail"])
+        self.assertIn("15", stat["detail"])
+        self.assertIn("2025", stat["detail"])
+        self.assertIn("bukan nol", stat["detail"].casefold())
 
 
 if __name__ == "__main__":
