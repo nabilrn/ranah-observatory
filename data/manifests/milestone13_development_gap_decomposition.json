@@ -70,7 +70,7 @@
     "data/analysis/engine/frontier_v1/m12-district-frontier.csv": "43e7eea8e4ac9cc4c46fb4e1da877e25e16739e5a14bf6584ab0525143b64e24",
     "data/analysis/engine/frontier_v1/m12-national-west-sumatra-frontier.json": "32d23227bbcfc3ebf7b90627724c2e111cafc1eba62cfee041b3fb31c2984c3f",
     "data/manifests/milestone11_expected_performance_v2.json": "159a5e76f3f95c7f64d2177f6411d0740c23784b509bf4117d2ee73c02bb9be7",
-    "data/manifests/milestone12_attainable_frontier.json": "645f56dffb6439b2041798223d0437b8120122414150e42a23699b471aaf60a7",
+    "data/manifests/milestone12_attainable_frontier.json": "12af14774b1d6357148ac3c8e25cbace30445a608f7a02d9948087b339753d2c",
     "data/manifests/milestone13_design_gate.json": "61c4a545844eca356017bdfc17fc4308701083bf50f8f9a6f190667f0b419751",
     "research/MILESTONE13_DEVELOPMENT_GAP_DECOMPOSITION_SPEC.md": "ea97d2039d12e57b8870db93c37ba61d1d574a11dead1c8623e65236d5bbde3f"
   },
