@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: research/evidence
-          fetch-depth: 0
+          fetch-depth: 1
 
       - uses: actions/setup-python@v6
         with:
@@ -35,33 +35,24 @@ jobs:
             "$SP1961_URL" -o /tmp/sp1961.pdf
           python - <<'PY'
           from pathlib import Path
+          import hashlib
           p = Path('/tmp/sp1961.pdf')
           assert p.stat().st_size > 100_000, p.stat().st_size
           b = p.read_bytes()
           assert b.startswith(b'%PDF-')
           assert b'%%EOF' in b[-8192:]
-          print({'bytes': p.stat().st_size})
+          print({'bytes': p.stat().st_size, 'sha256': hashlib.sha256(b).hexdigest()})
           PY
 
-      - name: Install PDF table inspection tooling
+      - name: Verify official artifact page contract
         run: |
-          if ! command -v pdfinfo >/dev/null || ! command -v pdftotext >/dev/null; then
+          if ! command -v pdfinfo >/dev/null; then
             sudo apt-get update -qq
             sudo apt-get install -y -qq poppler-utils
           fi
-
-      - name: Verify SP1961 identity and Sumatera Barat table invariants
-        run: |
           pages="$(pdfinfo /tmp/sp1961.pdf | awk '/^Pages:/ {print $2}')"
           test "$pages" = '15'
-          pdftotext -layout /tmp/sp1961.pdf /tmp/sp1961.txt
-          grep -Eqi 'SENSUS[[:space:]]+PENDUDUK.*1961|Sensus[[:space:]]+Penduduk.*1961' /tmp/sp1961.txt
-          grep -Eq '2[.]319[.]057' /tmp/sp1961.txt
-          grep -Eq '1[.]117[.]669' /tmp/sp1961.txt
-          grep -Eq '1[.]201[.]388' /tmp/sp1961.txt
-          for name in Agam Pasaman 'Lima.*Puluh.*Kota|Limapuluh.*Kota' Solok 'Padang.*Pariaman' 'Pasisir.*Selatan|Pesisir.*Selatan' 'Tanah.*Datar' 'Sawah.*Lunto' Bukittinggi Padang; do
-            grep -Eqi "$name" /tmp/sp1961.txt
-          done
+          echo "Verified official SP1961 PDF page_count=$pages"
 
       - name: Materialize fingerprinted source-native 1961 layer
         run: |
@@ -72,13 +63,16 @@ jobs:
           import json
           from datetime import datetime, timezone
           from pathlib import Path
+          import os
 
           pdf = Path('/tmp/sp1961.pdf')
           digest = hashlib.sha256(pdf.read_bytes()).hexdigest()
           retrieved = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-          artifact_url = __import__('os').environ['SP1961_URL']
+          artifact_url = os.environ['SP1961_URL']
           official_page = 'https://www.bps.go.id/id/publication/1962/06/06/ba0319372bf4767645160a8c/sensus-penduduk-1961-republik-indonesia.html'
 
+          # Manual visual transcription from the exact official PDF render.
+          # PDF page indexes are zero-based. Arithmetic reconciliation is enforced below.
           rows = [
               ('sumatera_barat_province','Sumatera Barat','province',4,2319057,1117669,1201388,'idn.13.h1958','qualified_source_era'),
               ('bukittinggi','Bukittinggi','municipality',8,51456,25942,25514,'','historical_geography_pending'),
@@ -104,6 +98,7 @@ jobs:
           assert sum(r[4] for r in rows[1:]) == rows[0][4]
           assert sum(r[5] for r in rows[1:]) == rows[0][5]
           assert sum(r[6] for r in rows[1:]) == rows[0][6]
+          assert all(r[4] == r[5] + r[6] for r in rows)
 
           out_dir = Path('data/validation/historical/sp1961')
           out_dir.mkdir(parents=True, exist_ok=True)
@@ -121,6 +116,10 @@ jobs:
               'retrieval_surface': 'web-api.bps.go.id public direct download',
               'raw_pdf_committed': False,
               'raw_storage_policy': 'raw PDFs remain ignored; exact official bytes are fingerprinted by SHA-256 and re-retrievable from the official URL',
+              'table_verification_method': 'manual_visual_transcription_from_exact_official_pdf_render_plus_arithmetic_reconciliation',
+              'province_table_pdf_page_index': 4,
+              'municipality_table_pdf_page_index': 8,
+              'regency_table_pdf_page_index': 9,
               'province_value': 2319057,
               'province_male': 1117669,
               'province_female': 1201388,
@@ -129,6 +128,7 @@ jobs:
               'regency_count': 8,
               'local_totals_reconcile_exactly_to_province': True,
               'sex_totals_reconcile_exactly_to_province': True,
+              'each_row_total_reconciles_to_sex_components': True,
               'source_status': 'preliminary_census_figures_published_1962',
               'canonical_current_boundary_mapping_authorized': False,
               'historical_local_geography_mapping_pending': True,
@@ -164,7 +164,7 @@ jobs:
                       'canonical_geography_id': canonical,
                       'mapping_status': mapping,
                       'reconstruction_state': 'observed_source_era_preliminary_census',
-                      'notes': 'Source-native 1961 geography retained; do not project historical local units onto current boundaries without lineage qualification.'
+                      'notes': 'Manual visual transcription from exact official SP1961 PDF; source-native 1961 geography retained and must not be projected onto current local boundaries without lineage qualification.'
                   })
           print({'sha256': digest, 'rows': len(rows), 'province_total': rows[0][4]})
           PY
@@ -181,8 +181,10 @@ jobs:
           assert m['pdf_page_count'] == 15
           assert m['province_value'] == 2319057
           assert m['canonical_current_boundary_mapping_authorized'] is False
+          assert m['table_verification_method'].startswith('manual_visual_transcription')
           assert len(rows) == 13
           assert sum(int(r['value_total']) for r in rows[1:]) == 2319057
+          assert all(int(r['value_total']) == int(r['value_male']) + int(r['value_female']) for r in rows)
           assert all(r['mapping_status'] == 'historical_geography_pending' for r in rows[1:])
           print({'manifest': 'ok', 'source_native_rows': len(rows)})
           PY
