@@ -1,0 +1,20 @@
+{
+  "artifact_sha256": "f0a441692e25b68f0ac8f4559509d14d707f527c20471832eb06c9a949eae325",
+  "domains": {
+    "agriculture": [],
+    "education": [],
+    "health": [],
+    "industry": [],
+    "population": [],
+    "public_finance": [],
+    "trade": [],
+    "transport": []
+  },
+  "evidentiary_role": "page discovery only; snippets are not canonical numeric observations",
+  "extraction_method": "pdftotext-layout-built-in-text-layer-only-no-ocr",
+  "numeric_promotion_authorized": false,
+  "schema": "ranah-observatory/sumbar1970-structural-discovery-index/v1",
+  "source_pdf_page_count": 138,
+  "text_layer_char_count": 28290,
+  "text_layer_page_chunks": 139
+}
