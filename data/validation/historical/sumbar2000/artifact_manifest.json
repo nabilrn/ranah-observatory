@@ -1,0 +1,38 @@
+{
+  "artifact_bytes": 31081427,
+  "artifact_role": "complete official multidomain regional statistical yearbook artifact",
+  "artifact_sha256": "689318d0760f99ff82a54866295b580a0159ed0e39051b4342b8b7e9d13648cf",
+  "blanket_numeric_promotion_authorized": false,
+  "builtin_text_char_count": 737222,
+  "current_catalog_number": "1102001.13",
+  "full_publication_artifact_acquired": true,
+  "historical_anchor_satisfied": true,
+  "issn_isbn": "0303-5328",
+  "next_gate": "qualify additional source-native indicators table-by-table; the complete artifact itself never authorizes blanket numeric promotion",
+  "numeric_extraction_started": true,
+  "numeric_promotion_authorized": false,
+  "official_direct_artifact_url": "https://web-api.bps.go.id/download.php?f=LohU2NCB0%2BCnYSh%2BtCJH7lZZVVo0a29NQ0RBNWpmQzlldXF5T3JRMXlIUHVjQndsM0lKcHdic0swdzBDQUFUcnhuaEU3NTR1Z253S05rWGNpUkZoUzBXR1JQdFlhUmNPSHZBYUNyZW83eUxsVzBNY1ZpV2g5U0gvbUtiQ2d1ZDU2THNsTUVONFhYZ0t0UTRNNXJnVkFwc3QvZ1RCSHZDSysrODVyNHRueGRDSzRxMkt0VHp1cVFGM04vNmI2ai9zRy9GSmdVMFBxQUMrRVRQK0lodHZCRmQxa1E3VFhiUUlhQmcwb1JwNmdwRll5Y3BCenlrRFQ3eG1zS1hFaGlFTlNmeVA0VGZqVXhGbDJRUVM%3D",
+  "official_page_url": "https://sumbar.bps.go.id/id/publication/2001/09/05/e7d159765642b6b991651b12/sumatera-barat-dalam-angka-tahun-2000.html",
+  "pdf_page_count": 646,
+  "publication_number": "13000.2000",
+  "qualified_extraction_manifests": [
+    "data/validation/historical/sumbar2000/population_anchor_manifest.json"
+  ],
+  "raw_pdf_committed": false,
+  "release_date": "2001-09-05",
+  "retrieval_surface": "web-api.bps.go.id public direct download",
+  "schema": "ranah-observatory/sumbar2000-official-artifact/v1",
+  "source": "BPS Provinsi Sumatera Barat",
+  "source_native_cover_catalog_number": "1403.13",
+  "title": "Sumatera Barat Dalam Angka Tahun 2000",
+  "visual_completeness_review": {
+    "back_cover_present_on_final_pdf_page": true,
+    "cover_present": true,
+    "main_statistical_table_body_present": true,
+    "review_method": "manual visual review of rasterized pages 1, 323, and 646 from the exact SHA-bound official PDF",
+    "sampled_body_page_content": "Table 6.4.17 Number of Paid Workers Large/Medium Industry by Kind Industrial 1996-1999",
+    "sampled_body_pdf_page": 323,
+    "sampled_body_printed_page": 268,
+    "sampled_pdf_pages": [1, 323, 646]
+  }
+}

@@ -1,0 +1,645 @@
+{
+  "artifact_sha256": "689318d0760f99ff82a54866295b580a0159ed0e39051b4342b8b7e9d13648cf",
+  "domains": {
+    "agriculture": [
+      {
+        "matched_terms": [
+          "pertanian"
+        ],
+        "pdf_page": 92,
+        "snippet": "kerja perempuan sebanyak 0,64 juta orang {Lihat Tabel 3.2.9) | Lapangan Usaha pertanian masih merupakan sektor yang paling | banyak menyedot tenaga kerja. Pada tahun 1999 sektor ini menyedot | sebanyak 48,25 persen dari seluruh penduduk berumur IO tahun keatas"
+      },
+      {
+        "matched_terms": [
+          "agriculture"
+        ],
+        "pdf_page": 103,
+        "snippet": "dan Perikanan | Agriculture, Farrestr)', Hunting | and Fishery | 2. lndustri / Manufacturing"
+      },
+      {
+        "matched_terms": [
+          "pertanian"
+        ],
+        "pdf_page": 113,
+        "snippet": "Perdagangan | Pertanian | id | 21%"
+      },
+      {
+        "matched_terms": [
+          "rice"
+        ],
+        "pdf_page": 219,
+        "snippet": "Sumber Kanwil Oepartemen Kehakiman Propinsi Sumalml Batat | Source ReKiOnal Office Depr ofJu.Trice of Sumatra Baral Province | 164"
+      },
+      {
+        "matched_terms": [
+          "padi"
+        ],
+        "pdf_page": 226,
+        "snippet": "5. PERT ANIAN | 5.1 Padi dan Palawija | Selama tahun 2000 produksi padi di Sumatera Barat mencapai 1.759.059 | ton yang terdiri dari I. 736.878 ton Padi Sawah dan 22.181 ton Padi Ladang. ·"
+      },
+      {
+        "matched_terms": [
+          "padi"
+        ],
+        "pdf_page": 227,
+        "snippet": "label Luas Panen, Hasil per Hektardan Produksi Padi & Palawija menurut Jenis | : s.1.1 | Table Tanaman / HarYC$ted Area. Yield Rate, and Production ofPaddy&, Food"
+      },
+      {
+        "matched_terms": [
+          "padi"
+        ],
+        "pdf_page": 228,
+        "snippet": "Tabet Luas Panc:n, Hasil PerHcktar danProduksi Padi (Sawah + Ladang) | : S.1.2 | Table m�nurut Kabupaten/Kota / Harvested Area, Yield Rates & Production of"
+      },
+      {
+        "matched_terms": [
+          "padi"
+        ],
+        "pdf_page": 229,
+        "snippet": "----- | Tat,c,J : S.1.3 Luas Panen, Hasil Per Hektar dan Produksi Padi Sawahmcnurut Kabupatcn/ Kota | Table I Harvested Area, Yield Rares & Producrion of Wet Land Paddy by | Regency!Munic1poliry"
+      },
+      {
+        "matched_terms": [
+          "padi"
+        ],
+        "pdf_page": 230,
+        "snippet": "Tabel Luas Panen, Hasil per Hcktar dan Produksi Padi Ladangmcnurut | : S.1.4 | Tabet KabupalffllKota Harvested Area, Yield Rates & Production ofDry"
+      },
+      {
+        "matched_terms": [
+          "padi"
+        ],
+        "pdf_page": 233,
+        "snippet": "Gambar / Figure 16 | Produksi Padi Per Tahun | Production ofPortland Cement and Clinker | 1996-2000"
+      },
+      {
+        "matched_terms": [
+          "pertanian"
+        ],
+        "pdf_page": 235,
+        "snippet": "1996 3 542 709 TII I 764 2 626 678 | Sumbcr: Din� Pertanian Tanaman Pangan Propinsi Sumbar. | 180 | _':________ ___ �-"
+      },
+      {
+        "matched_terms": [
+          "pertanian"
+        ],
+        "pdf_page": 237,
+        "snippet": "1996 26 243 4 S06 7 88S 29 145 80 S66 6 944 | Sumbcr: Dinas Pertanian Tanaman Pangan & BPS Prop. Sumata'a Ban1 | 182"
+      }
+    ],
+    "education": [
+      {
+        "matched_terms": [
+          "education"
+        ],
+        "pdf_page": 98,
+        "snippet": "Table Menurut Tingltat Pendidikan Yang Ditamatkan | Number afExperienced Job Seeker by Education Attainment | 2000 | Pendidikan Belum ditcmpatkan Tcrdaftar dalarn Ditcmpatkan daJam"
+      },
+      {
+        "matched_terms": [
+          "sekolah",
+          "guru"
+        ],
+        "pdf_page": 102,
+        "snippet": "um | • Sekolah/Atrending 22.30 22.87 22.59 22.57 22.30 22.43 | //s | School"
+      },
+      {
+        "matched_terms": [
+          "sekolah"
+        ],
+        "pdf_page": 112,
+        "snippet": "id | Sekolah ---53% | 23% | o."
+      },
+      {
+        "matched_terms": [
+          "murid",
+          "guru"
+        ],
+        "pdf_page": 120,
+        "snippet": "� 4.1.1 JumJah Taman K.anak-kanak, Murid, Guru dan LobJ | Table Number OfPupil Teachers And Classes At Kindergartens | 2000"
+      },
+      {
+        "matched_terms": [
+          "sekolah",
+          "guru"
+        ],
+        "pdf_page": 121,
+        "snippet": "Tahcl Jumlah Sekolah, Muriel, Guru clanKelas padaSekolah Dasar | : 4.1.2 | Table �c geri clanSwasa/ Number ofSchool. Pupil. Teacher"
+      },
+      {
+        "matched_terms": [
+          "sekolah",
+          "murid",
+          "guru"
+        ],
+        "pdf_page": 122,
+        "snippet": "Swasta / Pr,vace Jumlah / Tocal | Muri d Guru Kelas Sekolah Murid Guru Kelas | Pup ,r Teacher Classes School Pupil Teacher Classes | (7) ( 8) (9) (10) (11) (12) (13)"
+      },
+      {
+        "matched_terms": [
+          "sekolah",
+          "guru"
+        ],
+        "pdf_page": 123,
+        "snippet": "Tabd Jumlah Sckolah, Muriel, Guru dan Kelas pada Sekolah Lanjutan | : 4.1.3 | Table Tingkat Pcrtama Negeri dan Swasta / Number ofSchools,"
+      },
+      {
+        "matched_terms": [
+          "sekolah",
+          "murid",
+          "guru"
+        ],
+        "pdf_page": 124,
+        "snippet": "Swasta / Private Jumlah / Total | Murid Guru Kelas Sekolah Murid Guru Kclas | Pupil Teacher Classes Scho o l Pupil Teacher Classes | (7) (8) (9) (10) (11) (12) (13)"
+      },
+      {
+        "matched_terms": [
+          "guru"
+        ],
+        "pdf_page": 125,
+        "snippet": "Tabet Jumlah Sckolah, Muriel, Guru clan Kclu pada Sckolah Lanju a | t n | 4.1.4"
+      },
+      {
+        "matched_terms": [
+          "sekolah",
+          "murid",
+          "guru"
+        ],
+        "pdf_page": 126,
+        "snippet": "Swasta / Private Jumlah / Total | Muri d Guru Kelas Sekolah Murid Guru Kclas | P u pi l Teacher Classe.r School P rip i I Teacher Classes | (7) (8) (9) (10) (11) (12) (13)"
+      },
+      {
+        "matched_terms": [
+          "murid",
+          "guru"
+        ],
+        "pdf_page": 127,
+        "snippet": "Tabel Jumlah Sckolah, Murid, Guru dan Kclas pada Sckolah Mcncngah AW | :4.U | Table Ncgcri dan Swasta/Number ofSchools. Pupils. Teachers and Classes at"
+      },
+      {
+        "matched_terms": [
+          "sekolah",
+          "murid",
+          "guru",
+          "education"
+        ],
+        "pdf_page": 128,
+        "snippet": "Swasta / Private Jumlah / Total | Murid Guru Kelas Sekolah Murid Guru Kelas | Pupd Teachu Classes School Pupil Teacher Classes | (7) (8) (9) (10) (11) (12) (13)"
+      }
+    ],
+    "health": [
+      {
+        "matched_terms": [
+          "rumah sakit",
+          "puskesmas",
+          "dokter"
+        ],
+        "pdf_page": 119,
+        "snippet": "Data dari Kanwil Kesehatan juga memperlihatkan bahwa jumlah | kunjungan kerumah sakit jiwa pada yahun 2000 adalah 13.916 orang. Jadi | mengalami penurunan jika dibanding tahun 1999 yang mencapai 14�327 | orang."
+      },
+      {
+        "matched_terms": [
+          "rumah sakit",
+          "health"
+        ],
+        "pdf_page": 150,
+        "snippet": "� : 4.2.1 | Jumlah Rumah Sakit Umum Menurut Kabupatcn/Kota | Table Number OfPublic Hospilal by Regency/Municipality | 2000"
+      },
+      {
+        "matched_terms": [
+          "health"
+        ],
+        "pdf_page": 152,
+        "snippet": "648 250 250 426 426 180 180 | Source: Regional Office ofDept. of Health ofSumatra Baral Prol'ince | 97"
+      },
+      {
+        "matched_terms": [
+          "rumah sakit"
+        ],
+        "pdf_page": 153,
+        "snippet": "Jumlah Kunjungan Pada Rumah Sakit Umum Menurut Kab upaten/Kota | � :4.2.3 | Table Number ofArrendences in Public Ho,p,tal by Regency/Mumc1poliry"
+      },
+      {
+        "matched_terms": [
+          "health"
+        ],
+        "pdf_page": 154,
+        "snippet": "Sumber : Kantor Wilayah Departemen Kesehatan Propinsi Sumatera Barat | Source: Regional Office o[Dept. ofHealth o[Sumatra Baral Province | 99"
+      },
+      {
+        "matched_terms": [
+          "health"
+        ],
+        "pdf_page": 157,
+        "snippet": "Sumber : Kanwil Departemen Kesehatan Propinsi Sumatera Baral | Source: Regional Office Of Dept.OfHealth Of Sumatra Barat Province | 102"
+      },
+      {
+        "matched_terms": [
+          "dokter"
+        ],
+        "pdf_page": 158,
+        "snippet": "(1) (2) (3) (4) (.S) (6) | I. Dokter Spl!Sialis 124 20 .s 6 6 | Specialist Doctor | 2. Dokter Umum 87 31 2 9 II"
+      },
+      {
+        "matched_terms": [
+          "health"
+        ],
+        "pdf_page": 159,
+        "snippet": "Sumbcr : Kantor Wilayah Departcrnm Kcsehatan Propinsi Sumatera Baral | Source : Re1:1ana/ Office o[Depc. ofHealth ofSumarraBarar Province | 104"
+      },
+      {
+        "matched_terms": [
+          "rumah sakit"
+        ],
+        "pdf_page": 160,
+        "snippet": "Gambar / Figure 9 | Jumlah Kunjungan Pasien Rumah SakitNegeri dan | · Rumah Sakit Swasta | Number of Attendance in Public and Private Hospital"
+      },
+      {
+        "matched_terms": [
+          "dokter",
+          "health"
+        ],
+        "pdf_page": 161,
+        "snippet": ". (I) (2) (3) (4 ) (5) | I. Dokter Spesialis !Spec1alist 3 3 | 2. Dokter Umum /General Practmoners 6 4 4 5 | 3. D o k t e r G i g i /Dentist 2 3 2 4"
+      },
+      {
+        "matched_terms": [
+          "health"
+        ],
+        "pdf_page": 164,
+        "snippet": "10 15 15 12 193 | Source: Regional Office ofDept. ofHealth ofSumatra Baral Province | 109"
+      },
+      {
+        "matched_terms": [
+          "puskesmas",
+          "health"
+        ],
+        "pdf_page": 166,
+        "snippet": "Tahcl Jumlah Puskesmas, Puskesmas Pembantu dan Klinik B.:rsalin Swasb | : 4.2.10 | Table Number ofPublic Hea/Jh Centres and Pnvate Delivery Cbnics"
+      }
+    ],
+    "industry": [
+      {
+        "matched_terms": [
+          "industri"
+        ],
+        "pdf_page": 99,
+        "snippet": "Nor ye1 Placed Registered Assigned Ihis Year | Industrial Origm | Las/ Year Ihis rear | UM PIF JIT - UM PIF JIT UM PIF JIT"
+      },
+      {
+        "matched_terms": [
+          "industry"
+        ],
+        "pdf_page": 103,
+        "snippet": "Table : · · Lapan gan Pekerja an Utama/ Percentage afPapula11an Aged JO and | Over lt?ra Worked Dunng Previous Week by Main Industry | 1999-2000 | Lapangan Usaha / Main Industry 1999 2000"
+      },
+      {
+        "matched_terms": [
+          "industry"
+        ],
+        "pdf_page": 113,
+        "snippet": "Percentage ofPopulation Aged 10 and | Over Who Worked During Previous Week by Main Industry | 1999 | Lainnya"
+      },
+      {
+        "matched_terms": [
+          "industry"
+        ],
+        "pdf_page": 306,
+        "snippet": "SentralPembangkit Produksi Rumahtangge B.Usaha ln dustri Um u m Jumlah | Central Station Production Household Commer- Industry Public Total | cial | (I) (2) (3) (4) (5) (6) (7)"
+      },
+      {
+        "matched_terms": [
+          "industry"
+        ],
+        "pdf_page": 307,
+        "snippet": "Central Station | House- Commer- Industry Public Total | hold cial | (I) ( 2) (3) (4) (5) (6)"
+      },
+      {
+        "matched_terms": [
+          "industry"
+        ],
+        "pdf_page": 312,
+        "snippet": "Table lndustri dan Status Permodalan | Number ofMedium and large Industry Companies by Kind of | IndustryAnd /nvestm Status | 1999"
+      },
+      {
+        "matched_terms": [
+          "industri"
+        ],
+        "pdf_page": 313,
+        "snippet": "- | � : 6.4.2 Banyaknya Pcrusahun Industri Bcsar dan Sedang mcnurut Golongan | Table Industri clan Bcntuk Baclan Hukum | Number o[Medium and Large Scale Jndus1ry By Kmd oflndus1ry and"
+      },
+      {
+        "matched_terms": [
+          "industri",
+          "industry"
+        ],
+        "pdf_page": 314,
+        "snippet": "Table lndustri dan Pcmilikan Modal | Number ofMedium and large Scale Industry By Kind ofIndustry and | Capital Ownership | 1999"
+      },
+      {
+        "matched_terms": [
+          "industry"
+        ],
+        "pdf_page": 315,
+        "snippet": "Scbelum 1980 Jumlah | Jcnis lndustri/ Kind of Industry 1980 s'd 1998 1999 To1ol | 1997 | (I) (2) (3) (4) (5) (6)"
+      },
+      {
+        "matched_terms": [
+          "industri"
+        ],
+        "pdf_page": 316,
+        "snippet": "(I) (2) (3� ! 4} ! 5) (6 ) | L Industri Makanan, Minuman dan 3 567 I 002 4 569 45 \"'614 | Tembalcau I Mam,f O/Food. | 8rHragu And Tobacco"
+      },
+      {
+        "matched_terms": [
+          "industri",
+          "industry"
+        ],
+        "pdf_page": 317,
+        "snippet": "TabJ. Menurut Sub Sclctor | Electriciry Produced, Purchased and Sold by Industrial Code | 1999 | Produksi"
+      },
+      {
+        "matched_terms": [
+          "industri",
+          "industry"
+        ],
+        "pdf_page": 318,
+        "snippet": "Tenaga Listrik (Ekctriciry) | ·Jcnis lndustri / Kind OfIndustry Yang Dijual (Sotd) | I) | I. lndustri Makanan, Minuman dan Tembakau"
+      }
+    ],
+    "population": [
+      {
+        "matched_terms": [
+          "penduduk"
+        ],
+        "pdf_page": 92,
+        "snippet": "3.PENDUDUK DAN TENAGA KERJA | 3.1 Penduduk | Berdasarkan hasil Susenas 2000, jumlah penduduk Sumatera"
+      },
+      {
+        "matched_terms": [
+          "penduduk"
+        ],
+        "pdf_page": 93,
+        "snippet": "2000 terlihat mengalami penurunan yaitu menjadi 12,80 persen dari | seluruh penduduk yang bekerja. | Dilihat dari lowongan kerja yang dilaporkan Depnaker pada tahun | 2000 tersedia lowongan untuk l.l 13 orang, dan lowongan kerja"
+      },
+      {
+        "matched_terms": [
+          "penduduk",
+          "population"
+        ],
+        "pdf_page": 94,
+        "snippet": "Tabet Luas Daerah, Jumlah Penduduk clan Rata-rataKepadatan Penduduk | : 3.1.1 | Table MenurutKabupaten/Kota"
+      },
+      {
+        "matched_terms": [
+          "penduduk"
+        ],
+        "pdf_page": 95,
+        "snippet": "Tabel Jwnlah Penduduk Menurul Kabupaten/Kota dan Jenis Kelamin | : 3.1.2 | Table Number ofPopulallon by Regency/Munictpal,ry and Sex"
+      },
+      {
+        "matched_terms": [
+          "penduduk",
+          "population"
+        ],
+        "pdf_page": 96,
+        "snippet": "Tabel Jumlah Penduduk Menurut Golongan Umur dan Jenis Kelamin | : 3.1.3 | Table Number ofPopulation by Age Group and Sex"
+      },
+      {
+        "matched_terms": [
+          "penduduk"
+        ],
+        "pdf_page": 102,
+        "snippet": "Tabel Pencntase Penduduk Baumur IO Tahun Keat.as Menurut Jaus Kegimn & | : 3.2.6 | Table Jenis Kelarnin IPersentage ofPopuwlion Aged JO and Over by Type"
+      },
+      {
+        "matched_terms": [
+          "penduduk",
+          "population"
+        ],
+        "pdf_page": 111,
+        "snippet": "Gambar / Figure 5 | Piramida Penduduk Sumatera Barat | Pyramid ofPopulation in West Sumatera | 2000"
+      },
+      {
+        "matched_terms": [
+          "penduduk",
+          "population"
+        ],
+        "pdf_page": 112,
+        "snippet": "Gambar / Figure 6 | Persentase Penduduk Berumur 10 Tahun Keatas Menurut Jenis | Kegiatan &Jenis Kelarnin | Persentage of Population Aged 10 and Over by Type ofActivity and Sex"
+      },
+      {
+        "matched_terms": [
+          "penduduk",
+          "population"
+        ],
+        "pdf_page": 113,
+        "snippet": "Gambar / Figure 6a | Persentase Penduduk Berumur 10 Tahun Keatas yang Bekerja menurut | Lapangan Pekerjaan Utama | Percentage ofPopulation Aged 10 and"
+      },
+      {
+        "matched_terms": [
+          "population"
+        ],
+        "pdf_page": 133,
+        "snippet": "Table Kobupotcn/Kota, Jcnis Kcl.amin dan Kcmampuan Baca Tulis/ | Percentage a/Population Aged IO and Over by | Munic1pa/iry1Regency. Sex and Literacy | 2000"
+      },
+      {
+        "matched_terms": [
+          "penduduk",
+          "population"
+        ],
+        "pdf_page": 147,
+        "snippet": "- | Tabet Persentasc Penduduk Berumur 7-24 Tahun ke alas | : 4.1.18 | Tobe/ Menurut Partisipasi Sekolah/Percentage ofPopulation"
+      },
+      {
+        "matched_terms": [
+          "penduduk",
+          "population"
+        ],
+        "pdf_page": 148,
+        "snippet": "Tabel Persentase Penduduk Berumur IO Tahun ke atas Menurut Pendidikan | : 4_ J.l 9 | Table Tertinggi yang Ditamatkan / Percentage ofPopulation JO Years and"
+      }
+    ],
+    "public_finance": [],
+    "trade": [
+      {
+        "matched_terms": [
+          "trade"
+        ],
+        "pdf_page": 99,
+        "snippet": "6. Pcrdagangan, R.Makan 0 0 0 S 2 7 S 2 7 | dan Hotel/Trade , | ba | Res1auran1 and Ho1e/"
+      },
+      {
+        "matched_terms": [
+          "trade"
+        ],
+        "pdf_page": 103,
+        "snippet": "r.b | Trade, Restaurant & Hotel | ba | 4. Jasa-jasa / Service 14.78 12.80"
+      },
+      {
+        "matched_terms": [
+          "perdagangan"
+        ],
+        "pdf_page": 113,
+        "snippet": "9% | Perdagangan | Pertanian | id"
+      },
+      {
+        "matched_terms": [
+          "trade"
+        ],
+        "pdf_page": 198,
+        "snippet": "Regencyl}.,funicipality | Trader Public and | Servanc Veceran | (I} (2} (3l (4} (S} (6}"
+      },
+      {
+        "matched_terms": [
+          "trade"
+        ],
+        "pdf_page": 295,
+        "snippet": ": S.S.14 JumlahKapa! yang MendaraL Produksi & Nilai lkan mtl.uui Tempat | Table Pclclangan lkan / Number ofFishing Boars d': Production ofFish Trade at | T.P.I | 2000/2001"
+      },
+      {
+        "matched_terms": [
+          "ekspor"
+        ],
+        "pdf_page": 332,
+        "snippet": "Seluruhnya | Bengkulu Lampung OKI Jakarta Ekspor Lain-Lain Grand Total | Exe_ort Others | (8l (9l (10) (Ill (12) (13)"
+      },
+      {
+        "matched_terms": [
+          "perdagangan",
+          "ekspor",
+          "impor"
+        ],
+        "pdf_page": 342,
+        "snippet": "7. PERDAGANGAN LUAR NEGERI | 7.1. Ekspor | Nilai ekspor komoditi non migas dari Sumatera Barat pada 2000"
+      },
+      {
+        "matched_terms": [
+          "ekspor"
+        ],
+        "pdf_page": 343,
+        "snippet": "Tabel Ekspor Sumatera B2rat Menurut Negara Tujuan | : 7.1.1 | Table Export o[West Sumatra By Country o[Destinat,on"
+      },
+      {
+        "matched_terms": [
+          "ekspor"
+        ],
+        "pdf_page": 344,
+        "snippet": "Tabet : 7.1.2 | Volume Ekspor Sumatera Baral menurut Gol.Barang I Digit SITC | Tabet Volume ofExport of WestSumatra by 1 Digit SITC | 1997 - 2000"
+      },
+      {
+        "matched_terms": [
+          "ekspor"
+        ],
+        "pdf_page": 345,
+        "snippet": "- | Tabet Nilai Ekspor Sumatera Baral menurul Gol.Barang I Digit SITC | : 7.1.3 | Table Value ofExport of West Sumatra by 1 D1g1t SJTC"
+      },
+      {
+        "matched_terms": [
+          "ekspor"
+        ],
+        "pdf_page": 346,
+        "snippet": ": 7.1.4 | Ekspor Sumatera Baral menurut Jenis Komoditi | Export of West Sumatra by Kind o[Comod111es | 2000"
+      },
+      {
+        "matched_terms": [
+          "ekspor"
+        ],
+        "pdf_page": 348,
+        "snippet": "Tab,,I Volume dan Nilai Ekspor Kayu Olahan mmurut Negara Tujuan | : 7.1.6 | Table lume and Value of Export ofWood Products by Country ofDestinati<"
+      }
+    ],
+    "transport": [
+      {
+        "matched_terms": [
+          "jalan"
+        ],
+        "pdf_page": 93,
+        "snippet": "id | Pemerintah Daerah untuk dicarikan jalan keluamya. | o. | .g"
+      },
+      {
+        "matched_terms": [
+          "transport"
+        ],
+        "pdf_page": 99,
+        "snippet": "um | munikasi !Transport. | and Commumcauon | 8. l..cmbaga Kcuangan/ 0 0 0 17 14 31 17 14 31"
+      },
+      {
+        "matched_terms": [
+          "transport"
+        ],
+        "pdf_page": 344,
+        "snippet": "tp | Machinery&Transport Equipment | ht | 8 Berbagai jns brg buatan pabrik 136 79 167 45"
+      },
+      {
+        "matched_terms": [
+          "transport"
+        ],
+        "pdf_page": 345,
+        "snippet": "7 Perlengkapan Mesin & Pengangkutan 871 7 340 195 916 | Machinery&Transport Equipment | tp | ht"
+      },
+      {
+        "matched_terms": [
+          "pelabuhan"
+        ],
+        "pdf_page": 358,
+        "snippet": "i | Pelabuhan /Port o[lme.ortation Jumlah | TahunlYear M11.tra Teluk Tabing PTT Total | Bayur"
+      },
+      {
+        "matched_terms": [
+          "pelabuhan"
+        ],
+        "pdf_page": 359,
+        "snippet": "Tabel Nilai Impor Sumatera Baral menurul Pelabuhan Impor | : 7_2_4 | Table Value ofImport of West Sumatra by Port ofImport"
+      },
+      {
+        "matched_terms": [
+          "transport"
+        ],
+        "pdf_page": 360,
+        "snippet": "tp | Transport Equipment | ht | 8 Berhagai jenis brg buatan pabrik 32 s 225 223"
+      },
+      {
+        "matched_terms": [
+          "jalan"
+        ],
+        "pdf_page": 368,
+        "snippet": "8. ANG KUTAN DAN KOMUNIKASI | 8.1. Angkutan Jalan Raya | Panjang jalan raya di Sumatera Barat pada 2000 tercatat sepanjang | 2.316,48 Km dengan rincian menurut status jalan sepanjang 1.444,53 Km"
+      },
+      {
+        "matched_terms": [
+          "pelabuhan"
+        ],
+        "pdf_page": 369,
+        "snippet": "id | Angkutan khusus Batubara melalui Pelabuhan Teluk Bayur Padang | o. | pada tahun 2000 untuk tujuan luar negeri mengalami penurunan, yakni hanya"
+      },
+      {
+        "matched_terms": [
+          "jalan"
+        ],
+        "pdf_page": 370,
+        "snippet": "Tahcl Panjang Jalan mcnurut Fungsi dan Status Jalan | : 8_ 1.1 | Table Road Length by Function and Status"
+      },
+      {
+        "matched_terms": [
+          "jalan"
+        ],
+        "pdf_page": 371,
+        "snippet": "Tabcl Panjang Jalan Negara mcnurut Cabang Dinas Bina Marga | : 8.1.2 | Table Length ofNarional Road"
+      },
+      {
+        "matched_terms": [
+          "jalan"
+        ],
+        "pdf_page": 372,
+        "snippet": "J•bcl Panjang Jalan Propinsi mcnurut Cabang Dinas Bina l'vbrga | : 8.1.3 | Table length a/National Road"
+      }
+    ]
+  },
+  "evidentiary_role": "page/table discovery only; snippets are not canonical numeric observations",
+  "extraction_method": "pdftotext-layout-built-in-text-layer-only-no-ocr",
+  "numeric_promotion_authorized": false,
+  "schema": "ranah-observatory/sumbar2000-structural-discovery-index/v1",
+  "source_pdf_page_count": 646,
+  "text_layer_char_count": 736122
+}
