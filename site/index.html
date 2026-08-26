@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="explorer.css">
   <link rel="stylesheet" href="readiness.css">
+  <link rel="stylesheet" href="catalog.css">
   <link rel="stylesheet" href="glossary.css">
 </head>
 <body>
@@ -25,6 +26,7 @@
     <nav class="nav" aria-label="Navigasi utama">
       <a href="#temuan">Temuan</a>
       <a href="#status-riset">Status riset</a>
+      <a href="#katalog">Katalog</a>
       <a href="#daerah">Daerah</a>
       <a href="#batas">Batas</a>
       <a href="#glosarium">Glosarium</a>
@@ -43,6 +45,7 @@
         <div class="hero-actions">
           <a class="button button-primary" href="#temuan">Lihat yang sudah kita tahu</a>
           <a class="button button-secondary" href="#status-riset">Cek yang belum terjawab</a>
+          <a class="button button-secondary" href="#katalog">Lihat data tersedia</a>
           <a class="button button-secondary" href="#daerah">Jelajahi daerah</a>
           <a class="button button-secondary" id="preprint-link" href="#sumber">Baca laporan teknis</a>
         </div>
@@ -88,6 +91,26 @@
       </div>
       <div class="readiness-summary" id="readiness-summary" aria-live="polite"></div>
       <div class="readiness-grid" id="readiness-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="section catalog-section" id="katalog" aria-labelledby="catalog-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Katalog data</p>
+          <h2 id="catalog-title">Apa saja data yang tersedia?</h2>
+        </div>
+        <p id="catalog-intro">Memuat inventaris indikator Panel v3…</p>
+      </div>
+      <div class="catalog-summary" id="catalog-summary" aria-live="polite"></div>
+      <div class="catalog-toolbar">
+        <div class="catalog-search-wrap">
+          <label for="catalog-search">Cari indikator atau sumber</label>
+          <input id="catalog-search" type="search" placeholder="Contoh: internet, JKN, BNPB, kemiskinan">
+        </div>
+        <div class="catalog-filters" id="catalog-filters" aria-label="Filter domain indikator"></div>
+      </div>
+      <p class="catalog-result-count" id="catalog-result-count"></p>
+      <div class="catalog-grid" id="catalog-grid" aria-live="polite"></div>
     </section>
 
     <section class="section explorer-section" id="daerah" aria-labelledby="district-title">
@@ -174,6 +197,7 @@
   </noscript>
   <script src="app.js" defer></script>
   <script src="readiness.js" defer></script>
+  <script src="catalog.js" defer></script>
   <script src="glossary.js" defer></script>
 </body>
 </html>
