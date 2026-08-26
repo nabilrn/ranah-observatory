@@ -19,9 +19,9 @@ This is a host-policy extension, not a relaxation to arbitrary URLs.
 
 ## BPBD queue
 
-`data/acquisition_requests/bpbd_publications.csv` now contains five government-source requests. Only one is allowed to satisfy the exit gate:
+`data/acquisition_requests/bpbd_publications.csv` contains five government-source requests. Only one is allowed to satisfy the exit gate:
 
-1. **P0 / exit gate — 2017 Pusdalops annual report.** The browser opens the active official BPBD PPID surface, where the archived 2017 report identified by M50/PPID record 8604 must be obtained as the original PDF.
+1. **P0 / exit gate — 2017 Pusdalops annual report.** The collector now opens the active official PPID inventory at `https://ppid.sumbarprov.go.id/home/dip`. The acquisition operator must filter for the exact title, BPBD as OPD, and year 2017, then obtain the original annual-report PDF corresponding to legacy PPID download-audit record 8604.
 2. **P1 — 2015 Pusdalops activity report.** This freezes the raw artifact behind M49/M50's 686-event taxonomy, incompleteness warning, methodology, and internal year-label contradiction.
 3. **P1 companion — Data Kebencanaan BPBD Sumatera Barat Tahun 2015/2016.** The direct official PPID PDF `2017_90.pdf` is a historical data-lineage and impact-schema companion only.
 4. **P1 companion — LAKIP BPBD Sumatera Barat Tahun 2017.** This official cross-publication reproduces the 2017 725-event total and identifies Pusdalops PB BPBD Sumbar as source. It is useful for lineage/cross-publication checks but is not the missing annual-report artifact.
@@ -29,9 +29,21 @@ This is a host-policy extension, not a relaxation to arbitrary URLs.
 
 All rows allow only `sumbarprov.go.id` and its subdomains. The four companion/continuity requests have `exit_gate_candidate=no`; acquiring all of them still does **not** satisfy M52's trigger if the annual 2017 report remains missing.
 
-## Current PPID migration constraint
+## PPID migration forensics — 26 August 2026
 
-The current PPID frontend uses UUID-based information routes and download URLs of the form `/api/download/?id=<uuid>&link=<encrypted-publicfile-token>...`. The historical audit still proves that old record `8604` existed, but no indexed migration mapping from record 8604 to the new UUID/download token has been recovered. The companion PDFs therefore improve acquisition coverage without pretending that the annual-report bytes have been recovered.
+A new review of the live official PPID surface narrows the blocker without pretending to solve it:
+
+- the active catalog is `https://ppid.sumbarprov.go.id/home/dip` and exposes filters for title/description, OPD, year and information type;
+- current information pages use UUID routes of the form `/home/information/<uuid>`;
+- a live information page's **Download** action resolves directly to `/home/download/<uuid>` and returns the document bytes;
+- indexed PPID results also show that an `/api/download/?id=<uuid>&link=<encrypted-publicfile-token>&title=<title>` wrapper exists for some records, so both download surfaces may coexist;
+- the legacy 2018 Pusdalops annual report is still indexed at `home/details/7526-laporan-tahunan-pusdalops-pb.html` and its official raw PDF is still available at `images/2019/07/file/Laporan_Tahunan_PUSDALOPS_PB.pdf`;
+- the official 2024 PPID download-audit PDF reconfirms record **8604**, title **Laporan Tahunan Data Kebencanaan Pusdalops PB Sumatera Barat Tahun 2017**, OPD **Badan Penanggulangan Bencana Daerah**, with 24 recorded downloads;
+- no defensible mapping from legacy record 8604 to a current UUID, `/home/information/<uuid>`, `/home/download/<uuid>`, API token, or direct official 2017 PDF URL has been recovered.
+
+Therefore the previous M51 wording that treated the tokenized `/api/download/` wrapper as the sole current frontend route is superseded. The active human workflow should start from `/home/dip`, then follow the current UUID detail/download route if the 2017 record is recovered.
+
+This evidence reduces search ambiguity but **does not recover the 2017 bytes**. Search-indexed non-government mirrors may be used only as discovery/verification targets; they cannot satisfy the official-artifact gate.
 
 ## Commands
 
