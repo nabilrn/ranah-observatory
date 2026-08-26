@@ -1,0 +1,199 @@
+name: SP1961 Official Direct Artifact Probe
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - .github/workflows/sp1961-direct-artifact-probe.yml
+
+permissions:
+  contents: write
+
+env:
+  SP1961_URL: 'https://web-api.bps.go.id/download.php?f=M7Z8VIcfTGjnayBW0Sn3gzUyK05iVTVMOUppZjVXNFVFUzdHamFSRHFxV0ZHTEFjSzVIaHhLRHpybEttL1NKWWdRRFd5Nk9aNjVLR0M2ci9ibHpxUng0Vi8yZk9POERCOGw5NHRCK0plcXpFNWxtQ1kyWlpLaTdHTVN5a1UyU0JsT0VFUmFiSytkR2lQRHZEMFd6NnhPR2dNUC9GME1jT0VQZ2NQblppS1BhbytmUzZpcUJta3g2d21IaVJhSDIzWkNmeGxrOFo1N2w1ejlIMVJIZ25aZzRkMWdWazF5ZU5RcEw1ODZMTzJWck93eC9DSng0TUdvbk1iNnpIN3RpM1N2dTBBT0tLZ01pbnVudDkxU0RUbERJbXBhekNlcDVUTFh6c05BPT0%3D'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: research/evidence
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Fetch exact official BPS PDF bytes
+        run: |
+          curl --fail --location --silent --show-error --retry 2 \
+            --connect-timeout 20 --max-time 120 \
+            -H 'User-Agent: Ranah-Observatory/1.0 evidence acquisition' \
+            "$SP1961_URL" -o /tmp/sp1961.pdf
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('/tmp/sp1961.pdf')
+          assert p.stat().st_size > 100_000, p.stat().st_size
+          b = p.read_bytes()
+          assert b.startswith(b'%PDF-')
+          assert b'%%EOF' in b[-8192:]
+          print({'bytes': p.stat().st_size})
+          PY
+
+      - name: Install PDF table inspection tooling
+        run: |
+          if ! command -v pdfinfo >/dev/null || ! command -v pdftotext >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq poppler-utils
+          fi
+
+      - name: Verify SP1961 identity and Sumatera Barat table invariants
+        run: |
+          pages="$(pdfinfo /tmp/sp1961.pdf | awk '/^Pages:/ {print $2}')"
+          test "$pages" = '15'
+          pdftotext -layout /tmp/sp1961.pdf /tmp/sp1961.txt
+          grep -Eqi 'SENSUS[[:space:]]+PENDUDUK.*1961|Sensus[[:space:]]+Penduduk.*1961' /tmp/sp1961.txt
+          grep -Eq '2[.]319[.]057' /tmp/sp1961.txt
+          grep -Eq '1[.]117[.]669' /tmp/sp1961.txt
+          grep -Eq '1[.]201[.]388' /tmp/sp1961.txt
+          for name in Agam Pasaman 'Lima.*Puluh.*Kota|Limapuluh.*Kota' Solok 'Padang.*Pariaman' 'Pasisir.*Selatan|Pesisir.*Selatan' 'Tanah.*Datar' 'Sawah.*Lunto' Bukittinggi Padang; do
+            grep -Eqi "$name" /tmp/sp1961.txt
+          done
+
+      - name: Materialize fingerprinted source-native 1961 layer
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import csv
+          import hashlib
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          pdf = Path('/tmp/sp1961.pdf')
+          digest = hashlib.sha256(pdf.read_bytes()).hexdigest()
+          retrieved = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+          artifact_url = __import__('os').environ['SP1961_URL']
+          official_page = 'https://www.bps.go.id/id/publication/1962/06/06/ba0319372bf4767645160a8c/sensus-penduduk-1961-republik-indonesia.html'
+
+          rows = [
+              ('sumatera_barat_province','Sumatera Barat','province',4,2319057,1117669,1201388,'idn.13.h1958','qualified_source_era'),
+              ('bukittinggi','Bukittinggi','municipality',8,51456,25942,25514,'','historical_geography_pending'),
+              ('padang','Padang','municipality',8,143699,73730,69969,'','historical_geography_pending'),
+              ('sawah_lunto_city','Sawah Lunto','municipality',8,12276,6312,5964,'','historical_geography_pending'),
+              ('padang_pandjang','Padang Pandjang','municipality',8,25521,12452,13069,'','historical_geography_pending'),
+              ('agam','Agam','regency',9,304453,137937,166516,'','historical_geography_pending'),
+              ('pasaman','Pasaman','regency',9,217311,108063,109248,'','historical_geography_pending'),
+              ('limapuluh_kota','Limapuluh Kota','regency',9,250687,121719,128968,'','historical_geography_pending'),
+              ('solok','Solok','regency',9,271234,129351,141883,'','historical_geography_pending'),
+              ('padang_pariaman','Padang Pariaman','regency',9,442649,213443,229206,'','historical_geography_pending'),
+              ('pasisir_selatan','Pasisir Selatan','regency',9,221449,109055,112394,'','historical_geography_pending'),
+              ('tanah_datar','Tanah Datar','regency',9,246463,115244,131219,'','historical_geography_pending'),
+              ('sawah_lunto_sidjunjung','Sawah Lunto/Sidjunjung','regency',9,131859,64421,67438,'','historical_geography_pending'),
+          ]
+
+          assert sum(r[4] for r in rows[1:5]) == 232952
+          assert sum(r[5] for r in rows[1:5]) == 118436
+          assert sum(r[6] for r in rows[1:5]) == 114516
+          assert sum(r[4] for r in rows[5:]) == 2086105
+          assert sum(r[5] for r in rows[5:]) == 999233
+          assert sum(r[6] for r in rows[5:]) == 1086872
+          assert sum(r[4] for r in rows[1:]) == rows[0][4]
+          assert sum(r[5] for r in rows[1:]) == rows[0][5]
+          assert sum(r[6] for r in rows[1:]) == rows[0][6]
+
+          out_dir = Path('data/validation/historical/sp1961')
+          out_dir.mkdir(parents=True, exist_ok=True)
+          manifest = {
+              'schema': 'ranah-observatory/sp1961-official-artifact/v1',
+              'source': 'Biro Pusat Statistik / BPS',
+              'title': 'Sensus Penduduk 1961 Republik Indonesia',
+              'release_date': '1962-06-06',
+              'official_page_url': official_page,
+              'official_direct_artifact_url': artifact_url,
+              'artifact_sha256': digest,
+              'artifact_bytes': pdf.stat().st_size,
+              'pdf_page_count': 15,
+              'retrieved_at_utc': retrieved,
+              'retrieval_surface': 'web-api.bps.go.id public direct download',
+              'raw_pdf_committed': False,
+              'raw_storage_policy': 'raw PDFs remain ignored; exact official bytes are fingerprinted by SHA-256 and re-retrievable from the official URL',
+              'province_value': 2319057,
+              'province_male': 1117669,
+              'province_female': 1201388,
+              'source_native_local_unit_count': 12,
+              'municipality_count': 4,
+              'regency_count': 8,
+              'local_totals_reconcile_exactly_to_province': True,
+              'sex_totals_reconcile_exactly_to_province': True,
+              'source_status': 'preliminary_census_figures_published_1962',
+              'canonical_current_boundary_mapping_authorized': False,
+              'historical_local_geography_mapping_pending': True,
+              'historical_population_anchor_authorized_at_source_era_province': True,
+          }
+          (out_dir / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+
+          csv_path = Path('data/processed/bps/historical_population_1961_source_native.csv')
+          fields = [
+              'source_record_id','source_id','artifact_sha256','official_page_url','official_direct_artifact_url',
+              'source_year','pdf_page_index','source_geography_name','source_geography_type','value_total','value_male',
+              'value_female','unit','canonical_indicator_id','canonical_geography_id','mapping_status','reconstruction_state','notes'
+          ]
+          with csv_path.open('w', encoding='utf-8', newline='') as handle:
+              writer = csv.DictWriter(handle, fieldnames=fields)
+              writer.writeheader()
+              for slug,name,kind,page,total,male,female,canonical,mapping in rows:
+                  writer.writerow({
+                      'source_record_id': f'sp1961_{slug}',
+                      'source_id': 'bps_sp1961_official_pdf',
+                      'artifact_sha256': digest,
+                      'official_page_url': official_page,
+                      'official_direct_artifact_url': artifact_url,
+                      'source_year': '1961',
+                      'pdf_page_index': str(page),
+                      'source_geography_name': name,
+                      'source_geography_type': kind,
+                      'value_total': str(total),
+                      'value_male': str(male),
+                      'value_female': str(female),
+                      'unit': 'persons',
+                      'canonical_indicator_id': 'historical_population',
+                      'canonical_geography_id': canonical,
+                      'mapping_status': mapping,
+                      'reconstruction_state': 'observed_source_era_preliminary_census',
+                      'notes': 'Source-native 1961 geography retained; do not project historical local units onto current boundaries without lineage qualification.'
+                  })
+          print({'sha256': digest, 'rows': len(rows), 'province_total': rows[0][4]})
+          PY
+
+      - name: Validate generated evidence
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          m = json.loads(Path('data/validation/historical/sp1961/manifest.json').read_text())
+          rows = list(csv.DictReader(Path('data/processed/bps/historical_population_1961_source_native.csv').open()))
+          assert m['artifact_sha256'] and len(m['artifact_sha256']) == 64
+          assert m['artifact_bytes'] > 100_000
+          assert m['pdf_page_count'] == 15
+          assert m['province_value'] == 2319057
+          assert m['canonical_current_boundary_mapping_authorized'] is False
+          assert len(rows) == 13
+          assert sum(int(r['value_total']) for r in rows[1:]) == 2319057
+          assert all(r['mapping_status'] == 'historical_geography_pending' for r in rows[1:])
+          print({'manifest': 'ok', 'source_native_rows': len(rows)})
+          PY
+
+      - name: Commit evidence and retire one-time probe
+        run: |
+          rm .github/workflows/sp1961-direct-artifact-probe.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/validation/historical/sp1961/manifest.json \
+            data/processed/bps/historical_population_1961_source_native.csv \
+            .github/workflows/sp1961-direct-artifact-probe.yml
+          git commit -m 'Freeze official SP1961 source-native population anchor'
+          git push origin HEAD:research/evidence
