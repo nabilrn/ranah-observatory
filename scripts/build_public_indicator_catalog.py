@@ -35,6 +35,32 @@ UNIT_LABELS = {
     "ratio": "rasio",
 }
 
+PUBLIC_NAMES = {
+    "expected_years_schooling": "Harapan lama sekolah",
+    "mean_years_schooling": "Rata-rata lama sekolah",
+    "life_expectancy": "Umur harapan hidup",
+    "labor_force_participation": "Tingkat partisipasi angkatan kerja",
+    "unemployment_rate": "Tingkat pengangguran terbuka",
+    "poverty_rate": "Persentase penduduk miskin",
+    "real_grdp_growth": "Pertumbuhan PDRB riil",
+    "agriculture_share_grdp": "Pangsa pertanian dalam PDRB",
+    "manufacturing_share_grdp": "Pangsa industri pengolahan dalam PDRB",
+    "rice_yield": "Produktivitas padi",
+    "underemployment_rate": "Tingkat setengah pengangguran",
+    "population_total": "Jumlah penduduk",
+    "annual_rainfall": "Curah hujan tahunan",
+    "flood_events": "Kejadian banjir tercatat",
+    "landslide_events": "Kejadian longsor tercatat",
+    "real_grdp_per_capita": "PDRB riil per kapita",
+    "morbidity_rate": "Angka kesakitan",
+    "jkn_membership_coverage": "Cakupan kepesertaan JKN",
+    "internet_access_age5plus": "Akses internet usia 5+",
+    "adequate_sanitation_access": "Akses sanitasi layak",
+    "adequate_drinking_water_access": "Akses air minum layak",
+    "dependency_ratio": "Rasio ketergantungan",
+    "total_disaster_events": "Total kejadian bencana tercatat",
+}
+
 
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -59,6 +85,7 @@ def build(metadata_path: Path = METADATA, coverage_path: Path = COVERAGE) -> dic
     assert len(coverage_rows) == len(coverage), "duplicate indicator id in Panel v3 coverage"
     assert set(metadata) == set(coverage), "Panel v3 metadata/coverage indicator sets differ"
     assert len(metadata) == 23, f"expected 23 Panel v3 indicators, found {len(metadata)}"
+    assert set(metadata) == set(PUBLIC_NAMES), "public indicator-name map is incomplete or stale"
 
     indicators: list[dict[str, Any]] = []
     for indicator_id in sorted(metadata):
@@ -78,7 +105,8 @@ def build(metadata_path: Path = METADATA, coverage_path: Path = COVERAGE) -> dic
 
         indicators.append({
             "id": indicator_id,
-            "name": meta["name"],
+            "public_name": PUBLIC_NAMES[indicator_id],
+            "source_name": meta["name"],
             "domain": meta["domain"],
             "domain_label": DOMAIN_LABELS[meta["domain"]],
             "definition": meta["definition"],
