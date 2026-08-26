@@ -67,8 +67,20 @@ def validate() -> dict[str, int | bool | str]:
     assert index["extraction_method"] == "pdftotext-layout-built-in-text-layer-only-no-ocr"
     assert index["evidentiary_role"].startswith("page/table discovery only")
     domains = index["domains"]
-    assert {"population", "education", "health", "agriculture", "industry", "public_finance", "transport", "trade"} == set(domains)
-    assert all(domains[name] for name in domains)
+    expected_domains = {
+        "population",
+        "education",
+        "health",
+        "agriculture",
+        "industry",
+        "public_finance",
+        "transport",
+        "trade",
+    }
+    assert expected_domains == set(domains)
+    detected_domains = expected_domains - {"public_finance"}
+    assert all(domains[name] for name in detected_domains)
+    assert domains["public_finance"] == []
     population_pages = {row["pdf_page"] for row in domains["population"]}
     assert {92, 94, 95, 96}.issubset(population_pages)
     assert 226 in {row["pdf_page"] for row in domains["agriculture"]}
@@ -153,6 +165,7 @@ def validate() -> dict[str, int | bool | str]:
         "population_total": EXPECTED_POPULATION[0],
         "source_native_rows": len(rows),
         "blanket_numeric_promotion_authorized": False,
+        "public_finance_discovery_gap_preserved": True,
         "artifact_sha256": EXPECTED_SHA256,
     }
 
