@@ -1,0 +1,96 @@
+name: Verify Milestone 41 BNPB Historical Normalization Contract
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone41-bnpb-historical-normalization-contract.yml"
+      - "data/manifests/milestone41_bnpb_historical_normalization_contract.json"
+      - "data/registries/bnpb_historical_geography_lineage.csv"
+      - "research/MILESTONE41_BNPB_HISTORICAL_NORMALIZATION_CONTRACT.md"
+      - "tests/test_milestone41_bnpb_historical_normalization_contract.py"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone41-bnpb-historical-normalization-contract.yml"
+      - "data/manifests/milestone41_bnpb_historical_normalization_contract.json"
+      - "data/registries/bnpb_historical_geography_lineage.csv"
+      - "research/MILESTONE41_BNPB_HISTORICAL_NORMALIZATION_CONTRACT.md"
+      - "tests/test_milestone41_bnpb_historical_normalization_contract.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused M41 tests
+        run: python -m unittest tests.test_milestone41_bnpb_historical_normalization_contract -v
+
+      - name: Assert normalization boundary
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          m = json.loads(Path('data/manifests/milestone41_bnpb_historical_normalization_contract.json').read_text(encoding='utf-8'))
+          with Path('data/registries/bnpb_historical_geography_lineage.csv').open(encoding='utf-8', newline='') as fh:
+              lineage = list(csv.DictReader(fh))
+
+          q = m['qualification']
+          assert q['normalization_contract_frozen'] is True
+          assert q['empty_workbook_zero_inference_forbidden'] is True
+          assert q['absent_row_zero_inference_forbidden'] is True
+          assert q['source_total_is_geography_observation'] is False
+          assert q['raw_code_cross_era_mapping_forbidden'] is True
+          assert q['source_native_integer_parsing_authorized_for_staging'] is True
+          assert q['historical_numeric_values_promoted'] is False
+          assert q['district_city_panel_authorized'] is False
+          assert q['event_level_panel_authorized'] is False
+
+          audits = m['audited_workbooks']
+          assert [a['year'] for a in audits] == [2002, 2003, 2004, 2005, 2006, 2012, 2017]
+          assert all(a['all_14_metrics_total_reconcile'] is True for a in audits)
+
+          absent = m['semantic_counterexamples']['absent_row_not_zero']
+          assert absent['year'] == 2004
+          assert absent['observed_source_rows'] == []
+          assert set(absent['legally_active_full_year_entities']) == {'Solok Selatan', 'Dharmasraya', 'Pasaman Barat'}
+
+          label = m['semantic_counterexamples']['source_label_not_contemporaneous_legal_name']
+          assert label['source_year'] == 2003
+          assert label['source_label'] == '1304. SIJUNJUNG'
+          assert label['legal_rename_effective_date'] == '2008-03-10'
+
+          geo = m['geography_contract']
+          assert geo['reuse_2024_raw_code_crosswalk_for_2000_2017'] is False
+          assert geo['allocate_pre_split_parent_to_successors'] is False
+          assert [row['year'] for row in geo['transition_years']] == [2002, 2003, 2008]
+
+          assert len(lineage) == 6
+          assert all(row['verification_status'] == 'verified_official_legal_source' for row in lineage)
+          PY
+
+      - name: Assert no writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone41-bnpb-historical-normalization-contract.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY

@@ -1,0 +1,144 @@
+name: Verify Milestone 46 Total-Event Panel v3
+
+on:
+  push:
+    branches:
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone46-verify-total-events-panel.yml"
+      - "scripts/apply_milestone46_registry_migration.py"
+      - "scripts/build_milestone46_total_events_panel.py"
+      - "data/manifests/milestone46_total_events_panel_integration.json"
+      - "data/processed/bnpb/total_events/**"
+      - "data/analysis/engine/panel_v3/**"
+      - "data/registries/indicators.csv"
+      - "data/registries/bnpb_indicator_qualification.csv"
+      - "scripts/validate_climate_disaster_foundation.py"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone46-verify-total-events-panel.yml"
+      - ".github/workflows/milestone46-materialize-total-events-panel.yml"
+      - "scripts/apply_milestone46_registry_migration.py"
+      - "scripts/build_milestone46_total_events_panel.py"
+      - "data/manifests/milestone46_total_events_panel_integration.json"
+      - "data/processed/bnpb/total_events/**"
+      - "data/analysis/engine/panel_v3/**"
+      - "data/registries/indicators.csv"
+      - "data/registries/bnpb_indicator_qualification.csv"
+      - "scripts/validate_climate_disaster_foundation.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Apply or verify idempotent registry migration in workspace
+        run: |
+          python scripts/apply_milestone46_registry_migration.py
+          python scripts/apply_milestone46_registry_migration.py
+
+      - name: Validate foundations after M46 migration
+        run: |
+          python scripts/validate_data_foundation.py
+          python scripts/validate_climate_disaster_foundation.py
+
+      - name: Rebuild M46 into temporary root
+        run: python -m scripts.build_milestone46_total_events_panel --output-root /tmp/m46
+
+      - name: Validate rebuilt product contract
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+
+          tmp = Path('/tmp/m46')
+          manifest = json.loads((tmp / 'data/manifests/milestone46_total_events_panel_integration.json').read_text(encoding='utf-8'))
+          m45 = json.loads(Path('data/manifests/milestone45_bnpb_total_events_candidate.json').read_text(encoding='utf-8'))
+          assert manifest['integration_success'] is True
+          assert manifest['base_panel_preserved_field_exact'] is True
+          assert manifest['base_observation_count'] == 2679
+          assert manifest['added_observation_count'] == 133
+          assert manifest['long_observation_count'] == 2812
+          assert manifest['indicator_count'] == 23
+          assert manifest['wide_row_count'] == 152
+          assert manifest['total_event_panel_period'] == [2018, 2024]
+          assert manifest['total_event_2025_state'] == 'missing_not_zero'
+          assert manifest['exact_polygon_harmonization_proven'] is False
+          assert manifest['zero_fill_performed'] is False
+          assert manifest['m45_candidate_sha256'] == m45['candidate_artifact']['sha256']
+
+          canonical = tmp / manifest['outputs']['canonical']['path']
+          assert hashlib.sha256(canonical.read_bytes()).hexdigest() == m45['candidate_artifact']['sha256']
+          long_rows = list(csv.DictReader((tmp / manifest['outputs']['long']['path']).open(encoding='utf-8', newline='')))
+          total_rows = [row for row in long_rows if row['indicator_id'] == 'total_disaster_events']
+          assert len(total_rows) == 133
+          assert {int(row['analysis_year']) for row in total_rows} == set(range(2018, 2025))
+          assert all(row['comparable'] == '' for row in total_rows)
+          assert all('exact_polygon_harmonization=not_proven' in row['source_notes'] for row in total_rows)
+          PY
+
+      - name: Compare committed materialization when present
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          committed_manifest = Path('data/manifests/milestone46_total_events_panel_integration.json')
+          if not committed_manifest.exists():
+              print('M46 committed materialization not present yet; dry-run verification only.')
+              raise SystemExit(0)
+          committed = json.loads(committed_manifest.read_text(encoding='utf-8'))
+          rebuilt = json.loads(Path('/tmp/m46/data/manifests/milestone46_total_events_panel_integration.json').read_text(encoding='utf-8'))
+          assert committed == rebuilt
+          for item in rebuilt['outputs'].values():
+              rel = item['path']
+              committed_path = Path(rel)
+              rebuilt_path = Path('/tmp/m46') / rel
+              assert committed_path.exists(), rel
+              assert hashlib.sha256(committed_path.read_bytes()).hexdigest() == item['sha256']
+              assert committed_path.read_bytes() == rebuilt_path.read_bytes()
+          PY
+
+      - name: Stage reviewed artifact payload
+        run: |
+          mkdir -p /tmp/m46-review/workspace/data/registries
+          mkdir -p /tmp/m46-review/workspace/scripts
+          cp data/registries/indicators.csv /tmp/m46-review/workspace/data/registries/indicators.csv
+          cp data/registries/bnpb_indicator_qualification.csv /tmp/m46-review/workspace/data/registries/bnpb_indicator_qualification.csv
+          cp scripts/validate_climate_disaster_foundation.py /tmp/m46-review/workspace/scripts/validate_climate_disaster_foundation.py
+          cp -R /tmp/m46/data /tmp/m46-review/generated-data
+
+      - name: Upload reviewed M46 materialization
+        uses: actions/upload-artifact@v4
+        with:
+          name: m46-reviewed-materialization
+          path: /tmp/m46-review/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Assert verifier is read-only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone46-verify-total-events-panel.yml').read_text(encoding='utf-8')
+          forbidden_write_permission = 'contents:' + ' write'
+          forbidden_push_command = 'git ' + 'push'
+          assert 'contents: read' in text
+          assert forbidden_write_permission not in text
+          assert forbidden_push_command not in text
+          PY

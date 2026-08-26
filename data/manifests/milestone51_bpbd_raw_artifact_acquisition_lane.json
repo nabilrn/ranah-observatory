@@ -1,0 +1,98 @@
+{
+  "schema": "ranah-observatory/milestone51-bpbd-raw-artifact-acquisition-lane/v2",
+  "milestone": 51,
+  "title": "BPBD raw historical artifact acquisition lane",
+  "depends_on": [50],
+  "decision_date": "2026-08-25",
+  "research_question": "Can the existing reproducible historical PDF collection tooling be safely extended to acquire BPBD/Pusdalops artifacts from explicitly allowlisted government hosts without weakening the BPS-only security contract, while keeping the missing 2017 annual report as the only exit-gate artifact?",
+  "queue": {
+    "path": "data/acquisition_requests/bpbd_publications.csv",
+    "request_count": 5,
+    "p0_request_id": "bpbd_pusdalops_2017",
+    "p0_anchor_year": 2017,
+    "p0_exit_gate_candidate": true,
+    "allowed_host": "sumbarprov.go.id",
+    "companion_requests": [
+      "bpbd_pusdalops_2015",
+      "bpbd_data_kebencanaan_2015_2016",
+      "bpbd_lakip_2017",
+      "bpbd_pusdalops_2018"
+    ],
+    "companion_requests_may_satisfy_2017_exit_gate": false
+  },
+  "companion_evidence": {
+    "bpbd_data_kebencanaan_2015_2016": {
+      "official_url": "https://ppid.sumbarprov.go.id/images/2017/07/file/2017_90.pdf",
+      "role": "historical BPBD data-lineage and impact-schema companion",
+      "substitutes_for_2017_annual_report": false
+    },
+    "bpbd_lakip_2017": {
+      "official_url": "https://ppid.sumbarprov.go.id/images/2018/09/file/150.%20LAKIP%20BPBD%20Prov%20Sumbar%20Tahun%202017.pdf",
+      "role": "official cross-publication companion reproducing the 2017 725-event total and identifying Pusdalops PB BPBD Sumbar as source",
+      "substitutes_for_2017_annual_report": false
+    }
+  },
+  "collector_contract": {
+    "script": "scripts/historical_batch_collect.py",
+    "generic_host_validator": "official_source_url",
+    "legacy_bps_wrapper_retained": "official_bps_url",
+    "default_allowed_host": "bps.go.id",
+    "queue_allowed_host_optional": true,
+    "https_required": true,
+    "exact_or_subdomain_match_required": true,
+    "suffix_trick_rejected": true,
+    "raw_target": "data/raw/inbox",
+    "pdf_signature_validation": true,
+    "pdf_eof_validation": true,
+    "sha256_after_copy": true
+  },
+  "ingest_contract": {
+    "script": "scripts/historical_batch_ingest.py",
+    "supports_custom_queue": true,
+    "supports_custom_manifest": true,
+    "recommended_manifest": "data/manifests/bpbd_historical_artifacts.csv",
+    "exact_bytes_hashed": true,
+    "raw_pdfs_committed_to_git": false
+  },
+  "commands": {
+    "inspect_p0": "python scripts/historical_batch_collect.py --queue data/acquisition_requests/bpbd_publications.csv --priority P0",
+    "collect_p0": "python scripts/historical_batch_collect.py --queue data/acquisition_requests/bpbd_publications.csv --priority P0 --open",
+    "collect_p1_companions": "python scripts/historical_batch_collect.py --queue data/acquisition_requests/bpbd_publications.csv --priority P1 --open",
+    "ingest": "python scripts/historical_batch_ingest.py --queue data/acquisition_requests/bpbd_publications.csv --manifest data/manifests/bpbd_historical_artifacts.csv",
+    "require_2017_exit_gate": "python scripts/historical_batch_ingest.py --queue data/acquisition_requests/bpbd_publications.csv --manifest data/manifests/bpbd_historical_artifacts.csv --require-exit-gate"
+  },
+  "result": {
+    "bpbd_acquisition_queue_materialized": true,
+    "collector_generalized_without_removing_bps_wrapper": true,
+    "bpbd_official_host_allowlisted": true,
+    "official_companion_surfaces_added": 2,
+    "raw_2017_artifact_acquired": false,
+    "raw_2017_checksum_frozen": false,
+    "source_native_2017_extraction_authorized": false,
+    "canonical_historical_impact_promotion_authorized": false
+  },
+  "qualification": {
+    "external_artifact_blocker_converted_to_executable_queue": true,
+    "bps_default_security_behavior_preserved": true,
+    "non_https_sources_rejected": true,
+    "host_suffix_spoofing_rejected": true,
+    "official_2017_lakip_companion_available": true,
+    "official_2015_2016_data_companion_available": true,
+    "companions_do_not_replace_p0_exit_gate": true,
+    "m50_expected_values_remain_verification_targets_only": true,
+    "raw_official_artifact_still_required": true,
+    "promotion_gate_fail_closed": true
+  },
+  "next_gate": {
+    "milestone": 52,
+    "title": "BPBD 2017 artifact verification and source-native extraction",
+    "trigger": "Only after bpbd-pusdalops-sumbar-2017.pdf is acquired from an allowlisted official government surface and hashed by the acquisition lane.",
+    "tasks": [
+      "Freeze SHA256, byte count, source URL and acquisition timestamp in a BPBD artifact manifest.",
+      "Locate the raw report pages/tables for event count, human impacts, facility/housing impacts and loss.",
+      "Compare raw values with M50 indexed verification targets and preserve every disagreement.",
+      "Use companion artifacts only for lineage/cross-publication checks; never treat them as the missing annual-report bytes.",
+      "Materialize a separate BPBD source-native layer; do not merge it into BNPB/DIBI without taxonomy and lineage qualification."
+    ]
+  }
+}

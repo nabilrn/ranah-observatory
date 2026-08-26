@@ -1,0 +1,71 @@
+{
+  "schema": "ranah-observatory/public-research-readiness/v1",
+  "version": "0.1.0",
+  "language": "id",
+  "title": "Seberapa jauh pertanyaan utama sudah terjawab?",
+  "intro": "Status ini bukan progress bar kosmetik. Setiap pertanyaan hanya dinaikkan sejauh yang diizinkan oleh sintesis M18, dan semuanya masih memiliki evidence yang perlu ditambah.",
+  "source": {
+    "manifest_path": "data/manifests/milestone18_final_analytical_synthesis.json",
+    "readiness_path": "data/analysis/engine/final_synthesis_v1/m18-research-question-readiness.csv"
+  },
+  "summary": {
+    "question_count": 5,
+    "fully_resolved_count": 0,
+    "bounded_answer_count": 2,
+    "bounded_partial_count": 2,
+    "not_action_ready_count": 1,
+    "policy_ranking_performed": false
+  },
+  "questions": [
+    {
+      "id": "RQ1",
+      "title": "Lintasan historis",
+      "readiness_state": "bounded_partial",
+      "evidence_basis": "M6;M10",
+      "fully_resolved": false,
+      "current_answer": "Untuk indikator terpilih, perubahan kabupaten/kota pada periode modern sudah dapat dianalisis secara reproducible. Rekonstruksi lintasan panjang sejak awal kemerdekaan belum lengkap.",
+      "limitation": "Bukti historis masih jarang, baru memiliki satu anchor populasi historis pada M6, dan belum ada harmonisasi batas wilayah historis yang umum untuk seluruh seri.",
+      "next_evidence": "Tambahkan seri historis yang tabelnya dapat dikualifikasi, dengan definisi wilayah dan vintage yang eksplisit serta rekonstruksi batas yang dapat dipertanggungjawabkan."
+    },
+    {
+      "id": "RQ2",
+      "title": "Pembangunan yang dapat dicapai",
+      "readiness_state": "bounded_answer",
+      "evidence_basis": "M11;M12",
+      "fully_resolved": false,
+      "current_answer": "Untuk kemiskinan, pengangguran, dan pertumbuhan PDRB riil pada 19 kabupaten/kota dalam rezim 2019–2024, model menyediakan conditional expectation yang lolos benchmark dan empirical favorable reference yang terkalibrasi.",
+      "limitation": "Reference itu bersifat empiris, bukan theoretical maximum, dan belum mewakili seluruh dimensi pembangunan maupun seluruh periode sejarah.",
+      "next_evidence": "Perlu outcome family yang lebih luas, comparison universe yang lebih besar, dan validasi khusus per metode sebelum klaim attainable development diperluas."
+    },
+    {
+      "id": "RQ3",
+      "title": "Divergensi pembangunan",
+      "readiness_state": "bounded_partial",
+      "evidence_basis": "M13",
+      "fully_resolved": false,
+      "current_answer": "Untuk tiga outcome yang dimodelkan pada 2019–2024, engine dapat menunjukkan observasi yang secara material lebih atau kurang menguntungkan dibanding conditional expectation dan favorable empirical reference.",
+      "limitation": "M13 belum mengidentifikasi kapan divergensi jangka panjang Sumatera Barat muncul terhadap daerah pembanding pada seluruh dimensi yang ditetapkan charter.",
+      "next_evidence": "Perlu panel regional yang lebih panjang dan comparable, termasuk penyelarasan batas wilayah serta metodologi historis lintas daerah."
+    },
+    {
+      "id": "RQ4",
+      "title": "Faktor penjelas",
+      "readiness_state": "bounded_answer",
+      "evidence_basis": "M14;M8;M15",
+      "fully_resolved": false,
+      "current_answer": "Engine sudah memisahkan association hujan–gap pengangguran yang stabil tetapi non-causal dari evidence causal, mempertahankan studi quasi-causal gempa yang selesai, dan mencatat dua identification failure tanpa meng-upgrade hasilnya.",
+      "limitation": "Satu association yang stabil bukan penjelasan causal, dan studi gempa yang selesai tidak mengotorisasi klaim efek arah nonzero yang robust.",
+      "next_evidence": "Prioritas berikutnya adalah variasi waktu independen atau natural experiment yang kredibel, lengkap dengan pre-event diagnostics dan small-cluster inference ketika diperlukan."
+    },
+    {
+      "id": "RQ5",
+      "title": "Aksi",
+      "readiness_state": "not_action_ready",
+      "evidence_basis": "M17;M15;M16",
+      "fully_resolved": false,
+      "current_answer": "Engine dapat menunjukkan sensitivity dari state model dan menjelaskan mengapa skenario intervensi hujan/pasar kerja serta disaster-risk belum diotorisasi. Bukti saat ini belum cukup untuk meranking kebijakan nyata berdasarkan expected impact.",
+      "limitation": "Belum ada causal policy counterfactual, biaya yang qualified, horizon implementasi, pemetaan risiko bencana yang lengkap, atau evidence cost-benefit.",
+      "next_evidence": "Sebelum rekomendasi atau ranking kebijakan, dibutuhkan causal effect spesifik intervensi, data feasibility dan horizon implementasi, biaya yang qualified, serta pemetaan komponen risiko yang lengkap untuk intervensi resilience."
+    }
+  ]
+}

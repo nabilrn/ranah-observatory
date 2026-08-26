@@ -153,17 +153,19 @@ def validate() -> list[str]:
     canonical_pairs = {(row["indicator_id"], row["source_column"]) for row in canonical_ready}
     if canonical_pairs != {("flood_events", "BANJIR"), ("landslide_events", "TANAH LONGSOR")}:
         errors.append(f"unexpected first canonical BNPB scope: {sorted(canonical_pairs)}")
-    for indicator_id in ("flood_events", "landslide_events", "disaster_affected_population"):
+    for indicator_id in ("flood_events", "landslide_events", "total_disaster_events", "disaster_affected_population"):
         if indicator_id not in indicators:
             errors.append(f"missing canonical indicator {indicator_id}")
     affected = [row for row in qualifications if row["indicator_id"] == "disaster_affected_population"]
     if len(affected) != 1 or affected[0]["promotion_status"] != "held_source_native":
         errors.append("disaster_affected_population must remain held source-native")
     total_context = [row for row in qualifications if row["series_id"] == "total_disaster_events_2010_2024"]
-    if len(total_context) != 1 or total_context[0]["promotion_status"] != "source_native_context":
-        errors.append("2010-2024 total disaster events must remain source-native context")
-    if total_context and total_context[0]["indicator_id"]:
-        errors.append("all-disaster total series must not masquerade as a canonical indicator")
+    if len(total_context) != 1 or total_context[0]["promotion_status"] != "canonical_ready_separate_layer":
+        errors.append("2010-2024 total disaster events must be qualified in the separate canonical layer")
+    if total_context and total_context[0]["indicator_id"] != "total_disaster_events":
+        errors.append("all-disaster total series must map only to total_disaster_events")
+    if total_context and "exact_polygon_not_proven" not in total_context[0]["geography_rule"]:
+        errors.append("total-disaster geography qualification must preserve the exact-polygon caveat")
 
     for required_catalog_id in ("bnpb_satu_data", "bmkg_satu_peta", "bmkg_open_data"):
         if required_catalog_id not in catalog:

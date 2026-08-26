@@ -1,0 +1,58 @@
+name: Milestone 49 BPBD Local Taxonomy Compatibility
+
+on:
+  pull_request:
+    paths:
+      - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "data/manifests/milestone48_bnpb_annual_republication_lineage.json"
+      - "data/manifests/milestone49_bpbd_local_taxonomy_compatibility.json"
+      - "data/registries/bpbd_sumbar_2015_incident_taxonomy.csv"
+      - "research/MILESTONE49_BPBD_LOCAL_TAXONOMY_COMPATIBILITY.md"
+      - "scripts/validate_milestone49_bpbd_local_taxonomy_compatibility.py"
+      - "tests/test_milestone49_bpbd_local_taxonomy_compatibility.py"
+      - ".github/workflows/milestone49-bpbd-local-taxonomy-compatibility.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz"
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "data/manifests/milestone48_bnpb_annual_republication_lineage.json"
+      - "data/manifests/milestone49_bpbd_local_taxonomy_compatibility.json"
+      - "data/registries/bpbd_sumbar_2015_incident_taxonomy.csv"
+      - "research/MILESTONE49_BPBD_LOCAL_TAXONOMY_COMPATIBILITY.md"
+      - "scripts/validate_milestone49_bpbd_local_taxonomy_compatibility.py"
+      - "tests/test_milestone49_bpbd_local_taxonomy_compatibility.py"
+      - ".github/workflows/milestone49-bpbd-local-taxonomy-compatibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M49 local-taxonomy compatibility gate
+        run: python scripts/validate_milestone49_bpbd_local_taxonomy_compatibility.py
+
+      - name: Run M49 focused tests
+        run: python -m unittest tests.test_milestone49_bpbd_local_taxonomy_compatibility -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py

@@ -1,0 +1,53 @@
+name: Milestone 47 BNPB Impact Overlap Eligibility
+
+on:
+  pull_request:
+    paths:
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "data/manifests/milestone46_total_events_panel_integration.json"
+      - "data/manifests/milestone47_bnpb_impact_overlap_eligibility.json"
+      - "data/registries/bnpb_impact_overlap_candidates.csv"
+      - "data/registries/disaster_sources.csv"
+      - "scripts/validate_milestone47_bnpb_impact_overlap_eligibility.py"
+      - "tests/test_milestone47_bnpb_impact_overlap_eligibility.py"
+      - ".github/workflows/milestone47-bnpb-impact-overlap-eligibility.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/manifests/milestone43_bnpb_historical_semantics_geography_gate.json"
+      - "data/manifests/milestone46_total_events_panel_integration.json"
+      - "data/manifests/milestone47_bnpb_impact_overlap_eligibility.json"
+      - "data/registries/bnpb_impact_overlap_candidates.csv"
+      - "data/registries/disaster_sources.csv"
+      - "scripts/validate_milestone47_bnpb_impact_overlap_eligibility.py"
+      - "tests/test_milestone47_bnpb_impact_overlap_eligibility.py"
+      - ".github/workflows/milestone47-bnpb-impact-overlap-eligibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M47 fail-closed overlap eligibility gate
+        run: python scripts/validate_milestone47_bnpb_impact_overlap_eligibility.py
+
+      - name: Run M47 focused tests
+        run: python -m unittest tests.test_milestone47_bnpb_impact_overlap_eligibility -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py

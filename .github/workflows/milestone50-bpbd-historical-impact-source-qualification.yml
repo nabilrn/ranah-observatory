@@ -1,0 +1,54 @@
+name: Milestone 50 BPBD Historical Impact Source Qualification
+
+on:
+  pull_request:
+    paths:
+      - "data/manifests/milestone49_bpbd_local_taxonomy_compatibility.json"
+      - "data/manifests/milestone50_bpbd_historical_impact_source_qualification.json"
+      - "data/registries/bpbd_historical_impact_source_candidates.csv"
+      - "scripts/validate_milestone50_bpbd_historical_impact_source_qualification.py"
+      - "tests/test_milestone50_bpbd_historical_impact_source_qualification.py"
+      - "research/MILESTONE50_BPBD_HISTORICAL_IMPACT_SOURCE_QUALIFICATION.md"
+      - ".github/workflows/milestone50-bpbd-historical-impact-source-qualification.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/manifests/milestone49_bpbd_local_taxonomy_compatibility.json"
+      - "data/manifests/milestone50_bpbd_historical_impact_source_qualification.json"
+      - "data/registries/bpbd_historical_impact_source_candidates.csv"
+      - "scripts/validate_milestone50_bpbd_historical_impact_source_qualification.py"
+      - "tests/test_milestone50_bpbd_historical_impact_source_qualification.py"
+      - "research/MILESTONE50_BPBD_HISTORICAL_IMPACT_SOURCE_QUALIFICATION.md"
+      - ".github/workflows/milestone50-bpbd-historical-impact-source-qualification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M50 impact-source qualification gate
+        run: python scripts/validate_milestone50_bpbd_historical_impact_source_qualification.py
+
+      - name: Run M50 focused tests
+        run: python -m unittest tests.test_milestone50_bpbd_historical_impact_source_qualification -v
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py

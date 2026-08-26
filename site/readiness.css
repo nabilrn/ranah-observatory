@@ -1,0 +1,131 @@
+.readiness-section {
+  border-top: 1px solid var(--line);
+}
+
+.readiness-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.readiness-summary > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.readiness-summary strong {
+  font-size: 1.7rem;
+  letter-spacing: -0.05em;
+}
+
+.readiness-summary span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.readiness-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.readiness-card {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.readiness-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.readiness-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.readiness-id,
+.readiness-source {
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.readiness-badge {
+  display: inline-flex;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.readiness-answer { color: var(--supported); }
+.readiness-partial { color: var(--context); }
+.readiness-blocked { color: var(--blocked); }
+
+.readiness-card h3 {
+  margin: 0.8rem 0 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.025em;
+}
+
+.readiness-answer-copy {
+  margin: 0.7rem 0 0;
+  color: #403c36;
+  font-size: 0.84rem;
+}
+
+.readiness-boundary,
+.readiness-next {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.readiness-boundary strong,
+.readiness-next strong {
+  display: block;
+  font-size: 0.72rem;
+}
+
+.readiness-boundary p,
+.readiness-next p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.readiness-source {
+  margin: 0.9rem 0 0;
+}
+
+.readiness-error {
+  color: var(--blocked);
+}
+
+@media (max-width: 720px) {
+  .readiness-summary,
+  .readiness-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .readiness-card:last-child {
+    grid-column: auto;
+  }
+
+  .readiness-summary > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+}

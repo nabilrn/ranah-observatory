@@ -1,0 +1,64 @@
+name: Verify Milestone 37 BNPB Observed Impact
+
+on:
+  push:
+    branches:
+      - main
+      - research/evidence
+    paths:
+      - ".github/workflows/milestone37-bnpb-observed-impact.yml"
+      - "data/raw/bnpb/m37_observed_impact/**"
+      - "data/processed/bnpb/m37_observed_impact/**"
+      - "data/manifests/milestone37_bnpb_observed_impact.json"
+      - "data/registries/disaster_sources.csv"
+      - "research/MILESTONE37_BNPB_OBSERVED_IMPACT_CONTEXT.md"
+      - "scripts/build_milestone37_bnpb_observed_impact.py"
+      - "tests/test_milestone37_bnpb_observed_impact.py"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/milestone37-bnpb-observed-impact.yml"
+      - "data/raw/bnpb/m37_observed_impact/**"
+      - "data/processed/bnpb/m37_observed_impact/**"
+      - "data/manifests/milestone37_bnpb_observed_impact.json"
+      - "data/registries/disaster_sources.csv"
+      - "research/MILESTONE37_BNPB_OBSERVED_IMPACT_CONTEXT.md"
+      - "scripts/build_milestone37_bnpb_observed_impact.py"
+      - "tests/test_milestone37_bnpb_observed_impact.py"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused M37 tests
+        run: python -m unittest tests.test_milestone37_bnpb_observed_impact -v
+
+      - name: Rebuild M37 outputs offline
+        run: python scripts/build_milestone37_bnpb_observed_impact.py
+
+      - name: Require byte-identical committed outputs
+        run: |
+          git diff --exit-code -- \
+            data/processed/bnpb/m37_observed_impact/sumatera-barat-observed-impact-2024-2025.csv \
+            data/manifests/milestone37_bnpb_observed_impact.json
+
+      - name: Assert no M37 writer permission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/milestone37-bnpb-observed-impact.yml').read_text(encoding='utf-8')
+          assert 'contents: read' in text
+          assert 'contents: write' not in text
+          assert 'git push' not in text
+          PY

@@ -42,11 +42,11 @@ INDICATORS: dict[str, dict[str, Any]] = {
     "rice_yield": {
         "label": "Produktivitas padi",
         "short_label": "Produktivitas padi",
-        "unit": "ton/ha",
+        "unit": "unit hasil sumber",
         "decimals": 3,
         "source_claim_id": "C22_RICE_YIELD_TRAJECTORY",
         "favorable_semantics": "Nilai yang lebih tinggi umumnya lebih menguntungkan dalam indikator produktivitas hasil.",
-        "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+        "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
     },
 }
 

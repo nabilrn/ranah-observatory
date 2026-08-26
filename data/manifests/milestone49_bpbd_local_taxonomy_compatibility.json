@@ -1,0 +1,101 @@
+{
+  "schema": "ranah-observatory/milestone49-bpbd-local-taxonomy-compatibility/v1",
+  "milestone": 49,
+  "title": "BPBD Sumatera Barat 2015 local operational taxonomy compatibility gate",
+  "depends_on": [43, 48],
+  "decision_date": "2026-08-25",
+  "research_question": "Can the separately published 2015 Pusdalops PB BPBD Sumatera Barat incident counts be used as an independent same-concept crosscheck for M42 BNPB/DIBI disaster-event and impact aggregates?",
+  "sources": {
+    "m42_dibi_2015": {
+      "artifact": "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz",
+      "source_year": 2015,
+      "source_role": "BNPB/DIBI historical source-native archive",
+      "explicit_geography_rows": 14,
+      "jumlah_kejadian_sum": 89,
+      "promotion_state": "source_native_only"
+    },
+    "bpbd_sumbar_pusdalops_2015": {
+      "title": "Laporan Kegiatan Pusdalops PB BPBD Sumbar Tahun 2015",
+      "producer": "Pusdalops PB BPBD Provinsi Sumatera Barat",
+      "official_url": "https://www.sumbarprov.go.id/images/1456451857-Laporan%20Kegiatan%20Pusdalops%20PB%20BPBD%20Sumbar%20Th%202015.pdf",
+      "evidence_table": "Tabel 4.2. Tabel Jumlah Kejadian Perjenis Bencana tercatat selama Tahun 2015",
+      "reported_incident_total": 686,
+      "reported_category_count": 21,
+      "taxonomy_registry": "data/registries/bpbd_sumbar_2015_incident_taxonomy.csv",
+      "evidence_access_note": "Official provincial-government PDF was discoverable and its indexed table text was reviewed; direct PDF retrieval was unavailable during the review session, so this milestone freezes a discovery/compatibility gate rather than a canonical source snapshot."
+    },
+    "perka_bnpb_7_2012": {
+      "authority": "BNPB",
+      "title": "Pedoman Pengelolaan Data dan Informasi Bencana Indonesia",
+      "official_url": "https://www.bnpb.go.id/storage/app/media/uploads/24/peraturan-kepala/2012/perka-7-tahun-2012-tentang-pedoman-pengelolaan-data-dan-informasi-bencana-indonesia.pdf",
+      "current_status": "historical_reference_not_current_governance",
+      "relevant_rule": "DIBI province and district/city use the same DIBI application/data basis as DIBI National but may add locally needed data and disaster classifications; local implementations can also use finer administrative detail.",
+      "evidentiary_role": "Explains why a local BPBD operational taxonomy can legitimately be broader than the national DIBI aggregate and blocks an assumption of concept identity."
+    }
+  },
+  "bpbd_2015_taxonomy_profile": {
+    "category_count": 21,
+    "reported_total": 686,
+    "largest_categories": {
+      "Kebakaran": 285,
+      "Longsor": 130,
+      "Angin Kencang": 116,
+      "Banjir": 68
+    },
+    "examples_of_operational_classes_not_safe_to_equate_with_m42_disaster_event_universe": [
+      "Hanyut/Tenggelam",
+      "Masuk Sumur",
+      "Orang Gantung Diri",
+      "Orang Hilang",
+      "Orang Tenggelam",
+      "Penemuan Mayat",
+      "Tersambar Petir"
+    ],
+    "taxonomy_scope_state": "broader_local_operational_incident_universe"
+  },
+  "comparison": {
+    "year": 2015,
+    "m42_dibi_total": 89,
+    "bpbd_pusdalops_reported_total": 686,
+    "arithmetic_difference_bpbd_minus_m42": 597,
+    "difference_interpretation": "not_interpretable_as_revision_undercount_or_error",
+    "reason": "The two totals are produced under unproven upstream independence and visibly different inclusion/classification scopes. Perka BNPB 7/2012 explicitly allows local DIBI implementations to add data and classifications.",
+    "direct_value_reconciliation_authorized": false,
+    "district_row_reconciliation_authorized": false,
+    "impact_metric_reconciliation_authorized": false
+  },
+  "qualification": {
+    "separate_local_publication_found": true,
+    "separate_local_operational_taxonomy_found": true,
+    "upstream_source_independence_from_dibi_proven": false,
+    "same_event_taxonomy_as_m42_proven": false,
+    "same_inclusion_threshold_as_m42_proven": false,
+    "same_deduplication_rules_as_m42_proven": false,
+    "same_victim_impact_schema_as_m42_proven": false,
+    "independent_same_concept_crosscheck_qualified": false,
+    "bpbd_686_vs_m42_89_may_be_interpreted_as_dibi_undercount": false,
+    "bpbd_686_vs_m42_89_may_be_interpreted_as_release_revision": false,
+    "operational_incident_layer_candidate": true,
+    "canonical_historical_impact_promotion_authorized": false,
+    "m43_semantics_and_geography_gate_unchanged": true,
+    "m48_evidence_independence_rule_unchanged": true,
+    "promotion_gate_fail_closed": true
+  },
+  "claim_boundaries": [
+    "The BPBD report is evidence that a broader local operational incident universe existed in 2015; it is not evidence that BNPB/DIBI omitted 597 otherwise-equivalent disaster events.",
+    "A separately published local report is not automatically an independent upstream source because provincial DIBI and national DIBI are institutionally related and can share data while allowing local additions.",
+    "No BPBD operational incident count is inserted into the canonical BNPB disaster panel.",
+    "No historical victim or damage metric is promoted from this source discovery.",
+    "M42 absent rows remain missing, not zero."
+  ],
+  "next_gate": {
+    "milestone": 50,
+    "title": "BPBD local operational incident layer and historical impact-source discovery",
+    "tasks": [
+      "Search 2014-2017 BPBD/Pusdalops reports for victim and physical-impact fields with explicit definitions and event/district provenance.",
+      "Keep a prospective BPBD operational-incident layer separate from the BNPB/DIBI disaster-event layer unless a taxonomy crosswalk is directly evidenced.",
+      "Document whether local Pusdalops records are direct contributors to DIBI for the reviewed years before calling any overlapping values independent.",
+      "Only reconcile victim/damage values when source independence, metric semantics, geography, and aggregation rules are all sufficiently qualified."
+    ]
+  }
+}

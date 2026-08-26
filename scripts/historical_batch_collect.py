@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_QUEUE = ROOT / "data" / "acquisition_requests" / "bps_publications.csv"
 DEFAULT_INBOX = ROOT / "data" / "raw" / "inbox"
 ALLOWED_PRIORITY = {"P0", "P1", "P2"}
+DEFAULT_ALLOWED_HOST = "bps.go.id"
 
 
 def read_queue(path: Path) -> list[dict[str, str]]:
@@ -35,10 +36,24 @@ def read_queue(path: Path) -> list[dict[str, str]]:
     return rows
 
 
-def official_bps_url(url: str) -> bool:
+def official_source_url(url: str, allowed_host: str = DEFAULT_ALLOWED_HOST) -> bool:
     parsed = urlparse(url)
-    host = (parsed.hostname or "").lower()
-    return parsed.scheme == "https" and (host == "bps.go.id" or host.endswith(".bps.go.id"))
+    host = (parsed.hostname or "").lower().rstrip(".")
+    allowed = allowed_host.strip().lower().rstrip(".")
+    if not allowed or ":" in allowed or "/" in allowed or "@" in allowed:
+        return False
+    return parsed.scheme == "https" and (
+        host == allowed or host.endswith("." + allowed)
+    )
+
+
+def official_bps_url(url: str) -> bool:
+    """Backward-compatible wrapper for the original BPS-only collector contract."""
+    return official_source_url(url, DEFAULT_ALLOWED_HOST)
+
+
+def queue_allowed_host(row: dict[str, str]) -> str:
+    return (row.get("allowed_host") or "").strip() or DEFAULT_ALLOWED_HOST
 
 
 def validate_pdf(path: Path) -> None:
@@ -129,10 +144,15 @@ def collect(
         request_id = row["request_id"].strip()
         title = row["title"].strip()
         page_url = row["official_page_url"].strip()
+        allowed_host = queue_allowed_host(row)
         output = inbox_dir / row["output_filename"].strip()
 
-        if not official_bps_url(page_url):
-            print(f"ERROR {request_id}: refusing non-BPS URL {page_url}", file=sys.stderr)
+        if not official_source_url(page_url, allowed_host):
+            print(
+                f"ERROR {request_id}: refusing URL outside allowed official host "
+                f"{allowed_host}: {page_url}",
+                file=sys.stderr,
+            )
             failed += 1
             continue
 
@@ -148,6 +168,7 @@ def collect(
         print("\n" + "=" * 72)
         print(f"[{index}/{len(rows)}] {title}")
         print(f"Target: {output.name}")
+        print(f"Allowed host: {allowed_host}")
         print(page_url)
         before = snapshot_pdfs(downloads_dir)
         started_at = time.time()
@@ -202,7 +223,11 @@ def collect(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Open official BPS source pages and collect browser-downloaded PDFs into a local inbox."
+        description=(
+            "Open allowlisted official source pages and collect browser-downloaded "
+            "PDFs into a local inbox. Queue rows default to bps.go.id unless "
+            "allowed_host is supplied."
+        )
     )
     parser.add_argument("--queue", type=Path, default=DEFAULT_QUEUE)
     parser.add_argument("--downloads-dir", type=Path, default=Path.home() / "Downloads")

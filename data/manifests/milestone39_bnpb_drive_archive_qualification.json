@@ -1,0 +1,136 @@
+{
+  "schema": "ranah-observatory/milestone39-bnpb-drive-archive-qualification/v1",
+  "milestone": 39,
+  "title": "BNPB historical Google Drive archive qualification for Sumatera Barat, initial 2002-2006 tranche",
+  "source_chain": {
+    "catalogue": "BNPB Satu Data",
+    "catalogue_base": "https://data.bnpb.go.id",
+    "resource_transport": "BNPB-catalogued public Google Drive folders",
+    "provenance_rule": "Drive files are qualified only when reached from the year-specific folder URL frozen by M38; arbitrary Drive search results are not sufficient provenance."
+  },
+  "coverage": {
+    "qualified_folder_listing_years": [2002, 2003, 2004, 2005, 2006],
+    "folder_count": 5,
+    "sumbar_candidate_count": 5,
+    "downloaded_workbook_years": [2002, 2003],
+    "schema_audited_years": [2002, 2003],
+    "remaining_drive_years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017]
+  },
+  "qualification": {
+    "drive_folder_listing_deterministic_for_qualified_years": true,
+    "exactly_one_sumbar_filename_candidate_per_qualified_folder": true,
+    "downloadable_xlsx_confirmed_for_schema_audited_years": true,
+    "source_native_sumbar_label_confirmed_for_schema_audited_years": true,
+    "historical_schema_compatibility_confirmed_for_schema_audited_years": true,
+    "numeric_values_promoted": false,
+    "district_city_panel_authorized": false,
+    "event_level_panel_authorized": false,
+    "interpretation": "BNPB-catalogued public Drive folders can be listed deterministically and expose one downloadable stat_by_wil_13_YEAR.xlsx candidate for each qualified year. The downloaded 2002 and 2003 workbooks explicitly identify province 13 as Sumatera Barat and retain the 16-column disaster-impact schema observed in the direct-file archive. Numeric promotion remains blocked pending completion of the 2002-2017 archive audit and missingness/geography-version semantics."
+  },
+  "expected_source_columns": [
+    "No",
+    "Wilayah",
+    "Jumlah Kejadian",
+    "Meninggal",
+    "Hilang",
+    "Terluka",
+    "Menderita",
+    "Mengungsi",
+    "Rumah Rusak Berat",
+    "Rumah Rusak Sedang",
+    "Rumah Rusak Ringan",
+    "Rumah Terendam",
+    "Fasilitas Pendidikan",
+    "Fasilitas Kesehatan",
+    "Fasilitas Peribadatan",
+    "Fasilitas Umum"
+  ],
+  "years": [
+    {
+      "year": 2002,
+      "folder_url": "https://drive.google.com/drive/folders/1cB1h3gjrTonMPsj49pb4aIc8UUDBB554",
+      "folder_listing_file_count": 38,
+      "sumbar_file": {
+        "name": "stat_by_wil_13_2002.xlsx",
+        "file_id": "1h_788IN5OfiRIG2QIwsffRSoaXlk80ye",
+        "size_bytes": 27046,
+        "downloadable": true,
+        "sha256": "6d9c2766f44648a2383dc7fbe02378c413cb93ad361d0972060b1421de21baae",
+        "sheet": "statistik",
+        "used_range": "A1:P12",
+        "province_label": "Propinsi : 13. Sumatera Barat, 2002",
+        "body_row_count": 3,
+        "total_row_present": true,
+        "impact_values_promoted": false
+      }
+    },
+    {
+      "year": 2003,
+      "folder_url": "https://drive.google.com/drive/folders/1xMh5ByqtLZpp8gQomQE9hAdBRAS8QXv6",
+      "folder_listing_file_count": 38,
+      "sumbar_file": {
+        "name": "stat_by_wil_13_2003.xlsx",
+        "file_id": "1YOlUQzvh3Bk3HOX_LXyN2BPdi3VgthLW",
+        "size_bytes": 27120,
+        "downloadable": true,
+        "sha256": "e3263203c3f791d79d14d9100fd50b878f571e0f53d187800d5b65fc921b7a78",
+        "sheet": "statistik",
+        "used_range": "A1:P13",
+        "province_label": "Propinsi : 13. Sumatera Barat, 2003",
+        "body_row_count": 4,
+        "total_row_present": true,
+        "impact_values_promoted": false
+      }
+    },
+    {
+      "year": 2004,
+      "folder_url": "https://drive.google.com/drive/folders/1_KqSlahI4QbUiYtrxDaqf26K-b1X41Xg",
+      "folder_listing_file_count": 38,
+      "sumbar_file": {
+        "name": "stat_by_wil_13_2004.xlsx",
+        "file_id": "1G1KdFLpFqqhU7MESZklg5AjMiAOSJXVA",
+        "size_bytes": 27448,
+        "downloadable": true,
+        "sha256": null,
+        "schema_audited": false,
+        "impact_values_promoted": false
+      }
+    },
+    {
+      "year": 2005,
+      "folder_url": "https://drive.google.com/drive/folders/1IxqI09TnYEVLyrUYFhPV1Izap0eCfaGn",
+      "folder_listing_file_count": 38,
+      "sumbar_file": {
+        "name": "stat_by_wil_13_2005.xlsx",
+        "file_id": "1IjSA3FYXm-8CnzaeusARlEeX4KgXeT6j",
+        "size_bytes": 27797,
+        "downloadable": true,
+        "sha256": null,
+        "schema_audited": false,
+        "impact_values_promoted": false
+      }
+    },
+    {
+      "year": 2006,
+      "folder_url": "https://drive.google.com/drive/folders/16ESrYQPqMwBmxSzQk1y0QW-KTwkucyy8",
+      "folder_listing_file_count": 38,
+      "sumbar_file": {
+        "name": "stat_by_wil_13_2006.xlsx",
+        "file_id": "1qOv0DiVsdEPChJ3RFzP8NO0P7FKBSVd3",
+        "size_bytes": 27766,
+        "downloadable": true,
+        "sha256": null,
+        "schema_audited": false,
+        "impact_values_promoted": false
+      }
+    }
+  ],
+  "research_boundaries": [
+    "Do not infer zero from an empty workbook body or blank cell.",
+    "Do not treat annual district/city aggregates as event-level records.",
+    "Do not treat body-row names/codes as temporally stable administrative geography until boundary-version handling is frozen.",
+    "Do not sum victim metrics as unique persons across categories, districts, years, or events.",
+    "Do not combine these annual aggregates with M37 provincial cells as if they share one aggregation contract.",
+    "Do not use the source alone for causal, monetary-loss, composite-risk, avoided-loss, or policy-ranking claims."
+  ]
+}

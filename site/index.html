@@ -8,6 +8,7 @@
   <title>Ranah Observatory — Sumatera Barat dalam data</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="explorer.css">
+  <link rel="stylesheet" href="readiness.css">
   <link rel="stylesheet" href="glossary.css">
 </head>
 <body>
@@ -23,6 +24,7 @@
     </a>
     <nav class="nav" aria-label="Navigasi utama">
       <a href="#temuan">Temuan</a>
+      <a href="#status-riset">Status riset</a>
       <a href="#daerah">Daerah</a>
       <a href="#batas">Batas</a>
       <a href="#glosarium">Glosarium</a>
@@ -40,6 +42,7 @@
         <p class="hero-boundary" id="hero-boundary"></p>
         <div class="hero-actions">
           <a class="button button-primary" href="#temuan">Lihat yang sudah kita tahu</a>
+          <a class="button button-secondary" href="#status-riset">Cek yang belum terjawab</a>
           <a class="button button-secondary" href="#daerah">Jelajahi daerah</a>
           <a class="button button-secondary" id="preprint-link" href="#sumber">Baca laporan teknis</a>
         </div>
@@ -58,7 +61,7 @@
     <section class="section stat-section" aria-labelledby="snapshot-title">
       <div class="section-heading compact-heading">
         <p class="eyebrow">Snapshot</p>
-        <h2 id="snapshot-title">Empat angka untuk memahami posisi riset sekarang</h2>
+        <h2 id="snapshot-title">Lima angka untuk memahami posisi riset sekarang</h2>
       </div>
       <div class="stat-grid" id="headline-stats" aria-live="polite"></div>
     </section>
@@ -73,6 +76,18 @@
       </div>
       <div class="filter-row" id="story-filters" aria-label="Filter kategori temuan"></div>
       <div class="story-grid" id="stories" aria-live="polite"></div>
+    </section>
+
+    <section class="section readiness-section" id="status-riset" aria-labelledby="readiness-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Status pertanyaan riset</p>
+          <h2 id="readiness-title">Seberapa jauh pertanyaan utama sudah terjawab?</h2>
+        </div>
+        <p id="readiness-intro">Memuat batas jawaban dan evidence berikutnya dari sintesis M18…</p>
+      </div>
+      <div class="readiness-summary" id="readiness-summary" aria-live="polite"></div>
+      <div class="readiness-grid" id="readiness-grid" aria-live="polite"></div>
     </section>
 
     <section class="section explorer-section" id="daerah" aria-labelledby="district-title">
@@ -158,6 +173,7 @@
     <div class="noscript">Halaman ini membutuhkan JavaScript untuk membaca kontrak data publik lokal. Tidak ada data yang diambil dari API eksternal saat runtime.</div>
   </noscript>
   <script src="app.js" defer></script>
+  <script src="readiness.js" defer></script>
   <script src="glossary.js" defer></script>
 </body>
 </html>

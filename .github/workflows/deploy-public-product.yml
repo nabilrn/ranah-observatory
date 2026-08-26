@@ -7,9 +7,12 @@ on:
     paths:
       - site/**
       - scripts/validate_public_product.py
+      - scripts/validate_public_readiness.py
       - scripts/build_public_district_explorer.py
       - publication/v0.1/claim-ledger.csv
       - data/analysis/engine/hierarchical_trajectory_v1/m22-geography-trajectories.csv
+      - data/manifests/milestone18_final_analytical_synthesis.json
+      - data/analysis/engine/final_synthesis_v1/m18-research-question-readiness.csv
       - data/validation/climate/station/m36/**
       - .github/workflows/deploy-public-product.yml
   workflow_dispatch:
@@ -39,6 +42,9 @@ jobs:
       - name: Validate public narrative claim gating
         run: python scripts/validate_public_product.py
 
+      - name: Validate public research readiness against frozen M18 synthesis
+        run: python scripts/validate_public_readiness.py
+
       - name: Rebuild and require deterministic district explorer
         run: |
           cp site/data/districts.json /tmp/districts-frozen.json
@@ -48,12 +54,20 @@ jobs:
       - name: Validate static product surface
         run: |
           node --check site/app.js
+          node --check site/readiness.js
+          node --check site/glossary.js
           test -s site/index.html
           test -s site/styles.css
           test -s site/explorer.css
+          test -s site/readiness.css
+          test -s site/glossary.css
           test -s site/app.js
+          test -s site/readiness.js
+          test -s site/glossary.js
           test -s site/data/overview.json
           test -s site/data/districts.json
+          test -s site/data/readiness.json
+          test -s site/data/glossary.json
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

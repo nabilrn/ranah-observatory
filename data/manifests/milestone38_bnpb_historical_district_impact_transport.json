@@ -1,0 +1,97 @@
+{
+  "schema": "ranah-observatory/milestone38-bnpb-historical-district-impact-transport-freeze/v1",
+  "milestone": 38,
+  "title": "BNPB historical district/city impact annual-series transport freeze, 2000-2017",
+  "source_portal": "https://data.bnpb.go.id",
+  "ckan_api_base": "https://data.bnpb.go.id/api/3/action",
+  "coverage": {
+    "years": [2000, 2017],
+    "found_year_count": 18,
+    "missing_years": [],
+    "direct_file_years": [2000, 2001],
+    "link_only_years": [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017],
+    "sumbar_direct_filename_years": [2000, 2001]
+  },
+  "qualification": {
+    "transport_metadata_qualified": true,
+    "numeric_values_promoted": false,
+    "district_city_observed_impact_authorized": false,
+    "event_level_observed_impact_authorized": false,
+    "interpretation": "All 2000-2017 annual packages are discoverable. Only 2000-2001 expose direct BNPB-hosted files; 2002-2017 resolve to external Google Drive folder resources. Numeric ingestion remains blocked pending schema, geography, and missingness qualification."
+  },
+  "direct_sumbar_candidates": [
+    {
+      "year": 2000,
+      "package_id": "b40b63a8-30dc-49b1-9b63-4f285270bbd3",
+      "resource_id": "023bac35-92c4-44cb-b8a9-89b08d06a1a3",
+      "name": "stat_by_wil_13_2000.xlsx",
+      "url": "https://data.bnpb.go.id/dataset/b40b63a8-30dc-49b1-9b63-4f285270bbd3/resource/023bac35-92c4-44cb-b8a9-89b08d06a1a3/download/stat_by_wil_13_2000.xlsx",
+      "sha256": "c9ecfe81673f1680c4a6d4d257a1c26b24005152e72820d4c01c206ec1a904fe",
+      "size_bytes": 27041,
+      "sheet": "statistik",
+      "used_range": "A1:P12",
+      "province_label": "Propinsi : 13. Sumatera Barat, 2000",
+      "source_data_row_count": 3,
+      "total_row_present": true,
+      "impact_values_promoted": false
+    },
+    {
+      "year": 2001,
+      "package_id": "b96e3ce5-2670-4f3a-9a57-db5e52cca6bb",
+      "resource_id": "7834d31b-2d98-40ab-a277-ae1e33d675c9",
+      "name": "stat_by_wil_13_2001.xlsx",
+      "url": "https://data.bnpb.go.id/dataset/b96e3ce5-2670-4f3a-9a57-db5e52cca6bb/resource/7834d31b-2d98-40ab-a277-ae1e33d675c9/download/stat_by_wil_13_2001.xlsx",
+      "sha256": "00d9ceac4fde0febf17f02cda92c60d10d297f0d2b413354e56ce5adb168ba01",
+      "size_bytes": 26648,
+      "sheet": "statistik",
+      "used_range": "A1:P8",
+      "province_label": "Propinsi : 13. Sumatera Barat, 2001",
+      "source_data_row_count": 0,
+      "total_row_present": false,
+      "impact_values_promoted": false,
+      "empty_body_interpretation": "unresolved; do not infer zero disasters or zero impact from an empty body without source semantics"
+    }
+  ],
+  "source_columns": [
+    "No",
+    "Wilayah",
+    "Jumlah Kejadian",
+    "Meninggal",
+    "Hilang",
+    "Terluka",
+    "Menderita",
+    "Mengungsi",
+    "Rumah Rusak Berat",
+    "Rumah Rusak Sedang",
+    "Rumah Rusak Ringan",
+    "Rumah Terendam",
+    "Fasilitas Pendidikan",
+    "Fasilitas Kesehatan",
+    "Fasilitas Peribadatan",
+    "Fasilitas Umum"
+  ],
+  "external_folder_transport": [
+    {"year": 2002, "package_id": "74bc8fbb-2ad3-4fc4-82a4-f30d6c7626ab", "url": "https://drive.google.com/drive/folders/1cB1h3gjrTonMPsj49pb4aIc8UUDBB554?usp=sharing"},
+    {"year": 2003, "package_id": "07d9c228-f5c1-47d2-ac9a-fd95f1119bde", "url": "https://drive.google.com/drive/folders/1xMh5ByqtLZpp8gQomQE9hAdBRAS8QXv6?usp=sharing"},
+    {"year": 2004, "package_id": "03aa7b58-fcee-414d-9450-9a92c5efedd8", "url": "https://drive.google.com/drive/folders/1_KqSlahI4QbUiYtrxDaqf26K-b1X41Xg?usp=sharing"},
+    {"year": 2005, "package_id": "297b6430-a532-4f2d-985d-ea1b3eb6389d", "url": "https://drive.google.com/drive/folders/1IxqI09TnYEVLyrUYFhPV1Izap0eCfaGn?usp=sharing"},
+    {"year": 2006, "package_id": "67f8b5e6-be1b-44ac-8780-eff59046e295", "url": "https://drive.google.com/drive/folders/16ESrYQPqMwBmxSzQk1y0QW-KTwkucyy8?usp=sharing"},
+    {"year": 2007, "package_id": "394a9a8a-6462-417e-9d4b-a927022ce3d7", "url": "https://drive.google.com/drive/folders/1h9mIoEwnWh1rsDErYmLuVEZbZAuXS5je?usp=sharing"},
+    {"year": 2008, "package_id": "8988e74e-946d-41ae-88db-587858edd7cb", "url": "https://drive.google.com/drive/folders/11RcBlfjdPOCViFzLbXxdrzdwOwGkFfcM?usp=sharing"},
+    {"year": 2009, "package_id": "8862fd1a-1c3e-454a-ab57-27208b4ae120", "url": "https://drive.google.com/drive/folders/1dEmB9elGrudc_N7EzfVC6iXR7XscMXkV?usp=sharing"},
+    {"year": 2010, "package_id": "a7e098a3-dace-459f-9bc2-bfc42bbeafc2", "url": "https://drive.google.com/drive/folders/1HuADXppt6XVdfCt8FZ4Cobw1uAl8QO9F?usp=sharing"},
+    {"year": 2011, "package_id": "4040fe7c-530b-49e8-8dec-09cec50f319c", "url": "https://drive.google.com/drive/folders/1AsFCoVXTcx_gKbLeWSTXZdvPyzS_b58y?usp=sharing"},
+    {"year": 2012, "package_id": "e734e68d-c526-46d7-9601-755d9e14ff82", "url": "https://drive.google.com/drive/folders/1iAhPmnbQ6ymdRnUqGUuUhApmymWHjfg3?usp=sharing"},
+    {"year": 2013, "package_id": "9076aeb3-ff85-4591-8f2b-82e049075901", "url": "https://drive.google.com/drive/folders/1P6aH3hmMQ8K3A6J0ABtT-uM4bfLeYFdr?usp=sharing"},
+    {"year": 2014, "package_id": "89599698-64c7-4a3d-9aba-0ff8bd68df49", "url": "https://drive.google.com/drive/folders/1NsN2l293L8vyxPq0wxRbmvRyqBQvVq-Z?usp=sharing", "resource_records": 2, "distinct_urls": 1},
+    {"year": 2015, "package_id": "2fe6e372-0af6-413b-9175-9e3a896ebca9", "url": "https://drive.google.com/drive/folders/1iJ3br2AAf2y92CrODRa_q_5YzevneOa6?usp=sharing"},
+    {"year": 2016, "package_id": "dd3bc505-6f45-40b5-873d-caa82ea4bf10", "url": "https://drive.google.com/drive/folders/19q72ocka_qm4cA0VYp0fFKYL4cgh4dLS?usp=sharing"},
+    {"year": 2017, "package_id": "282bd95e-fe10-4a90-afa7-69cea5fb02c8", "url": "https://drive.google.com/drive/folders/1tuz5clbQ3r65MSj25SPuNLzqszlrkMzb?usp=sharing"}
+  ],
+  "source_artifact": {
+    "workflow_run_id": 32729125584,
+    "artifact_id": 9520685574,
+    "artifact_digest": "sha256:64e54a6a3c94521202ed5bba8eedfbb5d24e094274363c8781e281755a121611",
+    "generated_at_utc": "2026-08-24T12:49:23.877130+00:00"
+  }
+}

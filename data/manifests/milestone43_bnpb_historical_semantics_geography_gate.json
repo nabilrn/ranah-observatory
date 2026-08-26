@@ -1,0 +1,298 @@
+{
+  "schema": "ranah-observatory/milestone43-bnpb-historical-semantics-geography-gate/v1",
+  "milestone": 43,
+  "title": "BNPB historical metric-semantics and temporal-geography qualification gate",
+  "depends_on": [41, 42],
+  "scope": {
+    "archive_years": [2000, 2017],
+    "source_metric_columns": 14,
+    "source_native_staging": "data/processed/bnpb_historical_source_native_rows_2000_2017.csv.gz",
+    "lineage_registry": "data/registries/bnpb_historical_geography_lineage.csv"
+  },
+  "qualification": {
+    "metric_semantics_gate_frozen": true,
+    "temporal_geography_gate_frozen": true,
+    "structural_schema_continuity_proven": true,
+    "semantic_identity_all_metrics_all_years_proven": false,
+    "current_boundary_equivalence_all_rows_proven": false,
+    "source_reported_archival_counts_may_be_displayed_with_provenance": true,
+    "canonical_historical_panel_promotion_authorized": false,
+    "direct_current_era_comparison_authorized": false,
+    "unique_person_aggregation_authorized": false,
+    "parent_successor_allocation_authorized": false,
+    "absent_row_zero_inference_authorized": false,
+    "facility_category_arithmetic_authorized": false
+  },
+  "evidence_register": [
+    {
+      "id": "bnpb_perka8_2011",
+      "authority": "BNPB JDIH",
+      "url": "https://jdih.bnpb.go.id/dokumen/Peraturan/perka-nomor-8-tahun-2011",
+      "status_observed": "tidak_berlaku",
+      "role": "historical standardization reference for disaster-data concepts",
+      "limit": "The regulation supplies a historical definition reference but does not prove that every 2000-2017 archive row was produced under identical procedures."
+    },
+    {
+      "id": "bnpb_perka7_2012",
+      "authority": "BNPB JDIH",
+      "url": "https://jdih.bnpb.go.id/dokumen/Peraturan/perka-nomor-7-tahun-2012",
+      "status_observed": "tidak_berlaku",
+      "role": "historical disaster-data management reference",
+      "limit": "Its 2012 adoption cannot be projected backward to 2000-2011."
+    },
+    {
+      "id": "bnpb_perban1_2023",
+      "authority": "BNPB JDIH",
+      "url": "https://jdih.bnpb.go.id/dokumen/Peraturan/perban-nomor-1-tahun-2023",
+      "status_observed": "berlaku",
+      "role": "current Satu Data Bencana governance reference",
+      "limit": "Current governance is not evidence of unchanged historical counting practice."
+    },
+    {
+      "id": "bps_sirusa_disaster_victim_metadata",
+      "authority": "BPS SiRuSa",
+      "url": "https://sirusa.web.bps.go.id/metadata/indikator/1107",
+      "role": "official-government metadata reproducing Perka 8/2011 victim definitions",
+      "observed_definitions": {
+        "meninggal": "reported dead or deceased due to disaster",
+        "hilang": "reported missing, not found, or whereabouts unknown after disaster",
+        "terdampak": "people suffering adverse disaster impacts while still able to occupy their residence",
+        "terluka_sakit": "people injured or ill, from light to severe, outpatient or inpatient",
+        "mengungsi": "people forced to leave their residence for a safer place due to disaster impacts"
+      }
+    },
+    {
+      "id": "bnpb_satu_data_historical_2010_2024",
+      "authority": "BNPB Portal Satu Data Bencana Indonesia",
+      "url": "https://data.bnpb.go.id/dataset/data-bencana-indonesia",
+      "role": "current official republication exposing separate 2010-2024 resources for meninggal, hilang, luka/sakit, terdampak, mengungsi, and physical impacts",
+      "limit": "Resource labels demonstrate current publishing concepts but do not by themselves prove equality with the M42 district/city archive values."
+    },
+    {
+      "id": "bnpb_historical_terdampak_resource",
+      "authority": "BNPB Portal Satu Data Bencana Indonesia",
+      "url": "https://data.bnpb.go.id/dataset/data-bencana-indonesia/resource/7f9e5218-bbba-4916-a2b8-13cf1764dc96",
+      "role": "official 2010-2024 resource labelled Jumlah Korban Terdampak",
+      "limit": "Does not prove that the archive label Menderita is a lossless historical synonym."
+    },
+    {
+      "id": "bnpb_historical_mengungsi_resource",
+      "authority": "BNPB Portal Satu Data Bencana Indonesia",
+      "url": "https://data.bnpb.go.id/dataset/data-bencana-indonesia/resource/d7b61b56-43d5-4dcc-8d7b-45c993e1bdb0",
+      "role": "official 2010-2024 resource retaining a separate Mengungsi concept"
+    },
+    {
+      "id": "bnpb_2025_combined_dictionary",
+      "authority": "BNPB Portal Satu Data Bencana Indonesia",
+      "url": "https://data.bnpb.go.id/dataset/kompilasi-data-kejadian-dan-dampak-bencana-2025/resource/6e947c9c-2404-4c02-b743-34dc5320f399",
+      "role": "current combined-resource dictionary separating Terdampak and Mengungsi and enumerating current physical-impact fields"
+    },
+    {
+      "id": "bnpb_data_bencana_2017",
+      "authority": "BNPB",
+      "url": "https://bnpb.go.id/storage/app/media/uploads/24/buku-data-bencana/buku-data-bencana-2017-compressed.pdf",
+      "role": "contemporaneous publication evidence",
+      "observed_presentation": "Public 2017 summary tables present Meninggal & Hilang and Menderita & Mengungsi as grouped display categories while retaining house and facility damage categories.",
+      "limit": "Grouped presentation is evidence against assuming category arithmetic or unique-person additivity; it is not proof that the underlying source columns were merged."
+    },
+    {
+      "id": "uu12_2002_kota_pariaman",
+      "authority": "BPK Peraturan",
+      "url": "https://peraturan.bpk.go.id/Details/44443/uu-no-12-tahun-2002",
+      "effective_date": "2002-04-10",
+      "role": "boundary-split anchor for Kota Pariaman / Padang Pariaman"
+    },
+    {
+      "id": "uu38_2003_three_districts",
+      "authority": "BPK Peraturan",
+      "url": "https://peraturan.bpk.go.id/Details/44168/uu-no-38-tahun-2003",
+      "effective_date": "2003-12-18",
+      "role": "boundary-split anchor for Dharmasraya, Solok Selatan, and Pasaman Barat"
+    }
+  ],
+  "metric_qualification": [
+    {
+      "metric": "jumlah_kejadian",
+      "source_label": "Jumlah Kejadian",
+      "unit": "event_count",
+      "current_concept_successor": "Jumlah Kejadian",
+      "semantic_state": "concept_plausible_cross_era_procedure_not_proven",
+      "safe_use": "archive-reported annual count only",
+      "blocked_use": ["assume unchanged event threshold/taxonomy across eras", "directly compare to current-era event counts without overlap reconciliation"]
+    },
+    {
+      "metric": "meninggal",
+      "source_label": "Meninggal",
+      "unit": "person_count",
+      "current_concept_successor": "Meninggal",
+      "semantic_state": "definition_reference_available_archive_application_not_proven_all_years",
+      "safe_use": "archive-reported category count with source year and geography",
+      "blocked_use": ["infer identical case-verification procedures for 2000-2017", "treat cross-category sums as unique people"]
+    },
+    {
+      "metric": "hilang",
+      "source_label": "Hilang",
+      "unit": "person_status_count",
+      "current_concept_successor": "Hilang",
+      "semantic_state": "definition_reference_available_archive_application_not_proven_all_years",
+      "safe_use": "archive-reported missing-person category count",
+      "blocked_use": ["assume a common finalization date for missing-person status", "add to other victim categories as unique people"]
+    },
+    {
+      "metric": "terluka",
+      "source_label": "Terluka",
+      "unit": "person_incidence_count",
+      "current_concept_successor": "Luka/Sakit",
+      "semantic_state": "close_concept_match_exact_historical_scope_not_proven",
+      "safe_use": "archive-reported injured category count",
+      "blocked_use": ["assume identical inclusion of sickness/outpatient/inpatient cases in every archive year", "interpret annual aggregate as deduplicated unique people"]
+    },
+    {
+      "metric": "menderita",
+      "source_label": "Menderita",
+      "unit": "person_impact_count",
+      "current_concept_successor": "Terdampak",
+      "semantic_state": "candidate_successor_mapping_not_proven",
+      "safe_use": "preserve and display as Menderita, never silently relabel",
+      "blocked_use": ["rename to Terdampak without value-level reconciliation", "add to Mengungsi as unique people"]
+    },
+    {
+      "metric": "mengungsi",
+      "source_label": "Mengungsi",
+      "unit": "person_displacement_count",
+      "current_concept_successor": "Mengungsi",
+      "semantic_state": "definition_reference_available_archive_application_not_proven_all_years",
+      "safe_use": "archive-reported displacement count",
+      "blocked_use": ["interpret as deduplicated people across multiple events", "add to Menderita as unique people"]
+    },
+    {
+      "metric": "rumah_rusak_berat",
+      "source_label": "Rusak Berat",
+      "unit": "housing_unit_impact_count",
+      "current_concept_successor": "Rumah Rusak Berat",
+      "semantic_state": "label_continuity_category_threshold_not_proven_all_years",
+      "safe_use": "archive-reported unit count",
+      "blocked_use": ["assume one unique physical house can occur only once in an annual aggregate", "convert to monetary loss"]
+    },
+    {
+      "metric": "rumah_rusak_sedang",
+      "source_label": "Rusak Sedang",
+      "unit": "housing_unit_impact_count",
+      "current_concept_successor": "Rumah Rusak Sedang",
+      "semantic_state": "label_continuity_category_threshold_not_proven_all_years",
+      "safe_use": "archive-reported unit count",
+      "blocked_use": ["assume one unique physical house can occur only once in an annual aggregate", "convert to monetary loss"]
+    },
+    {
+      "metric": "rumah_rusak_ringan",
+      "source_label": "Rusak Ringan",
+      "unit": "housing_unit_impact_count",
+      "current_concept_successor": "Rumah Rusak Ringan",
+      "semantic_state": "label_continuity_category_threshold_not_proven_all_years",
+      "safe_use": "archive-reported unit count",
+      "blocked_use": ["assume one unique physical house can occur only once in an annual aggregate", "convert to monetary loss"]
+    },
+    {
+      "metric": "rumah_terendam",
+      "source_label": "Terendam",
+      "unit": "housing_unit_impact_count",
+      "current_concept_successor": null,
+      "semantic_state": "historical_category_current_direct_successor_not_frozen",
+      "safe_use": "archive-reported flooded-house count only",
+      "blocked_use": ["add to damage-severity categories as if mutually exclusive", "silently map to current Rumah Rusak"]
+    },
+    {
+      "metric": "fasilitas_pendidikan",
+      "source_label": "Pendidikan",
+      "unit": "facility_unit_impact_count",
+      "current_concept_successor": "Satuan Pendidikan Rusak",
+      "semantic_state": "close_label_match_inclusion_rules_not_proven_all_years",
+      "safe_use": "archive-reported facility count",
+      "blocked_use": ["assume identical facility inclusion rules across eras", "convert to monetary loss"]
+    },
+    {
+      "metric": "fasilitas_kesehatan",
+      "source_label": "Kesehatan",
+      "unit": "facility_unit_impact_count",
+      "current_concept_successor": "Fasilitas Pelayanan Kesehatan Rusak",
+      "semantic_state": "close_label_match_inclusion_rules_not_proven_all_years",
+      "safe_use": "archive-reported facility count",
+      "blocked_use": ["assume identical facility inclusion rules across eras", "convert to monetary loss"]
+    },
+    {
+      "metric": "fasilitas_peribadatan",
+      "source_label": "Peribadatan",
+      "unit": "facility_unit_impact_count",
+      "current_concept_successor": "Rumah Ibadat Rusak",
+      "semantic_state": "close_label_match_inclusion_rules_not_proven_all_years",
+      "safe_use": "archive-reported facility count",
+      "blocked_use": ["assume identical facility inclusion rules across eras", "convert to monetary loss"]
+    },
+    {
+      "metric": "fasilitas_umum",
+      "source_label": "Umum",
+      "unit": "facility_unit_impact_count_or_aggregate_unknown",
+      "current_concept_successor": null,
+      "semantic_state": "aggregation_role_ambiguous",
+      "safe_use": "preserve source value as its own archival field",
+      "blocked_use": ["treat as a fourth category disjoint from education/health/worship", "treat as the sum of the three specific facility columns without direct value-level proof"]
+    }
+  ],
+  "geography_qualification": {
+    "principle": "Legal lineage can prevent false identity joins, but legal creation dates alone do not prove that every annual source row is already comparable to a current-boundary geometry.",
+    "transition_years": [
+      {
+        "year": 2002,
+        "effective_date": "2002-04-10",
+        "affected": ["Padang Pariaman", "Kota Pariaman"],
+        "state": "partial_year_boundary_transition",
+        "current_boundary_comparison": "blocked"
+      },
+      {
+        "year": 2003,
+        "effective_date": "2003-12-18",
+        "affected": ["Sawahlunto/Sijunjung", "Dharmasraya", "Solok", "Solok Selatan", "Pasaman", "Pasaman Barat"],
+        "state": "partial_year_boundary_transition",
+        "current_boundary_comparison": "blocked"
+      },
+      {
+        "year": 2008,
+        "effective_date": "2008-03-10",
+        "affected": ["Sawahlunto/Sijunjung", "Sijunjung"],
+        "state": "rename_same_entity",
+        "current_boundary_comparison": "rename_alone_does_not_block_but_source_label_timing_must_remain_versioned"
+      }
+    ],
+    "post_split_rule": "Rows after a split may be legally lineage-eligible for current-entity identity once the successor existed for the full year, but M43 does not assert geometry-equivalent current boundaries or completeness of absent rows.",
+    "unaffected_entity_rule": "Absence of a listed creation/split event is not proof that boundary geometry was unchanged; do not upgrade current-boundary comparability without an explicit geometry/legal audit.",
+    "missingness_rule": "M41/M42 missingness semantics remain unchanged: absent source rows and the 2001 empty workbook are never zeros."
+  },
+  "authorized_outputs": [
+    "source-native archive tables retaining original metric names",
+    "year/geography-specific archival count display with provenance and missingness state",
+    "QA/reconciliation summaries over explicit source rows",
+    "research diagnostics that explicitly label values as BNPB archive-reported counts"
+  ],
+  "blocked_outputs": [
+    "canonical current-boundary historical district/city panel",
+    "unqualified 2000-2017 trend claims as true incidence rather than archive-reported counts",
+    "automatic Menderita-to-Terdampak relabeling",
+    "victim-category unique-person totals",
+    "house/facility unique-asset totals across categories or events",
+    "facility Umum arithmetic with specific facility columns",
+    "transition-year parent/successor allocation",
+    "direct historical-to-current comparisons without overlap-year reconciliation",
+    "causal attribution, monetary loss, avoided loss, composite risk, or policy ranking"
+  ],
+  "next_gate": {
+    "milestone": 44,
+    "title": "BNPB overlap-year semantic reconciliation",
+    "tasks": [
+      "Compare 2010-2017 overlapping official Satu Data resources against the M42 archive at every dimension that can be made genuinely like-for-like.",
+      "Test whether archive Menderita is value-compatible with current Terdampak before any rename.",
+      "Test the arithmetic relationship, if any, between historical Umum and the three specific facility fields.",
+      "Quantify revisions or disagreements for shared victim and physical-impact concepts rather than assuming equality.",
+      "Promote only metric-year-geography slices whose semantic and temporal-geography gates both pass."
+    ]
+  }
+}

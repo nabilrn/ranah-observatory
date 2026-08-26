@@ -90,7 +90,7 @@
   "regime_id": "sumbar_current_kabkota_2018_2025_v1",
   "registry_files": {
     "data/registries/geographies.csv": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de",
-    "data/registries/indicators.csv": "8fb0616603fa270859d595039f812b15b95d2f06b6895c3033b038eab199ea70"
+    "data/registries/indicators.csv": "346b99fd69a00af5dd211ac483dc0c5f45353407412ddfb4d0720291bd2b4674"
   },
   "schema": "ranah-observatory/milestone10-analytical-panel/v1",
   "source_files": {

@@ -39,13 +39,13 @@
       "criterion_number": 3,
       "details": {
         "domain_count": 12,
-        "indicator_definition_count": 67
+        "indicator_definition_count": 68
       },
       "errors": [],
       "evidence": [
         {
           "path": "data/registries/indicators.csv",
-          "sha256": "8fb0616603fa270859d595039f812b15b95d2f06b6895c3033b038eab199ea70"
+          "sha256": "346b99fd69a00af5dd211ac483dc0c5f45353407412ddfb4d0720291bd2b4674"
         }
       ]
     },

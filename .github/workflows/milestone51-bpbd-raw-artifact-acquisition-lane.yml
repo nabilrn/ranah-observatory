@@ -1,0 +1,66 @@
+name: Milestone 51 BPBD Raw Artifact Acquisition Lane
+
+on:
+  pull_request:
+    paths:
+      - "data/acquisition_requests/bpbd_publications.csv"
+      - "data/manifests/milestone50_bpbd_historical_impact_source_qualification.json"
+      - "data/manifests/milestone51_bpbd_raw_artifact_acquisition_lane.json"
+      - "scripts/historical_batch_collect.py"
+      - "scripts/historical_batch_ingest.py"
+      - "scripts/validate_milestone51_bpbd_raw_artifact_acquisition_lane.py"
+      - "tests/test_historical_batch.py"
+      - "tests/test_milestone51_bpbd_raw_artifact_acquisition_lane.py"
+      - "research/MILESTONE51_BPBD_RAW_ARTIFACT_ACQUISITION_LANE.md"
+      - ".github/workflows/milestone51-bpbd-raw-artifact-acquisition-lane.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/acquisition_requests/bpbd_publications.csv"
+      - "data/manifests/milestone50_bpbd_historical_impact_source_qualification.json"
+      - "data/manifests/milestone51_bpbd_raw_artifact_acquisition_lane.json"
+      - "scripts/historical_batch_collect.py"
+      - "scripts/historical_batch_ingest.py"
+      - "scripts/validate_milestone51_bpbd_raw_artifact_acquisition_lane.py"
+      - "tests/test_historical_batch.py"
+      - "tests/test_milestone51_bpbd_raw_artifact_acquisition_lane.py"
+      - "research/MILESTONE51_BPBD_RAW_ARTIFACT_ACQUISITION_LANE.md"
+      - ".github/workflows/milestone51-bpbd-raw-artifact-acquisition-lane.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Inspect BPBD P0 acquisition queue
+        run: python scripts/historical_batch_collect.py --queue data/acquisition_requests/bpbd_publications.csv --priority P0
+
+      - name: Validate M51 acquisition-lane contract
+        run: python scripts/validate_milestone51_bpbd_raw_artifact_acquisition_lane.py
+
+      - name: Run collector and M51 focused tests
+        run: python -m unittest tests.test_historical_batch tests.test_milestone51_bpbd_raw_artifact_acquisition_lane -v
+
+      - name: Revalidate historical acquisition batch
+        run: python scripts/validate_historical_batch.py
+
+      - name: Revalidate canonical data foundation
+        run: python scripts/validate_data_foundation.py
+
+      - name: Revalidate historical reconstruction foundation
+        run: python scripts/validate_historical_reconstruction.py
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py

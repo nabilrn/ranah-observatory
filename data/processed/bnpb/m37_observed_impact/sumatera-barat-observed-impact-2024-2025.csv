@@ -1,0 +1,91 @@
+year,metric_id,hazard,value,source_cell_state,source_resource_id
+2024,deaths,BANJIR,61,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,CUACA EKSTREM,3,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,ERUPSI GUNUNG API,32,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,GELOMBANG PASANG DAN ABRASI,0,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,GEMPABUMI,0,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,KEKERINGAN,0,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,TANAH LONGSOR,23,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,deaths,TSUNAMI,0,reported_numeric,69605ad2-73ea-4967-b2d5-639ad9291833
+2024,affected,BANJIR,196788,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,CUACA EKSTREM,315,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,ERUPSI GUNUNG API,3345,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,GELOMBANG PASANG DAN ABRASI,565,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,GEMPABUMI,0,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,KEKERINGAN,1292,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,TANAH LONGSOR,50,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,affected,TSUNAMI,0,reported_numeric,5b9f7853-e69b-4d3a-917c-3fa3e473ed60
+2024,injured,BANJIR,66,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,CUACA EKSTREM,1,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,ERUPSI GUNUNG API,2,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,GELOMBANG PASANG DAN ABRASI,0,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,GEMPABUMI,0,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,KEKERINGAN,0,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,TANAH LONGSOR,19,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,injured,TSUNAMI,0,reported_numeric,b1e58b39-8dc4-4b9b-abc6-50139acd2fda
+2024,displaced,BANJIR,106503,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,CUACA EKSTREM,0,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,ERUPSI GUNUNG API,3061,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,GELOMBANG PASANG DAN ABRASI,6,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,GEMPABUMI,,source_blank,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,KEKERINGAN,0,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,TANAH LONGSOR,77,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,displaced,TSUNAMI,0,reported_numeric,d1fd9f08-26e1-453a-9be0-422538f01b5e
+2024,houses,BANJIR,12577,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,CUACA EKSTREM,164,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,ERUPSI GUNUNG API,236,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,GELOMBANG PASANG DAN ABRASI,23,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,GEMPABUMI,0,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,KEKERINGAN,0,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,TANAH LONGSOR,10,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2024,houses,TSUNAMI,0,reported_numeric,471f71cb-27a4-4460-836f-416c0c35b4dc
+2025,deaths,BANJIR,267,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,CUACA EKSTREM,3,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,ERUPSI GUNUNG API,0,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,GELOMBANG PASANG DAN ABRASI,0,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,GEMPABUMI,0,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,KEKERINGAN,0,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,TANAH LONGSOR,0,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,deaths,TSUNAMI,0,reported_numeric,aefe8331-5962-4610-8b0c-2de637a336cd
+2025,affected,BANJIR,328428,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,CUACA EKSTREM,1610,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,ERUPSI GUNUNG API,0,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,GELOMBANG PASANG DAN ABRASI,90,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,GEMPABUMI,0,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,KEKERINGAN,1000,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,TANAH LONGSOR,336,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,affected,TSUNAMI,0,reported_numeric,8d8db1c8-d79b-4fb1-b735-d8b9c1e0517a
+2025,injured,BANJIR,382,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,CUACA EKSTREM,3,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,ERUPSI GUNUNG API,0,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,GELOMBANG PASANG DAN ABRASI,0,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,GEMPABUMI,0,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,KEKERINGAN,0,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,TANAH LONGSOR,0,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,injured,TSUNAMI,0,reported_numeric,50b99a45-d8ff-496e-a64f-9e689754371c
+2025,displaced,BANJIR,10915,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,CUACA EKSTREM,0,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,ERUPSI GUNUNG API,0,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,GELOMBANG PASANG DAN ABRASI,10,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,GEMPABUMI,0,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,KEKERINGAN,0,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,TANAH LONGSOR,0,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,displaced,TSUNAMI,0,reported_numeric,eefa5746-5c65-4156-ac74-2eff2bfac767
+2025,houses,BANJIR,12683,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,CUACA EKSTREM,351,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,ERUPSI GUNUNG API,0,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,GELOMBANG PASANG DAN ABRASI,2,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,GEMPABUMI,0,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,KEBAKARAN HUTAN DAN LAHAN,0,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,KEKERINGAN,0,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,TANAH LONGSOR,6,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
+2025,houses,TSUNAMI,0,reported_numeric,43b83e79-c8b6-4b9a-b2f0-d1cbd9cfa636
