@@ -43,9 +43,9 @@ jobs:
           print({'bytes': p.stat().st_size})
           PY
 
-      - name: Build small visual-completeness preview
+      - name: Build rasterized visual-completeness preview
         run: |
-          python -m pip install --quiet pypdf==6.0.0
+          python -m pip install --quiet PyMuPDF==1.26.4 Pillow==11.3.0
           python - <<'PY'
           from __future__ import annotations
           import hashlib
@@ -53,33 +53,33 @@ jobs:
           import os
           from datetime import datetime, timezone
           from pathlib import Path
-          from pypdf import PdfReader, PdfWriter
+          import fitz
+          from PIL import Image
 
           pdf = Path('/tmp/sumbar1990.pdf')
-          reader = PdfReader(str(pdf))
-          page_count = len(reader.pages)
-          assert page_count > 20, page_count
+          doc = fitz.open(pdf)
+          page_count = doc.page_count
+          assert page_count == 58, page_count
 
-          chosen = []
-          for idx in [0, 1, 2, page_count - 3, page_count - 2, page_count - 1]:
-              if 0 <= idx < page_count and idx not in chosen:
-                  chosen.append(idx)
-          writer = PdfWriter()
-          for idx in chosen:
-              writer.add_page(reader.pages[idx])
-
+          chosen = [0, page_count // 2, page_count - 1]
           out_dir = Path('data/validation/historical/sumbar1990')
           out_dir.mkdir(parents=True, exist_ok=True)
-          preview = out_dir / 'temporary_completeness_preview.pdf'
-          with preview.open('wb') as handle:
-              writer.write(handle)
-
+          jpgs = []
           text_chars = 0
-          for page in reader.pages:
-              try:
-                  text_chars += len(page.extract_text() or '')
-              except Exception:
-                  pass
+          for page in doc:
+              text_chars += len(page.get_text('text') or '')
+          for idx in chosen:
+              pix = doc[idx].get_pixmap(matrix=fitz.Matrix(1.0, 1.0), alpha=False)
+              path = Path('/tmp') / f'sumbar1990-preview-{idx+1}.jpg'
+              pix.save(path, jpg_quality=70)
+              jpgs.append(path)
+          doc.close()
+
+          images = [Image.open(path).convert('RGB') for path in jpgs]
+          preview = out_dir / 'temporary_completeness_preview.pdf'
+          images[0].save(preview, 'PDF', resolution=72.0, save_all=True, append_images=images[1:])
+          for image in images:
+              image.close()
 
           manifest = {
               'schema': 'ranah-observatory/sumbar1990-official-artifact-probe/v1',
@@ -98,7 +98,8 @@ jobs:
               'retrieval_surface': 'web-api.bps.go.id public direct download',
               'raw_pdf_committed': False,
               'builtin_text_char_count': text_chars,
-              'temporary_preview_pdf_pages': [i + 1 for i in chosen],
+              'temporary_preview_source_pdf_pages': [i + 1 for i in chosen],
+              'temporary_preview_generation': 'rasterized at 72dpi-equivalent from exact official PDF; visual review only',
               'temporary_preview_role': 'visual completeness review only; must be deleted before merge',
               'visual_completeness_review_pending': True,
               'full_publication_artifact_acquired': None,
@@ -109,7 +110,7 @@ jobs:
               json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + '\n',
               encoding='utf-8',
           )
-          print({'sha256': manifest['artifact_sha256'], 'bytes': manifest['artifact_bytes'], 'pages': page_count, 'text_chars': text_chars, 'preview_bytes': preview.stat().st_size})
+          print({'sha256': manifest['artifact_sha256'], 'bytes': manifest['artifact_bytes'], 'pages': page_count, 'text_chars': text_chars, 'preview_bytes': preview.stat().st_size, 'preview_source_pages': manifest['temporary_preview_source_pdf_pages']})
           PY
 
       - name: Validate preview is bounded
@@ -120,12 +121,13 @@ jobs:
           m = json.loads(Path('data/validation/historical/sumbar1990/artifact_probe_manifest.json').read_text())
           preview = Path('data/validation/historical/sumbar1990/temporary_completeness_preview.pdf')
           assert len(m['artifact_sha256']) == 64
-          assert m['artifact_bytes'] > 5_000_000
-          assert m['pdf_page_count'] > 20
+          assert m['artifact_bytes'] == 14_702_296
+          assert m['pdf_page_count'] == 58
           assert m['visual_completeness_review_pending'] is True
           assert m['full_publication_artifact_acquired'] is None
           assert m['numeric_promotion_authorized'] is False
-          assert preview.stat().st_size < 10_000_000, preview.stat().st_size
+          assert m['temporary_preview_source_pdf_pages'] == [1, 30, 58]
+          assert preview.stat().st_size < 5_000_000, preview.stat().st_size
           print({'preview': 'bounded', 'bytes': preview.stat().st_size})
           PY
 
