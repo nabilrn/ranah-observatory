@@ -9,8 +9,11 @@ on:
       - scripts/validate_public_product.py
       - scripts/validate_public_readiness.py
       - scripts/build_public_district_explorer.py
+      - scripts/build_public_indicator_catalog.py
       - publication/v0.1/claim-ledger.csv
       - data/analysis/engine/hierarchical_trajectory_v1/m22-geography-trajectories.csv
+      - data/analysis/engine/panel_v3/m46-indicator-metadata.csv
+      - data/analysis/engine/panel_v3/m46-indicator-coverage.csv
       - data/manifests/milestone18_final_analytical_synthesis.json
       - data/analysis/engine/final_synthesis_v1/m18-research-question-readiness.csv
       - data/validation/climate/station/m36/**
@@ -51,22 +54,32 @@ jobs:
           python scripts/build_public_district_explorer.py
           diff -u /tmp/districts-frozen.json site/data/districts.json
 
+      - name: Rebuild and require deterministic indicator catalog
+        run: |
+          cp site/data/indicators.json /tmp/indicators-frozen.json
+          python scripts/build_public_indicator_catalog.py
+          diff -u /tmp/indicators-frozen.json site/data/indicators.json
+
       - name: Validate static product surface
         run: |
           node --check site/app.js
           node --check site/readiness.js
+          node --check site/catalog.js
           node --check site/glossary.js
           test -s site/index.html
           test -s site/styles.css
           test -s site/explorer.css
           test -s site/readiness.css
+          test -s site/catalog.css
           test -s site/glossary.css
           test -s site/app.js
           test -s site/readiness.js
+          test -s site/catalog.js
           test -s site/glossary.js
           test -s site/data/overview.json
           test -s site/data/districts.json
           test -s site/data/readiness.json
+          test -s site/data/indicators.json
           test -s site/data/glossary.json
 
       - name: Configure GitHub Pages
