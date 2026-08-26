@@ -7,6 +7,8 @@ on:
       - "data/acquisition_requests/**"
       - "data/manifests/**"
       - "data/processed/bps/historical_population_source_native.csv"
+      - "data/processed/bps/historical_population_1961_source_native.csv"
+      - "data/validation/historical/sp1961/**"
       - "data/registries/geographies.csv"
       - "data/registries/historical_*.csv"
       - "data/snapshots/bps/var-484-1971.json"
@@ -16,9 +18,11 @@ on:
       - "scripts/historical_batch_ingest.py"
       - "scripts/normalize_bps_dynamic.py"
       - "scripts/validate_bps_historical_anchor.py"
+      - "scripts/validate_sp1961_official_anchor.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
+      - "tests/test_sp1961_official_anchor.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -30,6 +34,8 @@ on:
       - "data/acquisition_requests/**"
       - "data/manifests/**"
       - "data/processed/bps/historical_population_source_native.csv"
+      - "data/processed/bps/historical_population_1961_source_native.csv"
+      - "data/validation/historical/sp1961/**"
       - "data/registries/geographies.csv"
       - "data/registries/historical_*.csv"
       - "data/snapshots/bps/var-484-1971.json"
@@ -39,9 +45,11 @@ on:
       - "scripts/historical_batch_ingest.py"
       - "scripts/normalize_bps_dynamic.py"
       - "scripts/validate_bps_historical_anchor.py"
+      - "scripts/validate_sp1961_official_anchor.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
+      - "tests/test_sp1961_official_anchor.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -85,6 +93,9 @@ jobs:
 
       - name: Validate BPS-backed 1971 historical population anchor
         run: python scripts/validate_bps_historical_anchor.py
+
+      - name: Validate official SP1961 historical population anchor
+        run: python scripts/validate_sp1961_official_anchor.py
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
