@@ -1,9 +1,9 @@
 {
-  "schema": "ranah-observatory/milestone51-bpbd-raw-artifact-acquisition-lane/v2",
+  "schema": "ranah-observatory/milestone51-bpbd-raw-artifact-acquisition-lane/v3",
   "milestone": 51,
   "title": "BPBD raw historical artifact acquisition lane",
   "depends_on": [50],
-  "decision_date": "2026-08-25",
+  "decision_date": "2026-08-26",
   "research_question": "Can the existing reproducible historical PDF collection tooling be safely extended to acquire BPBD/Pusdalops artifacts from explicitly allowlisted government hosts without weakening the BPS-only security contract, while keeping the missing 2017 annual report as the only exit-gate artifact?",
   "queue": {
     "path": "data/acquisition_requests/bpbd_publications.csv",
@@ -11,6 +11,7 @@
     "p0_request_id": "bpbd_pusdalops_2017",
     "p0_anchor_year": 2017,
     "p0_exit_gate_candidate": true,
+    "p0_active_inventory_url": "https://ppid.sumbarprov.go.id/home/dip",
     "allowed_host": "sumbarprov.go.id",
     "companion_requests": [
       "bpbd_pusdalops_2015",
@@ -19,6 +20,25 @@
       "bpbd_pusdalops_2018"
     ],
     "companion_requests_may_satisfy_2017_exit_gate": false
+  },
+  "ppid_migration_forensics": {
+    "checked_at": "2026-08-26",
+    "active_inventory_url": "https://ppid.sumbarprov.go.id/home/dip",
+    "active_information_route_template": "https://ppid.sumbarprov.go.id/home/information/<uuid>",
+    "active_download_route_template": "https://ppid.sumbarprov.go.id/home/download/<uuid>",
+    "indexed_api_download_wrapper_also_observed": true,
+    "indexed_api_download_route_template": "https://ppid.sumbarprov.go.id/api/download/?id=<uuid>&link=<encrypted-publicfile-token>&title=<title>",
+    "legacy_2018_detail_url": "https://ppid.sumbarprov.go.id/home/details/7526-laporan-tahunan-pusdalops-pb.html",
+    "legacy_2018_direct_pdf_url": "https://ppid.sumbarprov.go.id/images/2019/07/file/Laporan_Tahunan_PUSDALOPS_PB.pdf",
+    "legacy_2017_download_audit_url": "https://ppid.sumbarprov.go.id/images/2024/10/file/download_tahunan2024-09_47_14.pdf",
+    "legacy_2017_download_audit_record_id": 8604,
+    "legacy_2017_download_audit_title": "Laporan Tahunan Data Kebencanaan Pusdalops PB Sumatera Barat Tahun 2017",
+    "legacy_2017_download_audit_opd": "Badan Penanggulangan Bencana Daerah",
+    "legacy_2017_download_count": 24,
+    "record_8604_to_current_uuid_mapping_recovered": false,
+    "current_detail_or_download_url_for_2017_recovered": false,
+    "raw_2017_pdf_bytes_recovered": false,
+    "m52_trigger_satisfied": false
   },
   "companion_evidence": {
     "bpbd_data_kebencanaan_2015_2016": {
@@ -66,6 +86,8 @@
     "collector_generalized_without_removing_bps_wrapper": true,
     "bpbd_official_host_allowlisted": true,
     "official_companion_surfaces_added": 2,
+    "ppid_active_route_shape_frozen": true,
+    "legacy_2017_download_record_reconfirmed": true,
     "raw_2017_artifact_acquired": false,
     "raw_2017_checksum_frozen": false,
     "source_native_2017_extraction_authorized": false,
@@ -76,6 +98,11 @@
     "bps_default_security_behavior_preserved": true,
     "non_https_sources_rejected": true,
     "host_suffix_spoofing_rejected": true,
+    "active_ppid_inventory_confirmed": true,
+    "active_uuid_detail_and_download_routes_confirmed": true,
+    "legacy_2018_ppid_detail_and_direct_pdf_confirmed": true,
+    "legacy_2017_download_audit_record_confirmed": true,
+    "record_8604_to_current_uuid_mapping_recovered": false,
     "official_2017_lakip_companion_available": true,
     "official_2015_2016_data_companion_available": true,
     "companions_do_not_replace_p0_exit_gate": true,
