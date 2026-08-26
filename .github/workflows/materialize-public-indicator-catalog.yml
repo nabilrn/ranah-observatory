@@ -1,0 +1,53 @@
+name: Materialize Public Indicator Catalog
+
+on:
+  push:
+    branches:
+      - release/publication
+    paths:
+      - scripts/build_public_indicator_catalog.py
+      - .github/workflows/materialize-public-indicator-catalog.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: release/publication
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Build catalog
+        run: python scripts/build_public_indicator_catalog.py
+
+      - name: Verify bounded catalog
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('site/data/indicators.json').read_text())
+          assert p['schema'] == 'ranah-observatory/public-indicator-catalog/v1'
+          assert p['summary']['indicator_count'] == 23
+          assert p['summary']['geography_count'] == 19
+          assert len(p['indicators']) == 23
+          forbidden = {'score', 'rank', 'causal_effect', 'recommended_policy', 'expected_policy_impact'}
+          assert not any(forbidden & set(row) for row in p['indicators'])
+          print(p['summary'])
+          PY
+
+      - name: Commit generated catalog and retire writer
+        run: |
+          rm .github/workflows/materialize-public-indicator-catalog.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/data/indicators.json .github/workflows/materialize-public-indicator-catalog.yml
+          git commit -m 'Materialize bounded public indicator catalog'
+          git push origin HEAD:release/publication
