@@ -1,0 +1,1051 @@
+{
+  "domains": [
+    "Bencana & ketahanan",
+    "Demografi",
+    "Ekonomi & kesejahteraan",
+    "Iklim & lingkungan",
+    "Infrastruktur & konektivitas",
+    "Kesehatan",
+    "Pasar kerja",
+    "Pendidikan & pengetahuan",
+    "Produksi & struktur ekonomi"
+  ],
+  "indicators": [
+    {
+      "allowed_claim_types": [
+        "observed",
+        "backcast_estimate"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 7,
+        "first_year": 2019,
+        "last_year": 2025,
+        "missing_cells": 19,
+        "present_cells": 133,
+        "rate": 0.875,
+        "total_possible_cells": 152,
+        "years_present": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 7
+      },
+      "definition": "Share of households with access to an adequate drinking-water source under the BPS SDGs-aligned definition used from 2019",
+      "domain": "infrastructure_connectivity",
+      "domain_label": "Infrastruktur & konektivitas",
+      "frequency": "annual",
+      "id": "adequate_drinking_water_access",
+      "methodology_versions": "susenas_sdgs_adequate_drinking_water|susenas_sdgs_adequate_drinking_water_backcast",
+      "name": "Adequate drinking-water access",
+      "present_claim_types": [
+        "backcast_estimate",
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "source_annual_period_unspecified_within_year",
+      "registry_unit": "percent",
+      "semantic_caution": "2018 is excluded from the SDGs-aligned regime; 2019-2020 are explicitly backcast estimates and must not be relabeled observed; adequate source is not synonymous with piped-water service.",
+      "source_artifact": "m28_bps_broader_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Share of households with access to adequate sanitation under the BPS Susenas source definition",
+      "domain": "infrastructure_connectivity",
+      "domain_label": "Infrastruktur & konektivitas",
+      "frequency": "annual",
+      "id": "adequate_sanitation_access",
+      "methodology_versions": "susenas_adequate_sanitation",
+      "name": "Adequate sanitation access",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "source_annual_period_unspecified_within_year",
+      "registry_unit": "percent",
+      "semantic_caution": "Preserve BPS adequate-sanitation definition and methodology revisions by source year; no missing year is zero.",
+      "source_artifact": "m28_bps_broader_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "derived"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 6,
+        "first_year": 2018,
+        "last_year": 2023,
+        "missing_cells": 38,
+        "present_cells": 114,
+        "rate": 0.75,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "years_present_count": 6
+      },
+      "definition": "Agriculture forestry and fisheries value added as share of current-price GRDP",
+      "domain": "production_trade",
+      "domain_label": "Produksi & struktur ekonomi",
+      "frequency": "annual",
+      "id": "agriculture_share_grdp",
+      "methodology_versions": "GRDP series 2010 ADHB",
+      "name": "Agriculture share of GRDP",
+      "present_claim_types": [
+        "derived"
+      ],
+      "price_bases": "current_prices_series_2010",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "percent",
+      "semantic_caution": "Derived from same-source ADHB sector and total GRDP; current-price structural share, not real growth.",
+      "source_artifact": "bps_expansion_canonical",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed",
+        "derived",
+        "model_estimate"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Accumulated precipitation over stated annual reference period",
+      "domain": "environment_climate",
+      "domain_label": "Iklim & lingkungan",
+      "frequency": "annual",
+      "id": "annual_rainfall",
+      "methodology_versions": "chirps_v3_final_monthly_big_june_2026_fixed_boundary_v1",
+      "name": "Annual rainfall",
+      "present_claim_types": [
+        "model_estimate"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "millimetres",
+      "semantic_caution": "CHIRPS v3 Final fixed-current-boundary model estimate; not BMKG station-observation equivalence.",
+      "source_artifact": "chirps_annual_rainfall",
+      "source_priority": [
+        "BMKG",
+        "CHIRPS",
+        "ERA5-Land"
+      ],
+      "unit_label": "mm"
+    },
+    {
+      "allowed_claim_types": [
+        "observed_census_anchor",
+        "model_estimate_projection"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 5,
+        "first_year": 2020,
+        "last_year": 2024,
+        "missing_cells": 57,
+        "present_cells": 95,
+        "rate": 0.625,
+        "total_possible_cells": 152,
+        "years_present": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "years_present_count": 5
+      },
+      "definition": "Dependents relative to working-age population under the BPS LF SP2020 anchor and 2020-2035 projection regime",
+      "domain": "demography_migration",
+      "domain_label": "Demografi",
+      "frequency": "annual",
+      "id": "dependency_ratio",
+      "methodology_versions": "lf_sp2020_anchor|population_projection_2020_2035_sp2020_basis",
+      "name": "Dependency ratio (LF SP2020 / projection regime)",
+      "present_claim_types": [
+        "model_estimate_projection",
+        "observed_census_anchor"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "source_annual_period_unspecified_within_year",
+      "registry_unit": "ratio",
+      "semantic_caution": "2020 is an LF SP2020 anchor while 2021-2024 are projection estimates; never relabel projection years as observed.",
+      "source_artifact": "m28_bps_broader_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "rasio"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Expected schooling years for a child under current participation patterns",
+      "domain": "education_knowledge",
+      "domain_label": "Pendidikan & pengetahuan",
+      "frequency": "annual",
+      "id": "expected_years_schooling",
+      "methodology_versions": "BPS HDI new method; Susenas March",
+      "name": "Expected years of schooling",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "march_reference",
+      "registry_unit": "years",
+      "semantic_caution": "Susenas/HDI annual indicator; retain March reference-period semantics.",
+      "source_artifact": "bps_canonical_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "tahun"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 1,
+        "first_year": 2024,
+        "last_year": 2024,
+        "missing_cells": 133,
+        "present_cells": 19,
+        "rate": 0.125,
+        "total_possible_cells": 152,
+        "years_present": [
+          2024
+        ],
+        "years_present_count": 1
+      },
+      "definition": "Count of officially recorded flood events under source event definition",
+      "domain": "disaster_resilience",
+      "domain_label": "Bencana & ketahanan",
+      "frequency": "annual",
+      "id": "flood_events",
+      "methodology_versions": "BNPB/DIBI 2024 event classification",
+      "name": "Recorded flood events",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "count",
+      "semantic_caution": "BNPB observed recorded-event count for 2024 only; missing years are not zero-filled.",
+      "source_artifact": "bnpb_disaster_canonical",
+      "source_priority": [
+        "BNPB"
+      ],
+      "unit_label": "kejadian"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Share of persons age 5 years and older who accessed the internet within the previous three months under the BPS Susenas definition",
+      "domain": "infrastructure_connectivity",
+      "domain_label": "Infrastruktur & konektivitas",
+      "frequency": "annual",
+      "id": "internet_access_age5plus",
+      "methodology_versions": "susenas_age5plus_internet_last_3_months",
+      "name": "Internet access age 5+ in previous 3 months",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "source_annual_period_unspecified_within_year",
+      "registry_unit": "percent",
+      "semantic_caution": "Age universe and three-month recall period are part of the indicator identity and must not be dropped.",
+      "source_artifact": "m28_bps_broader_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 7,
+        "first_year": 2019,
+        "last_year": 2025,
+        "missing_cells": 19,
+        "present_cells": 133,
+        "rate": 0.875,
+        "total_possible_cells": 152,
+        "years_present": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 7
+      },
+      "definition": "Share of population covered by Jaminan Kesehatan Nasional under the BPS source definition including BPJS Mandiri and BPJS PBI",
+      "domain": "health",
+      "domain_label": "Kesehatan",
+      "frequency": "annual",
+      "id": "jkn_membership_coverage",
+      "methodology_versions": "jkn_membership_bpjs_mandiri_and_pbi",
+      "name": "JKN membership coverage",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "source_annual_period_unspecified_within_year",
+      "registry_unit": "percent",
+      "semantic_caution": "Administrative/coverage membership is not healthcare utilization access quality or effective service coverage.",
+      "source_artifact": "m28_bps_broader_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Share of working age population in labor force",
+      "domain": "labor_livelihoods",
+      "domain_label": "Pasar kerja",
+      "frequency": "annual_or_quarterly",
+      "id": "labor_force_participation",
+      "methodology_versions": "Sakernas August",
+      "name": "Labor force participation rate",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "august_reference",
+      "registry_unit": "percent",
+      "semantic_caution": "August Sakernas reference; source weighting-regime notes remain material.",
+      "source_artifact": "bps_canonical_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 1,
+        "first_year": 2024,
+        "last_year": 2024,
+        "missing_cells": 133,
+        "present_cells": 19,
+        "rate": 0.125,
+        "total_possible_cells": 152,
+        "years_present": [
+          2024
+        ],
+        "years_present_count": 1
+      },
+      "definition": "Count of officially recorded landslide events under source event definition",
+      "domain": "disaster_resilience",
+      "domain_label": "Bencana & ketahanan",
+      "frequency": "annual",
+      "id": "landslide_events",
+      "methodology_versions": "BNPB/DIBI 2024 event classification",
+      "name": "Recorded landslide events",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "count",
+      "semantic_caution": "BNPB observed recorded-event count for 2024 only; missing years are not zero-filled.",
+      "source_artifact": "bnpb_disaster_canonical",
+      "source_priority": [
+        "BNPB"
+      ],
+      "unit_label": "kejadian"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 6,
+        "first_year": 2020,
+        "last_year": 2025,
+        "missing_cells": 38,
+        "present_cells": 114,
+        "rate": 0.75,
+        "total_possible_cells": 152,
+        "years_present": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 6
+      },
+      "definition": "Expected years of life at birth under source life table assumptions",
+      "domain": "health",
+      "domain_label": "Kesehatan",
+      "frequency": "annual",
+      "id": "life_expectancy",
+      "methodology_versions": "LF-SP2020 based UHH",
+      "name": "Life expectancy at birth",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "years",
+      "semantic_caution": "LF-SP2020-based UHH only in the qualified modern series; do not chain to legacy methodology.",
+      "source_artifact": "bps_canonical_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "tahun"
+    },
+    {
+      "allowed_claim_types": [
+        "derived"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 6,
+        "first_year": 2018,
+        "last_year": 2023,
+        "missing_cells": 38,
+        "present_cells": 114,
+        "rate": 0.75,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "years_present_count": 6
+      },
+      "definition": "Manufacturing value added as share of current-price GRDP",
+      "domain": "production_trade",
+      "domain_label": "Produksi & struktur ekonomi",
+      "frequency": "annual",
+      "id": "manufacturing_share_grdp",
+      "methodology_versions": "GRDP series 2010 ADHB",
+      "name": "Manufacturing share of GRDP",
+      "present_claim_types": [
+        "derived"
+      ],
+      "price_bases": "current_prices_series_2010",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "percent",
+      "semantic_caution": "Derived from same-source ADHB sector and total GRDP; current-price structural share, not real growth.",
+      "source_artifact": "bps_expansion_canonical",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Average completed years of formal schooling for source age universe",
+      "domain": "education_knowledge",
+      "domain_label": "Pendidikan & pengetahuan",
+      "frequency": "annual",
+      "id": "mean_years_schooling",
+      "methodology_versions": "BPS HDI new method; Susenas March",
+      "name": "Mean years of schooling",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "march_reference",
+      "registry_unit": "years",
+      "semantic_caution": "Susenas/HDI annual indicator; retain March reference-period semantics.",
+      "source_artifact": "bps_canonical_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "tahun"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 7,
+        "first_year": 2018,
+        "last_year": 2024,
+        "missing_cells": 19,
+        "present_cells": 133,
+        "rate": 0.875,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "years_present_count": 7
+      },
+      "definition": "Share of population meeting the BPS Susenas morbidity definition for the source reference period",
+      "domain": "health",
+      "domain_label": "Kesehatan",
+      "frequency": "annual",
+      "id": "morbidity_rate",
+      "methodology_versions": "susenas_morbidity",
+      "name": "Morbidity rate",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "source_annual_period_unspecified_within_year",
+      "registry_unit": "percent",
+      "semantic_caution": "Do not reinterpret self-reported/source-defined morbidity as diagnosed disease prevalence; preserve Susenas definition and source notes.",
+      "source_artifact": "m28_bps_broader_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed",
+        "derived"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 1,
+        "first_year": 2020,
+        "last_year": 2020,
+        "missing_cells": 133,
+        "present_cells": 19,
+        "rate": 0.125,
+        "total_possible_cells": 152,
+        "years_present": [
+          2020
+        ],
+        "years_present_count": 1
+      },
+      "definition": "Resident population under the source definition",
+      "domain": "demography_migration",
+      "domain_label": "Demografi",
+      "frequency": "annual_or_census",
+      "id": "population_total",
+      "methodology_versions": "Sensus Penduduk 2020",
+      "name": "Population",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "september_reference",
+      "registry_unit": "persons",
+      "semantic_caution": "SP2020 census anchor is intentionally sparse; no interpolation or annual back/forward fill.",
+      "source_artifact": "bps_expansion_canonical",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "orang"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Population below official poverty line as share of population",
+      "domain": "income_productivity_poverty_inequality",
+      "domain_label": "Ekonomi & kesejahteraan",
+      "frequency": "semiannual_or_annual",
+      "id": "poverty_rate",
+      "methodology_versions": "Susenas March",
+      "name": "Poverty headcount rate",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "march_reference",
+      "registry_unit": "percent",
+      "semantic_caution": "Susenas March poverty measure; annual analysis-year indexing does not make it a year-end value.",
+      "source_artifact": "bps_canonical_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed",
+        "derived"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Growth of constant-price gross regional domestic product",
+      "domain": "income_productivity_poverty_inequality",
+      "domain_label": "Ekonomi & kesejahteraan",
+      "frequency": "annual_or_quarterly",
+      "id": "real_grdp_growth",
+      "methodology_versions": "ADHK 2010",
+      "name": "Real GRDP growth",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "constant_2010",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "percent",
+      "semantic_caution": "ADHK 2010 real growth; source release/revision status remains in lineage notes.",
+      "source_artifact": "bps_canonical_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed_source_published"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 7,
+        "first_year": 2018,
+        "last_year": 2024,
+        "missing_cells": 19,
+        "present_cells": 133,
+        "rate": 0.875,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "years_present_count": 7
+      },
+      "definition": "BPS-published per-capita GRDP at constant 2010 prices under the source Seri 2010 methodology",
+      "domain": "income_productivity_poverty_inequality",
+      "domain_label": "Ekonomi & kesejahteraan",
+      "frequency": "annual",
+      "id": "real_grdp_per_capita",
+      "methodology_versions": "bps_grdp_per_capita_seri2010_constant_price",
+      "name": "Real GRDP per capita (BPS Seri 2010)",
+      "present_claim_types": [
+        "observed_source_published"
+      ],
+      "price_bases": "constant_2010",
+      "reference_period_patterns": "source_annual_period_unspecified_within_year",
+      "registry_unit": "thousand_idr_constant_2010_per_capita",
+      "semantic_caution": "Keep BPS source-published per-capita measure distinct from a repository-derived GRDP/population calculation; 2023 and 2024 provisional-status notes remain in provenance.",
+      "source_artifact": "m28_bps_broader_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "ribu rupiah konstan 2010 per kapita"
+    },
+    {
+      "allowed_claim_types": [
+        "observed",
+        "derived"
+      ],
+      "comparability": "true",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Harvested rice output per unit harvested area",
+      "domain": "production_trade",
+      "domain_label": "Produksi & struktur ekonomi",
+      "frequency": "annual",
+      "id": "rice_yield",
+      "methodology_versions": "KSA",
+      "name": "Rice yield",
+      "present_claim_types": [
+        "derived"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "tonnes_per_hectare",
+      "semantic_caution": "KSA-based derived productivity; preserve KSA revision/caveat notes.",
+      "source_artifact": "bps_expansion_canonical",
+      "source_priority": [
+        "BPS",
+        "Ministry_of_Agriculture"
+      ],
+      "unit_label": "ton/ha"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 7,
+        "first_year": 2018,
+        "last_year": 2024,
+        "missing_cells": 19,
+        "present_cells": 133,
+        "rate": 0.875,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "years_present_count": 7
+      },
+      "definition": "Count of all disaster events recorded by BNPB for the stated geography and calendar year under the qualified source release",
+      "domain": "disaster_resilience",
+      "domain_label": "Bencana & ketahanan",
+      "frequency": "annual",
+      "id": "total_disaster_events",
+      "methodology_versions": "BNPB/DIBI total-event matrix 2010-2024 release",
+      "name": "Recorded total disaster events",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "calendar_year",
+      "registry_unit": "count",
+      "semantic_caution": "BNPB recorded all-disaster event counts; 2018-2024 is integrated into Panel v3. Exact historical-to-current polygon harmonization is not proven; reporting intensity, classification practice, and release revisions remain material. 2025 is missing, not zero.",
+      "source_artifact": "bnpb_total_events_canonical_m46",
+      "source_priority": [
+        "BNPB"
+      ],
+      "unit_label": "kejadian"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 7,
+        "first_year": 2018,
+        "last_year": 2024,
+        "missing_cells": 19,
+        "present_cells": 133,
+        "rate": 0.875,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "years_present_count": 7
+      },
+      "definition": "Employed persons meeting source underemployment criteria as share of relevant workers",
+      "domain": "labor_livelihoods",
+      "domain_label": "Pasar kerja",
+      "frequency": "annual_or_quarterly",
+      "id": "underemployment_rate",
+      "methodology_versions": "August Sakernas",
+      "name": "Underemployment rate",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "august_reference",
+      "registry_unit": "percent",
+      "semantic_caution": "August Sakernas; cross-regime comparability remains source-qualified rather than assumed.",
+      "source_artifact": "bps_expansion_canonical",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    },
+    {
+      "allowed_claim_types": [
+        "observed"
+      ],
+      "comparability": "blank_only",
+      "coverage": {
+        "exact_19_geography_year_count": 8,
+        "first_year": 2018,
+        "last_year": 2025,
+        "missing_cells": 0,
+        "present_cells": 152,
+        "rate": 1.0,
+        "total_possible_cells": 152,
+        "years_present": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "years_present_count": 8
+      },
+      "definition": "Unemployed persons as share of labor force",
+      "domain": "labor_livelihoods",
+      "domain_label": "Pasar kerja",
+      "frequency": "annual_or_quarterly",
+      "id": "unemployment_rate",
+      "methodology_versions": "Sakernas August",
+      "name": "Open unemployment rate",
+      "present_claim_types": [
+        "observed"
+      ],
+      "price_bases": "",
+      "reference_period_patterns": "august_reference",
+      "registry_unit": "percent",
+      "semantic_caution": "August Sakernas reference; source weighting-regime notes remain material.",
+      "source_artifact": "bps_canonical_panel",
+      "source_priority": [
+        "BPS"
+      ],
+      "unit_label": "%"
+    }
+  ],
+  "intro": "Katalog ini menunjukkan data yang tersedia di panel analitis saat ini. Coverage bukan skor kualitas daerah dan keberadaan indikator bukan izin untuk membuat klaim sebab-akibat.",
+  "language": "id",
+  "schema": "ranah-observatory/public-indicator-catalog/v1",
+  "sources": {
+    "coverage": {
+      "path": "data/analysis/engine/panel_v3/m46-indicator-coverage.csv",
+      "sha256": "78520bc4f3832ee0fb533aa2d9ae44db833ed590ff4184da9b195f71ca250fc7"
+    },
+    "metadata": {
+      "path": "data/analysis/engine/panel_v3/m46-indicator-metadata.csv",
+      "sha256": "3b1388e0081077f5aed7321105fb278889e38fbee7b22a2f8e1ca71aae0282e2"
+    }
+  },
+  "summary": {
+    "complete_2018_2025_indicator_count": 10,
+    "domain_count": 9,
+    "geography_count": 19,
+    "indicator_count": 23,
+    "panel_years": [
+      2018,
+      2025
+    ]
+  },
+  "title": "Katalog data Panel v3",
+  "version": "0.1.0"
+}
