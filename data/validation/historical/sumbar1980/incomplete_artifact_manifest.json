@@ -1,0 +1,31 @@
+{
+  "artifact_bytes": 5361943,
+  "artifact_role": "official digitized front matter / table-of-contents fragment only",
+  "artifact_sha256": "313384e4dd96b48b906eacd9422c5100ed55d5770bb6a6f5202b1c288ad7e606",
+  "catalog_number": "1102001.13",
+  "full_publication_artifact_acquired": false,
+  "historical_anchor_satisfied": false,
+  "issn_isbn": "0303-5328",
+  "next_gate": "locate a complete official BPS softcopy/archive containing the referenced table body before numeric extraction",
+  "numeric_extraction_started": false,
+  "numeric_promotion_authorized": false,
+  "official_direct_artifact_url": "https://web-api.bps.go.id/download.php?f=cy3hBAoIAHpWQKME%2FrndfWNTcEVRNEtDN3k5M3BXLzBsZUw4MHU5ZTBZbGF5ekF3cEdZcndiNGcxbzJ6RkJTRkRZR2Y0aUZuNFpvUGVadCtIK2F4YkhaaUVzaVZ6QzVtdFF6cUNhdEllL2hwYzA1OUZaNVhYV2tmTmZxcVhVRnhpR1RpQVhRbTBzSFpvWG1TN0NKUmxhbDdiNCtvZmdPNVNTc25KdlJQdENiZUdtWVE2dGlMYks4UUo1diswZFV5YWxnZmR2eWhhcFdRaHpzYlcyVmR5Vk40TXhKbExuazl5RjlESUlVMTUrTzJFVm5tY0JabFhRZWlocmozU2t0aUozMDBCZTJ1ZlFwWUUyY08%3D",
+  "official_page_url": "https://sumbar.bps.go.id/id/publication/1981/08/18/a41db922f366817818a2a68a/sumatera-barat-dalam-angka-tahun-1980.html",
+  "pdf_page_count": 22,
+  "publication_number": "13000.1981",
+  "release_date": "1981-08-18",
+  "retrieval_surface": "web-api.bps.go.id public direct download",
+  "retrieved_at_utc": "2026-08-26T13:30:17+00:00",
+  "schema": "ranah-observatory/sumbar1980-incomplete-official-artifact/v1",
+  "source": "BAPPEDA Tingkat I Sumatera Barat + Kantor Sensus dan Statistik Provinsi Sumatera Barat / BPS",
+  "title": "Sumatera Barat Dalam Angka Tahun 1980",
+  "visual_completeness_review": {
+    "cover_present": true,
+    "data_table_body_present_in_downloaded_pdf": false,
+    "last_pdf_page_is_table_of_contents": true,
+    "review_method": "manual visual review of exact official PDF screenshots",
+    "table_of_contents_present": true,
+    "toc_references_population_table_start_printed_page": 103,
+    "toc_references_regional_income_tables_through_printed_page": 788
+  }
+}
