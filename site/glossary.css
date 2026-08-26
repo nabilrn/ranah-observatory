@@ -1,0 +1,73 @@
+.glossary-section {
+  border-top: 1px solid var(--line);
+}
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.glossary-card {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.glossary-term-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.glossary-term-row h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: -0.025em;
+}
+
+.glossary-term-row code {
+  color: var(--muted);
+  font-size: 0.68rem;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.glossary-card > p {
+  margin: 0.75rem 0 0;
+  color: #403c36;
+  font-size: 0.82rem;
+}
+
+.glossary-card .glossary-not {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.glossary-not strong {
+  color: var(--ink);
+}
+
+.glossary-error {
+  color: var(--blocked);
+}
+
+@media (max-width: 720px) {
+  .glossary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .glossary-term-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .glossary-term-row code {
+    text-align: left;
+  }
+}

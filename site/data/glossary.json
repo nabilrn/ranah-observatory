@@ -1,0 +1,68 @@
+{
+  "schema": "ranah-observatory/public-glossary/v1",
+  "language": "id",
+  "title": "Istilah yang sering bikin data terdengar lebih rumit dari sebenarnya",
+  "intro": "Istilah teknis tetap dipertahankan di audit trail, tetapi produk publik menerjemahkannya supaya pembaca tahu apa yang benar-benar dimaksud — dan apa yang tidak dimaksud.",
+  "terms": [
+    {
+      "term": "Observasi",
+      "technical": "observed",
+      "plain": "Angka yang berasal dari pengukuran atau statistik sumber, bukan hasil tebakan model Ranah Observatory.",
+      "not_mean": "Tidak otomatis berarti angka itu sempurna, bebas revisi, atau bisa dibandingkan dengan semua periode lain."
+    },
+    {
+      "term": "Model estimate",
+      "technical": "model_estimate",
+      "plain": "Nilai yang dibentuk oleh sebuah produk/model dari data masukan. CHIRPS rainfall termasuk kategori ini.",
+      "not_mean": "Bukan pengukuran stasiun langsung dan tidak boleh diberi label seolah-olah berasal dari alat ukur di lokasi tersebut."
+    },
+    {
+      "term": "Benchmark",
+      "technical": "benchmark",
+      "plain": "Pembanding sederhana yang harus dikalahkan model sebelum hasil model boleh dianggap berguna untuk tujuan tertentu.",
+      "not_mean": "Model yang lebih rumit tidak otomatis lebih bagus. Kalau kalah dari benchmark, hasilnya ditahan atau diterbitkan sebagai hasil negatif."
+    },
+    {
+      "term": "Trajectory",
+      "technical": "trajectory",
+      "plain": "Arah perubahan sebuah indikator sepanjang periode yang dianalisis, bukan hanya selisih dua angka awal dan akhir.",
+      "not_mean": "Trajectory bukan ramalan masa depan dan tidak menjelaskan penyebab perubahan."
+    },
+    {
+      "term": "Robust / konsisten",
+      "technical": "robust trajectory",
+      "plain": "Arah model tetap bertahan ketika tahun-tahun tertentu dikeluarkan satu per satu sesuai uji stabilitas yang sudah ditentukan sebelumnya.",
+      "not_mean": "Bukan jaminan 100%, bukan confidence interval, dan bukan bukti sebab-akibat."
+    },
+    {
+      "term": "Association",
+      "technical": "statistical association",
+      "plain": "Dua hal bergerak bersama secara statistik dalam data yang dianalisis.",
+      "not_mean": "Belum berarti faktor A menyebabkan faktor B."
+    },
+    {
+      "term": "Causal",
+      "technical": "causal effect",
+      "plain": "Klaim bahwa perubahan pada satu faktor benar-benar menyebabkan perubahan pada faktor lain di bawah desain identifikasi yang memadai.",
+      "not_mean": "Korelasi, residual model, atau sensitivity model tidak cukup untuk menyebut sebuah efek sebagai causal."
+    },
+    {
+      "term": "Context only",
+      "technical": "context_only",
+      "plain": "Datanya cukup baik untuk memberi latar dan skala masalah, tetapi belum boleh dipakai untuk kesimpulan analitis yang lebih kuat.",
+      "not_mean": "Bukan data yang tidak berguna; batasnya hanya lebih sempit."
+    },
+    {
+      "term": "Held",
+      "technical": "held / not qualified",
+      "plain": "Data atau hasil sengaja tidak dipromosikan karena ada masalah coverage, comparability, duplikasi, atau gate lain yang belum terpenuhi.",
+      "not_mean": "Bukan berarti nilainya nol dan bukan izin untuk mengisi kekosongan dengan tebakan."
+    },
+    {
+      "term": "Empirical reference",
+      "technical": "empirical favorable reference",
+      "plain": "Pembanding yang dibentuk dari pola kinerja yang benar-benar terlihat di data, dengan syarat dan metode tertentu.",
+      "not_mean": "Bukan theoretical maximum dan bukan target kebijakan yang pasti bisa dicapai."
+    }
+  ]
+}
