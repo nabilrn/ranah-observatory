@@ -43,7 +43,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": -0.05152412740061304,
@@ -59,7 +59,7 @@
           "trajectory_classification": "persistent_decrease",
           "trajectory_label": "turun persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -130,7 +130,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.04858144444689439,
@@ -146,7 +146,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -217,7 +217,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.022681151191762405,
@@ -233,7 +233,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -304,7 +304,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.05598320397768615,
@@ -320,7 +320,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -391,7 +391,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.005285256763610002,
@@ -407,7 +407,7 @@
           "trajectory_classification": "trajectory_not_robust",
           "trajectory_label": "arah belum robust",
           "trajectory_robust": false,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -478,7 +478,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.04662250016536945,
@@ -494,7 +494,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -565,7 +565,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": -0.028673687517915013,
@@ -581,7 +581,7 @@
           "trajectory_classification": "trajectory_not_robust",
           "trajectory_label": "arah belum robust",
           "trajectory_robust": false,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -652,7 +652,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.02339669371375653,
@@ -668,7 +668,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -739,7 +739,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.0267867230392697,
@@ -755,7 +755,7 @@
           "trajectory_classification": "trajectory_not_robust",
           "trajectory_label": "arah belum robust",
           "trajectory_robust": false,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -826,7 +826,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.035267661455692094,
@@ -842,7 +842,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -913,7 +913,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": -5.1986638149620346e-05,
@@ -929,7 +929,7 @@
           "trajectory_classification": "trajectory_not_robust",
           "trajectory_label": "arah belum robust",
           "trajectory_robust": false,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1000,7 +1000,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": -0.05480858487861886,
@@ -1016,7 +1016,7 @@
           "trajectory_classification": "persistent_decrease",
           "trajectory_label": "turun persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1087,7 +1087,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.031279391660970615,
@@ -1103,7 +1103,7 @@
           "trajectory_classification": "trajectory_not_robust",
           "trajectory_label": "arah belum robust",
           "trajectory_robust": false,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1174,7 +1174,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.0481005060304721,
@@ -1190,7 +1190,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1261,7 +1261,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.23613569664630782,
@@ -1277,7 +1277,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1348,7 +1348,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": -0.08504905408683,
@@ -1364,7 +1364,7 @@
           "trajectory_classification": "persistent_decrease",
           "trajectory_label": "turun persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1435,7 +1435,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.04425299869909379,
@@ -1451,7 +1451,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1522,7 +1522,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.19502132714484155,
@@ -1538,7 +1538,7 @@
           "trajectory_classification": "persistent_increase",
           "trajectory_label": "naik persisten",
           "trajectory_robust": true,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1609,7 +1609,7 @@
           "unit": "%"
         },
         "rice_yield": {
-          "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+          "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
           "decimals": 3,
           "favorable_direction_semantics": "higher_is_generally_favorable_with_context",
           "hierarchical_slope_per_year": 0.04774859987211429,
@@ -1625,7 +1625,7 @@
           "trajectory_classification": "trajectory_not_robust",
           "trajectory_label": "arah belum robust",
           "trajectory_robust": false,
-          "unit": "unit hasil sumber"
+          "unit": "ton/ha"
         },
         "unemployment_rate": {
           "boundary": "Trajectory 2018–2025; tidak mengidentifikasi penyebab perubahan pengangguran.",
@@ -1702,7 +1702,7 @@
       "unit": "%"
     },
     {
-      "boundary": "Trajectory deskriptif 2018–2025; unit dipertahankan source-native dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
+      "boundary": "Trajectory deskriptif 2018–2025; unit canonical tonnes_per_hectare, produktivitas KSA-based, dan hasil tidak mengidentifikasi efek kebijakan atau iklim.",
       "classification_counts": {
         "persistent_decrease": 3,
         "persistent_increase": 10,
@@ -1714,7 +1714,7 @@
       "label": "Produktivitas padi",
       "short_label": "Produktivitas padi",
       "source_claim_id": "C22_RICE_YIELD_TRAJECTORY",
-      "unit": "unit hasil sumber"
+      "unit": "ton/ha"
     }
   ],
   "interpretation": {
