@@ -10,6 +10,7 @@ on:
       - "data/processed/bps/historical_population_1961_source_native.csv"
       - "data/validation/historical/sp1961/**"
       - "data/validation/historical/sumbar1970/**"
+      - "data/validation/historical/sumbar1980/**"
       - "data/registries/geographies.csv"
       - "data/registries/historical_*.csv"
       - "data/snapshots/bps/var-484-1971.json"
@@ -21,11 +22,13 @@ on:
       - "scripts/validate_bps_historical_anchor.py"
       - "scripts/validate_sp1961_official_anchor.py"
       - "scripts/validate_sumbar1970_official_artifact.py"
+      - "scripts/validate_sumbar1980_incomplete_artifact.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
       - "tests/test_sp1961_official_anchor.py"
       - "tests/test_sumbar1970_official_artifact.py"
+      - "tests/test_sumbar1980_incomplete_artifact.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -40,6 +43,7 @@ on:
       - "data/processed/bps/historical_population_1961_source_native.csv"
       - "data/validation/historical/sp1961/**"
       - "data/validation/historical/sumbar1970/**"
+      - "data/validation/historical/sumbar1980/**"
       - "data/registries/geographies.csv"
       - "data/registries/historical_*.csv"
       - "data/snapshots/bps/var-484-1971.json"
@@ -51,11 +55,13 @@ on:
       - "scripts/validate_bps_historical_anchor.py"
       - "scripts/validate_sp1961_official_anchor.py"
       - "scripts/validate_sumbar1970_official_artifact.py"
+      - "scripts/validate_sumbar1980_incomplete_artifact.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
       - "tests/test_sp1961_official_anchor.py"
       - "tests/test_sumbar1970_official_artifact.py"
+      - "tests/test_sumbar1980_incomplete_artifact.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -105,6 +111,9 @@ jobs:
 
       - name: Validate bounded Sumbar 1970 official artifact checkpoint
         run: python scripts/validate_sumbar1970_official_artifact.py
+
+      - name: Validate incomplete official Sumbar 1980 artifact finding
+        run: python scripts/validate_sumbar1980_incomplete_artifact.py
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
