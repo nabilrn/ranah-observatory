@@ -1,0 +1,58 @@
+name: Materialize Public District Unit Fix
+
+on:
+  push:
+    branches:
+      - release/publication
+    paths:
+      - scripts/build_public_district_explorer.py
+      - .github/workflows/materialize-public-district-unit-fix.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout publication workstream
+        uses: actions/checkout@v6
+        with:
+          ref: release/publication
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Materialize deterministic explorer data
+        run: python scripts/build_public_district_explorer.py
+
+      - name: Verify canonical rice-yield unit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path('site/data/districts.json').read_text(encoding='utf-8'))
+          assert len(payload['districts']) == 19
+          for district in payload['districts']:
+              rice = district['indicators']['rice_yield']
+              assert rice['unit'] == 'ton/ha'
+              assert 'tonnes_per_hectare' in rice['boundary']
+          summary = next(row for row in payload['indicator_summary'] if row['id'] == 'rice_yield')
+          assert summary['unit'] == 'ton/ha'
+          assert 'tonnes_per_hectare' in summary['boundary']
+          print({'districts_checked': 19, 'rice_yield_unit': 'ton/ha'})
+          PY
+
+      - name: Commit materialized data and retire writer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/districts.json
+          git rm .github/workflows/materialize-public-district-unit-fix.yml
+          git diff --cached --check
+          git commit -m "Materialize canonical rice-yield unit in public explorer"
+          git push origin HEAD:release/publication
