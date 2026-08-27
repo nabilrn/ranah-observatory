@@ -51,7 +51,9 @@ def validate() -> dict[str, object]:
     assert manifest["canonical_historical_geography_id"] == EXPECTED_HISTORICAL_GEOGRAPHY
     assert manifest["source_unit_label"] == "000 Rupiah"
     assert manifest["price_semantics"].startswith("nominal current rupiah")
-    assert "classified by source of financing" in manifest["measure_family"]
+    measure_family = manifest["measure_family"].casefold()
+    assert "construction value completed" in measure_family
+    assert "financing source" in measure_family
 
     for publication_key, expected_title, expected_number, expected_release in (
         ("primary_publication", "Statistik Konstruksi 2002", "05230.0307", "2003-09-15"),
