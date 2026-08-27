@@ -1,0 +1,133 @@
+{
+  "schema": "ranah-observatory/bps-construction-financing-composition-2000/v1",
+  "source_year": 2000,
+  "source_geography_name": "Sumatera Barat",
+  "source_geography_type": "province",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "geography_mapping_status": "qualified_source_era_province_aggregate",
+  "source_unit_label": "000 Rupiah",
+  "price_semantics": "nominal current rupiah as published; no inflation adjustment or constant-price conversion",
+  "measure_family": "construction value completed by construction establishments, decomposed by financing source",
+  "primary_publication": {
+    "title": "Statistik Konstruksi 2002",
+    "publication_page_url": "https://www.bps.go.id/id/publication/2003/09/15/64f95df846959ea74de12f2f/statistik-konstruksi-2002.html",
+    "deep_search_url": "https://searchengine.web.bps.go.id/deep?content=publication&id=64f95df846959ea74de12f2f&mfd=0000&page=1&q=Construction+Statistics+2002",
+    "publisher": "Badan Pusat Statistik",
+    "current_catalog_number": "6301003",
+    "source_native_catalog_number": "6513",
+    "publication_number": "05230.0307",
+    "release_date": "2003-09-15",
+    "table_note": "Angka Sementara/Preliminary Figures"
+  },
+  "crosscheck_publication": {
+    "title": "Statistik Konstruksi 2003",
+    "publication_page_url": "https://www.bps.go.id/id/publication/2004/07/19/edd503e858f3aa5b1ecd9525/statistik-konstruksi-2003.html",
+    "deep_search_url": "https://searchengine.web.bps.go.id/deep?content=publication&id=edd503e858f3aa5b1ecd9525&mfd=0000&page=1&q=Statistik+Konstruksi+2003",
+    "publisher": "Badan Pusat Statistik",
+    "current_catalog_number": "6301003",
+    "source_native_catalog_number": "6513",
+    "publication_number": "05230.0407",
+    "release_date": "2004-07-19",
+    "table_note": "Angka Sementara/Preliminary Figures",
+    "year_header_marker_R_interpretation": "not asserted here; the source visibly carries the R marker on historical year headers but this checkpoint does not infer its meaning without an explicit source definition"
+  },
+  "components_thousand_rupiah": {
+    "total_construction_completed": {
+      "table_number": "14",
+      "printed_page": 46,
+      "source_label_id": "Nilai konstruksi yang diselesaikan menurut propinsi",
+      "source_label_en": "Value of construction completed by province",
+      "primary_2000": 345371439,
+      "crosscheck_2000": 345371439,
+      "share_of_total_percent": 100.0
+    },
+    "financed_by_central_government_budget": {
+      "table_number": "15.1",
+      "printed_page": 62,
+      "source_label_id": "Nilai konstruksi yang diselesaikan dari sumber dana APBN",
+      "source_label_en": "Value of completed construction financed by central government budget",
+      "primary_2000": 207997331,
+      "crosscheck_2000": 207997331,
+      "share_of_total_percent": 60.224242
+    },
+    "financed_by_local_government_budget": {
+      "table_number": "15.2",
+      "printed_page": 63,
+      "source_label_id": "Nilai konstruksi yang diselesaikan dari sumber dana APBD",
+      "source_label_en": "Value of completed construction financed by local government budget",
+      "primary_2000": 39956642,
+      "crosscheck_2000": 39956642,
+      "share_of_total_percent": 11.56918
+    },
+    "financed_by_foreign_loan": {
+      "table_number": "15.3",
+      "printed_page": 64,
+      "source_label_id": "Nilai konstruksi yang diselesaikan dari dana luar negeri",
+      "source_label_en": "Value of completed construction financed by foreign loan",
+      "primary_2000": 76727103,
+      "crosscheck_2000": 76727103,
+      "share_of_total_percent": 22.215822
+    },
+    "financed_by_state_enterprises": {
+      "table_number": "15.4",
+      "printed_page": 65,
+      "source_label_id": "Nilai konstruksi yang diselesaikan dari sumber dana BUMN",
+      "source_label_en": "Value of completed construction financed by state enterprises",
+      "primary_2000": 1229691,
+      "crosscheck_2000": 1229691,
+      "share_of_total_percent": 0.356049
+    },
+    "financed_by_other_sources": {
+      "table_number": "15.5",
+      "printed_page": 66,
+      "source_label_id": "Nilai konstruksi yang diselesaikan dari sumber dana lainnya",
+      "source_label_en": "Value of completed construction financed by other sources of fund",
+      "primary_2000": 19460672,
+      "crosscheck_2000": 19460672,
+      "share_of_total_percent": 5.634708
+    }
+  },
+  "arithmetic_reconciliation": {
+    "financing_component_sum_thousand_rupiah": 345371439,
+    "reported_total_construction_thousand_rupiah": 345371439,
+    "difference_thousand_rupiah": 0,
+    "exact_identity_holds": true,
+    "government_budget_sources_apbn_plus_apbd_thousand_rupiah": 247953973,
+    "government_budget_sources_share_percent": 71.793422,
+    "share_sum_percent_rounded_6dp": 100.000001,
+    "share_sum_rounding_note": "component shares are rounded independently to six decimal places; exact values reconcile in rupiah-source units"
+  },
+  "cross_publication_reconciliation": {
+    "all_2000_component_values_exact_match": true,
+    "all_2000_total_values_exact_match": true,
+    "component_count": 5,
+    "primary_and_crosscheck_use_same_table_family": true,
+    "interpretation": "the 2000 financing composition is repeated exactly in the following annual BPS construction-statistics publication"
+  },
+  "semantic_boundary": {
+    "source_native_composition_authorized": true,
+    "canonical_fiscal_account_mapping_authorized": false,
+    "djpk_capital_expenditure_bridge_authorized": false,
+    "panel_v3_integration_authorized": false,
+    "deflation_authorized": false,
+    "interpolation_authorized": false,
+    "causal_claim_authorized": false,
+    "not_equivalent_to": [
+      "government budget composition",
+      "APBD expenditure composition",
+      "DJPK fiscal realization accounts",
+      "public investment composition",
+      "capital formation by institutional sector"
+    ]
+  },
+  "source_boundary": {
+    "evidence_surface": "official BPS publication metadata plus official BPS AllStats/Deep Search full-text index",
+    "raw_pdf_committed": false,
+    "pdf_sha256_available_in_repository": false,
+    "allstats_text_treated_as_numeric_evidence": true,
+    "allstats_text_treated_as_artifact_sha_equivalent": false,
+    "sumbar2000_yearbook_public_finance_zero_hit_resolved": false
+  },
+  "reconstruction_state": "observed_source_published_crosschecked_preliminary_with_exact_financing_reconciliation",
+  "next_gate": "extend only to adjacent years or other construction-financing concepts when table identity and cross-publication revision behavior are separately qualified; do not bridge to modern fiscal accounts by label similarity"
+}
