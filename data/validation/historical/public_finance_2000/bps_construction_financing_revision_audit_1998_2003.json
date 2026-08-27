@@ -1,0 +1,130 @@
+{
+  "schema": "ranah-observatory/bps-construction-financing-revision-audit-1998-2003/v1",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "source_unit_label": "000 Rupiah",
+  "price_semantics": "nominal current rupiah as published",
+  "measure_family": "construction value completed by construction establishments, total and by financing source",
+  "releases": {
+    "construction_statistics_2002": {
+      "publication_title": "Statistik Konstruksi 2002",
+      "publication_number": "05230.0307",
+      "release_date": "2003-09-15",
+      "coverage_years": [1998, 1999, 2000, 2001, 2002],
+      "historical_header_marker": null,
+      "table_note": "Angka Sementara/Preliminary Figures"
+    },
+    "construction_statistics_2003": {
+      "publication_title": "Statistik Konstruksi 2003",
+      "publication_number": "05230.0407",
+      "release_date": "2004-07-19",
+      "coverage_years": [1999, 2000, 2001, 2002, 2003],
+      "historical_header_marker": "R on 1999, 2000, and 2001 headers",
+      "historical_header_marker_interpretation": "not asserted without an explicit source definition",
+      "table_note": "Angka Sementara/Preliminary Figures"
+    }
+  },
+  "values_thousand_rupiah": {
+    "total_construction_completed": {
+      "table_number": "14",
+      "construction_statistics_2002": {"1998": 298681997, "1999": 341872541, "2000": 345371439, "2001": 397936972, "2002": 458502979},
+      "construction_statistics_2003": {"1999": 341872541, "2000": 345371439, "2001": 397936972, "2002": 458502968, "2003": 469007986}
+    },
+    "financed_by_central_government_budget": {
+      "table_number": "15.1",
+      "construction_statistics_2002": {"1998": 101904361, "1999": 137521571, "2000": 207997331, "2001": 253393100, "2002": 291959530},
+      "construction_statistics_2003": {"1999": 137521568, "2000": 207997331, "2001": 253393100, "2002": 291959524, "2003": 298648772}
+    },
+    "financed_by_local_government_budget": {
+      "table_number": "15.2",
+      "construction_statistics_2002": {"1998": 47227148, "1999": 26004489, "2000": 39956642, "2001": 46038043, "2002": 53045033},
+      "construction_statistics_2003": {"1999": 26004489, "2000": 39956642, "2001": 46038043, "2002": 53045032, "2003": 54260376}
+    },
+    "financed_by_foreign_loan": {
+      "table_number": "15.3",
+      "construction_statistics_2002": {"1998": 68376381, "1999": 162367854, "2000": 76727103, "2001": 88404968, "2002": 101860204},
+      "construction_statistics_2003": {"1999": 162367854, "2000": 76727103, "2001": 88404968, "2002": 101860202, "2003": 104193978}
+    },
+    "financed_by_state_enterprises": {
+      "table_number": "15.4",
+      "construction_statistics_2002": {"1998": 11729132, "1999": 6048377, "2000": 1229691, "2001": 3912500, "2002": 4507983},
+      "construction_statistics_2003": {"1999": 6048377, "2000": 1229691, "2001": 3912500, "2002": 4507982, "2003": 4611267}
+    },
+    "financed_by_other_sources": {
+      "table_number": "15.5",
+      "construction_statistics_2002": {"1998": 69444975, "1999": 9930253, "2000": 19460672, "2001": 6188360, "2002": 7130228},
+      "construction_statistics_2003": {"1999": 9930253, "2000": 19460672, "2001": 6188360, "2002": 7130228, "2003": 7293593}
+    }
+  },
+  "release_revision_deltas_crosscheck_minus_primary_thousand_rupiah": {
+    "1999": {
+      "total_construction_completed": 0,
+      "financed_by_central_government_budget": -3,
+      "financed_by_local_government_budget": 0,
+      "financed_by_foreign_loan": 0,
+      "financed_by_state_enterprises": 0,
+      "financed_by_other_sources": 0
+    },
+    "2000": {
+      "total_construction_completed": 0,
+      "financed_by_central_government_budget": 0,
+      "financed_by_local_government_budget": 0,
+      "financed_by_foreign_loan": 0,
+      "financed_by_state_enterprises": 0,
+      "financed_by_other_sources": 0
+    },
+    "2001": {
+      "total_construction_completed": 0,
+      "financed_by_central_government_budget": 0,
+      "financed_by_local_government_budget": 0,
+      "financed_by_foreign_loan": 0,
+      "financed_by_state_enterprises": 0,
+      "financed_by_other_sources": 0
+    },
+    "2002": {
+      "total_construction_completed": -11,
+      "financed_by_central_government_budget": -6,
+      "financed_by_local_government_budget": -1,
+      "financed_by_foreign_loan": -2,
+      "financed_by_state_enterprises": -1,
+      "financed_by_other_sources": 0
+    }
+  },
+  "within_release_financing_reconciliation": {
+    "construction_statistics_2002": {
+      "1998": {"component_sum_minus_reported_total_thousand_rupiah": 0, "exact": true},
+      "1999": {"component_sum_minus_reported_total_thousand_rupiah": 3, "exact": false},
+      "2000": {"component_sum_minus_reported_total_thousand_rupiah": 0, "exact": true},
+      "2001": {"component_sum_minus_reported_total_thousand_rupiah": -1, "exact": false},
+      "2002": {"component_sum_minus_reported_total_thousand_rupiah": -1, "exact": false}
+    },
+    "construction_statistics_2003": {
+      "1999": {"component_sum_minus_reported_total_thousand_rupiah": 0, "exact": true},
+      "2000": {"component_sum_minus_reported_total_thousand_rupiah": 0, "exact": true},
+      "2001": {"component_sum_minus_reported_total_thousand_rupiah": -1, "exact": false},
+      "2002": {"component_sum_minus_reported_total_thousand_rupiah": 0, "exact": true},
+      "2003": {"component_sum_minus_reported_total_thousand_rupiah": 0, "exact": true}
+    }
+  },
+  "revision_findings": {
+    "year_2000_all_six_measures_stable": true,
+    "year_1999_later_release_resolves_component_total_residual": true,
+    "year_2002_later_release_resolves_component_total_residual": true,
+    "year_2001_one_thousand_rupiah_residual_persists": true,
+    "silent_latest_value_overwrite_authorized": false,
+    "preferred_storage_rule": "retain release-specific values and revision deltas; do not overwrite prior evidence in place"
+  },
+  "semantic_boundary": {
+    "source_native_longitudinal_review_authorized": true,
+    "canonical_fiscal_account_mapping_authorized": false,
+    "panel_v3_integration_authorized": false,
+    "deflation_authorized": false,
+    "interpolation_authorized": false,
+    "causal_claim_authorized": false
+  },
+  "source_boundary": {
+    "evidence_surface": "official BPS publication metadata plus official BPS AllStats/Deep Search full-text index",
+    "pdf_sha256_available_in_repository": false,
+    "allstats_text_treated_as_artifact_sha_equivalent": false
+  }
+}
