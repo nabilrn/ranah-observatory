@@ -1,0 +1,51 @@
+{
+  "schema": "ranah-observatory/sumbar2000-labor-semantic-gate/v1",
+  "artifact_sha256": "689318d0760f99ff82a54866295b580a0159ed0e39051b4342b8b7e9d13648cf",
+  "official_page_url": "https://sumbar.bps.go.id/id/publication/2001/09/05/e7d159765642b6b991651b12/sumatera-barat-dalam-angka-tahun-2000.html",
+  "source_year": 2000,
+  "candidate_indicators": [
+    "labor_force_participation",
+    "unemployment_rate"
+  ],
+  "historical_source_evidence": {
+    "structural_index_path": "data/validation/historical/sumbar2000/structural_index.json",
+    "related_labor_universe_signals": [
+      {
+        "pdf_page": 92,
+        "evidence": "The labor/agriculture chapter narrative describes employment shares for population age 10 years and over.",
+        "role": "semantic caution only; this does not establish the exact universe of a TPAK or TPT table"
+      },
+      {
+        "pdf_page": 103,
+        "evidence": "A 1999-2000 work-by-main-industry table is explicitly framed for population age 10 years and over.",
+        "role": "semantic caution only; this does not establish the exact universe of a TPAK or TPT table"
+      }
+    ],
+    "exact_tpak_table_verified": false,
+    "exact_tpt_table_verified": false,
+    "exact_tpak_value_verified": false,
+    "exact_tpt_value_verified": false,
+    "exact_reference_period_verified": false,
+    "exact_population_universe_verified": false
+  },
+  "modern_panel_identity": {
+    "panel_metadata_path": "data/analysis/engine/panel_v3/m46-indicator-metadata.csv",
+    "qualification_doc_path": "docs/BPS_NORMALIZED_PANEL.md",
+    "labor_force_participation_source_family": "BPS August Sakernas",
+    "unemployment_rate_source_family": "BPS August Sakernas",
+    "cross_regime_weighting_comparability_resolved": false
+  },
+  "decision": {
+    "source_native_numeric_extraction_authorized": false,
+    "canonical_promotion_authorized": false,
+    "panel_v3_backfill_authorized": false,
+    "reason": "The complete 2000 official artifact is qualified, but the exact TPAK/TPT table identity, value, unit, reference period, and population universe have not yet been qualified. Related labor evidence in the same artifact uses an age-10-plus universe, so name similarity is insufficient to assert longitudinal equivalence with the modern August-Sakernas Panel v3 families."
+  },
+  "next_gate": [
+    "Locate and verify the exact 2000 TPAK and/or TPT table in the SHA-bound official artifact.",
+    "Record the table number, printed and PDF page, value, unit, reference period, source line, population universe, and any methodological footnote.",
+    "Compare the historical measurement contract with the qualified modern August-Sakernas contract before any canonical bridge is considered.",
+    "If equivalence cannot be demonstrated, retain the historical measure as a separate source-native series and do not backfill Panel v3.",
+    "Do not interpolate the 2000-to-modern gap."
+  ]
+}
