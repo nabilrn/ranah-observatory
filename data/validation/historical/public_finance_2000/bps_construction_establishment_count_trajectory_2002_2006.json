@@ -1,0 +1,112 @@
+{
+  "schema": "ranah-observatory/bps-construction-establishment-count-trajectory-2002-2006/v1",
+  "research_question": "Can the official BPS annual construction-establishment series establish a published Sumatera Barat establishment-count trajectory across 2002-2006, bind the 2003 total to the previously recovered qualification table, and add evidence about the 2005 post-directory-update period without mislabeling published establishment totals as sampling-frame counts?",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "depends_on": {
+    "pre_post_qualification_boundary": "bps_construction_qualification_pre_post_update_acquisition_boundary.json",
+    "revision_persistence_lifecycle": "bps_construction_revision_persistence_release_lifecycle_2002_2006.json",
+    "mechanism_candidate": "bps_construction_revision_mechanism_candidate.json"
+  },
+  "official_source": {
+    "title": "Statistik Tahunan Perusahaan Konstruksi 2002-2006",
+    "catalog_number": "6301003",
+    "publication_number": "05340.0704",
+    "issn_isbn": "1978-9149",
+    "official_bps_metadata_release_date": "2007-05-15",
+    "pdf_preface_date_text": "Jakarta, Nopember 2007",
+    "metadata_preface_date_conflict_preserved": true,
+    "official_page_url": "https://www.bps.go.id/id/publication/2007/05/15/ee11be4bf5be942ff9dee9a8/statistik-tahunan-perusahaan-konstruksi-2002-2006.html",
+    "official_deep_search_url": "https://searchengine.web.bps.go.id/deep?content=publication&id=ee11be4bf5be942ff9dee9a8&mfd=0000&page=1&q=-",
+    "series_basis": "BPS states that the 2002-2006 construction statistical series resulted from Annual Construction Establishment Surveys.",
+    "coverage_statement": "The Annual Construction Survey covers national construction establishments operating on construction projects in Indonesia.",
+    "table_number": "4",
+    "table_title_indonesian": "JUMLAH PERUSAHAAN KONSTRUKSI MENURUT PROPINSI",
+    "table_title_english": "NUMBER OF CONSTRUCTION ESTABLISHMENT BY PROVINCE",
+    "measure": "published number of construction establishments by province",
+    "unit": "establishments"
+  },
+  "sumatera_barat": {
+    "2002": {"count": 2779, "status": "published_without_provisional_marker"},
+    "2003": {"count": 2882, "status": "published_without_provisional_marker"},
+    "2004": {"count": 2837, "status": "published_without_provisional_marker"},
+    "2005": {"count": 2435, "status": "published_without_provisional_marker"},
+    "2006": {"count": 2664, "status": "asterisk_marked_in_table"}
+  },
+  "trajectory": {
+    "2002_to_2003": {"delta_count": 103, "delta_percent": 3.706369},
+    "2003_to_2004": {"delta_count": -45, "delta_percent": -1.561416},
+    "2004_to_2005": {"delta_count": -402, "delta_percent": -14.169898},
+    "2003_to_2005": {"delta_count": -447, "delta_percent": -15.510062},
+    "2005_to_2006": {"delta_count": 229, "delta_percent": 9.404517}
+  },
+  "cross_source_binding": {
+    "qualification_source_title": "Statistik Konstruksi 2004",
+    "qualification_table_number": "4.3",
+    "qualification_table_year": 2003,
+    "qualification_categories": {
+      "B": 0,
+      "M1": 16,
+      "M2": 134,
+      "K1": 334,
+      "K2": 1084,
+      "K3": 1314
+    },
+    "qualification_category_sum": 2882,
+    "annual_series_2003_establishment_count": 2882,
+    "exact_numeric_match": true,
+    "bounded_interpretation": "The exact 2003 match binds the published qualification composition to the published annual establishment total for the same province-year. It does not by itself prove that either published total is the exact sampling-frame size used for weighting or historical revision."
+  },
+  "post_update_period_evidence": {
+    "published_2005_establishment_count_confirmed": true,
+    "published_2005_establishment_count": 2435,
+    "change_from_2003_count": -447,
+    "change_from_2003_percent": -15.510062,
+    "2005_directory_update_known_from_separate_official_evidence": true,
+    "table_labels_2005_count_as_sampling_frame_size": false,
+    "old_vs_new_sampling_frame_counts_recovered": false,
+    "qualification_composition_2005_recovered": false,
+    "frame_change_quantification_authorized": false
+  },
+  "inference": {
+    "published_establishment_count_trajectory_2002_2006_confirmed": true,
+    "qualification_2003_total_and_annual_series_2003_total_match_exactly": true,
+    "published_post_update_period_2005_total_confirmed": true,
+    "2003_to_2005_published_establishment_count_decline_confirmed": true,
+    "published_establishment_total_is_equivalent_to_sampling_frame_size": false,
+    "2003_to_2005_decline_proves_directory_refresh_effect": false,
+    "2003_to_2005_decline_proves_historical_value_revision_mechanism": false,
+    "exact_2003_match_authorizes_qualification_composition_bridge_to_2005": false,
+    "causal_revision_attribution_authorized": false
+  },
+  "classification": "published_establishment_trajectory_confirmed_2003_cross_source_total_match_post_update_2005_total_recovered_frame_equivalence_unproven",
+  "next_gate": {
+    "title": "Recover period-specific 2005 qualification composition or explicit frame semantics",
+    "trigger": "Obtain an official BPS source that exposes Sumatera Barat 2005 qualification counts or explicitly identifies comparable old/new sampling-frame counts and definitions.",
+    "preferred_sources": [
+      "Profil Perusahaan Konstruksi di Luar Pulau Jawa 2005 (05230.0610)",
+      "another contemporaneous official BPS publication reproducing Sumatera Barat 2005 qualification counts",
+      "a contemporaneous BPS methodology or revision note that explicitly links directory/frame changes to weighting or re-estimation"
+    ]
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "published_establishment_count_as_sampling_frame_authorized": false,
+    "pre_post_qualification_comparison_authorized": false,
+    "frame_change_quantification_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  },
+  "source_boundary": {
+    "official_bps_metadata_page_verified": true,
+    "official_bps_deep_search_text_verified": true,
+    "official_bps_table_4_values_verified": true,
+    "raw_pdf_sha256_available_in_repository": false,
+    "note": "This checkpoint freezes published establishment totals and cross-source numeric linkage only. It deliberately does not relabel the totals as sampling-frame counts."
+  }
+}
