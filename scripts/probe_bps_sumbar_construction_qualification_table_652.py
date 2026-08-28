@@ -50,22 +50,6 @@ def variable_relevant(row: Mapping[str, Any]) -> bool:
     )
 
 
-def collect_year_mentions(node: Any, path: str = "$") -> list[dict[str, Any]]:
-    hits: list[dict[str, Any]] = []
-    if isinstance(node, Mapping):
-        for key, value in node.items():
-            hits.extend(collect_year_mentions(value, f"{path}.{key}"))
-        return hits
-    if isinstance(node, list):
-        for idx, value in enumerate(node):
-            hits.extend(collect_year_mentions(value, f"{path}[{idx}]"))
-        return hits
-    text = str(node)
-    if any(year in text for year in ("2003", "2004", "2005", "2006")):
-        hits.append({"path": path, "value": node})
-    return hits
-
-
 def candidate_id(row: Mapping[str, Any]) -> int | None:
     for key in ("var_id", "id", "table_id", "sub_id", "subject_id"):
         value = row.get(key)
@@ -77,8 +61,25 @@ def candidate_id(row: Mapping[str, Any]) -> int | None:
     return None
 
 
-def decode_public_identity() -> str:
-    return base64.b64decode(TARGET_ENCODED_ID).decode("utf-8")
+def exact_period_labels(
+    csa: Mapping[str, Any] | None,
+    legacy_periods: Mapping[str, list[Mapping[str, Any]]],
+) -> list[str]:
+    """Return only exact source-native period labels; never substring-scan metadata."""
+    labels: set[str] = set()
+    if isinstance(csa, Mapping):
+        for value in csa.get("available_years", []) or []:
+            labels.add(str(value).strip())
+        for row in csa.get("tahun", []) or []:
+            if isinstance(row, Mapping) and row.get("label") is not None:
+                labels.add(str(row["label"]).strip())
+    for rows in legacy_periods.values():
+        for row in rows:
+            for key in ("label", "tahun", "year", "th"):
+                value = row.get(key)
+                if value is not None:
+                    labels.add(str(value).strip())
+    return sorted(label for label in labels if label)
 
 
 def main() -> int:
@@ -88,17 +89,16 @@ def main() -> int:
 
     OUTDIR.mkdir(parents=True, exist_ok=True)
     client = BPSClient(key, timeout=60, retries=2, retry_backoff_seconds=1.0)
-
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/bps-sumbar-construction-qualification-table-652-probe/v3",
+        "schema": "ranah-observatory/bps-sumbar-construction-qualification-table-652-probe/v4",
         "purpose": (
             "Resolve the official BPS CSA table object backing public Sumatera Barat statistics-table "
-            "652#2 and determine which BPS source family/transport it exposes."
+            "652#2 and determine which source-native periods it exposes."
         ),
         "domain": DOMAIN,
         "public_table": {
             "encoded_id": TARGET_ENCODED_ID,
-            "decoded_identity": decode_public_identity(),
+            "decoded_identity": base64.b64decode(TARGET_ENCODED_ID).decode("utf-8"),
             "expected_decoded_identity": f"{TARGET_TABLE_ID}#{TARGET_SOURCE_NUMBER}",
             "title": TARGET_TITLE,
             "url": PUBLIC_URL,
@@ -114,59 +114,37 @@ def main() -> int:
         "errors": [],
     }
 
-    # Correct current-site contract: statistics-table pages use CSA `tablestatistic`
-    # identities. The encoded ID is taken verbatim from the verified public page URL.
     try:
         report["csa_tablestatistic_view"] = client._request(
             "api/view",
-            {
-                "model": "tablestatistic",
-                "domain": DOMAIN,
-                "lang": "ind",
-                "id": TARGET_ENCODED_ID,
-            },
+            {"model": "tablestatistic", "domain": DOMAIN, "lang": "ind", "id": TARGET_ENCODED_ID},
         )
     except BPSApiError as exc:
         report["errors"].append({"stage": "csa-tablestatistic-view", "error": str(exc)})
 
-    # Preserve the disproven legacy hypothesis as an explicit negative control.
     try:
         report["legacy_statictable_652_view"] = client._request(
             "api/view/",
-            {
-                "model": "statictable",
-                "domain": DOMAIN,
-                "lang": "ind",
-                "id": TARGET_TABLE_ID,
-            },
+            {"model": "statictable", "domain": DOMAIN, "lang": "ind", "id": TARGET_TABLE_ID},
         )
     except BPSApiError as exc:
         report["errors"].append({"stage": "legacy-statictable-view:652", "error": str(exc)})
 
-    for keyword in (
-        "kualifikasi konstruksi",
-        "usaha perusahaan konstruksi",
-        "kode kualifikasi usaha",
-    ):
+    for keyword in ("kualifikasi konstruksi", "usaha perusahaan konstruksi", "kode kualifikasi usaha"):
         try:
-            rows = client.list_static_tables(
-                domain=DOMAIN, lang="ind", keyword=keyword, max_pages=3
-            )
+            rows = client.list_static_tables(domain=DOMAIN, lang="ind", keyword=keyword, max_pages=3)
         except BPSApiError as exc:
             report["errors"].append({"stage": f"legacy-statictable-list:{keyword}", "error": str(exc)})
             continue
         for row in rows:
-            if static_relevant(row):
-                item = dict(row)
-                if item not in report["legacy_static_table_keyword_candidates"]:
-                    report["legacy_static_table_keyword_candidates"].append(item)
+            if static_relevant(row) and dict(row) not in report["legacy_static_table_keyword_candidates"]:
+                report["legacy_static_table_keyword_candidates"].append(dict(row))
 
     try:
         subjects = client.list_subjects(domain=DOMAIN, lang="ind", max_pages=20)
     except BPSApiError as exc:
         subjects = []
         report["errors"].append({"stage": "legacy-subjects", "error": str(exc)})
-
     for row in subjects:
         if "konstruksi" in row_text(row):
             report["legacy_construction_subject_candidates"].append(dict(row))
@@ -188,41 +166,27 @@ def main() -> int:
                 if vid is not None:
                     seen_vars[vid] = row
 
-    report["legacy_construction_variable_candidates"] = [
-        dict(seen_vars[vid]) for vid in sorted(seen_vars)
-    ]
+    report["legacy_construction_variable_candidates"] = [dict(seen_vars[vid]) for vid in sorted(seen_vars)]
     for vid in sorted(seen_vars):
         try:
-            periods = client.list_periods(domain=DOMAIN, lang="ind", var=vid, max_pages=20)
-            report["legacy_candidate_periods"][str(vid)] = [dict(row) for row in periods]
+            rows = client.list_periods(domain=DOMAIN, lang="ind", var=vid, max_pages=20)
+            report["legacy_candidate_periods"][str(vid)] = [dict(row) for row in rows]
         except BPSApiError as exc:
             report["errors"].append({"stage": f"legacy-periods:var:{vid}", "error": str(exc)})
 
-    report["year_mentions"] = collect_year_mentions(
-        {
-            "csa_tablestatistic_view": report["csa_tablestatistic_view"],
-            "legacy_statictable_652_view": report["legacy_statictable_652_view"],
-            "legacy_static_table_keyword_candidates": report["legacy_static_table_keyword_candidates"],
-            "legacy_construction_variable_candidates": report["legacy_construction_variable_candidates"],
-            "legacy_candidate_periods": report["legacy_candidate_periods"],
-        }
-    )
-    report["source_native_2005_mention_present"] = any(
-        "2005" in str(hit["value"]) for hit in report["year_mentions"]
-    )
-
     csa = report["csa_tablestatistic_view"]
+    csa_map = csa if isinstance(csa, Mapping) else None
+    period_labels = exact_period_labels(csa_map, report["legacy_candidate_periods"])
+    report["source_native_period_labels"] = period_labels
+    report["source_native_2005_period_present"] = "2005" in period_labels
+
     csa_available = isinstance(csa, Mapping) and str(csa.get("data-availability", "")) == "available"
     csa_years = csa.get("available_years", []) if isinstance(csa, Mapping) else []
     csa_variables = csa.get("var", []) if isinstance(csa, Mapping) else []
 
     path = OUTDIR / "bps-sumbar-construction-qualification-table-652-probe.json"
-    path.write_text(
-        json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
-
-    summary = {
+    path.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(json.dumps({
         "decoded_identity": report["public_table"]["decoded_identity"],
         "csa_tablestatistic_available": csa_available,
         "csa_available_years": csa_years,
@@ -231,11 +195,11 @@ def main() -> int:
             isinstance(report["legacy_statictable_652_view"], Mapping)
             and str(report["legacy_statictable_652_view"].get("data-availability", "")) == "available"
         ),
-        "source_native_2005_mention_present": report["source_native_2005_mention_present"],
+        "source_native_period_labels": period_labels,
+        "source_native_2005_period_present": report["source_native_2005_period_present"],
         "error_count": len(report["errors"]),
         "output": path.as_posix(),
-    }
-    print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
+    }, ensure_ascii=False, indent=2, sort_keys=True))
     return 0
 
 
