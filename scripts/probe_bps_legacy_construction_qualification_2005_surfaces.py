@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import base64
 import json
 import os
 from pathlib import Path
@@ -26,6 +27,7 @@ TARGET_TURVARS = {
     457: "Jumlah",
 }
 TARGET_SUMBAR_VERVAR = 1300
+TARGET_CSA_ID = "MjE2IzI="
 
 
 def folded(value: Any) -> str:
@@ -75,11 +77,11 @@ def main() -> int:
     OUTDIR.mkdir(parents=True, exist_ok=True)
     client = BPSClient(key, timeout=60, retries=2, retry_backoff_seconds=1.0)
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/bps-legacy-construction-qualification-2005-surfaces/v3",
+        "schema": "ranah-observatory/bps-legacy-construction-qualification-2005-surfaces/v4",
         "purpose": (
-            "Search official central and Sumatera Barat BPS legacy WebAPI surfaces for construction "
-            "qualification data in 2005, then recover central variable 216 small/medium/large strata "
-            "for Sumatera Barat from source Direktori Perusahaan Konstruksi."
+            "Search official BPS legacy WebAPI surfaces for 2005 construction qualification data, "
+            "inspect variable 216 sourced from Direktori Perusahaan Konstruksi, and resolve its "
+            "public CSA statistics-table object 216#2."
         ),
         "api_key_persisted": False,
         "domains": {},
@@ -88,6 +90,9 @@ def main() -> int:
             "var_id": TARGET_VAR,
             "year": TARGET_YEAR,
             "th_id": TARGET_TH_ID,
+            "csa_encoded_id": TARGET_CSA_ID,
+            "csa_decoded_id": base64.b64decode(TARGET_CSA_ID).decode("utf-8"),
+            "csa_tablestatistic_view": None,
             "derived_variables": [],
             "derived_periods": [],
             "dynamic_by_turvar": {},
@@ -176,6 +181,19 @@ def main() -> int:
 
     target = report["target_var_216"]
     try:
+        target["csa_tablestatistic_view"] = dict(client._request(
+            "api/view",
+            {
+                "model": "tablestatistic",
+                "domain": "0000",
+                "lang": "ind",
+                "id": TARGET_CSA_ID,
+            },
+        ))
+    except BPSApiError as exc:
+        target["errors"].append({"stage": "csa_tablestatistic_view", "error": str(exc)})
+
+    try:
         target["derived_variables"] = [
             dict(x) for x in client.list_derived_variables(
                 domain="0000", lang="ind", var=TARGET_VAR, max_pages=30
@@ -231,6 +249,7 @@ def main() -> int:
 
     path = OUTDIR / "bps-legacy-construction-qualification-2005-surfaces.json"
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    csa = target["csa_tablestatistic_view"]
     print(json.dumps({
         "domains": {
             domain: {
@@ -243,6 +262,8 @@ def main() -> int:
             for domain, data in report["domains"].items()
         },
         "target_var_216": {
+            "csa_available": isinstance(csa, Mapping) and str(csa.get("data-availability", "")) == "available",
+            "csa_keys": sorted(csa.keys()) if isinstance(csa, Mapping) else [],
             "derived_variables": len(target["derived_variables"]),
             "sumbar_2005": target["sumbar_2005"],
             "reconciliation": target["sumbar_2005_reconciliation"],
