@@ -1,0 +1,122 @@
+{
+  "schema": "ranah-observatory/bps-construction-financing-major-release-break-2002-2003/v1",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "source_unit_label": "000 Rupiah",
+  "price_semantics": "nominal current rupiah as published",
+  "measure_family": "construction value completed by construction establishments, total and by financing source",
+  "earlier_release": {
+    "publication_title": "Statistik Konstruksi 2003",
+    "publication_number": "05230.0407",
+    "catalog_number": "6301003",
+    "source_native_catalog_number": "6513",
+    "release_date": "2004-07-19",
+    "publication_page_url": "https://www.bps.go.id/id/publication/2004/07/19/edd503e858f3aa5b1ecd9525/statistik-konstruksi-2003.html",
+    "deep_search_url": "https://searchengine.web.bps.go.id/deep?content=publication&id=edd503e858f3aa5b1ecd9525&mfd=0000&page=1&q=Statistik%20Konstruksi%202003",
+    "methodology_evidence": {
+      "annual_survey_basis_for_2002": true,
+      "publication_explanation": "The explanation states that the construction statistics presented are results of the 2002 Annual Construction Establishment Survey.",
+      "year_2003_preliminary_estimation": "Preliminary 2003 figures are estimated from the Quarterly Construction Survey using 2003-over-2002 growth."
+    }
+  },
+  "later_release": {
+    "publication_title": "Statistik Tahunan Perusahaan Konstruksi 2002-2006",
+    "publication_number": "05340.0704",
+    "catalog_number": "6301003",
+    "issn": "1978-9149",
+    "release_date": "2007-05-15",
+    "publication_page_url": "https://www.bps.go.id/id/publication/2007/05/15/ee11be4bf5be942ff9dee9a8/statistik-tahunan-perusahaan-konstruksi-2002-2006.html",
+    "deep_search_url": "https://searchengine.web.bps.go.id/deep?content=publication&id=ee11be4bf5be942ff9dee9a8&mfd=0000&page=1&q=-",
+    "methodology_evidence": {
+      "series_years": [2002, 2003, 2004, 2005, 2006],
+      "annual_survey_series_statement": "The foreword states that construction statistics for 2002-2006 are series data resulting from Annual Construction Establishment Surveys.",
+      "coverage": "national construction establishments operating in Indonesia",
+      "construction_value_definition": "value of work completed by contractor during a period of enumeration based on contract value and realized project",
+      "only_explicit_preliminary_year_in_estimation_section": 2006,
+      "preliminary_2006_method": "estimated from Quarterly Construction Survey using 2006-over-2005 growth"
+    },
+    "table_pages_pdf_index": {
+      "14_total": 63,
+      "15_1_apbn": 80,
+      "15_2_apbd": 81,
+      "15_3_foreign_loan": 82,
+      "15_4_bumn": 83,
+      "15_5_other": 84
+    }
+  },
+  "values_thousand_rupiah": {
+    "2002": {
+      "total_construction_completed": {"earlier": 458502968, "later": 717299178, "delta": 258796210, "delta_percent": 56.443737, "later_to_earlier_ratio": 1.564437371},
+      "financed_by_central_government_budget": {"earlier": 291959524, "later": 356752390, "delta": 64792866, "delta_percent": 22.192414, "later_to_earlier_ratio": 1.221924139},
+      "financed_by_local_government_budget": {"earlier": 53045032, "later": 182985630, "delta": 129940598, "delta_percent": 244.962804, "later_to_earlier_ratio": 3.449628044},
+      "financed_by_foreign_loan": {"earlier": 101860202, "later": 159353907, "delta": 57493705, "delta_percent": 56.443737, "later_to_earlier_ratio": 1.564437375},
+      "financed_by_state_enterprises": {"earlier": 4507982, "later": 7052456, "delta": 2544474, "delta_percent": 56.443748, "later_to_earlier_ratio": 1.564437480},
+      "financed_by_other_sources": {"earlier": 7130228, "later": 11154795, "delta": 4024567, "delta_percent": 56.443735, "later_to_earlier_ratio": 1.564437350}
+    },
+    "2003": {
+      "total_construction_completed": {"earlier": 469007986, "later": 844516928, "delta": 375508942, "delta_percent": 80.064509, "later_to_earlier_ratio": 1.800645092},
+      "financed_by_central_government_budget": {"earlier": 298648772, "later": 303268240, "delta": 4619468, "delta_percent": 1.546790, "later_to_earlier_ratio": 1.015467896},
+      "financed_by_local_government_budget": {"earlier": 54260376, "later": 108161492, "delta": 53901116, "delta_percent": 99.337896, "later_to_earlier_ratio": 1.993378962},
+      "financed_by_foreign_loan": {"earlier": 104193978, "later": 161858669, "delta": 57664691, "delta_percent": 55.343593, "later_to_earlier_ratio": 1.553435929},
+      "financed_by_state_enterprises": {"earlier": 4611267, "later": 1256000, "delta": -3355267, "delta_percent": -72.762367, "later_to_earlier_ratio": 0.272376334},
+      "financed_by_other_sources": {"earlier": 7293593, "later": 269972527, "delta": 262678934, "delta_percent": 3601.502497, "later_to_earlier_ratio": 37.015024968}
+    }
+  },
+  "within_release_reconciliation": {
+    "2002": {
+      "earlier_component_sum_thousand_rupiah": 458502968,
+      "earlier_reported_total_thousand_rupiah": 458502968,
+      "earlier_residual": 0,
+      "later_component_sum_thousand_rupiah": 717299178,
+      "later_reported_total_thousand_rupiah": 717299178,
+      "later_residual": 0
+    },
+    "2003": {
+      "earlier_component_sum_thousand_rupiah": 469007986,
+      "earlier_reported_total_thousand_rupiah": 469007986,
+      "earlier_residual": 0,
+      "later_component_sum_thousand_rupiah": 844516928,
+      "later_reported_total_thousand_rupiah": 844516928,
+      "later_residual": 0
+    }
+  },
+  "break_findings": {
+    "year_2002": {
+      "classification": "major_release_break_unexplained",
+      "earlier_status": "annual_survey_published",
+      "later_status": "annual_survey_series_published",
+      "total_level_shift_percent": 56.443737,
+      "available_methodology_text_explains_shift": false,
+      "candidate_causes_not_asserted": ["rebenchmarking", "reweighting", "coverage expansion", "frame revision", "reprocessing"],
+      "numerical_pattern_only": "The later/earlier ratio for total, foreign-loan, BUMN and other-source values is approximately 1.564437, while APBN and APBD change by materially different factors. This pattern is descriptive only and is not assigned a causal interpretation."
+    },
+    "year_2003": {
+      "classification": "major_release_break_status_transition",
+      "earlier_status": "preliminary_quarterly_growth_estimate",
+      "later_status": "annual_survey_series_published",
+      "total_level_shift_percent": 80.064509,
+      "status_transition_supported_by_source": true,
+      "mechanical_bridge_or_revision_formula_available": false,
+      "interpretation": "The status transition explains why the two vintages are not equivalent observations, but it does not provide a formula for converting the preliminary estimate into the later annual-survey value."
+    }
+  },
+  "gate": {
+    "retain_both_vintages": true,
+    "silent_latest_value_overwrite_authorized": false,
+    "cross_release_longitudinal_bridge_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "canonical_fiscal_mapping_authorized": false,
+    "panel_v3_integration_authorized": false,
+    "deflation_authorized": false,
+    "interpolation_authorized": false,
+    "causal_claim_authorized": false,
+    "release_break_resolution_required_before_longitudinal_use": true
+  },
+  "source_boundary": {
+    "later_pdf_text_layer_verified": true,
+    "later_pdf_screenshot_attempt_status": "tool cache miss; text-layer evidence used",
+    "later_pdf_sha256_available_in_repository": false,
+    "earlier_pdf_sha256_available_in_repository": false,
+    "allstats_text_treated_as_artifact_sha_equivalent": false
+  }
+}
