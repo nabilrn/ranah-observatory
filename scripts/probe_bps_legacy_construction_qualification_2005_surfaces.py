@@ -16,6 +16,9 @@ KEYWORDS = (
     "perusahaan konstruksi menurut kualifikasi",
     "konstruksi",
 )
+TARGET_VAR = 216
+TARGET_YEAR = "2005"
+TARGET_TH_ID = 105
 
 
 def folded(value: Any) -> str:
@@ -61,13 +64,24 @@ def main() -> int:
     OUTDIR.mkdir(parents=True, exist_ok=True)
     client = BPSClient(key, timeout=60, retries=2, retry_backoff_seconds=1.0)
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/bps-legacy-construction-qualification-2005-surfaces/v1",
+        "schema": "ranah-observatory/bps-legacy-construction-qualification-2005-surfaces/v2",
         "purpose": (
             "Search official central and Sumatera Barat BPS legacy static/dynamic WebAPI surfaces "
-            "for construction-establishment qualification data with an explicit source-native 2005 period."
+            "for construction-establishment qualification data with an explicit source-native 2005 period, "
+            "then inspect central variable 216 because its source is Direktori Perusahaan Konstruksi."
         ),
         "api_key_persisted": False,
         "domains": {},
+        "target_var_216": {
+            "domain": "0000",
+            "var_id": TARGET_VAR,
+            "year": TARGET_YEAR,
+            "th_id": TARGET_TH_ID,
+            "derived_variables": [],
+            "derived_periods": [],
+            "dynamic_2005": None,
+            "errors": [],
+        },
     }
 
     for domain in DOMAINS:
@@ -138,7 +152,7 @@ def main() -> int:
                 d["errors"].append({"stage": f"periods:{vid}", "error": str(exc)})
                 continue
             labels = source_period_labels(periods)
-            if "2005" in labels:
+            if TARGET_YEAR in labels:
                 d["variables_with_2005"].append({
                     "variable": dict(row),
                     "period_labels": labels,
@@ -147,8 +161,42 @@ def main() -> int:
 
         report["domains"][domain] = d
 
+    target = report["target_var_216"]
+    try:
+        target["derived_variables"] = [
+            dict(x) for x in client.list_derived_variables(
+                domain="0000", lang="ind", var=TARGET_VAR, max_pages=30
+            )
+        ]
+    except BPSApiError as exc:
+        target["errors"].append({"stage": "derived_variables", "error": str(exc)})
+
+    try:
+        target["derived_periods"] = [
+            dict(x) for x in client.list_derived_periods(
+                domain="0000", lang="ind", var=TARGET_VAR, max_pages=30
+            )
+        ]
+    except BPSApiError as exc:
+        target["errors"].append({"stage": "derived_periods", "error": str(exc)})
+
+    try:
+        target["dynamic_2005"] = dict(client.get_dynamic_data(
+            domain="0000", lang="ind", var=TARGET_VAR, th=TARGET_TH_ID
+        ))
+    except BPSApiError as exc:
+        target["errors"].append({"stage": "dynamic_2005_th_id", "error": str(exc)})
+        try:
+            target["dynamic_2005"] = dict(client.get_dynamic_data(
+                domain="0000", lang="ind", var=TARGET_VAR, th=TARGET_YEAR
+            ))
+        except BPSApiError as exc2:
+            target["errors"].append({"stage": "dynamic_2005_year", "error": str(exc2)})
+
     path = OUTDIR / "bps-legacy-construction-qualification-2005-surfaces.json"
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    dynamic = target["dynamic_2005"]
+    dynamic_keys = sorted(dynamic.keys()) if isinstance(dynamic, Mapping) else []
     print(json.dumps({
         "domains": {
             domain: {
@@ -159,6 +207,13 @@ def main() -> int:
                 "errors": len(data["errors"]),
             }
             for domain, data in report["domains"].items()
+        },
+        "target_var_216": {
+            "derived_variables": len(target["derived_variables"]),
+            "derived_periods": len(target["derived_periods"]),
+            "dynamic_2005_available": isinstance(dynamic, Mapping),
+            "dynamic_keys": dynamic_keys,
+            "errors": len(target["errors"]),
         },
         "output": path.as_posix(),
     }, ensure_ascii=False, indent=2, sort_keys=True))
