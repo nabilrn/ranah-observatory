@@ -31,7 +31,7 @@ class Milestone26EventImpactTransportCandidateTest(unittest.TestCase):
         self.assertFalse(result["numeric_extraction_authorized"])
         self.assertFalse(result["event_panel_materialization_authorized"])
         self.assertFalse(result["risk_synthesis_authorized"])
-        self.assertEqual(result["unresolved_contract_count"], 8)
+        self.assertEqual(result["unresolved_contract_count"], 9)
 
 
 if __name__ == "__main__":
