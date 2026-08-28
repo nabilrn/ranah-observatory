@@ -1,0 +1,80 @@
+{
+  "schema": "ranah-observatory/bpbd-2017-ppid-migration-forensics/v1",
+  "decision_date": "2026-08-28",
+  "depends_on_milestone": 51,
+  "research_question": "Can legacy PPID record 8604 or the current PPID inventory recover a semantically valid official transport for the missing 2017 BPBD/Pusdalops annual report?",
+  "target": {
+    "legacy_record_id": 8604,
+    "title": "Laporan Tahunan Data Kebencanaan Pusdalops PB Sumatera Barat Tahun 2017",
+    "opd": "Badan Penanggulangan Bencana Daerah",
+    "historical_download_count": 24,
+    "m51_parent_manifest": "data/manifests/milestone51_bpbd_raw_artifact_acquisition_lane.json"
+  },
+  "legacy_route_probe": {
+    "tested_urls": [
+      "https://ppid.sumbarprov.go.id/home/details/8604-laporan-tahunan-data-kebencanaan-pusdalops-pb-sumatera-barat-tahun-2017.html",
+      "https://ppid.sumbarprov.go.id/home/details/8604-laporan-tahunan-data-kebencanaan-pusdalops-pb-sumatera-barat-tahun-2017",
+      "https://ppid.sumbarprov.go.id/home/details/8604"
+    ],
+    "all_resolved_http_200": true,
+    "common_redirect_uuid": "e46ef762-5314-4f25-8a70-53de147147da",
+    "common_information_url": "https://ppid.sumbarprov.go.id/home/information/e46ef762-5314-4f25-8a70-53de147147da",
+    "common_download_url": "https://ppid.sumbarprov.go.id/home/download/e46ef762-5314-4f25-8a70-53de147147da",
+    "destination_visible_title": "SPO Cervical RPO",
+    "target_exact_title_present": false,
+    "target_identity_tokens_present": false,
+    "download_http_status": 200,
+    "download_response_text": "File tidak ditemukan atau tidak dapat diakses.",
+    "classification": "legacy_numeric_redirect_semantic_collision_not_valid_mapping"
+  },
+  "active_inventory_probe": {
+    "url": "https://ppid.sumbarprov.go.id/home/dip",
+    "method": "POST exact title using fresh public csrf token and cookie session",
+    "http_status": 200,
+    "exact_title_present": false,
+    "identity_tokens_present": false,
+    "returned_information_url_count": 0,
+    "exact_title_match_count": 0,
+    "token_only_match_count": 0,
+    "classification": "active_inventory_exact_title_no_hit"
+  },
+  "bounded_inference": {
+    "legacy_redirect_is_valid_2017_mapping": false,
+    "active_inventory_currently_indexes_exact_title": false,
+    "does_not_prove_artifact_deleted": true,
+    "does_not_prove_bytes_unavailable_on_other_official_surface": true,
+    "does_not_authorize_mirror_substitution": true,
+    "does_not_invalidate_historical_ppid_record_existence_evidence": true
+  },
+  "transient_execution_trace": {
+    "role": "reproducibility trace only; GitHub Actions artifacts are not canonical evidence storage",
+    "probe_logic_commit": "4e9be52d6c8451e37717adee2bc8947b142823a9",
+    "workflow_run_id": 33153486197,
+    "workflow_job_id": 98790718012,
+    "artifact_id": 9678662866,
+    "artifact_zip_sha256": "025236f884855a6553c9593bc264f396e1b19cc67099c8828829e39cca46b070"
+  },
+  "gate": {
+    "legacy_redirect_destination_recovered": true,
+    "record_8604_to_current_uuid_mapping_recovered": false,
+    "current_detail_or_download_url_for_2017_recovered": false,
+    "raw_official_pdf_recovered": false,
+    "raw_checksum_frozen": false,
+    "source_native_2017_extraction_authorized": false,
+    "canonical_historical_impact_promotion_authorized": false,
+    "m52_trigger_satisfied": false
+  },
+  "next_search_boundary": {
+    "allow": [
+      "other official Sumatera Barat government archival surfaces",
+      "BPBD/Pusdalops official archival surfaces",
+      "PPID migration metadata or downloadable archive indexes with semantic identity verification"
+    ],
+    "forbid": [
+      "UUID brute force",
+      "treating the e46ef762 redirect as the 2017 report",
+      "using the Scribd mirror as raw official evidence",
+      "promoting companion-source values as substitutes for the missing annual-report bytes"
+    ]
+  }
+}
