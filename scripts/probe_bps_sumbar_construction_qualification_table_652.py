@@ -30,10 +30,22 @@ def row_text(row: Mapping[str, Any]) -> str:
     return folded(json.dumps(row, ensure_ascii=False, sort_keys=True))
 
 
-def relevant(row: Mapping[str, Any]) -> bool:
+def static_relevant(row: Mapping[str, Any]) -> bool:
     text = row_text(row)
-    tokens = ("konstruksi", "kualifikasi")
-    return all(token in text for token in tokens)
+    return "konstruksi" in text and (
+        "kualifikasi" in text or ("usaha" in text and "perusahaan" in text)
+    )
+
+
+def variable_relevant(row: Mapping[str, Any]) -> bool:
+    """Subject context already supplies 'Konstruksi'; do not require it in variable title."""
+    text = row_text(row)
+    return (
+        "kualifikasi" in text
+        or "kode kualifikasi" in text
+        or ("usaha" in text and "perusahaan" in text)
+        or "banyaknya perusahaan" in text
+    )
 
 
 def collect_year_mentions(node: Any, path: str = "$") -> list[dict[str, Any]]:
@@ -72,7 +84,7 @@ def main() -> int:
     client = BPSClient(key, timeout=60, retries=2, retry_backoff_seconds=1.0)
 
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/bps-sumbar-construction-qualification-table-652-probe/v1",
+        "schema": "ranah-observatory/bps-sumbar-construction-qualification-table-652-probe/v2",
         "purpose": (
             "Identify the official BPS WebAPI object backing public Sumatera Barat statistics-table "
             "652#2 and determine whether source-native 2005 data are exposed."
@@ -88,8 +100,10 @@ def main() -> int:
         "static_table_keyword_candidates": [],
         "static_table_652_view": None,
         "construction_subject_candidates": [],
+        "construction_subject_variables": [],
         "construction_variable_candidates": [],
         "candidate_periods": {},
+        "candidate_derived_variables": {},
         "errors": [],
     }
 
@@ -106,13 +120,13 @@ def main() -> int:
             report["errors"].append({"stage": f"statictable-list:{keyword}", "error": str(exc)})
             continue
         for row in rows:
-            if relevant(row):
+            if static_relevant(row):
                 item = dict(row)
                 if item not in report["static_table_keyword_candidates"]:
                     report["static_table_keyword_candidates"].append(item)
 
     try:
-        view = client._request(  # bounded probe of verified numeric hypothesis from public URL
+        view = client._request(  # bounded hypothesis derived from verified public URL identity
             "api/view/",
             {
                 "model": "statictable",
@@ -147,8 +161,10 @@ def main() -> int:
         except BPSApiError as exc:
             report["errors"].append({"stage": f"variables:subject:{sid}", "error": str(exc)})
             continue
+
+        report["construction_subject_variables"].extend(dict(row) for row in rows)
         for row in rows:
-            if relevant(row):
+            if variable_relevant(row):
                 vid = candidate_id(row)
                 if vid is not None:
                     seen_vars[vid] = row
@@ -160,10 +176,14 @@ def main() -> int:
     for vid in sorted(seen_vars):
         try:
             periods = client.list_periods(domain=DOMAIN, lang="ind", var=vid, max_pages=20)
+            report["candidate_periods"][str(vid)] = [dict(row) for row in periods]
         except BPSApiError as exc:
             report["errors"].append({"stage": f"periods:var:{vid}", "error": str(exc)})
-            continue
-        report["candidate_periods"][str(vid)] = [dict(row) for row in periods]
+        try:
+            turvars = client.list_derived_variables(domain=DOMAIN, lang="ind", var=vid, max_pages=20)
+            report["candidate_derived_variables"][str(vid)] = [dict(row) for row in turvars]
+        except BPSApiError as exc:
+            report["errors"].append({"stage": f"derived-variables:var:{vid}", "error": str(exc)})
 
     report["year_mentions"] = collect_year_mentions(
         {
@@ -171,6 +191,7 @@ def main() -> int:
             "static_table_652_view": report["static_table_652_view"],
             "construction_variable_candidates": report["construction_variable_candidates"],
             "candidate_periods": report["candidate_periods"],
+            "candidate_derived_variables": report["candidate_derived_variables"],
         }
     )
     report["source_native_2005_mention_present"] = any(
@@ -185,9 +206,13 @@ def main() -> int:
 
     summary = {
         "static_candidates": len(report["static_table_keyword_candidates"]),
-        "table_652_view_available": report["static_table_652_view"] is not None,
+        "table_652_data_available": (
+            isinstance(report["static_table_652_view"], Mapping)
+            and str(report["static_table_652_view"].get("data-availability", "")) == "available"
+        ),
         "construction_subjects": len(report["construction_subject_candidates"]),
-        "construction_variables": len(report["construction_variable_candidates"]),
+        "construction_subject_variables": len(report["construction_subject_variables"]),
+        "construction_variable_candidates": len(report["construction_variable_candidates"]),
         "source_native_2005_mention_present": report["source_native_2005_mention_present"],
         "error_count": len(report["errors"]),
         "output": path.as_posix(),
