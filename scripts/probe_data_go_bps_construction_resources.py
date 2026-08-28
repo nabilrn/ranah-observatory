@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 DATASET_ID = "95930772-cddb-412c-9d6e-e43b11e9ccd6"
-API_URL = "https://data.go.id/api/3/action/package_show"
+API_URL = "https://data.go.id/api/action/package_show"
 OUTDIR = Path("probe-output")
 MAX_RESOURCE_BYTES = 8 * 1024 * 1024
 TARGET_LABELS = ("kecil", "menengah", "besar", "jumlah")
@@ -74,7 +74,7 @@ def main() -> int:
     result = package["result"]
     resources = result.get("resources") or []
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/data-go-bps-construction-resources/v1",
+        "schema": "ranah-observatory/data-go-bps-construction-resources/v2",
         "dataset_id": DATASET_ID,
         "dataset_title": result.get("title"),
         "organization": (result.get("organization") or {}).get("title"),
@@ -116,7 +116,7 @@ def main() -> int:
                 ctype = folded(headers.get("content-type"))
                 if "csv" in fmt or "csv" in ctype or url.casefold().endswith(".csv"):
                     item["sumbar_2005_rows"] = extract_csv_sumbar_2005(raw)
-            except Exception as exc:  # bounded transport diagnostic only
+            except Exception as exc:
                 item["fetch_error"] = f"{type(exc).__name__}: {exc}"
         report["resources"].append(item)
 
