@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "scripts/probe_bps_opac_construction_profile_outside_java_2005.py"
+      - "scripts/probe_bps_opac_verified_softcopy_outside_java_2005.py"
       - ".github/workflows/temp-bps-opac-outside-java-2005-probe.yml"
 
 permissions:
@@ -18,7 +19,10 @@ jobs:
         with:
           python-version: "3.12"
       - name: Probe exact BPS OPAC title
+        continue-on-error: true
         run: python scripts/probe_bps_opac_construction_profile_outside_java_2005.py
+      - name: Probe verified target softcopy locator
+        run: python scripts/probe_bps_opac_verified_softcopy_outside_java_2005.py
       - name: Upload bounded probe evidence
         if: always()
         uses: actions/upload-artifact@v4
