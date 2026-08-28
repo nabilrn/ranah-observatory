@@ -1,0 +1,28 @@
+name: Temporary BPS OPAC Detail Transport Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_bps_opac_detail_transport_outside_java_2005.py"
+      - ".github/workflows/temp-bps-opac-detail-transport-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Inspect verified public OPAC detail transport surface
+        run: python scripts/probe_bps_opac_detail_transport_outside_java_2005.py
+      - name: Upload bounded probe output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-opac-outside-java-2005-detail-transport-probe
+          path: probe-output/
+          if-no-files-found: error
