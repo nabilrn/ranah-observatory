@@ -1,0 +1,28 @@
+name: Temporary BPS OPAC Outside-Java 2005 Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_bps_opac_construction_profile_outside_java_2005.py"
+      - ".github/workflows/temp-bps-opac-outside-java-2005-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe exact BPS OPAC title
+        run: python scripts/probe_bps_opac_construction_profile_outside_java_2005.py
+      - name: Upload bounded probe evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-opac-outside-java-2005-probe
+          path: probe-output/
+          if-no-files-found: error
