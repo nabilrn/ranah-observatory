@@ -4,10 +4,10 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import shutil
-import subprocess
 import urllib.request
 from pathlib import Path
+
+from pypdf import PdfReader
 
 OUTDIR = Path("probe-output")
 PDFDIR = OUTDIR / "yearbooks"
@@ -76,21 +76,26 @@ def fetch_pdf(url: str, path: Path) -> dict[str, object]:
 
 
 def extract_text(pdf_path: Path, text_path: Path) -> dict[str, object]:
-    binary = shutil.which("pdftotext")
-    if not binary:
-        return {"available": False, "error": "pdftotext not installed on runner"}
-    proc = subprocess.run(
-        [binary, "-layout", str(pdf_path), str(text_path)],
-        text=True,
-        capture_output=True,
-        timeout=120,
-        check=False,
-    )
-    return {
-        "available": proc.returncode == 0 and text_path.exists(),
-        "returncode": proc.returncode,
-        "stderr": proc.stderr[-2000:],
-    }
+    try:
+        reader = PdfReader(str(pdf_path), strict=False)
+        page_texts: list[str] = []
+        pages_with_text = 0
+        for page_number, page in enumerate(reader.pages, start=1):
+            extracted = page.extract_text() or ""
+            if extracted.strip():
+                pages_with_text += 1
+            page_texts.append(f"\n===== PDF PAGE {page_number} =====\n{extracted}")
+        text = "".join(page_texts)
+        text_path.write_text(text, encoding="utf-8")
+        return {
+            "available": bool(text.strip()),
+            "extractor": "pypdf",
+            "page_count": len(reader.pages),
+            "pages_with_text": pages_with_text,
+            "character_count": len(text),
+        }
+    except Exception as exc:
+        return {"available": False, "extractor": "pypdf", "error": f"{type(exc).__name__}: {exc}"}
 
 
 def normalize(line: str) -> str:
@@ -143,10 +148,10 @@ def main() -> int:
     OUTDIR.mkdir(parents=True, exist_ok=True)
     PDFDIR.mkdir(parents=True, exist_ok=True)
     report = {
-        "schema": "ranah-observatory/sumbar-yearbooks-construction-qualification-probe/v1",
+        "schema": "ranah-observatory/sumbar-yearbooks-construction-qualification-probe/v2",
         "purpose": "Inspect official Sumatera Barat yearbook PDFs for source-native construction qualification evidence around 2005.",
         "sources": [],
-        "bounds": {"keyword_context_limit_per_source": 80, "ocr_used": False},
+        "bounds": {"keyword_context_limit_per_source": 80, "ocr_used": False, "embedded_text_extractor": "pypdf"},
     }
 
     for source in SOURCES:
@@ -155,7 +160,7 @@ def main() -> int:
         text_path = PDFDIR / f"{source['label']}.txt"
         try:
             item["fetch"] = fetch_pdf(source["download_url"], pdf_path)
-        except Exception as exc:  # bounded acquisition report; continue other official sources
+        except Exception as exc:
             item["fetch"] = {"complete_pdf": False, "error": f"{type(exc).__name__}: {exc}"}
             report["sources"].append(item)
             continue
