@@ -1,0 +1,72 @@
+{
+  "schema": "ranah-observatory/bps-construction-post-update-opac-detail-transport-boundary/v1",
+  "decision_date": "2026-08-28",
+  "research_question": "Does the already-verified BPS OPAC detail locator for the 2005 outside-Java construction profile expose any additional public official transport locator that can satisfy the post-update qualification-table acquisition gate without authentication bypass?",
+  "depends_on": "data/validation/historical/public_finance_2000/bps_construction_qualification_pre_post_update_acquisition_boundary.json",
+  "target": {
+    "record_id": "111.0614.1380",
+    "title": "Profil Perusahaan Konstruksi di Luar Pulau Jawa 2005",
+    "publication_number": "05230.0610",
+    "detail_url": "https://perpustakaan.bps.go.id/opac/details/111.0614.1380",
+    "read_url": "https://perpustakaan.bps.go.id/opac/read/111.0614.1380.pdf"
+  },
+  "detail_probe": {
+    "method": "single verified locator GET with BPS-only redirect allowlist",
+    "workflow_run_id": 33158677083,
+    "workflow_job_id": 98807547611,
+    "artifact_id": 9680675235,
+    "artifact_zip_sha256": "ada84602eb0558142db502898d5b5ba9e3451706074dc8f047b7c3b4071767ba",
+    "http_status": 200,
+    "final_url": "https://sso-pst.bps.go.id/login",
+    "content_type": "text/html; charset=utf-8",
+    "response_body_bytes": 7026,
+    "response_body_sha256": "d943c16f5d562d346ecca95cc72d37d953d43761bb4396f18385c6c6674a56f7",
+    "exact_title_present": false,
+    "record_id_present": false,
+    "relevant_public_official_links": 0,
+    "forms": 0,
+    "classification": "verified_opac_detail_locator_sso_gated_before_record_metadata"
+  },
+  "combined_transport_finding": {
+    "detail_locator_public_metadata_reachable_without_sso": false,
+    "read_locator_public_pdf_reachable_without_sso": false,
+    "detail_page_exposes_additional_public_download_locator": false,
+    "detail_page_exposes_public_api_locator": false,
+    "both_verified_record_routes_sso_gated": true,
+    "sso_gate_is_transport_access_blocker_not_absence_evidence": true,
+    "authentication_bypass_attempted": false,
+    "hidden_route_guessing_performed": false
+  },
+  "comparison_gate": {
+    "post_update_raw_pdf_acquired": false,
+    "post_update_sumbar_qualification_values_acquired": false,
+    "post_update_table_semantics_confirmed": false,
+    "pre_post_qualification_comparison_authorized": false,
+    "frame_change_quantification_authorized": false,
+    "causal_revision_attribution_authorized": false
+  },
+  "next_search_boundary": {
+    "allow": [
+      "official BPS Deep Search or web-api text surfaces that expose content from publication 05230.0610",
+      "other official BPS publication indexes or archival text surfaces with semantically sufficient table context",
+      "official BPS-authored companion material that explicitly reproduces the 2005 post-update qualification table"
+    ],
+    "forbid": [
+      "authentication bypass",
+      "credential acquisition",
+      "record-ID enumeration or guessing",
+      "treating catalog metadata alone as the missing qualification table",
+      "using third-party mirrors as canonical post-update values"
+    ]
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  }
+}
