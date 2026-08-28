@@ -1,0 +1,30 @@
+name: Temporary BPS Legacy Construction Qualification 2005 Surface Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_bps_legacy_construction_qualification_2005_surfaces.py"
+      - ".github/workflows/temp-bps-legacy-construction-qualification-2005-surfaces.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe official legacy BPS surfaces
+        run: python scripts/probe_bps_legacy_construction_qualification_2005_surfaces.py
+      - name: Upload bounded probe report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-legacy-construction-qualification-2005-surfaces
+          path: probe-output/bps-legacy-construction-qualification-2005-surfaces.json
+          if-no-files-found: error
