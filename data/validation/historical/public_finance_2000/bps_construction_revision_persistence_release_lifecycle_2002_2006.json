@@ -1,0 +1,114 @@
+{
+  "schema": "ranah-observatory/bps-construction-revision-persistence-release-lifecycle-2002-2006/v1",
+  "research_question": "Do the revised Sumatera Barat construction values first confirmed in Statistik Indonesia 2005/2006 persist into a later dedicated BPS annual construction-series release, and can that persistence be distinguished from ordinary preliminary/estimated release maturation?",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "measure": "value of construction completed by province",
+  "unit": "thousand rupiahs",
+  "depends_on": {
+    "revision_localization": "bps_construction_revision_localization_2001_2004.json",
+    "mechanism_candidate": "bps_construction_revision_mechanism_candidate.json"
+  },
+  "earlier_vintage": {
+    "title": "Statistik Indonesia 2005/2006",
+    "publication_number": "07330.0608",
+    "official_page_url": "https://www.bps.go.id/id/publication/2006/05/15/1f61622779b21f7b8ba221ac/statistik-indonesia-2005-2006.html",
+    "sumatera_barat": {
+      "2002": {"value_thousand_rupiah": 717299178, "status": "revised"},
+      "2003": {"value_thousand_rupiah": 844516928, "status": "revised"},
+      "2004": {"value_thousand_rupiah": 932441815, "status": "preliminary"},
+      "2005": {"value_thousand_rupiah": 1046561944, "status": "estimated"}
+    }
+  },
+  "later_dedicated_series": {
+    "title": "Statistik Tahunan Perusahaan Konstruksi 2002-2006",
+    "catalog_number": "6301003",
+    "publication_number": "05340.0704",
+    "issn_isbn": "1978-9149",
+    "official_bps_metadata_release_date": "2007-05-15",
+    "pdf_preface_date_text": "Jakarta, Nopember 2007",
+    "metadata_preface_date_conflict_preserved": true,
+    "official_page_url": "https://www.bps.go.id/id/publication/2007/05/15/ee11be4bf5be942ff9dee9a8/statistik-tahunan-perusahaan-konstruksi-2002-2006.html",
+    "official_deep_search_url": "https://searchengine.web.bps.go.id/deep?content=publication&id=ee11be4bf5be942ff9dee9a8&mfd=0000&page=1&q=-",
+    "series_basis": "The publication foreword states that the 2002-2006 construction statistical series results from Annual Construction Establishment Surveys.",
+    "table_number": "14",
+    "table_title": "Nilai Konstruksi yang Diselesaikan Menurut Propinsi / Value of Construction Completed by Province",
+    "sumatera_barat": {
+      "2002": {"value_thousand_rupiah": 717299178, "status": "published_without_provisional_marker"},
+      "2003": {"value_thousand_rupiah": 844516928, "status": "published_without_provisional_marker"},
+      "2004": {"value_thousand_rupiah": 956619300, "status": "published_without_provisional_marker"},
+      "2005": {"value_thousand_rupiah": 1315105562, "status": "published_without_provisional_marker"},
+      "2006": {"value_thousand_rupiah": 1324786176, "status": "preliminary"}
+    }
+  },
+  "cross_vintage_comparison": {
+    "2002": {
+      "earlier_value": 717299178,
+      "later_value": 717299178,
+      "delta": 0,
+      "earlier_status": "revised",
+      "later_status": "published_without_provisional_marker",
+      "classification": "explicit_revision_persists_exactly_into_later_dedicated_series"
+    },
+    "2003": {
+      "earlier_value": 844516928,
+      "later_value": 844516928,
+      "delta": 0,
+      "earlier_status": "revised",
+      "later_status": "published_without_provisional_marker",
+      "classification": "explicit_revision_persists_exactly_into_later_dedicated_series"
+    },
+    "2004": {
+      "earlier_value": 932441815,
+      "later_value": 956619300,
+      "delta": 24177485,
+      "delta_percent": 2.592922,
+      "earlier_status": "preliminary",
+      "later_status": "published_without_provisional_marker",
+      "classification": "ordinary_provisional_to_later_release_maturation"
+    },
+    "2005": {
+      "earlier_value": 1046561944,
+      "later_value": 1315105562,
+      "delta": 268543618,
+      "delta_percent": 25.659601,
+      "earlier_status": "estimated",
+      "later_status": "published_without_provisional_marker",
+      "classification": "ordinary_estimated_to_later_release_maturation"
+    }
+  },
+  "inference": {
+    "revised_2002_2003_values_are_single_yearbook_anomaly": false,
+    "revised_2002_2003_values_persist_in_later_dedicated_bps_series": true,
+    "2004_2005_changes_are_distinguishable_by_prior_provisional_status": true,
+    "persistent_historical_revision_distinguished_from_release_maturation": true,
+    "persistence_proves_revision_mechanism": false,
+    "persistence_proves_2005_directory_update_caused_revision": false,
+    "persistence_authorizes_cross_vintage_backcast": false
+  },
+  "mechanism_candidate_effect": {
+    "candidate_id": "sampling_frame_refresh_plus_qualification_based_expansion_reestimation",
+    "candidate_status_changed": false,
+    "candidate_status_remains": "operationally_plausible_period_link_confirmed_causal_revision_link_unproven",
+    "new_support": "The 2002-2003 revised levels persist exactly in a subsequent dedicated annual-survey series, strengthening the evidence that the revision represents an adopted BPS historical vintage rather than a one-off yearbook transcription or display anomaly.",
+    "causal_gap_remaining": "No contemporaneous revision note, weighting formula, old/new Sumatera Barat frame counts, or reproducible old-to-new bridge has been recovered."
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  },
+  "source_boundary": {
+    "official_bps_metadata_page_verified": true,
+    "official_bps_deep_search_text_verified": true,
+    "later_series_table_values_verified_from_bps_authored_publication_text_surface": true,
+    "raw_pdf_sha256_available_in_repository": false,
+    "raw_pdf_byte_identity_gate_required_for_causal_claim": false,
+    "note": "This checkpoint establishes release-vintage persistence and status lifecycle only; it does not upgrade the causal mechanism claim."
+  }
+}
