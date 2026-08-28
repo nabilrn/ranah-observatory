@@ -92,7 +92,7 @@ def main() -> int:
     report: dict[str, Any] = {
         "schema": "ranah-observatory/bps-sumbar-construction-qualification-table-652-probe/v3",
         "purpose": (
-            "Resolve the official CSA table object backing public Sumatera Barat statistics-table "
+            "Resolve the official BPS CSA table object backing public Sumatera Barat statistics-table "
             "652#2 and determine which BPS source family/transport it exposes."
         ),
         "domain": DOMAIN,
@@ -213,7 +213,8 @@ def main() -> int:
 
     csa = report["csa_tablestatistic_view"]
     csa_available = isinstance(csa, Mapping) and str(csa.get("data-availability", "")) == "available"
-    csa_data = csa.get("data") if isinstance(csa, Mapping) else None
+    csa_years = csa.get("available_years", []) if isinstance(csa, Mapping) else []
+    csa_variables = csa.get("var", []) if isinstance(csa, Mapping) else []
 
     path = OUTDIR / "bps-sumbar-construction-qualification-table-652-probe.json"
     path.write_text(
@@ -224,12 +225,12 @@ def main() -> int:
     summary = {
         "decoded_identity": report["public_table"]["decoded_identity"],
         "csa_tablestatistic_available": csa_available,
-        "csa_data_type": type(csa_data).__name__ if csa is not None else None,
+        "csa_available_years": csa_years,
+        "csa_variable_labels": [row.get("label") for row in csa_variables if isinstance(row, Mapping)],
         "legacy_statictable_available": (
             isinstance(report["legacy_statictable_652_view"], Mapping)
             and str(report["legacy_statictable_652_view"].get("data-availability", "")) == "available"
         ),
-        "legacy_construction_subject_variables": len(report["legacy_construction_subject_variables"]),
         "source_native_2005_mention_present": report["source_native_2005_mention_present"],
         "error_count": len(report["errors"]),
         "output": path.as_posix(),
