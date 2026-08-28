@@ -19,6 +19,13 @@ KEYWORDS = (
 TARGET_VAR = 216
 TARGET_YEAR = "2005"
 TARGET_TH_ID = 105
+TARGET_TURVARS = {
+    454: "Kecil",
+    455: "Menengah",
+    456: "Besar",
+    457: "Jumlah",
+}
+TARGET_SUMBAR_VERVAR = 1300
 
 
 def folded(value: Any) -> str:
@@ -56,6 +63,10 @@ def source_period_labels(rows: list[Mapping[str, Any]]) -> list[str]:
     return sorted(x for x in labels if x)
 
 
+def datacontent_key(vervar: int, var: int, turvar: int, th: int, turth: int = 0) -> str:
+    return f"{vervar}{var}{turvar}{th}{turth}"
+
+
 def main() -> int:
     key = os.environ.get("BPS_API_KEY", "").strip()
     if not key:
@@ -64,11 +75,11 @@ def main() -> int:
     OUTDIR.mkdir(parents=True, exist_ok=True)
     client = BPSClient(key, timeout=60, retries=2, retry_backoff_seconds=1.0)
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/bps-legacy-construction-qualification-2005-surfaces/v2",
+        "schema": "ranah-observatory/bps-legacy-construction-qualification-2005-surfaces/v3",
         "purpose": (
-            "Search official central and Sumatera Barat BPS legacy static/dynamic WebAPI surfaces "
-            "for construction-establishment qualification data with an explicit source-native 2005 period, "
-            "then inspect central variable 216 because its source is Direktori Perusahaan Konstruksi."
+            "Search official central and Sumatera Barat BPS legacy WebAPI surfaces for construction "
+            "qualification data in 2005, then recover central variable 216 small/medium/large strata "
+            "for Sumatera Barat from source Direktori Perusahaan Konstruksi."
         ),
         "api_key_persisted": False,
         "domains": {},
@@ -79,7 +90,9 @@ def main() -> int:
             "th_id": TARGET_TH_ID,
             "derived_variables": [],
             "derived_periods": [],
-            "dynamic_2005": None,
+            "dynamic_by_turvar": {},
+            "sumbar_2005": {},
+            "sumbar_2005_reconciliation": None,
             "errors": [],
         },
     }
@@ -180,23 +193,44 @@ def main() -> int:
     except BPSApiError as exc:
         target["errors"].append({"stage": "derived_periods", "error": str(exc)})
 
-    try:
-        target["dynamic_2005"] = dict(client.get_dynamic_data(
-            domain="0000", lang="ind", var=TARGET_VAR, th=TARGET_TH_ID
-        ))
-    except BPSApiError as exc:
-        target["errors"].append({"stage": "dynamic_2005_th_id", "error": str(exc)})
+    for turvar_id, label in TARGET_TURVARS.items():
         try:
-            target["dynamic_2005"] = dict(client.get_dynamic_data(
-                domain="0000", lang="ind", var=TARGET_VAR, th=TARGET_YEAR
+            dynamic = dict(client.get_dynamic_data(
+                domain="0000",
+                lang="ind",
+                var=TARGET_VAR,
+                th=TARGET_TH_ID,
+                turvar=turvar_id,
             ))
-        except BPSApiError as exc2:
-            target["errors"].append({"stage": "dynamic_2005_year", "error": str(exc2)})
+        except BPSApiError as exc:
+            target["errors"].append({"stage": f"dynamic_2005_turvar:{turvar_id}", "error": str(exc)})
+            continue
+        target["dynamic_by_turvar"][str(turvar_id)] = dynamic
+        content = dynamic.get("datacontent")
+        value = None
+        if isinstance(content, Mapping):
+            key_name = datacontent_key(
+                TARGET_SUMBAR_VERVAR, TARGET_VAR, turvar_id, TARGET_TH_ID, 0
+            )
+            value = content.get(key_name)
+        target["sumbar_2005"][label] = value
+
+    values = target["sumbar_2005"]
+    small = values.get("Kecil")
+    medium = values.get("Menengah")
+    large = values.get("Besar")
+    total = values.get("Jumlah")
+    if all(isinstance(x, (int, float)) for x in (small, medium, large, total)):
+        component_sum = small + medium + large
+        target["sumbar_2005_reconciliation"] = {
+            "component_sum": component_sum,
+            "reported_total": total,
+            "difference": component_sum - total,
+            "exact": component_sum == total,
+        }
 
     path = OUTDIR / "bps-legacy-construction-qualification-2005-surfaces.json"
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    dynamic = target["dynamic_2005"]
-    dynamic_keys = sorted(dynamic.keys()) if isinstance(dynamic, Mapping) else []
     print(json.dumps({
         "domains": {
             domain: {
@@ -210,9 +244,8 @@ def main() -> int:
         },
         "target_var_216": {
             "derived_variables": len(target["derived_variables"]),
-            "derived_periods": len(target["derived_periods"]),
-            "dynamic_2005_available": isinstance(dynamic, Mapping),
-            "dynamic_keys": dynamic_keys,
+            "sumbar_2005": target["sumbar_2005"],
+            "reconciliation": target["sumbar_2005_reconciliation"],
             "errors": len(target["errors"]),
         },
         "output": path.as_posix(),
