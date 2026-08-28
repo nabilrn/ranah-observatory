@@ -16,12 +16,13 @@ PER_PAGE = 100
 MAX_DETAIL_VIEWS = 40
 
 
-def text(row: Mapping[str, Any]) -> str:
-    return " ".join(json.dumps(row, ensure_ascii=False, sort_keys=True).casefold().split())
+def title_text(row: Mapping[str, Any]) -> str:
+    """Normalize only the source-native table title; subject metadata must not satisfy relevance."""
+    return " ".join(str(row.get("title", "")).casefold().split())
 
 
 def relevant(row: Mapping[str, Any]) -> bool:
-    value = text(row)
+    value = title_text(row)
     if "konstruksi" not in value:
         return False
     return any(token in value for token in ("kualifikasi", "perusahaan", "usaha", "direktori"))
@@ -62,15 +63,23 @@ def main() -> int:
     OUTDIR.mkdir(parents=True, exist_ok=True)
     client = BPSClient(key, timeout=60, retries=2, retry_backoff_seconds=1.0)
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/bps-csa-construction-historical-candidates-probe/v1",
+        "schema": "ranah-observatory/bps-csa-construction-historical-candidates-probe/v2",
         "purpose": (
-            "Enumerate only the official BPS CSA table catalog for Sumatera Barat subject 559, "
-            "then resolve construction-establishment/qualification candidates and inspect exact source-native periods."
+            "Enumerate the official BPS CSA table catalog for Sumatera Barat subject 559, "
+            "then resolve only tables whose own title explicitly identifies construction "
+            "establishment/qualification/directory content and inspect exact source-native periods."
         ),
         "domain": DOMAIN,
         "csa_subject_id": CSA_SUBJECT_ID,
         "api_key_persisted": False,
+        "relevance_contract": {
+            "field": "title",
+            "requires": "konstruksi",
+            "also_requires_one_of": ["kualifikasi", "perusahaan", "usaha", "direktori"],
+            "subject_text_cannot_satisfy_title_filter": True,
+        },
         "catalog_pages": [],
+        "catalog_rows": [],
         "relevant_catalog_rows": [],
         "candidate_views": [],
         "errors": [],
@@ -113,6 +122,7 @@ def main() -> int:
         if fingerprint in seen_rows:
             continue
         seen_rows.add(fingerprint)
+        report["catalog_rows"].append(dict(row))
         if relevant(row):
             candidates.append(row)
             report["relevant_catalog_rows"].append(dict(row))
@@ -128,7 +138,11 @@ def main() -> int:
                 {"model": "tablestatistic", "domain": DOMAIN, "lang": "ind", "id": tid},
             )
         except BPSApiError as exc:
-            report["errors"].append({"stage": f"candidate-view:{tid}", "error": str(exc)})
+            report["errors"].append({
+                "stage": f"candidate-view:{tid}",
+                "title": row.get("title"),
+                "error": str(exc),
+            })
             continue
         var_rows = view.get("var", []) if isinstance(view, Mapping) else []
         labels = [str(item.get("label", "")) for item in var_rows if isinstance(item, Mapping)]
@@ -159,7 +173,7 @@ def main() -> int:
     path = OUTDIR / "bps-csa-construction-historical-candidates-probe.json"
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({
-        "catalog_rows_seen": len(all_rows),
+        "catalog_rows_seen": len(report["catalog_rows"]),
         "relevant_catalog_rows": len(report["relevant_catalog_rows"]),
         "candidate_views": len(report["candidate_views"]),
         "exact_2005_candidate_count": report["exact_2005_candidate_count"],
