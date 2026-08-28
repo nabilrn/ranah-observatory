@@ -1,0 +1,30 @@
+name: Temporary BPS Sumbar Construction Qualification 652 Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_bps_sumbar_construction_qualification_table_652.py"
+      - ".github/workflows/temp-bps-sumbar-construction-qualification-652.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe official BPS table 652 backing data
+        run: python scripts/probe_bps_sumbar_construction_qualification_table_652.py
+      - name: Upload bounded WebAPI probe output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-sumbar-construction-qualification-table-652-probe
+          path: probe-output/
+          if-no-files-found: error
