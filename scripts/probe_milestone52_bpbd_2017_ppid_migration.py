@@ -127,6 +127,15 @@ def fetch(url: str, *, max_body: int = MAX_HTML_BODY) -> dict[str, Any]:
     return _request_result(opener, request, max_body)
 
 
+def _redacted_forms(forms: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    copied = json.loads(json.dumps(forms))
+    for form in copied:
+        for field in form.get("fields", []):
+            if field.get("name") == "csrf_ppid" and field.get("value"):
+                field["value"] = "<redacted-volatile-csrf>"
+    return copied
+
+
 def summarize_response(result: dict[str, Any]) -> dict[str, Any]:
     body: bytes = result["body"]
     content_type = str(result["content_type"]).casefold()
@@ -155,7 +164,7 @@ def summarize_response(result: dict[str, Any]) -> dict[str, Any]:
             if any(token in low for token in ("download", ".pdf", "pusdalops", "8604", "information")):
                 relevant_links.append(absolute)
         summary["relevant_links"] = sorted(set(relevant_links))[:100]
-        summary["forms"] = parser.forms[:20]
+        summary["forms"] = _redacted_forms(parser.forms[:20])
         summary["script_sources"] = [
             urllib.parse.urljoin(str(result["final_url"] or result["requested_url"]), src)
             for src in parser.scripts
@@ -260,7 +269,7 @@ def main() -> int:
         f"{BASE}/api/download/?id={RECORD_ID}&title={urllib.parse.quote_plus(TITLE)}",
     ]
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/m52-bpbd-2017-ppid-migration-live-probe/v3",
+        "schema": "ranah-observatory/m52-bpbd-2017-ppid-migration-live-probe/v4",
         "purpose": "Read-only deterministic recovery probe for legacy PPID record 8604 plus exact-title search on the official PPID inventory; no UUID brute force and no scientific value promotion.",
         "record_id": RECORD_ID,
         "exact_title": TITLE,
