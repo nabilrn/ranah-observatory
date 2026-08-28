@@ -1,0 +1,106 @@
+{
+  "schema": "ranah-observatory/milestone26-event-impact-transport-candidate/v1",
+  "source_id": "bnpb_event_impact_table",
+  "component_class": "observed_impact",
+  "hazard_family": "multi_hazard",
+  "official_owner": "BNPB",
+  "discovery_date": "2026-08-28",
+  "upstream_stage0_binding": {
+    "registry_path": "data/registries/m26-bnpb-source-candidates.csv",
+    "qualification_path": "data/analysis/engine/disaster_risk_chain_v1/m26-source-qualification.csv",
+    "original_surface_url": "https://gis.bnpb.go.id/databencana/tabel/pencarian.php",
+    "original_qualification_state": "field_surface_verified_retrieval_contract_pending",
+    "numeric_extraction_authorized": false
+  },
+  "candidate_transport": {
+    "url": "https://gis.bnpb.go.id/server/rest/services/Hosted/Data_Bencana_Dashboard/FeatureServer/0",
+    "query_url": "https://gis.bnpb.go.id/server/rest/services/Hosted/Data_Bencana_Dashboard/FeatureServer/0/query",
+    "service_item_id": "cc34bb232b504e279ee1c94c081e3860",
+    "layer_id": 0,
+    "layer_name": "Sheet2",
+    "layer_type": "Feature Layer",
+    "geometry_type": "esriGeometryPoint",
+    "object_id_field": "objectid",
+    "max_record_count": 2000,
+    "supported_query_formats": ["JSON", "geoJSON", "PBF"],
+    "supports_query": true,
+    "supports_advanced_queries": true,
+    "supports_order_by": true,
+    "supports_pagination": true,
+    "supports_statistics": true,
+    "uses_standardized_queries": true
+  },
+  "field_surface": {
+    "identity_candidates": ["objectid", "id", "xdibi", "serial", "kib"],
+    "geography_fields": ["nprop", "nkab", "lokasi", "alamat_lengkap", "desa", "desa_terdampak", "longitude", "latitude"],
+    "event_fields": ["id_jenis_bencana", "kejadian", "nama_kejadian", "tahun", "bulan", "tanggal", "tgl", "status", "tanggal_status", "tanggal_update"],
+    "human_impact_fields": ["meninggal", "hilang", "terluka", "menderita", "mengungsi"],
+    "housing_impact_fields": ["rumah_rusak_berat", "rumah_rusak_sedang", "rumah_rusak_ringan", "rumah_rusak", "terendam"],
+    "public_facility_impact_fields": ["pendidikan_rusak", "peribadatan_rusak", "kesehatan_rusak", "kantor_rusak", "fasum_rusak", "jembatan_rusak"],
+    "economic_context_fields": ["kerugian_juta", "pabrik_rusak", "kios_rusak"],
+    "provenance_fields": ["sumber", "link_dokumentasi", "tanggal_input", "tanggal_update"]
+  },
+  "type_hazards": [
+    {
+      "field": "terluka",
+      "declared_type": "esriFieldTypeString",
+      "blocking_implication": "cannot assume numeric casualty semantics or coerce blanks/non-numeric tokens to zero"
+    },
+    {
+      "field": "pabrik_rusak_sedang",
+      "declared_type": "esriFieldTypeString",
+      "blocking_implication": "cannot assume homogeneous integer damage semantics across detailed facility fields"
+    }
+  ],
+  "transport_classification": {
+    "official_machine_readable_surface_verified": true,
+    "query_operation_exposed": true,
+    "same_official_owner": true,
+    "same_component_class": true,
+    "source_family_changed": false,
+    "scientific_design_changed": false,
+    "posthoc_transport_discovery_performed": true,
+    "posthoc_source_family_search_performed": false,
+    "candidate_status": "official_machine_readable_transport_verified_retrieval_contract_pending"
+  },
+  "unresolved_contracts": {
+    "deterministic_query_response_verified": false,
+    "source_native_sumatera_barat_label_frozen": false,
+    "stable_event_identity_verified": false,
+    "identity_candidate_uniqueness_profiled": false,
+    "missing_value_semantics_frozen": false,
+    "duplicate_event_rules_frozen": false,
+    "geography_name_to_canonical_id_mapping_frozen": false,
+    "impact_field_numeric_parsing_rules_frozen": false,
+    "live_snapshot_checksum_frozen": false
+  },
+  "proposed_next_audit": {
+    "stage_1": "freeze a raw FeatureServer metadata snapshot and checksum",
+    "stage_2": "retrieve distinct source-native province labels before writing a province filter",
+    "stage_3": "query Sumatera Barat with explicit outFields, returnGeometry=false, objectid ordering, and deterministic pagination",
+    "stage_4": "freeze every raw page with retrieval timestamp and SHA-256",
+    "stage_5": "profile objectid/id/xdibi/serial/kib nullness and uniqueness without deduplication",
+    "stage_6": "freeze null-versus-zero and string-to-numeric rules field by field",
+    "stage_7": "map kabupaten/kota names to canonical geography only after exact-name audit",
+    "stage_8": "authorize event-panel materialization only if all prior gates pass"
+  },
+  "gate": {
+    "replace_html_surface_as_canonical_transport_authorized": false,
+    "numeric_extraction_authorized": false,
+    "event_panel_materialization_authorized": false,
+    "silent_numeric_coercion_authorized": false,
+    "blind_deduplication_authorized": false,
+    "objectid_as_stable_cross_snapshot_event_id_authorized": false,
+    "aggregate_to_kabupaten_kota_authorized": false,
+    "risk_synthesis_authorized": false,
+    "causal_claim_authorized": false,
+    "monetary_loss_claim_authorized": false
+  },
+  "evidence_boundary": {
+    "metadata_surface_verified_from_official_arcgis_rest": true,
+    "metadata_snapshot_bytes_stored_in_repository": false,
+    "event_rows_retrieved": false,
+    "event_values_inspected": false,
+    "reason_for_hold": "The official machine-readable surface materially improves transport feasibility, but identity, missingness, duplicate, geography, typing, and snapshot contracts remain unresolved."
+  }
+}
