@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import base64
 import json
 import os
 from pathlib import Path
@@ -10,6 +11,8 @@ from bps_client import BPSApiError, BPSClient
 
 DOMAIN = "1300"
 TARGET_TABLE_ID = 652
+TARGET_SOURCE_NUMBER = 2
+TARGET_ENCODED_ID = "NjUyIzI="
 TARGET_TITLE = (
     "Banyaknya Usaha/Perusahaan Konstruksi Menurut Kabupaten/Kota dan "
     "Kode Kualifikasi Usaha di Sumatera Barat"
@@ -38,7 +41,6 @@ def static_relevant(row: Mapping[str, Any]) -> bool:
 
 
 def variable_relevant(row: Mapping[str, Any]) -> bool:
-    """Subject context already supplies 'Konstruksi'; do not require it in variable title."""
     text = row_text(row)
     return (
         "kualifikasi" in text
@@ -75,6 +77,10 @@ def candidate_id(row: Mapping[str, Any]) -> int | None:
     return None
 
 
+def decode_public_identity() -> str:
+    return base64.b64decode(TARGET_ENCODED_ID).decode("utf-8")
+
+
 def main() -> int:
     key = os.environ.get("BPS_API_KEY", "").strip()
     if not key:
@@ -84,28 +90,58 @@ def main() -> int:
     client = BPSClient(key, timeout=60, retries=2, retry_backoff_seconds=1.0)
 
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/bps-sumbar-construction-qualification-table-652-probe/v2",
+        "schema": "ranah-observatory/bps-sumbar-construction-qualification-table-652-probe/v3",
         "purpose": (
-            "Identify the official BPS WebAPI object backing public Sumatera Barat statistics-table "
-            "652#2 and determine whether source-native 2005 data are exposed."
+            "Resolve the official CSA table object backing public Sumatera Barat statistics-table "
+            "652#2 and determine which BPS source family/transport it exposes."
         ),
         "domain": DOMAIN,
         "public_table": {
-            "encoded_identity": "652#2",
-            "table_id_hypothesis": TARGET_TABLE_ID,
+            "encoded_id": TARGET_ENCODED_ID,
+            "decoded_identity": decode_public_identity(),
+            "expected_decoded_identity": f"{TARGET_TABLE_ID}#{TARGET_SOURCE_NUMBER}",
             "title": TARGET_TITLE,
             "url": PUBLIC_URL,
         },
         "api_key_persisted": False,
-        "static_table_keyword_candidates": [],
-        "static_table_652_view": None,
-        "construction_subject_candidates": [],
-        "construction_subject_variables": [],
-        "construction_variable_candidates": [],
-        "candidate_periods": {},
-        "candidate_derived_variables": {},
+        "csa_tablestatistic_view": None,
+        "legacy_statictable_652_view": None,
+        "legacy_static_table_keyword_candidates": [],
+        "legacy_construction_subject_candidates": [],
+        "legacy_construction_subject_variables": [],
+        "legacy_construction_variable_candidates": [],
+        "legacy_candidate_periods": {},
         "errors": [],
     }
+
+    # Correct current-site contract: statistics-table pages use CSA `tablestatistic`
+    # identities. The encoded ID is taken verbatim from the verified public page URL.
+    try:
+        report["csa_tablestatistic_view"] = client._request(
+            "api/view",
+            {
+                "model": "tablestatistic",
+                "domain": DOMAIN,
+                "lang": "ind",
+                "id": TARGET_ENCODED_ID,
+            },
+        )
+    except BPSApiError as exc:
+        report["errors"].append({"stage": "csa-tablestatistic-view", "error": str(exc)})
+
+    # Preserve the disproven legacy hypothesis as an explicit negative control.
+    try:
+        report["legacy_statictable_652_view"] = client._request(
+            "api/view/",
+            {
+                "model": "statictable",
+                "domain": DOMAIN,
+                "lang": "ind",
+                "id": TARGET_TABLE_ID,
+            },
+        )
+    except BPSApiError as exc:
+        report["errors"].append({"stage": "legacy-statictable-view:652", "error": str(exc)})
 
     for keyword in (
         "kualifikasi konstruksi",
@@ -117,86 +153,67 @@ def main() -> int:
                 domain=DOMAIN, lang="ind", keyword=keyword, max_pages=3
             )
         except BPSApiError as exc:
-            report["errors"].append({"stage": f"statictable-list:{keyword}", "error": str(exc)})
+            report["errors"].append({"stage": f"legacy-statictable-list:{keyword}", "error": str(exc)})
             continue
         for row in rows:
             if static_relevant(row):
                 item = dict(row)
-                if item not in report["static_table_keyword_candidates"]:
-                    report["static_table_keyword_candidates"].append(item)
-
-    try:
-        view = client._request(  # bounded hypothesis derived from verified public URL identity
-            "api/view/",
-            {
-                "model": "statictable",
-                "domain": DOMAIN,
-                "lang": "ind",
-                "id": TARGET_TABLE_ID,
-            },
-        )
-        report["static_table_652_view"] = view
-    except BPSApiError as exc:
-        report["errors"].append({"stage": "statictable-view:652", "error": str(exc)})
+                if item not in report["legacy_static_table_keyword_candidates"]:
+                    report["legacy_static_table_keyword_candidates"].append(item)
 
     try:
         subjects = client.list_subjects(domain=DOMAIN, lang="ind", max_pages=20)
     except BPSApiError as exc:
         subjects = []
-        report["errors"].append({"stage": "subjects", "error": str(exc)})
+        report["errors"].append({"stage": "legacy-subjects", "error": str(exc)})
 
     for row in subjects:
         if "konstruksi" in row_text(row):
-            report["construction_subject_candidates"].append(dict(row))
+            report["legacy_construction_subject_candidates"].append(dict(row))
 
     seen_vars: dict[int, Mapping[str, Any]] = {}
-    for subject in report["construction_subject_candidates"]:
+    for subject in report["legacy_construction_subject_candidates"]:
         sid = candidate_id(subject)
         if sid is None:
             continue
         try:
-            rows = client.list_variables(
-                domain=DOMAIN, lang="ind", subject=sid, max_pages=20
-            )
+            rows = client.list_variables(domain=DOMAIN, lang="ind", subject=sid, max_pages=20)
         except BPSApiError as exc:
-            report["errors"].append({"stage": f"variables:subject:{sid}", "error": str(exc)})
+            report["errors"].append({"stage": f"legacy-variables:subject:{sid}", "error": str(exc)})
             continue
-
-        report["construction_subject_variables"].extend(dict(row) for row in rows)
+        report["legacy_construction_subject_variables"].extend(dict(row) for row in rows)
         for row in rows:
             if variable_relevant(row):
                 vid = candidate_id(row)
                 if vid is not None:
                     seen_vars[vid] = row
 
-    report["construction_variable_candidates"] = [
+    report["legacy_construction_variable_candidates"] = [
         dict(seen_vars[vid]) for vid in sorted(seen_vars)
     ]
-
     for vid in sorted(seen_vars):
         try:
             periods = client.list_periods(domain=DOMAIN, lang="ind", var=vid, max_pages=20)
-            report["candidate_periods"][str(vid)] = [dict(row) for row in periods]
+            report["legacy_candidate_periods"][str(vid)] = [dict(row) for row in periods]
         except BPSApiError as exc:
-            report["errors"].append({"stage": f"periods:var:{vid}", "error": str(exc)})
-        try:
-            turvars = client.list_derived_variables(domain=DOMAIN, lang="ind", var=vid, max_pages=20)
-            report["candidate_derived_variables"][str(vid)] = [dict(row) for row in turvars]
-        except BPSApiError as exc:
-            report["errors"].append({"stage": f"derived-variables:var:{vid}", "error": str(exc)})
+            report["errors"].append({"stage": f"legacy-periods:var:{vid}", "error": str(exc)})
 
     report["year_mentions"] = collect_year_mentions(
         {
-            "static_table_keyword_candidates": report["static_table_keyword_candidates"],
-            "static_table_652_view": report["static_table_652_view"],
-            "construction_variable_candidates": report["construction_variable_candidates"],
-            "candidate_periods": report["candidate_periods"],
-            "candidate_derived_variables": report["candidate_derived_variables"],
+            "csa_tablestatistic_view": report["csa_tablestatistic_view"],
+            "legacy_statictable_652_view": report["legacy_statictable_652_view"],
+            "legacy_static_table_keyword_candidates": report["legacy_static_table_keyword_candidates"],
+            "legacy_construction_variable_candidates": report["legacy_construction_variable_candidates"],
+            "legacy_candidate_periods": report["legacy_candidate_periods"],
         }
     )
     report["source_native_2005_mention_present"] = any(
         "2005" in str(hit["value"]) for hit in report["year_mentions"]
     )
+
+    csa = report["csa_tablestatistic_view"]
+    csa_available = isinstance(csa, Mapping) and str(csa.get("data-availability", "")) == "available"
+    csa_data = csa.get("data") if isinstance(csa, Mapping) else None
 
     path = OUTDIR / "bps-sumbar-construction-qualification-table-652-probe.json"
     path.write_text(
@@ -205,14 +222,14 @@ def main() -> int:
     )
 
     summary = {
-        "static_candidates": len(report["static_table_keyword_candidates"]),
-        "table_652_data_available": (
-            isinstance(report["static_table_652_view"], Mapping)
-            and str(report["static_table_652_view"].get("data-availability", "")) == "available"
+        "decoded_identity": report["public_table"]["decoded_identity"],
+        "csa_tablestatistic_available": csa_available,
+        "csa_data_type": type(csa_data).__name__ if csa is not None else None,
+        "legacy_statictable_available": (
+            isinstance(report["legacy_statictable_652_view"], Mapping)
+            and str(report["legacy_statictable_652_view"].get("data-availability", "")) == "available"
         ),
-        "construction_subjects": len(report["construction_subject_candidates"]),
-        "construction_subject_variables": len(report["construction_subject_variables"]),
-        "construction_variable_candidates": len(report["construction_variable_candidates"]),
+        "legacy_construction_subject_variables": len(report["legacy_construction_subject_variables"]),
         "source_native_2005_mention_present": report["source_native_2005_mention_present"],
         "error_count": len(report["errors"]),
         "output": path.as_posix(),
