@@ -17,8 +17,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Confirm PDF text extractor
-        run: command -v pdftotext && pdftotext -v
+      - name: Install embedded-text PDF extractor
+        run: python -m pip install --disable-pip-version-check --no-cache-dir pypdf==6.0.0
       - name: Probe official Sumbar yearbooks
         run: python scripts/probe_sumbar_yearbooks_construction_qualification_2004_2007.py
       - name: Upload bounded probe report
