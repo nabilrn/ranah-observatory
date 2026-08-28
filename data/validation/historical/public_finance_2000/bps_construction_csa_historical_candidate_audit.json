@@ -1,0 +1,108 @@
+{
+  "schema": "ranah-observatory/bps-construction-csa-historical-candidate-audit/v1",
+  "research_question": "Does the current official BPS Sumatera Barat CSA table catalog under the construction-related subject expose any construction-establishment or qualification table with a source-native 2005 period that can close the post-update historical evidence gap?",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "depends_on": {
+    "current_csa_table_652_boundary": "bps_construction_current_csa_table_652_boundary.json",
+    "pre_post_acquisition_boundary": "bps_construction_qualification_pre_post_update_acquisition_boundary.json"
+  },
+  "official_catalog_contract": {
+    "endpoint": "https://webapi.bps.go.id/v1/api/list",
+    "model": "tablestatistic",
+    "domain": "1300",
+    "subject_id": 559,
+    "subject_label": "Pertambangan, Manufaktur, Konstruksi",
+    "catalog_rows_seen": 19,
+    "catalog_query_error_count": 0,
+    "catalog_inventory_complete_within_reported_pagination": true
+  },
+  "relevance_contract": {
+    "field": "title",
+    "requires": "konstruksi",
+    "also_requires_one_of": [
+      "kualifikasi",
+      "perusahaan",
+      "usaha",
+      "direktori"
+    ],
+    "subject_text_cannot_satisfy_title_filter": true,
+    "reason": "The CSA subject label itself contains the word Konstruksi and therefore cannot be used to establish table-level construction relevance. Relevance is determined from the table's own source-native title."
+  },
+  "relevant_candidates": [
+    {
+      "encoded_id": "NjUyIzI=",
+      "tablesource": "2",
+      "title": "Banyaknya Usaha/Perusahaan Konstruksi menurut Kabupaten/Kota dan Kode Kualifikasi Usaha di Sumatera Barat (Usaha)",
+      "catalog_oldest_period": 2016,
+      "catalog_latest_period": 2016,
+      "detail_status": "OK",
+      "detail_data_availability": "available",
+      "detail_exact_years": [
+        "2016"
+      ],
+      "contains_2005_period": false,
+      "source_subject_text": "Sensus Ekonomi",
+      "historical_role": "current qualification table already bounded by the prior CSA table 652 checkpoint; not a 2005 post-directory-update source"
+    },
+    {
+      "encoded_id": "U1ZSa2VIZzBVbVpVTDBoNk4wSkxSbXRTYnpOcGR6MDkjMyMxMzAw",
+      "tablesource": "3",
+      "title": "Banyaknya Sampel Usaha, Rata-Rata Pekerja Tetap, Rata-Rata Hari Orang Pekerja Harian, Median Balas Jasa dan Upah Pekerja per Tahun, serta Median Nilai Konstruksi yang Diselesaikan Usaha Konstruksi Perorangan Menurut Kabupaten/Kota di Provinsi Sumatera Barat",
+      "catalog_oldest_period": 2020,
+      "catalog_latest_period": 2022,
+      "detail_status": "OK",
+      "detail_data_availability": "available",
+      "detail_exact_years": [],
+      "contains_2005_period": false,
+      "source_subject_text": null,
+      "historical_role": "modern individual-construction table; catalog-native period bounds are 2020-2022 and therefore exclude 2005 even though this source family does not expose the standard CSA year axis in the detail response"
+    }
+  ],
+  "audit_result": {
+    "relevant_title_candidate_count": 2,
+    "resolved_candidate_count": 2,
+    "candidate_detail_error_count": 0,
+    "resolved_exact_2005_candidate_count": 0,
+    "any_candidate_catalog_bounds_include_2005": false,
+    "current_csa_catalog_closes_2005_gap": false,
+    "classification": "current_sumbar_csa_construction_catalog_exhausted_no_2005_candidate"
+  },
+  "bounded_inference": {
+    "claim_scope": "Current CSA catalog inventory under Sumatera Barat subject 559 only.",
+    "proves_bps_never_published_2005_data": false,
+    "proves_book_ii_05230_0610_absent": false,
+    "proves_no_2005_source_exists_in_deep_search_or_archival_publications": false,
+    "supports_stopping_repeated_csa_subject_559_search": true,
+    "preferred_remaining_frontier": "Contemporaneous official BPS publication/Deep Search surfaces, especially Book II 05230.0610 or another official 2005-era reproduction of Sumatera Barat post-update qualification counts."
+  },
+  "probe_provenance": {
+    "workflow_run_id": 33161202159,
+    "workflow_job_id": 98815822980,
+    "workflow_artifact_id": 9681697553,
+    "workflow_artifact_zip_sha256": "322487312bc9152b6fb032e09cf770e26e459a7b21ac63cd24edd83aaace7562",
+    "api_key_persisted": false,
+    "hidden_table_id_guessing_performed": false,
+    "detail_ids_followed_only_from_official_catalog": true,
+    "note": "The final audit run used title-only relevance after an earlier experimental filter was found to be confounded by the subject label containing 'Konstruksi'. Only the corrected final run is canonical."
+  },
+  "comparison_gate": {
+    "pre_update_baseline_available": true,
+    "post_update_2005_comparable_table_available": false,
+    "post_update_2005_sumbar_qualification_values_acquired": false,
+    "pre_post_qualification_comparison_authorized": false,
+    "frame_change_quantification_authorized": false,
+    "old_vs_new_sumbar_frame_counts_recovered": false,
+    "causal_revision_attribution_authorized": false
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  }
+}
