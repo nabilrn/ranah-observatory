@@ -17,8 +17,54 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install temporary PDF identity dependency
+        run: python -m pip install pypdf==6.0.0
       - name: Probe exact PPID migration surfaces
         run: python scripts/probe_milestone52_bpbd_2017_ppid_migration.py
+      - name: Verify candidate PDF identity without promoting values
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import re
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          candidate = Path("probe-output/bpbd-pusdalops-sumbar-2017-candidate.pdf")
+          out = Path("probe-output/m52-candidate-pdf-identity.json")
+          report = {
+              "schema": "ranah-observatory/m52-bpbd-2017-candidate-pdf-identity/v1",
+              "candidate_exists": candidate.exists(),
+              "scientific_value_promotion_authorized": False,
+          }
+          if candidate.exists():
+              raw = candidate.read_bytes()
+              reader = PdfReader(str(candidate))
+              text = "\n".join((page.extract_text() or "") for page in reader.pages)
+              normalized = re.sub(r"\s+", " ", text).casefold()
+              compact_numeric = re.sub(r"[^0-9]", "", text)
+              markers = {
+                  "pusdalops_pb": "pusdalops pb" in normalized,
+                  "sumatera_barat": "sumatera barat" in normalized,
+                  "year_2017": "2017" in normalized,
+                  "event_total_725_verification_target": bool(re.search(r"(?<!\d)725(?!\d)", text)),
+                  "loss_target_digits_verification_only": "20647693425" in compact_numeric,
+              }
+              report.update({
+                  "raw_sha256": hashlib.sha256(raw).hexdigest(),
+                  "raw_bytes": len(raw),
+                  "page_count": len(reader.pages),
+                  "extracted_text_chars": len(text),
+                  "markers": markers,
+                  "artifact_identity_candidate_pass": all(
+                      markers[key]
+                      for key in ("pusdalops_pb", "sumatera_barat", "year_2017", "event_total_725_verification_target")
+                  ),
+                  "note": "Numeric markers are identity/reconciliation targets only and are not promoted as canonical observations by this temporary probe.",
+              })
+          out.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(report, indent=2, sort_keys=True))
+          PY
       - name: Upload probe evidence
         if: always()
         uses: actions/upload-artifact@v4
