@@ -1,0 +1,30 @@
+name: Temporary BPS CSA Construction Historical Candidates Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_bps_csa_construction_historical_candidates.py"
+      - ".github/workflows/temp-bps-csa-construction-historical-candidates.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Enumerate bounded CSA construction candidates
+        run: python scripts/probe_bps_csa_construction_historical_candidates.py
+      - name: Upload bounded candidate report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-csa-construction-historical-candidates-probe
+          path: probe-output/
+          if-no-files-found: error
