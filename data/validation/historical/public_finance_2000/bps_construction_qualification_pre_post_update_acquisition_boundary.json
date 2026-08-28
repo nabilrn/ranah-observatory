@@ -1,0 +1,110 @@
+{
+  "schema": "ranah-observatory/bps-construction-qualification-pre-post-update-acquisition-boundary/v1",
+  "research_question": "Can Sumatera Barat construction-establishment qualification composition immediately before the 2005 directory updating be compared with a post-update 2005 outside-Java profile without overstating the relationship to the historical construction-value revision?",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "depends_on": {
+    "mechanism_candidate": "bps_construction_revision_mechanism_candidate.json",
+    "period_method_support": "bps_construction_revision_period_method_support_2004_2009.json"
+  },
+  "pre_update_published_baseline": {
+    "status": "acquired_and_tabulated",
+    "year": 2003,
+    "title": "Statistik Konstruksi 2004",
+    "publication_number": "05230.0506",
+    "legacy_catalog_number_on_pdf": "6513",
+    "isbn": "979-724-383-4",
+    "official_bps_release_date": "2005-09-12",
+    "official_page_url": "https://www.bps.go.id/id/publication/2005/09/12/869f31cc603c898d5b915982/statistik-konstruksi-2004.html",
+    "table_number": "4.3",
+    "table_title": "JUMLAH PERUSAHAAN KONSTRUKSI MENURUT KUALIFIKASI PER KABUPATEN TAHUN 2003",
+    "province_total": {
+      "B": 0,
+      "M1": 16,
+      "M2": 134,
+      "K1": 334,
+      "K2": 1084,
+      "K3": 1314,
+      "total": 2882
+    },
+    "district_row_count": 16,
+    "processed_path": "data/processed/bps/historical_construction_qualification_sumbar_2003.csv",
+    "interpretation_boundary": "This is a published pre-update qualification-composition baseline. It is not labeled or treated as the exact old sampling frame."
+  },
+  "post_update_target": {
+    "status": "official_opac_record_recovered_softcopy_sso_gated",
+    "title": "Profil Perusahaan Konstruksi di Luar Pulau Jawa 2005",
+    "publication_number": "05230.0610",
+    "legacy_catalog_number": "6507",
+    "isbn": "979-724-565-9",
+    "page_count_text": "xxiii + 647",
+    "scope_relevant_to_sumatera_barat": true,
+    "catalog_role": "BPS catalog evidence states that the publication profiles construction establishments outside Java based on the 2005 construction-directory updating and includes characteristics plus construction-activity indicators during 2003-2005.",
+    "opac_record_id": "111.0614.1380",
+    "opac_search_url": "https://perpustakaan.bps.go.id/opac/search",
+    "opac_detail_url": "https://perpustakaan.bps.go.id/opac/details/111.0614.1380",
+    "opac_read_url": "https://perpustakaan.bps.go.id/opac/read/111.0614.1380.pdf",
+    "exact_title_search_record_recovered": true,
+    "matching_detail_and_read_record_id": true,
+    "softcopy_request_final_url": "https://sso-pst.bps.go.id/login",
+    "softcopy_request_http_status": 200,
+    "softcopy_response_content_type": "text/html; charset=utf-8",
+    "softcopy_pdf_signature": false,
+    "softcopy_pdf_eof": false,
+    "raw_pdf_acquired": false,
+    "post_update_sumbar_qualification_composition_acquired": false
+  },
+  "opac_locator_provenance": {
+    "method": "public BPS OPAC exact-title GET search using the site's q field",
+    "search_query_title": "Profil Perusahaan Konstruksi di Luar Pulau Jawa 2005",
+    "discovery_workflow_run_id": 33156939897,
+    "discovery_workflow_job_id": 98801856553,
+    "discovery_artifact_id": 9679984516,
+    "discovery_artifact_zip_sha256": "45fb60bc75a61857d9e97f85b70d9b28e4c0f859edb28c2891d9c9ae686a04af",
+    "verified_softcopy_workflow_run_id": 33157241994,
+    "verified_softcopy_workflow_job_id": 98802837444,
+    "verified_softcopy_artifact_id": 9680104397,
+    "verified_softcopy_artifact_zip_sha256": "5d6684d12dc5a7724c55d15d4fef05bc91166d76185daa833bae1c8994e3dbad",
+    "record_id_guessed_or_bruteforced": false
+  },
+  "comparison_gate": {
+    "pre_update_baseline_available": true,
+    "post_update_comparable_table_available": false,
+    "pre_post_qualification_comparison_authorized": false,
+    "frame_change_quantification_authorized": false,
+    "old_vs_new_sumbar_frame_counts_recovered": false,
+    "causal_revision_attribution_authorized": false
+  },
+  "bounded_inference": {
+    "pre_update_2003_qualification_composition_confirmed": true,
+    "post_update_source_identity_confirmed": true,
+    "post_update_source_locator_confirmed": true,
+    "post_update_raw_bytes_confirmed": false,
+    "post_update_table_semantics_confirmed": false,
+    "post_update_sumbar_values_confirmed": false,
+    "opac_sso_gate_is_transport_access_blocker": true,
+    "sso_gate_is_not_evidence_that_artifact_is_absent": true,
+    "published_2003_baseline_is_not_asserted_as_exact_sampling_frame": true
+  },
+  "next_gate": {
+    "title": "Acquire and semantically verify the post-update outside-Java 2005 profile",
+    "trigger": "Obtain the official Book II PDF bytes or another official BPS text surface exposing the relevant Sumatera Barat qualification table with enough context to establish construct comparability.",
+    "tasks": [
+      "Freeze raw artifact SHA256 and byte count if official PDF bytes are acquired.",
+      "Locate Sumatera Barat establishment counts by qualification and record exact table title/year/definitions.",
+      "Test whether pre-update 2003 and post-update 2005 qualification categories are semantically comparable before calculating differences.",
+      "Preserve district/geography boundary differences and do not force a 2003-to-2005 district one-to-one bridge where administrative units changed.",
+      "Treat any composition difference as frame/profile evidence only until a contemporaneous revision note or reproducible value-reestimation bridge links it to the 2001-2003 construction-value revision."
+    ]
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  }
+}
