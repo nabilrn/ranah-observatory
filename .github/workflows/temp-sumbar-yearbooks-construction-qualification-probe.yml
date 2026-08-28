@@ -1,0 +1,30 @@
+name: Temporary Sumbar Yearbooks Construction Qualification Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_sumbar_yearbooks_construction_qualification_2004_2007.py"
+      - ".github/workflows/temp-sumbar-yearbooks-construction-qualification-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Confirm PDF text extractor
+        run: command -v pdftotext && pdftotext -v
+      - name: Probe official Sumbar yearbooks
+        run: python scripts/probe_sumbar_yearbooks_construction_qualification_2004_2007.py
+      - name: Upload bounded probe report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sumbar-yearbooks-construction-qualification-probe
+          path: probe-output/sumbar-yearbooks-construction-qualification-probe.json
+          if-no-files-found: error
