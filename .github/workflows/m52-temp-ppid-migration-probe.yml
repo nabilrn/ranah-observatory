@@ -1,0 +1,28 @@
+name: Temporary M52 PPID Migration Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_milestone52_bpbd_2017_ppid_migration.py"
+      - ".github/workflows/m52-temp-ppid-migration-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe exact PPID migration surfaces
+        run: python scripts/probe_milestone52_bpbd_2017_ppid_migration.py
+      - name: Upload probe evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m52-ppid-migration-probe
+          path: probe-output/
+          if-no-files-found: error
