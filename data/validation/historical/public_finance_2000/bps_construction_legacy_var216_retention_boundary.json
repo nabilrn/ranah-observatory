@@ -1,0 +1,172 @@
+{
+  "schema": "ranah-observatory/bps-construction-legacy-var216-retention-boundary/v1",
+  "status": "official_2005_total_recovered_component_strata_not_exposed_current_csa_starts_2016",
+  "question": "Can official BPS machine-readable surfaces recover the missing 2005 Sumatera Barat construction qualification composition, or at least define the exact digital retention boundary around the known 2005 total?",
+  "legacy_variable": {
+    "domain": "0000",
+    "subject": "Konstruksi",
+    "var_id": 216,
+    "title": "Banyaknya Perusahaan Konstruksi",
+    "source": "Direktori Perusahaan Konstruksi",
+    "period_count": 26,
+    "period_start": {
+      "th": "2000",
+      "th_id": 100
+    },
+    "period_end": {
+      "th": "2025",
+      "th_id": 125
+    },
+    "target_period": {
+      "th": "2005",
+      "th_id": 105
+    },
+    "derived_variable_group": "Jenis Golongan Perusahaan",
+    "derived_variables": [
+      {
+        "label": "Kecil",
+        "turvar_id": 454
+      },
+      {
+        "label": "Menengah",
+        "turvar_id": 455
+      },
+      {
+        "label": "Besar",
+        "turvar_id": 456
+      },
+      {
+        "label": "Jumlah",
+        "turvar_id": 457
+      }
+    ],
+    "derived_period": {
+      "label": "Tahun",
+      "turth_id": 0
+    },
+    "canonical_hashes": {
+      "variable_metadata_sha256": "3714919348bf448aa486a2facba4afa2cc8e5f3646d42ba90ef7d6a9221a356f",
+      "period_rows_sha256": "bb77e9bd23f0f5ad4e1a09c6638f62a395f5bc4d2dc6c6fcbd0c309429c47003",
+      "derived_variables_sha256": "195c07e02a4c9ae892c2f55b95fa21b3bf32147b4075f33a3d781eacba4b7afa",
+      "derived_periods_sha256": "b9afe1cacacd97ae00339d10d1ed3a608c5f4b5e2738847001285f377fb944fe"
+    }
+  },
+  "legacy_2005_total": {
+    "domain": "0000",
+    "var_id": 216,
+    "turvar_id": 457,
+    "turvar_label": "Jumlah",
+    "th_id": 105,
+    "th_label": "2005",
+    "turth_id": 0,
+    "geography_dimension": "38 Provinsi",
+    "sumatera_barat": {
+      "vervar_id": 1300,
+      "label": "SUMATERA BARAT",
+      "datacontent_key": "13002164571050",
+      "value": 2435
+    },
+    "last_update": "2025-12-31 06:32:26",
+    "canonical_response_sha256": "b32f04b12b50fd73903c734dc0ad17e02950572ed6fc0bad8620d6d6fd10d6f5"
+  },
+  "legacy_2005_component_probe": {
+    "requested_turvar_ids": [
+      454,
+      455,
+      456
+    ],
+    "requested_labels": [
+      "Kecil",
+      "Menengah",
+      "Besar"
+    ],
+    "result": "data_not_available_under_tested_legacy_dynamic_contract",
+    "component_values_recovered": false,
+    "interpretation": "This is an API-surface result only. It does not prove the 2005 source publication lacked those strata."
+  },
+  "current_csa_surface": {
+    "public_page": "https://www.bps.go.id/id/statistics-table/2/MjE2IzI=/banyaknya-perusahaan-konstruksi.html",
+    "encoded_id": "MjE2IzI=",
+    "decoded_id": "216#2",
+    "model": "tablestatistic",
+    "domain": "0000",
+    "available": true,
+    "available_years": [
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "derived_variables": [
+      {
+        "label": "Kecil",
+        "turvar_id": 454
+      },
+      {
+        "label": "Menengah",
+        "turvar_id": 455
+      },
+      {
+        "label": "Besar",
+        "turvar_id": 456
+      },
+      {
+        "label": "Jumlah",
+        "turvar_id": 457
+      }
+    ],
+    "year_2005_exposed": false,
+    "last_update": "2025-12-31 06:32:26",
+    "canonical_response_sha256": "8a3b3a96397709b75776eee80bda6155c19a91bd7e2d69420c9909a5c1648d38"
+  },
+  "retention_boundary": {
+    "legacy_period_metadata_contains_2005": true,
+    "legacy_2005_total_retrievable": true,
+    "legacy_2005_small_medium_large_retrievable_under_tested_contract": false,
+    "current_csa_full_size_surface_earliest_year": 2016,
+    "current_csa_contains_2005": false,
+    "classification": "legacy_total_survives_before_current_csa_component_retention_window"
+  },
+  "research_gates": {
+    "official_2005_sumbar_total_confirmed": true,
+    "official_2005_sumbar_small_medium_large_components_recovered": false,
+    "official_2005_sumbar_b_m1_m2_k1_k2_k3_components_recovered": false,
+    "period_specific_2003_to_2005_category_mapping_verified": false,
+    "qualification_composition_change_quantified": false,
+    "sampling_frame_change_quantified": false,
+    "revision_attributed_to_2005_directory_update": false,
+    "bridge_or_backcast_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  },
+  "provenance": {
+    "pull_request": 112,
+    "workflow_run_id": 33176262302,
+    "workflow_job_id": 98865549072,
+    "artifact_id": 9687725097,
+    "artifact_zip_sha256": "d79f788355571fb7b6150ee01c6dc8e7e59cb5085bf208504d6863e3c399d3af",
+    "api_key_persisted": false,
+    "ocr_used": false
+  },
+  "next_search_boundary": {
+    "preferred": [
+      "official BPS Book II 05230.0610 table or another contemporaneous BPS reproduction exposing Sumatera Barat 2005 qualification counts",
+      "an official BPS transport that explicitly exposes 2005 Kecil/Menengah/Besar values for variable 216",
+      "period-specific BPS or LPJK documentation proving how 2005 aggregate Kecil/Menengah/Besar maps to B/M1/M2/K1/K2/K3"
+    ],
+    "forbidden": [
+      "treating API non-availability as proof that the source publication lacked component strata",
+      "inferring 2005 component values from the 2435 total",
+      "using 2016-2025 CSA composition as a proxy for 2005",
+      "mapping Kecil=K1+K2+K3, Menengah=M1+M2, Besar=B without period-specific support",
+      "bridge or backcast",
+      "causal attribution from this retention boundary alone"
+    ]
+  }
+}
