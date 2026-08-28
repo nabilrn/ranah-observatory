@@ -1,0 +1,165 @@
+{
+  "schema": "ranah-observatory/bps-construction-current-csa-table-652-boundary/v1",
+  "research_question": "Can the current BPS Sumatera Barat statistics-table titled 'Banyaknya Usaha/Perusahaan Konstruksi Menurut Kabupaten/Kota dan Kode Kualifikasi Usaha di Sumatera Barat' supply the missing post-update 2005 qualification composition needed for the historical construction revision investigation?",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "depends_on": {
+    "pre_post_acquisition_boundary": "bps_construction_qualification_pre_post_update_acquisition_boundary.json",
+    "opac_detail_transport_boundary": "bps_construction_post_update_opac_detail_transport_boundary.json"
+  },
+  "public_page_identity": {
+    "title": "Banyaknya Usaha/Perusahaan Konstruksi Menurut Kabupaten/Kota dan Kode Kualifikasi Usaha di Sumatera Barat",
+    "url": "https://sumbar.bps.go.id/id/statistics-table/2/NjUyIzI=/banyaknya-usaha-perusahaan-konstruksi-menurut-kabupaten-kota-dan-kode-kualifikasi-usaha-di-sumatera-barat.html",
+    "encoded_id": "NjUyIzI=",
+    "decoded_identity": "652#2",
+    "encoded_identity_verified_by_base64_decode": true
+  },
+  "api_contract": {
+    "official_base": "https://webapi.bps.go.id/v1/api/view",
+    "model": "tablestatistic",
+    "domain": "1300",
+    "lang": "ind",
+    "id": "NjUyIzI=",
+    "classification": "current_statistics_table_resolved_through_csa_tablestatistic",
+    "legacy_statictable_id_652_is_same_object": false,
+    "legacy_statictable_652_data_availability": "not-available"
+  },
+  "official_csa_response": {
+    "status": "OK",
+    "data_availability": "available",
+    "canonicalized_response_sha256": "1f7cd5c99dbc2ba8e28f5028faa5ee0e34090c2974f2c125c8753e5a2ca650ac",
+    "canonicalized_response_bytes": 6163,
+    "last_update": "2022-04-21 08:48:51",
+    "available_years": [
+      "2016"
+    ],
+    "year_dimension": [
+      {
+        "label": "2016",
+        "val": 116
+      }
+    ],
+    "source_native_2005_available": false,
+    "labelvervar": "Kabupaten/Kota",
+    "subject_csa": {
+      "label": "Pertambangan, Manufaktur, Konstruksi",
+      "val": 559
+    },
+    "variable": {
+      "val": 652,
+      "label": "Banyaknya Usaha/Perusahaan Konstruksi menurut Kabupaten/Kota dan Kode Kualifikasi Usaha di Sumatera Barat",
+      "subj": "Sensus Ekonomi",
+      "unit": "Usaha",
+      "decimal": 0,
+      "note": "Kualifikasi Usaha Perusahaan Konstruksi: Usaha Mikro = Usaha Perorangan; Usaha Kecil = K1, K2, K3; Usaha Menengah = M1 dan M2; Usaha Besar = B1 dan B2. The source-native note also includes value-limit descriptions for M1, M2, B1 and B2."
+    },
+    "qualification_categories": [
+      "Perseorangan",
+      "K1",
+      "K2",
+      "K3",
+      "M1",
+      "M2",
+      "B1",
+      "B2",
+      "Lainnya",
+      "Jumlah"
+    ],
+    "geography_rows": {
+      "kabupaten_kota_count": 19,
+      "province_total_row_present": true,
+      "total_vervar_rows": 20
+    },
+    "province_total_2016": {
+      "Perseorangan": 4106,
+      "K1": 482,
+      "K2": 143,
+      "K3": 82,
+      "M1": 210,
+      "M2": 32,
+      "B1": 14,
+      "B2": 7,
+      "Lainnya": 790,
+      "Jumlah": 5866,
+      "component_sum_matches_jumlah": true
+    }
+  },
+  "historical_comparability": {
+    "pre_update_2003_categories": [
+      "B",
+      "M1",
+      "M2",
+      "K1",
+      "K2",
+      "K3"
+    ],
+    "current_2016_categories": [
+      "Perseorangan",
+      "K1",
+      "K2",
+      "K3",
+      "M1",
+      "M2",
+      "B1",
+      "B2",
+      "Lainnya"
+    ],
+    "classification_regime_identical_to_2003": false,
+    "differences": [
+      "The 2003 baseline publishes a single aggregate B category, whereas the 2016 table separates B1 and B2.",
+      "The 2016 table separately publishes Perseorangan and Lainnya categories that are not present in the 2003 baseline table.",
+      "The current table is sourced to Sensus Ekonomi and only exposes 2016, not the 2005 directory-updating period."
+    ],
+    "direct_full_composition_comparison_2003_to_2016_authorized": false,
+    "category_name_overlap_proves_definition_equivalence": false
+  },
+  "bounded_finding": {
+    "current_bps_table_identity_verified": true,
+    "current_bps_table_machine_readable_transport_verified": true,
+    "encoded_identity_is_csa_tablestatistic_not_legacy_statictable": true,
+    "post_update_2005_values_recovered": false,
+    "current_table_can_substitute_for_2005_book_ii": false,
+    "current_table_closes_2005_acquisition_gap": false,
+    "classification": "current_csa_table_verified_2016_only_not_post_update_2005_source"
+  },
+  "probe_provenance": {
+    "workflow_run_id": 33160550789,
+    "workflow_job_id": 98813698778,
+    "workflow_artifact_id": 9681437018,
+    "workflow_artifact_zip_sha256": "e1b06b59a0a9a3c8742fe7bb6314e378ddf4576cf882bcefef40b0bba35e0061",
+    "api_key_persisted": false,
+    "authentication_bypass_attempted": false,
+    "hidden_endpoint_guessing_performed": false,
+    "note": "The temporary frontend-page probe received HTTP 403 from the website and is not used as evidence for table contents. The canonical finding comes from the official BPS WebAPI CSA tablestatistic response."
+  },
+  "comparison_gate": {
+    "pre_update_baseline_available": true,
+    "post_update_2005_comparable_table_available": false,
+    "post_update_2005_sumbar_qualification_values_acquired": false,
+    "pre_post_qualification_comparison_authorized": false,
+    "frame_change_quantification_authorized": false,
+    "old_vs_new_sumbar_frame_counts_recovered": false,
+    "causal_revision_attribution_authorized": false
+  },
+  "next_search_boundary": {
+    "do_not_reuse_current_table_as_2005_proxy": true,
+    "do_not_return_to_opac_route_guessing": true,
+    "target": "Recover an official BPS source that explicitly exposes Sumatera Barat 2005 post-directory-update qualification counts with period-specific definitions, ideally Book II 05230.0610 or another contemporaneous BPS-authored reproduction.",
+    "acceptable_surfaces": [
+      "official BPS publication text/PDF bytes",
+      "official BPS Deep Search indexed text",
+      "official BPS CSA/SIMDASI/WebAPI object explicitly carrying 2005",
+      "another contemporaneous official BPS publication reproducing the 2005 qualification table with definitions"
+    ]
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  }
+}
