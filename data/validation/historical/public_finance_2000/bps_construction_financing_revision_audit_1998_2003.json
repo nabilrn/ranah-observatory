@@ -21,7 +21,8 @@
       "coverage_years": [1999, 2000, 2001, 2002, 2003],
       "historical_header_marker": "R on 1999, 2000, and 2001 headers",
       "historical_header_marker_interpretation": "not asserted without an explicit source definition",
-      "table_note": "Angka Sementara/Preliminary Figures"
+      "table_note": "Angka Sementara/Preliminary Figures",
+      "method_note": "The publication explanation states that its presented annual construction data are the result of the 2002 Annual Construction Establishment Survey, while preliminary 2003 figures are estimated from the Quarterly Construction Survey using 2003-over-2002 growth."
     }
   },
   "values_thousand_rupiah": {

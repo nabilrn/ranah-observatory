@@ -12,6 +12,7 @@ on:
       - "data/processed/bps/historical_apbd_construction_2000_source_native.csv"
       - "data/processed/bps/historical_construction_financing_2000_source_native.csv"
       - "data/processed/bps/historical_construction_financing_revision_1998_2003.csv"
+      - "data/processed/bps/historical_construction_financing_major_release_break_2002_2003.csv"
       - "data/validation/historical/sp1961/**"
       - "data/validation/historical/sumbar1970/**"
       - "data/validation/historical/sumbar1980/**"
@@ -35,6 +36,7 @@ on:
       - "scripts/validate_sumbar2000_apbd_construction_anchor.py"
       - "scripts/validate_sumbar2000_construction_financing_composition.py"
       - "scripts/validate_sumbar_construction_financing_revision_audit.py"
+      - "scripts/validate_sumbar_construction_major_release_break.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
@@ -46,6 +48,7 @@ on:
       - "tests/test_sumbar2000_apbd_construction_anchor.py"
       - "tests/test_sumbar2000_construction_financing_composition.py"
       - "tests/test_sumbar_construction_financing_revision_audit.py"
+      - "tests/test_sumbar_construction_major_release_break.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -53,6 +56,7 @@ on:
       - "research/SUMBAR2000_APBD_CONSTRUCTION_ANCHOR.md"
       - "research/SUMBAR2000_CONSTRUCTION_FINANCING_COMPOSITION.md"
       - "research/SUMBAR_CONSTRUCTION_FINANCING_REVISION_AUDIT_1998_2003.md"
+      - "research/SUMBAR_CONSTRUCTION_MAJOR_RELEASE_BREAK_2002_2003.md"
       - ".github/workflows/historical-reconstruction.yml"
   pull_request:
     paths:
@@ -65,6 +69,7 @@ on:
       - "data/processed/bps/historical_apbd_construction_2000_source_native.csv"
       - "data/processed/bps/historical_construction_financing_2000_source_native.csv"
       - "data/processed/bps/historical_construction_financing_revision_1998_2003.csv"
+      - "data/processed/bps/historical_construction_financing_major_release_break_2002_2003.csv"
       - "data/validation/historical/sp1961/**"
       - "data/validation/historical/sumbar1970/**"
       - "data/validation/historical/sumbar1980/**"
@@ -88,6 +93,7 @@ on:
       - "scripts/validate_sumbar2000_apbd_construction_anchor.py"
       - "scripts/validate_sumbar2000_construction_financing_composition.py"
       - "scripts/validate_sumbar_construction_financing_revision_audit.py"
+      - "scripts/validate_sumbar_construction_major_release_break.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
@@ -99,6 +105,7 @@ on:
       - "tests/test_sumbar2000_apbd_construction_anchor.py"
       - "tests/test_sumbar2000_construction_financing_composition.py"
       - "tests/test_sumbar_construction_financing_revision_audit.py"
+      - "tests/test_sumbar_construction_major_release_break.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -106,6 +113,7 @@ on:
       - "research/SUMBAR2000_APBD_CONSTRUCTION_ANCHOR.md"
       - "research/SUMBAR2000_CONSTRUCTION_FINANCING_COMPOSITION.md"
       - "research/SUMBAR_CONSTRUCTION_FINANCING_REVISION_AUDIT_1998_2003.md"
+      - "research/SUMBAR_CONSTRUCTION_MAJOR_RELEASE_BREAK_2002_2003.md"
       - ".github/workflows/historical-reconstruction.yml"
 
 permissions:
@@ -169,6 +177,9 @@ jobs:
 
       - name: Validate Sumbar 1998-2003 construction financing revision audit
         run: python scripts/validate_sumbar_construction_financing_revision_audit.py
+
+      - name: Validate Sumbar 2002-2003 construction major release break
+        run: python scripts/validate_sumbar_construction_major_release_break.py
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
