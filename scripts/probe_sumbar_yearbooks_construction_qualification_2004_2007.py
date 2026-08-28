@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import urllib.request
+import subprocess
 from pathlib import Path
 
 from pypdf import PdfReader
@@ -50,28 +50,55 @@ KEYWORDS = (
 
 
 def fetch_pdf(url: str, path: Path) -> dict[str, object]:
-    request = urllib.request.Request(
+    path.unlink(missing_ok=True)
+    command = [
+        "curl",
+        "--location",
+        "--http1.1",
+        "--tlsv1.2",
+        "--retry",
+        "3",
+        "--retry-delay",
+        "2",
+        "--retry-all-errors",
+        "--connect-timeout",
+        "30",
+        "--max-time",
+        "180",
+        "--silent",
+        "--show-error",
+        "--user-agent",
+        "Mozilla/5.0 (Ranah Observatory evidence probe; public BPS artifact)",
+        "--header",
+        "Accept: application/pdf,*/*;q=0.8",
+        "--output",
+        str(path),
+        "--write-out",
+        "%{url_effective}\n%{http_code}\n%{content_type}\n",
         url,
-        headers={
-            "User-Agent": "Mozilla/5.0 (Ranah Observatory evidence probe; public BPS artifact)",
-            "Accept": "application/pdf,*/*;q=0.8",
-        },
-    )
-    with urllib.request.urlopen(request, timeout=120) as response:
-        data = response.read()
-        final_url = response.geturl()
-        content_type = response.headers.get("Content-Type", "")
+    ]
+    proc = subprocess.run(command, text=True, capture_output=True, timeout=210, check=False)
+    writeout = proc.stdout.splitlines()
+    final_url = writeout[-3].strip() if len(writeout) >= 3 else ""
+    http_code = writeout[-2].strip() if len(writeout) >= 2 else ""
+    content_type = writeout[-1].strip() if len(writeout) >= 1 else ""
+    data = path.read_bytes() if path.exists() else b""
     complete_pdf = data.startswith(b"%PDF-") and b"%%EOF" in data[-8192:]
-    if complete_pdf:
-        path.write_bytes(data)
+    if not complete_pdf:
+        path.unlink(missing_ok=True)
     return {
+        "transport": "curl_http1_1_tls1_2_verified",
+        "curl_returncode": proc.returncode,
+        "curl_stderr": proc.stderr[-1200:],
         "http_final_url": final_url,
+        "http_status": int(http_code) if http_code.isdigit() else None,
         "content_type": content_type,
         "byte_count": len(data),
-        "sha256": hashlib.sha256(data).hexdigest(),
+        "sha256": hashlib.sha256(data).hexdigest() if data else None,
         "pdf_signature": data.startswith(b"%PDF-"),
-        "pdf_eof": b"%%EOF" in data[-8192:],
+        "pdf_eof": b"%%EOF" in data[-8192:] if data else False,
         "complete_pdf": complete_pdf,
+        "tls_verification_disabled": False,
     }
 
 
@@ -148,10 +175,16 @@ def main() -> int:
     OUTDIR.mkdir(parents=True, exist_ok=True)
     PDFDIR.mkdir(parents=True, exist_ok=True)
     report = {
-        "schema": "ranah-observatory/sumbar-yearbooks-construction-qualification-probe/v2",
+        "schema": "ranah-observatory/sumbar-yearbooks-construction-qualification-probe/v3",
         "purpose": "Inspect official Sumatera Barat yearbook PDFs for source-native construction qualification evidence around 2005.",
         "sources": [],
-        "bounds": {"keyword_context_limit_per_source": 80, "ocr_used": False, "embedded_text_extractor": "pypdf"},
+        "bounds": {
+            "keyword_context_limit_per_source": 80,
+            "ocr_used": False,
+            "embedded_text_extractor": "pypdf",
+            "transport": "curl HTTP/1.1 with TLS verification and bounded retries",
+            "insecure_tls_mode_used": False,
+        },
     }
 
     for source in SOURCES:
