@@ -1,0 +1,29 @@
+name: Temporary BPS Historical Construction Publication Object Probe
+
+on:
+  pull_request:
+    paths:
+      - "scripts/probe_bps_historical_construction_publication_objects.py"
+      - ".github/workflows/temp-bps-historical-construction-publication-object-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    env:
+      BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Resolve exact historical publication objects
+        run: python scripts/probe_bps_historical_construction_publication_objects.py
+      - name: Upload bounded publication-object report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bps-historical-construction-publication-object-probe
+          path: probe-output/bps-historical-construction-publication-object-probe.json
+          if-no-files-found: error
