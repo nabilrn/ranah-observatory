@@ -1,0 +1,125 @@
+{
+  "schema": "ranah-observatory/bps-construction-se06-listing-boundary-2006/v1",
+  "research_question": "Does the 2006 Economic Census establishment listing provide an independent Sumatera Barat construction-establishment benchmark that constrains interpretation of the annual construction-survey establishment count and sampling-frame hypothesis?",
+  "source_geography_name": "Sumatera Barat",
+  "canonical_historical_geography_id": "idn.13.h1958",
+  "depends_on": {
+    "annual_establishment_trajectory": "bps_construction_establishment_count_trajectory_2002_2006.json",
+    "period_method_support": "bps_construction_revision_period_method_support_2004_2009.json",
+    "mechanism_candidate": "bps_construction_revision_mechanism_candidate.json"
+  },
+  "se06_source": {
+    "title": "Sensus Ekonomi 2006 - Hasil Pendaftaran Perusahaan/Usaha - Sumatera Barat",
+    "english_title": "2006 Economic Census - Establishment Listing Result - West Sumatera",
+    "publication_number": "05000.0733",
+    "catalog_number": "9102005.13",
+    "isbn": "978-979-724-726-3",
+    "publisher": "Badan Pusat Statistik, Jakarta - Indonesia",
+    "listing_period": "May-June 2006",
+    "classification_basis": "KBLI 2005 industrial classification",
+    "official_bps_text_surface": "web-api.bps.go.id BPS-authored publication artifact",
+    "table_number": "12",
+    "table_title_indonesian": "Banyaknya Perusahaan/Usaha Menurut Klasifikasi Lapangan Usaha dan Skala Usaha",
+    "table_title_english": "Number of Establishments by Industrial Classification and Scale of Enterprises"
+  },
+  "se06_sumatera_barat_construction": {
+    "industrial_classification": "Konstruksi / Construction",
+    "permanent_location": {
+      "large": 20,
+      "medium": 110,
+      "small": 828,
+      "micro": 3540,
+      "not_classified": 6,
+      "total": 4504
+    },
+    "non_permanent_location": {
+      "large": 0,
+      "medium": 0,
+      "small": 0,
+      "micro": 0,
+      "total": 0
+    },
+    "all_locations_total": 4504,
+    "scale_components_sum_to_total": true
+  },
+  "cross_check": {
+    "table_14_title": "Number of Establishments With Permanent Location by Industrial Classification and Business Network",
+    "table_14_construction_total": 4504,
+    "table_1c_title": "Number of Establishments by Regency/Municipality and Industrial Classification",
+    "table_1c_sumatera_barat_construction_total": 4504,
+    "independent_table_totals_match": true
+  },
+  "annual_survey_comparator": {
+    "title": "Statistik Tahunan Perusahaan Konstruksi 2002-2006",
+    "publication_number": "05340.0704",
+    "table_number": "4",
+    "table_title": "Number of Construction Establishment by Province",
+    "2006_sumatera_barat_count": 2664,
+    "2006_status": "asterisk_marked",
+    "coverage_text": "The Annual Construction Survey includes national construction establishments which have construction projects in Indonesia.",
+    "establishment_definition_text": "The annual-survey explanation defines an establishment as an economic activity unit providing goods/services in a physical building with its own cost structure and production records; documented legal forms include cooperative/partnership/government/private and related forms."
+  },
+  "same_year_2006_comparison": {
+    "se06_listing_count": 4504,
+    "annual_survey_published_count": 2664,
+    "difference_annual_minus_se06": -1840,
+    "annual_count_as_percent_of_se06_listing": 59.147425,
+    "difference_percent_of_se06_listing": -40.852575,
+    "numeric_identity": false,
+    "comparison_scope": "same geography and nominal year, but different statistical operations and not assumed to have identical universe, inclusion rules, or estimation semantics"
+  },
+  "interpretation": {
+    "se06_construction_listing_total_confirmed": true,
+    "se06_construction_scale_profile_confirmed": true,
+    "se06_construction_non_permanent_count_is_zero_in_table_12": true,
+    "annual_2006_and_se06_2006_counts_are_materially_different": true,
+    "annual_table_4_count_equals_full_se06_construction_listing_universe": false,
+    "difference_proves_annual_survey_excludes_micro_establishments": false,
+    "difference_proves_specific_formality_or_legal_status_filter": false,
+    "difference_identifies_exact_annual_sampling_frame": false,
+    "se06_listing_is_proven_to_be_the_annual_survey_sampling_frame": false,
+    "annual_table_4_count_is_proven_to_be_sampling_frame_size": false,
+    "2005_annual_count_is_proven_to_be_sampling_frame_size": false,
+    "same_year_difference_proves_2005_directory_refresh_caused_historical_revision": false,
+    "causal_revision_attribution_authorized": false
+  },
+  "mechanism_candidate_effect": {
+    "candidate_id": "sampling_frame_refresh_plus_qualification_based_expansion_reestimation",
+    "status_upgrade_authorized": false,
+    "new_constraint": "The independent SE06 construction listing reports 4,504 Sumatera Barat construction establishments in 2006, while the annual construction series reports 2,664*. Therefore the annual-series establishment count cannot be silently equated with the full SE06 construction-establishment listing universe.",
+    "remaining_gap": "The exact inclusion rules and source frame behind the annual-series count, the 2005 Sumatera Barat qualification composition, old/new survey-frame counts, and period-specific weights remain unrecovered."
+  },
+  "classification": "same_year_se06_listing_divergence_confirms_annual_count_not_full_census_listing_universe_frame_mapping_unproven",
+  "next_gate": {
+    "title": "Resolve the annual-survey universe/frame semantics or recover 2005 qualification composition",
+    "preferred_evidence": [
+      "contemporaneous BPS documentation explicitly identifying which construction directory/frame generated the annual-survey population estimates",
+      "Profil Perusahaan Konstruksi di Luar Pulau Jawa 2005 (05230.0610) Sumatera Barat qualification table",
+      "another official BPS 2005-2007 source reproducing Sumatera Barat qualification counts",
+      "old/new Sumatera Barat frame counts or expansion factors under comparable definitions"
+    ]
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "se06_listing_as_annual_sampling_frame_authorized": false,
+    "annual_establishment_count_as_sampling_frame_authorized": false,
+    "infer_micro_exclusion_authorized": false,
+    "pre_post_qualification_comparison_authorized": false,
+    "frame_change_quantification_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  },
+  "source_boundary": {
+    "official_bps_se06_text_verified": true,
+    "se06_table_12_scale_values_verified": true,
+    "se06_table_14_total_cross_check_verified": true,
+    "se06_table_1c_total_cross_check_verified": true,
+    "annual_survey_explanation_verified_from_official_bps_deep_search": true,
+    "raw_pdf_sha256_available_in_repository": false,
+    "note": "The checkpoint constrains construct equivalence; it does not infer the causal reason for the count difference."
+  }
+}
