@@ -1,0 +1,99 @@
+{
+  "schema": "ranah-observatory/bps-construction-revision-period-method-support-2004-2009/v1",
+  "research_question": "What period-specific BPS evidence constrains the sampling and population-estimation mechanism of the annual construction survey around the 2005 revision window, without overstating a causal link to the historical revision?",
+  "depends_on": {
+    "mechanism_candidate": "bps_construction_revision_mechanism_candidate.json",
+    "revision_persistence": "bps_construction_revision_persistence_release_lifecycle_2002_2006.json"
+  },
+  "source": {
+    "title": "Kegiatan BPS Tahun 2004-2009 dan Rencana Kegiatan BPS Tahun 2010",
+    "cover_title": "Aktivitas Badan Pusat Statistik 2008",
+    "publication_number": "02130.0903",
+    "catalog_number": "1202027",
+    "issn": "1907-8862",
+    "publisher": "Badan Pusat Statistik, Jakarta - Indonesia",
+    "preface_date": "Jakarta, Agustus 2009",
+    "bps_authored_artifact_surface": "mirror retaining original bps.go.id page markings and embedded BPS publication metadata",
+    "screenshot_attempted": true,
+    "screenshot_status": "remote PDF screenshot timed out",
+    "raw_pdf_sha256_available_in_repository": false
+  },
+  "annual_construction_survey_method": {
+    "section": "3.7. Survei Konstruksi Tahunan",
+    "report_page": 144,
+    "sampling_is_used": true,
+    "reported_current_sample_size": 12199,
+    "reported_active_universe_approx": 80000,
+    "sample_selection_method": "combination of cut-off point and stratified PPS sampling",
+    "collection_method": "interview",
+    "population_estimation_rule": "For each characteristic, population estimates use company qualification as the basis of the expansion factor.",
+    "qualification_definition": "Company qualification represents capability to handle construction projects according to contract value.",
+    "qualification_categories_documented": ["B", "M1", "M2", "K1", "K2", "K3"]
+  },
+  "historical_respondent_counts": {
+    "source_table": "Tabel 5.5. Jumlah Responden Survei Industri dan Konstruksi Tahun 2004-2009",
+    "annual_construction": {
+      "2004": 8168,
+      "2005": 8168,
+      "2006": 7441,
+      "2007": 7441,
+      "2008": 24398,
+      "2009": 23268
+    },
+    "quarterly_construction": {
+      "2004": 5080,
+      "2005": 5080,
+      "2006": 5076,
+      "2007": 5076,
+      "2008": 20928,
+      "2009": 19560
+    }
+  },
+  "period_link": {
+    "historical_year_2005_annual_survey_respondent_count_documented": true,
+    "annual_sampling_design_documented_in_report_covering_2004_2009": true,
+    "qualification_based_expansion_documented_in_report_covering_2004_2009": true,
+    "same_approximate_80000_universe_as_2005_directory_metadata": true,
+    "same_approximate_universe_is_not_frame_identity_proof": true,
+    "report_proves_2005_refreshed_directory_replaced_prior_annual_survey_frame": false,
+    "report_proves_2001_2003_values_were_reestimated_with_2005_frame": false,
+    "report_proves_revision_cause": false
+  },
+  "mechanism_candidate_effect": {
+    "candidate_id": "sampling_frame_refresh_plus_qualification_based_expansion_reestimation",
+    "prior_status": "operationally_plausible_period_link_confirmed_causal_revision_link_unproven",
+    "status_after_this_checkpoint": "operationally_plausible_period_method_support_strengthened_causal_revision_link_unproven",
+    "status_change_scope": "evidence-strength refinement only; no causal authorization",
+    "new_support": [
+      "BPS retrospectively documents an annual construction survey design using cut-off point plus stratified PPS sampling for the 2004-2009 operational period.",
+      "BPS retrospectively documents qualification as the basis of the expansion factor for annual construction population estimates.",
+      "BPS records 8,168 annual construction survey respondents in 2005.",
+      "The report's approximate 80,000 active-company universe is numerically consistent with the approximate universe reported for the 2005 directory-updating metadata."
+    ],
+    "remaining_causal_gaps": [
+      "no contemporaneous 2005/2006 revision note linking revised 2001-2003 values to the directory refresh",
+      "no proof that the refreshed directory replaced the exact frame used to recompute the revised historical years",
+      "no Sumatera Barat old/new qualification-stratum frame counts",
+      "no contemporaneous old/new weights or expansion factors for Sumatera Barat",
+      "no reproducible transformation from old-vintage to revised-vintage values"
+    ]
+  },
+  "classification": {
+    "period_specific_sampling_support": "confirmed_retrospectively_for_2004_2009",
+    "period_specific_qualification_expansion_support": "confirmed_retrospectively_for_2004_2009",
+    "historical_2005_respondent_count": "confirmed",
+    "frame_identity_with_2005_directory_update": "unproven",
+    "historical_revision_reestimation_link": "unproven",
+    "causal_mechanism": "unproven"
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "backcast_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  }
+}
