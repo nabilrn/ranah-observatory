@@ -1,0 +1,103 @@
+{
+  "schema": "ranah-observatory/bps-construction-revision-mechanism-candidate/v1",
+  "research_question": "What operational mechanism could have produced the explicit BPS revision of the Sumatera Barat construction series first confirmed in the Statistik Indonesia 2005/2006 vintage?",
+  "revision_checkpoint_binding": {
+    "localization_checkpoint": "bps_construction_revision_localization_2001_2004.json",
+    "major_break_checkpoint": "bps_construction_financing_major_release_break_2002_2003.json",
+    "revision_event_confirmed": true,
+    "revision_mechanism_documented": false,
+    "affected_confirmed_revised_years": [2001, 2002, 2003]
+  },
+  "period_evidence": {
+    "directory_update_2005": {
+      "status": "confirmed",
+      "source": "Katalog Publikasi 2007",
+      "official_page_url": "https://www.bps.go.id/id/publication/2007/04/15/ec8db46f407fd0f711341239/katalog-publikasi-2007.html",
+      "catalog_publication_number": "03220.0701",
+      "profile_java_publication_number": "05230.0609",
+      "profile_outside_java_publication_number": "05230.0610",
+      "profile_outside_java_relevant_to_sumatera_barat": true,
+      "finding": "The catalog states that the 2005 construction-establishment profile resulted from a construction-directory updating conducted simultaneously throughout Indonesia at the end of 2005. The outside-Java profile is based on the 2005 updating and presents construction-activity indicators for 2003-2005; its catalog entry also states that presented data result from the annual construction establishment survey."
+    },
+    "directory_update_sampling_frame_use": {
+      "status": "confirmed",
+      "source": "Ringkasan Metadata Kegiatan Statistik 2009",
+      "publication_number": "03210.0803",
+      "bps_catalog_number": "1103004",
+      "data_year": 2005,
+      "national_coverage": true,
+      "covered_establishments": 20450,
+      "approximate_universe_establishments": 80000,
+      "recorded_data_use": "Sampling frame kegiatan survei konstruksi sebagai direktori awal perusahaan konstruksi",
+      "artifact_access": "BPS-authored publication accessed via mirror retaining bps.go.id markings",
+      "screenshot_attempted": true,
+      "screenshot_status": "cache miss",
+      "artifact_sha256_available_in_repository": false
+    },
+    "annual_survey_expansion_method_support": {
+      "status": "confirmed_later_method_not_contemporaneous",
+      "source": "Aktivitas BPS 2010",
+      "finding_directory": "BPS describes construction-directory updating as necessary to obtain an up-to-date frame of incorporated national construction establishments with grades 2-7.",
+      "finding_sampling": "The annual construction survey is described as take-all for grades 5-7 and take-some for grades 2-4.",
+      "finding_estimation": "Population estimates for each characteristic use establishment qualification as the basis of the expansion factor.",
+      "temporal_limitation": "This is documentation of the 2010 operational method and is not direct evidence that the identical expansion algorithm was used for the 2005/2006 historical revision.",
+      "screenshot_attempted": true,
+      "screenshot_status": "cache miss",
+      "artifact_sha256_available_in_repository": false
+    },
+    "revised_series_publication_environment": {
+      "status": "confirmed",
+      "source": "Katalog Publikasi 2007",
+      "construction_statistics_2005_publication_number": "05230.0607",
+      "finding": "The official catalog describes Statistik Konstruksi 2005 as an annual construction-establishment series through 2004 resulting from the Annual Construction Establishment Survey."
+    }
+  },
+  "candidate_mechanism": {
+    "id": "sampling_frame_refresh_plus_qualification_based_expansion_reestimation",
+    "status": "operationally_plausible_period_link_confirmed_causal_revision_link_unproven",
+    "hypothesis": "The nationwide end-2005 directory refresh could have changed the construction-establishment sampling frame and qualification composition used in survey estimation, making re-estimation of population-level construction characteristics operationally possible.",
+    "supporting_chain": [
+      "nationwide construction-directory update at end-2005 is confirmed",
+      "the 2005 updating output is explicitly recorded by BPS metadata as a sampling frame for construction-survey activity",
+      "an outside-Java profile relevant to Sumatera Barat explicitly combines the 2005 updating basis with annual-survey construction indicators",
+      "BPS later documents annual-survey population expansion using establishment qualification as the expansion-factor basis",
+      "the revised 2001-2003 series is first confirmed in the examined yearbook vintage immediately after the 2005 updating period"
+    ],
+    "evidence_missing_for_causal_confirmation": [
+      "a contemporaneous 2005/2006 survey manual stating that the refreshed directory replaced the prior frame for the revised historical estimates",
+      "a contemporaneous weighting or expansion-factor formula used to recompute 2001-2003",
+      "a revision note explicitly connecting the revised series to the 2005 directory update",
+      "old-versus-new frame counts by Sumatera Barat and qualification stratum sufficient to reproduce the revision",
+      "a reproducible bridge from old-vintage values to revised-vintage values"
+    ],
+    "causal_claim_authorized": false
+  },
+  "numerical_consistency": {
+    "year_2001_later_to_earlier_ratio": 1.564437370,
+    "year_2002_later_to_earlier_ratio": 1.564437371,
+    "common_2001_2002_scale_pattern": true,
+    "pattern_compatible_with_multiplier_change": true,
+    "pattern_proves_multiplier_change": false,
+    "reason": "A common scale factor is compatible with an expansion-factor change but is not unique evidence for one; component-level revisions are heterogeneous and no contemporaneous formula has been recovered."
+  },
+  "classification": {
+    "revision_event": "confirmed",
+    "revision_timing_by_vintage": "localized",
+    "sampling_frame_refresh": "confirmed",
+    "sampling_frame_use_for_construction_surveys": "confirmed",
+    "qualification_based_population_expansion": "confirmed_in_later_bps_method_documentation",
+    "candidate_mechanism": "plausible_and_operationally_linked",
+    "causal_mechanism": "unproven"
+  },
+  "gate": {
+    "retain_all_vintages": true,
+    "silent_overwrite_authorized": false,
+    "single_continuous_1998_2006_trajectory_authorized": false,
+    "cross_vintage_bridge_authorized": false,
+    "apply_common_2001_2002_ratio_as_backcast_factor_authorized": false,
+    "attribute_revision_to_2005_directory_update_authorized": false,
+    "canonical_fiscal_mapping_authorized": false,
+    "panel_v3_integration_authorized": false,
+    "causal_claim_authorized": false
+  }
+}
