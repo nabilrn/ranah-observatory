@@ -18,11 +18,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Probe exact BPS OPAC title
-        continue-on-error: true
-        run: python scripts/probe_bps_opac_construction_profile_outside_java_2005.py
       - name: Probe verified target softcopy locator
         run: python scripts/probe_bps_opac_verified_softcopy_outside_java_2005.py
+      - name: Refresh exact-title OPAC search trace
+        continue-on-error: true
+        run: python scripts/probe_bps_opac_construction_profile_outside_java_2005.py
       - name: Upload bounded probe evidence
         if: always()
         uses: actions/upload-artifact@v4
