@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import http.cookiejar
 import json
 import re
 import urllib.error
@@ -20,6 +21,7 @@ USER_AGENT = "ranah-observatory/0.1 (+https://github.com/nabilrn/ranah-observato
 MAX_HTML_BODY = 8_000_000
 MAX_PDF_BODY = 100_000_000
 MAX_SCRIPT_ASSETS = 16
+MAX_SEARCH_RESULTS_TO_INSPECT = 20
 UUID_INFO_RE = re.compile(r"/home/information/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/?$", re.I)
 
 
@@ -46,14 +48,12 @@ class PageParser(HTMLParser):
             }
             self.forms.append(self._form)
         elif tag in {"input", "select", "textarea"} and self._form is not None:
-            self._form["fields"].append(
-                {
-                    "tag": tag,
-                    "name": values.get("name", ""),
-                    "type": values.get("type", ""),
-                    "value": values.get("value", ""),
-                }
-            )
+            self._form["fields"].append({
+                "tag": tag,
+                "name": values.get("name", ""),
+                "type": values.get("type", ""),
+                "value": values.get("value", ""),
+            })
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "form":
@@ -71,25 +71,15 @@ def _same_official_host(url: str) -> bool:
     return parsed.scheme == "https" and (host == "sumbarprov.go.id" or host.endswith(".sumbarprov.go.id"))
 
 
-def fetch(url: str, *, max_body: int = MAX_HTML_BODY) -> dict[str, Any]:
-    if not _same_official_host(url):
-        raise ValueError(f"refusing non-official URL: {url}")
-    request = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": USER_AGENT,
-            "Accept": "text/html,application/pdf,application/javascript,text/javascript,*/*",
-        },
-        method="GET",
-    )
+def _request_result(opener: urllib.request.OpenerDirector, request: urllib.request.Request, max_body: int) -> dict[str, Any]:
     try:
-        with urllib.request.urlopen(request, timeout=45) as response:
+        with opener.open(request, timeout=45) as response:
             body = response.read(max_body + 1)
             truncated = len(body) > max_body
             if truncated:
                 body = body[:max_body]
             return {
-                "requested_url": url,
+                "requested_url": request.full_url,
                 "status": int(response.status),
                 "final_url": str(response.geturl()),
                 "content_type": str(response.headers.get("Content-Type", "")),
@@ -104,7 +94,7 @@ def fetch(url: str, *, max_body: int = MAX_HTML_BODY) -> dict[str, Any]:
         if truncated:
             body = body[:max_body]
         return {
-            "requested_url": url,
+            "requested_url": request.full_url,
             "status": int(exc.code),
             "final_url": str(exc.geturl()),
             "content_type": str(exc.headers.get("Content-Type", "")),
@@ -115,7 +105,7 @@ def fetch(url: str, *, max_body: int = MAX_HTML_BODY) -> dict[str, Any]:
         }
     except (urllib.error.URLError, TimeoutError) as exc:
         return {
-            "requested_url": url,
+            "requested_url": request.full_url,
             "status": None,
             "final_url": None,
             "content_type": "",
@@ -124,6 +114,17 @@ def fetch(url: str, *, max_body: int = MAX_HTML_BODY) -> dict[str, Any]:
             "body_truncated": False,
             "error": f"{type(exc).__name__}:{exc}",
         }
+
+
+def fetch(url: str, *, max_body: int = MAX_HTML_BODY) -> dict[str, Any]:
+    if not _same_official_host(url):
+        raise ValueError(f"refusing non-official URL: {url}")
+    opener = urllib.request.build_opener()
+    request = urllib.request.Request(url, headers={
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/pdf,application/javascript,text/javascript,*/*",
+    })
+    return _request_result(opener, request, max_body)
 
 
 def summarize_response(result: dict[str, Any]) -> dict[str, Any]:
@@ -143,15 +144,17 @@ def summarize_response(result: dict[str, Any]) -> dict[str, Any]:
         parser = PageParser()
         parser.feed(text)
         visible = re.sub(r"\s+", " ", " ".join(parser.text_parts)).strip()
-        summary["visible_text_excerpt"] = visible[:1600]
-        summary["exact_title_present"] = TITLE.casefold() in visible.casefold()
+        folded = visible.casefold()
+        summary["visible_text_excerpt"] = visible[:1800]
+        summary["exact_title_present"] = TITLE.casefold() in folded
+        summary["identity_tokens_present"] = all(token in folded for token in ("pusdalops", "kebencanaan", "2017"))
         relevant_links: list[str] = []
         for href in parser.links:
             absolute = urllib.parse.urljoin(str(result["final_url"] or result["requested_url"]), href)
             low = absolute.casefold()
             if any(token in low for token in ("download", ".pdf", "pusdalops", "8604", "information")):
                 relevant_links.append(absolute)
-        summary["relevant_links"] = sorted(set(relevant_links))[:80]
+        summary["relevant_links"] = sorted(set(relevant_links))[:100]
         summary["forms"] = parser.forms[:20]
         summary["script_sources"] = [
             urllib.parse.urljoin(str(result["final_url"] or result["requested_url"]), src)
@@ -159,7 +162,55 @@ def summarize_response(result: dict[str, Any]) -> dict[str, Any]:
         ][:80]
     else:
         summary["exact_title_present"] = False
+        summary["identity_tokens_present"] = False
     return summary
+
+
+def exact_title_inventory_search() -> tuple[dict[str, Any], list[str]]:
+    jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    dip_url = f"{BASE}/home/dip"
+    get_request = urllib.request.Request(dip_url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,*/*"})
+    initial = _request_result(opener, get_request, MAX_HTML_BODY)
+    if initial["status"] != 200 or not initial["body"]:
+        return summarize_response(initial), []
+
+    parser = PageParser()
+    parser.feed(initial["body"].decode("utf-8", errors="replace"))
+    csrf = None
+    for form in parser.forms:
+        for field in form["fields"]:
+            if field["name"] == "csrf_ppid" and field["value"]:
+                csrf = field["value"]
+                break
+        if csrf:
+            break
+    if not csrf:
+        summary = summarize_response(initial)
+        summary["search_error"] = "csrf_token_not_found"
+        return summary, []
+
+    payload = urllib.parse.urlencode({"csrf_ppid": csrf, "judul": TITLE}).encode("utf-8")
+    post_request = urllib.request.Request(
+        dip_url,
+        data=payload,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "text/html,*/*",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": dip_url,
+        },
+        method="POST",
+    )
+    result = _request_result(opener, post_request, MAX_HTML_BODY)
+    summary = summarize_response(result)
+    summary["search_method"] = "official_ppid_dip_post_exact_title"
+    summary["csrf_cookie_session_used"] = True
+    info_urls = [
+        url for url in summary.get("relevant_links", [])
+        if UUID_INFO_RE.search(urllib.parse.urlparse(url).path)
+    ]
+    return summary, sorted(set(info_urls))
 
 
 def extract_asset_hints(body: bytes) -> list[str]:
@@ -172,6 +223,25 @@ def extract_asset_hints(body: bytes) -> list[str]:
         if len(hints) >= 40:
             break
     return hints
+
+
+def maybe_save_verified_download(report: dict[str, Any], information_url: str) -> None:
+    uuid_match = UUID_INFO_RE.search(urllib.parse.urlparse(information_url).path)
+    if not uuid_match:
+        return
+    uuid = uuid_match.group(1).lower()
+    download_url = f"{BASE}/home/download/{uuid}"
+    raw = fetch(download_url, max_body=MAX_PDF_BODY)
+    summary = summarize_response(raw)
+    summary["source_information_url"] = information_url
+    report["active_inventory_exact_match_download"] = summary
+    if summary["is_pdf"] and raw["body"] and not raw["body_truncated"]:
+        target = OUTDIR / "bpbd-pusdalops-sumbar-2017-candidate.pdf"
+        target.write_bytes(raw["body"])
+        summary["saved_path"] = target.as_posix()
+        summary["exact_raw_sha256"] = hashlib.sha256(raw["body"]).hexdigest()
+        summary["exact_raw_bytes"] = len(raw["body"])
+        report["raw_official_pdf_candidate_saved"] = True
 
 
 def main() -> int:
@@ -190,55 +260,73 @@ def main() -> int:
         f"{BASE}/api/download/?id={RECORD_ID}&title={urllib.parse.quote_plus(TITLE)}",
     ]
     report: dict[str, Any] = {
-        "schema": "ranah-observatory/m52-bpbd-2017-ppid-migration-live-probe/v2",
-        "purpose": "Read-only deterministic recovery probe for legacy PPID record 8604; no UUID brute force and no scientific value promotion.",
+        "schema": "ranah-observatory/m52-bpbd-2017-ppid-migration-live-probe/v3",
+        "purpose": "Read-only deterministic recovery probe for legacy PPID record 8604 plus exact-title search on the official PPID inventory; no UUID brute force and no scientific value promotion.",
         "record_id": RECORD_ID,
         "exact_title": TITLE,
         "candidate_urls": candidates,
         "responses": [],
         "asset_hints": [],
-        "legacy_record_uuid_mapping": None,
-        "legacy_mapping_consistent": False,
-        "discovered_uuid_download": None,
+        "legacy_record_uuid_redirect": None,
+        "legacy_redirect_consistent": False,
+        "legacy_redirect_semantic_match": False,
         "raw_official_pdf_candidate_saved": False,
+        "active_inventory_exact_match_download": None,
     }
 
     script_urls: list[str] = []
     legacy_uuid_by_url: dict[str, str] = {}
+    legacy_summaries: list[dict[str, Any]] = []
     for url in candidates:
         raw = fetch(url)
         summary = summarize_response(raw)
         report["responses"].append(summary)
         if url == f"{BASE}/home/dip":
             script_urls = [u for u in summary.get("script_sources", []) if _same_official_host(u)]
-        if url in legacy_urls and raw.get("final_url"):
-            match = UUID_INFO_RE.search(str(raw["final_url"]))
-            if match:
-                legacy_uuid_by_url[url] = match.group(1).lower()
+        if url in legacy_urls:
+            legacy_summaries.append(summary)
+            if raw.get("final_url"):
+                match = UUID_INFO_RE.search(urllib.parse.urlparse(str(raw["final_url"])).path)
+                if match:
+                    legacy_uuid_by_url[url] = match.group(1).lower()
 
     unique_uuids = sorted(set(legacy_uuid_by_url.values()))
     report["legacy_uuid_by_url"] = legacy_uuid_by_url
     if len(legacy_uuid_by_url) == len(legacy_urls) and len(unique_uuids) == 1:
-        recovered_uuid = unique_uuids[0]
-        report["legacy_record_uuid_mapping"] = {
+        uuid = unique_uuids[0]
+        report["legacy_record_uuid_redirect"] = {
             "legacy_record_id": RECORD_ID,
-            "current_uuid": recovered_uuid,
-            "information_url": f"{BASE}/home/information/{recovered_uuid}",
-            "download_url": f"{BASE}/home/download/{recovered_uuid}",
+            "current_uuid": uuid,
+            "information_url": f"{BASE}/home/information/{uuid}",
+            "download_url": f"{BASE}/home/download/{uuid}",
         }
-        report["legacy_mapping_consistent"] = True
+        report["legacy_redirect_consistent"] = True
+        report["legacy_redirect_semantic_match"] = all(
+            item.get("exact_title_present") or item.get("identity_tokens_present")
+            for item in legacy_summaries
+        )
+        stale_raw = fetch(f"{BASE}/home/download/{uuid}", max_body=MAX_PDF_BODY)
+        report["legacy_redirect_download"] = summarize_response(stale_raw)
 
-        download_url = f"{BASE}/home/download/{recovered_uuid}"
-        raw = fetch(download_url, max_body=MAX_PDF_BODY)
-        summary = summarize_response(raw)
-        report["discovered_uuid_download"] = summary
-        if summary["is_pdf"] and raw["body"] and not raw["body_truncated"]:
-            target = OUTDIR / "bpbd-pusdalops-sumbar-2017-candidate.pdf"
-            target.write_bytes(raw["body"])
-            summary["saved_path"] = target.as_posix()
-            summary["exact_raw_sha256"] = hashlib.sha256(raw["body"]).hexdigest()
-            summary["exact_raw_bytes"] = len(raw["body"])
-            report["raw_official_pdf_candidate_saved"] = True
+    search_summary, info_urls = exact_title_inventory_search()
+    report["active_inventory_exact_title_search"] = search_summary
+    report["active_inventory_information_urls"] = info_urls
+    inspected: list[dict[str, Any]] = []
+    exact_matches: list[str] = []
+    token_matches: list[str] = []
+    for info_url in info_urls[:MAX_SEARCH_RESULTS_TO_INSPECT]:
+        detail = summarize_response(fetch(info_url))
+        detail["information_url"] = info_url
+        inspected.append(detail)
+        if detail.get("exact_title_present"):
+            exact_matches.append(info_url)
+        elif detail.get("identity_tokens_present"):
+            token_matches.append(info_url)
+    report["active_inventory_inspected_records"] = inspected
+    report["active_inventory_exact_title_matches"] = exact_matches
+    report["active_inventory_token_only_matches"] = token_matches
+    if len(exact_matches) == 1:
+        maybe_save_verified_download(report, exact_matches[0])
 
     for script_url in script_urls[:MAX_SCRIPT_ASSETS]:
         raw = fetch(script_url)
