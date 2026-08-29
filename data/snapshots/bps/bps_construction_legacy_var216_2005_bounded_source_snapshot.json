@@ -1,0 +1,173 @@
+{
+  "component_probe_errors": [
+    {
+      "error": "BPS dynamic data is not available for the requested selection",
+      "stage": "dynamic_2005_turvar:454"
+    },
+    {
+      "error": "BPS dynamic data is not available for the requested selection",
+      "stage": "dynamic_2005_turvar:455"
+    },
+    {
+      "error": "BPS dynamic data is not available for the requested selection",
+      "stage": "dynamic_2005_turvar:456"
+    }
+  ],
+  "current_csa": {
+    "available_years": [
+      "2025",
+      "2024",
+      "2023",
+      "2022",
+      "2021",
+      "2020",
+      "2019",
+      "2018",
+      "2017",
+      "2016"
+    ],
+    "data-availability": "available",
+    "last_update": "2025-12-31 06:32:26",
+    "status": "OK",
+    "turvar": [
+      {
+        "label": "Kecil",
+        "val": 454
+      },
+      {
+        "label": "Menengah",
+        "val": 455
+      },
+      {
+        "label": "Besar",
+        "val": 456
+      },
+      {
+        "label": "Jumlah",
+        "val": 457
+      }
+    ]
+  },
+  "derived_periods": [
+    {
+      "group_turth_id": 0,
+      "name_group_turth": "Tahunan",
+      "turth": "Tahun",
+      "turth_id": 0
+    }
+  ],
+  "derived_variables": [
+    {
+      "group_turvar_id": 92,
+      "name_group_turvar": "Jenis Golongan Perusahaan",
+      "turvar": "Kecil",
+      "turvar_id": 454
+    },
+    {
+      "group_turvar_id": 92,
+      "name_group_turvar": "Jenis Golongan Perusahaan",
+      "turvar": "Menengah",
+      "turvar_id": 455
+    },
+    {
+      "group_turvar_id": 92,
+      "name_group_turvar": "Jenis Golongan Perusahaan",
+      "turvar": "Besar",
+      "turvar_id": 456
+    },
+    {
+      "group_turvar_id": 92,
+      "name_group_turvar": "Jenis Golongan Perusahaan",
+      "turvar": "Jumlah",
+      "turvar_id": 457
+    }
+  ],
+  "dynamic_2005_total": {
+    "data-availability": "available",
+    "indonesia_datacontent_key": "99992164571050",
+    "indonesia_value": 79391,
+    "labelvervar": "38 Provinsi",
+    "last_update": "2025-12-31 06:32:26",
+    "status": "OK",
+    "sumatera_barat_datacontent_key": "13002164571050",
+    "sumatera_barat_value": 2435,
+    "sumatera_barat_vervar": {
+      "label": "SUMATERA BARAT",
+      "val": 1300
+    },
+    "tahun": [
+      {
+        "label": "2005",
+        "val": 105
+      }
+    ],
+    "turtahun": [
+      {
+        "label": "Tahun",
+        "val": 0
+      }
+    ],
+    "turvar": [
+      {
+        "label": "Jumlah",
+        "val": 457
+      }
+    ],
+    "var": [
+      {
+        "decimal": 0,
+        "def": "",
+        "label": "Banyaknya Perusahaan Konstruksi",
+        "note": "<p>Sumber: Direktori Perusahaan Konstruksi</p><p>Catatan: Penggolongan perusahaan didasarkan pada Peraturan Lembaga Pengembangan Jasa Konstruksi (LPJK) yang telah mengalami beberapa kali perubahan, yaitu: Peraturan LPJK No. 11A Tahun 2008 diganti dengan Peraturan LPJK No. 10 Tahun 2013, kemudian menggunakan Peraturan LPJK Nasional No. 3 Tahun 2017,  dan yang terakhir menggunakan PP No 5 Tahun 2021</p>",
+        "subj": "Konstruksi",
+        "unit": "",
+        "val": 216
+      }
+    ]
+  },
+  "extraction_note": "Bounded lossless field extraction from the GitHub Actions probe artifact; no values inferred.",
+  "periods": [
+    {"th": "2025", "th_id": 125},
+    {"th": "2024", "th_id": 124},
+    {"th": "2023", "th_id": 123},
+    {"th": "2022", "th_id": 122},
+    {"th": "2021", "th_id": 121},
+    {"th": "2020", "th_id": 120},
+    {"th": "2019", "th_id": 119},
+    {"th": "2018", "th_id": 118},
+    {"th": "2017", "th_id": 117},
+    {"th": "2016", "th_id": 116},
+    {"th": "2015", "th_id": 115},
+    {"th": "2014", "th_id": 114},
+    {"th": "2013", "th_id": 113},
+    {"th": "2012", "th_id": 112},
+    {"th": "2011", "th_id": 111},
+    {"th": "2010", "th_id": 110},
+    {"th": "2009", "th_id": 109},
+    {"th": "2008", "th_id": 108},
+    {"th": "2007", "th_id": 107},
+    {"th": "2006", "th_id": 106},
+    {"th": "2005", "th_id": 105},
+    {"th": "2004", "th_id": 104},
+    {"th": "2003", "th_id": 103},
+    {"th": "2002", "th_id": 102},
+    {"th": "2001", "th_id": 101},
+    {"th": "2000", "th_id": 100}
+  ],
+  "provenance": {
+    "api_key_persisted": false,
+    "artifact_id": 9687725097,
+    "artifact_zip_sha256": "d79f788355571fb7b6150ee01c6dc8e7e59cb5085bf208504d6863e3c399d3af",
+    "workflow_job_id": 98865549072,
+    "workflow_run_id": 33176262302
+  },
+  "schema": "ranah-observatory/bps-legacy-var216-2005-bounded-source-snapshot/v1",
+  "source_report_schema": "ranah-observatory/bps-legacy-construction-qualification-2005-surfaces/v4",
+  "variable": {
+    "source_note": "&lt;p&gt;Sumber: Direktori Perusahaan Konstruksi&lt;/p&gt;&lt;p&gt;Catatan: Penggolongan perusahaan didasarkan pada Peraturan Lembaga Pengembangan Jasa Konstruksi (LPJK) yang telah mengalami beberapa kali perubahan, yaitu: Peraturan LPJK No. 11A Tahun 2008 diganti dengan Peraturan LPJK No. 10 Tahun 2013, kemudian menggunakan Peraturan LPJK Nasional No. 3 Tahun 2017,  dan yang terakhir menggunakan PP No 5 Tahun 2021&lt;/p&gt;",
+    "subject": "Konstruksi",
+    "title": "Banyaknya Perusahaan Konstruksi",
+    "unit": "Tidak Ada Satuan",
+    "var_id": 216
+  }
+}
