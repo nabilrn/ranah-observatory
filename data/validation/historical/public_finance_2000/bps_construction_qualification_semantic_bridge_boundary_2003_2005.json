@@ -1,0 +1,117 @@
+{
+  "schema": "ranah-observatory/bps-construction-qualification-semantic-bridge-boundary-2003-2005/v1",
+  "status": "pre_update_six_class_composition_confirmed_arithmetic_three_group_candidate_reproducible_period_specific_2005_semantic_mapping_unproven",
+  "research_question": "Can the source-native 2003 Sumatera Barat construction qualification classes B/M1/M2/K1/K2/K3 be aggregated into Kecil/Menengah/Besar and treated as semantically comparable with the legacy BPS variable-216 labels for 2005?",
+  "depends_on": {
+    "pre_post_acquisition_boundary": "data/validation/historical/public_finance_2000/bps_construction_qualification_pre_post_update_acquisition_boundary.json",
+    "legacy_var216_retention_boundary": "data/validation/historical/public_finance_2000/bps_construction_legacy_var216_retention_boundary.json"
+  },
+  "official_bps_2003_source": {
+    "title": "Statistik Konstruksi 2004",
+    "publication_number": "05230.0506",
+    "legacy_catalog_number": "6513",
+    "isbn": "979-724-383-4",
+    "official_release_date": "2005-09-12",
+    "official_page_url": "https://www.bps.go.id/id/publication/2005/09/12/869f31cc603c898d5b915982/statistik-konstruksi-2004.html",
+    "table_number": "4.3",
+    "table_title": "JUMLAH PERUSAHAAN KONSTRUKSI MENURUT KUALIFIKASI PER KABUPATEN TAHUN 2003",
+    "province": "SUMATERA BARAT",
+    "source_native_columns": ["B", "M1", "M2", "K1", "K2", "K3", "TOTAL"],
+    "province_total": {
+      "B": 0,
+      "M1": 16,
+      "M2": 134,
+      "K1": 334,
+      "K2": 1084,
+      "K3": 1314,
+      "TOTAL": 2882
+    },
+    "evidence_role": "Direct BPS evidence that the 2003 Sumatera Barat qualification table is published in six detailed classes plus total."
+  },
+  "arithmetic_three_group_candidate_2003": {
+    "definition_status": "arithmetic_candidate_not_semantic_bridge",
+    "candidate_formulae": {
+      "Kecil": "K1 + K2 + K3",
+      "Menengah": "M1 + M2",
+      "Besar": "B"
+    },
+    "candidate_values": {
+      "Kecil": 2732,
+      "Menengah": 150,
+      "Besar": 0,
+      "Jumlah": 2882
+    },
+    "candidate_shares_percent": {
+      "Kecil": 94.79528105482305,
+      "Menengah": 5.20471894517696,
+      "Besar": 0.0
+    },
+    "reconciliation": {
+      "component_sum": 2882,
+      "published_total": 2882,
+      "difference": 0,
+      "exact": true
+    },
+    "interpretation": "These values are deterministic arithmetic summaries of the source-native 2003 classes only. They are not authorized as BPS-defined 2003 aggregate categories and are not authorized for comparison with 2005 variable-216 Kecil/Menengah/Besar until a period-specific construct mapping is recovered."
+  },
+  "official_bps_2005_digital_surface": {
+    "domain": "0000",
+    "variable_id": 216,
+    "title": "Banyaknya Perusahaan Konstruksi",
+    "source": "Direktori Perusahaan Konstruksi",
+    "period": {
+      "th": "2005",
+      "th_id": 105
+    },
+    "derived_variable_group": "Jenis Golongan Perusahaan",
+    "derived_variables": [
+      {"label": "Kecil", "turvar_id": 454},
+      {"label": "Menengah", "turvar_id": 455},
+      {"label": "Besar", "turvar_id": 456},
+      {"label": "Jumlah", "turvar_id": 457}
+    ],
+    "sumatera_barat_total_2005": 2435,
+    "small_medium_large_values_retrievable_under_tested_contract": false,
+    "detailed_b_m1_m2_k1_k2_k3_values_exposed_for_2005": false,
+    "semantic_definition_linking_2005_aggregate_labels_to_2003_six_classes_recovered": false
+  },
+  "semantic_audit": {
+    "same_general_subject": true,
+    "same_geography_sumatera_barat": true,
+    "2003_six_class_labels_source_native": true,
+    "2005_three_group_labels_source_native": true,
+    "2003_to_2005_exact_category_mapping_source_native": false,
+    "period_specific_2005_definition_recovered": false,
+    "category_drift_risk": true,
+    "reason_for_fail_closed": "Matching human-readable notions of small, medium, and large are insufficient to prove statistical construct equivalence across the 2003 detailed qualification table and the 2005 legacy variable-216 aggregate labels. The variable-216 source note itself records that construction-company classification regulations changed multiple times, reinforcing the need for period-specific evidence."
+  },
+  "classification": "arithmetic_aggregation_candidate_reproducible_semantic_bridge_not_authorized",
+  "research_gates": {
+    "2003_detailed_qualification_composition_confirmed": true,
+    "2003_arithmetic_three_group_candidate_reproducible": true,
+    "2005_sumbar_total_confirmed": true,
+    "2005_small_medium_large_component_values_recovered": false,
+    "period_specific_2005_aggregate_definition_recovered": false,
+    "period_specific_2003_to_2005_category_mapping_verified": false,
+    "2003_to_2005_qualification_composition_comparison_authorized": false,
+    "sampling_frame_change_quantified": false,
+    "bridge_or_backcast_authorized": false,
+    "revision_attributed_to_2005_directory_update": false,
+    "causal_claim_authorized": false,
+    "panel_v3_integration_authorized": false
+  },
+  "next_evidence": {
+    "preferred": [
+      "Official BPS Statistik Konstruksi 2005 publication 05230.0607 with the relevant qualification table and definitions.",
+      "Official BPS Profil Perusahaan Konstruksi di Luar Pulau Jawa 2005 publication 05230.0610 with Sumatera Barat qualification values and definitions.",
+      "Contemporaneous 2005 BPS or LPJK documentation explicitly stating how Kecil/Menengah/Besar correspond to B/M1/M2/K1/K2/K3 for the series used by variable 216."
+    ],
+    "forbidden": [
+      "Promoting the arithmetic 2003 three-group candidate to a source-native BPS aggregate without definition evidence.",
+      "Assuming Kecil=K1+K2+K3, Menengah=M1+M2, and Besar=B for 2005 solely because the labels appear intuitively compatible.",
+      "Inferring missing 2005 component values from the confirmed total 2435.",
+      "Using later 2016-2025 CSA category behavior as a proxy for 2005.",
+      "Calculating a pre/post composition delta before the 2005 component values and category semantics are both recovered."
+    ]
+  }
+}
