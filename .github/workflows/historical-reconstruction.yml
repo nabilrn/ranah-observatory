@@ -23,6 +23,7 @@ on:
       - "data/registries/historical_*.csv"
       - "data/snapshots/bps/var-484-1971.json"
       - "data/snapshots/bps/var-484-1971.json.sha256"
+      - "data/snapshots/bps/bps_construction_legacy_var216_2005_bounded_source_snapshot.json"
       - "schemas/historical-extraction.schema.json"
       - "scripts/historical_batch_collect.py"
       - "scripts/historical_batch_ingest.py"
@@ -37,6 +38,7 @@ on:
       - "scripts/validate_sumbar2000_construction_financing_composition.py"
       - "scripts/validate_sumbar_construction_financing_revision_audit.py"
       - "scripts/validate_sumbar_construction_major_release_break.py"
+      - "scripts/validate_sumbar_construction_legacy_var216_retention_boundary.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
@@ -49,6 +51,7 @@ on:
       - "tests/test_sumbar2000_construction_financing_composition.py"
       - "tests/test_sumbar_construction_financing_revision_audit.py"
       - "tests/test_sumbar_construction_major_release_break.py"
+      - "tests/test_sumbar_construction_legacy_var216_retention_boundary.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -57,6 +60,7 @@ on:
       - "research/SUMBAR2000_CONSTRUCTION_FINANCING_COMPOSITION.md"
       - "research/SUMBAR_CONSTRUCTION_FINANCING_REVISION_AUDIT_1998_2003.md"
       - "research/SUMBAR_CONSTRUCTION_MAJOR_RELEASE_BREAK_2002_2003.md"
+      - "research/SUMBAR_CONSTRUCTION_LEGACY_VAR216_RETENTION_BOUNDARY.md"
       - ".github/workflows/historical-reconstruction.yml"
   pull_request:
     paths:
@@ -80,6 +84,7 @@ on:
       - "data/registries/historical_*.csv"
       - "data/snapshots/bps/var-484-1971.json"
       - "data/snapshots/bps/var-484-1971.json.sha256"
+      - "data/snapshots/bps/bps_construction_legacy_var216_2005_bounded_source_snapshot.json"
       - "schemas/historical-extraction.schema.json"
       - "scripts/historical_batch_collect.py"
       - "scripts/historical_batch_ingest.py"
@@ -94,6 +99,7 @@ on:
       - "scripts/validate_sumbar2000_construction_financing_composition.py"
       - "scripts/validate_sumbar_construction_financing_revision_audit.py"
       - "scripts/validate_sumbar_construction_major_release_break.py"
+      - "scripts/validate_sumbar_construction_legacy_var216_retention_boundary.py"
       - "scripts/validate_historical_batch.py"
       - "scripts/validate_historical_reconstruction.py"
       - "tests/test_bps_historical_anchor.py"
@@ -106,6 +112,7 @@ on:
       - "tests/test_sumbar2000_construction_financing_composition.py"
       - "tests/test_sumbar_construction_financing_revision_audit.py"
       - "tests/test_sumbar_construction_major_release_break.py"
+      - "tests/test_sumbar_construction_legacy_var216_retention_boundary.py"
       - "tests/test_historical_batch.py"
       - "tests/test_historical_reconstruction.py"
       - "docs/HISTORICAL_ACQUISITION.md"
@@ -114,6 +121,7 @@ on:
       - "research/SUMBAR2000_CONSTRUCTION_FINANCING_COMPOSITION.md"
       - "research/SUMBAR_CONSTRUCTION_FINANCING_REVISION_AUDIT_1998_2003.md"
       - "research/SUMBAR_CONSTRUCTION_MAJOR_RELEASE_BREAK_2002_2003.md"
+      - "research/SUMBAR_CONSTRUCTION_LEGACY_VAR216_RETENTION_BOUNDARY.md"
       - ".github/workflows/historical-reconstruction.yml"
 
 permissions:
@@ -180,6 +188,9 @@ jobs:
 
       - name: Validate Sumbar 2002-2003 construction major release break
         run: python scripts/validate_sumbar_construction_major_release_break.py
+
+      - name: Validate BPS legacy var216 2005 retention boundary
+        run: python scripts/validate_sumbar_construction_legacy_var216_retention_boundary.py
 
       - name: Run unit tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
