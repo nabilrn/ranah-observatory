@@ -28,7 +28,7 @@
     "m10_panel_manifest": {
       "path": "data/manifests/milestone10_analytical_panel.json",
       "schema": "ranah-observatory/milestone10-analytical-panel/v1",
-      "sha256": "8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433"
+      "sha256": "247d56475f514cdc8ea1ed1c7f46fb31dbbc75abe0a68a8682762b2d8de7b853"
     },
     "m10_wide_panel": {
       "path": "data/analysis/engine/panel_v1/m10-panel-wide.csv",
