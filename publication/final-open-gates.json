@@ -5,9 +5,9 @@
   "mode": "ship_first_finalization",
   "summary": {
     "must_close_total": 6,
-    "must_close_satisfied": 2,
+    "must_close_satisfied": 3,
     "must_close_open_internal": 3,
-    "must_close_blocked_external": 1,
+    "must_close_blocked_external": 0,
     "valuable_if_easy_total": 3,
     "defer_total": 7
   },
@@ -39,15 +39,17 @@
     },
     {
       "id": "github_pages_enablement",
-      "status": "blocked_external_manual",
+      "status": "satisfied",
       "owner": "repository_owner",
-      "why_release_critical": "A canonical public URL cannot be verified until GitHub Pages is enabled for the repository.",
+      "why_release_critical": "The release needs a verified canonical public URL backed by the validated static site artifact.",
       "evidence": [
         ".github/workflows/deploy-public-product.yml",
-        "docs/FINAL_10_DAY_DELIVERY.md"
+        "publication/pages-deployment.json"
       ],
-      "known_error": "Resource not accessible by integration",
-      "manual_action": "Repository Settings → Pages → Build and deployment → Source → GitHub Actions",
+      "previous_error": "Resource not accessible by integration",
+      "resolution": "Repository Settings → Pages → Build and deployment → Source was changed to GitHub Actions by the repository owner.",
+      "production_url": "https://nabilrn.github.io/ranah-observatory/",
+      "workflow_run_id": 33309643635,
       "exit_condition": "Deploy Public Product completes and the production URL serves the canonical site artifact."
     },
     {
