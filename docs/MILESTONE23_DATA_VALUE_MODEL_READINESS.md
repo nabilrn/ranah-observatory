@@ -9,7 +9,7 @@ M23 formalizes the lesson from M19–M22: several current analytical limits are 
 ### Tier A — immediate
 
 1. **National comparable regional panel — BPS**
-   - highest leverage for RQ2 attainable-development comparisons and RQ3 long-run/comparable regional divergence;
+   - greatest analytical value for RQ2 attainable-development comparisons and RQ3 long-run/comparable regional divergence;
    - expands the analytical universe beyond 19 West Sumatra kabupaten/kota;
    - the repository already uses `BPS_API_KEY` as a GitHub Secret, so the first discovery/harvest can proceed without user credential handling.
 

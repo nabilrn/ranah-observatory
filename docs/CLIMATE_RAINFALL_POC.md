@@ -65,7 +65,7 @@ The workflow therefore:
 4. records `valid_area_fraction` for every geography-month;
 5. fails if a polygon has no valid CHIRPS overlap.
 
-This is especially important for Kepulauan Mentawai, where silently treating ocean/nodata cells as zero would bias a polygon mean downward.
+For coastal regions like Kepulauan Mentawai, silently treating ocean/nodata cells as zero would bias the polygon mean downward.
 
 The proof of concept does not yet define a production minimum coverage threshold. Its purpose is to expose the observed coverage fractions first so the threshold can be chosen from evidence rather than guessed in advance.
 

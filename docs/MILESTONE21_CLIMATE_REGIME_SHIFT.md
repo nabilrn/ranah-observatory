@@ -31,7 +31,7 @@ The rolling median selected breakpoint is 1998, but only **55%** of rolling brea
 
 M21 does **not** establish a defensible 1998 climate-regime shift. It establishes that a two-regime representation is plausible enough to investigate, but not stable and predictively superior enough to authorize a public regime-shift claim under the locked design.
 
-This is stronger evidence than simply fitting a breakpoint to the full series and reporting the best-looking year: the same candidate must survive rolling out-of-time prediction and stability checks, and it did not.
+This is stronger evidence than fitting a breakpoint to the full series and reporting the best-looking year: the same candidate must survive rolling out-of-time prediction and stability checks, and it did not.
 
 ## Claim boundary
 

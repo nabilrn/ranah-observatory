@@ -45,7 +45,7 @@ The model-generated 2026 rows remain diagnostics only. They are not qualified su
 
 ## Why failure is retained
 
-The failure is a research result, not a broken pipeline. The preregistered model family is not replaced post hoc merely to obtain a winning score. A future model family may be evaluated only as a separately specified research lane with its own validation contract.
+The failure is a valid research result. The preregistered model family is not replaced post hoc merely to obtain a winning score. A future model family may be evaluated only as a separately specified research lane with its own validation contract.
 
 ## Reproducibility contract
 

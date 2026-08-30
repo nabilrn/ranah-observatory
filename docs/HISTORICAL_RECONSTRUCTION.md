@@ -45,7 +45,7 @@ The canonical register therefore stores this event at **year precision**. A blan
 
 UU Darurat No. 19 Tahun 1957 created the Tingkat I regions Sumatera Barat, Jambi, and Riau. BPK records enactment on 9 August 1957 and effect from 10 August 1957, and lists Perpu No. 4 Tahun 1950 as revoked.
 
-This is the key break for long-run Sumatera Barat analysis. A value for Sumatera Tengah before the reorganisation is **not** an observation for Sumatera Barat after the reorganisation merely because much of present-day Sumatera Barat lay within it.
+A value for Sumatera Tengah before the reorganisation is **not** an observation for Sumatera Barat after the reorganisation merely because much of present-day Sumatera Barat lay within it.
 
 ### 1958 — confirmation and constituent-area detail
 
@@ -59,7 +59,7 @@ When historical area membership is reconstructed at Tingkat II, this law and the
 
 Official BPS institutional history records that Kantor Pusat Statistik became Biro Pusat Statistik effective 1 June 1957 under Keppres No. 172 Tahun 1957. It also records that UU No. 6 Tahun 1960 on census and UU No. 7 Tahun 1960 on statistics replaced colonial-era ordinances, and that the 1961 Population Census was the first population census after independence.
 
-This institutional break matters. A long-run series can span administrations and statistical regimes only when concepts and collection methods are explicitly checked.
+A long-run series can span administrations and statistical regimes only when concepts and collection methods are explicitly checked.
 
 ## 1961 Population Census: a hard boundary warning
 
@@ -81,7 +81,7 @@ The exact 1971 response is frozen at `data/snapshots/bps/var-484-1971.json` with
 For the total-sex category (`turvar=34`):
 
 - the province total is **2,789,822 persons**;
-- fourteen local total rows are actually present in `datacontent`;
+- fourteen local total rows are present in `datacontent`;
 - those fourteen local totals sum exactly to the province total;
 - current-looking labels/codes for later split units may appear in response metadata, but missing 1971 values are not synthesized;
 - only the province aggregate is currently mapped to `idn.13.h1958`;
@@ -183,7 +183,7 @@ OCR output is evidence for review, not automatically a canonical observation.
 
 ## Immediate analytical consequence
 
-The initial long-run panel should **not** start in 1945 simply because the project aspires to cover the independence era. Each indicator starts at the earliest point where its geography and definition can be defended.
+The initial long-run panel should **not** start in 1945 merely because the project aspires to cover the independence era. Each indicator starts at the earliest point where its geography and definition can be defended.
 
 For example:
 

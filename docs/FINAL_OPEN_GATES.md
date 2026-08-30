@@ -121,7 +121,7 @@ The PPID migration/access boundary is frozen. Reopen only if a semantically veri
 
 ### Definitive rupiah-valued “wasted potential”
 
-The frozen M18 claim gate blocks a single definitive monetary headline. Do not weaken the research standard just to create one.
+The frozen M18 claim gate blocks a single definitive monetary headline. Do not weaken the research standard to create one.
 
 ### Theoretical maximum or guaranteed policy gains
 

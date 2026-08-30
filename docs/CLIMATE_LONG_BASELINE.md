@@ -40,7 +40,7 @@ Two product states exist:
 
 For longitudinal research the final product is preferred because the project values stable retrospective comparability above minimum latency.
 
-CHIRPS v3 is fundamentally a pentad and monthly product. Annual values can be derived from compatible monthly or pentadal totals. Daily products are derived through an additional temporal-disaggregation step and therefore have different semantics.
+CHIRPS v3 is a pentad and monthly product. Annual values can be derived from compatible monthly or pentadal totals. Daily products are derived through an additional temporal-disaggregation step and therefore have different semantics.
 
 ### Qualified access lane
 
@@ -84,7 +84,7 @@ Primary daily-product documentation:
 
 `https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/readme.txt`
 
-CHIRPS v3 daily values are not simply direct daily gauge observations. The producer documents two temporal-disaggregation products:
+CHIRPS v3 daily values are not direct daily gauge observations. The producer documents two temporal-disaggregation products:
 
 - `rnl`: ERA5 daily precipitation ratios partition CHIRPS pentadal totals;
 - `sat`: NASA IMERG daily precipitation ratios partition CHIRPS pentadal totals.
@@ -217,4 +217,4 @@ Held now:
 
 ## Immediate next dependency
 
-The highest-leverage dependency is a reproducible authoritative Sumatera Barat polygon layer with stable identifiers and provenance. Once polygon geometry is qualified, the credential-free CHIRPS monthly COG lane can produce the first 1981-present gridded rainfall panel without waiting for BMKG Data Online or CDS credentials.
+The most critical dependency is a reproducible authoritative Sumatera Barat polygon layer with stable identifiers and provenance. Once polygon geometry is qualified, the credential-free CHIRPS monthly COG lane can produce the first 1981-present gridded rainfall panel without waiting for BMKG Data Online or CDS credentials.

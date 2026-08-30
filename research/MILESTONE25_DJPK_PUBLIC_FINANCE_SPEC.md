@@ -23,8 +23,6 @@ M25 does not assume that the DJPK selector is a BPS geography code. An explicit 
 
 The annual-final semantic compatibility is a representation amendment only. It does not change the locked `periode=12` selector, target years, geographies, account-family set, or statistical design. The HTML page remains blocking evidence for jurisdiction, fiscal year, accepted annual-final status, and the same-selector export link; exact numeric account values come from the official SpreadsheetML export. Rounded HTML table values are diagnostic only.
 
-The annual-final semantic compatibility is a representation amendment only. It does not change the locked `periode=12` selector, target years, geographies, account-family set, or statistical design. The HTML page remains blocking evidence for jurisdiction, fiscal year, accepted annual-final status, and the same-selector export link; exact numeric account values come from the official SpreadsheetML export. Rounded HTML table values are diagnostic only.
-
 ## Geography crosswalk
 
 The locked 19-selector mapping is derived from official DJPK regional-code ordering and portal evidence. The current West Sumatra geography IDs remain the canonical project identifiers.

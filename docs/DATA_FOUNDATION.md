@@ -118,7 +118,7 @@ Ingestion branches should normally emit `observed` values. Any transformation th
 ## Time conventions
 
 - Dates use ISO 8601.
-- Annual observations use January 1 to December 31 only when the source truly represents a calendar year; otherwise preserve the source reference period.
+- Annual observations use January 1 to December 31 only when the source represents a calendar year; otherwise preserve the source reference period.
 - Census/reference-date values retain their actual reference date when known.
 - Publication date and observation/reference date are separate concepts.
 - Retrieval time belongs to provenance, not the observation period.

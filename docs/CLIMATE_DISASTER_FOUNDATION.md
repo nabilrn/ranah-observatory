@@ -24,7 +24,7 @@ Primary endpoints used by this repository:
 
 The primary historical compilation dataset is `f61d78e5-04c6-4ce8-9acf-e425dadc1f4d` (`Kompilasi Data Kejadian dan Dampak Bencana`).
 
-### Important scope distinction
+### Scope boundary
 
 Resource `21044ffd-c397-4b3c-acbd-5adaa03d79e3` reports **total recorded disaster events by kabupaten/kota for each year 2010–2024**. It does not provide a disaster-type-by-year-by-kabupaten cube. Therefore it is retained as source-native context and must not be relabeled as historical flood or landslide counts.
 
@@ -42,7 +42,7 @@ BNPB publishes a separate `Kompilasi Data Kejadian dan Dampak Bencana 2025` data
 
 BNPB DataStore metadata describes its kabupaten/kota code and name fields as based on Permendagri. Canonical Ranah Observatory geography records use BPS statistical codes. The two code systems are never assumed interchangeable.
 
-Live artifact review showed why this matters: in the reviewed BNPB resources, source code `1301` is `PESISIR SELATAN`, source code `1309` is `KEPULAUAN MENTAWAI`, `1310` is `DHARMASRAYA`, and `1311` is `SOLOK SELATAN`. Those assignments must not be interpreted using the canonical BPS code registry.
+In the reviewed BNPB resources, source code `1301` is `PESISIR SELATAN`, source code `1309` is `KEPULAUAN MENTAWAI`, `1310` is `DHARMASRAYA`, and `1311` is `SOLOK SELATAN`. Those assignments must not be interpreted using the canonical BPS code registry.
 
 For the first 2024 detailed panel, `data/registries/bnpb_geography_map.csv` stores the exact **code + source-name pair** observed consistently in all four reviewed BNPB resources and maps that pair to a canonical Ranah Observatory geography ID. The source code and source name remain in provenance. A live pre-build validator requires every reviewed resource to reproduce all 19 expected code/name pairs exactly; any code/name drift is a hard failure before canonical mapping occurs.
 

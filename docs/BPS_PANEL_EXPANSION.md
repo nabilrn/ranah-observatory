@@ -4,7 +4,7 @@
 
 This phase extends the first modern BPS panel with structural outcomes that are directly relevant to long-run development analysis: labor slack, inequality, sector composition, agricultural productivity, exports, and a clean population census anchor.
 
-The expansion follows the same evidence ladder as the first panel. A source being present in BPS WebAPI does not make it canonical. Each logical series passes through source-native selection, explicit geography mapping, evidence qualification, deterministic transformation where needed, canonical promotion, semantic-drift review, and durable materialization.
+The expansion follows the same evidence ladder as the first panel. A source requires explicit evidence qualification to become canonical. Each logical series passes through source-native selection, explicit geography mapping, evidence qualification, deterministic transformation where needed, canonical promotion, semantic-drift review, and durable materialization.
 
 ## Reviewed logical series
 
@@ -172,7 +172,7 @@ This expansion does not establish causality or quantify unrealized potential. It
 - interpolate population between census/SUPAS anchors;
 - treat labor weighting regimes as automatically comparable.
 
-These constraints are part of the research result, not missing cleanup.
+These constraints are an intentional part of the research result.
 
 ## Exit gate
 

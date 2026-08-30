@@ -10,7 +10,7 @@ The official dataset descriptions state that the annual packages contain disaste
 
 This milestone freezes source identity and transport behavior only. It does not promote historical impact values.
 
-## Why this lane matters
+## District-level impact gap
 
 M37 added bounded, source-native **provincial** observed-impact context for Sumatera Barat in 2024–2025. It explicitly did not infer district/city values and did not resolve the M26 event-level retrieval gate.
 

@@ -103,7 +103,7 @@ For the long historical baseline, a separate research deliverable may qualify da
 
 ## Research rule
 
-Map accessibility is not evidence of temporal comparability.
+Temporal comparability requires explicit observation metadata regardless of map accessibility.
 
 Before a BMKG source can enter the canonical longitudinal panel, it must expose or be paired with:
 

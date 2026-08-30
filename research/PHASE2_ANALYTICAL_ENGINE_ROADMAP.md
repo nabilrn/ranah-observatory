@@ -2,7 +2,7 @@
 
 ## Status
 
-The initial Research Charter foundation is complete (`9/9`). Phase 2 begins only after that closure and is explicitly **not** the public-dashboard phase.
+The initial Research Charter foundation is complete (`9/9`). Phase 2 begins only after that closure and focuses strictly on building the analytical engine rather than a public dashboard.
 
 The goal of Phase 2 is to turn the qualified evidence foundation into a reproducible analytical system that can answer the project's harder questions about expected performance, attainable performance, development gaps, bottlenecks, causal mechanisms, climate/spatial constraints, and intervention scenarios.
 
@@ -10,10 +10,10 @@ The goal of Phase 2 is to turn the qualified evidence foundation into a reproduc
 
 Phase 2 inherits all Research Charter rules:
 
-- evidence before narrative;
-- provenance before visualization;
-- reproducibility before scale;
-- comparison before underperformance claims;
+- build narrative only upon evidence;
+- secure provenance before generating visualization;
+- ensure reproducibility prior to increasing scale;
+- validate claims of underperformance through comparison;
 - prediction is not causation;
 - uncertainty remains visible;
 - policy recommendations distinguish evidence from assumptions.
@@ -157,4 +157,4 @@ The synthesis must expose disagreements among methods instead of averaging them 
 
 Phase 2 is complete when the analytical engine can reproducibly answer the Research Charter's core questions with explicit evidence strength and uncertainty.
 
-It does **not** require a polished public web application. The public product/dashboard is a later delivery layer over stable analytical outputs.
+The public product/dashboard remains a later delivery layer over stable analytical outputs.

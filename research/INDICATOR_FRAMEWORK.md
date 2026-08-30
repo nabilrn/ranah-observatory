@@ -1,6 +1,6 @@
 # Indicator Framework
 
-The initial panel targets 40–60 carefully validated indicators across twelve domains:
+The initial panel targets 40–60 validated indicators across twelve domains:
 
 1. demography and migration;
 2. health;
@@ -19,4 +19,4 @@ Core candidates include population, urbanization, migration, life expectancy, ed
 
 Every indicator must define: `indicator_id`, name, domain, definition, unit, frequency, preferred geography, source priority, comparability notes, known breaks, and allowed claim type.
 
-Availability alone is not sufficient. A core indicator must be interpretable, relevant to a research question, reproducibly sourced, and sufficiently comparable across time or regions.
+Beyond mere availability, a core indicator must be interpretable, relevant to a research question, reproducibly sourced, and sufficiently comparable across time or regions.

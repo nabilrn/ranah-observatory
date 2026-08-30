@@ -131,7 +131,7 @@ Once this source passes the live gate, CHIRPS v3 monthly COGs can be spatially a
 
 A resulting 1981-present rainfall panel must still disclose that historical raster values are being summarized over current administrative polygons unless historical geometry is later reconstructed.
 
-This distinction is important: a long climate series on fixed current polygons is analytically useful for comparing physical climate exposure over a constant spatial frame, but it is not the same object as a historical administrative-statistics panel whose boundaries change over time.
+A long climate series on fixed current polygons is analytically useful for comparing physical climate exposure over a constant spatial frame, but it is not the same object as a historical administrative-statistics panel whose boundaries change over time.
 
 ## Exit gate
 

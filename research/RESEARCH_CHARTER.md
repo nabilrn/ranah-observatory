@@ -59,10 +59,10 @@ The initial ontology covers:
 
 ## Research principles
 
-- Evidence before narrative.
-- Provenance before visualization.
-- Reproducibility before scale.
-- Comparison before claims of underperformance.
+- Establish evidence as a prerequisite to narrative.
+- Do not produce visualization without provenance.
+- Reproducibility is required before scaling.
+- Compare against peers before claiming underperformance.
 - Prediction is not causation.
 - Uncertainty must remain visible.
 - Policy recommendations must distinguish evidence from assumptions.
@@ -79,7 +79,7 @@ Every analytical claim should be identifiable as one of:
 - scenario assumption.
 
 ## Initial success criterion
-The first milestone is not a polished dashboard. It is a reproducible research foundation containing:
+The first milestone requires a reproducible research foundation containing:
 
 - a canonical geography registry;
 - a source catalog;
