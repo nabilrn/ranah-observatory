@@ -1,0 +1,156 @@
+{
+  "schema": "ranah-observatory/final-open-gates/v1",
+  "as_of": "2026-08-30",
+  "delivery_deadline": "2026-09-09",
+  "mode": "ship_first_finalization",
+  "summary": {
+    "must_close_total": 6,
+    "must_close_satisfied": 2,
+    "must_close_open_internal": 3,
+    "must_close_blocked_external": 1,
+    "valuable_if_easy_total": 3,
+    "defer_total": 7
+  },
+  "must_close": [
+    {
+      "id": "frozen_v01_package_consistency",
+      "status": "satisfied",
+      "owner": "repository",
+      "why_release_critical": "The final release must preserve the frozen scientific package and claim-state distribution.",
+      "evidence": [
+        "publication/v0.1/completeness-certificate.json",
+        "scripts/validate_release_readiness.py",
+        ".github/workflows/release-readiness.yml"
+      ],
+      "exit_condition": "Completeness certificate, claim ledger, negative results, and all nine blocked M18 claims validate without drift."
+    },
+    {
+      "id": "public_product_contract_consistency",
+      "status": "satisfied",
+      "owner": "repository",
+      "why_release_critical": "The public observatory must remain a deterministic translation of qualified evidence.",
+      "evidence": [
+        "site/",
+        "scripts/validate_public_product.py",
+        "scripts/validate_public_readiness.py",
+        "scripts/validate_public_history.py"
+      ],
+      "exit_condition": "Public narrative, readiness, catalog/explorer support surfaces, and historical context validators remain green."
+    },
+    {
+      "id": "github_pages_enablement",
+      "status": "blocked_external_manual",
+      "owner": "repository_owner",
+      "why_release_critical": "A canonical public URL cannot be verified until GitHub Pages is enabled for the repository.",
+      "evidence": [
+        ".github/workflows/deploy-public-product.yml",
+        "docs/FINAL_10_DAY_DELIVERY.md"
+      ],
+      "known_error": "Resource not accessible by integration",
+      "manual_action": "Repository Settings → Pages → Build and deployment → Source → GitHub Actions",
+      "exit_condition": "Deploy Public Product completes and the production URL serves the canonical site artifact."
+    },
+    {
+      "id": "clean_main_reproducibility_sweep",
+      "status": "open_internal",
+      "owner": "repository",
+      "why_release_critical": "Final delivery needs one clean-main CI sweep after all release-critical integration work is merged.",
+      "evidence": [
+        ".github/workflows/release-readiness.yml",
+        ".github/workflows/public-product.yml",
+        ".github/workflows/historical-reconstruction.yml",
+        ".github/workflows/milestone10-analytical-panel-repro.yml"
+      ],
+      "exit_condition": "All release-critical deterministic validators and relevant regression suites pass from the same clean main candidate."
+    },
+    {
+      "id": "adversarial_public_readability_audit",
+      "status": "open_internal",
+      "owner": "repository",
+      "why_release_critical": "The final product must be understandable without weakening caveats or hiding negative results.",
+      "evidence": [
+        "site/",
+        "docs/PRODUCT_V0_1_SPEC.md",
+        "docs/FINAL_10_DAY_DELIVERY.md"
+      ],
+      "exit_condition": "Mobile/desktop navigation, copy, terminology, failure states, blocked claims, and evidence-state labels receive a final adversarial pass with only blocker fixes remaining."
+    },
+    {
+      "id": "release_candidate_and_handoff_bundle",
+      "status": "open_internal",
+      "owner": "release/publication",
+      "why_release_critical": "The project needs one named immutable candidate plus concise release/handoff metadata rather than an indefinitely moving main branch.",
+      "evidence": [
+        "publication/v0.1/",
+        "README.md",
+        "docs/FINAL_10_DAY_DELIVERY.md"
+      ],
+      "exit_condition": "A release-candidate commit is named, audited, and accompanied by final release notes/status/citation or handoff metadata as appropriate."
+    }
+  ],
+  "valuable_if_easy": [
+    {
+      "id": "translate_more_qualified_post_v01_evidence",
+      "status": "opportunistic",
+      "rule": "Only add an already-qualified result when it materially improves public understanding and can be derived deterministically from canonical evidence."
+    },
+    {
+      "id": "de_network_acquisition_workflows",
+      "status": "opportunistic",
+      "rule": "Do not mass-delete acquisition infrastructure. If a release-critical change touches an old live-probe workflow, prefer manual-only or deterministic validation unless live transport is still necessary."
+    },
+    {
+      "id": "release_surface_metadata_polish",
+      "status": "opportunistic",
+      "rule": "Improve release notes, citation metadata, and repository navigation only when it directly reduces final handoff ambiguity."
+    }
+  ],
+  "defer": [
+    {
+      "id": "construction_2005_qualification_component_recovery",
+      "reason": "The missing 2005 Kecil/Menengah/Besar or B/M1/M2/K1/K2/K3 composition has a strong frozen access/semantic boundary. No current official route justifies another acquisition loop.",
+      "reopen_trigger": "A genuinely new official BPS/LPJK period-specific source or transport locator appears."
+    },
+    {
+      "id": "construction_revision_causal_attribution",
+      "reason": "Operational plausibility is documented, but causal linkage from the 2005 directory update to historical value revisions is unproven and not required to ship the bounded product.",
+      "reopen_trigger": "A contemporaneous revision note, weighting formula, or reproducible old/new frame bridge is recovered."
+    },
+    {
+      "id": "bpbd_2017_missing_raw_report_bytes",
+      "reason": "The legacy PPID migration/access boundary is frozen; companion evidence cannot substitute for the missing raw official artifact.",
+      "reopen_trigger": "A semantically verified official archival locator or raw PDF becomes available."
+    },
+    {
+      "id": "definitive_monetary_wasted_potential",
+      "reason": "The frozen M18 claim gate explicitly blocks a single definitive monetary wasted-potential number.",
+      "reopen_trigger": "A defensible identification and valuation design satisfying the claim gate is developed in future work."
+    },
+    {
+      "id": "theoretical_maximum_and_guaranteed_policy_gain",
+      "reason": "Current empirical gaps do not identify a theoretical maximum or guaranteed gain from closing those gaps.",
+      "reopen_trigger": "A separate defensible structural/causal design supports those constructs."
+    },
+    {
+      "id": "rainfall_to_unemployment_causal_effect",
+      "reason": "Current evidence is descriptive/predictive and does not identify a causal rainfall→unemployment effect.",
+      "reopen_trigger": "A credible causal identification strategy and required data become available."
+    },
+    {
+      "id": "composite_disaster_score_and_policy_ranking",
+      "reason": "The project intentionally keeps disaster components separate and does not authorize a synthetic risk score, treatment-effect interpretation, or ranked policy/cost-benefit list.",
+      "reopen_trigger": "Future research defines and validates explicit weighting, causal, and decision criteria."
+    }
+  ],
+  "workflow_audit": {
+    "open_pull_requests_at_audit": 0,
+    "mass_workflow_deletion_authorized": false,
+    "finding": "No generic release blocker was found in the legacy acquisition workflows. Manual-only probes may remain as reproducible acquisition utilities; path-scoped live probes are not triggered by ordinary release/public-product changes.",
+    "examples_checked": [
+      ".github/workflows/big-boundary-probe.yml",
+      ".github/workflows/bmkg-open-data-probe.yml",
+      ".github/workflows/bmkg-wms-probe.yml",
+      ".github/workflows/bps-discovery.yml"
+    ]
+  }
+}

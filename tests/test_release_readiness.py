@@ -20,6 +20,10 @@ class ReleaseReadinessTest(unittest.TestCase):
         self.assertEqual(result["research_questions"], 5)
         self.assertEqual(result["fully_resolved_questions"], 0)
         self.assertEqual(result["historical_context_cards"], 3)
+        self.assertEqual(result["must_close_gates_total"], 6)
+        self.assertEqual(result["must_close_gates_satisfied"], 2)
+        self.assertEqual(result["must_close_gates_open_internal"], 3)
+        self.assertEqual(result["deferred_research_gates"], 7)
         self.assertEqual(result["external_manual_blockers"], 1)
         self.assertIn("GitHub Pages", result["external_manual_blocker"])
 

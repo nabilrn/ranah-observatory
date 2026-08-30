@@ -67,7 +67,7 @@ The project is now in a shipping-focused finalization window through **9 Septemb
 
 > finish qualified evidence, product translation, reproducibility, and release packaging before opening new research fronts.
 
-See `docs/FINAL_10_DAY_DELIVERY.md` for the concrete cut line and completion gates.
+See `docs/FINAL_10_DAY_DELIVERY.md` for the concrete cut line and completion gates. See `docs/FINAL_OPEN_GATES.md` for the current must-close / valuable-if-easy / defer classification.
 
 ## Development workflow
 
@@ -85,6 +85,7 @@ Work uses grouped workstream branches rather than one branch per milestone:
 - Research charter: `research/RESEARCH_CHARTER.md`
 - Original sprint roadmap: `docs/ROADMAP_25_DAYS.md`
 - Final 10-day delivery contract: `docs/FINAL_10_DAY_DELIVERY.md`
+- Final open-gate registry: `docs/FINAL_OPEN_GATES.md`
 - Public product specification: `docs/PRODUCT_V0_1_SPEC.md`
 - Frozen claim ledger: `publication/v0.1/claim-ledger.csv`
 - Publication completeness certificate: `publication/v0.1/completeness-certificate.json`

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from validate_final_open_gates import validate as validate_final_open_gates
 from validate_public_history import validate as validate_public_history
 from validate_public_product import validate as validate_public_product
 from validate_public_readiness import validate as validate_public_readiness
@@ -12,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CERTIFICATE = ROOT / "publication/v0.1/completeness-certificate.json"
 README = ROOT / "README.md"
 FINAL_PLAN = ROOT / "docs/FINAL_10_DAY_DELIVERY.md"
+FINAL_GATES_DOC = ROOT / "docs/FINAL_OPEN_GATES.md"
 PAGES_WORKFLOW = ROOT / ".github/workflows/deploy-public-product.yml"
 
 REQUIRED_PUBLIC_FILES = [
@@ -75,11 +77,22 @@ def validate() -> dict[str, Any]:
     assert history["harmonized_series_authorized"] is False
     assert history["causal_claim_authorized"] is False
 
+    open_gates = validate_final_open_gates()
+    assert open_gates == {
+        "must_close_total": 6,
+        "must_close_satisfied": 2,
+        "must_close_open_internal": 3,
+        "must_close_blocked_external": 1,
+        "deferred_research_gates": 7,
+        "mass_workflow_deletion_authorized": False,
+    }
+
     for path in REQUIRED_PUBLIC_FILES:
         assert path.is_file() and path.stat().st_size > 0, f"missing public release file: {path.relative_to(ROOT)}"
 
     readme = README.read_text(encoding="utf-8")
     final_plan = FINAL_PLAN.read_text(encoding="utf-8")
+    final_gates_doc = FINAL_GATES_DOC.read_text(encoding="utf-8")
     pages_workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
 
     for token in (
@@ -99,6 +112,13 @@ def validate() -> dict[str, Any]:
     ):
         assert token in final_plan, f"final delivery contract lost token: {token}"
 
+    for token in (
+        "6 must-close",
+        "Clean-main reproducibility sweep",
+        "Deferred research — not release blockers",
+    ):
+        assert token in final_gates_doc, f"final open-gate document lost token: {token}"
+
     assert "pages: write" in pages_workflow
     assert "id-token: write" in pages_workflow
     assert "actions/configure-pages@v5" in pages_workflow
@@ -114,8 +134,12 @@ def validate() -> dict[str, Any]:
         "research_questions": readiness["questions"],
         "fully_resolved_questions": readiness["fully_resolved"],
         "historical_context_cards": history["cards"],
-        "external_manual_blockers": 1,
+        "must_close_gates_total": open_gates["must_close_total"],
+        "must_close_gates_satisfied": open_gates["must_close_satisfied"],
+        "must_close_gates_open_internal": open_gates["must_close_open_internal"],
+        "external_manual_blockers": open_gates["must_close_blocked_external"],
         "external_manual_blocker": "enable GitHub Pages with GitHub Actions as the source",
+        "deferred_research_gates": open_gates["deferred_research_gates"],
     }
 
 
