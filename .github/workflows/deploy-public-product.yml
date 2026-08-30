@@ -70,9 +70,15 @@ jobs:
 
       - name: Rebuild and require deterministic historical context
         run: |
-          cp site/data/history.json /tmp/history-frozen.json
-          python scripts/build_public_history.py
-          diff -u /tmp/history-frozen.json site/data/history.json
+          python scripts/build_public_history.py --output /tmp/history-rebuilt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          frozen = json.loads(Path('site/data/history.json').read_text(encoding='utf-8'))
+          rebuilt = json.loads(Path('/tmp/history-rebuilt.json').read_text(encoding='utf-8'))
+          assert frozen == rebuilt, 'site/data/history.json drifted from canonical manifests'
+          print({'history_contract_match': True})
+          PY
 
       - name: Validate static product surface
         run: |
