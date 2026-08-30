@@ -8,6 +8,7 @@ on:
       - site/**
       - docs/PRODUCT_V0_1_SPEC.md
       - publication/public-readability-audit.json
+      - scripts/validate_release_readiness.py
       - scripts/validate_public_product.py
       - scripts/validate_public_readiness.py
       - scripts/validate_public_history.py
@@ -49,6 +50,7 @@ jobs:
           allowed_exact = {
               'docs/PRODUCT_V0_1_SPEC.md',
               'publication/public-readability-audit.json',
+              'scripts/validate_release_readiness.py',
               'scripts/validate_public_product.py',
               'scripts/validate_public_readiness.py',
               'scripts/validate_public_history.py',
