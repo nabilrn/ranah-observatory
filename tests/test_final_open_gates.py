@@ -14,9 +14,9 @@ class FinalOpenGatesTest(unittest.TestCase):
     def test_release_blockers_are_separated_from_deferred_research(self) -> None:
         result = validate()
         self.assertEqual(result["must_close_total"], 6)
-        self.assertEqual(result["must_close_satisfied"], 2)
+        self.assertEqual(result["must_close_satisfied"], 3)
         self.assertEqual(result["must_close_open_internal"], 3)
-        self.assertEqual(result["must_close_blocked_external"], 1)
+        self.assertEqual(result["must_close_blocked_external"], 0)
         self.assertEqual(result["deferred_research_gates"], 7)
         self.assertFalse(result["mass_workflow_deletion_authorized"])
 
