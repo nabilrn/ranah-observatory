@@ -1,0 +1,62 @@
+name: Final Release Readiness
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - README.md
+      - docs/FINAL_10_DAY_DELIVERY.md
+      - docs/PRODUCT_V0_1_SPEC.md
+      - publication/v0.1/**
+      - site/**
+      - scripts/validate_public_product.py
+      - scripts/validate_public_readiness.py
+      - scripts/validate_public_history.py
+      - scripts/validate_release_readiness.py
+      - tests/test_release_readiness.py
+      - .github/workflows/deploy-public-product.yml
+      - .github/workflows/release-readiness.yml
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+      - docs/FINAL_10_DAY_DELIVERY.md
+      - docs/PRODUCT_V0_1_SPEC.md
+      - publication/v0.1/**
+      - site/**
+      - scripts/validate_public_product.py
+      - scripts/validate_public_readiness.py
+      - scripts/validate_public_history.py
+      - scripts/validate_release_readiness.py
+      - tests/test_release_readiness.py
+      - .github/workflows/deploy-public-product.yml
+      - .github/workflows/release-readiness.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Validate final repository-internal release readiness
+        run: python scripts/validate_release_readiness.py
+
+      - name: Run release readiness regression test
+        run: python -m unittest tests.test_release_readiness -v
+
+      - name: Confirm external Pages blocker remains documented separately
+        run: |
+          grep -q 'Resource not accessible by integration' docs/FINAL_10_DAY_DELIVERY.md
+          grep -q 'Settings → Pages' docs/FINAL_10_DAY_DELIVERY.md
+          grep -q 'enablement: true' .github/workflows/deploy-public-product.yml
