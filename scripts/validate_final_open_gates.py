@@ -6,12 +6,13 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "publication/final-open-gates.json"
+PAGES_EVIDENCE = ROOT / "publication/pages-deployment.json"
 DOC = ROOT / "docs/FINAL_OPEN_GATES.md"
 
 EXPECTED_MUST_CLOSE = {
     "frozen_v01_package_consistency": "satisfied",
     "public_product_contract_consistency": "satisfied",
-    "github_pages_enablement": "blocked_external_manual",
+    "github_pages_enablement": "satisfied",
     "clean_main_reproducibility_sweep": "open_internal",
     "adversarial_public_readability_audit": "open_internal",
     "release_candidate_and_handoff_bundle": "open_internal",
@@ -53,9 +54,18 @@ def validate() -> dict[str, Any]:
         assert gate["status"] != "deferred", gate_id
 
     pages = must_close["github_pages_enablement"]
+    pages_evidence = load_json(PAGES_EVIDENCE)
     assert pages["owner"] == "repository_owner"
-    assert pages["known_error"] == "Resource not accessible by integration"
-    assert pages["manual_action"] == "Repository Settings → Pages → Build and deployment → Source → GitHub Actions"
+    assert pages["production_url"] == "https://nabilrn.github.io/ranah-observatory/"
+    assert pages["workflow_run_id"] == 33309643635
+    assert pages_evidence["schema"] == "ranah-observatory/pages-deployment-evidence/v1"
+    assert pages_evidence["workflow"] == "Deploy Public Product"
+    assert pages_evidence["workflow_run_id"] == 33309643635
+    assert pages_evidence["workflow_run_attempt"] == 2
+    assert pages_evidence["configure_pages"] == "success"
+    assert pages_evidence["upload_pages_artifact"] == "success"
+    assert pages_evidence["deploy_pages"] == "success"
+    assert pages_evidence["production_url"] == pages["production_url"]
 
     valuable = payload["valuable_if_easy"]
     assert len(valuable) == 3
@@ -88,6 +98,7 @@ def validate() -> dict[str, Any]:
     for token in (
         "6 must-close",
         "GitHub Pages",
+        "https://nabilrn.github.io/ranah-observatory/",
         "Clean-main reproducibility sweep",
         "Adversarial public readability audit",
         "Release candidate and handoff bundle",
