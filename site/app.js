@@ -2,17 +2,17 @@ const OVERVIEW_URL = "data/overview.json";
 const DISTRICTS_URL = "data/districts.json";
 
 const STATUS_META = {
-  supported: { label: "Didukung", className: "badge-supported" },
-  supported_post_v0_1: { label: "Didukung · evidence baru", className: "badge-supported_post_v0_1" },
-  negative_result: { label: "Hasil negatif", className: "badge-negative_result" },
+  supported: { label: "Didukung data", className: "badge-supported" },
+  supported_post_v0_1: { label: "Didukung data baru", className: "badge-supported_post_v0_1" },
+  negative_result: { label: "Gagal uji", className: "badge-negative_result" },
   context: { label: "Konteks", className: "badge-context" },
-  not_supported: { label: "Belum didukung", className: "badge-not_supported" },
+  not_supported: { label: "Belum bisa disimpulkan", className: "badge-not_supported" },
 };
 
 const TRAJECTORY_META = {
-  persistent_increase: { label: "Naik persisten", className: "trajectory-up" },
-  persistent_decrease: { label: "Turun persisten", className: "trajectory-down" },
-  trajectory_not_robust: { label: "Arah belum robust", className: "trajectory-held" },
+  persistent_increase: { label: "Naik konsisten", className: "trajectory-up" },
+  persistent_decrease: { label: "Turun konsisten", className: "trajectory-down" },
+  trajectory_not_robust: { label: "Arah belum jelas", className: "trajectory-held" },
 };
 
 const escapeHtml = (value = "") => String(value)
@@ -25,8 +25,8 @@ const escapeHtml = (value = "") => String(value)
 function sourceText(item) {
   const claims = item.source_claim_ids || [];
   const paths = item.source_paths || [];
-  if (claims.length) return `Claim: ${claims.join(" · ")}`;
-  if (paths.length) return `Evidence: ${paths.join(" · ")}`;
+  if (claims.length) return `Rujukan: ${claims.join(" · ")}`;
+  if (paths.length) return `Sumber teknis: ${paths.join(" · ")}`;
   return "";
 }
 
@@ -51,8 +51,8 @@ function storyCard(story) {
       </div>
       <h3>${escapeHtml(story.title)}</h3>
       <p class="story-copy">${escapeHtml(story.plain_language)}</p>
-      <p class="story-why"><strong>Mengapa penting?</strong>${escapeHtml(story.why_it_matters)}</p>
-      <p class="story-caveat"><strong>Batas interpretasi</strong>${escapeHtml(story.caveat)}</p>
+      <p class="story-why"><strong>Kenapa penting?</strong>${escapeHtml(story.why_it_matters)}</p>
+      <p class="story-caveat"><strong>Yang perlu diingat</strong>${escapeHtml(story.caveat)}</p>
       <p class="story-source">${escapeHtml(sourceText(story))}</p>
     </article>
   `;
@@ -118,7 +118,7 @@ function renderHero(data) {
   document.querySelector("#hero-title").textContent = data.hero.headline;
   document.querySelector("#hero-summary").textContent = data.hero.summary;
   document.querySelector("#hero-boundary").textContent = data.hero.boundary;
-  document.querySelector("#footer-version").textContent = `Public product v${data.version}`;
+  document.querySelector("#footer-version").textContent = `Versi publik ${data.version}`;
 }
 
 function applyLinks(links = {}) {
@@ -202,7 +202,7 @@ function indicatorCard(indicatorId, indicator, domain) {
       </div>
       ${miniTrend(indicator, domain)}
       <div class="change-row">
-        <span>Perubahan observasi</span>
+        <span>Perubahan</span>
         <strong>${escapeHtml(signedFormat(indicator.observed_change, decimals))} ${escapeHtml(indicator.unit)}</strong>
       </div>
       <p class="indicator-meaning"><strong>Cara baca</strong>${escapeHtml(indicator.plain_favorable_semantics)}</p>
@@ -219,7 +219,7 @@ function districtSummary(district) {
   const entries = Object.values(district.indicators);
   const robust = entries.filter((indicator) => indicator.trajectory_robust).length;
   const held = entries.length - robust;
-  return `${robust} dari ${entries.length} indikator memiliki arah trajectory daerah yang robust; ${held} lainnya ditahan sebagai arah belum robust. Ini ringkasan evidence, bukan skor kinerja daerah.`;
+  return `${robust} dari ${entries.length} indikator menunjukkan arah perubahan yang cukup konsisten; ${held} lainnya belum cukup jelas. Ini bukan skor atau ranking daerah.`;
 }
 
 function renderDistrict(data, districtId, domains) {
@@ -271,7 +271,7 @@ function showError(error) {
   const notice = document.createElement("div");
   notice.className = "loading-error";
   notice.setAttribute("role", "alert");
-  notice.textContent = "Data ringkasan publik gagal dimuat. Buka repository untuk melihat evidence dan laporan teknis secara langsung.";
+  notice.textContent = "Data halaman gagal dimuat. Data dan laporan teknis tetap bisa diperiksa langsung di repository.";
   main.prepend(notice);
 }
 
