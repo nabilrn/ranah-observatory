@@ -1,0 +1,152 @@
+.history-section {
+  border-top: 1px solid var(--line);
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.history-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.history-card h3 {
+  margin: 0;
+  font-size: 1.16rem;
+  line-height: 1.35;
+}
+
+.history-eyebrow {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.history-copy,
+.history-caveat,
+.history-key-fact,
+.history-qualification p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.history-caveat {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.history-series {
+  display: grid;
+  gap: 9px;
+}
+
+.history-series-row {
+  display: grid;
+  grid-template-columns: 44px minmax(80px, 1fr) 58px;
+  gap: 10px;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.history-series-row > span:last-child {
+  text-align: right;
+}
+
+.history-meter {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-strong);
+}
+
+.history-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.history-key-fact {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--surface-strong);
+  font-size: 0.9rem;
+}
+
+.history-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.history-metric {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.history-metric strong {
+  font-size: 1.22rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.history-metric span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.history-qualification {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.history-boundary {
+  margin: 18px 0 0;
+  max-width: 920px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .history-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .history-card {
+    padding: 18px;
+  }
+
+  .history-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .history-series-row {
+    grid-template-columns: 40px minmax(60px, 1fr) 54px;
+    gap: 8px;
+  }
+}
