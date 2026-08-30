@@ -4,7 +4,7 @@
 **Delivery deadline:** 9 September 2026  
 **Mode:** ship-first finalization
 
-**Registry summary:** 6 must-close gates — 3 satisfied and 3 internal open — plus 3 valuable-if-easy items and 7 deferred research gates. There are **0 external/manual blockers** remaining.
+**Registry summary:** 6 must-close gates — **4 satisfied and 2 internal open** — plus 3 valuable-if-easy items and 7 deferred research gates. There are **0 external/manual blockers** remaining.
 
 This document is the human-readable view of `publication/final-open-gates.json`.
 
@@ -27,7 +27,7 @@ Every remaining task belongs to one of three classes:
 
 #### Frozen v0.1 package consistency
 
-The v0.1 completeness certificate, claim ledger, negative results, and nine blocked M18 claims are already bound by release-readiness validation.
+The v0.1 completeness certificate, claim ledger, negative results, and nine blocked M18 claims are bound by release-readiness validation.
 
 #### Public product contract consistency
 
@@ -37,7 +37,7 @@ The current public product narrative, readiness surface, indicator/explorer supp
 
 The repository owner changed **Settings → Pages → Build and deployment → Source** to **GitHub Actions** on 30 August 2026.
 
-The previously failed `Deploy Public Product` workflow was rerun. The rerun completed successfully:
+The previously failed `Deploy Public Product` workflow was rerun successfully:
 
 - workflow run: `33309643635`, attempt 2;
 - `Configure GitHub Pages`: success;
@@ -45,24 +45,31 @@ The previously failed `Deploy Public Product` workflow was rerun. The rerun comp
 - `Deploy to GitHub Pages`: success;
 - production URL: **https://nabilrn.github.io/ranah-observatory/**.
 
-Machine-readable deployment evidence is frozen in `publication/pages-deployment.json`. The earlier `Resource not accessible by integration` error is therefore historical, not an active blocker.
+Machine-readable deployment evidence is frozen in `publication/pages-deployment.json`. The earlier `Resource not accessible by integration` error is historical, not an active blocker.
+
+#### Clean-main reproducibility sweep
+
+The integrated offline sweep is now verified on canonical `main`:
+
+- verified commit: `fa960c278d4ad69524c26e1bf984a1a29b9a2ab3`;
+- workflow: `Final Clean Main Reproducibility Sweep`;
+- push run: **`33318320220`**;
+- conclusion: **success**.
+
+The same checkout rebuilt and audited the frozen release contract, public-product data, historical reconstruction chain, M10 analytical panel, M11 expected-performance model, and M19 strict forecast backtest, then required the tracked analytical outputs to remain byte-identical.
+
+The integrated sweep was useful because it exposed two issues before the successful run:
+
+1. the historical public JSON rebuild was semantically identical but serialized object keys differently; the sweep was aligned with the existing semantic JSON contract rather than weakening the check; and
+2. M19 still fingerprinted an older M10 manifest SHA. The M19 provenance fingerprint was refreshed to the current canonical M10 manifest. Prediction rows, metrics, and the **0/3 forecast qualification result did not change**.
+
+M11 remains a bounded conditional expected-performance model: 342 leave-one-geography-out cross-fitted predictions and 3/3 benchmark-qualified targets. M19 remains the future-facing test: 285 strictly out-of-time predictions and 0/3 qualified targets, so substantive 2026 forecasting remains blocked.
+
+Machine-readable evidence is frozen in `publication/clean-main-sweep.json`. The permanent workflow runs on future PRs and pushes to `main`, so later repository drift is still guarded.
 
 ### Still open
 
-#### 1. Clean-main reproducibility sweep
-
-Run the final relevant validation matrix from one clean `main` candidate after release-critical integration work is done.
-
-The sweep must explicitly preserve both predictive-model outcomes:
-
-- M11: 342 leave-one-geography-out cross-fitted predictions, with all 3 targets beating the preregistered peer-mean benchmark on RMSE and MAE;
-- M19: 285 strictly out-of-time predictions, with 0 of 3 targets beating own-lag persistence on both RMSE and MAE, so substantive 2026 forecasting remains blocked.
-
-`docs/FINAL_MODEL_VALIDATION.md` records the distinction between these two contracts and `scripts/validate_final_model_testing.py` makes it machine-verifiable. A failed forecast benchmark is a retained negative result, not a reason to tune until a model wins.
-
-Exit condition: release readiness, final model testing, public product, historical reconstruction, and analytical reproducibility gates are all green for the same candidate state.
-
-#### 2. Adversarial public readability audit
+#### 1. Adversarial public readability audit
 
 Check the actual user-facing product for:
 
@@ -71,11 +78,12 @@ Check the actual user-facing product for:
 - caveats that remain adjacent to the numbers they constrain;
 - visible negative and blocked results;
 - loading/error states;
-- stale or contradictory public copy.
+- stale or contradictory public copy;
+- accessibility and anchor/link behavior.
 
 Exit condition: only blocker fixes remain after the audit.
 
-#### 3. Release candidate and handoff bundle
+#### 2. Release candidate and handoff bundle
 
 Name one immutable release-candidate commit and prepare the final release/handoff metadata around it.
 
@@ -91,7 +99,7 @@ Do this only when the evidence is already canonical, adds clear public value, an
 
 Do **not** mass-delete old acquisition infrastructure. If finalization work touches an old live-probe workflow, prefer a manual-only or deterministic validation path unless live transport remains essential.
 
-The workflow audit found no generic release blocker in the examples checked. `bmkg-wms-probe.yml` and `bps-discovery.yml` are already isolated/manual-style acquisition utilities; BIG and BMKG open-data probes are scoped to their own acquisition paths rather than ordinary release/product changes.
+The workflow audit found no generic release blocker in the examples checked. `bmkg-wms-probe.yml` and `bps-discovery.yml` are already isolated/manual-style acquisition utilities; BIG and BMKG open-data probes are scoped to their own acquisition paths rather than ordinary release/public-product changes.
 
 ### Release-surface metadata polish
 
