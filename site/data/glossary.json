@@ -1,68 +1,68 @@
 {
   "schema": "ranah-observatory/public-glossary/v1",
   "language": "id",
-  "title": "Istilah yang sering bikin data terdengar lebih rumit dari sebenarnya",
-  "intro": "Istilah teknis tetap dipertahankan di audit trail, tetapi produk publik menerjemahkannya supaya pembaca tahu apa yang benar-benar dimaksud — dan apa yang tidak dimaksud.",
+  "title": "Istilah teknis, diterjemahkan ke bahasa biasa",
+  "intro": "Kalau istilah statistik muncul di halaman ini, artinya dijelaskan di sini. Nama teknis tetap dicantumkan supaya hasilnya masih bisa dicocokkan dengan laporan dan kode.",
   "terms": [
     {
-      "term": "Observasi",
+      "term": "Data asli",
       "technical": "observed",
       "plain": "Angka yang berasal dari pengukuran atau statistik sumber, bukan hasil tebakan model Ranah Observatory.",
-      "not_mean": "Tidak otomatis berarti angka itu sempurna, bebas revisi, atau bisa dibandingkan dengan semua periode lain."
+      "not_mean": "Tidak otomatis berarti angkanya sempurna, bebas revisi, atau bisa dibandingkan dengan semua tahun lain."
     },
     {
-      "term": "Model estimate",
+      "term": "Estimasi model",
       "technical": "model_estimate",
-      "plain": "Nilai yang dibentuk oleh sebuah produk/model dari data masukan. CHIRPS rainfall termasuk kategori ini.",
-      "not_mean": "Bukan pengukuran stasiun langsung dan tidak boleh diberi label seolah-olah berasal dari alat ukur di lokasi tersebut."
+      "plain": "Nilai yang dihitung oleh model dari data masukan. Curah hujan CHIRPS termasuk jenis ini.",
+      "not_mean": "Bukan pengukuran stasiun langsung dan tidak boleh disebut seolah-olah berasal dari alat ukur di lokasi tersebut."
     },
     {
-      "term": "Benchmark",
+      "term": "Pembanding",
       "technical": "benchmark",
-      "plain": "Pembanding sederhana yang harus dikalahkan model sebelum hasil model boleh dianggap berguna untuk tujuan tertentu.",
-      "not_mean": "Model yang lebih rumit tidak otomatis lebih bagus. Kalau kalah dari benchmark, hasilnya ditahan atau diterbitkan sebagai hasil negatif."
+      "plain": "Cara sederhana yang dipakai untuk mengecek apakah model yang lebih rumit benar-benar memberi hasil lebih baik.",
+      "not_mean": "Model yang lebih rumit tidak otomatis lebih bagus. Kalau tidak mengalahkan pembanding, hasilnya tidak dipromosikan sebagai prediksi yang lebih baik."
     },
     {
-      "term": "Trajectory",
+      "term": "Arah perubahan",
       "technical": "trajectory",
-      "plain": "Arah perubahan sebuah indikator sepanjang periode yang dianalisis, bukan hanya selisih dua angka awal dan akhir.",
-      "not_mean": "Trajectory bukan ramalan masa depan dan tidak menjelaskan penyebab perubahan."
+      "plain": "Pola naik, turun, atau tidak jelas sepanjang periode yang dianalisis, bukan hanya selisih angka awal dan akhir.",
+      "not_mean": "Bukan ramalan masa depan dan tidak menjelaskan penyebab perubahan."
     },
     {
-      "term": "Robust / konsisten",
+      "term": "Konsisten",
       "technical": "robust trajectory",
-      "plain": "Arah model tetap bertahan ketika tahun-tahun tertentu dikeluarkan satu per satu sesuai uji stabilitas yang sudah ditentukan sebelumnya.",
-      "not_mean": "Bukan jaminan 100%, bukan confidence interval, dan bukan bukti sebab-akibat."
+      "plain": "Arah perubahan tetap muncul ketika data diuji ulang dengan beberapa variasi yang sudah ditentukan sebelumnya.",
+      "not_mean": "Bukan jaminan 100% dan bukan bukti sebab-akibat."
     },
     {
-      "term": "Association",
+      "term": "Hubungan statistik",
       "technical": "statistical association",
-      "plain": "Dua hal bergerak bersama secara statistik dalam data yang dianalisis.",
-      "not_mean": "Belum berarti faktor A menyebabkan faktor B."
+      "plain": "Dua hal terlihat bergerak bersama dalam data yang dianalisis.",
+      "not_mean": "Belum berarti faktor pertama menyebabkan faktor kedua."
     },
     {
-      "term": "Causal",
+      "term": "Sebab-akibat",
       "technical": "causal effect",
-      "plain": "Klaim bahwa perubahan pada satu faktor benar-benar menyebabkan perubahan pada faktor lain di bawah desain identifikasi yang memadai.",
-      "not_mean": "Korelasi, residual model, atau sensitivity model tidak cukup untuk menyebut sebuah efek sebagai causal."
+      "plain": "Klaim bahwa perubahan pada satu faktor benar-benar menyebabkan perubahan pada faktor lain, berdasarkan rancangan analisis yang memang bisa menguji hal itu.",
+      "not_mean": "Korelasi atau selisih dari prediksi model saja tidak cukup untuk membuktikan sebab-akibat."
     },
     {
-      "term": "Context only",
+      "term": "Konteks saja",
       "technical": "context_only",
-      "plain": "Datanya cukup baik untuk memberi latar dan skala masalah, tetapi belum boleh dipakai untuk kesimpulan analitis yang lebih kuat.",
-      "not_mean": "Bukan data yang tidak berguna; batasnya hanya lebih sempit."
+      "plain": "Datanya berguna untuk memberi latar, skala, atau gambaran awal, tetapi belum cukup untuk kesimpulan yang lebih kuat.",
+      "not_mean": "Bukan berarti datanya tidak berguna; hanya batas penggunaannya lebih sempit."
     },
     {
-      "term": "Held",
+      "term": "Ditahan",
       "technical": "held / not qualified",
-      "plain": "Data atau hasil sengaja tidak dipromosikan karena ada masalah coverage, comparability, duplikasi, atau gate lain yang belum terpenuhi.",
-      "not_mean": "Bukan berarti nilainya nol dan bukan izin untuk mengisi kekosongan dengan tebakan."
+      "plain": "Data atau hasil sengaja tidak dipakai sebagai temuan utama karena ada masalah kelengkapan, perbandingan, duplikasi, atau syarat pengujian yang belum terpenuhi.",
+      "not_mean": "Bukan berarti nilainya nol dan bukan alasan untuk mengisi data yang hilang dengan tebakan."
     },
     {
-      "term": "Empirical reference",
+      "term": "Pembanding empiris",
       "technical": "empirical favorable reference",
-      "plain": "Pembanding yang dibentuk dari pola kinerja yang benar-benar terlihat di data, dengan syarat dan metode tertentu.",
-      "not_mean": "Bukan theoretical maximum dan bukan target kebijakan yang pasti bisa dicapai."
+      "plain": "Pembanding yang dibentuk dari pola yang benar-benar terlihat dalam data yang tersedia.",
+      "not_mean": "Bukan batas maksimum kemampuan suatu daerah dan bukan target kebijakan yang pasti bisa dicapai."
     }
   ]
 }
