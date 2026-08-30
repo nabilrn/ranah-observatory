@@ -1,0 +1,45 @@
+{
+  "schema": "ranah-observatory/public-readability-audit/v1",
+  "as_of": "2026-08-30",
+  "base_main_commit": "d088ab354decce9729ef947e2d924a02f16b2e5e",
+  "source_audit_head": "aa70bd56f3b0961a0250a5776f647f091861b61a",
+  "production_url": "https://nabilrn.github.io/ranah-observatory/",
+  "scope": [
+    "site/index.html",
+    "site/dashboard.js",
+    "site/dashboard.css",
+    "site/mobile.css",
+    "site/app.js",
+    "site/readiness.js",
+    "site/catalog.js",
+    "site/history.js",
+    "site/glossary.js"
+  ],
+  "checks": {
+    "data_first_information_hierarchy": "pass",
+    "desktop_compact_workspace": "pass_source_contract",
+    "mobile_navigation_reachable": "pass_source_contract",
+    "keyboard_navigation_state": "pass_source_contract",
+    "caveats_adjacent_to_key_findings": "pass",
+    "negative_results_visible": "pass",
+    "blocked_claims_visible": "pass",
+    "loading_and_error_states": "pass_source_contract",
+    "local_static_data_fetches_only": "pass",
+    "anchor_and_hash_view_routing": "pass_source_contract",
+    "live_visual_browser_verification": "pending_manual"
+  },
+  "blockers_fixed": [
+    "The first screen previously prioritized model and audit diagnostics before the plain-language socioeconomic findings readers are most likely to understand.",
+    "Active app-view navigation did not explicitly expose aria-current state, and the key-findings failure state was not announced as an alert."
+  ],
+  "scientific_changes": false,
+  "data_changes": false,
+  "model_changes": false,
+  "claim_gate_changes": false,
+  "source_level_blockers_remaining": 0,
+  "manual_checks_remaining": [
+    "Open the deployed GitHub Pages site in a real desktop and mobile browser and visually confirm no clipping, overlap, inaccessible horizontal navigation, or broken external links after deployment."
+  ],
+  "gate_closable": false,
+  "gate_blocker": "Live visual browser verification has not been performed in this tool session; the GitHub Pages host could not be opened by the available fetch layer."
+}
