@@ -12,6 +12,7 @@ on:
       - docs/PRODUCT_V0_1_SPEC.md
       - publication/v0.1/**
       - publication/final-open-gates.json
+      - publication/pages-deployment.json
       - site/**
       - data/manifests/milestone11_expected_performance_v2.json
       - data/manifests/milestone19_dynamic_forecast_engine.json
@@ -39,6 +40,7 @@ on:
       - docs/PRODUCT_V0_1_SPEC.md
       - publication/v0.1/**
       - publication/final-open-gates.json
+      - publication/pages-deployment.json
       - site/**
       - data/manifests/milestone11_expected_performance_v2.json
       - data/manifests/milestone19_dynamic_forecast_engine.json
@@ -86,8 +88,9 @@ jobs:
           python -m unittest tests.test_final_open_gates -v
           python -m unittest tests.test_release_readiness -v
 
-      - name: Confirm external Pages blocker remains documented separately
+      - name: Confirm Pages deployment is recorded as resolved
         run: |
-          grep -q 'Resource not accessible by integration' docs/FINAL_10_DAY_DELIVERY.md
-          grep -q 'Settings → Pages' docs/FINAL_10_DAY_DELIVERY.md
+          grep -q 'https://nabilrn.github.io/ranah-observatory/' docs/FINAL_10_DAY_DELIVERY.md
+          grep -q '"deploy_pages": "success"' publication/pages-deployment.json
+          grep -q '"must_close_blocked_external": 0' publication/final-open-gates.json
           grep -q 'enablement: true' .github/workflows/deploy-public-product.yml
