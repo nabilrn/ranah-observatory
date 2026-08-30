@@ -8,17 +8,24 @@ on:
       - README.md
       - docs/FINAL_10_DAY_DELIVERY.md
       - docs/FINAL_OPEN_GATES.md
+      - docs/FINAL_MODEL_VALIDATION.md
       - docs/PRODUCT_V0_1_SPEC.md
       - publication/v0.1/**
       - publication/final-open-gates.json
       - site/**
+      - data/manifests/milestone11_expected_performance_v2.json
+      - data/manifests/milestone19_dynamic_forecast_engine.json
       - scripts/validate_public_product.py
       - scripts/validate_public_readiness.py
       - scripts/validate_public_history.py
+      - scripts/validate_final_model_testing.py
       - scripts/validate_final_open_gates.py
       - scripts/validate_release_readiness.py
+      - tests/test_final_model_testing.py
       - tests/test_final_open_gates.py
       - tests/test_release_readiness.py
+      - .github/workflows/milestone11-expected-performance-repro.yml
+      - .github/workflows/milestone19-dynamic-forecast-repro.yml
       - .github/workflows/deploy-public-product.yml
       - .github/workflows/release-readiness.yml
   push:
@@ -28,17 +35,24 @@ on:
       - README.md
       - docs/FINAL_10_DAY_DELIVERY.md
       - docs/FINAL_OPEN_GATES.md
+      - docs/FINAL_MODEL_VALIDATION.md
       - docs/PRODUCT_V0_1_SPEC.md
       - publication/v0.1/**
       - publication/final-open-gates.json
       - site/**
+      - data/manifests/milestone11_expected_performance_v2.json
+      - data/manifests/milestone19_dynamic_forecast_engine.json
       - scripts/validate_public_product.py
       - scripts/validate_public_readiness.py
       - scripts/validate_public_history.py
+      - scripts/validate_final_model_testing.py
       - scripts/validate_final_open_gates.py
       - scripts/validate_release_readiness.py
+      - tests/test_final_model_testing.py
       - tests/test_final_open_gates.py
       - tests/test_release_readiness.py
+      - .github/workflows/milestone11-expected-performance-repro.yml
+      - .github/workflows/milestone19-dynamic-forecast-repro.yml
       - .github/workflows/deploy-public-product.yml
       - .github/workflows/release-readiness.yml
   workflow_dispatch:
@@ -57,6 +71,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate final model testing contract
+        run: python scripts/validate_final_model_testing.py
+
       - name: Validate final open gate classification
         run: python scripts/validate_final_open_gates.py
 
@@ -65,6 +82,7 @@ jobs:
 
       - name: Run finalization regression tests
         run: |
+          python -m unittest tests.test_final_model_testing -v
           python -m unittest tests.test_final_open_gates -v
           python -m unittest tests.test_release_readiness -v
 
