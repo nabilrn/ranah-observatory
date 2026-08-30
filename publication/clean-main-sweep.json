@@ -1,0 +1,37 @@
+{
+  "schema": "ranah-observatory/clean-main-reproducibility-evidence/v1",
+  "verified_at": "2026-08-30T21:59:08+07:00",
+  "main_commit": "fa960c278d4ad69524c26e1bf984a1a29b9a2ab3",
+  "workflow": "Final Clean Main Reproducibility Sweep",
+  "workflow_run_id": 33318320220,
+  "workflow_run_number": 4,
+  "event": "push",
+  "conclusion": "success",
+  "contracts_verified": [
+    "frozen_release_and_open_gate_contract",
+    "final_model_testing_contract",
+    "deterministic_public_product_rebuilds",
+    "public_product_contract_tests",
+    "historical_reconstruction_chain",
+    "milestone10_analytical_panel_rebuild_audit_tests",
+    "milestone11_expected_performance_rebuild_audit_tests",
+    "milestone19_strict_forecast_rebuild_audit_tests",
+    "byte_identical_analytical_outputs",
+    "github_pages_deployment_evidence"
+  ],
+  "defects_exposed_before_success": [
+    {
+      "kind": "comparison_contract",
+      "finding": "Public history JSON was semantically identical but serialized with a different object-key order when rebuilt directly into the tracked file.",
+      "resolution": "The integrated sweep now compares history JSON semantically using an isolated rebuild output, matching the permanent public-product contract."
+    },
+    {
+      "kind": "stale_provenance_fingerprint",
+      "finding": "Milestone 19 still fingerprinted an older Milestone 10 manifest SHA even though the current M10 rebuild was canonical.",
+      "resolution": "The M19 input fingerprint was refreshed from 8183e95d5dc31f096f94f2262be2c6325e02635944a32020c58f625fa12d4433 to 247d56475f514cdc8ea1ed1c7f46fb31dbbc75abe0a68a8682762b2d8de7b853. Model predictions, metrics, and the 0-of-3 forecast qualification verdict were unchanged."
+    }
+  ],
+  "live_acquisition_performed": false,
+  "external_statistical_api_required": false,
+  "future_main_pushes_guarded_by_same_workflow": true
+}
