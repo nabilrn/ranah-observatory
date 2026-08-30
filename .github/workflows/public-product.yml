@@ -9,6 +9,8 @@ on:
       - docs/PRODUCT_V0_1_SPEC.md
       - scripts/validate_public_product.py
       - scripts/validate_public_readiness.py
+      - scripts/validate_public_history.py
+      - scripts/build_public_history.py
       - scripts/build_public_district_explorer.py
       - scripts/build_public_indicator_catalog.py
       - tests/test_public_product.py
@@ -16,6 +18,7 @@ on:
       - tests/test_public_glossary.py
       - tests/test_public_readiness.py
       - tests/test_public_indicator_catalog.py
+      - tests/test_public_history.py
       - .github/workflows/public-product.yml
       - .github/workflows/deploy-public-product.yml
   workflow_dispatch:
@@ -45,6 +48,8 @@ jobs:
               'docs/PRODUCT_V0_1_SPEC.md',
               'scripts/validate_public_product.py',
               'scripts/validate_public_readiness.py',
+              'scripts/validate_public_history.py',
+              'scripts/build_public_history.py',
               'scripts/build_public_district_explorer.py',
               'scripts/build_public_indicator_catalog.py',
               'tests/test_public_product.py',
@@ -52,6 +57,7 @@ jobs:
               'tests/test_public_glossary.py',
               'tests/test_public_readiness.py',
               'tests/test_public_indicator_catalog.py',
+              'tests/test_public_history.py',
               '.github/workflows/public-product.yml',
               '.github/workflows/deploy-public-product.yml',
           }
@@ -78,11 +84,20 @@ jobs:
           python scripts/build_public_indicator_catalog.py
           diff -u /tmp/indicators-frozen.json site/data/indicators.json
 
+      - name: Rebuild deterministic historical context candidate
+        run: |
+          cp site/data/history.json /tmp/history-frozen.json
+          python scripts/build_public_history.py
+          diff -u /tmp/history-frozen.json site/data/history.json
+
       - name: Validate public narrative against frozen claim ledger
         run: python scripts/validate_public_product.py
 
       - name: Validate public research readiness against frozen M18 synthesis
         run: python scripts/validate_public_readiness.py
+
+      - name: Validate bounded public historical context
+        run: python scripts/validate_public_history.py
 
       - name: Run product contract tests
         run: |
@@ -91,6 +106,7 @@ jobs:
           python -m unittest tests.test_public_glossary -v
           python -m unittest tests.test_public_readiness -v
           python -m unittest tests.test_public_indicator_catalog -v
+          python -m unittest tests.test_public_history -v
 
       - name: Check browser JavaScript syntax
         run: |
@@ -98,6 +114,7 @@ jobs:
           node --check site/glossary.js
           node --check site/readiness.js
           node --check site/catalog.js
+          node --check site/history.js
 
       - name: Validate Pages workflow safety contract
         run: |
@@ -109,8 +126,10 @@ jobs:
           grep -q 'path: site' .github/workflows/deploy-public-product.yml
           grep -q 'python scripts/validate_public_product.py' .github/workflows/deploy-public-product.yml
           grep -q 'python scripts/validate_public_readiness.py' .github/workflows/deploy-public-product.yml
+          grep -q 'python scripts/validate_public_history.py' .github/workflows/deploy-public-product.yml
           grep -q 'python scripts/build_public_district_explorer.py' .github/workflows/deploy-public-product.yml
           grep -q 'python scripts/build_public_indicator_catalog.py' .github/workflows/deploy-public-product.yml
+          grep -q 'python scripts/build_public_history.py' .github/workflows/deploy-public-product.yml
 
       - name: Require static product files
         run: |
@@ -119,20 +138,24 @@ jobs:
           test -s site/explorer.css
           test -s site/readiness.css
           test -s site/catalog.css
+          test -s site/history.css
           test -s site/glossary.css
           test -s site/app.js
           test -s site/readiness.js
           test -s site/catalog.js
+          test -s site/history.js
           test -s site/glossary.js
           test -s site/data/overview.json
           test -s site/data/districts.json
           test -s site/data/readiness.json
           test -s site/data/indicators.json
+          test -s site/data/history.json
           test -s site/data/glossary.json
           test -f site/.nojekyll
           grep -q 'id="temuan"' site/index.html
           grep -q 'id="status-riset"' site/index.html
           grep -q 'id="katalog"' site/index.html
+          grep -q 'id="sejarah"' site/index.html
           grep -q 'id="daerah"' site/index.html
           grep -q 'id="batas"' site/index.html
           grep -q 'id="glosarium"' site/index.html
