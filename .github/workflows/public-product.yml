@@ -7,6 +7,7 @@ on:
     paths:
       - site/**
       - docs/PRODUCT_V0_1_SPEC.md
+      - publication/public-readability-audit.json
       - scripts/validate_public_product.py
       - scripts/validate_public_readiness.py
       - scripts/validate_public_history.py
@@ -17,6 +18,7 @@ on:
       - tests/test_public_district_explorer.py
       - tests/test_public_glossary.py
       - tests/test_public_readiness.py
+      - tests/test_public_readability.py
       - tests/test_public_indicator_catalog.py
       - tests/test_public_history.py
       - .github/workflows/public-product.yml
@@ -46,6 +48,7 @@ jobs:
           import subprocess
           allowed_exact = {
               'docs/PRODUCT_V0_1_SPEC.md',
+              'publication/public-readability-audit.json',
               'scripts/validate_public_product.py',
               'scripts/validate_public_readiness.py',
               'scripts/validate_public_history.py',
@@ -56,6 +59,7 @@ jobs:
               'tests/test_public_district_explorer.py',
               'tests/test_public_glossary.py',
               'tests/test_public_readiness.py',
+              'tests/test_public_readability.py',
               'tests/test_public_indicator_catalog.py',
               'tests/test_public_history.py',
               '.github/workflows/public-product.yml',
@@ -111,12 +115,14 @@ jobs:
           python -m unittest tests.test_public_district_explorer -v
           python -m unittest tests.test_public_glossary -v
           python -m unittest tests.test_public_readiness -v
+          python -m unittest tests.test_public_readability -v
           python -m unittest tests.test_public_indicator_catalog -v
           python -m unittest tests.test_public_history -v
 
       - name: Check browser JavaScript syntax
         run: |
           node --check site/app.js
+          node --check site/dashboard.js
           node --check site/glossary.js
           node --check site/readiness.js
           node --check site/catalog.js
@@ -146,7 +152,10 @@ jobs:
           test -s site/catalog.css
           test -s site/history.css
           test -s site/glossary.css
+          test -s site/mobile.css
+          test -s site/dashboard.css
           test -s site/app.js
+          test -s site/dashboard.js
           test -s site/readiness.js
           test -s site/catalog.js
           test -s site/history.js
