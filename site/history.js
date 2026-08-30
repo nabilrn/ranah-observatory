@@ -78,14 +78,14 @@ function renderSameYear(card) {
   metrics.className = "history-metrics";
   metrics.append(
     comparisonMetric("Survei tahunan", card.comparison.annual_survey),
-    comparisonMetric("SE06 full listing", card.comparison.se06_full_listing),
-    comparisonMetric("Dengan status hukum", card.comparison.se06_legal),
+    comparisonMetric("Daftar Sensus Ekonomi", card.comparison.se06_full_listing),
+    comparisonMetric("Berstatus hukum", card.comparison.se06_legal),
     comparisonMetric("Tanpa status hukum", card.comparison.se06_nonlegal),
   );
 
   const ratio = document.createElement("p");
   ratio.className = "history-key-fact";
-  ratio.textContent = `Angka survei tahunan = ${formatHistoryNumber(card.comparison.annual_percent_of_listing)}% dari full listing SE06, tetapi rasio ini bukan sampling fraction yang teridentifikasi.`;
+  ratio.textContent = `Angka survei tahunan setara ${formatHistoryNumber(card.comparison.annual_percent_of_listing)}% dari daftar Sensus Ekonomi. Persentase ini hanya perbandingan dua angka, bukan bukti besarnya sampel survei.`;
 
   article.append(metrics, ratio, caveat);
   return article;
@@ -97,13 +97,13 @@ function renderQualification(card) {
   details.className = "history-qualification";
 
   const source = document.createElement("p");
-  source.innerHTML = `<strong>2003 source-native:</strong> B ${formatHistoryNumber(card.qualification_2003.B)} · M1 ${formatHistoryNumber(card.qualification_2003.M1)} · M2 ${formatHistoryNumber(card.qualification_2003.M2)} · K1 ${formatHistoryNumber(card.qualification_2003.K1)} · K2 ${formatHistoryNumber(card.qualification_2003.K2)} · K3 ${formatHistoryNumber(card.qualification_2003.K3)}.`;
+  source.innerHTML = `<strong>Rincian BPS 2003:</strong> B ${formatHistoryNumber(card.qualification_2003.B)} · M1 ${formatHistoryNumber(card.qualification_2003.M1)} · M2 ${formatHistoryNumber(card.qualification_2003.M2)} · K1 ${formatHistoryNumber(card.qualification_2003.K1)} · K2 ${formatHistoryNumber(card.qualification_2003.K2)} · K3 ${formatHistoryNumber(card.qualification_2003.K3)}.`;
 
   const candidate = document.createElement("p");
-  candidate.innerHTML = `<strong>Kandidat aritmetika 2003:</strong> Kecil ${formatHistoryNumber(card.arithmetic_candidate_2003.Kecil)} · Menengah ${formatHistoryNumber(card.arithmetic_candidate_2003.Menengah)} · Besar ${formatHistoryNumber(card.arithmetic_candidate_2003.Besar)}.`;
+  candidate.innerHTML = `<strong>Jika hanya dijumlahkan secara aritmetika:</strong> Kecil ${formatHistoryNumber(card.arithmetic_candidate_2003.Kecil)} · Menengah ${formatHistoryNumber(card.arithmetic_candidate_2003.Menengah)} · Besar ${formatHistoryNumber(card.arithmetic_candidate_2003.Besar)}.`;
 
   const target = document.createElement("p");
-  target.innerHTML = `<strong>2005:</strong> total ${formatHistoryNumber(card.total_2005)}; komponen belum recovered; semantic mapping belum verified.`;
+  target.innerHTML = `<strong>2005:</strong> total ${formatHistoryNumber(card.total_2005)} perusahaan. Rincian Kecil/Menengah/Besar dan definisi penghubungnya dengan kelas 2003 belum ditemukan.`;
 
   details.append(source, candidate, target);
   article.append(details, caveat);
@@ -140,7 +140,7 @@ async function loadHistory() {
     renderHistory(payload);
   } catch (error) {
     if (grid) {
-      grid.textContent = "Jejak historis gagal dimuat. Evidence canonical tetap tersedia di repository.";
+      grid.textContent = "Data sejarah gagal dimuat. File sumber tetap tersedia di repository.";
     }
     console.error("Failed to load public history", error);
   }
