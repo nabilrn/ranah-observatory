@@ -4,7 +4,7 @@
 **Delivery deadline:** 9 September 2026  
 **Mode:** ship-first finalization
 
-**Registry summary:** 6 must-close gates — 2 satisfied, 3 internal open, and 1 external/manual blocker — plus 3 valuable-if-easy items and 7 deferred research gates.
+**Registry summary:** 6 must-close gates — 3 satisfied and 3 internal open — plus 3 valuable-if-easy items and 7 deferred research gates. There are **0 external/manual blockers** remaining.
 
 This document is the human-readable view of `publication/final-open-gates.json`.
 
@@ -17,7 +17,7 @@ Its purpose is to stop two failure modes during the final delivery window:
 
 Every remaining task belongs to one of three classes:
 
-- **must close** — final delivery is not complete until this gate is closed or, for an external platform action, explicitly completed by the repository owner;
+- **must close** — final delivery is not complete until this gate is closed;
 - **valuable if easy** — useful only when it can be completed cheaply without delaying must-close work;
 - **defer** — a legitimate future research question, but not a condition for shipping the current bounded product.
 
@@ -33,24 +33,23 @@ The v0.1 completeness certificate, claim ledger, negative results, and nine bloc
 
 The current public product narrative, readiness surface, indicator/explorer support layers, glossary, and bounded historical supplement are validated as deterministic translations of qualified evidence.
 
+#### GitHub Pages enablement and deployment
+
+The repository owner changed **Settings → Pages → Build and deployment → Source** to **GitHub Actions** on 30 August 2026.
+
+The previously failed `Deploy Public Product` workflow was rerun. The rerun completed successfully:
+
+- workflow run: `33309643635`, attempt 2;
+- `Configure GitHub Pages`: success;
+- public artifact upload: success;
+- `Deploy to GitHub Pages`: success;
+- production URL: **https://nabilrn.github.io/ranah-observatory/**.
+
+Machine-readable deployment evidence is frozen in `publication/pages-deployment.json`. The earlier `Resource not accessible by integration` error is therefore historical, not an active blocker.
+
 ### Still open
 
-#### 1. Enable and verify GitHub Pages
-
-**Owner:** repository owner  
-**Type:** external/manual
-
-The deployment workflow passes its repository-side validation but GitHub refuses first-site creation with:
-
-`Resource not accessible by integration`
-
-Manual action:
-
-**Repository Settings → Pages → Build and deployment → Source → GitHub Actions**
-
-Exit condition: `Deploy Public Product` succeeds and the canonical production URL serves the repository's static site artifact.
-
-#### 2. Clean-main reproducibility sweep
+#### 1. Clean-main reproducibility sweep
 
 Run the final relevant validation matrix from one clean `main` candidate after release-critical integration work is done.
 
@@ -63,7 +62,7 @@ The sweep must explicitly preserve both predictive-model outcomes:
 
 Exit condition: release readiness, final model testing, public product, historical reconstruction, and analytical reproducibility gates are all green for the same candidate state.
 
-#### 3. Adversarial public readability audit
+#### 2. Adversarial public readability audit
 
 Check the actual user-facing product for:
 
@@ -76,7 +75,7 @@ Check the actual user-facing product for:
 
 Exit condition: only blocker fixes remain after the audit.
 
-#### 4. Release candidate and handoff bundle
+#### 3. Release candidate and handoff bundle
 
 Name one immutable release-candidate commit and prepare the final release/handoff metadata around it.
 
