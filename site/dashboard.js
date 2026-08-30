@@ -37,9 +37,12 @@ function activateView(viewName, updateHash = true) {
   });
 
   tabs.forEach((tab) => {
-    tab.classList.toggle("is-active", tab.dataset.viewTarget === target.dataset.view);
+    const active = tab.dataset.viewTarget === target.dataset.view;
+    tab.classList.toggle("is-active", active);
     if (tab.matches("button")) {
-      tab.setAttribute("aria-pressed", tab.dataset.viewTarget === target.dataset.view ? "true" : "false");
+      tab.setAttribute("aria-pressed", active ? "true" : "false");
+      if (active) tab.setAttribute("aria-current", "page");
+      else tab.removeAttribute("aria-current");
     }
   });
 
@@ -96,7 +99,10 @@ async function initDashboard() {
   } catch (error) {
     console.error(error);
     const root = document.querySelector("#key-stories");
-    if (root) root.textContent = "Temuan utama gagal dimuat.";
+    if (root) {
+      root.setAttribute("role", "alert");
+      root.textContent = "Temuan utama gagal dimuat. Data lain tetap dapat dibuka melalui tab Daerah, Data, dan Riset.";
+    }
   }
 }
 

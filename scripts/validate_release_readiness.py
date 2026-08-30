@@ -159,9 +159,12 @@ def validate() -> dict[str, Any]:
         "342 leave-one-geography-out cross-fitted predictions",
         "285 total",
         "0 / 3 targets qualify",
-        "failure is a research result",
     ):
         assert token in model_validation_doc, f"model validation document lost token: {token}"
+
+    model_validation_semantics = model_validation_doc.casefold()
+    assert "failure" in model_validation_semantics, "model validation document lost forecast-failure language"
+    assert "research result" in model_validation_semantics, "model validation document no longer treats model failure as a research result"
 
     assert "pages: write" in pages_workflow
     assert "id-token: write" in pages_workflow

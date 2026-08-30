@@ -27,15 +27,15 @@
       </span>
     </a>
     <nav class="nav app-nav" aria-label="Bagian data">
-      <button type="button" class="nav-tab is-active" data-view-target="ringkasan">Ringkasan</button>
-      <button type="button" class="nav-tab" data-view-target="daerah">Daerah</button>
-      <button type="button" class="nav-tab" data-view-target="katalog">Data</button>
-      <button type="button" class="nav-tab" data-view-target="riset">Riset</button>
-      <button type="button" class="nav-tab" data-view-target="latar">Latar & sumber</button>
+      <button type="button" class="nav-tab is-active" data-view-target="ringkasan" aria-controls="ringkasan" aria-pressed="true" aria-current="page">Ringkasan</button>
+      <button type="button" class="nav-tab" data-view-target="daerah" aria-controls="daerah" aria-pressed="false">Daerah</button>
+      <button type="button" class="nav-tab" data-view-target="katalog" aria-controls="katalog" aria-pressed="false">Data</button>
+      <button type="button" class="nav-tab" data-view-target="riset" aria-controls="riset" aria-pressed="false">Riset</button>
+      <button type="button" class="nav-tab" data-view-target="latar" aria-controls="latar" aria-pressed="false">Latar & sumber</button>
     </nav>
   </header>
 
-  <main id="main" class="workspace">
+  <main id="main" class="workspace" tabindex="-1">
     <section class="app-view overview-view is-active" id="ringkasan" data-view="ringkasan" aria-labelledby="hero-title">
       <div class="overview-header">
         <div>
@@ -50,26 +50,26 @@
         <p class="hero-boundary" id="hero-boundary"></p>
       </div>
 
-      <section class="snapshot-panel" aria-labelledby="snapshot-title">
-        <div class="panel-title-row">
-          <div>
-            <p class="eyebrow">Angka utama</p>
-            <h2 id="snapshot-title">Lima angka penting dari data yang sudah diperiksa</h2>
-          </div>
-          <span class="panel-hint">Ringkasan provinsi dan kabupaten/kota</span>
-        </div>
-        <div class="stat-grid" id="headline-stats" aria-live="polite"></div>
-      </section>
-
       <section class="key-findings-panel" aria-labelledby="key-findings-title">
         <div class="panel-title-row">
           <div>
-            <p class="eyebrow">Temuan kunci</p>
-            <h2 id="key-findings-title">Yang paling perlu diketahui sekarang</h2>
+            <p class="eyebrow">Temuan utama</p>
+            <h2 id="key-findings-title">Empat hal yang langsung terlihat dari data</h2>
           </div>
           <button type="button" class="text-button" data-view-target="riset">Lihat semua temuan →</button>
         </div>
         <div class="key-story-grid" id="key-stories" aria-live="polite"></div>
+      </section>
+
+      <section class="snapshot-panel" aria-labelledby="snapshot-title">
+        <div class="panel-title-row">
+          <div>
+            <p class="eyebrow">Konteks data & pengujian</p>
+            <h2 id="snapshot-title">Seberapa jauh data dan modelnya sudah diperiksa?</h2>
+          </div>
+          <span class="panel-hint">Detail pendukung, bukan skor Sumatera Barat</span>
+        </div>
+        <div class="stat-grid" id="headline-stats" aria-live="polite"></div>
       </section>
     </section>
 
