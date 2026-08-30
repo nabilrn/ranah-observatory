@@ -27,7 +27,8 @@ class PublicReadabilityTests(unittest.TestCase):
             self.assertIn(f'data-view-target="{view}"', self.html)
             self.assertIn(f'aria-controls="{view}"', self.html)
         self.assertIn('tabindex="-1"', self.html)
-        self.assertIn('aria-current="page"', self.dashboard_js)
+        self.assertIn('setAttribute("aria-current", "page")', self.dashboard_js)
+        self.assertIn('removeAttribute("aria-current")', self.dashboard_js)
 
     def test_negative_and_blocked_results_remain_visible(self) -> None:
         self.assertIn('data-view="riset"', self.html)
