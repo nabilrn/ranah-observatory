@@ -1,0 +1,17 @@
+{
+  "schema": "ranah-observatory/pages-deployment-evidence/v1",
+  "verified_at": "2026-08-30T21:44:14+07:00",
+  "workflow": "Deploy Public Product",
+  "workflow_run_id": 33309643635,
+  "workflow_run_attempt": 2,
+  "source_commit": "8aac7ee6babd52bc1cb22e6e2ba65964eb356c24",
+  "site_content_current_at_main": true,
+  "canonical_main_at_verification": "00ecf1668df7fd0681b6b6f11e84058c05eb8865",
+  "configure_pages": "success",
+  "upload_pages_artifact": "success",
+  "deploy_pages": "success",
+  "production_url": "https://nabilrn.github.io/ranah-observatory/",
+  "previous_blocker": "Resource not accessible by integration",
+  "resolution": "Repository owner changed Pages build source to GitHub Actions, then the previously failed deployment workflow was rerun successfully.",
+  "notes": "The deployed site artifact is unchanged by subsequent release-only commits through the canonical main recorded above."
+}
