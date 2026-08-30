@@ -4,6 +4,8 @@
 **Delivery deadline:** 9 September 2026  
 **Mode:** ship-first finalization
 
+**Registry summary:** 6 must-close gates — 2 satisfied, 3 internal open, and 1 external/manual blocker — plus 3 valuable-if-easy items and 7 deferred research gates.
+
 This document is the human-readable view of `publication/final-open-gates.json`.
 
 Its purpose is to stop two failure modes during the final delivery window:
