@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ranah Observatory — observatorium data dan riset pembangunan Sumatera Barat yang membedakan temuan, hasil negatif, konteks, dan klaim yang belum didukung.">
+  <meta name="description" content="Ranah Observatory — data pembangunan Sumatera Barat per kabupaten/kota, lengkap dengan batas pembacaan dan hasil yang belum terbukti.">
   <meta name="theme-color" content="#f4f1e8">
   <title>Ranah Observatory — Sumatera Barat dalam data</title>
   <link rel="stylesheet" href="styles.css">
@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="catalog.css">
   <link rel="stylesheet" href="history.css">
   <link rel="stylesheet" href="glossary.css">
+  <link rel="stylesheet" href="mobile.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Lewati ke isi utama</a>
@@ -26,12 +27,12 @@
     </a>
     <nav class="nav" aria-label="Navigasi utama">
       <a href="#temuan">Temuan</a>
-      <a href="#status-riset">Status riset</a>
-      <a href="#katalog">Katalog</a>
-      <a href="#sejarah">Sejarah</a>
       <a href="#daerah">Daerah</a>
+      <a href="#status-riset">Yang belum terjawab</a>
+      <a href="#katalog">Data</a>
+      <a href="#sejarah">Sejarah</a>
       <a href="#batas">Batas</a>
-      <a href="#glosarium">Glosarium</a>
+      <a href="#glosarium">Istilah</a>
       <a href="#metode">Metode</a>
       <a href="#sumber">Sumber</a>
     </nav>
@@ -40,34 +41,32 @@
   <main id="main">
     <section class="hero section" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow" id="hero-eyebrow">Memuat observatorium…</p>
-        <h1 id="hero-title">Data harus menjelaskan, bukan membuat kepastian palsu.</h1>
+        <p class="eyebrow" id="hero-eyebrow">Memuat data…</p>
+        <h1 id="hero-title">Sumatera Barat tidak bergerak dalam satu arah.</h1>
         <p class="hero-summary" id="hero-summary"></p>
         <p class="hero-boundary" id="hero-boundary"></p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#temuan">Lihat yang sudah kita tahu</a>
-          <a class="button button-secondary" href="#status-riset">Cek yang belum terjawab</a>
-          <a class="button button-secondary" href="#katalog">Lihat data tersedia</a>
-          <a class="button button-secondary" href="#sejarah">Lihat jejak historis</a>
-          <a class="button button-secondary" href="#daerah">Jelajahi daerah</a>
-          <a class="button button-secondary" id="preprint-link" href="#sumber">Baca laporan teknis</a>
+          <a class="button button-primary" href="#temuan">Lihat temuan utama</a>
+          <a class="button button-secondary" href="#daerah">Cek daerah</a>
+          <a class="button button-secondary" href="#status-riset">Yang belum terjawab</a>
+          <a class="button button-secondary" id="preprint-link" href="#sumber">Laporan teknis</a>
         </div>
       </div>
-      <aside class="hero-note" aria-label="Cara membaca status bukti">
-        <p class="note-kicker">Empat status bukti</p>
+      <aside class="hero-note" aria-label="Cara membaca status hasil">
+        <p class="note-kicker">Cara membaca hasil</p>
         <div class="legend" id="legend">
-          <div><span class="status-dot status-supported"></span><strong>Didukung</strong><small>Lolos gate dalam batas yang jelas.</small></div>
-          <div><span class="status-dot status-negative"></span><strong>Hasil negatif</strong><small>Analisis dilakukan, tetapi klaim gagal lolos.</small></div>
-          <div><span class="status-dot status-context"></span><strong>Konteks</strong><small>Datanya qualified, inferensinya belum.</small></div>
-          <div><span class="status-dot status-blocked"></span><strong>Belum didukung</strong><small>Secara eksplisit tidak boleh diklaim.</small></div>
+          <div><span class="status-dot status-supported"></span><strong>Didukung data</strong><small>Hasilnya cukup kuat untuk ditampilkan.</small></div>
+          <div><span class="status-dot status-negative"></span><strong>Gagal uji</strong><small>Analisis dilakukan, tetapi hasilnya tidak cukup kuat.</small></div>
+          <div><span class="status-dot status-context"></span><strong>Konteks</strong><small>Datanya berguna, tetapi belum cukup untuk menarik kesimpulan lebih jauh.</small></div>
+          <div><span class="status-dot status-blocked"></span><strong>Belum bisa disimpulkan</strong><small>Buktinya belum cukup dan tidak kami paksakan.</small></div>
         </div>
       </aside>
     </section>
 
     <section class="section stat-section" aria-labelledby="snapshot-title">
       <div class="section-heading compact-heading">
-        <p class="eyebrow">Snapshot</p>
-        <h2 id="snapshot-title">Lima angka untuk memahami posisi riset sekarang</h2>
+        <p class="eyebrow">Ringkasan cepat</p>
+        <h2 id="snapshot-title">Lima angka penting dari data yang sudah diperiksa</h2>
       </div>
       <div class="stat-grid" id="headline-stats" aria-live="polite"></div>
     </section>
@@ -76,65 +75,21 @@
       <div class="section-heading split-heading">
         <div>
           <p class="eyebrow">Temuan utama</p>
-          <h2 id="stories-title">Apa yang sebenarnya dikatakan data?</h2>
+          <h2 id="stories-title">Apa yang terlihat dari data?</h2>
         </div>
-        <p>Setiap kartu membawa caveat-nya sendiri. Angka tanpa batas interpretasi tidak ditampilkan sebagai kesimpulan.</p>
+        <p>Setiap temuan dilengkapi batas pembacaan supaya angka tidak berubah menjadi kesimpulan yang berlebihan.</p>
       </div>
       <div class="filter-row" id="story-filters" aria-label="Filter kategori temuan"></div>
       <div class="story-grid" id="stories" aria-live="polite"></div>
     </section>
 
-    <section class="section readiness-section" id="status-riset" aria-labelledby="readiness-title">
-      <div class="section-heading split-heading">
-        <div>
-          <p class="eyebrow">Status pertanyaan riset</p>
-          <h2 id="readiness-title">Seberapa jauh pertanyaan utama sudah terjawab?</h2>
-        </div>
-        <p id="readiness-intro">Memuat batas jawaban dan evidence berikutnya dari sintesis M18…</p>
-      </div>
-      <div class="readiness-summary" id="readiness-summary" aria-live="polite"></div>
-      <div class="readiness-grid" id="readiness-grid" aria-live="polite"></div>
-    </section>
-
-    <section class="section catalog-section" id="katalog" aria-labelledby="catalog-title">
-      <div class="section-heading split-heading">
-        <div>
-          <p class="eyebrow">Katalog data</p>
-          <h2 id="catalog-title">Apa saja data yang tersedia?</h2>
-        </div>
-        <p id="catalog-intro">Memuat inventaris indikator Panel v3…</p>
-      </div>
-      <div class="catalog-summary" id="catalog-summary" aria-live="polite"></div>
-      <div class="catalog-toolbar">
-        <div class="catalog-search-wrap">
-          <label for="catalog-search">Cari indikator atau sumber</label>
-          <input id="catalog-search" type="search" placeholder="Contoh: internet, JKN, BNPB, kemiskinan">
-        </div>
-        <div class="catalog-filters" id="catalog-filters" aria-label="Filter domain indikator"></div>
-      </div>
-      <p class="catalog-result-count" id="catalog-result-count"></p>
-      <div class="catalog-grid" id="catalog-grid" aria-live="polite"></div>
-    </section>
-
-    <section class="section history-section" id="sejarah" aria-labelledby="history-title">
-      <div class="section-heading split-heading">
-        <div>
-          <p class="eyebrow">Jejak historis</p>
-          <h2 id="history-title">Apa yang sudah kita tahu dari data lama?</h2>
-        </div>
-        <p id="history-intro">Memuat evidence historis yang sudah qualified…</p>
-      </div>
-      <div class="history-grid" id="history-grid" aria-live="polite"></div>
-      <p class="history-boundary" id="history-boundary"></p>
-    </section>
-
     <section class="section explorer-section" id="daerah" aria-labelledby="district-title">
       <div class="section-heading split-heading">
         <div>
-          <p class="eyebrow">Explorer kabupaten/kota</p>
+          <p class="eyebrow">Kabupaten/kota</p>
           <h2 id="district-title">Apa yang berubah di daerah saya?</h2>
         </div>
-        <p>Explorer ini hanya memakai empat indikator yang model trajectory M22-nya lolos benchmark. Ia tidak membuat ranking antar daerah.</p>
+        <p>Bandingkan perubahan 2018–2025 pada empat indikator yang cukup kuat untuk dibaca per daerah. Ini bukan ranking kabupaten/kota.</p>
       </div>
 
       <div class="explorer-toolbar">
@@ -149,20 +104,64 @@
           <p class="district-type" id="district-type"></p>
           <h3 id="district-name">—</h3>
         </div>
-        <p id="district-summary">Data explorer sedang dimuat.</p>
+        <p id="district-summary">Data daerah sedang dimuat.</p>
       </div>
 
       <div class="indicator-grid" id="district-indicators" aria-live="polite"></div>
       <p class="explorer-boundary" id="district-boundary"></p>
     </section>
 
+    <section class="section readiness-section" id="status-riset" aria-labelledby="readiness-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Yang belum terjawab</p>
+          <h2 id="readiness-title">Pertanyaan mana yang sudah punya jawaban, dan mana yang belum?</h2>
+        </div>
+        <p id="readiness-intro">Memuat status pertanyaan riset…</p>
+      </div>
+      <div class="readiness-summary" id="readiness-summary" aria-live="polite"></div>
+      <div class="readiness-grid" id="readiness-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="section catalog-section" id="katalog" aria-labelledby="catalog-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Data yang tersedia</p>
+          <h2 id="catalog-title">Data apa saja yang sudah terkumpul?</h2>
+        </div>
+        <p id="catalog-intro">Memuat daftar indikator…</p>
+      </div>
+      <div class="catalog-summary" id="catalog-summary" aria-live="polite"></div>
+      <div class="catalog-toolbar">
+        <div class="catalog-search-wrap">
+          <label for="catalog-search">Cari indikator atau sumber</label>
+          <input id="catalog-search" type="search" placeholder="Contoh: internet, JKN, BNPB, kemiskinan">
+        </div>
+        <div class="catalog-filters" id="catalog-filters" aria-label="Filter kelompok indikator"></div>
+      </div>
+      <p class="catalog-result-count" id="catalog-result-count"></p>
+      <div class="catalog-grid" id="catalog-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="section history-section" id="sejarah" aria-labelledby="history-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Data lama</p>
+          <h2 id="history-title">Apa yang bisa dibaca dari catatan historis?</h2>
+        </div>
+        <p id="history-intro">Memuat data historis yang sudah diperiksa…</p>
+      </div>
+      <div class="history-grid" id="history-grid" aria-live="polite"></div>
+      <p class="history-boundary" id="history-boundary"></p>
+    </section>
+
     <section class="section boundary-section" id="batas" aria-labelledby="boundaries-title">
       <div class="section-heading split-heading">
         <div>
-          <p class="eyebrow">Batas pengetahuan</p>
-          <h2 id="boundaries-title">Hal yang belum boleh kami klaim</h2>
+          <p class="eyebrow">Yang belum bisa disimpulkan</p>
+          <h2 id="boundaries-title">Hal yang tidak kami klaim</h2>
         </div>
-        <p>Ini bukan catatan kaki. Daftar ini adalah bagian inti dari produk agar pembaca tahu persis di mana bukti berhenti.</p>
+        <p>Bagian ini penting: ada pertanyaan yang datanya belum cukup kuat untuk dijawab. Kami memilih menahannya daripada membuat angka yang terlihat meyakinkan tetapi tidak bisa dipertanggungjawabkan.</p>
       </div>
       <div class="boundary-grid" id="boundaries"></div>
     </section>
@@ -170,10 +169,10 @@
     <section class="section glossary-section" id="glosarium" aria-labelledby="glossary-title">
       <div class="section-heading split-heading">
         <div>
-          <p class="eyebrow">Bahasa manusia</p>
-          <h2 id="glossary-title">Glosarium riset</h2>
+          <p class="eyebrow">Istilah</p>
+          <h2 id="glossary-title">Kalau ada istilah teknis, cek di sini</h2>
         </div>
-        <p id="glossary-intro">Memuat penjelasan istilah teknis…</p>
+        <p id="glossary-intro">Memuat penjelasan istilah…</p>
       </div>
       <div class="glossary-grid" id="glossary-grid" aria-live="polite"></div>
     </section>
@@ -181,8 +180,8 @@
     <section class="section" id="metode" aria-labelledby="method-title">
       <div class="section-heading">
         <p class="eyebrow">Cara kerja</p>
-        <h2 id="method-title">Mengapa observatorium ini lebih lambat daripada sekadar membuat dashboard?</h2>
-        <p id="method-intro">Karena setiap visual harus melewati rantai bukti yang sama dengan risetnya.</p>
+        <h2 id="method-title">Dari data mentah sampai jadi temuan</h2>
+        <p id="method-intro">Setiap angka publik harus bisa ditelusuri kembali ke sumber dan langkah pengolahannya.</p>
       </div>
       <ol class="method-grid" id="method-steps"></ol>
     </section>
@@ -190,25 +189,25 @@
     <section class="section source-section" id="sumber" aria-labelledby="sources-title">
       <div class="source-card">
         <div>
-          <p class="eyebrow">Audit trail</p>
-          <h2 id="sources-title">Mau memeriksa sendiri?</h2>
-          <p>Semua cerita publik ini berasal dari claim ledger, manifest, dan source evidence yang tetap tersedia di repository. Produk ini tidak memiliki jalur analisis tersembunyi.</p>
+          <p class="eyebrow">Sumber & pemeriksaan</p>
+          <h2 id="sources-title">Mau cek datanya sendiri?</h2>
+          <p>Data, kode pengolahan, hasil pengujian, dan laporan teknis tersedia di repository. Angka di halaman ini tidak dibuat ulang secara tersembunyi di browser.</p>
         </div>
         <div class="source-actions">
           <a class="button button-primary" id="repo-link" href="https://github.com/nabilrn/ranah-observatory">Buka repository</a>
-          <a class="button button-secondary" id="ledger-link" href="https://github.com/nabilrn/ranah-observatory/blob/main/publication/v0.1/claim-ledger.csv">Lihat claim ledger</a>
+          <a class="button button-secondary" id="ledger-link" href="https://github.com/nabilrn/ranah-observatory/blob/main/publication/v0.1/claim-ledger.csv">Daftar klaim</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p><strong>Ranah Observatory</strong> · Open research infrastructure for West Sumatra.</p>
-    <p id="footer-version">Public product v0.1</p>
+    <p><strong>Ranah Observatory</strong> · Riset data terbuka untuk Sumatera Barat.</p>
+    <p id="footer-version">Versi publik 0.1</p>
   </footer>
 
   <noscript>
-    <div class="noscript">Halaman ini membutuhkan JavaScript untuk membaca kontrak data publik lokal. Tidak ada data yang diambil dari API eksternal saat runtime.</div>
+    <div class="noscript">Halaman ini membutuhkan JavaScript untuk menampilkan data lokal. Tidak ada data yang diambil dari API eksternal saat halaman dibuka.</div>
   </noscript>
   <script src="app.js" defer></script>
   <script src="readiness.js" defer></script>

@@ -1,9 +1,9 @@
 const READINESS_URL = "data/readiness.json";
 
 const READINESS_META = {
-  bounded_answer: { label: "Jawaban terbatas", className: "readiness-answer" },
-  bounded_partial: { label: "Terjawab sebagian", className: "readiness-partial" },
-  not_action_ready: { label: "Belum siap untuk aksi", className: "readiness-blocked" },
+  bounded_answer: { label: "Sudah ada jawaban", className: "readiness-answer" },
+  bounded_partial: { label: "Baru sebagian", className: "readiness-partial" },
+  not_action_ready: { label: "Belum siap jadi rekomendasi", className: "readiness-blocked" },
 };
 
 function readinessEscape(value = "") {
@@ -26,14 +26,14 @@ function readinessCard(question) {
       <h3>${readinessEscape(question.title)}</h3>
       <p class="readiness-answer-copy">${readinessEscape(question.current_answer)}</p>
       <div class="readiness-boundary">
-        <strong>Yang belum terjawab</strong>
+        <strong>Yang masih belum jelas</strong>
         <p>${readinessEscape(question.limitation)}</p>
       </div>
       <div class="readiness-next">
-        <strong>Evidence berikutnya</strong>
+        <strong>Data yang masih dibutuhkan</strong>
         <p>${readinessEscape(question.next_evidence)}</p>
       </div>
-      <p class="readiness-source">Evidence basis: ${readinessEscape(question.evidence_basis)}</p>
+      <p class="readiness-source">Rujukan teknis: ${readinessEscape(question.evidence_basis)}</p>
     </article>
   `;
 }
@@ -42,8 +42,8 @@ function renderReadinessSummary(summary) {
   const root = document.querySelector("#readiness-summary");
   root.innerHTML = `
     <div><strong>${readinessEscape(summary.question_count)}</strong><span>pertanyaan utama</span></div>
-    <div><strong>${readinessEscape(summary.fully_resolved_count)}</strong><span>fully resolved</span></div>
-    <div><strong>${readinessEscape(summary.not_action_ready_count)}</strong><span>belum siap untuk aksi</span></div>
+    <div><strong>${readinessEscape(summary.fully_resolved_count)}</strong><span>terjawab penuh</span></div>
+    <div><strong>${readinessEscape(summary.not_action_ready_count)}</strong><span>belum siap jadi rekomendasi</span></div>
   `;
 }
 
@@ -65,7 +65,7 @@ async function initReadiness() {
     root.innerHTML = data.questions.map(readinessCard).join("");
   } catch (error) {
     console.error(error);
-    root.innerHTML = '<p class="readiness-error">Status pertanyaan riset gagal dimuat. Lihat sintesis M18 di repository untuk audit trail.</p>';
+    root.innerHTML = '<p class="readiness-error">Status pertanyaan riset gagal dimuat. Ringkasan teknis tetap tersedia di repository.</p>';
   }
 }
 

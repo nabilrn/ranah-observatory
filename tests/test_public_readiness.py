@@ -31,13 +31,18 @@ class PublicReadinessTests(unittest.TestCase):
     def test_readiness_surface_is_static_and_snapshot_count_is_current(self) -> None:
         html = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
         js = (ROOT / "site" / "readiness.js").read_text(encoding="utf-8")
+        mobile_css = (ROOT / "site" / "mobile.css").read_text(encoding="utf-8")
         self.assertIn('id="status-riset"', html)
         self.assertIn('src="readiness.js"', html)
         self.assertIn('href="readiness.css"', html)
-        self.assertIn("Lima angka untuk memahami posisi riset sekarang", html)
+        self.assertIn('href="mobile.css"', html)
+        self.assertIn("Lima angka penting dari data yang sudah diperiksa", html)
         self.assertIn('data/readiness.json', js)
         self.assertNotIn('fetch("https://', js)
         self.assertNotIn("fetch('https://", js)
+        self.assertIn("@media (max-width: 700px)", mobile_css)
+        self.assertIn(".nav", mobile_css)
+        self.assertIn("display: flex", mobile_css)
 
 
 if __name__ == "__main__":
