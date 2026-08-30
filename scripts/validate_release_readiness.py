@@ -16,7 +16,10 @@ README = ROOT / "README.md"
 FINAL_PLAN = ROOT / "docs/FINAL_10_DAY_DELIVERY.md"
 FINAL_GATES_DOC = ROOT / "docs/FINAL_OPEN_GATES.md"
 MODEL_VALIDATION_DOC = ROOT / "docs/FINAL_MODEL_VALIDATION.md"
+PAGES_EVIDENCE = ROOT / "publication/pages-deployment.json"
+CLEAN_SWEEP_EVIDENCE = ROOT / "publication/clean-main-sweep.json"
 PAGES_WORKFLOW = ROOT / ".github/workflows/deploy-public-product.yml"
+CLEAN_SWEEP_WORKFLOW = ROOT / ".github/workflows/final-clean-main-sweep.yml"
 
 REQUIRED_PUBLIC_FILES = [
     ROOT / "site/index.html",
@@ -93,12 +96,24 @@ def validate() -> dict[str, Any]:
     open_gates = validate_final_open_gates()
     assert open_gates == {
         "must_close_total": 6,
-        "must_close_satisfied": 3,
-        "must_close_open_internal": 3,
+        "must_close_satisfied": 4,
+        "must_close_open_internal": 2,
         "must_close_blocked_external": 0,
         "deferred_research_gates": 7,
         "mass_workflow_deletion_authorized": False,
     }
+
+    pages = load_json(PAGES_EVIDENCE)
+    assert pages["deploy_pages"] == "success"
+    assert pages["production_url"] == "https://nabilrn.github.io/ranah-observatory/"
+
+    clean_sweep = load_json(CLEAN_SWEEP_EVIDENCE)
+    assert clean_sweep["main_commit"] == "fa960c278d4ad69524c26e1bf984a1a29b9a2ab3"
+    assert clean_sweep["workflow_run_id"] == 33318320220
+    assert clean_sweep["event"] == "push"
+    assert clean_sweep["conclusion"] == "success"
+    assert clean_sweep["live_acquisition_performed"] is False
+    assert clean_sweep["external_statistical_api_required"] is False
 
     for path in REQUIRED_PUBLIC_FILES:
         assert path.is_file() and path.stat().st_size > 0, f"missing public release file: {path.relative_to(ROOT)}"
@@ -108,6 +123,7 @@ def validate() -> dict[str, Any]:
     final_gates_doc = FINAL_GATES_DOC.read_text(encoding="utf-8")
     model_validation_doc = MODEL_VALIDATION_DOC.read_text(encoding="utf-8")
     pages_workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
+    clean_sweep_workflow = CLEAN_SWEEP_WORKFLOW.read_text(encoding="utf-8")
 
     for token in (
         "v0.1 research/publication package is frozen",
@@ -128,9 +144,13 @@ def validate() -> dict[str, Any]:
 
     for token in (
         "6 must-close",
+        "4 satisfied and 2 internal open",
         "GitHub Pages",
         "https://nabilrn.github.io/ranah-observatory/",
         "Clean-main reproducibility sweep",
+        "33318320220",
+        "Adversarial public readability audit",
+        "Release candidate and handoff bundle",
         "Deferred research — not release blockers",
     ):
         assert token in final_gates_doc, f"final open-gate document lost token: {token}"
@@ -150,6 +170,20 @@ def validate() -> dict[str, Any]:
     assert "actions/upload-pages-artifact@v4" in pages_workflow
     assert "actions/deploy-pages@v4" in pages_workflow
 
+    for token in (
+        "Final Clean Main Reproducibility Sweep",
+        "push:",
+        "branches:",
+        "- main",
+        "validate_final_model_testing.py",
+        "validate_historical_reconstruction.py",
+        "build_milestone10_analytical_panel",
+        "build_milestone11_expected_performance_v2",
+        "build_milestone19_dynamic_forecast_engine.py",
+        "git diff --exit-code",
+    ):
+        assert token in clean_sweep_workflow, f"clean-main workflow lost token: {token}"
+
     return {
         "internal_release_readiness_passed": True,
         "frozen_claims": certificate["claim_count"],
@@ -166,7 +200,10 @@ def validate() -> dict[str, Any]:
         "must_close_gates_satisfied": open_gates["must_close_satisfied"],
         "must_close_gates_open_internal": open_gates["must_close_open_internal"],
         "external_manual_blockers": open_gates["must_close_blocked_external"],
-        "public_product_url": "https://nabilrn.github.io/ranah-observatory/",
+        "clean_main_reproducibility_verified": True,
+        "clean_main_verified_commit": clean_sweep["main_commit"],
+        "clean_main_workflow_run_id": clean_sweep["workflow_run_id"],
+        "public_product_url": pages["production_url"],
         "deferred_research_gates": open_gates["deferred_research_gates"],
     }
 

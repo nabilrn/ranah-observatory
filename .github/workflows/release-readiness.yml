@@ -13,6 +13,7 @@ on:
       - publication/v0.1/**
       - publication/final-open-gates.json
       - publication/pages-deployment.json
+      - publication/clean-main-sweep.json
       - site/**
       - data/manifests/milestone11_expected_performance_v2.json
       - data/manifests/milestone19_dynamic_forecast_engine.json
@@ -27,6 +28,7 @@ on:
       - tests/test_release_readiness.py
       - .github/workflows/milestone11-expected-performance-repro.yml
       - .github/workflows/milestone19-dynamic-forecast-repro.yml
+      - .github/workflows/final-clean-main-sweep.yml
       - .github/workflows/deploy-public-product.yml
       - .github/workflows/release-readiness.yml
   push:
@@ -41,6 +43,7 @@ on:
       - publication/v0.1/**
       - publication/final-open-gates.json
       - publication/pages-deployment.json
+      - publication/clean-main-sweep.json
       - site/**
       - data/manifests/milestone11_expected_performance_v2.json
       - data/manifests/milestone19_dynamic_forecast_engine.json
@@ -55,6 +58,7 @@ on:
       - tests/test_release_readiness.py
       - .github/workflows/milestone11-expected-performance-repro.yml
       - .github/workflows/milestone19-dynamic-forecast-repro.yml
+      - .github/workflows/final-clean-main-sweep.yml
       - .github/workflows/deploy-public-product.yml
       - .github/workflows/release-readiness.yml
   workflow_dispatch:
@@ -88,9 +92,13 @@ jobs:
           python -m unittest tests.test_final_open_gates -v
           python -m unittest tests.test_release_readiness -v
 
-      - name: Confirm Pages deployment is recorded as resolved
+      - name: Confirm deployment and clean-main evidence remain resolved
         run: |
           grep -q 'https://nabilrn.github.io/ranah-observatory/' docs/FINAL_10_DAY_DELIVERY.md
           grep -q '"deploy_pages": "success"' publication/pages-deployment.json
           grep -q '"must_close_blocked_external": 0' publication/final-open-gates.json
+          grep -q '"must_close_satisfied": 4' publication/final-open-gates.json
+          grep -q '"must_close_open_internal": 2' publication/final-open-gates.json
+          grep -q '"workflow_run_id": 33318320220' publication/clean-main-sweep.json
+          grep -q '"conclusion": "success"' publication/clean-main-sweep.json
           grep -q 'enablement: true' .github/workflows/deploy-public-product.yml

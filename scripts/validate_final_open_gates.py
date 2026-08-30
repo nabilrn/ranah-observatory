@@ -7,13 +7,14 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "publication/final-open-gates.json"
 PAGES_EVIDENCE = ROOT / "publication/pages-deployment.json"
+CLEAN_SWEEP_EVIDENCE = ROOT / "publication/clean-main-sweep.json"
 DOC = ROOT / "docs/FINAL_OPEN_GATES.md"
 
 EXPECTED_MUST_CLOSE = {
     "frozen_v01_package_consistency": "satisfied",
     "public_product_contract_consistency": "satisfied",
     "github_pages_enablement": "satisfied",
-    "clean_main_reproducibility_sweep": "open_internal",
+    "clean_main_reproducibility_sweep": "satisfied",
     "adversarial_public_readability_audit": "open_internal",
     "release_candidate_and_handoff_bundle": "open_internal",
 }
@@ -67,6 +68,22 @@ def validate() -> dict[str, Any]:
     assert pages_evidence["deploy_pages"] == "success"
     assert pages_evidence["production_url"] == pages["production_url"]
 
+    clean = must_close["clean_main_reproducibility_sweep"]
+    clean_evidence = load_json(CLEAN_SWEEP_EVIDENCE)
+    assert clean["verified_main_commit"] == "fa960c278d4ad69524c26e1bf984a1a29b9a2ab3"
+    assert clean["workflow_run_id"] == 33318320220
+    assert clean_evidence["schema"] == "ranah-observatory/clean-main-reproducibility-evidence/v1"
+    assert clean_evidence["main_commit"] == clean["verified_main_commit"]
+    assert clean_evidence["workflow"] == "Final Clean Main Reproducibility Sweep"
+    assert clean_evidence["workflow_run_id"] == clean["workflow_run_id"]
+    assert clean_evidence["event"] == "push"
+    assert clean_evidence["conclusion"] == "success"
+    assert clean_evidence["live_acquisition_performed"] is False
+    assert clean_evidence["external_statistical_api_required"] is False
+    assert clean_evidence["future_main_pushes_guarded_by_same_workflow"] is True
+    assert len(clean_evidence["contracts_verified"]) == 10
+    assert len(clean_evidence["defects_exposed_before_success"]) == 2
+
     valuable = payload["valuable_if_easy"]
     assert len(valuable) == 3
     assert all(item["status"] == "opportunistic" for item in valuable)
@@ -100,6 +117,7 @@ def validate() -> dict[str, Any]:
         "GitHub Pages",
         "https://nabilrn.github.io/ranah-observatory/",
         "Clean-main reproducibility sweep",
+        "33318320220",
         "Adversarial public readability audit",
         "Release candidate and handoff bundle",
         "Deferred research — not release blockers",
