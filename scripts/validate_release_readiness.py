@@ -93,9 +93,9 @@ def validate() -> dict[str, Any]:
     open_gates = validate_final_open_gates()
     assert open_gates == {
         "must_close_total": 6,
-        "must_close_satisfied": 2,
+        "must_close_satisfied": 3,
         "must_close_open_internal": 3,
-        "must_close_blocked_external": 1,
+        "must_close_blocked_external": 0,
         "deferred_research_gates": 7,
         "mass_workflow_deletion_authorized": False,
     }
@@ -120,14 +120,16 @@ def validate() -> dict[str, Any]:
     for token in (
         "30 August 2026 → 9 September 2026",
         "ship-first finalization",
-        "Resource not accessible by integration",
-        "GitHub Actions",
+        "https://nabilrn.github.io/ranah-observatory/",
+        "GitHub Pages deployment verified",
         "Definition of “done”",
     ):
         assert token in final_plan, f"final delivery contract lost token: {token}"
 
     for token in (
         "6 must-close",
+        "GitHub Pages",
+        "https://nabilrn.github.io/ranah-observatory/",
         "Clean-main reproducibility sweep",
         "Deferred research — not release blockers",
     ):
@@ -164,7 +166,7 @@ def validate() -> dict[str, Any]:
         "must_close_gates_satisfied": open_gates["must_close_satisfied"],
         "must_close_gates_open_internal": open_gates["must_close_open_internal"],
         "external_manual_blockers": open_gates["must_close_blocked_external"],
-        "external_manual_blocker": "enable GitHub Pages with GitHub Actions as the source",
+        "public_product_url": "https://nabilrn.github.io/ranah-observatory/",
         "deferred_research_gates": open_gates["deferred_research_gates"],
     }
 

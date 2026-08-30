@@ -77,19 +77,19 @@ M18 remains deliberately fail-closed:
 
 This is a valid research outcome. The final release must not manufacture a stronger conclusion merely to appear more complete.
 
-## External/manual blocker
+## GitHub Pages deployment verified
 
-GitHub Pages deployment is technically implemented and all product validation/rebuild/static checks pass. Automatic first-site creation fails with:
-
-`Resource not accessible by integration`
-
-The repository owner must perform one manual setup action:
+The previous first-site creation boundary is resolved. On 30 August 2026 the repository owner changed:
 
 **Repository Settings → Pages → Build and deployment → Source → GitHub Actions**
 
-After that, rerun `Deploy Public Product` or push a relevant `main` change.
+The failed `Deploy Public Product` workflow was rerun as workflow run `33309643635`, attempt 2. Repository/product validators passed, `Configure GitHub Pages` succeeded, the public artifact uploaded successfully, and `Deploy to GitHub Pages` completed successfully.
 
-This blocker is external to the product contract and does not authorize bypassing validation.
+Canonical public URL:
+
+**https://nabilrn.github.io/ranah-observatory/**
+
+Machine-readable deployment evidence is recorded in `publication/pages-deployment.json`. The earlier `Resource not accessible by integration` message is retained only as historical resolution context and is no longer an active blocker.
 
 ## Delivery sequence
 
@@ -99,7 +99,7 @@ This blocker is external to the product contract and does not authorize bypassin
 - expose already-qualified high-value post-v0.1 evidence where it materially improves the public product;
 - ensure every public number has a nearby interpretation boundary;
 - keep scientific source packages immutable from product-only work;
-- enable GitHub Pages manually and confirm the production URL once available.
+- preserve the verified GitHub Pages deployment path and canonical production URL.
 
 **Exit gate:** a non-technical reader can navigate from repository → public product → evidence boundary without reading internal milestone history.
 
@@ -161,7 +161,7 @@ Only blocker fixes are accepted after this audit starts.
 
 - merge blocker fixes;
 - run final release-readiness CI;
-- confirm public-product deployment if Pages is enabled;
+- confirm the canonical public-product deployment remains healthy;
 - freeze final commit/tag/release bundle as appropriate;
 - preserve deposit/handoff metadata and citation instructions;
 - produce a concise final status: what is supported, what remains blocked, and what future work would be required.
@@ -182,9 +182,9 @@ The final window is considered successfully closed when all **repository-interna
 - [ ] no unresolved CI failure is caused by repository code/data;
 - [ ] final release candidate is identified and audited.
 
-The following is tracked separately because it requires owner/platform state rather than research code:
+Platform delivery state:
 
-- [ ] GitHub Pages is enabled and the canonical public product is deployed.
+- [x] GitHub Pages is enabled and the canonical public product is deployed at https://nabilrn.github.io/ranah-observatory/.
 
 ## Definition of “done”
 

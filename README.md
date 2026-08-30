@@ -42,7 +42,7 @@ The repository contains a static public observatory under `site/` designed for n
 
 The public product has no runtime dependency on external statistical APIs. Its JSON contracts are validated against frozen repository evidence before deployment.
 
-GitHub Pages deployment is implemented in `.github/workflows/deploy-public-product.yml`. The repository owner still needs to enable **Settings → Pages → Source: GitHub Actions** once; the deployment workflow cannot create the Pages site with the repository integration token. This is a hosting-setting boundary, not a failed product validation.
+GitHub Pages is enabled and the validated public artifact is deployed at **https://nabilrn.github.io/ranah-observatory/** through `.github/workflows/deploy-public-product.yml`. The successful deployment is frozen in `publication/pages-deployment.json` and the earlier first-site integration-permission error is no longer an active blocker.
 
 ## Model validation
 
