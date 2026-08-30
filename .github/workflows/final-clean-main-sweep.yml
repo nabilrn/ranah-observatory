@@ -49,13 +49,19 @@ jobs:
         run: |
           cp site/data/districts.json /tmp/districts-frozen.json
           cp site/data/indicators.json /tmp/indicators-frozen.json
-          cp site/data/history.json /tmp/history-frozen.json
           python scripts/build_public_district_explorer.py
           python scripts/build_public_indicator_catalog.py
-          python scripts/build_public_history.py
+          python scripts/build_public_history.py --output /tmp/history-rebuilt.json
           diff -u /tmp/districts-frozen.json site/data/districts.json
           diff -u /tmp/indicators-frozen.json site/data/indicators.json
-          diff -u /tmp/history-frozen.json site/data/history.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          frozen = json.loads(Path('site/data/history.json').read_text(encoding='utf-8'))
+          rebuilt = json.loads(Path('/tmp/history-rebuilt.json').read_text(encoding='utf-8'))
+          assert frozen == rebuilt, 'site/data/history.json drifted semantically from canonical manifests'
+          print({'history_contract_match': True})
+          PY
 
       - name: Validate public product contracts
         run: |
