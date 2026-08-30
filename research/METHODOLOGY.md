@@ -28,7 +28,7 @@ quasi-causal / causal design
        policy scenario
 ```
 
-A result may stop at any level. Failure to establish causality is not a failure of the project; overstating evidence is.
+A result may stop at any level. Descriptive findings are valid research results; overstating evidence is a failure.
 
 ## 2. Source audit and data qualification
 

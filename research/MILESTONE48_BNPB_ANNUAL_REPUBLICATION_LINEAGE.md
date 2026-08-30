@@ -20,7 +20,7 @@ For every year 2010–2017:
 
 Result: **8/8 locator matches, 8/8 byte-size matches, 8/8 SHA256 matches.**
 
-## Why this matters
+## Validation independence
 
 A second website entry is not a second observation source when it resolves to the same underlying file. Counting the annual portal pages as an independent validation source would overstate the evidence base.
 

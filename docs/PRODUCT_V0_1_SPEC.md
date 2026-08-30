@@ -17,7 +17,7 @@ The product is not a second analytical pipeline. It is a **translation layer ove
 
 A reader should be able to answer three questions in less than five minutes:
 
-1. **What do we actually know?**
+1. **What do we know?**
 2. **How strong is the evidence?**
 3. **What are we explicitly not claiming?**
 
@@ -40,7 +40,7 @@ Every substantive card uses exactly one public evidence state:
 - `context` — maps only to `context_only` claims or a later source-bound historical checkpoint that explicitly forbids stronger interpretation;
 - `not_supported` — maps to blocked claims and is displayed only as a boundary, never as a positive conclusion.
 
-The UI must never hide negative results simply because they are less visually attractive.
+The UI must never hide negative results because they are less visually attractive.
 
 ### 3. Main story cards
 
@@ -66,7 +66,7 @@ Each card contains:
 
 ### 4. Research readiness and data catalog
 
-The public product exposes the frozen M18 research-question readiness and the bounded Panel v3 indicator catalog as navigational surfaces. They help readers distinguish between a question that is partially answerable, a dataset that exists, and a claim that is actually authorized.
+The public product exposes the frozen M18 research-question readiness and the bounded Panel v3 indicator catalog as navigational surfaces. They help readers distinguish between a question that is partially answerable, a dataset that exists, and a claim that is authorized.
 
 Neither surface upgrades a research question merely because additional data are present.
 

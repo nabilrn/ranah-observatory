@@ -1,6 +1,6 @@
 # Threats to Validity
 
-Ranah Observatory must actively test for the following validity risks whenever they are relevant.
+Ranah Observatory must test for the following validity risks whenever they are relevant.
 
 ## Boundary changes
 Historical observations may refer to different territorial units. Preserve source-era geography, version boundaries, and use explicit crosswalks.

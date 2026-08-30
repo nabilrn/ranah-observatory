@@ -52,7 +52,7 @@ When a developer key is available, use WebAPI variable and data endpoints to dis
 - derived-variable and derived-period selections;
 - source notes and metadata returned by BPS.
 
-Important: the WebAPI `th` parameter is a **period-data ID selection**. It must not be treated as a calendar year merely because the displayed label may be a year.
+The WebAPI `th` parameter is a **period-data ID selection**. It must not be treated as a calendar year merely because the displayed label may be a year.
 
 ### 3. Static tables
 
@@ -68,7 +68,7 @@ Current high-value seeds include:
 
 A separate historical anchor registry verifies public BPS publication pages for reference years 1970, 1971, 1975, 1989, 1990, 1999, 2000, 2010, 2015, 2019, 2024, 2025, and 2026.
 
-Two facts are methodologically important:
+Documented timeline:
 
 - the official abstract for the 1971 edition describes it as the **second** book in the series;
 - the official 1970 publication page is therefore the earliest currently verified digital anchor for this series in this repository.

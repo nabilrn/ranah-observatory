@@ -188,8 +188,6 @@ Platform delivery state:
 
 ## Definition of “done”
 
-“Done” does **not** mean every research question is fully resolved.
-
 “Done” means:
 
 - the strongest defensible answers are reproducible;

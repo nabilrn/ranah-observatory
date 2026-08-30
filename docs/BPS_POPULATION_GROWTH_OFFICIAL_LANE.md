@@ -81,7 +81,7 @@ If an official row-level source is later promoted, intended semantics are:
 
 Because the legacy Static Table WebAPI lane is now qualified negative, the next bounded task should investigate the **modern statistics-table delivery path** used by the current BPS website or another official stable artifact attached to the SP2020 publication.
 
-That task must remain read-only until it identifies a stable official row/file source. It should not fall back to iframe scraping or custom population-growth calculation simply because the legacy API is incomplete.
+That task must remain read-only until it identifies a stable official row/file source. It should not fall back to iframe scraping or custom population-growth calculation because the legacy API is incomplete.
 
 ## Promotion gate
 

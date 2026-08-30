@@ -61,4 +61,4 @@ M19 establishes a reusable time-respecting forecasting harness:
 6. empirical residual uncertainty;
 7. deterministic artifact materialization.
 
-Future forecasting work should use this harness or an equally strict temporal evaluation design. New model families must have a theory/data justification and must not be introduced simply because M19 failed.
+Future forecasting work should use this harness or an equally strict temporal evaluation design. New model families must have a theory/data justification and must not be introduced because M19 failed.

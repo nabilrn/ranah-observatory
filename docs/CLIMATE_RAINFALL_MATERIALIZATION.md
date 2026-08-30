@@ -79,7 +79,7 @@ The notes explicitly state:
 
 CHIRPS incorporates station and satellite information, but the published grid cell value is not a direct BMKG gauge observation.
 
-This distinction is mandatory for later statistical or machine-learning use.
+Future statistical or machine-learning use must account for this non-equivalence.
 
 ## Source contract
 

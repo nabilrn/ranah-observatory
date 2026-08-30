@@ -140,7 +140,7 @@ The number is deliberately labelled a **2024 top-decile conditional empirical pe
 
 M12 performs neither population aggregation nor multi-year accumulation.
 
-## Why M12 does not use DEA/SFA just for appearance
+## DEA/SFA exclusion
 
 A mathematically sophisticated efficiency score is only useful if the underlying production semantics are defensible.
 
@@ -165,4 +165,4 @@ M12 gives Phase 2 two different objects for later gap work:
 1. a conditional expectation from M11;
 2. an empirical favorable-peer reference from M12.
 
-Milestone 13 may use those objects to build a multidimensional development-gap decomposition, but it may not simply relabel every positive frontier distance as inefficiency or monetary wasted potential.
+Milestone 13 may use those objects to build a multidimensional development-gap decomposition, but it may not relabel every positive frontier distance as inefficiency or monetary wasted potential.

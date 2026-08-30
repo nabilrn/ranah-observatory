@@ -28,7 +28,7 @@ The target indicator in Ranah Observatory is only the **2010–2020** growth col
 
 The earlier var-484 anchor audit showed that its 2010 response is not the appropriate pair source for this calculation.
 
-A critical example is the province total:
+The province total illustrates the difference:
 
 - var-484 2010 audited value: `4,865,841`;
 - official SP2010 census dataset and Table 3.1.1: **`4,846,909`**.

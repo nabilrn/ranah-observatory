@@ -2,7 +2,7 @@
 
 Open research infrastructure for understanding West Sumatra's past, measuring its present, and evaluating plausible futures.
 
-Ranah Observatory combines historical reconstruction, official statistics, geospatial evidence, climate and disaster data, comparative regional analysis, statistical modeling, and explicit claim gating. The objective is not to manufacture a single dramatic number, but to distinguish what the evidence supports, what remains contextual, and what is still unresolved.
+Ranah Observatory combines historical reconstruction, official statistics, geospatial evidence, climate and disaster data, comparative regional analysis, statistical modeling, and explicit claim gating. The objective is to distinguish what the evidence supports, what remains contextual, and what is still unresolved.
 
 ## Core questions
 
@@ -12,7 +12,7 @@ Ranah Observatory combines historical reconstruction, official statistics, geosp
 - Which relationships are descriptive, predictive, or supported by stronger explanatory evidence?
 - Which interventions deserve further testing?
 
-The project does **not** assume a fixed amount of "wasted potential." A monetary wasted-potential estimate, theoretical maximum, causal residual interpretation, guaranteed policy gain, and ranked policy prescription remain blocked unless their evidence gates are actually satisfied.
+The project treats "wasted potential" as an empirical question. A monetary wasted-potential estimate, theoretical maximum, causal residual interpretation, guaranteed policy gain, and ranked policy prescription remain blocked unless their evidence gates are satisfied.
 
 ## Current state
 
