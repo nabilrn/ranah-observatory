@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from validate_final_model_testing import validate as validate_final_model_testing
 from validate_final_open_gates import validate as validate_final_open_gates
 from validate_public_history import validate as validate_public_history
 from validate_public_product import validate as validate_public_product
@@ -14,6 +15,7 @@ CERTIFICATE = ROOT / "publication/v0.1/completeness-certificate.json"
 README = ROOT / "README.md"
 FINAL_PLAN = ROOT / "docs/FINAL_10_DAY_DELIVERY.md"
 FINAL_GATES_DOC = ROOT / "docs/FINAL_OPEN_GATES.md"
+MODEL_VALIDATION_DOC = ROOT / "docs/FINAL_MODEL_VALIDATION.md"
 PAGES_WORKFLOW = ROOT / ".github/workflows/deploy-public-product.yml"
 
 REQUIRED_PUBLIC_FILES = [
@@ -77,6 +79,17 @@ def validate() -> dict[str, Any]:
     assert history["harmonized_series_authorized"] is False
     assert history["causal_claim_authorized"] is False
 
+    model_testing = validate_final_model_testing()
+    assert model_testing == {
+        "model_testing_gate_passed": True,
+        "m11_crossfit_predictions": 342,
+        "m11_benchmark_qualified_targets": 3,
+        "m19_out_of_time_predictions": 285,
+        "m19_forecast_qualified_targets": 0,
+        "m19_forecast_blocked_targets": 3,
+        "posthoc_algorithm_search_performed": False,
+    }
+
     open_gates = validate_final_open_gates()
     assert open_gates == {
         "must_close_total": 6,
@@ -93,6 +106,7 @@ def validate() -> dict[str, Any]:
     readme = README.read_text(encoding="utf-8")
     final_plan = FINAL_PLAN.read_text(encoding="utf-8")
     final_gates_doc = FINAL_GATES_DOC.read_text(encoding="utf-8")
+    model_validation_doc = MODEL_VALIDATION_DOC.read_text(encoding="utf-8")
     pages_workflow = PAGES_WORKFLOW.read_text(encoding="utf-8")
 
     for token in (
@@ -119,6 +133,14 @@ def validate() -> dict[str, Any]:
     ):
         assert token in final_gates_doc, f"final open-gate document lost token: {token}"
 
+    for token in (
+        "342 leave-one-geography-out cross-fitted predictions",
+        "285 total",
+        "0 / 3 targets qualify",
+        "failure is a research result",
+    ):
+        assert token in model_validation_doc, f"model validation document lost token: {token}"
+
     assert "pages: write" in pages_workflow
     assert "id-token: write" in pages_workflow
     assert "actions/configure-pages@v5" in pages_workflow
@@ -134,6 +156,10 @@ def validate() -> dict[str, Any]:
         "research_questions": readiness["questions"],
         "fully_resolved_questions": readiness["fully_resolved"],
         "historical_context_cards": history["cards"],
+        "model_testing_gate_passed": model_testing["model_testing_gate_passed"],
+        "m11_benchmark_qualified_targets": model_testing["m11_benchmark_qualified_targets"],
+        "m19_forecast_qualified_targets": model_testing["m19_forecast_qualified_targets"],
+        "m19_forecast_blocked_targets": model_testing["m19_forecast_blocked_targets"],
         "must_close_gates_total": open_gates["must_close_total"],
         "must_close_gates_satisfied": open_gates["must_close_satisfied"],
         "must_close_gates_open_internal": open_gates["must_close_open_internal"],
