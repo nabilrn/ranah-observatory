@@ -8,6 +8,8 @@ on:
       - site/**
       - scripts/validate_public_product.py
       - scripts/validate_public_readiness.py
+      - scripts/validate_public_history.py
+      - scripts/build_public_history.py
       - scripts/build_public_district_explorer.py
       - scripts/build_public_indicator_catalog.py
       - publication/v0.1/claim-ledger.csv
@@ -17,6 +19,9 @@ on:
       - data/manifests/milestone18_final_analytical_synthesis.json
       - data/analysis/engine/final_synthesis_v1/m18-research-question-readiness.csv
       - data/validation/climate/station/m36/**
+      - data/validation/historical/public_finance_2000/bps_construction_establishment_count_trajectory_2002_2006.json
+      - data/validation/historical/public_finance_2000/bps_construction_se06_listing_boundary_2006.json
+      - data/validation/historical/public_finance_2000/bps_construction_qualification_semantic_bridge_boundary_2003_2005.json
       - .github/workflows/deploy-public-product.yml
   workflow_dispatch:
 
@@ -48,6 +53,9 @@ jobs:
       - name: Validate public research readiness against frozen M18 synthesis
         run: python scripts/validate_public_readiness.py
 
+      - name: Validate bounded public historical context
+        run: python scripts/validate_public_history.py
+
       - name: Rebuild and require deterministic district explorer
         run: |
           cp site/data/districts.json /tmp/districts-frozen.json
@@ -60,26 +68,42 @@ jobs:
           python scripts/build_public_indicator_catalog.py
           diff -u /tmp/indicators-frozen.json site/data/indicators.json
 
+      - name: Rebuild and require deterministic historical context
+        run: |
+          python scripts/build_public_history.py --output /tmp/history-rebuilt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          frozen = json.loads(Path('site/data/history.json').read_text(encoding='utf-8'))
+          rebuilt = json.loads(Path('/tmp/history-rebuilt.json').read_text(encoding='utf-8'))
+          assert frozen == rebuilt, 'site/data/history.json drifted from canonical manifests'
+          print({'history_contract_match': True})
+          PY
+
       - name: Validate static product surface
         run: |
           node --check site/app.js
           node --check site/readiness.js
           node --check site/catalog.js
+          node --check site/history.js
           node --check site/glossary.js
           test -s site/index.html
           test -s site/styles.css
           test -s site/explorer.css
           test -s site/readiness.css
           test -s site/catalog.css
+          test -s site/history.css
           test -s site/glossary.css
           test -s site/app.js
           test -s site/readiness.js
           test -s site/catalog.js
+          test -s site/history.js
           test -s site/glossary.js
           test -s site/data/overview.json
           test -s site/data/districts.json
           test -s site/data/readiness.json
           test -s site/data/indicators.json
+          test -s site/data/history.json
           test -s site/data/glossary.json
 
       - name: Configure GitHub Pages

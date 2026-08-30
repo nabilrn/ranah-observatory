@@ -1,0 +1,86 @@
+{
+  "schema": "ranah-observatory/public-history/v1",
+  "version": "0.1.0-post",
+  "language": "id",
+  "scope": "Konteks historis BPS yang sudah qualified setelah freeze publikasi v0.1. Data ini ditampilkan apa adanya menurut operasi statistik sumber dan tidak membentuk satu seri harmonized baru.",
+  "source_paths": [
+    "data/validation/historical/public_finance_2000/bps_construction_establishment_count_trajectory_2002_2006.json",
+    "data/validation/historical/public_finance_2000/bps_construction_se06_listing_boundary_2006.json",
+    "data/validation/historical/public_finance_2000/bps_construction_qualification_semantic_bridge_boundary_2003_2005.json"
+  ],
+  "cards": [
+    {
+      "id": "construction-annual-2002-2006",
+      "evidence_state": "context",
+      "eyebrow": "Survei tahunan konstruksi",
+      "title": "BPS menerbitkan 2.779–2.664 perusahaan konstruksi Sumatera Barat per tahun pada 2002–2006.",
+      "series": [
+        {"year": 2002, "value": 2779, "source_status": "published_without_provisional_marker"},
+        {"year": 2003, "value": 2882, "source_status": "published_without_provisional_marker"},
+        {"year": 2004, "value": 2837, "source_status": "published_without_provisional_marker"},
+        {"year": 2005, "value": 2435, "source_status": "published_without_provisional_marker"},
+        {"year": 2006, "value": 2664, "source_status": "asterisk_marked_in_table"}
+      ],
+      "unit": "perusahaan",
+      "key_fact": {
+        "label": "Perubahan 2003 → 2005",
+        "value": -447,
+        "percent": -15.510062
+      },
+      "plain_language": "Jumlah yang dipublikasikan turun dari 2.882 pada 2003 menjadi 2.435 pada 2005, lalu menjadi 2.664* pada 2006.",
+      "caveat": "Angka ini adalah jumlah perusahaan yang dipublikasikan dalam seri Survei Tahunan Perusahaan Konstruksi. Angka tersebut tidak boleh disebut ukuran sampling frame, dampak kebijakan, atau bukti bahwa pembaruan direktori 2005 menyebabkan perubahan seri historis."
+    },
+    {
+      "id": "construction-se06-2006",
+      "evidence_state": "context",
+      "eyebrow": "Sensus Ekonomi 2006",
+      "title": "Pada tahun nominal yang sama, SE06 mencatat 4.504 usaha konstruksi—bukan 2.664 seperti seri survei tahunan.",
+      "comparison": {
+        "annual_survey": 2664,
+        "se06_full_listing": 4504,
+        "se06_legal": 1379,
+        "se06_nonlegal": 3125,
+        "annual_percent_of_listing": 59.147425
+      },
+      "unit": "usaha/perusahaan",
+      "plain_language": "SE06 adalah listing populasi/direktori dan infrastruktur master sampling frame untuk survei ekonomi. Nilai 2.664 dari seri survei tahunan tidak sama dengan total SE06 4.504, juga tidak sama dengan subset berstatus hukum 1.379 atau tanpa status hukum 3.125.",
+      "caveat": "Perbedaan ini justru menolak penyamaan sederhana antar operasi statistik. Kita belum mengetahui exact universe atau operational frame yang menghasilkan angka tahunan 2.664."
+    },
+    {
+      "id": "construction-qualification-bridge",
+      "evidence_state": "context",
+      "eyebrow": "Kualifikasi perusahaan",
+      "title": "Komposisi 2003 diketahui rinci; komposisi 2005 belum boleh direkonstruksi.",
+      "qualification_2003": {
+        "B": 0,
+        "M1": 16,
+        "M2": 134,
+        "K1": 334,
+        "K2": 1084,
+        "K3": 1314,
+        "total": 2882
+      },
+      "arithmetic_candidate_2003": {
+        "Kecil": 2732,
+        "Menengah": 150,
+        "Besar": 0,
+        "Jumlah": 2882
+      },
+      "total_2005": 2435,
+      "component_values_2005_recovered": false,
+      "semantic_mapping_verified": false,
+      "plain_language": "BPS 2003 menerbitkan kelas B/M1/M2/K1/K2/K3 yang berjumlah tepat 2.882. Untuk 2005, surface legacy memastikan total 2.435 dan mengenal label Kecil/Menengah/Besar, tetapi nilai komponennya tidak tersedia lewat kontrak yang diuji.",
+      "caveat": "Penjumlahan K1+K2+K3, M1+M2, dan B hanya kandidat aritmetika untuk 2003. Tanpa definisi periode 2005, mapping itu tidak boleh dipakai untuk menghitung perubahan komposisi 2003→2005."
+    }
+  ],
+  "global_boundary": "Jejak ini menambah kedalaman sejarah tanpa menciptakan continuity palsu. Tidak ada bridge/backcast, sampling-frame reconstruction, atribusi kausal, atau integrasi Panel v3 yang diotorisasi dari evidence ini.",
+  "authorizations": {
+    "historical_context_display": true,
+    "single_harmonized_series": false,
+    "sampling_frame_reconstruction": false,
+    "pre_post_qualification_comparison": false,
+    "bridge_or_backcast": false,
+    "causal_claim": false,
+    "panel_v3_integration": false
+  }
+}

@@ -37,7 +37,7 @@ Every substantive card uses exactly one public evidence state:
 
 - `supported` — maps only to `publishable_bounded` claims or a later explicitly bounded evidence milestone;
 - `negative_result` — maps only to `publishable_negative_result` claims;
-- `context` — maps only to `context_only` claims;
+- `context` — maps only to `context_only` claims or a later source-bound historical checkpoint that explicitly forbids stronger interpretation;
 - `not_supported` — maps to blocked claims and is displayed only as a boundary, never as a positive conclusion.
 
 The UI must never hide negative results simply because they are less visually attractive.
@@ -64,7 +64,35 @@ Each card contains:
 - a caveat/boundary sentence;
 - traceable source claim IDs or canonical evidence paths.
 
-### 4. "What we still cannot answer" section
+### 4. Research readiness and data catalog
+
+The public product exposes the frozen M18 research-question readiness and the bounded Panel v3 indicator catalog as navigational surfaces. They help readers distinguish between a question that is partially answerable, a dataset that exists, and a claim that is actually authorized.
+
+Neither surface upgrades a research question merely because additional data are present.
+
+### 5. Post-v0.1 historical context supplement
+
+Historical work completed after the v0.1 publication freeze may be exposed under **Jejak historis** only when it is already frozen in canonical repository evidence and can be rendered without changing the scientific state of the v0.1 preprint.
+
+The first historical supplement is construction evidence derived from three canonical checkpoints:
+
+- the BPS published establishment-count trajectory for Sumatera Barat, 2002–2006;
+- the independent 2006 Economic Census construction listing and master-frame boundary;
+- the fail-closed 2003–2005 qualification semantic-bridge audit.
+
+`site/data/history.json` is a derived public contract, not a scientific source. `scripts/build_public_history.py` rebuilds it deterministically from the canonical manifests, and `scripts/validate_public_history.py` requires the frozen public object to match that rebuild.
+
+The historical surface may display source-native counts, same-year differences across statistical operations, and explicitly labeled arithmetic candidates. It must not:
+
+- manufacture one harmonized historical series across incompatible operations or vintages;
+- relabel published establishment counts as sampling-frame sizes;
+- reconstruct missing 2005 qualification components;
+- treat the 2003 arithmetic grouping as a verified 2005 semantic mapping;
+- bridge or backcast unresolved vintages;
+- attribute historical revisions to the 2005 directory update as fact;
+- make causal claims or silently integrate these historical checkpoints into Panel v3.
+
+### 6. "What we still cannot answer" section
 
 The nine blocked claims remain visible in human language. The product must be explicit that the project currently cannot defensibly provide:
 
@@ -85,22 +113,26 @@ v0.1 uses a static product surface under `site/`:
 - no backend dependency;
 - no runtime connection to BPS, BMKG, NCEI, BNPB, BKPM, or DJPK;
 - deployable on GitHub Pages, Cloudflare Pages, Netlify, Vercel static hosting, or any basic web server;
-- all public copy is loaded from a versioned JSON data contract;
+- all public copy is loaded from versioned local JSON data contracts;
 - no user tracking or analytics is required for the first release.
 
 This keeps the public product reproducible and prevents a source outage from silently changing what readers see.
 
 ## Claim-gating architecture
 
-`site/data/overview.json` is the public narrative contract.
+`site/data/overview.json` is the primary public narrative contract.
+
+The product also uses separately derived contracts for readiness, indicator catalog, district explorer, glossary, and post-v0.1 historical context so each surface can preserve the provenance and constraints of its own evidence layer.
 
 `scripts/validate_public_product.py` verifies that:
 
-1. every claim ID used by the public product exists in `publication/v0.1/claim-ledger.csv`;
+1. every claim ID used by the v0.1 public narrative exists in `publication/v0.1/claim-ledger.csv`;
 2. evidence states in the UI match the allowed claim-ledger states;
 3. blocked claims appear only in the `not_supported` boundary section;
 4. the post-v0.1 M36 station card matches the frozen M36 manifest and remains non-causal;
 5. no card silently promotes context evidence into a supported analytical conclusion.
+
+Separate validators bind the additional public contracts back to their canonical inputs. In particular, `validate_public_history.py` fails closed if the historical public JSON drifts from the qualified construction manifests or if blocked historical authorizations become true.
 
 ## Visual principles
 
@@ -121,4 +153,4 @@ Public Product v0.1 is considered a usable first product when:
 - no publication/scientific source is modified by the product layer;
 - CI validates the narrative contract.
 
-Interactive maps, district drill-down, downloadable indicator explorer, richer charts, and live data refresh are follow-up product increments on the same `release/publication` workstream branch. They are not prerequisites for the first understandable public surface.
+Post-v0.1 public supplements may extend the same static product only when they remain deterministic translation layers over already-qualified evidence and do not mutate the frozen v0.1 scientific package.
