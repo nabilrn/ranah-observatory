@@ -44,6 +44,15 @@ The public product has no runtime dependency on external statistical APIs. Its J
 
 GitHub Pages deployment is implemented in `.github/workflows/deploy-public-product.yml`. The repository owner still needs to enable **Settings → Pages → Source: GitHub Actions** once; the deployment workflow cannot create the Pages site with the repository integration token. This is a hosting-setting boundary, not a failed product validation.
 
+## Model validation
+
+Two predictive contracts are deliberately kept separate:
+
+- M11 produced 342 leave-one-geography-out conditional expected-performance predictions; all three targets beat the preregistered peer-mean benchmark on both RMSE and MAE.
+- M19 performed the stricter future-facing test with 285 rolling-origin, strictly out-of-time predictions; **0 of 3 targets beat own-lag persistence on both RMSE and MAE**, so substantive 2026 forecasts remain blocked.
+
+The M19 failure is retained as a negative result rather than replaced by post-hoc algorithm search. See `docs/FINAL_MODEL_VALIDATION.md` for the final model-testing contract and exact metrics.
+
 ## Research readiness
 
 The frozen M18 synthesis contains five main research questions:
@@ -86,6 +95,7 @@ Work uses grouped workstream branches rather than one branch per milestone:
 - Original sprint roadmap: `docs/ROADMAP_25_DAYS.md`
 - Final 10-day delivery contract: `docs/FINAL_10_DAY_DELIVERY.md`
 - Final open-gate registry: `docs/FINAL_OPEN_GATES.md`
+- Final model validation: `docs/FINAL_MODEL_VALIDATION.md`
 - Public product specification: `docs/PRODUCT_V0_1_SPEC.md`
 - Frozen claim ledger: `publication/v0.1/claim-ledger.csv`
 - Publication completeness certificate: `publication/v0.1/completeness-certificate.json`
