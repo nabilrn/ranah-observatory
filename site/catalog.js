@@ -47,20 +47,20 @@ function catalogCard(row) {
         <span class="catalog-coverage">${catalogEscape(catalogPercent(coverage.rate))} terisi</span>
       </div>
       <h3>${catalogEscape(row.public_name)}</h3>
-      <p class="catalog-source-name">${catalogEscape(row.source_name)} · <code>${catalogEscape(row.id)}</code></p>
+      <p class="catalog-source-name">Sumber: ${catalogEscape(source)}</p>
       <div class="catalog-facts">
         <div><span>Periode data</span><strong>${catalogEscape(years)}</strong></div>
         <div><span>Tahun lengkap untuk 19 daerah</span><strong>${catalogEscape(coverage.exact_19_geography_year_count)}</strong></div>
         <div><span>Satuan</span><strong>${catalogEscape(row.unit_label)}</strong></div>
-        <div><span>Sumber utama</span><strong>${catalogEscape(source)}</strong></div>
+        <div><span>Data tersedia</span><strong>${catalogEscape(catalogPercent(coverage.rate))}</strong></div>
       </div>
       <div class="catalog-types" aria-label="Jenis angka">${types}</div>
       <details class="catalog-detail">
-        <summary>Definisi & catatan</summary>
+        <summary>Metadata teknis asli</summary>
+        <p><strong>Nama teknis:</strong> ${catalogEscape(row.source_name)} · <code>${catalogEscape(row.id)}</code></p>
         <p><strong>Definisi sumber:</strong> ${catalogEscape(row.definition)}</p>
-        <p><strong>Yang perlu diperhatikan:</strong> ${catalogEscape(row.semantic_caution)}</p>
+        <p><strong>Catatan sumber:</strong> ${catalogEscape(row.semantic_caution)}</p>
         <p><strong>File sumber:</strong> <code>${catalogEscape(row.source_artifact)}</code></p>
-        <p><strong>Unit teknis:</strong> <code>${catalogEscape(row.registry_unit)}</code></p>
       </details>
     </article>
   `;
@@ -107,8 +107,6 @@ async function initCatalog() {
       throw new Error("public indicator catalog must contain exactly 23 Panel v3 indicators");
     }
 
-    document.querySelector("#catalog-title").textContent = data.title;
-    document.querySelector("#catalog-intro").textContent = data.intro;
     renderCatalogSummary(data);
     grid.innerHTML = data.indicators.map(catalogCard).join("");
 
