@@ -28,21 +28,31 @@ class PublicReadinessTests(unittest.TestCase):
         self.assertIn("kebijakan", copy)
         self.assertTrue("ranking" in copy or "meranking" in copy)
 
-    def test_readiness_surface_is_static_and_snapshot_count_is_current(self) -> None:
+    def test_readiness_surface_is_static_data_first_and_mobile_reachable(self) -> None:
         html = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
         js = (ROOT / "site" / "readiness.js").read_text(encoding="utf-8")
         mobile_css = (ROOT / "site" / "mobile.css").read_text(encoding="utf-8")
+        dashboard_css = (ROOT / "site" / "dashboard.css").read_text(encoding="utf-8")
+
         self.assertIn('id="status-riset"', html)
         self.assertIn('src="readiness.js"', html)
         self.assertIn('href="readiness.css"', html)
         self.assertIn('href="mobile.css"', html)
-        self.assertIn("Lima angka penting dari data yang sudah diperiksa", html)
+        self.assertIn('href="dashboard.css"', html)
+        self.assertIn("Empat hal yang langsung terlihat dari data", html)
+        self.assertIn("Seberapa jauh data dan modelnya sudah diperiksa?", html)
+        self.assertLess(html.index('id="key-findings-title"'), html.index('id="snapshot-title"'))
+        self.assertIn('tabindex="-1"', html)
+
         self.assertIn('data/readiness.json', js)
         self.assertNotIn('fetch("https://', js)
         self.assertNotIn("fetch('https://", js)
         self.assertIn("@media (max-width: 700px)", mobile_css)
         self.assertIn(".nav", mobile_css)
         self.assertIn("display: flex", mobile_css)
+        self.assertIn(".dashboard-page", dashboard_css)
+        self.assertIn("height: 100vh", dashboard_css)
+        self.assertIn("overflow: auto", dashboard_css)
 
 
 if __name__ == "__main__":
