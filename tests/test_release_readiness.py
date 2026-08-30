@@ -25,10 +25,13 @@ class ReleaseReadinessTest(unittest.TestCase):
         self.assertEqual(result["m19_forecast_qualified_targets"], 0)
         self.assertEqual(result["m19_forecast_blocked_targets"], 3)
         self.assertEqual(result["must_close_gates_total"], 6)
-        self.assertEqual(result["must_close_gates_satisfied"], 3)
-        self.assertEqual(result["must_close_gates_open_internal"], 3)
+        self.assertEqual(result["must_close_gates_satisfied"], 4)
+        self.assertEqual(result["must_close_gates_open_internal"], 2)
         self.assertEqual(result["deferred_research_gates"], 7)
         self.assertEqual(result["external_manual_blockers"], 0)
+        self.assertTrue(result["clean_main_reproducibility_verified"])
+        self.assertEqual(result["clean_main_verified_commit"], "fa960c278d4ad69524c26e1bf984a1a29b9a2ab3")
+        self.assertEqual(result["clean_main_workflow_run_id"], 33318320220)
         self.assertEqual(result["public_product_url"], "https://nabilrn.github.io/ranah-observatory/")
 
 
