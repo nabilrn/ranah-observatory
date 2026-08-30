@@ -1,12 +1,12 @@
 const INDICATOR_CATALOG_URL = "data/indicators.json";
 
 const CLAIM_TYPE_LABELS = {
-  observed: "Observasi",
-  derived: "Turunan",
-  model_estimate: "Estimasi model",
-  observed_source_published: "Observasi sumber",
-  backcast_estimate: "Estimasi backcast",
-  observed_census_anchor: "Anchor sensus",
+  observed: "Data asli",
+  derived: "Hasil hitung",
+  model_estimate: "Hasil model",
+  observed_source_published: "Angka sumber",
+  backcast_estimate: "Perkiraan historis",
+  observed_census_anchor: "Angka sensus",
   model_estimate_projection: "Proyeksi model",
 };
 
@@ -44,23 +44,23 @@ function catalogCard(row) {
     ].join(" ").toLocaleLowerCase("id-ID"))}">
       <div class="catalog-topline">
         <span class="catalog-domain">${catalogEscape(row.domain_label)}</span>
-        <span class="catalog-coverage">${catalogEscape(catalogPercent(coverage.rate))} coverage</span>
+        <span class="catalog-coverage">${catalogEscape(catalogPercent(coverage.rate))} terisi</span>
       </div>
       <h3>${catalogEscape(row.public_name)}</h3>
       <p class="catalog-source-name">${catalogEscape(row.source_name)} · <code>${catalogEscape(row.id)}</code></p>
       <div class="catalog-facts">
-        <div><span>Periode tersedia</span><strong>${catalogEscape(years)}</strong></div>
-        <div><span>Tahun lengkap 19 daerah</span><strong>${catalogEscape(coverage.exact_19_geography_year_count)}</strong></div>
-        <div><span>Unit</span><strong>${catalogEscape(row.unit_label)}</strong></div>
-        <div><span>Sumber prioritas</span><strong>${catalogEscape(source)}</strong></div>
+        <div><span>Periode data</span><strong>${catalogEscape(years)}</strong></div>
+        <div><span>Tahun lengkap untuk 19 daerah</span><strong>${catalogEscape(coverage.exact_19_geography_year_count)}</strong></div>
+        <div><span>Satuan</span><strong>${catalogEscape(row.unit_label)}</strong></div>
+        <div><span>Sumber utama</span><strong>${catalogEscape(source)}</strong></div>
       </div>
-      <div class="catalog-types" aria-label="Tipe angka">${types}</div>
+      <div class="catalog-types" aria-label="Jenis angka">${types}</div>
       <details class="catalog-detail">
-        <summary>Definisi & batas teknis</summary>
+        <summary>Definisi & catatan</summary>
         <p><strong>Definisi sumber:</strong> ${catalogEscape(row.definition)}</p>
-        <p><strong>Caveat:</strong> ${catalogEscape(row.semantic_caution)}</p>
-        <p><strong>Artefak:</strong> <code>${catalogEscape(row.source_artifact)}</code></p>
-        <p><strong>Registry unit:</strong> <code>${catalogEscape(row.registry_unit)}</code></p>
+        <p><strong>Yang perlu diperhatikan:</strong> ${catalogEscape(row.semantic_caution)}</p>
+        <p><strong>File sumber:</strong> <code>${catalogEscape(row.source_artifact)}</code></p>
+        <p><strong>Unit teknis:</strong> <code>${catalogEscape(row.registry_unit)}</code></p>
       </details>
     </article>
   `;
@@ -71,7 +71,7 @@ function renderCatalogSummary(data) {
   const summary = data.summary;
   root.innerHTML = `
     <div><strong>${catalogEscape(summary.indicator_count)}</strong><span>indikator</span></div>
-    <div><strong>${catalogEscape(summary.domain_count)}</strong><span>domain</span></div>
+    <div><strong>${catalogEscape(summary.domain_count)}</strong><span>kelompok data</span></div>
     <div><strong>${catalogEscape(summary.complete_2018_2025_indicator_count)}</strong><span>indikator lengkap 2018–2025</span></div>
     <div><strong>${catalogEscape(summary.geography_count)}</strong><span>kabupaten/kota</span></div>
   `;
@@ -130,7 +130,7 @@ async function initCatalog() {
     applyCatalogFilters();
   } catch (error) {
     console.error(error);
-    grid.innerHTML = '<p class="catalog-error">Katalog indikator gagal dimuat. Metadata dan coverage canonical tetap tersedia di repository.</p>';
+    grid.innerHTML = '<p class="catalog-error">Daftar indikator gagal dimuat. Metadata lengkap tetap tersedia di repository.</p>';
   }
 }
 
