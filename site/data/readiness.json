@@ -2,8 +2,8 @@
   "schema": "ranah-observatory/public-research-readiness/v1",
   "version": "0.1.0",
   "language": "id",
-  "title": "Seberapa jauh pertanyaan utama sudah terjawab?",
-  "intro": "Status ini bukan progress bar kosmetik. Setiap pertanyaan hanya dinaikkan sejauh yang diizinkan oleh sintesis M18, dan semuanya masih memiliki evidence yang perlu ditambah.",
+  "title": "Pertanyaan mana yang sudah punya jawaban, dan mana yang belum?",
+  "intro": "Lima pertanyaan utama riset tidak dipaksa terlihat selesai. Di bawah ini adalah jawaban yang sudah bisa dipakai, bagian yang masih lemah, dan data apa yang masih dibutuhkan.",
   "source": {
     "manifest_path": "data/manifests/milestone18_final_analytical_synthesis.json",
     "readiness_path": "data/analysis/engine/final_synthesis_v1/m18-research-question-readiness.csv"
@@ -19,53 +19,53 @@
   "questions": [
     {
       "id": "RQ1",
-      "title": "Lintasan historis",
+      "title": "Bagaimana Sumatera Barat berubah dari masa ke masa?",
       "readiness_state": "bounded_partial",
       "evidence_basis": "M6;M10",
       "fully_resolved": false,
-      "current_answer": "Untuk indikator terpilih, perubahan kabupaten/kota pada periode modern sudah dapat dianalisis secara reproducible. Rekonstruksi lintasan panjang sejak awal kemerdekaan belum lengkap.",
-      "limitation": "Bukti historis masih jarang, baru memiliki satu anchor populasi historis pada M6, dan belum ada harmonisasi batas wilayah historis yang umum untuk seluruh seri.",
-      "next_evidence": "Tambahkan seri historis yang tabelnya dapat dikualifikasi, dengan definisi wilayah dan vintage yang eksplisit serta rekonstruksi batas yang dapat dipertanggungjawabkan."
+      "current_answer": "Untuk beberapa indikator, perubahan 19 kabupaten/kota pada periode modern sudah bisa dibandingkan secara konsisten. Untuk periode jauh lebih lama sejak awal kemerdekaan, rangkaian datanya masih belum lengkap.",
+      "limitation": "Data historis masih jarang dan batas wilayah berubah dari waktu ke waktu. Karena itu seri lama belum boleh disambung seolah-olah definisinya selalu sama.",
+      "next_evidence": "Dibutuhkan lebih banyak tabel historis resmi beserta definisi wilayah dan tahun publikasinya, lalu perubahan batas wilayah harus dapat direkonstruksi dengan jelas."
     },
     {
       "id": "RQ2",
-      "title": "Pembangunan yang dapat dicapai",
+      "title": "Seberapa jauh hasil pembangunan daerah berbeda dari pola yang biasa terlihat di data?",
       "readiness_state": "bounded_answer",
       "evidence_basis": "M11;M12",
       "fully_resolved": false,
-      "current_answer": "Untuk kemiskinan, pengangguran, dan pertumbuhan PDRB riil pada 19 kabupaten/kota dalam rezim 2019–2024, model menyediakan conditional expectation yang lolos benchmark dan empirical favorable reference yang terkalibrasi.",
-      "limitation": "Reference itu bersifat empiris, bukan theoretical maximum, dan belum mewakili seluruh dimensi pembangunan maupun seluruh periode sejarah.",
-      "next_evidence": "Perlu outcome family yang lebih luas, comparison universe yang lebih besar, dan validasi khusus per metode sebelum klaim attainable development diperluas."
+      "current_answer": "Untuk kemiskinan, pengangguran, dan pertumbuhan PDRB riil pada 19 kabupaten/kota selama 2019–2024, model sudah cukup baik untuk membuat pembanding empiris terhadap pola daerah lain di dalam data yang tersedia.",
+      "limitation": "Pembanding ini bukan batas maksimum kemampuan sebuah daerah dan baru mencakup tiga hasil pembangunan serta periode yang terbatas.",
+      "next_evidence": "Cakupan indikator, periode, dan daerah pembanding perlu diperluas sebelum hasilnya dipakai untuk klaim pembangunan yang lebih umum."
     },
     {
       "id": "RQ3",
-      "title": "Divergensi pembangunan",
+      "title": "Di mana hasil daerah terlihat menyimpang dari pola pembanding?",
       "readiness_state": "bounded_partial",
       "evidence_basis": "M13",
       "fully_resolved": false,
-      "current_answer": "Untuk tiga outcome yang dimodelkan pada 2019–2024, engine dapat menunjukkan observasi yang secara material lebih atau kurang menguntungkan dibanding conditional expectation dan favorable empirical reference.",
-      "limitation": "M13 belum mengidentifikasi kapan divergensi jangka panjang Sumatera Barat muncul terhadap daerah pembanding pada seluruh dimensi yang ditetapkan charter.",
-      "next_evidence": "Perlu panel regional yang lebih panjang dan comparable, termasuk penyelarasan batas wilayah serta metodologi historis lintas daerah."
+      "current_answer": "Untuk tiga indikator yang dimodelkan pada 2019–2024, kita sudah bisa melihat observasi yang berada di sisi lebih baik, masih dalam kisaran biasa, atau berada di sisi yang kurang menguntungkan dibanding pola model.",
+      "limitation": "Analisis ini belum menunjukkan kapan perbedaan jangka panjang Sumatera Barat mulai muncul jika dibandingkan dengan wilayah lain sepanjang sejarah.",
+      "next_evidence": "Dibutuhkan panel regional yang lebih panjang dengan definisi wilayah dan metode statistik yang dapat dibandingkan antarperiode."
     },
     {
       "id": "RQ4",
-      "title": "Faktor penjelas",
+      "title": "Apa yang mungkin menjelaskan perbedaan antarhasil pembangunan?",
       "readiness_state": "bounded_answer",
       "evidence_basis": "M14;M8;M15",
       "fully_resolved": false,
-      "current_answer": "Engine sudah memisahkan association hujan–gap pengangguran yang stabil tetapi non-causal dari evidence causal, mempertahankan studi quasi-causal gempa yang selesai, dan mencatat dua identification failure tanpa meng-upgrade hasilnya.",
-      "limitation": "Satu association yang stabil bukan penjelasan causal, dan studi gempa yang selesai tidak mengotorisasi klaim efek arah nonzero yang robust.",
-      "next_evidence": "Prioritas berikutnya adalah variasi waktu independen atau natural experiment yang kredibel, lengkap dengan pre-event diagnostics dan small-cluster inference ketika diperlukan."
+      "current_answer": "Beberapa hubungan statistik sudah dapat diuji. Contohnya, hubungan hujan dengan gap pengangguran terlihat cukup stabil pada analisis tertentu, tetapi belum membuktikan sebab-akibat. Studi gempa juga dipertahankan sesuai hasil uji tanpa dipaksa menjadi klaim yang lebih kuat.",
+      "limitation": "Hubungan statistik yang stabil tetap bukan bukti penyebab. Data dan desain saat ini belum cukup untuk menjelaskan seluruh faktor di balik perbedaan pembangunan.",
+      "next_evidence": "Dibutuhkan variasi waktu atau kejadian alami yang memungkinkan perbandingan sebab-akibat secara lebih kredibel, beserta pemeriksaan sebelum kejadian dan metode ketidakpastian yang sesuai."
     },
     {
       "id": "RQ5",
-      "title": "Aksi",
+      "title": "Kebijakan apa yang sebaiknya diprioritaskan?",
       "readiness_state": "not_action_ready",
       "evidence_basis": "M17;M15;M16",
       "fully_resolved": false,
-      "current_answer": "Engine dapat menunjukkan sensitivity dari state model dan menjelaskan mengapa skenario intervensi hujan/pasar kerja serta disaster-risk belum diotorisasi. Bukti saat ini belum cukup untuk meranking kebijakan nyata berdasarkan expected impact.",
-      "limitation": "Belum ada causal policy counterfactual, biaya yang qualified, horizon implementasi, pemetaan risiko bencana yang lengkap, atau evidence cost-benefit.",
-      "next_evidence": "Sebelum rekomendasi atau ranking kebijakan, dibutuhkan causal effect spesifik intervensi, data feasibility dan horizon implementasi, biaya yang qualified, serta pemetaan komponen risiko yang lengkap untuk intervensi resilience."
+      "current_answer": "Belum ada dasar yang cukup kuat untuk meranking kebijakan nyata berdasarkan dampak yang diharapkan. Model bisa dipakai untuk memahami pola dan sensitivitas, tetapi belum bisa memberi urutan intervensi yang sah.",
+      "limitation": "Belum tersedia bukti sebab-akibat yang cukup untuk tiap intervensi, biaya yang dapat dibandingkan, waktu pelaksanaan, kelayakan, dan pemetaan risiko yang lengkap.",
+      "next_evidence": "Sebelum membuat rekomendasi atau ranking kebijakan, dibutuhkan estimasi efek intervensi yang kredibel, data biaya, kelayakan, horizon pelaksanaan, serta data risiko yang lengkap."
     }
   ]
 }
