@@ -5,8 +5,8 @@
   "mode": "ship_first_finalization",
   "summary": {
     "must_close_total": 6,
-    "must_close_satisfied": 3,
-    "must_close_open_internal": 3,
+    "must_close_satisfied": 4,
+    "must_close_open_internal": 2,
     "must_close_blocked_external": 0,
     "valuable_if_easy_total": 3,
     "defer_total": 7
@@ -54,15 +54,19 @@
     },
     {
       "id": "clean_main_reproducibility_sweep",
-      "status": "open_internal",
+      "status": "satisfied",
       "owner": "repository",
       "why_release_critical": "Final delivery needs one clean-main CI sweep after all release-critical integration work is merged.",
       "evidence": [
+        ".github/workflows/final-clean-main-sweep.yml",
+        "publication/clean-main-sweep.json",
         ".github/workflows/release-readiness.yml",
-        ".github/workflows/public-product.yml",
         ".github/workflows/historical-reconstruction.yml",
-        ".github/workflows/milestone10-analytical-panel-repro.yml"
+        ".github/workflows/milestone10-analytical-panel-repro.yml",
+        ".github/workflows/milestone19-dynamic-forecast-repro.yml"
       ],
+      "verified_main_commit": "fa960c278d4ad69524c26e1bf984a1a29b9a2ab3",
+      "workflow_run_id": 33318320220,
       "exit_condition": "All release-critical deterministic validators and relevant regression suites pass from the same clean main candidate."
     },
     {
