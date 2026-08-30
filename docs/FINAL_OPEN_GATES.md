@@ -54,7 +54,14 @@ Exit condition: `Deploy Public Product` succeeds and the canonical production UR
 
 Run the final relevant validation matrix from one clean `main` candidate after release-critical integration work is done.
 
-Exit condition: release readiness, public product, historical reconstruction, and analytical reproducibility gates are all green for the same candidate state.
+The sweep must explicitly preserve both predictive-model outcomes:
+
+- M11: 342 leave-one-geography-out cross-fitted predictions, with all 3 targets beating the preregistered peer-mean benchmark on RMSE and MAE;
+- M19: 285 strictly out-of-time predictions, with 0 of 3 targets beating own-lag persistence on both RMSE and MAE, so substantive 2026 forecasting remains blocked.
+
+`docs/FINAL_MODEL_VALIDATION.md` records the distinction between these two contracts and `scripts/validate_final_model_testing.py` makes it machine-verifiable. A failed forecast benchmark is a retained negative result, not a reason to tune until a model wins.
+
+Exit condition: release readiness, final model testing, public product, historical reconstruction, and analytical reproducibility gates are all green for the same candidate state.
 
 #### 3. Adversarial public readability audit
 
