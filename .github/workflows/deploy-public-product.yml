@@ -108,6 +108,8 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload public product artifact
         uses: actions/upload-pages-artifact@v4
