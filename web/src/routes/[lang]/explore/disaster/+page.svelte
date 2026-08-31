@@ -1,20 +1,32 @@
 <script lang="ts">
   import { copy, type Locale } from '$lib/i18n';
   import { repositoryUrl } from '$lib/catalog';
+  import { eventLabel, type DisasterDistrictRow, type PublicDisasterSummary } from '$lib/public-data';
 
-  export let data: { lang: Locale };
+  export let data: { lang: Locale; summary: PublicDisasterSummary };
   const lang = data.lang;
   const t = copy[lang].disaster;
+  const summary = data.summary;
 
-  let period = '2024';
+  let period = String(summary.years.at(-1) ?? 2024);
   let region = 'all';
   let hazard = 'all';
+
+  $: periodRows = summary.district_rows.filter((row) => row.year === Number(period));
+  $: districtOptions = [...periodRows].sort((a, b) => a.name.localeCompare(b.name, lang === 'id' ? 'id-ID' : 'en-US'));
+  $: if (region !== 'all' && !districtOptions.some((row) => row.geography_id === region)) region = 'all';
+  $: filteredRows = periodRows.filter((row) => region === 'all' || row.geography_id === region);
+  $: activeIndicators = hazard === 'all' ? summary.indicators : [hazard];
+  $: eventTotal = filteredRows.reduce(
+    (total, row) => total + activeIndicators.reduce((subtotal, indicator) => subtotal + (row.values[indicator] ?? 0), 0),
+    0
+  );
 
   const readiness = [
     {
       title: lang === 'id' ? 'Kejadian per kabupaten/kota' : 'Events by regency/city',
       state: 'ready',
-      detail: lang === 'id' ? 'Observasi kanonik BNPB 2024 tersedia untuk kejadian banjir dan longsor.' : 'Canonical 2024 BNPB observations are available for flood and landslide events.'
+      detail: lang === 'id' ? 'Observasi kanonik BNPB tersedia dan sekarang menjadi public artifact saat build.' : 'Canonical BNPB observations are available and now become a public artifact at build time.'
     },
     {
       title: lang === 'id' ? 'Korban dan masyarakat terdampak' : 'Casualties and affected population',
@@ -37,6 +49,10 @@
       detail: lang === 'id' ? 'CHIRPS memberi baseline jangka panjang; observasi stasiun BMKG tetap diperlakukan terpisah.' : 'CHIRPS provides a long-run baseline; BMKG station observations remain a separate evidence class.'
     }
   ];
+
+  function rowTotal(row: DisasterDistrictRow) {
+    return activeIndicators.reduce((total, indicator) => total + (row.values[indicator] ?? 0), 0);
+  }
 </script>
 
 <svelte:head>
@@ -51,46 +67,55 @@
       <h1>{t.title}</h1>
       <p class="lead">{t.lead}</p>
     </div>
-    <p class="hero-note">{lang === 'id' ? 'Filter ini sudah menjadi contract UI. Angka tidak akan diisi dengan placeholder palsu ketika source impact belum lolos materialisasi.' : 'These filters are already part of the UI contract. No fake placeholder figures will be shown while impact sources are still awaiting materialization.'}</p>
+    <p class="hero-note">{lang === 'id' ? 'Angka kejadian di bawah berasal dari canonical BNPB dan dihitung ulang saat public build. Angka korban, kerusakan, dan kerugian tetap ditahan sampai sumber impact lolos validasi.' : 'Event counts below come from canonical BNPB data and are rebuilt during the public build. Casualty, damage, and loss figures remain held until impact sources pass validation.'}</p>
   </section>
 
   <section class="section">
     <div class="toolbar">
       <select bind:value={period} aria-label={lang === 'id' ? 'Periode' : 'Period'}>
-        <option value="2024">2024</option>
+        {#each summary.years as year}<option value={String(year)}>{year}</option>{/each}
       </select>
       <select bind:value={region} aria-label={lang === 'id' ? 'Wilayah' : 'Region'}>
         <option value="all">{lang === 'id' ? 'Semua kabupaten/kota' : 'All regencies/cities'}</option>
+        {#each districtOptions as district}
+          <option value={district.geography_id}>{district.name}</option>
+        {/each}
       </select>
       <select bind:value={hazard} aria-label={lang === 'id' ? 'Jenis bencana' : 'Hazard type'}>
-        <option value="all">{lang === 'id' ? 'Semua jenis bencana' : 'All hazard types'}</option>
-        <option value="flood">{lang === 'id' ? 'Banjir' : 'Flood'}</option>
-        <option value="landslide">{lang === 'id' ? 'Tanah longsor' : 'Landslide'}</option>
+        <option value="all">{lang === 'id' ? 'Semua jenis tersedia' : 'All available hazard types'}</option>
+        {#each summary.indicators as indicator}
+          <option value={indicator}>{eventLabel(indicator, lang)}</option>
+        {/each}
       </select>
     </div>
 
     <div class="metric-grid" aria-label={lang === 'id' ? 'Metrik dampak' : 'Impact metrics'}>
+      <div class="metric">
+        <span>{lang === 'id' ? 'Kejadian tercatat' : 'Recorded events'}</span>
+        <strong>{eventTotal.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')}</strong>
+        <small>{period}{region === 'all' ? '' : ` · ${districtOptions.find((row) => row.geography_id === region)?.name ?? region}`}</small>
+      </div>
       {#each [
-        lang === 'id' ? 'Kejadian' : 'Events',
         lang === 'id' ? 'Korban' : 'Casualties',
         lang === 'id' ? 'Rumah rusak' : 'Housing damage',
         lang === 'id' ? 'Fasilitas rusak' : 'Facility damage',
         lang === 'id' ? 'Kerugian' : 'Losses'
-      ] as label, index}
+      ] as label}
         <div class="metric">
           <span>{label}</span>
-          <strong>{index === 0 ? 'BNPB' : '—'}</strong>
-          <small>{index === 0 ? (lang === 'id' ? 'data tersedia; agregasi publik berikutnya' : 'data available; public aggregation next') : (lang === 'id' ? 'ditahan sampai valid' : 'held until validated')}</small>
+          <strong>—</strong>
+          <small>{lang === 'id' ? 'ditahan sampai sumber impact tervalidasi' : 'held until impact source is validated'}</small>
         </div>
       {/each}
     </div>
+    <p class="hero-note" style="margin-top:14px">{summary.interpretation[lang]}</p>
   </section>
 
   <section class="section two-col">
     <div>
       <div class="section-head"><div><p class="eyebrow">MapLibre</p><h2>{t.mapTitle}</h2></div></div>
       <div class="map-shell">
-        <div><strong>{lang === 'id' ? 'Public geospatial contract' : 'Public geospatial contract'}</strong><p>{t.mapPending}</p></div>
+        <div><strong>Public geospatial contract</strong><p>{t.mapPending}</p></div>
       </div>
     </div>
     <aside>
@@ -108,18 +133,46 @@
 
   <section class="section">
     <div class="section-head">
+      <div><p class="eyebrow">{lang === 'id' ? 'Tabel sumber' : 'Source table'}</p><h2>{lang === 'id' ? 'Kejadian per kabupaten/kota' : 'Events by regency/city'}</h2></div>
+      <p>{lang === 'id' ? 'Tabel mengikuti filter periode, wilayah, dan jenis bencana di atas. Tidak ada angka kosong yang diubah menjadi nol oleh frontend.' : 'The table follows the period, geography, and hazard filters above. The frontend never converts missing values into zero.'}</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>{lang === 'id' ? 'Kabupaten/kota' : 'Regency/city'}</th>
+            {#each summary.indicators as indicator}<th>{eventLabel(indicator, lang)}</th>{/each}
+            <th>{lang === 'id' ? 'Total terfilter' : 'Filtered total'}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each filteredRows as row}
+            <tr>
+              <td><strong>{row.name}</strong></td>
+              {#each summary.indicators as indicator}<td>{row.values[indicator] ?? '—'}</td>{/each}
+              <td><strong>{rowTotal(row)}</strong></td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
       <div><p class="eyebrow">{t.proofTitle}</p><h2>{lang === 'id' ? 'Dari temuan kembali ke file sumber' : 'From finding back to source file'}</h2></div>
-      <p>{lang === 'id' ? 'Ini menggantikan claim ID teknis sebagai pengalaman utama. Detail riset tetap tersedia satu tingkat lebih dalam.' : 'This replaces technical claim IDs as the primary experience. Research detail remains available one level deeper.'}</p>
+      <p>{lang === 'id' ? 'Public artifact menyimpan path dan checksum sumber. Detail riset tetap tersedia satu tingkat lebih dalam.' : 'The public artifact retains the source path and checksum. Research detail remains available one level deeper.'}</p>
     </div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>{lang === 'id' ? 'Lapisan' : 'Layer'}</th><th>{lang === 'id' ? 'Status' : 'Status'}</th><th>{lang === 'id' ? 'Sumber' : 'Source'}</th><th>{lang === 'id' ? 'Bukti' : 'Evidence'}</th></tr></thead>
         <tbody>
-          <tr><td>{lang === 'id' ? 'Kejadian banjir & longsor 2024' : '2024 flood & landslide events'}</td><td>{lang === 'id' ? 'Materialized' : 'Materialized'}</td><td>BNPB / DIBI</td><td><a href={repositoryUrl('data/processed/bnpb/disaster/bnpb-disaster-canonical-observations.csv')}>{lang === 'id' ? 'Lihat data →' : 'View data →'}</a></td></tr>
-          <tr><td>{lang === 'id' ? 'Dampak bencana 2023–2024' : '2023–2024 disaster impacts'}</td><td>{lang === 'id' ? 'Acquisition' : 'Acquisition'}</td><td>BPBD Sumbar</td><td><a href={repositoryUrl('data/acquisition_requests/sumbarprov_priority_datasets.csv')}>{lang === 'id' ? 'Lihat antrean data →' : 'View acquisition queue →'}</a></td></tr>
-          <tr><td>{lang === 'id' ? 'Curah hujan tahunan' : 'Annual rainfall'}</td><td>{lang === 'id' ? 'Materialized' : 'Materialized'}</td><td>CHIRPS v3</td><td><a href={repositoryUrl('data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv')}>{lang === 'id' ? 'Lihat data →' : 'View data →'}</a></td></tr>
+          <tr><td>{lang === 'id' ? 'Kejadian bencana' : 'Disaster events'}</td><td>Materialized</td><td>{summary.source.organization}</td><td><a href={repositoryUrl(summary.source.path)}>{lang === 'id' ? 'Lihat data →' : 'View data →'}</a></td></tr>
+          <tr><td>{lang === 'id' ? 'Dampak bencana 2023–2024' : '2023–2024 disaster impacts'}</td><td>Acquisition</td><td>BPBD Sumbar</td><td><a href={repositoryUrl('data/acquisition_requests/sumbarprov_priority_datasets.csv')}>{lang === 'id' ? 'Lihat antrean data →' : 'View acquisition queue →'}</a></td></tr>
+          <tr><td>{lang === 'id' ? 'Curah hujan tahunan' : 'Annual rainfall'}</td><td>Materialized</td><td>CHIRPS v3</td><td><a href={repositoryUrl('data/processed/climate/rainfall/chirps-annual-rainfall-observations.csv')}>{lang === 'id' ? 'Lihat data →' : 'View data →'}</a></td></tr>
         </tbody>
       </table>
     </div>
+    <p class="meta" style="margin-top:10px">SHA256: <code>{summary.source.sha256}</code> · {summary.source.row_count_used} {lang === 'id' ? 'baris sumber dipakai' : 'source rows used'}</p>
   </section>
 </main>
