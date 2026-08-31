@@ -17,7 +17,6 @@ import csv
 import hashlib
 import json
 import re
-import tempfile
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -45,7 +44,9 @@ BPBD_PACKAGES = (
     "dampak-bencana-terhadap-fasilitas-umum-per-kabkota-2024",
 )
 
-BIG_LAYER = "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_LN/MapServer/0"
+# June 2026 BIG national administrative-area service. Use AR (area/polygon), not
+# LN (boundary line), because the public product needs district polygons.
+BIG_LAYER = "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_AR/MapServer/0"
 BIG_QUERY = BIG_LAYER + "/query"
 
 
@@ -83,7 +84,7 @@ def ckan_action(action: str, **params: str) -> dict:
             if payload.get("success") is not True:
                 raise RuntimeError(f"CKAN success=false: {payload}")
             return payload["result"]
-        except Exception as exc:  # noqa: BLE001 - preserve both official endpoint attempts
+        except Exception as exc:
             errors.append(f"{url}: {exc}")
     raise RuntimeError("all official CKAN endpoints failed:\n" + "\n".join(errors))
 
@@ -111,7 +112,6 @@ def materialize_workbook(package_slug: str, package: dict) -> dict:
     if not resources:
         raise RuntimeError(f"{package_slug}: no official XLSX resource found")
 
-    # Prefer an XLSX resource with the package title in the resource name, then the first official spreadsheet.
     package_title = str(package.get("title", "")).casefold()
     resource = sorted(
         resources,
@@ -129,7 +129,6 @@ def materialize_workbook(package_slug: str, package: dict) -> dict:
     package_dir = BPBD_OUTPUT / package_slug
     package_dir.mkdir(parents=True, exist_ok=True)
 
-    # Remove previously generated CSVs for this package so deleted/renamed worksheets do not linger.
     for old_csv in package_dir.glob("*.csv"):
         old_csv.unlink()
 
@@ -144,7 +143,6 @@ def materialize_workbook(package_slug: str, package: dict) -> dict:
             writer = csv.writer(handle)
             for row in worksheet.iter_rows(values_only=True):
                 values = [cell_text(value) for value in row]
-                # Trim trailing empty cells only; preserve leading/intermediate blanks and row order.
                 while values and values[-1] == "":
                     values.pop()
                 writer.writerow(values)
@@ -193,8 +191,11 @@ def lower_property(properties: dict, key: str):
 
 def acquire_big_boundary() -> dict:
     layer_metadata = fetch_json(BIG_LAYER + "?f=pjson")
+    if layer_metadata.get("geometryType") != "esriGeometryPolygon":
+        raise RuntimeError(f"BIG kab/kota source is not polygon geometry: {layer_metadata.get('geometryType')}")
+
     params = {
-        "where": "wadmpr='Sumatera Barat'",
+        "where": "WADMPR='Sumatera Barat'",
         "outFields": "*",
         "returnGeometry": "true",
         "outSR": "4326",
