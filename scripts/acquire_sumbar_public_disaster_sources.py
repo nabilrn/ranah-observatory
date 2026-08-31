@@ -189,6 +189,25 @@ def lower_property(properties: dict, key: str):
     return None
 
 
+def polygon_parts(geometry: dict | None) -> list:
+    if not geometry:
+        return []
+    geometry_type = geometry.get("type")
+    coordinates = geometry.get("coordinates") or []
+    if geometry_type == "Polygon":
+        return [coordinates]
+    if geometry_type == "MultiPolygon":
+        return list(coordinates)
+    raise RuntimeError(f"unexpected BIG geometry type: {geometry_type!r}")
+
+
+def first_nonempty(values: list):
+    for value in values:
+        if value not in (None, ""):
+            return value
+    return None
+
+
 def acquire_big_boundary() -> dict:
     layer_metadata = fetch_json(BIG_LAYER + "?f=pjson")
     if layer_metadata.get("geometryType") != "esriGeometryPolygon":
@@ -203,13 +222,12 @@ def acquire_big_boundary() -> dict:
     }
     query_url = BIG_QUERY + "?" + urllib.parse.urlencode(params)
     payload = fetch_json(query_url, timeout=120)
-    features = payload.get("features") or []
-    if len(features) != 19:
-        raise RuntimeError(f"BIG Sumatera Barat kab/kota query returned {len(features)} features; expected 19")
+    source_features = payload.get("features") or []
+    if not source_features:
+        raise RuntimeError("BIG Sumatera Barat kab/kota query returned no features")
 
-    normalized_features = []
-    names: list[str] = []
-    for feature in features:
+    grouped: dict[str, dict] = {}
+    for feature in source_features:
         properties = feature.get("properties") or {}
         province = lower_property(properties, "wadmpr")
         name = lower_property(properties, "wadmkk") or lower_property(properties, "namobj")
@@ -218,29 +236,59 @@ def acquire_big_boundary() -> dict:
         if not name:
             raise RuntimeError("BIG feature missing kabupaten/kota name")
         name = str(name).strip()
-        names.append(name)
+        key = name.casefold()
+        record = grouped.setdefault(
+            key,
+            {
+                "name": name,
+                "polygon_parts": [],
+                "kdbbps": [],
+                "kdcbps": [],
+                "kdpkab": [],
+                "source_objectids": [],
+            },
+        )
+        record["polygon_parts"].extend(polygon_parts(feature.get("geometry")))
+        record["kdbbps"].append(lower_property(properties, "kdbbps"))
+        record["kdcbps"].append(lower_property(properties, "kdcbps"))
+        record["kdpkab"].append(lower_property(properties, "kdpkab"))
+        record["source_objectids"].append(
+            lower_property(properties, "objectid") or lower_property(properties, "objectid_1")
+        )
+
+    if len(grouped) != 19:
+        names = sorted(record["name"] for record in grouped.values())
+        raise RuntimeError(
+            f"BIG Sumatera Barat query produced {len(source_features)} source features but {len(grouped)} unique kab/kota; "
+            f"expected 19. names={names}"
+        )
+
+    normalized_features = []
+    for record in grouped.values():
+        parts = record["polygon_parts"]
+        if not parts:
+            raise RuntimeError(f"BIG feature has no polygon geometry: {record['name']}")
         normalized_features.append(
             {
                 "type": "Feature",
-                "geometry": feature.get("geometry"),
+                "geometry": {"type": "MultiPolygon", "coordinates": parts},
                 "properties": {
-                    "name": name,
+                    "name": record["name"],
                     "province": "Sumatera Barat",
-                    "kdbbps": lower_property(properties, "kdbbps"),
-                    "kdcbps": lower_property(properties, "kdcbps"),
-                    "kdpkab": lower_property(properties, "kdpkab"),
-                    "source_objectid": lower_property(properties, "objectid") or lower_property(properties, "objectid_1"),
+                    "kdbbps": first_nonempty(record["kdbbps"]),
+                    "kdcbps": first_nonempty(record["kdcbps"]),
+                    "kdpkab": first_nonempty(record["kdpkab"]),
+                    "source_objectids": [value for value in record["source_objectids"] if value not in (None, "")],
+                    "source_feature_count": len(record["source_objectids"]),
                 },
             }
         )
 
-    if len(set(name.casefold() for name in names)) != 19:
-        raise RuntimeError("BIG boundary contains duplicate kabupaten/kota names")
-
+    normalized_features.sort(key=lambda item: item["properties"]["name"].casefold())
     output_payload = {
         "type": "FeatureCollection",
         "name": "Sumatera Barat Kabupaten/Kota",
-        "features": sorted(normalized_features, key=lambda item: item["properties"]["name"].casefold()),
+        "features": normalized_features,
     }
     GEO_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     GEO_OUTPUT.write_text(json.dumps(output_payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
@@ -254,8 +302,9 @@ def acquire_big_boundary() -> dict:
         "geometry_type": layer_metadata.get("geometryType"),
         "spatial_reference": (layer_metadata.get("extent") or {}).get("spatialReference"),
         "supported_query_formats": layer_metadata.get("supportedQueryFormats"),
+        "source_feature_count": len(source_features),
         "feature_count": len(normalized_features),
-        "district_names": sorted(names, key=str.casefold),
+        "district_names": [item["properties"]["name"] for item in normalized_features],
         "output_path": GEO_OUTPUT.relative_to(ROOT).as_posix(),
         "output_sha256": sha256_path(GEO_OUTPUT),
     }
@@ -314,6 +363,7 @@ def main() -> None:
                 "bpbd_manifest": BPBD_MANIFEST.relative_to(ROOT).as_posix(),
                 "bpbd_package_count": len(bpbd_records),
                 "geo_manifest": GEO_MANIFEST.relative_to(ROOT).as_posix(),
+                "geo_source_feature_count": geo_record["source_feature_count"],
                 "geo_feature_count": geo_record["feature_count"],
             },
             ensure_ascii=False,
