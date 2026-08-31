@@ -227,15 +227,27 @@ def acquire_big_boundary() -> dict:
         raise RuntimeError("BIG Sumatera Barat kab/kota query returned no features")
 
     grouped: dict[str, dict] = {}
+    excluded_unnamed: list[dict] = []
     for feature in source_features:
         properties = feature.get("properties") or {}
         province = lower_property(properties, "wadmpr")
-        name = lower_property(properties, "wadmkk") or lower_property(properties, "namobj")
+        raw_name = lower_property(properties, "wadmkk") or lower_property(properties, "namobj")
+        name = str(raw_name or "").strip()
+        object_id = lower_property(properties, "objectid") or lower_property(properties, "objectid_1")
         if str(province).strip().casefold() != "sumatera barat":
             raise RuntimeError(f"BIG query returned non-Sumatera Barat feature: {province!r} {name!r}")
         if not name:
-            raise RuntimeError("BIG feature missing kabupaten/kota name")
-        name = str(name).strip()
+            excluded_unnamed.append(
+                {
+                    "source_objectid": object_id,
+                    "kdbbps": lower_property(properties, "kdbbps"),
+                    "kdcbps": lower_property(properties, "kdcbps"),
+                    "kdpkab": lower_property(properties, "kdpkab"),
+                    "reason": "WADMKK and NAMOBJ are blank in source feature",
+                }
+            )
+            continue
+
         key = name.casefold()
         record = grouped.setdefault(
             key,
@@ -252,15 +264,13 @@ def acquire_big_boundary() -> dict:
         record["kdbbps"].append(lower_property(properties, "kdbbps"))
         record["kdcbps"].append(lower_property(properties, "kdcbps"))
         record["kdpkab"].append(lower_property(properties, "kdpkab"))
-        record["source_objectids"].append(
-            lower_property(properties, "objectid") or lower_property(properties, "objectid_1")
-        )
+        record["source_objectids"].append(object_id)
 
     if len(grouped) != 19:
         names = sorted(record["name"] for record in grouped.values())
         raise RuntimeError(
-            f"BIG Sumatera Barat query produced {len(source_features)} source features but {len(grouped)} unique kab/kota; "
-            f"expected 19. names={names}"
+            f"BIG Sumatera Barat query produced {len(source_features)} source features, "
+            f"{len(excluded_unnamed)} unnamed exclusions, and {len(grouped)} named kab/kota; expected 19. names={names}"
         )
 
     normalized_features = []
@@ -303,6 +313,9 @@ def acquire_big_boundary() -> dict:
         "spatial_reference": (layer_metadata.get("extent") or {}).get("spatialReference"),
         "supported_query_formats": layer_metadata.get("supportedQueryFormats"),
         "source_feature_count": len(source_features),
+        "named_source_feature_count": len(source_features) - len(excluded_unnamed),
+        "excluded_unnamed_feature_count": len(excluded_unnamed),
+        "excluded_unnamed_features": excluded_unnamed,
         "feature_count": len(normalized_features),
         "district_names": [item["properties"]["name"] for item in normalized_features],
         "output_path": GEO_OUTPUT.relative_to(ROOT).as_posix(),
@@ -364,6 +377,7 @@ def main() -> None:
                 "bpbd_package_count": len(bpbd_records),
                 "geo_manifest": GEO_MANIFEST.relative_to(ROOT).as_posix(),
                 "geo_source_feature_count": geo_record["source_feature_count"],
+                "geo_excluded_unnamed_feature_count": geo_record["excluded_unnamed_feature_count"],
                 "geo_feature_count": geo_record["feature_count"],
             },
             ensure_ascii=False,
