@@ -28,7 +28,8 @@ export type PublicBoundaryFeature = {
     geography_id: string;
     name: string;
     source_name: string;
-    bps_code: string;
+    source_code: string;
+    mapping_method: 'kdpkab' | 'exact_source_name';
     province: string;
     source_feature_count: number;
   };
@@ -74,7 +75,10 @@ export type PublicDisasterSummary = {
     organization: string;
     path: string;
     sha256: string;
+    crosswalk_path: string;
+    crosswalk_sha256: string;
     feature_count: number;
+    mapping_methods: Record<string, number>;
     public_path: string;
     anomaly_note: string;
   };
