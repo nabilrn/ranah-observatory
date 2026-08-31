@@ -1,13 +1,22 @@
 import { base } from '$app/paths';
-import type { PublicDisasterSummary } from '$lib/public-data';
+import type { PublicDisasterSummary, PublicDistrictBoundary } from '$lib/public-data';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch }) => {
-  const response = await fetch(`${base}/data/disaster-summary.json`);
-  if (!response.ok) throw new Error(`public disaster summary fetch failed: ${response.status}`);
-  const summary = (await response.json()) as PublicDisasterSummary;
-  if (summary.schema !== 'ranah-observatory/public-disaster-summary/v1') {
+  const [summaryResponse, geographyResponse] = await Promise.all([
+    fetch(`${base}/data/disaster-summary.json`),
+    fetch(`${base}/data/sumbar-kabkota.geojson`)
+  ]);
+  if (!summaryResponse.ok) throw new Error(`public disaster summary fetch failed: ${summaryResponse.status}`);
+  if (!geographyResponse.ok) throw new Error(`public geography fetch failed: ${geographyResponse.status}`);
+
+  const summary = (await summaryResponse.json()) as PublicDisasterSummary;
+  const geography = (await geographyResponse.json()) as PublicDistrictBoundary;
+  if (summary.schema !== 'ranah-observatory/public-disaster-summary/v2') {
     throw new Error(`unsupported public disaster summary schema: ${summary.schema}`);
   }
-  return { summary };
+  if (geography.type !== 'FeatureCollection' || geography.features.length !== summary.geography.feature_count) {
+    throw new Error('public geography contract does not match disaster summary metadata');
+  }
+  return { summary, geography };
 };
