@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - scripts/acquire_sumbar_public_disaster_sources.py
+      - scripts/materialize_bpbd_sumbar_impact.py
       - .github/workflows/public-disaster-source-refresh.yml
   workflow_dispatch:
 
@@ -26,17 +27,20 @@ jobs:
         run: python -m pip install --disable-pip-version-check openpyxl==3.1.5
       - name: Acquire official sources
         run: python scripts/acquire_sumbar_public_disaster_sources.py
-      - name: Commit normalized source-native artifacts
+      - name: Validate and materialize BPBD impact observations
+        run: python scripts/materialize_bpbd_sumbar_impact.py
+      - name: Commit validated disaster data artifacts
         run: |
           git config user.name "ranah-observatory-bot"
           git config user.email "116415990+nabilrn@users.noreply.github.com"
           git add \
             data/processed/bpbd/sumbar_open_data/2024 \
+            data/processed/bpbd/disaster_impact_2024 \
             data/processed/geography/sumbar-big-kabkota.geojson \
             data/manifests/sumbar_bpbd_open_data_2024.json \
             data/manifests/sumbar_big_kabkota_boundary.json
           if git diff --cached --quiet; then
-            echo "No source changes to commit"
+            echo "No source or canonical changes to commit"
             exit 0
           fi
           git commit -m "[skip ci] [data-refresh] Refresh official Sumbar disaster sources"
