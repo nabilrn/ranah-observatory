@@ -3,6 +3,10 @@
   import type { DisasterDistrictRow, PublicDistrictBoundary } from '$lib/public-data';
   import type { Map as MapLibreMap } from 'maplibre-gl';
 
+  type MutableGeoJsonSource = {
+    setData: (data: unknown) => void;
+  };
+
   export let geography: PublicDistrictBoundary;
   export let rows: DisasterDistrictRow[];
   export let indicators: string[];
@@ -71,8 +75,8 @@
   function refreshMap() {
     if (!map || !loaded) return;
     const data = decoratedGeojson();
-    const source = map.getSource('districts');
-    if (source && 'setData' in source) source.setData(data as never);
+    const source = map.getSource('districts') as MutableGeoJsonSource | undefined;
+    source?.setData(data);
 
     const maximum = Math.max(
       1,
