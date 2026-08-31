@@ -1,0 +1,120 @@
+{
+  "schema": "ranah-observatory/sumbar-bpbd-open-data-acquisition/v1",
+  "retrieved_at": "2026-08-31T22:59:35.331543+00:00",
+  "source": "https://data.sumbarprov.go.id/",
+  "producer": "BPBD Provinsi Sumatera Barat",
+  "source_data": "Pusdalops BPBD Sumatera Barat",
+  "year": 2024,
+  "promotion_state": "source_native_review_required",
+  "missing_values_inferred": false,
+  "packages": [
+    {
+      "package_slug": "jumlah-korban-per-kabkota-2024",
+      "package_id": "b16dce09-9c09-4eb6-9bf6-e544b9f9f84f",
+      "title": "Jumlah Korban Per KabKota 2024",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "author": "BPBD Provinsi Sumatera Barat",
+      "metadata_created": "2025-04-12T04:36:49.495034",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "539c6af0-c776-4ff2-a0b7-c79a8a0499b9",
+      "resource_name": "Jumlah Korban Per KabKota 2024.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/b16dce09-9c09-4eb6-9bf6-e544b9f9f84f/resource/539c6af0-c776-4ff2-a0b7-c79a8a0499b9/download/jumlah-korban-per-kabkota-2024.xlsx",
+      "resource_last_modified": "2025-06-11T06:59:55.688899",
+      "download_sha256": "f3852463b53f8b8cb99d4c1584e3b2efa3a4d571b53c7d329b32fb7b0be8daf4",
+      "download_size_bytes": 10576,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2024/jumlah-korban-per-kabkota-2024/01-Sheet1.csv",
+          "sha256": "5038d4c933e21ca16fe284d8d64ef9ba9df1fb79c58eebf37bcb4901fa97eb45",
+          "row_count": 21,
+          "nonempty_rows": 21,
+          "max_columns": 7
+        }
+      ]
+    },
+    {
+      "package_slug": "jumlah-kejadian-bencana-per-kabkota-2024",
+      "package_id": "869d0f32-ace8-4426-ab9c-a3725eccf8cb",
+      "title": "Jumlah Kejadian Bencana Per KabKota 2024",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "author": "BPBD Provinsi Sumatera Barat",
+      "metadata_created": "2025-04-12T04:36:49.495034",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "1026b826-032d-4371-a1c3-4981f4130694",
+      "resource_name": "Jumlah Kejadian Bencana Per KabKota 2024.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/869d0f32-ace8-4426-ab9c-a3725eccf8cb/resource/1026b826-032d-4371-a1c3-4981f4130694/download/jumlah-kejadian-bencana-per-kabkota-2024.xlsx",
+      "resource_last_modified": "2025-06-11T06:57:39.052826",
+      "download_sha256": "35b79652b8f24e58cebabe035ab3dacbc6888e7d58e01ea9b8c875cad592eeec",
+      "download_size_bytes": 10164,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2024/jumlah-kejadian-bencana-per-kabkota-2024/01-Sheet1.csv",
+          "sha256": "845c83c4a955c5fab76d5e029956a8e4b72c4b3fe244d3663e5351e878f0f275",
+          "row_count": 21,
+          "nonempty_rows": 21,
+          "max_columns": 3
+        }
+      ]
+    },
+    {
+      "package_slug": "dampak-bencana-terhadap-pemukiman-per-kabkota-2024",
+      "package_id": "0765a858-c8c4-4640-b319-e57c7001ba12",
+      "title": "Dampak Bencana Terhadap Pemukiman Per KabKota 2024",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "author": "BPBD Provinsi Sumatera Barat",
+      "metadata_created": "2025-04-12T04:36:49.495034",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "f3b42679-c800-48eb-bfd7-5c1037c779a3",
+      "resource_name": "Dampak Bencana Terhadap Pemukiman Per KabKota 2024.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/0765a858-c8c4-4640-b319-e57c7001ba12/resource/f3b42679-c800-48eb-bfd7-5c1037c779a3/download/dampak-bencana-terhadap-pemukiman-per-kabkota-2024.xlsx",
+      "resource_last_modified": "2025-06-11T06:52:39.821659",
+      "download_sha256": "85852b8994c64a21088b191ec6c56a79b6f99c88f330a7b71f9fdf6d12e105b4",
+      "download_size_bytes": 10492,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2024/dampak-bencana-terhadap-pemukiman-per-kabkota-2024/01-Sheet1.csv",
+          "sha256": "865a27517ffcce06b3ee5fe7322ed3415dd2164bfeea5e75a0a3f2c43868b755",
+          "row_count": 21,
+          "nonempty_rows": 21,
+          "max_columns": 6
+        }
+      ]
+    },
+    {
+      "package_slug": "dampak-bencana-terhadap-fasilitas-umum-per-kabkota-2024",
+      "package_id": "637ee0d2-c249-4e33-9441-688dfefbf214",
+      "title": "Dampak Bencana Terhadap Fasilitas Umum Per KabKota 2024",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "author": "BPBD Provinsi Sumatera Barat",
+      "metadata_created": "2025-04-12T04:36:49.495034",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "749b7d4b-041f-4c99-8dde-495fbc6aaf8d",
+      "resource_name": "Dampak Bencana Terhadap Fasilitas Umum Per KabKota 2024.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/637ee0d2-c249-4e33-9441-688dfefbf214/resource/749b7d4b-041f-4c99-8dde-495fbc6aaf8d/download/dampak-bencana-terhadap-fasilitas-umum-per-kabkota-2024.xlsx",
+      "resource_last_modified": "2025-06-11T06:48:07.305805",
+      "download_sha256": "5f39e5eae29cdde4be6bb34b8bf5de30f75e01866ec67911276623e4c6092666",
+      "download_size_bytes": 10505,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2024/dampak-bencana-terhadap-fasilitas-umum-per-kabkota-2024/01-Sheet1.csv",
+          "sha256": "30fa661e4270f45b79334818eed50370e125c83632cde8a18fccefcd5447a240",
+          "row_count": 21,
+          "nonempty_rows": 21,
+          "max_columns": 7
+        }
+      ]
+    }
+  ]
+}

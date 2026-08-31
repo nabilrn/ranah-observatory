@@ -1,0 +1,65 @@
+{
+  "schema": "ranah-observatory/big-kabkota-boundary-acquisition/v1",
+  "retrieved_at": "2026-08-31T22:59:35.331543+00:00",
+  "source_organization": "Badan Informasi Geospasial",
+  "layer_url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_AR/MapServer/0",
+  "query_url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_AR/MapServer/0/query?where=WADMPR%3D%27Sumatera+Barat%27&outFields=%2A&returnGeometry=true&outSR=4326&f=geojson",
+  "service_item_id": "46eea7e378e04224b6ae3767af0ab4d7",
+  "layer_name": "Area Batas Wilayah Administrasi Kabupaten/Kota",
+  "geometry_type": "esriGeometryPolygon",
+  "spatial_reference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "supported_query_formats": "JSON, geoJSON",
+  "source_feature_count": 22,
+  "named_source_feature_count": 19,
+  "excluded_unnamed_feature_count": 3,
+  "excluded_unnamed_features": [
+    {
+      "source_objectid": 1606,
+      "kdbbps": " ",
+      "kdcbps": " ",
+      "kdpkab": " ",
+      "reason": "WADMKK and NAMOBJ are blank in source feature"
+    },
+    {
+      "source_objectid": 1607,
+      "kdbbps": " ",
+      "kdcbps": " ",
+      "kdpkab": " ",
+      "reason": "WADMKK and NAMOBJ are blank in source feature"
+    },
+    {
+      "source_objectid": 1608,
+      "kdbbps": " ",
+      "kdcbps": " ",
+      "kdpkab": " ",
+      "reason": "WADMKK and NAMOBJ are blank in source feature"
+    }
+  ],
+  "feature_count": 19,
+  "district_names": [
+    "Agam",
+    "Dharmasraya",
+    "Kepulauan Mentawai",
+    "Kota Bukittinggi",
+    "Kota Padang",
+    "Kota Padang Panjang",
+    "Kota Pariaman",
+    "Kota Payakumbuh",
+    "Kota Sawahlunto",
+    "Kota Solok",
+    "Lima Puluh Kota",
+    "Padang Pariaman",
+    "Pasaman",
+    "Pasaman Barat",
+    "Pesisir Selatan",
+    "Sijunjung",
+    "Solok",
+    "Solok Selatan",
+    "Tanah Datar"
+  ],
+  "output_path": "data/processed/geography/sumbar-big-kabkota.geojson",
+  "output_sha256": "6d88adca93450f66a5f44cf5efd7e2dc28198caa5d5e71bc3612a8382e932367"
+}
