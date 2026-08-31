@@ -1,0 +1,111 @@
+{
+  "schema": "ranah-observatory/bpbd-disaster-impact-materialization/v1",
+  "materialized_at": "2026-08-31T23:03:48.045333+00:00",
+  "period": 2024,
+  "source_organization": "BPBD Provinsi Sumatera Barat",
+  "source_data": "Pusdalops BPBD Sumatera Barat",
+  "district_count": 19,
+  "indicator_count": 14,
+  "observation_count": 266,
+  "missing_values_inferred": false,
+  "synthetic_cross_indicator_totals_created": false,
+  "total_row_validation": "passed",
+  "indicator_totals": {
+    "deaths": 114,
+    "missing_people": 20,
+    "injured_or_sick_people": 73,
+    "suffering_people": 925,
+    "displaced_people": 80130,
+    "houses_heavily_damaged": 1572,
+    "houses_moderately_damaged": 5178,
+    "houses_lightly_damaged": 5263,
+    "houses_flooded": 49775,
+    "education_facilities_affected": 79,
+    "worship_facilities_affected": 74,
+    "health_facilities_affected": 9,
+    "office_facilities_affected": 11,
+    "bridges_affected": 153
+  },
+  "validations": [
+    {
+      "family": "casualties",
+      "package_slug": "jumlah-korban-per-kabkota-2024",
+      "source_path": "data/processed/bpbd/sumbar_open_data/2024/jumlah-korban-per-kabkota-2024/01-Sheet1.csv",
+      "source_sha256": "5038d4c933e21ca16fe284d8d64ef9ba9df1fb79c58eebf37bcb4901fa97eb45",
+      "district_row_count": 19,
+      "source_totals": {
+        "deaths": 114,
+        "missing_people": 20,
+        "injured_or_sick_people": 73,
+        "suffering_people": 925,
+        "displaced_people": 80130
+      },
+      "computed_totals": {
+        "deaths": 114,
+        "missing_people": 20,
+        "injured_or_sick_people": 73,
+        "suffering_people": 925,
+        "displaced_people": 80130
+      },
+      "total_validation": "passed"
+    },
+    {
+      "family": "housing",
+      "package_slug": "dampak-bencana-terhadap-pemukiman-per-kabkota-2024",
+      "source_path": "data/processed/bpbd/sumbar_open_data/2024/dampak-bencana-terhadap-pemukiman-per-kabkota-2024/01-Sheet1.csv",
+      "source_sha256": "865a27517ffcce06b3ee5fe7322ed3415dd2164bfeea5e75a0a3f2c43868b755",
+      "district_row_count": 19,
+      "source_totals": {
+        "houses_heavily_damaged": 1572,
+        "houses_moderately_damaged": 5178,
+        "houses_lightly_damaged": 5263,
+        "houses_flooded": 49775
+      },
+      "computed_totals": {
+        "houses_heavily_damaged": 1572,
+        "houses_moderately_damaged": 5178,
+        "houses_lightly_damaged": 5263,
+        "houses_flooded": 49775
+      },
+      "total_validation": "passed"
+    },
+    {
+      "family": "facilities",
+      "package_slug": "dampak-bencana-terhadap-fasilitas-umum-per-kabkota-2024",
+      "source_path": "data/processed/bpbd/sumbar_open_data/2024/dampak-bencana-terhadap-fasilitas-umum-per-kabkota-2024/01-Sheet1.csv",
+      "source_sha256": "30fa661e4270f45b79334818eed50370e125c83632cde8a18fccefcd5447a240",
+      "district_row_count": 19,
+      "source_totals": {
+        "education_facilities_affected": 79,
+        "worship_facilities_affected": 74,
+        "health_facilities_affected": 9,
+        "office_facilities_affected": 11,
+        "bridges_affected": 153
+      },
+      "computed_totals": {
+        "education_facilities_affected": 79,
+        "worship_facilities_affected": 74,
+        "health_facilities_affected": 9,
+        "office_facilities_affected": 11,
+        "bridges_affected": 153
+      },
+      "total_validation": "passed"
+    }
+  ],
+  "outputs": {
+    "observations": {
+      "path": "data/processed/bpbd/disaster_impact_2024/bpbd-disaster-impact-canonical-observations.csv",
+      "sha256": "be2ae2f864cbca4e3edd32015b0a94e0d9623f4064c62175508e060722c17047"
+    },
+    "provenance": {
+      "path": "data/processed/bpbd/disaster_impact_2024/bpbd-disaster-impact-canonical-provenance.csv",
+      "sha256": "a783b3d48a7671816758ca04bc4ea5b17c42cf7559f42e4cf20aa0f37a0b5f91"
+    }
+  },
+  "interpretation_notes": [
+    "Menderita and Mengungsi remain separate source indicators and are not summed into a synthetic affected-population total.",
+    "Rumah Terendam remains separate from the three Rumah Rusak severity indicators.",
+    "Facility categories are kept separate; no synthetic facility total is stored as a canonical observation.",
+    "Economic loss is not included because the acquired 2024 package set does not contain a validated 2024 loss table."
+  ]
+}
