@@ -6,13 +6,9 @@
 
   $: lang = data.lang;
   $: t = copy[lang];
-  $: other: Locale = lang === 'id' ? 'en' : 'id';
+  $: other = (lang === 'id' ? 'en' : 'id') as Locale;
   $: switchHref = $page.url.pathname.replace(/^\/(id|en)(?=\/|$)/, `/${other}`);
 </script>
-
-<svelte:head>
-  <html lang={lang} />
-</svelte:head>
 
 <div class="shell">
   <header class="topbar">
