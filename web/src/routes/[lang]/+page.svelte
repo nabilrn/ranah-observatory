@@ -1,10 +1,11 @@
 <script lang="ts">
+  import type { PublicDataCatalog } from '$lib/catalog';
   import { copy, type Locale } from '$lib/i18n';
-  import { datasets } from '$lib/catalog';
 
-  export let data: { lang: Locale };
+  export let data: { lang: Locale; catalog: PublicDataCatalog };
   const lang = data.lang;
   const t = copy[lang];
+  const catalog = data.catalog;
 
   const sectors = lang === 'id'
     ? [
@@ -41,7 +42,7 @@
         <a class="button secondary" href={`/${lang}/data`}>{t.nav.data}</a>
       </div>
     </div>
-    <p class="hero-note">{t.home.note}<br /><br /><strong>{datasets.length}</strong> {lang === 'id' ? 'keluarga dataset sudah masuk adapter katalog baru.' : 'dataset families are already represented in the new catalog adapter.'}</p>
+    <p class="hero-note">{t.home.note}<br /><br /><strong>{catalog.summary.dataset_count}</strong> {lang === 'id' ? 'dataset/keluarga data sudah terdaftar pada katalog publik.' : 'datasets/data families are registered in the public catalog.'}<br /><strong>{catalog.summary.materialized_count}</strong> {lang === 'id' ? 'sudah materialized.' : 'are materialized.'}</p>
   </section>
 
   <section class="section">
