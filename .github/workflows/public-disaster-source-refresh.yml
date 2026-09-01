@@ -6,6 +6,7 @@ on:
     paths:
       - scripts/acquire_sumbar_public_disaster_sources.py
       - scripts/acquire_sumbar_priority_disaster_context.py
+      - scripts/acquire_sumbar_exposure_context.py
       - scripts/materialize_bpbd_sumbar_impact.py
       - scripts/materialize_bpbd_priority_context.py
       - .github/workflows/public-disaster-source-refresh.yml
@@ -31,11 +32,13 @@ jobs:
         run: python scripts/acquire_sumbar_public_disaster_sources.py
       - name: Acquire priority disaster context sources
         run: python scripts/acquire_sumbar_priority_disaster_context.py
+      - name: Acquire exposure and monitoring context sources
+        run: python scripts/acquire_sumbar_exposure_context.py
       - name: Validate and materialize BPBD impact observations
         run: python scripts/materialize_bpbd_sumbar_impact.py
       - name: Validate and materialize priority disaster context
         run: python scripts/materialize_bpbd_priority_context.py
-      - name: Commit validated disaster data artifacts
+      - name: Commit validated disaster and context data artifacts
         run: |
           git config user.name "ranah-observatory-bot"
           git config user.email "116415990+nabilrn@users.noreply.github.com"
@@ -45,13 +48,15 @@ jobs:
             data/processed/bpbd/disaster_impact_2023 \
             data/processed/bpbd/disaster_impact_2024 \
             data/processed/bpbd/disaster_context_2024 \
+            data/processed/sumbarprov/exposure_context \
             data/processed/geography/sumbar-big-kabkota.geojson \
             data/manifests/sumbar_bpbd_open_data_2024.json \
             data/manifests/sumbar_bpbd_priority_context.json \
+            data/manifests/sumbar_exposure_context.json \
             data/manifests/sumbar_big_kabkota_boundary.json
           if git diff --cached --quiet; then
             echo "No source or canonical changes to commit"
             exit 0
           fi
-          git commit -m "[skip ci] [data-refresh] Refresh official Sumbar disaster sources"
+          git commit -m "[skip ci] [data-refresh] Refresh official Sumbar disaster and context sources"
           git push origin HEAD:main
