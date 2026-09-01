@@ -6,6 +6,7 @@ on:
     paths:
       - scripts/probe_klhk_land_cover_2022.py
       - scripts/probe_forestry_land_cover_publications.py
+      - scripts/materialize_forestry_land_cover_sumbar.py
       - .github/workflows/klhk-land-cover-qualification.yml
   workflow_dispatch:
 
@@ -30,3 +31,5 @@ jobs:
         run: python scripts/probe_klhk_land_cover_2022.py
       - name: Inspect official 2022 and 2023 land-cover publication tables
         run: python scripts/probe_forestry_land_cover_publications.py
+      - name: Validate province-level Sumbar land-cover materialization
+        run: python scripts/materialize_forestry_land_cover_sumbar.py
