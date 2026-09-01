@@ -1,0 +1,55 @@
+{
+  "schema": "ranah-observatory/sumbar-exposure-context-validated/v1",
+  "year": 2024,
+  "source_manifest": "data/manifests/sumbar_exposure_context.json",
+  "source_manifest_sha256": "074a296a35f27905e22fa0706dbdf2a4d27e0b4fc7b0307e1f3278cf7b291f89",
+  "missing_values_inferred": false,
+  "geography_inferred": false,
+  "rain_gauge_inventory": {
+    "source_role": "rain_gauge_inventory",
+    "semantic_role": "hydrometeorological_monitoring_capacity",
+    "not_rainfall_observations": true,
+    "responsible_unit_count": 2,
+    "rain_gauge_post_total": 47,
+    "output": "data/processed/sumbarprov/context_2024/rain_gauge_inventory.csv",
+    "output_sha256": "ec52c0fe339eca85c2bf3d2bbdbf27b6ddb0f3dfe580a676733673cadf5f71a9"
+  },
+  "provincial_roads": {
+    "source_role": "provincial_road_surface_length",
+    "semantic_role": "provincial_road_exposure_and_condition_context",
+    "segment_count": 65,
+    "surface_fields_mutually_exclusive": [
+      "concrete_km",
+      "concrete_block_km",
+      "asphalt_km",
+      "lapen_km",
+      "stone_km",
+      "gravel_km",
+      "earth_km"
+    ],
+    "severely_damaged_is_overlapping_condition": true,
+    "totals": {
+      "length_km": "1690.4999999999995",
+      "concrete_km": "46.04",
+      "concrete_block_km": "0",
+      "asphalt_km": "1263.43",
+      "lapen_km": "0",
+      "severely_damaged_km": "24.62",
+      "stone_km": "0",
+      "gravel_km": "260.09",
+      "earth_km": "120.94"
+    },
+    "source_percentages": {
+      "concrete_km": "0.0272",
+      "concrete_block_km": "0",
+      "asphalt_km": "0.7474",
+      "lapen_km": "0",
+      "severely_damaged_km": "0.0146",
+      "stone_km": "0",
+      "gravel_km": "0.1539",
+      "earth_km": "0.0715"
+    },
+    "output": "data/processed/sumbarprov/context_2024/provincial_road_segments.csv",
+    "output_sha256": "3d5314c7c3c3c1c5ed6df374e5682d525640c0976773fc7ecbd295acb985e29a"
+  }
+}

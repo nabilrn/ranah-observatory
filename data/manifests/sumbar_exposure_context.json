@@ -1,6 +1,6 @@
 {
   "schema": "ranah-observatory/sumbar-exposure-context-acquisition/v1",
-  "retrieved_at": "2026-09-01T07:42:24.997581+00:00",
+  "retrieved_at": "2026-09-01T07:45:37.630617+00:00",
   "source": "https://data.sumbarprov.go.id/",
   "promotion_state": "source_native_review_required",
   "missing_values_inferred": false,
