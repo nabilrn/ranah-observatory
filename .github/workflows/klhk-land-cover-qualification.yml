@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - scripts/probe_klhk_land_cover_2022.py
+      - scripts/probe_forestry_land_cover_publications.py
       - .github/workflows/klhk-land-cover-qualification.yml
   workflow_dispatch:
 
@@ -23,5 +24,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.13'
-      - name: Probe official KLHK 2022 land-cover service
+      - name: Probe official forestry transport paths
         run: python scripts/probe_klhk_land_cover_2022.py
+      - name: Inspect official 2022 and 2023 land-cover publication tables
+        run: python scripts/probe_forestry_land_cover_publications.py
