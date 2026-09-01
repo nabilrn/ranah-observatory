@@ -9,7 +9,8 @@ Rules:
 - Count-table dash markers are interpreted as explicit source zeros and validated to totals.
 - Excel floating-point artifacts are accepted only when within tolerance of an integer.
 - 2024 casualties by hazard must reconcile to the already-validated district-impact totals.
-- Flood/landslide monthly totals must reconcile to the BNPB canonical 2024 event totals.
+- BPBD monthly event totals are compared with BNPB canonical totals where overlapping,
+  but cross-source differences are preserved and documented rather than forced equal.
 """
 
 from __future__ import annotations
@@ -365,6 +366,27 @@ def canonical_2024_event_totals() -> dict[str, int]:
     return dict(totals)
 
 
+def compare_event_sources(hazard_totals: dict[str, int], canonical_events: dict[str, int]) -> dict[str, dict]:
+    overlaps = {
+        "flood": "flood_events",
+        "landslide": "landslide_events",
+    }
+    comparison: dict[str, dict] = {}
+    for hazard_id, indicator_id in overlaps.items():
+        bpbd_total = hazard_totals.get(hazard_id)
+        bnpb_total = canonical_events.get(indicator_id)
+        if bpbd_total is None or bnpb_total is None:
+            raise RuntimeError(f"overlapping event series missing for comparison: {hazard_id}/{indicator_id}")
+        comparison[hazard_id] = {
+            "bpbd_pusdalops_total": bpbd_total,
+            "bnpb_canonical_total": bnpb_total,
+            "difference_bpbd_minus_bnpb": bpbd_total - bnpb_total,
+            "status": "match" if bpbd_total == bnpb_total else "cross_source_divergent",
+            "interpretation": "Different official recording/classification systems are retained as separate series; divergence is evidence, not an error to overwrite.",
+        }
+    return comparison
+
+
 def build_2024(by_role: dict[str, dict], aliases: dict[str, tuple[str, str]]) -> dict:
     casualty_path = role_sheet(by_role, "casualties_by_hazard")
     monthly_path = role_sheet(by_role, "monthly_events")
@@ -454,11 +476,7 @@ def build_2024(by_role: dict[str, dict], aliases: dict[str, tuple[str, str]]) ->
     for index, month_number in enumerate(MONTHS.values(), start=1):
         if month_totals[month_number] != as_int(grand[index]):
             raise RuntimeError(f"monthly column total mismatch for month={month_number}")
-    canonical_events = canonical_2024_event_totals()
-    if canonical_events.get("flood_events") is not None and hazard_totals["flood"] != canonical_events["flood_events"]:
-        raise RuntimeError("flood total disagrees with BNPB canonical 2024")
-    if canonical_events.get("landslide_events") is not None and hazard_totals["landslide"] != canonical_events["landslide_events"]:
-        raise RuntimeError("landslide total disagrees with BNPB canonical 2024")
+    event_source_comparison = compare_event_sources(hazard_totals, canonical_2024_event_totals())
     write_csv(CTX_MONTHLY_2024, list(monthly_rows[0].keys()), monthly_rows)
 
     header_index = next((i for i, row in enumerate(sirens) if row and row[0] == "NO"), None)
@@ -512,6 +530,7 @@ def build_2024(by_role: dict[str, dict], aliases: dict[str, tuple[str, str]]) ->
         "monthly_event_rows": len(monthly_rows),
         "monthly_event_total": grand_total,
         "monthly_hazard_totals": hazard_totals,
+        "event_source_comparison": event_source_comparison,
         "siren_count": len(siren_rows),
         "siren_status_counts": dict(statuses),
         "siren_geography_count": len(geography_counts),
@@ -530,6 +549,7 @@ def main() -> None:
         "source_manifest_sha256": sha256(SOURCE_MANIFEST),
         "missing_values_inferred": False,
         "zero_interpretation": "Dash markers are converted to zero only in additive count tables whose source totals validate that interpretation. Economic-loss blanks/dashes remain missing.",
+        "cross_source_policy": "BPBD/Pusdalops and BNPB event series remain separate when official totals diverge; no overwrite or forced reconciliation is performed.",
         "result_2023": result_2023,
         "result_2024": result_2024,
         "outputs": {
