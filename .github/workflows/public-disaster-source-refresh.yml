@@ -36,7 +36,7 @@ jobs:
         with:
           python-version: '3.13'
       - name: Install source readers and topography dependencies
-        run: python -m pip install --disable-pip-version-check openpyxl==3.1.5 numpy==2.3.3 tifffile==2026.8.30
+        run: python -m pip install --disable-pip-version-check openpyxl==3.1.5 numpy==2.3.3 tifffile==2026.8.23
       - name: Acquire official district-impact sources
         run: python scripts/acquire_sumbar_bpbd_impact_sources.py
       - name: Acquire priority disaster context sources
