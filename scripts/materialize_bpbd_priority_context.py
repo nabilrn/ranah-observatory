@@ -124,6 +124,7 @@ def role_sheet(by_role: dict[str, dict], role: str) -> Path:
 
 def load_geography_aliases() -> tuple[dict[str, tuple[str, str]], set[str]]:
     aliases: dict[str, tuple[str, str]] = {}
+    ambiguous_aliases: set[str] = set()
     ids: set[str] = set()
     with GEOGRAPHIES.open(newline="", encoding="utf-8") as handle:
         for row in csv.DictReader(handle):
@@ -140,12 +141,20 @@ def load_geography_aliases() -> tuple[dict[str, tuple[str, str]], set[str]]:
             else:
                 candidates.add(f"kota {name}".casefold())
             for alias in candidates:
+                if alias in ambiguous_aliases:
+                    continue
                 existing = aliases.get(alias)
                 if existing and existing[0] != geography_id:
-                    raise RuntimeError(f"ambiguous geography alias {alias!r}")
+                    aliases.pop(alias, None)
+                    ambiguous_aliases.add(alias)
+                    continue
                 aliases[alias] = (geography_id, name)
     if len(ids) != 19:
         raise RuntimeError(f"expected 19 current Sumbar districts, found {len(ids)}")
+    if "solok" not in ambiguous_aliases:
+        raise RuntimeError("expected bare 'solok' alias to be ambiguous between regency and city")
+    if "kabupaten solok" not in aliases or "kota solok" not in aliases:
+        raise RuntimeError("qualified Solok aliases missing after ambiguity handling")
     return aliases, ids
 
 
@@ -153,7 +162,7 @@ def map_geography(source_name: str, aliases: dict[str, tuple[str, str]]) -> tupl
     key = re.sub(r"\s+", " ", source_name.strip()).casefold()
     result = aliases.get(key)
     if not result:
-        raise RuntimeError(f"unmapped Sumbar geography name: {source_name!r}")
+        raise RuntimeError(f"unmapped or ambiguous Sumbar geography name: {source_name!r}")
     return result
 
 
