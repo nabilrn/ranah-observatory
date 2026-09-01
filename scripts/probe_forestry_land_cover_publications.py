@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 """Inspect official Kementerian Kehutanan land-cover publications for Sumbar tables.
 
-Downloads current official PDFs from SIGAP, extracts text with Poppler's
-pdftotext, and prints only pages relevant to Sumatera Barat / its districts.
-This is a qualification probe; raw PDFs and extracted text are not committed.
+Downloads current official PDFs from SIGAP, extracts text with pypdf, and
+prints only pages relevant to Sumatera Barat / its districts. This is a
+qualification probe; raw PDFs and extracted text are not committed.
 """
 
 from __future__ import annotations
 
 import json
-import shutil
-import subprocess
 import tempfile
 import urllib.request
 from pathlib import Path
+
+from pypdf import PdfReader
 
 USER_AGENT = "ranah-observatory/1.0 (+https://github.com/nabilrn/ranah-observatory)"
 PUBLICATIONS = {
@@ -46,31 +46,35 @@ def download(url: str, path: Path) -> dict[str, object]:
     return {"url": url, "final_url": final_url, "bytes": len(raw), "content_type": content_type}
 
 
-def extract(pdf_path: Path, txt_path: Path) -> None:
-    executable = shutil.which("pdftotext")
-    if not executable:
-        raise RuntimeError("pdftotext is not installed on the GitHub Actions runner")
-    subprocess.run([executable, "-layout", str(pdf_path), str(txt_path)], check=True, timeout=180)
-
-
-def page_summary(text: str) -> list[dict[str, object]]:
-    pages = text.split("\f")
+def inspect_pdf(pdf_path: Path) -> tuple[int, int, list[dict[str, object]], list[str]]:
+    reader = PdfReader(str(pdf_path), strict=False)
+    occurrence_count = 0
     matches: list[dict[str, object]] = []
-    for index, page in enumerate(pages, start=1):
-        lower = page.casefold()
+    district_terms: set[str] = set()
+
+    for index, page in enumerate(reader.pages, start=1):
+        # Layout mode preserves table columns better when the source PDF has an
+        # actual text layer. Fall back to normal extraction for unusual pages.
+        try:
+            text = page.extract_text(extraction_mode="layout") or ""
+        except Exception:
+            text = page.extract_text() or ""
+        lower = text.casefold()
+        occurrence_count += lower.count("sumatera barat")
         hit_terms = [needle for needle in NEEDLES if needle in lower]
         if not hit_terms:
             continue
-        lines = [line.rstrip() for line in page.splitlines()]
-        nonempty = [line for line in lines if line.strip()]
+        district_terms.update(term for term in hit_terms if term != "sumatera barat")
+        nonempty = [line.rstrip() for line in text.splitlines() if line.strip()]
         matches.append(
             {
                 "pdf_page_index": index,
                 "hit_terms": hit_terms,
-                "preview_lines": nonempty[:100],
+                "preview_lines": nonempty[:120],
             }
         )
-    return matches
+
+    return len(reader.pages), occurrence_count, matches, sorted(district_terms)
 
 
 def main() -> None:
@@ -78,26 +82,22 @@ def main() -> None:
         root = Path(tmp)
         for key, url in PUBLICATIONS.items():
             pdf_path = root / f"{key}.pdf"
-            txt_path = root / f"{key}.txt"
             source = download(url, pdf_path)
-            extract(pdf_path, txt_path)
-            text = txt_path.read_text(encoding="utf-8", errors="replace")
-            pages = text.split("\f")
-            matches = page_summary(text)
+            page_count, occurrence_count, matches, district_terms = inspect_pdf(pdf_path)
             print(
                 json.dumps(
                     {
                         "publication": key,
                         "source": source,
-                        "page_count_extracted": len(pages),
+                        "page_count_extracted": page_count,
                         "sumbar_relevant_page_count": len(matches),
-                        "sumatera_barat_occurrences": text.casefold().count("sumatera barat"),
-                        "district_needles_found": sorted({term for item in matches for term in item["hit_terms"] if term != "sumatera barat"}),
+                        "sumatera_barat_occurrences": occurrence_count,
+                        "district_needles_found": district_terms,
                     },
                     ensure_ascii=False,
                 )
             )
-            for item in matches[:12]:
+            for item in matches[:16]:
                 print(json.dumps({"publication": key, "relevant_page": item}, ensure_ascii=False))
 
 
