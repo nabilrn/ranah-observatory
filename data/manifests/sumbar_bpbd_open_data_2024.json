@@ -1,6 +1,6 @@
 {
   "schema": "ranah-observatory/sumbar-bpbd-open-data-acquisition/v1",
-  "retrieved_at": "2026-09-01T07:45:04.465008+00:00",
+  "retrieved_at": "2026-09-01T08:59:48.208684+00:00",
   "source": "https://data.sumbarprov.go.id/",
   "producer": "BPBD Provinsi Sumatera Barat",
   "source_data": "Pusdalops BPBD Sumatera Barat",
@@ -116,5 +116,7 @@
         }
       ]
     }
-  ]
+  ],
+  "boundary_refresh_performed": false,
+  "boundary_note": "Routine BPBD refresh reuses the separately materialized BIG boundary. Run acquire_sumbar_public_disaster_sources.py explicitly when refreshing geography."
 }

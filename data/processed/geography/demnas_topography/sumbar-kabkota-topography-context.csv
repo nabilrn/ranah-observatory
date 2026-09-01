@@ -1,0 +1,20 @@
+geography_id,geography_name,source_kdpkab,source_name,analysis_grid_cell_count,elevation_mean_m,elevation_median_m,elevation_p10_m,elevation_p90_m,elevation_min_m,elevation_max_m,slope_mean_deg_generalized,slope_median_deg_generalized,slope_p90_deg_generalized
+idn.13.1301,Kepulauan Mentawai,1309,Kepulauan Mentawai,19460,77.06,65.32,16.86,157.29,-0.23,325.29,2.21,1.86,4.35
+idn.13.1302,Pesisir Selatan,1301,Pesisir Selatan,19673,513.48,302.63,6.08,1419.74,-4.42,2570.72,6.62,5.93,14.72
+idn.13.1303,Solok,1302,Solok,11682,971.10,898.73,438.67,1602.10,210.73,2519.60,8.53,8.02,15.28
+idn.13.1304,Sijunjung,1303,Sijunjung,10254,363.98,319.02,154.35,641.52,86.05,1693.80,5.66,4.70,11.87
+idn.13.1305,Tanah Datar,1304,Tanah Datar,4478,751.26,651.35,355.88,1251.68,177.04,2803.93,6.74,5.38,14.11
+idn.13.1306,Padang Pariaman,1305,Padang Pariaman,4354,235.28,124.42,11.19,666.77,-2.31,2147.38,4.06,2.02,11.65
+idn.13.1307,Agam,1306,Agam,7234,605.62,589.94,9.86,1224.56,-2.50,2799.69,5.52,3.74,13.82
+idn.13.1308,Lima Puluh Kota,1307,Lima Puluh Kota,10646,608.46,561.39,167.64,1092.51,76.42,2125.26,7.09,5.83,14.79
+idn.13.1309,Pasaman,1308,Pasaman,12691,719.56,669.21,256.12,1248.84,28.94,2597.61,8.69,8.06,16.16
+idn.13.1310,Solok Selatan,1311,Solok Selatan,10682,655.29,505.15,214.14,1367.10,110.91,3603.10,6.28,4.92,13.94
+idn.13.1311,Dharmasraya,1310,Dharmasraya,9506,194.38,150.43,87.71,326.82,61.43,2358.45,2.01,0.96,4.94
+idn.13.1312,Pasaman Barat,1312,Pasaman Barat,12541,248.49,53.13,5.73,812.68,-5.74,2769.31,3.31,0.90,10.08
+idn.13.1371,Padang,1371,Kota Padang,2259,470.99,328.72,6.23,1160.91,-4.65,1759.52,8.32,8.34,16.68
+idn.13.1372,Solok,1372,Kota Solok,189,631.38,465.86,386.37,1220.03,383.21,1466.04,4.30,2.91,11.10
+idn.13.1373,Sawahlunto,1373,Kota Sawahlunto,755,433.10,401.44,259.51,672.61,208.03,1092.17,6.12,5.51,11.36
+idn.13.1374,Padang Panjang,1374,Kota Padang Panjang,78,822.48,781.08,711.90,997.22,636.59,1278.59,6.11,3.58,13.38
+idn.13.1375,Bukittinggi,1375,Kota Bukittinggi,80,911.86,913.32,888.33,934.86,849.57,973.89,1.49,0.99,3.52
+idn.13.1376,Payakumbuh,1376,Kota Payakumbuh,243,523.36,511.46,499.44,560.58,495.28,697.18,1.04,0.30,3.56
+idn.13.1377,Pariaman,1377,Kota Pariaman,213,17.15,12.07,4.97,37.17,0.00,64.64,0.56,0.51,1.17

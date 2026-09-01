@@ -1,0 +1,92 @@
+{
+  "schema": "ranah-observatory/demnas-sumbar-topography-context/v1",
+  "source": {
+    "provider": "Badan Informasi Geospasial",
+    "product": "DEMNAS",
+    "service": "https://geoservices.big.go.id/raster/rest/services/DEMNAS/DEM_Indonesia/ImageServer",
+    "service_contract": {
+      "name": "DEMNAS/DEM_Indonesia",
+      "description": "DEMNAS Indonesia",
+      "extent": {
+        "xmin": 94.75,
+        "ymin": -11.250000000000002,
+        "xmax": 141,
+        "ymax": 6.249999999999998,
+        "spatialReference": {
+          "wkid": 4326,
+          "latestWkid": 4326,
+          "vcsWkid": 105790,
+          "latestVcsWkid": 3855
+        }
+      },
+      "spatial_reference": 4326,
+      "native_pixel_degrees": 7.498500299940011e-05,
+      "band_count": 1,
+      "pixel_type": "F32",
+      "min_values": [
+        -70.76360321044922
+      ],
+      "max_values": [
+        4535.35888671875
+      ],
+      "default_resampling_method": "Bilinear",
+      "max_image_width": 15000,
+      "max_image_height": 4100,
+      "copyright": "Badan Informasi Geospasial",
+      "service_metadata_url": "https://geoservices.big.go.id/raster/rest/services/DEMNAS/DEM_Indonesia/ImageServer?f=pjson",
+      "service_metadata_sha256": "7275403dadcd3b7d7b97ab67d8cf1a7e121210bef080e4fec50a1c777bf9eda2"
+    }
+  },
+  "analysis_contract": {
+    "purpose": "regional kabupaten/kota topography context for Ranah Observatory",
+    "native_resolution_preserved": false,
+    "analysis_pixel_degrees_target": 0.005,
+    "analysis_grid_label": "coarse regional grid, roughly 0.5 km near the equator",
+    "slope_is_generalized": true,
+    "safe_for_local_hazard_mapping": false,
+    "safe_for_engineering_design": false,
+    "causal_claim_by_itself": false,
+    "boundary_source": "data/processed/geography/sumbar-big-kabkota.geojson",
+    "boundary_sha256": "6d88adca93450f66a5f44cf5efd7e2dc28198caa5d5e71bc3612a8382e932367",
+    "crosswalk_source": "data/registries/big_geography_map.csv",
+    "crosswalk_sha256": "4b67e68bf0d87432002416201eef4fbe74c29e2d67d659ebc148fd56ef43bdbe",
+    "boundary_edition": "Juni 2026",
+    "district_count": 19,
+    "bbox_wgs84": [
+      98.58650192,
+      -3.58302,
+      101.90288296,
+      0.91672222
+    ]
+  },
+  "export": {
+    "request_url": "https://geoservices.big.go.id/raster/rest/services/DEMNAS/DEM_Indonesia/ImageServer/exportImage?bbox=98.58650192%2C-3.58302000%2C101.90288296%2C0.91672222&bboxSR=4326&imageSR=4326&size=664%2C900&format=tiff&pixelType=F32&interpolation=RSP_BilinearInterpolation&f=image",
+    "resolved_url": "https://geoservices.big.go.id/raster/rest/services/DEMNAS/DEM_Indonesia/ImageServer/exportImage?bbox=98.58650192%2C-3.58302000%2C101.90288296%2C0.91672222&bboxSR=4326&imageSR=4326&size=664%2C900&format=tiff&pixelType=F32&interpolation=RSP_BilinearInterpolation&f=image",
+    "request_parameters": {
+      "bbox": "98.58650192,-3.58302000,101.90288296,0.91672222",
+      "bboxSR": "4326",
+      "imageSR": "4326",
+      "size": "664,900",
+      "format": "tiff",
+      "pixelType": "F32",
+      "interpolation": "RSP_BilinearInterpolation",
+      "f": "image"
+    },
+    "content_type": "image/tiff",
+    "width": 664,
+    "height": 900,
+    "raw_tiff_path": "data/raw/demnas/sumbar-regional-grid-0.005deg.tif",
+    "raw_tiff_committed": false,
+    "raw_tiff_bytes": 2688176,
+    "raw_tiff_sha256": "84931b9ea8978a54ce83dacfc7fa49cce81834ade98a272f29ea7944931925f0",
+    "valid_cell_count": 597600,
+    "total_cell_count": 597600
+  },
+  "output": {
+    "path": "data/processed/geography/demnas_topography/sumbar-kabkota-topography-context.csv",
+    "sha256": "0c14490c8363e7768ab26dbcd111bb5cf24c7afcba74aaad618c8d5e55b069bd",
+    "row_count": 19
+  },
+  "missing_values_inferred": false,
+  "geography_inferred": false
+}

@@ -2,7 +2,7 @@
   "schema": "ranah-observatory/sumbar-exposure-context-validated/v1",
   "year": 2024,
   "source_manifest": "data/manifests/sumbar_exposure_context.json",
-  "source_manifest_sha256": "074a296a35f27905e22fa0706dbdf2a4d27e0b4fc7b0307e1f3278cf7b291f89",
+  "source_manifest_sha256": "465b90fcc3dbb146f9a1d80ef03825b302f113e554d83dfe2949dbaf23b09091",
   "missing_values_inferred": false,
   "geography_inferred": false,
   "rain_gauge_inventory": {

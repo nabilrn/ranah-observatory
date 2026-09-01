@@ -1,7 +1,7 @@
 {
   "schema": "ranah-observatory/bpbd-priority-context-materialization/v1",
   "source_manifest": "data/manifests/sumbar_bpbd_priority_context.json",
-  "source_manifest_sha256": "4a6d72828b1936b2977368529343195f55b791f713faf8a9b8e99b622d3aac86",
+  "source_manifest_sha256": "de891874bd47d5c0280073b4b04df36a15e19528f1b3b7c14f4c2bfae00e1f21",
   "missing_values_inferred": false,
   "zero_interpretation": "Dash markers are converted to zero only in additive count tables whose source totals validate that interpretation. Economic-loss blanks/dashes remain missing.",
   "cross_source_policy": "BPBD/Pusdalops and BNPB event series remain separate when official totals diverge; no overwrite or forced reconciliation is performed.",
