@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Acquire official river-context metadata and a source-native Padang river layer.
 
-Primary source discovery is Satu Data Indonesia's CKAN backend.  The script
+Primary source discovery is Satu Data Indonesia's CKAN backend. The script
 keeps coverage semantics fail-closed:
 
 * BIG ``Hidrografi_Sungai_25K`` is treated as the preferred national RBI
@@ -17,8 +17,6 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-import os
-import re
 import urllib.parse
 import urllib.request
 from collections import Counter
@@ -26,7 +24,10 @@ from pathlib import Path
 from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-CKAN_API = "https://katalog.data.go.id/api/3/action"
+CKAN_APIS = (
+    "https://data.go.id/api/3/action",
+    "https://katalog.data.go.id/api/3/action",
+)
 USER_AGENT = "ranah-observatory/1.0 (+https://github.com/nabilrn/ranah-observatory)"
 MAX_DOWNLOAD_BYTES = 50 * 1024 * 1024
 
@@ -83,13 +84,19 @@ def request_bytes(url: str, *, timeout: int = 60, max_bytes: int | None = None) 
         return data, headers, final_url
 
 
-def ckan_package_show(dataset_id: str) -> dict[str, Any]:
-    url = f"{CKAN_API}/package_show?{urllib.parse.urlencode({'id': dataset_id})}"
-    raw, _, _ = request_bytes(url, timeout=60, max_bytes=10 * 1024 * 1024)
-    payload = json.loads(raw.decode("utf-8"))
-    if payload.get("success") is not True or not isinstance(payload.get("result"), dict):
-        raise RuntimeError(f"CKAN package_show failed for {dataset_id}: {payload!r}")
-    return payload["result"]
+def ckan_package_show(dataset_id: str) -> tuple[dict[str, Any], str]:
+    errors: list[str] = []
+    for api in CKAN_APIS:
+        url = f"{api}/package_show?{urllib.parse.urlencode({'id': dataset_id})}"
+        try:
+            raw, _, _ = request_bytes(url, timeout=60, max_bytes=10 * 1024 * 1024)
+            payload = json.loads(raw.decode("utf-8"))
+            if payload.get("success") is not True or not isinstance(payload.get("result"), dict):
+                raise RuntimeError(f"invalid CKAN response: {payload!r}")
+            return payload["result"], api
+        except Exception as exc:
+            errors.append(f"{api}: {type(exc).__name__}: {exc}")
+    raise RuntimeError(f"all CKAN package_show transports failed for {dataset_id}: {' | '.join(errors)}")
 
 
 def verify_package(package: dict[str, Any], spec: dict[str, str]) -> None:
@@ -197,8 +204,6 @@ def geometry_audit(payload: dict[str, Any]) -> dict[str, Any]:
         raise RuntimeError("river GeoJSON has no finite coordinate positions")
 
     bbox = [min(xs), min(ys), max(xs), max(ys)]
-    # Indonesia/West Sumatra sanity gate, intentionally broad.  This does not
-    # infer exact administrative coverage from coordinates.
     if not (94 <= bbox[0] <= 110 and 94 <= bbox[2] <= 110 and -8 <= bbox[1] <= 7 and -8 <= bbox[3] <= 7):
         raise RuntimeError(f"river GeoJSON bounding box is outside broad western-Indonesia bounds: {bbox}")
 
@@ -245,10 +250,11 @@ def freeze_padang_geojson(package: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def package_manifest(key: str, package: dict[str, Any], spec: dict[str, str]) -> dict[str, Any]:
+def package_manifest(key: str, package: dict[str, Any], spec: dict[str, str], catalog_api: str) -> dict[str, Any]:
     resources = [resource_record(item) for item in package.get("resources") or []]
     result: dict[str, Any] = {
         "key": key,
+        "catalog_api": catalog_api,
         "dataset_id": package.get("id") or spec["id"],
         "name": package.get("name"),
         "title": package.get("title"),
@@ -264,8 +270,10 @@ def package_manifest(key: str, package: dict[str, Any], spec: dict[str, str]) ->
         service_resources = [
             item for item in resources
             if normalize(item.get("url")).startswith(("http://", "https://"))
-            and any(token in f"{normalize(item.get('name'))} {normalize(item.get('description'))} {normalize(item.get('format'))}".casefold()
-                    for token in ("service", "wfs", "wms", "arcgis", "rbi sungai"))
+            and any(
+                token in f"{normalize(item.get('name'))} {normalize(item.get('description'))} {normalize(item.get('format'))}".casefold()
+                for token in ("service", "wfs", "wms", "arcgis", "rbi sungai")
+            )
         ]
         result["preferred_role"] = "official_national_rbi_river_reference"
         result["service_resources"] = service_resources
@@ -282,15 +290,15 @@ def package_manifest(key: str, package: dict[str, Any], spec: dict[str, str]) ->
 def main() -> None:
     outputs: list[dict[str, Any]] = []
     for key, spec in DATASETS.items():
-        package = ckan_package_show(spec["id"])
+        package, catalog_api = ckan_package_show(spec["id"])
         verify_package(package, spec)
-        outputs.append(package_manifest(key, package, spec))
+        outputs.append(package_manifest(key, package, spec, catalog_api))
 
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     manifest = {
         "schema": "ranah-observatory/sumbar-river-context-acquisition/v1",
-        "source_catalog": "https://katalog.data.go.id",
-        "source_api": CKAN_API,
+        "source_catalog": "Satu Data Indonesia",
+        "source_api_candidates": list(CKAN_APIS),
         "missing_values_inferred": False,
         "geography_inferred": False,
         "promotion_state": "source_native_and_service_metadata_review_required",
@@ -302,6 +310,7 @@ def main() -> None:
     big = next(item for item in outputs if item["key"] == "big_rbi_river_25k")
     print(json.dumps({
         "manifest": MANIFEST.relative_to(ROOT).as_posix(),
+        "catalog_apis_used": sorted({item["catalog_api"] for item in outputs}),
         "big_service_resource_count": len(big.get("service_resources", [])),
         "padang_geojson_features": padang["geometry_audit"]["feature_count"],
         "padang_geojson_geometry_types": padang["geometry_audit"]["geometry_types"],
