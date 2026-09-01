@@ -13,8 +13,10 @@ on:
       - 'data/processed/bpbd/disaster_impact_2024/**'
       - 'data/processed/bpbd/disaster_context_2024/**'
       - 'data/processed/geography/sumbar-big-kabkota.geojson'
+      - 'data/processed/geography/demnas_topography/**'
       - 'data/registries/big_geography_map.csv'
       - 'data/manifests/sumbar_big_kabkota_boundary.json'
+      - 'data/manifests/sumbar_demnas_topography.json'
       - '.github/workflows/web.yml'
   pull_request:
     paths:
@@ -27,8 +29,10 @@ on:
       - 'data/processed/bpbd/disaster_impact_2024/**'
       - 'data/processed/bpbd/disaster_context_2024/**'
       - 'data/processed/geography/sumbar-big-kabkota.geojson'
+      - 'data/processed/geography/demnas_topography/**'
       - 'data/registries/big_geography_map.csv'
       - 'data/manifests/sumbar_big_kabkota_boundary.json'
+      - 'data/manifests/sumbar_demnas_topography.json'
       - '.github/workflows/web.yml'
 
 permissions:
