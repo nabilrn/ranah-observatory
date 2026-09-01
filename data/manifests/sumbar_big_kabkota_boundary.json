@@ -1,6 +1,6 @@
 {
   "schema": "ranah-observatory/big-kabkota-boundary-acquisition/v1",
-  "retrieved_at": "2026-08-31T23:03:22.322703+00:00",
+  "retrieved_at": "2026-09-01T05:52:39.089535+00:00",
   "source_organization": "Badan Informasi Geospasial",
   "layer_url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_AR/MapServer/0",
   "query_url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_AR/MapServer/0/query?where=WADMPR%3D%27Sumatera+Barat%27&outFields=%2A&returnGeometry=true&outSR=4326&f=geojson",

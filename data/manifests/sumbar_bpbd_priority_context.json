@@ -1,0 +1,203 @@
+{
+  "schema": "ranah-observatory/sumbar-bpbd-priority-context-acquisition/v1",
+  "retrieved_at": "2026-09-01T05:52:59.736602+00:00",
+  "source": "https://data.sumbarprov.go.id/",
+  "organization": "BPBD Provinsi Sumatera Barat",
+  "promotion_state": "source_native_review_required",
+  "missing_values_inferred": false,
+  "package_count": 6,
+  "packages": [
+    {
+      "requested_slug": "data-kerugian-akiban-bencana-tahun-2023",
+      "resolved_slug": "data-kerugian-akiban-bencana-tahun-2023",
+      "resolution": "package_show",
+      "role": "economic_loss",
+      "year": 2023,
+      "package_id": "565069bb-7c13-45b6-bea2-0761675bb179",
+      "title": "Data Kerugian Akibat Bencana Tahun 2023",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "producer": "BPBD Provinsi Sumatera Barat",
+      "source_data": "Pusdalop BPBD Sumatera Barat",
+      "metadata_created": "2024-05-29T00:45:44.286152",
+      "metadata_modified": "2024-05-29T01:54:27.120716",
+      "resource_id": "9a63ce80-cb99-4675-af76-1eed7fc0ec14",
+      "resource_name": "Data Kerugian Akibat Bencana Tahun 2023",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/565069bb-7c13-45b6-bea2-0761675bb179/resource/9a63ce80-cb99-4675-af76-1eed7fc0ec14/download/data-kerugian-bencana.xlsx",
+      "resource_last_modified": "2024-05-29T00:46:59.361341",
+      "download_sha256": "1d91d226e0bab0bc967f4d060f4122fab9a90983f5b53ab9566c8cc3cba4da5f",
+      "download_size_bytes": 11242,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2023/data-kerugian-akiban-bencana-tahun-2023/01-Sheet1.csv",
+          "sha256": "9e41aa6777492321140f0440eee10e49204d7faa7ec2653c218ed6bc93b26def",
+          "row_count": 21,
+          "nonempty_rows": 21,
+          "max_columns": 4
+        }
+      ]
+    },
+    {
+      "requested_slug": "dampak-bencana-terhadap-masyarakat-per-kabupaten-kota",
+      "resolved_slug": "dampak-bencana-terhadap-masyarakat-per-kabupaten-kota",
+      "resolution": "package_show",
+      "role": "impact_continuity",
+      "year": 2023,
+      "package_id": "6358facb-7d31-45ac-9c87-ff29e521ef5b",
+      "title": "Dampak bencana terhadap masyarakat Per Kabupaten/Kota 2023",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "producer": "BPBD Provinsi Sumatera Barat",
+      "source_data": "Pusdalop BPBD Sumatera Barat",
+      "metadata_created": "2024-05-29T02:12:11.182824",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "3c8a6024-83f6-4032-aca1-acea1d6e3e10",
+      "resource_name": "Dampak bencana terhadap masyarakat Per KabupatenKota.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/6358facb-7d31-45ac-9c87-ff29e521ef5b/resource/3c8a6024-83f6-4032-aca1-acea1d6e3e10/download/dampak-bencana-terhadap-masyarakat-per-kabupatenkota.xlsx",
+      "resource_last_modified": "2024-05-29T02:12:34.679391",
+      "download_sha256": "4ed58227ff7bc8dc119246776e412f3ad13e1f103732c8d1a2c6777792156ace",
+      "download_size_bytes": 11243,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2023/dampak-bencana-terhadap-masyarakat-per-kabupaten-kota/01-Sheet1.csv",
+          "sha256": "90403f0c47964d5d9ba75a90de4ee34285b042122309f02f89b11ea2b91a2b6c",
+          "row_count": 21,
+          "nonempty_rows": 21,
+          "max_columns": 6
+        }
+      ]
+    },
+    {
+      "requested_slug": "dampak-bencana-terhadap-pemukiman-masyarakat-per-kabupaten-kota-tahun-2023",
+      "resolved_slug": "dampak-bencana-terhadap-pemukiman-masyarakat-per-kabupaten-kota-tahun-2023",
+      "resolution": "package_show",
+      "role": "housing_continuity",
+      "year": 2023,
+      "package_id": "c7ceae41-76ae-449d-a06b-a8eb4e21c17a",
+      "title": "Dampak Bencana Terhadap Pemukiman Masyarakat Per Kabupaten/Kota Tahun 2023",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "producer": "BPBD Provinsi Sumatera Barat",
+      "source_data": "Pusdalop BPBD Sumatera Barat",
+      "metadata_created": "2024-05-29T02:20:26.785618",
+      "metadata_modified": "2024-05-29T02:21:45.074276",
+      "resource_id": "b4d6871f-78b4-4306-b10b-19051d1fec57",
+      "resource_name": "Dampak bencana terhadap pemukiman per kabupaten kota.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/c7ceae41-76ae-449d-a06b-a8eb4e21c17a/resource/b4d6871f-78b4-4306-b10b-19051d1fec57/download/dampak-bencana-terhadap-pemukiman-per-kabupaten-kota.xlsx",
+      "resource_last_modified": "2024-05-29T02:21:44.525803",
+      "download_sha256": "1ec69f6ad78c1dc87fed3c84bdccb28aaa1145f21c42a3193836d9c9e44687bb",
+      "download_size_bytes": 10939,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2023/dampak-bencana-terhadap-pemukiman-masyarakat-per-kabupaten-kota-tahun-2023/01-Sheet1.csv",
+          "sha256": "7489ccfb70048208830ba0d2a094826a48f9b6cee2fdf8f41202bcda44040818",
+          "row_count": 21,
+          "nonempty_rows": 21,
+          "max_columns": 5
+        }
+      ]
+    },
+    {
+      "requested_slug": "jumlah-korban-perjenis-bencana-2024",
+      "resolved_slug": "jumlah-korban-perjenis-bencana-2024",
+      "resolution": "package_show",
+      "role": "casualties_by_hazard",
+      "year": 2024,
+      "package_id": "1ecfe79c-8f4a-4a2b-8d01-f5ec621add64",
+      "title": "Jumlah Korban Perjenis Bencana 2024",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "producer": "BPBD Provinsi Sumatera Barat",
+      "source_data": "Pusdalop BPBD Sumatera Barat",
+      "metadata_created": "2025-04-12T04:36:49.495034",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "3177725a-a4c8-46bf-987a-efbf0b1abfac",
+      "resource_name": "Jumlah Korban Perjenis Bencana 2024.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/1ecfe79c-8f4a-4a2b-8d01-f5ec621add64/resource/3177725a-a4c8-46bf-987a-efbf0b1abfac/download/jumlah-korban-perjenis-bencana-2024.xlsx",
+      "resource_last_modified": "2025-06-11T07:00:44.698204",
+      "download_sha256": "7177635eb5265f68311306e0821435d4f566d5f8ded0deb0811813b0467d00e4",
+      "download_size_bytes": 9939,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2024/jumlah-korban-perjenis-bencana-2024/01-Sheet1.csv",
+          "sha256": "09cf228511d3a7d77b2a0f2e396e3d822802f469061b6d9b49f739a9dc1dfcc5",
+          "row_count": 9,
+          "nonempty_rows": 9,
+          "max_columns": 6
+        }
+      ]
+    },
+    {
+      "requested_slug": "jumlah-kejadian-bencana-perbulan-2024",
+      "resolved_slug": "jumlah-kejadian-bencana-perbulan-2024",
+      "resolution": "package_show",
+      "role": "monthly_events",
+      "year": 2024,
+      "package_id": "292eb688-e76a-4f93-96be-62cd631b2d93",
+      "title": "Jumlah Kejadian Bencana Perbulan 2024",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "producer": "BPBD Provinsi Sumatera Barat",
+      "source_data": "Pusdalop BPBD Sumatera Barat",
+      "metadata_created": "2025-04-12T04:36:49.495034",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "ae2b0b42-1985-4bd9-a4c1-9b96e517c5f0",
+      "resource_name": "Jumlah Kejadian Bencana Perbulan 2024.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/292eb688-e76a-4f93-96be-62cd631b2d93/resource/ae2b0b42-1985-4bd9-a4c1-9b96e517c5f0/download/jumlah-kejadian-bencana-perbulan-2024.xlsx",
+      "resource_last_modified": "2025-06-11T06:59:02.264234",
+      "download_sha256": "7d277d83ed32feee501d8d02434bf62b97cfa4df4754748fd289ed292eac6fdc",
+      "download_size_bytes": 10415,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/bpbd/sumbar_open_data/2024/jumlah-kejadian-bencana-perbulan-2024/01-Sheet1.csv",
+          "sha256": "afef774ecd151b0218e578acc5b4298459548739a2330a4b13552efa80472a99",
+          "row_count": 9,
+          "nonempty_rows": 9,
+          "max_columns": 14
+        }
+      ]
+    },
+    {
+      "requested_slug": "jumlah-sirine-tsunami-milik-provinsi-sumatera-barat",
+      "resolved_slug": "jumlah-sirine-tsunami-milik-provinsi-sumatera-barat",
+      "resolution": "package_show",
+      "role": "mitigation_capacity",
+      "year": 2024,
+      "package_id": "907a18a7-22a9-48e8-868d-5a8043df2117",
+      "title": "Jumlah Sirine Tsunami Milik Provinsi Sumatera Barat",
+      "organization": "Badan Penanggulangan Bencana Daerah",
+      "producer": "BPBD Provinsi Sumatera Barat",
+      "source_data": "Bidang PK BPBD Sumatera Barat",
+      "metadata_created": "2025-04-12T04:36:49.495034",
+      "metadata_modified": "2025-04-12T04:36:57.955087",
+      "resource_id": "66f172fc-434b-435b-8417-65fd5b58ffec",
+      "resource_name": "DATA EWS ATAU SIRINE TSUNAMI.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/907a18a7-22a9-48e8-868d-5a8043df2117/resource/66f172fc-434b-435b-8417-65fd5b58ffec/download/data-ews-atau-sirine-tsunami.xlsx",
+      "resource_last_modified": "2025-06-11T07:12:28.799337",
+      "download_sha256": "0986ed24c26b48614f460f0ce66f96666797f2c6c6b8b38f33a57b9b26cb48c8",
+      "download_size_bytes": 19475,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Data EWS Tsunami",
+          "path": "data/processed/bpbd/sumbar_open_data/2024/jumlah-sirine-tsunami-milik-provinsi-sumatera-barat/01-Data-EWS-Tsunami.csv",
+          "sha256": "71b450188a4f54952543a8747f04593f3e3763e67124e60a4d6c907123b6b8da",
+          "row_count": 51,
+          "nonempty_rows": 49,
+          "max_columns": 9
+        }
+      ]
+    }
+  ]
+}
