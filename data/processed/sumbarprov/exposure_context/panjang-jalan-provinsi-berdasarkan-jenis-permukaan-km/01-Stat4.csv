@@ -1,0 +1,68 @@
+NOMOR,Nama Ruas Jalan,Panjang Jalan (km),Beton (km),Blok Beton (km),Aspal (km),Lapen (km),Rusak Berat (km),Batu Kali (km),Kerikil (km),Tanah (km)
+007,Simancung - Tanjung Ampalu,10.62,0.17,0,10.45,0,0,0,0,0
+008,Tanjung Ampalu - Sinjunjung,20,0.54,0,19.46,0,0,0,0,0
+010,Simp. Sikabau - Simp. Koto Baru,29,0.16,0,28.84,0,0.2,0,0,0
+011,Simp. Koto Baru - Tj. Simalidu,11.9,0,0,11.9,0,0,0,0,0
+012,Simp. Koto Baru - Junction,5.4,0,0,5.4,0,0,0,0,0
+018,Inderapura - Muara Sakai,7.3,0,0,7.3,0,0,0,0,0
+025,Manggopoh - Padang Luar,69.43,0,0,69.43,0,0,0,0,0
+028,Sicincin - Kurai Taji,16.44,0,0,16.44,0,0,0,0,0
+031,Panti - Simpang Empat,74.23,0,0,74.23,0,0.3,0,0,0
+033.1,Simpang Empat - Sasak,20,0,0,20,0,0,0,0,0
+033.2,Sasak - Maligi,21.2,2.91,0,1.91,0,1.4,0,13.27,3.1
+034,Air Balam - Air Bangis,12.6,0,0,12.6,0,0,0,0,0
+035,Kubu Kerambil - Bts. Batusangkar (Simp. Kiambang),18.5,0,0,18.5,0,0,0,0,0
+036,Baso - Bts. Batusangkar (Balai Selasa),28.5,0,0,28.5,0,0.8,0,0,0
+037,Batas Batusangkar (Bukit Gombak) - Guguk Cino,10.4,0,0,10.4,0,0,0,0,0
+038,Guguk Cino - Sawah Lunto (Lapangan Segitiga),29.6,2.49,0,27.1,0,0,0,0,0
+039,Guguk Cino - Sitangkai,14.7,0,0,14.7,0,0.2,0,0,0
+040,Sitangkai - Tanjung Ampalu,17.5,0,0,17.5,0,0,0,0,0
+044,Bts. Kota Payakumbuh - Sitangkai,44,1.58,0,42.42,0,2.82,0,0,0
+054,Junction - Abai Siat (Bts. Jambi),12.6,0,0,12.6,0,0,0,0,0
+055,Sijunjung - Tanah Badantung,4.4,0,0,4.4,0,0,0,0,0
+056.1,Simp. Padang Aro - Lubuk Malako,20,2,0,18,0,0,0,0,0
+056.2,Lubuk Malako - Abai Sangir,17,0,0,17,0,0.1,0,0,0
+056.3,Abai Sangir - Sei. Dareh,73.65,0.5,0,25.01,0,0.1,0,48.14,0
+068,Padang Sawah - Kumpulan,36.5,0,0,36.5,0,0,0,0,0
+069.1,Bts. Payakumbuh - Suliki - Koto Tinggi,42.75,0,0,42.6,0,0,0,0.15,0
+069.2,Sp. Pua Data - Sp. Sei Dadok - Museum PDRI,5.17,0.1,0,5.07,0,1.5,0,0,0
+070,Batu Sangkar - Ombilin,17,0,0,17,0,0,0,0,0
+071,Solok - Alahan Panjang,46.8,0,0,46.8,0,0.5,0,0,0
+072,Lubuk Basung - Sungai Limau,28.6,0,0,28.6,0,0.1,0,0,0
+073,Pasar Baru - Alahan Panjang,44.95,0,0,38.35,0,0,0,6.6,0
+075,Simp. Duku (Ketaping) - Pariaman,22.5,0,0,22.5,0,0,0,0,0
+076,Pangkalan Koto Baru - Sialang - Gelugur,73.95,4.68,0,54.05,0,1.4,0,13.6,1.62
+078,Simp. Koto Mambang - Balingka,39.4,0.25,0,39.15,0,0,0,0,0
+079,Simp. Baso - Piladang,10.5,0.53,0,9.97,0,0.4,0,0,0
+080,Matur - Palembayan,20.7,0.2,0,20.5,0,0,0,0,0
+081,Palembayan - Palupuh (Simp. Patai),13.3,0.05,0,12.68,0,0,0,0.57,0
+082.1,Alahan Panjang - Kiliran Jao,94,0.77,0,18.13,0,0.1,0,75.1,0
+082.2,Simp. Sikundua - Garabak,3.06,0,0,0,0,0,0,3.06,0
+083.1,Teluk Kabung - Mandeh - Tarusan,44.1,0,0,44.1,0,0,0,0,0
+083.2,Gerbang Teluk Kabung - Mandeh,0.52,0,0,0.26,0,0,0,0,0.26
+083.3,Pelabuhan TPI Carocok - Tarusan,1.1,0,0,1.1,0,0,0,0,0
+084,Jalan Lingkar Selatan  - Bts. Payakumbuh,7.98,0,0,7.98,0,0,0,0,0
+085,Balai Panjang - Sp. Pdg Karambia - Tj. Bungo (TPA),5,2.7,0,2.3,0,0,0,0,0
+086,Surantiah - Kayu Aro - Langgai,29.3,4.48,0,13.17,0,0,0,11.65,0
+087,Duku - Sicincin,20.58,0,0,10.54,0,0.1,0,10.04,0
+088,Padang Koto Gadang - Palembayan,31,0.17,0,30.83,0,0.3,0,0,0
+090,Palupuh - Puagadih - Koto Tinggi,25,1.92,0,17.98,0,2.75,0,5.1,0
+091,Smp. Napar - Bukit Bual - Tanjung Ampalu,14.65,0.05,0,9.31,0,0.5,0,5.29,0
+092,Simp. Ganting - Bts Tanah Datar - Sumani,32.8,0,0,32.8,0,0,0,0,0
+093,Singkarak - Aripan - Tj. Balit - Padang Ganting,38.75,0.8,0,34.57,0,0.1,0,3.38,0
+094,Pintu Angin - Labuah Saiyo,5.61,0,0,5.61,0,0,0,0,0
+095,Rao - Rokan (Batas Riau),33,0,0,33,0,0,0,0,0
+096,Lb Sikaping (Simp. Daliak) - Talu (Simp. Gantiang),33,0.39,0,21.78,0,0,0,10.83,0
+097,Bungo Tanjung - Teluk Tapang,43.2,0,0,27.2,0,0,0,16,0
+098,Teluk Bayur - Nipah - Purus,12,0,0,12,0,0,0,0,0
+099,Purus - Bandara International Minangkabau,16,0,0,0.4,0,0,0,15.6,0
+100,Batu Batembak - Pelabuhan Panasahan,1,0,0,1,0,0,0,0,0
+101,Simp. Tanjung Air - Muaro Sei. Lolo - Gelugur,47,0.19,0,32.96,0,10.39,0,13.85,0
+102,Rawang - Talawi,12.9,4.77,0,4.48,0,0.36,0,3.59,0.06
+103,Simp Sp II - Kantor Camat,5.1,4.13,0,0,0,0,0,0.97,0
+104,Kantor Camat - Berkat,5.9,5.9,0,0,0,0,0,0,0
+105,Bonjol - Suliki,20.8,0.7,0,2,0,0.1,0,1,17.1
+106,Unggan - Pamusian - Tapi Selo,26.06,2.9,0,12.06,0,0.1,0,2.3,8.8
+107,Tiku - Sasak,90,0,0,0,0,0,0,0,90
+TOTAL,,1690.4999999999995,46.04,0,1263.43,0,24.62,0,260.09,120.94
+Persentase,,,0.0272,0,0.7474,0,0.0146,0,0.1539,0.0715

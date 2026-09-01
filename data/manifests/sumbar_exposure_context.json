@@ -1,0 +1,95 @@
+{
+  "schema": "ranah-observatory/sumbar-exposure-context-acquisition/v1",
+  "retrieved_at": "2026-09-01T07:42:24.997581+00:00",
+  "source": "https://data.sumbarprov.go.id/",
+  "promotion_state": "source_native_review_required",
+  "missing_values_inferred": false,
+  "package_count": 2,
+  "packages": [
+    {
+      "slug": "jumlah-pos-curah-hujan-dinas-sdabk-tahun-2024",
+      "title": "Jumlah Pos Curah Hujan Dinas SDABK Tahun 2024",
+      "role": "rain_gauge_inventory",
+      "domain": "climate_monitoring_context",
+      "package_id": "65e6fb25-9699-470b-9e0b-641c4abd10ca",
+      "organization_name": "dinas-pengelolaan-sumber-daya-air-dan-bina-konstruksi",
+      "organization_title": "Dinas Pengelolaan Sumber Daya Air dan Bina Konstruksi",
+      "author": "Juan Kelvin",
+      "producer": null,
+      "source_data": null,
+      "metadata_created": "2024-05-29T08:17:24.175092",
+      "metadata_modified": "2024-05-29T08:43:50.448509",
+      "tags": [
+        "2024",
+        "curahhujan",
+        "data",
+        "hidrology",
+        "sdabk"
+      ],
+      "resource_id": "0142b6b2-8f11-4b10-8ce5-d8364bfcca77",
+      "resource_name": "Jumlah Pos Curah Hujan Dinas SDABK Tahun 2024.xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/65e6fb25-9699-470b-9e0b-641c4abd10ca/resource/0142b6b2-8f11-4b10-8ce5-d8364bfcca77/download/jumlah-pos-curah-hujan-dinas-sdabk-tahun-2024.xlsx",
+      "resource_last_modified": "2024-05-29T08:43:50.424789",
+      "download_sha256": "77050ec5ce91620c3adc162b24110e9b928fcf54243c80d5581510b8ebe44708",
+      "download_size_bytes": 8364,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Sheet1",
+          "path": "data/processed/sumbarprov/exposure_context/jumlah-pos-curah-hujan-dinas-sdabk-tahun-2024/01-Sheet1.csv",
+          "sha256": "174bae56018d2bce2664f18b3c08128969427b168eaa8a227dba79bb3a995b90",
+          "row_count": 3,
+          "nonempty_rows": 3,
+          "max_columns": 2
+        },
+        {
+          "sheet_index": 2,
+          "sheet_title": "Sheet3",
+          "path": "data/processed/sumbarprov/exposure_context/jumlah-pos-curah-hujan-dinas-sdabk-tahun-2024/02-Sheet3.csv",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "row_count": 0,
+          "nonempty_rows": 0,
+          "max_columns": 0
+        }
+      ]
+    },
+    {
+      "slug": "panjang-jalan-provinsi-berdasarkan-jenis-permukaan-km",
+      "title": "Panjang Jalan Provinsi Berdasarkan Jenis Permukaan (Km)",
+      "role": "provincial_road_surface_length",
+      "domain": "infrastructure_exposure_context",
+      "package_id": "e2b0a927-6459-40ef-9cc8-c29bf2b8da8c",
+      "organization_name": "dinas-bina-marga-cipta-karya-dan-tata-ruang",
+      "organization_title": "Dinas Bina Marga, Cipta Karya dan Tata Ruang",
+      "author": "Dinas Bina Marga, Cipta Karya dan Tata Ruang Provinsi Sumatera Barat",
+      "producer": null,
+      "source_data": null,
+      "metadata_created": "2024-05-29T08:18:24.804403",
+      "metadata_modified": "2024-05-29T08:42:44.095953",
+      "tags": [
+        "Infrastruktur",
+        "jalan",
+        "transportasi"
+      ],
+      "resource_id": "159c6a90-8e31-4e1a-be99-0f14e2d58cf3",
+      "resource_name": "Panjang Jalan Provinsi Berdasarkan Jenis Permukaan (Km).xlsx",
+      "resource_format": "XLSX",
+      "resource_url": "https://data.sumbarprov.go.id/dataset/e2b0a927-6459-40ef-9cc8-c29bf2b8da8c/resource/159c6a90-8e31-4e1a-be99-0f14e2d58cf3/download/panjang-jalan-provinsi-berdasarkan-jenis-permukaan-km.xlsx",
+      "resource_last_modified": "2024-05-29T08:42:44.061953",
+      "download_sha256": "8abd2e29a4be56d81b7a9cce010566a5307c17a049cdf35c6cda9c79a9c77bd7",
+      "download_size_bytes": 15460,
+      "worksheets": [
+        {
+          "sheet_index": 1,
+          "sheet_title": "Stat4",
+          "path": "data/processed/sumbarprov/exposure_context/panjang-jalan-provinsi-berdasarkan-jenis-permukaan-km/01-Stat4.csv",
+          "sha256": "874e99807f1ff9178e7ccc87a8a1c29514b1b314990ddbe6a9cc3a9e1da66dae",
+          "row_count": 68,
+          "nonempty_rows": 68,
+          "max_columns": 11
+        }
+      ]
+    }
+  ]
+}
