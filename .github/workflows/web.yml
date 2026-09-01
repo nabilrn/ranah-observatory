@@ -5,10 +5,30 @@ on:
     branches: [main]
     paths:
       - 'web/**'
+      - 'catalog/public-datasets.csv'
+      - 'scripts/build_public_web_data.py'
+      - 'scripts/promote_public_disaster_context.py'
+      - 'data/processed/bnpb/disaster/**'
+      - 'data/processed/bpbd/disaster_impact_2023/**'
+      - 'data/processed/bpbd/disaster_impact_2024/**'
+      - 'data/processed/bpbd/disaster_context_2024/**'
+      - 'data/processed/geography/sumbar-big-kabkota.geojson'
+      - 'data/registries/big_geography_map.csv'
+      - 'data/manifests/sumbar_big_kabkota_boundary.json'
       - '.github/workflows/web.yml'
   pull_request:
     paths:
       - 'web/**'
+      - 'catalog/public-datasets.csv'
+      - 'scripts/build_public_web_data.py'
+      - 'scripts/promote_public_disaster_context.py'
+      - 'data/processed/bnpb/disaster/**'
+      - 'data/processed/bpbd/disaster_impact_2023/**'
+      - 'data/processed/bpbd/disaster_impact_2024/**'
+      - 'data/processed/bpbd/disaster_context_2024/**'
+      - 'data/processed/geography/sumbar-big-kabkota.geojson'
+      - 'data/registries/big_geography_map.csv'
+      - 'data/manifests/sumbar_big_kabkota_boundary.json'
       - '.github/workflows/web.yml'
 
 permissions:
