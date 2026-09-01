@@ -1,0 +1,27 @@
+name: KLHK land-cover qualification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/probe_klhk_land_cover_2022.py
+      - .github/workflows/klhk-land-cover-qualification.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: klhk-land-cover-qualification-main
+  cancel-in-progress: true
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Probe official KLHK 2022 land-cover service
+        run: python scripts/probe_klhk_land_cover_2022.py
