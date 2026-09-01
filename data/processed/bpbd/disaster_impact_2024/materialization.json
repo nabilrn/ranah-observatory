@@ -1,6 +1,6 @@
 {
   "schema": "ranah-observatory/bpbd-disaster-impact-materialization/v1",
-  "materialized_at": "2026-09-01T05:53:12.124878+00:00",
+  "materialized_at": "2026-09-01T06:04:26.529142+00:00",
   "period": 2024,
   "source_organization": "BPBD Provinsi Sumatera Barat",
   "source_data": "Pusdalops BPBD Sumatera Barat",
@@ -99,7 +99,7 @@
     },
     "provenance": {
       "path": "data/processed/bpbd/disaster_impact_2024/bpbd-disaster-impact-canonical-provenance.csv",
-      "sha256": "d2c976e3e682dc058042523c25b68abd2de22e241c22feab00e5051a8aea8080"
+      "sha256": "0e1835d332b4e2d22a4a0f17da291a9b5717ee554d65044697d1fa32d1e9d2f7"
     }
   },
   "interpretation_notes": [

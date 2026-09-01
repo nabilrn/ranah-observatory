@@ -1,0 +1,36 @@
+year,hazard_id,source_hazard_label,indicator_id,value_numeric,unit
+2024,flood,Banjir,deaths,57,people
+2024,flood,Banjir,missing_people,10,people
+2024,flood,Banjir,injured_or_sick_people,25,people
+2024,flood,Banjir,suffering_people,813,people
+2024,flood,Banjir,displaced_people,79016,people
+2024,extreme_weather,Cuaca ekstrem,deaths,3,people
+2024,extreme_weather,Cuaca ekstrem,missing_people,0,people
+2024,extreme_weather,Cuaca ekstrem,injured_or_sick_people,12,people
+2024,extreme_weather,Cuaca ekstrem,suffering_people,16,people
+2024,extreme_weather,Cuaca ekstrem,displaced_people,22,people
+2024,volcanic_eruption,Erupsi Gunung Api,deaths,34,people
+2024,volcanic_eruption,Erupsi Gunung Api,missing_people,10,people
+2024,volcanic_eruption,Erupsi Gunung Api,injured_or_sick_people,3,people
+2024,volcanic_eruption,Erupsi Gunung Api,suffering_people,0,people
+2024,volcanic_eruption,Erupsi Gunung Api,displaced_people,919,people
+2024,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,deaths,0,people
+2024,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,missing_people,0,people
+2024,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,injured_or_sick_people,0,people
+2024,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,suffering_people,90,people
+2024,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,displaced_people,0,people
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,deaths,0,people
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,missing_people,0,people
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,injured_or_sick_people,0,people
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,suffering_people,0,people
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,displaced_people,0,people
+2024,drought,Kekeringan,deaths,0,people
+2024,drought,Kekeringan,missing_people,0,people
+2024,drought,Kekeringan,injured_or_sick_people,0,people
+2024,drought,Kekeringan,suffering_people,0,people
+2024,drought,Kekeringan,displaced_people,0,people
+2024,landslide,Tanah Longsor,deaths,20,people
+2024,landslide,Tanah Longsor,missing_people,0,people
+2024,landslide,Tanah Longsor,injured_or_sick_people,33,people
+2024,landslide,Tanah Longsor,suffering_people,6,people
+2024,landslide,Tanah Longsor,displaced_people,173,people

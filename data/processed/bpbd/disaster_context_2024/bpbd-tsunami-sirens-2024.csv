@@ -1,0 +1,47 @@
+siren_id,source_number,location_name,address,geography_id,canonical_name,source_geography,ownership,installed_year,latitude,longitude,source_status,normalized_status,status_check_date
+bpbd-sumbar-siren-01,1,Sirine Kantor DPRD Provinsi,Jl. Khatib Sulaiman,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9067056,100.35205,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-02,2,Sirine Mesjid Muhajirin,Pasir Putih,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.86565,100.33548,,unknown,2024-02-26
+bpbd-sumbar-siren-03,3,Sirine Kampus Bung Hatta,Jl. Paus Ulak Karang,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.90605,100.3446,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-04,4,Sirine Kampus FIP UNP,Jl. Prof Dr Hamka,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.8966167,100.3501861,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-05,5,Sirine Mesjid/Shelter Nurul Haq,Jl. Bengkulu Tabing,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.88172,100.34411,,unknown,2024-02-26
+bpbd-sumbar-siren-06,6,Sirine Linggar Jati Mesjid Darussalam,Jl. Gunung Agung Tabing,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.86808,100.33949,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-07,7,Sirine Mesjid Raya Nailus Saadah,Jl. Adinegoro,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.85042,100.33486,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-08,8,Sirine SMA 1,Jl. Belanti Raya,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9189583,100.3546111,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-09,9,SDN 23 dan 24 Ujung Gurun,Jl. Veteran,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9325,100.35413,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-10,10,SMA Don Bosco,Jl. Bandar Gereja,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.95462,100.35635,,unknown,2024-02-26
+bpbd-sumbar-siren-11,11,Sirine Kantor PU Muara,Jl. Arau,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9656611,100.3544333,,unknown,2024-02-26
+bpbd-sumbar-siren-12,12,Sirine Gedung Tanji/Keluarga Tan,Jl. Kelenteng,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.96242,100.36203,,unknown,2024-02-26
+bpbd-sumbar-siren-13,13,Sirine Grand Zuri Hotel,Jl. Alang Laweh,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9546,100.36427,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-14,14,Sirine Mercure Hotel,Jl. Purus,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9360972,100.3528167,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-15,15,Sirine SD 03 dan 04 Ujung Gurun,Jll. Veteran,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9393,100.3540944,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-16,16,Sirine Kantor Gubernur/Escape Buliding,Jl. Sudirman,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.9368694,100.3601,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-17,17,Sirine Cavery Beach Hotel,Bungus Teluk Kabung,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-1.04724,100.41233,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-18,18,Sirine Pantai Air Manis,Air Manis,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2013,-0.98886,100.36148,,unknown,2024-02-26
+bpbd-sumbar-siren-19,19,Sirine Yamaha Tjahaya Baru,Jl. Damar,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.944896667,100.3543,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-20,20,Sirine Kantor Bappeda,Jl. Khatib Sulaiman,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.925883333,100.3608483,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-21,21,Sirine Lapas Muaro,Jl. Muara,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.96278,100.353555,,unknown,2024-02-26
+bpbd-sumbar-siren-22,22,Sirine Dinas Kebudayaan Provinsi,Jl. Samudera,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.954838333,100.3532061,,unknown,2024-02-26
+bpbd-sumbar-siren-23,23,Sirine Kantor BPBD Provinsi,Jl. Sudirman,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.938705,100.3611433,NON AKTIF,inactive,2024-02-26
+bpbd-sumbar-siren-24,24,Sirine UPT/Pusdalops,Jl. Indarung,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.953290833,100.4282728,,unknown,2024-02-26
+bpbd-sumbar-siren-25,25,Sirine Bank Nagari,Jl. Pemuda,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.949391667,100.3545917,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-26,26,Sirine RS Selaguri,Jl. Ahmad Yani,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.942361667,100.3580067,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-27,27,Sirine Mesjid Al Falah,Padang Sarai,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.808078333,100.307885,,unknown,2024-02-26
+bpbd-sumbar-siren-28,28,Sirine Mesjid Darul Muttaqin,Pasia Nan Tigo,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.85173,100.3277567,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-29,29,Sirine Mesjid Jihad Jondul V,Tabing,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.876155278,100.3419714,,unknown,2024-02-26
+bpbd-sumbar-siren-30,30,Sirine SMP N 7,Lolong,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.920785,100.3517167,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-31,31,Sirine Gaung (Rumah Hendri),Jl. Palembang 53,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.99488,100.3854467,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-32,32,Sirine Al Amin,Lubuk Buaya,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2019,-0.83684,100.327055,,unknown,2024-02-26
+bpbd-sumbar-siren-33,33,Sirine Al Mughni Pantai Kata,Pantai Kata,idn.13.1377,Pariaman,Kota Pariaman,BPBD Provinsi,2019,-0.647096667,100.13067,,unknown,2024-02-26
+bpbd-sumbar-siren-34,34,Sirine Mesjid Nurul Bahari,Gandoriah,idn.13.1377,Pariaman,Kota Pariaman,BPBD Provinsi,2019,-0.627336944,100.1162967,,unknown,2024-02-26
+bpbd-sumbar-siren-35,35,Sirine Penginapan Buana Lestari,Ketaping,idn.13.1306,Padang Pariaman,Padang Pariaman,BPBD Provinsi,2019,-0.786251667,100.30214,,unknown,2024-02-26
+bpbd-sumbar-siren-36,36,Sirine TPI Tiku,Tiku Selatan,idn.13.1307,Agam,Agam,BPBD Provinsi,2019,-0.400803333,99.91478167,,unknown,2024-02-26
+bpbd-sumbar-siren-37,37,Sirine Jorong Pondok Sasak,Jorong Pondok,idn.13.1312,Pasaman Barat,Pasaman Barat,BPBD Provinsi,2019,-0.016092222,99.72446889,,unknown,2024-02-26
+bpbd-sumbar-siren-38,38,Sirine Inklusi Gor H. Agus Salin,Jl. Batang Kampar,idn.13.1371,Padang,Kota Padang,BPBD Provinsi,2024,-0.930277,100.360202,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-39,39,Sirine Inklusi SUPM Politeknik Nareh Pariaman,Simpang Toboh,idn.13.1377,Pariaman,Kota Pariaman,BPBD Provinsi,2024,-0.564744,100.092249,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-40,40,Sirine  Inklusi Kantor Camat Tj Mutiara,Pasar Tiku,idn.13.1307,Agam,Agam,BPBD Provinsi,2024,-0.39531,99.924357,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-41,41,Sirine  Inklusi SLBN 1 Pariaman,Jl. Teratai,idn.13.1377,Pariaman,Kota Pariaman,BPBD Provinsi,2024,-0.633425,100.131449,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-42,42,Sirine  Inklusi Kantor Walikota Pariaman,Jl. Imam Bonjol,idn.13.1377,Pariaman,Kota Pariaman,BPBD Provinsi,2024,-0.629595,100.138279,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-43,43,Sirine  Inklusi Sasak Pasaman Barat,Sasak,idn.13.1312,Pasaman Barat,Pasaman Barat,BPBD Provinsi,2024,-0.00501,99.709599,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-44,44,Sirine  Inklusi SLBN 1 Painan,Jl. Sutan Syahrir,idn.13.1302,Pesisir Selatan,Pesisir Selatan,BPBD Provinsi,2024,-1.343223,100.579729,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-45,45,Sirine  Inklusi Kantor BPBD Pesisir Selatan,Jl. Moh Hatta,idn.13.1302,Pesisir Selatan,Pesisir Selatan,BPBD Provinsi,2024,-1.349966,100.579021,AKTIF,active,2024-02-26
+bpbd-sumbar-siren-46,46,Sirine  Inklusi Kantor Walinagari Sago,Sago Salido,idn.13.1302,Pesisir Selatan,Pesisir Selatan,BPBD Provinsi,2024,-1.30892,100.550083,AKTIF,active,2024-02-26

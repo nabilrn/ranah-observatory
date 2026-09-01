@@ -1,0 +1,85 @@
+year,month,month_name_source,hazard_id,source_hazard_label,value_numeric,unit,source_blank
+2024,1,Januari,flood,Banjir,31,events,false
+2024,2,Februari,flood,Banjir,17,events,false
+2024,3,Maret,flood,Banjir,23,events,false
+2024,4,April,flood,Banjir,46,events,false
+2024,5,Mei,flood,Banjir,28,events,false
+2024,6,Juni,flood,Banjir,16,events,false
+2024,7,Juli,flood,Banjir,11,events,false
+2024,8,Agustus,flood,Banjir,29,events,false
+2024,9,September,flood,Banjir,5,events,false
+2024,10,Oktober,flood,Banjir,18,events,false
+2024,11,November,flood,Banjir,20,events,false
+2024,12,Desember,flood,Banjir,9,events,false
+2024,1,Januari,extreme_weather,Cuaca ekstrem,80,events,false
+2024,2,Februari,extreme_weather,Cuaca ekstrem,62,events,false
+2024,3,Maret,extreme_weather,Cuaca ekstrem,36,events,false
+2024,4,April,extreme_weather,Cuaca ekstrem,60,events,false
+2024,5,Mei,extreme_weather,Cuaca ekstrem,25,events,false
+2024,6,Juni,extreme_weather,Cuaca ekstrem,42,events,false
+2024,7,Juli,extreme_weather,Cuaca ekstrem,25,events,false
+2024,8,Agustus,extreme_weather,Cuaca ekstrem,53,events,false
+2024,9,September,extreme_weather,Cuaca ekstrem,65,events,false
+2024,10,Oktober,extreme_weather,Cuaca ekstrem,39,events,false
+2024,11,November,extreme_weather,Cuaca ekstrem,41,events,false
+2024,12,Desember,extreme_weather,Cuaca ekstrem,59,events,false
+2024,1,Januari,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,2,Februari,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,3,Maret,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,4,April,volcanic_eruption,Erupsi Gunung Api,5,events,false
+2024,5,Mei,volcanic_eruption,Erupsi Gunung Api,3,events,false
+2024,6,Juni,volcanic_eruption,Erupsi Gunung Api,1,events,false
+2024,7,Juli,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,8,Agustus,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,9,September,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,10,Oktober,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,11,November,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,12,Desember,volcanic_eruption,Erupsi Gunung Api,,events,true
+2024,1,Januari,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,2,events,false
+2024,2,Februari,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,,events,true
+2024,3,Maret,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,,events,true
+2024,4,April,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,,events,true
+2024,5,Mei,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,2,events,false
+2024,6,Juni,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,1,events,false
+2024,7,Juli,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,1,events,false
+2024,8,Agustus,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,,events,true
+2024,9,September,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,,events,true
+2024,10,Oktober,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,8,events,false
+2024,11,November,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,,events,true
+2024,12,Desember,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,,events,true
+2024,1,Januari,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,2,Februari,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,3,Maret,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,4,April,forest_and_land_fire,Kebakaran Hutan dan Lahan,1,events,false
+2024,5,Mei,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,6,Juni,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,7,Juli,forest_and_land_fire,Kebakaran Hutan dan Lahan,12,events,false
+2024,8,Agustus,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,9,September,forest_and_land_fire,Kebakaran Hutan dan Lahan,2,events,false
+2024,10,Oktober,forest_and_land_fire,Kebakaran Hutan dan Lahan,10,events,false
+2024,11,November,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,12,Desember,forest_and_land_fire,Kebakaran Hutan dan Lahan,,events,true
+2024,1,Januari,drought,Kekeringan,,events,true
+2024,2,Februari,drought,Kekeringan,,events,true
+2024,3,Maret,drought,Kekeringan,,events,true
+2024,4,April,drought,Kekeringan,,events,true
+2024,5,Mei,drought,Kekeringan,,events,true
+2024,6,Juni,drought,Kekeringan,,events,true
+2024,7,Juli,drought,Kekeringan,,events,true
+2024,8,Agustus,drought,Kekeringan,,events,true
+2024,9,September,drought,Kekeringan,2,events,false
+2024,10,Oktober,drought,Kekeringan,,events,true
+2024,11,November,drought,Kekeringan,,events,true
+2024,12,Desember,drought,Kekeringan,,events,true
+2024,1,Januari,landslide,Tanah Longsor,55,events,false
+2024,2,Februari,landslide,Tanah Longsor,17,events,false
+2024,3,Maret,landslide,Tanah Longsor,18,events,false
+2024,4,April,landslide,Tanah Longsor,63,events,false
+2024,5,Mei,landslide,Tanah Longsor,40,events,false
+2024,6,Juni,landslide,Tanah Longsor,20,events,false
+2024,7,Juli,landslide,Tanah Longsor,9,events,false
+2024,8,Agustus,landslide,Tanah Longsor,9,events,false
+2024,9,September,landslide,Tanah Longsor,12,events,false
+2024,10,Oktober,landslide,Tanah Longsor,14,events,false
+2024,11,November,landslide,Tanah Longsor,13,events,false
+2024,12,Desember,landslide,Tanah Longsor,15,events,false

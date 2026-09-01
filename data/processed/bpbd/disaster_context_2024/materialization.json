@@ -1,0 +1,97 @@
+{
+  "schema": "ranah-observatory/bpbd-priority-context-materialization/v1",
+  "source_manifest": "data/manifests/sumbar_bpbd_priority_context.json",
+  "source_manifest_sha256": "446a0882dbce175a6f40a2bf49fd4f2561a1da97302a13e263fb17b4f85d51c6",
+  "missing_values_inferred": false,
+  "zero_interpretation": "Dash markers are converted to zero only in additive count tables whose source totals validate that interpretation. Economic-loss blanks/dashes remain missing.",
+  "cross_source_policy": "BPBD/Pusdalops and BNPB event series remain separate when official totals diverge; no overwrite or forced reconciliation is performed.",
+  "result_2023": {
+    "observation_count": 164,
+    "district_count": 19,
+    "social_totals": {
+      "disaster_events_reported": 1031,
+      "deaths": 30,
+      "missing_people": 0,
+      "injured_or_sick_people": 3188,
+      "displaced_people": 5480
+    },
+    "housing_totals": {
+      "houses_heavily_damaged": 90,
+      "houses_moderately_damaged": 40,
+      "houses_lightly_damaged": 466
+    },
+    "economic_loss_numeric_district_count": 12,
+    "economic_loss_missing_district_count": 7,
+    "economic_loss_numeric_sum_idr": 45287357667
+  },
+  "result_2024": {
+    "casualty_by_hazard_rows": 35,
+    "casualty_totals": {
+      "deaths": 114,
+      "missing_people": 20,
+      "injured_or_sick_people": 73,
+      "suffering_people": 925,
+      "displaced_people": 80130
+    },
+    "monthly_event_rows": 84,
+    "monthly_event_total": 1175,
+    "monthly_hazard_totals": {
+      "flood": 253,
+      "extreme_weather": 587,
+      "volcanic_eruption": 9,
+      "tidal_wave_and_coastal_erosion": 14,
+      "forest_and_land_fire": 25,
+      "drought": 2,
+      "landslide": 285
+    },
+    "event_source_comparison": {
+      "flood": {
+        "bpbd_pusdalops_total": 253,
+        "bnpb_canonical_total": 64,
+        "difference_bpbd_minus_bnpb": 189,
+        "status": "cross_source_divergent",
+        "interpretation": "Different official recording/classification systems are retained as separate series; divergence is evidence, not an error to overwrite."
+      },
+      "landslide": {
+        "bpbd_pusdalops_total": 285,
+        "bnpb_canonical_total": 10,
+        "difference_bpbd_minus_bnpb": 275,
+        "status": "cross_source_divergent",
+        "interpretation": "Different official recording/classification systems are retained as separate series; divergence is evidence, not an error to overwrite."
+      }
+    },
+    "siren_count": 46,
+    "siren_status_counts": {
+      "inactive": 9,
+      "unknown": 17,
+      "active": 20
+    },
+    "siren_geography_count": 6
+  },
+  "outputs": {
+    "observations_2023": {
+      "path": "data/processed/bpbd/disaster_impact_2023/bpbd-disaster-impact-2023-canonical-observations.csv",
+      "sha256": "eb67f1c2b7fbdd4aec6fecc09d044c1f0dfcd5a86f13b47d47330e376c34ff0c"
+    },
+    "provenance_2023": {
+      "path": "data/processed/bpbd/disaster_impact_2023/bpbd-disaster-impact-2023-provenance.csv",
+      "sha256": "7765f57bf7501d4fe942a6efe7b0fa65b2ef667881f28543b6edae3e9dbd3bfd"
+    },
+    "loss_coverage_2023": {
+      "path": "data/processed/bpbd/disaster_impact_2023/bpbd-disaster-loss-2023-coverage.csv",
+      "sha256": "4405e3790622b4e35ebb99b83f2d3c5ec0a317043ad066caffb939c3867a1413"
+    },
+    "casualties_by_hazard_2024": {
+      "path": "data/processed/bpbd/disaster_context_2024/bpbd-casualties-by-hazard-2024.csv",
+      "sha256": "98d6d1c19a806d972f8eea0421a7e2ea7e6ed56ce81798734ff64e5e7cfe4038"
+    },
+    "monthly_events_2024": {
+      "path": "data/processed/bpbd/disaster_context_2024/bpbd-monthly-events-by-hazard-2024.csv",
+      "sha256": "9872f1e664cf2209adc0c577a01652d87891c6746c5e7cfbcc6c12be4def2469"
+    },
+    "tsunami_sirens_2024": {
+      "path": "data/processed/bpbd/disaster_context_2024/bpbd-tsunami-sirens-2024.csv",
+      "sha256": "c3ed4166dcd59eaeb2a124c0a0e7383ea187078f3798bd42c40a7dbacf12598c"
+    }
+  }
+}

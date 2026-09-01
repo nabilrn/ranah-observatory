@@ -1,0 +1,20 @@
+year,geography_id,canonical_name,disaster_events_reported,economic_loss_estimate_idr,loss_value_status
+2023,idn.13.1301,Kepulauan Mentawai,26,,source_blank
+2023,idn.13.1302,Pesisir Selatan,80,96000000,reported_numeric
+2023,idn.13.1303,Solok,53,34634940000,reported_numeric
+2023,idn.13.1304,Sijunjung,43,15000000,reported_numeric
+2023,idn.13.1305,Tanah Datar,71,,source_dash
+2023,idn.13.1306,Padang Pariaman,106,1180000000,reported_numeric
+2023,idn.13.1307,Agam,134,,source_dash
+2023,idn.13.1308,Lima Puluh Kota,26,55000000,reported_numeric
+2023,idn.13.1309,Pasaman,31,4897217667,reported_numeric
+2023,idn.13.1310,Solok Selatan,13,2568200000,reported_numeric
+2023,idn.13.1311,Dharmasraya,55,,source_blank
+2023,idn.13.1312,Pasaman Barat,43,1089000000,reported_numeric
+2023,idn.13.1371,Padang,116,470000000,reported_numeric
+2023,idn.13.1372,Solok,25,,source_dash
+2023,idn.13.1373,Sawahlunto,32,30000000,reported_numeric
+2023,idn.13.1374,Padang Panjang,35,,source_dash
+2023,idn.13.1375,Bukittinggi,70,25000000,reported_numeric
+2023,idn.13.1376,Payakumbuh,34,,source_dash
+2023,idn.13.1377,Pariaman,38,227000000,reported_numeric
