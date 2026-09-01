@@ -1,0 +1,43 @@
+year,geography_id,geography_name,class_number,class_code,class_name,source_class_label,forest_group,hk_thousand_ha,hl_thousand_ha,hpt_thousand_ha,hp_thousand_ha,hutan_tetap_thousand_ha,hpk_thousand_ha,kawasan_hutan_thousand_ha,apl_thousand_ha,total_thousand_ha
+2022,idn.13,Sumatera Barat,1,2001,Hutan Lahan Kering Primer,Hutan Lahan Kering Primer,forest,373.1,193.8,4.5,2.6,574.0,1.3,575.3,7.7,583.0
+2022,idn.13,Sumatera Barat,2,2002,Hutan Lahan Kering Sekunder,Hutan Lahan Kering Sekunder,forest,296.2,377.5,137.2,225.8,1036.7,50.7,1087.4,148.1,1235.5
+2022,idn.13,Sumatera Barat,3,2005,Hutan Rawa Primer,Hutan Rawa Primer,forest,,0.3,,3.1,3.4,,3.4,,3.4
+2022,idn.13,Sumatera Barat,4,20051,Hutan Rawa Sekunder,Hutan Rawa Sekunder,forest,,0.7,,4.7,5.3,10.9,16.2,5.3,21.5
+2022,idn.13,Sumatera Barat,5,2004,Hutan Mangrove Primer,Hutan Mangrove Primer,forest,0.6,2.7,,3.2,6.5,1.3,7.8,5.8,13.6
+2022,idn.13,Sumatera Barat,6,20041,Hutan Mangrove Sekunder,Hutan Mangrove Sekunder,forest,0.0,0.4,,0.5,0.9,0.3,1.2,1.7,2.9
+2022,idn.13,Sumatera Barat,7,2006,Hutan Tanaman,Hutan Tanaman,forest,0.0,0.6,10.4,21.8,32.7,4.7,37.5,10.0,47.5
+2022,idn.13,Sumatera Barat,8,2007,Semak Belukar,Semak/Belukar,non_forest,18.6,54.8,14.7,12.4,100.5,9.2,109.7,64.3,174.0
+2022,idn.13,Sumatera Barat,9,20071,Semak Belukar Rawa,Semak Belukar Rawa,non_forest,0.2,1.6,,2.7,4.5,10.4,14.8,7.4,22.2
+2022,idn.13,Sumatera Barat,10,3000,Savana/ Padang Rumput,Savana/Rumput,non_forest,,,,,,,,,
+2022,idn.13,Sumatera Barat,11,2010,Perkebunan,Perkebunan,non_forest,0.8,11.7,9.6,22.8,44.9,21.3,66.2,453.5,519.7
+2022,idn.13,Sumatera Barat,12,20091,Pertanian Lahan Kering,Pertanian Lahan Kering,non_forest,18.8,31.1,18.3,9.9,78.0,13.2,91.3,368.7,459.9
+2022,idn.13,Sumatera Barat,13,20092,Pertanian Lahan Kering Campur,Pertanian Lahan Kering Campur,non_forest,53.1,88.0,31.9,42.7,215.7,33.1,248.7,484.8,733.5
+2022,idn.13,Sumatera Barat,14,20122,Permukiman Transmigrasi,Transmigrasi,non_forest,,,,,,,,1.6,1.6
+2022,idn.13,Sumatera Barat,15,20093,Sawah,Sawah,non_forest,1.6,3.5,0.5,0.8,6.5,1.5,7.9,242.5,250.4
+2022,idn.13,Sumatera Barat,16,20094,Tambak,Tambak,non_forest,,,,,,,,0.3,0.3
+2022,idn.13,Sumatera Barat,17,2014,Lahan Terbuka,Tanah Terbuka,non_forest,2.3,4.1,0.8,1.0,8.2,1.1,9.4,5.9,15.3
+2022,idn.13,Sumatera Barat,18,20141,Pertambangan,Pertambangan,non_forest,,,0.1,0.7,0.8,0.1,0.9,1.9,2.8
+2022,idn.13,Sumatera Barat,19,2012,Permukiman,Permukiman,non_forest,0.4,0.5,0.1,1.1,2.1,0.8,2.8,64.8,67.6
+2022,idn.13,Sumatera Barat,20,50011,Rawa,Rawa,non_forest,,,,0.4,0.4,,0.4,0.8,1.2
+2022,idn.13,Sumatera Barat,21,20121,Bandara/ Pelabuhan,Pelabuhan Udara/Laut,non_forest,,,,,,,,0.5,0.5
+2023,idn.13,Sumatera Barat,1,2001,Hutan Lahan Kering Primer,Hutan Lahan Kering Primer,forest,373.4,194.1,4.4,2.6,574.5,1.3,575.8,8.0,583.9
+2023,idn.13,Sumatera Barat,2,2002,Hutan Lahan Kering Sekunder,Hutan Lahan Kering Sekunder,forest,294.3,373.6,134.5,224.3,1026.6,49.5,1076.1,145.1,1221.2
+2023,idn.13,Sumatera Barat,3,2005,Hutan Rawa Primer,Hutan Rawa Primer,forest,,0.3,,2.8,3.1,,3.1,,3.1
+2023,idn.13,Sumatera Barat,4,20051,Hutan Rawa Sekunder,Hutan Rawa Sekunder,forest,,0.4,,4.4,4.9,8.6,13.5,5.1,18.6
+2023,idn.13,Sumatera Barat,5,2004,Hutan Mangrove Primer,Hutan Mangrove Primer,forest,0.6,2.7,,3.2,6.4,1.3,7.7,5.8,13.5
+2023,idn.13,Sumatera Barat,6,20041,Hutan Mangrove Sekunder,Hutan Mangrove Sekunder,forest,0.0,0.4,,0.5,0.9,0.3,1.2,1.8,3.0
+2023,idn.13,Sumatera Barat,7,2006,Hutan Tanaman,Hutan Tanaman,forest,0.0,0.5,10.5,21.9,32.9,4.8,37.7,10.1,47.8
+2023,idn.13,Sumatera Barat,8,2007,Semak Belukar,Semak/Belukar,non_forest,15.7,51.1,12.7,12.8,92.4,8.0,100.4,61.0,161.4
+2023,idn.13,Sumatera Barat,9,20071,Semak Belukar Rawa,Semak Belukar Rawa,non_forest,0.2,1.7,,3.0,4.9,9.7,14.6,7.2,21.7
+2023,idn.13,Sumatera Barat,10,3000,Savana/ Padang Rumput,Savana/Padang Rumput,non_forest,,,,,,,,,
+2023,idn.13,Sumatera Barat,11,2010,Perkebunan,Perkebunan,non_forest,0.9,11.8,9.6,22.8,45.1,22.8,67.9,455.1,523.0
+2023,idn.13,Sumatera Barat,12,20091,Pertanian Lahan Kering,Pertanian Lahan Kering,non_forest,20.5,30.3,19.3,9.1,79.2,12.7,91.9,368.9,460.7
+2023,idn.13,Sumatera Barat,13,20092,Pertanian Lahan Kering Campur,Pertanian Lahan Kering Campur,non_forest,56.2,93.1,34.8,41.3,225.4,34.7,260.1,495.6,755.8
+2023,idn.13,Sumatera Barat,14,20122,Permukiman Transmigrasi,Permukiman Transmigrasi,non_forest,,,,,,,,1.6,1.6
+2023,idn.13,Sumatera Barat,15,20093,Sawah,Sawah,non_forest,1.6,2.9,0.5,0.7,5.7,1.5,7.2,243.8,251.0
+2023,idn.13,Sumatera Barat,16,20094,Tambak,Tambak,non_forest,,,,,,,,0.3,0.3
+2023,idn.13,Sumatera Barat,17,2014,Lahan Terbuka,Lahan Terbuka,non_forest,2.5,4.8,1.2,1.8,10.3,2.3,12.5,6.7,19.3
+2023,idn.13,Sumatera Barat,18,20141,Pertambangan,Pertambangan,non_forest,,,0.1,0.7,0.8,0.1,0.9,1.9,2.8
+2023,idn.13,Sumatera Barat,19,2012,Permukiman,Permukiman,non_forest,0.4,0.5,0.1,1.0,2.0,0.7,2.6,66.7,69.3
+2023,idn.13,Sumatera Barat,20,50011,Rawa,Rawa,non_forest,,,,0.4,0.4,,0.4,0.8,1.2
+2023,idn.13,Sumatera Barat,21,20121,Bandara/ Pelabuhan,Bandara/Pelabuhan,non_forest,,,,,,,,0.5,0.5
