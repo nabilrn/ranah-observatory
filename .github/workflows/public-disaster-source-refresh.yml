@@ -12,6 +12,7 @@ on:
       - scripts/materialize_bpbd_priority_context.py
       - scripts/materialize_sumbar_exposure_context.py
       - scripts/materialize_demnas_sumbar_topography.py
+      - scripts/run_demnas_sumbar_topography.py
       - data/processed/geography/sumbar-big-kabkota.geojson
       - data/registries/big_geography_map.csv
       - .github/workflows/public-disaster-source-refresh.yml
@@ -50,7 +51,7 @@ jobs:
       - name: Validate and materialize exposure context
         run: python scripts/materialize_sumbar_exposure_context.py
       - name: Materialize coarse BIG DEMNAS topography context
-        run: python scripts/materialize_demnas_sumbar_topography.py
+        run: python scripts/run_demnas_sumbar_topography.py
       - name: Commit validated disaster and context data artifacts
         run: |
           git config user.name "ranah-observatory-bot"
