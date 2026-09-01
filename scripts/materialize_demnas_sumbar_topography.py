@@ -2,11 +2,11 @@
 """Materialize coarse Sumatera Barat topography context from BIG DEMNAS.
 
 The official DEMNAS ImageServer is sampled onto a deliberately coarser
-analysis grid (~0.005 degree, roughly 0.5 km near the equator).  This is for
+analysis grid (~0.005 degree, roughly 0.5 km near the equator). This is for
 regional kabupaten/kota context only; it must not be represented as a local
 hazard, engineering, or native-resolution DEM product.
 
-Raw TIFF bytes are written below data/raw (gitignored).  Only district-level
+Raw TIFF bytes are written below data/raw (gitignored). Only district-level
 summary CSV and a reproducibility/validation manifest are committed.
 """
 
@@ -314,14 +314,15 @@ def summarize(features: list[dict[str, Any]], bbox: tuple[float, float, float, f
     lon = xmin + (np.arange(width) + 0.5) * pixel_x
     lat = ymax - (np.arange(height) + 0.5) * pixel_y
 
-    # np.gradient uses row 0 at the north edge.  Latitude-dependent east-west
-    # spacing prevents an avoidable degree-to-metre distortion.
+    # Row zero is the north edge. Compute gradients in pixel units first, then
+    # convert each axis to metres. East-west spacing varies slightly by latitude.
     dy_m = 111_320.0 * pixel_y
     dx_m = 111_320.0 * np.cos(np.deg2rad(lat))[:, None] * pixel_x
-    grad_row, grad_col = np.gradient(elevation, dy_m, axis=(0, 1))
+    grad_row_px, grad_col_px = np.gradient(elevation)
     with np.errstate(divide="ignore", invalid="ignore"):
-        grad_x = grad_col / np.where(dx_m == 0, np.nan, 1.0)
-        slope = np.degrees(np.arctan(np.sqrt(grad_x * grad_x + grad_row * grad_row)))
+        grad_y = grad_row_px / dy_m
+        grad_x = grad_col_px / np.where(dx_m == 0, np.nan, dx_m)
+        slope = np.degrees(np.arctan(np.sqrt(grad_x * grad_x + grad_y * grad_y)))
     slope[~np.isfinite(elevation)] = np.nan
 
     outputs: list[dict[str, str]] = []
