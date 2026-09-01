@@ -1,4 +1,4 @@
-name: Refresh official public disaster sources
+name: Refresh official Sumbar research sources
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
       - scripts/acquire_sumbar_public_disaster_sources.py
       - scripts/acquire_sumbar_priority_disaster_context.py
       - scripts/acquire_sumbar_exposure_context.py
+      - scripts/acquire_sumbar_river_context.py
       - scripts/materialize_bpbd_sumbar_impact.py
       - scripts/materialize_bpbd_priority_context.py
       - scripts/materialize_sumbar_exposure_context.py
@@ -35,6 +36,8 @@ jobs:
         run: python scripts/acquire_sumbar_priority_disaster_context.py
       - name: Acquire exposure and monitoring context sources
         run: python scripts/acquire_sumbar_exposure_context.py
+      - name: Acquire official river context sources
+        run: python scripts/acquire_sumbar_river_context.py
       - name: Validate and materialize BPBD impact observations
         run: python scripts/materialize_bpbd_sumbar_impact.py
       - name: Validate and materialize priority disaster context
@@ -53,10 +56,12 @@ jobs:
             data/processed/bpbd/disaster_context_2024 \
             data/processed/sumbarprov/exposure_context \
             data/processed/sumbarprov/context_2024 \
+            data/processed/sumbarprov/river_context \
             data/processed/geography/sumbar-big-kabkota.geojson \
             data/manifests/sumbar_bpbd_open_data_2024.json \
             data/manifests/sumbar_bpbd_priority_context.json \
             data/manifests/sumbar_exposure_context.json \
+            data/manifests/sumbar_river_context.json \
             data/manifests/sumbar_big_kabkota_boundary.json
           if git diff --cached --quiet; then
             echo "No source or canonical changes to commit"
