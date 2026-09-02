@@ -1,0 +1,96 @@
+{
+  "schema": "ranah-observatory/milestone57-bpbd-events-2023/v1",
+  "milestone": 57,
+  "depends_on": [
+    54,
+    56
+  ],
+  "retrieved_at": "2026-09-02T09:31:06.812248+00:00",
+  "source": {
+    "portal": "https://data.sumbarprov.go.id/",
+    "package_slug": "jumlah-kejadian-bencana-tahun-2023",
+    "package_id": "e953d109-88d4-4be7-a0ad-ffc720b3c4a4",
+    "title": "Jumlah Kejadian Bencana Tahun 2023",
+    "organization": "Badan Penanggulangan Bencana Daerah",
+    "producer": "BPBD Provinsi Sumatera Barat",
+    "source_data": "Pusdalop BPBD Sumatera Barat",
+    "year": "2023",
+    "resource_id": "e5d974eb-95a0-4570-93d1-9ca45c9fb77b",
+    "resource_name": "Data Per Jenis Bencana.xlsx",
+    "resource_format": "XLSX",
+    "resource_url": "https://data.sumbarprov.go.id/dataset/e953d109-88d4-4be7-a0ad-ffc720b3c4a4/resource/e5d974eb-95a0-4570-93d1-9ca45c9fb77b/download/data-per-jenis-bencana.xlsx",
+    "datastore_active": true
+  },
+  "source_native": {
+    "row_count": 20,
+    "district_row_count": 19,
+    "total_row_count": 1,
+    "district_or_total_labels": [
+      "Kabupaten Agam",
+      "Kota Padang",
+      "Kabupaten Padang Pariaman",
+      "Kabupaten Pesisir Selatan",
+      "Kabupaten Tanah Datar",
+      "Kota Bukittinggi",
+      "Kabupaten Dharmasraya",
+      "Kabupaten Solok",
+      "Kabupaten Pasaman Barat",
+      "Kabupaten Sijunjung",
+      "Kota Pariaman",
+      "Kota Padang Panjang",
+      "Kota Payakumbuh",
+      "Kota Sawahlunto",
+      "Kabupaten Pasaman",
+      "Kabupaten Kepulauan Mentawai",
+      "Kabupaten Lima Puluh Kota",
+      "Kota Solok",
+      "Kabupaten Solok Selatan",
+      "Jumlah"
+    ],
+    "columns": [
+      "Kabupaten/Kota",
+      "Abrasi pantai",
+      "Angin kencang",
+      "Banjir",
+      "Banjir Bandang",
+      "Erupsi Gunung Api",
+      "Gelombang Pasang",
+      "Gempa Bumi",
+      "Kebakaran Hutan & Lahan",
+      "Kekeringan",
+      "Longsor",
+      "Jumlah"
+    ],
+    "province_total_events": 1031,
+    "district_sum_events": 1031,
+    "hazard_total_sum_events": 1031,
+    "hazard_totals": {
+      "Abrasi pantai": 8,
+      "Angin kencang": 562,
+      "Banjir": 144,
+      "Banjir Bandang": 10,
+      "Erupsi Gunung Api": 44,
+      "Gelombang Pasang": 1,
+      "Gempa Bumi": 1,
+      "Kebakaran Hutan & Lahan": 76,
+      "Kekeringan": 19,
+      "Longsor": 166
+    },
+    "missing_values_inferred": false,
+    "zero_values_reinterpreted": false,
+    "geography_mapping_performed": false,
+    "hazard_taxonomy_harmonized": false
+  },
+  "outputs": {
+    "observations": {
+      "path": "data/processed/bpbd/disaster_events_2023/bpbd-disaster-events-2023-source-native.csv",
+      "sha256": "b669afb839b0644e471090ecd3053c955fc7a5920129500caf83e2ad0e6b2e16"
+    }
+  },
+  "claim_boundary": {
+    "classification": "source_native_official_operational_event_counts",
+    "cross_source_equivalence_with_dibi_2022_authorized": false,
+    "cross_source_equivalence_with_bnpb_authorized": false,
+    "dashboard_use_authorized_after_geography_review": false
+  }
+}
