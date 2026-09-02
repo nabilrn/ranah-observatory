@@ -1,0 +1,60 @@
+{
+  "schema": "ranah-observatory/milestone65-irbi-krb-lookup-bridge/v1",
+  "milestone": 65,
+  "depends_on": [
+    62,
+    64
+  ],
+  "inputs": {
+    "m62_manifest": {
+      "path": "data/manifests/milestone62_irbi_hazard_risk_2024_final.json",
+      "sha256": "08d039751b4b1d35a8457268a6921944dfa63bc574d037a9c4a8caf03ddf58f8"
+    },
+    "irbi_risk": {
+      "path": "data/processed/bnpb/irbi_hazard_risk_2024/irbi-sumbar-hazard-risk-2024-canonical.csv",
+      "sha256": "74505b1d5347792ed3b1c9f87d5133d23bc8122a9d804a1543c3a6744a9ba2cf"
+    },
+    "m64_manifest": {
+      "path": "data/manifests/milestone64_krb_recommendations_final.json",
+      "sha256": "014b5878bfd10e492181b3d64fb02c594fa5f7d67366ee9a819bf450e314b98c"
+    },
+    "krb_context": {
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-recommendation-context-2022-2026.csv",
+      "sha256": "e2d6fae91d404a2d6c0db8510008d36fa1d6a7ded01fdfa04af5aeb1522d7cd2"
+    },
+    "krb_actions": {
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv",
+      "sha256": "68e3c1bb242eb882fc8ffdab30c251a3a238233460698e2267e6ec936911bf2f"
+    }
+  },
+  "result": {
+    "krb_hazard_count": 14,
+    "irbi_hazard_count": 9,
+    "authorized_lookup_bridge_count": 9,
+    "unmatched_krb_hazard_count": 5,
+    "risk_lookup_index_row_count": 124,
+    "all_irbi_2024_rows_have_recommendation_lookup": true,
+    "lookup_join_authorized": true,
+    "global_taxonomy_equivalence_authorized": false,
+    "numeric_value_equivalence_authorized": false,
+    "event_taxonomy_join_authorized": false,
+    "prediction_claim_authorized": false
+  },
+  "unmatched_krb_hazards": [
+    "covid_19",
+    "epidemic_and_disease_outbreak",
+    "flash_flood",
+    "liquefaction",
+    "technological_failure"
+  ],
+  "outputs": {
+    "crosswalk": {
+      "path": "data/mappings/milestone65_irbi_krb_hazard_lookup_crosswalk.csv",
+      "sha256": "5cf351bde83be83e3fa07ad42f056913bb3354a5d4649a89ded954122b77a2c0"
+    },
+    "risk_mitigation_lookup_index": {
+      "path": "data/processed/bnpb/irbi_krb_bridge_2024/irbi-risk-mitigation-lookup-index-2024.csv",
+      "sha256": "4b5e29bbbd61abcbaad8584c2b68cd993b85999135f75a96da8f84af5d0641e0"
+    }
+  }
+}
