@@ -1,0 +1,191 @@
+year,geography_id,geography_name,source_geography_name,irbi_score,risk_class,unit,claim_type,source_family,source_page
+2015,idn.13.1307,Agam,AGAM,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1307,Agam,AGAM,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1307,Agam,AGAM,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1307,Agam,AGAM,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1307,Agam,AGAM,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1307,Agam,AGAM,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1307,Agam,AGAM,193.52,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1307,Agam,AGAM,193.52,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1307,Agam,AGAM,204.32,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1307,Agam,AGAM,204.61,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1312,Pasaman Barat,PASAMAN BARAT,203.20,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1312,Pasaman Barat,PASAMAN BARAT,192.85,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,197.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,184.08,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1301,Kepulauan Mentawai,KEPULAUAN MENTAWAI,190.67,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1309,Pasaman,PASAMAN,178.00,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1309,Pasaman,PASAMAN,178.00,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1309,Pasaman,PASAMAN,178.00,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1309,Pasaman,PASAMAN,178.00,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1309,Pasaman,PASAMAN,178.00,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1309,Pasaman,PASAMAN,178.00,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1309,Pasaman,PASAMAN,176.80,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1309,Pasaman,PASAMAN,176.80,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1309,Pasaman,PASAMAN,177.50,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1309,Pasaman,PASAMAN,177.65,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1371,Padang,KOTA PADANG,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1371,Padang,KOTA PADANG,209.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1371,Padang,KOTA PADANG,191.60,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1371,Padang,KOTA PADANG,191.60,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1371,Padang,KOTA PADANG,169.92,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1371,Padang,KOTA PADANG,169.92,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1371,Padang,KOTA PADANG,181.70,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1371,Padang,KOTA PADANG,179.03,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1371,Padang,KOTA PADANG,166.99,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1371,Padang,KOTA PADANG,155.96,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1377,Pariaman,KOTA PARIAMAN,171.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1377,Pariaman,KOTA PARIAMAN,171.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1377,Pariaman,KOTA PARIAMAN,171.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1377,Pariaman,KOTA PARIAMAN,171.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1377,Pariaman,KOTA PARIAMAN,171.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1377,Pariaman,KOTA PARIAMAN,171.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1377,Pariaman,KOTA PARIAMAN,171.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1377,Pariaman,KOTA PARIAMAN,157.28,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1377,Pariaman,KOTA PARIAMAN,146.81,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1377,Pariaman,KOTA PARIAMAN,153.04,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,196.80,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,196.80,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,184.11,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,184.11,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,180.72,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,167.21,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,156.73,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,156.73,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,161.48,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1306,Padang Pariaman,PADANG PARIAMAN,152.17,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,189.60,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,189.60,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,189.60,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,189.60,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,189.60,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,189.60,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,169.42,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,152.96,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,162.58,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1302,Pesisir Selatan,PESISIR SELATAN,149.22,tinggi,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1303,Solok,SOLOK,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1303,Solok,SOLOK,137.20,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1311,Dharmasraya,DHARMASRAYA,143.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1311,Dharmasraya,DHARMASRAYA,143.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1311,Dharmasraya,DHARMASRAYA,143.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1311,Dharmasraya,DHARMASRAYA,143.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1311,Dharmasraya,DHARMASRAYA,143.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1311,Dharmasraya,DHARMASRAYA,143.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1311,Dharmasraya,DHARMASRAYA,137.69,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1311,Dharmasraya,DHARMASRAYA,137.69,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1311,Dharmasraya,DHARMASRAYA,141.50,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1311,Dharmasraya,DHARMASRAYA,134.81,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,130.00,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,130.00,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,130.00,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,130.00,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,130.00,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,130.00,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,130.00,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,128.01,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,128.61,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1375,Bukittinggi,KOTA BUKITTINGGI,128.61,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1305,Tanah Datar,TANAH DATAR,125.20,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1372,Solok,KOTA SOLOK,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1372,Solok,KOTA SOLOK,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1372,Solok,KOTA SOLOK,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1372,Solok,KOTA SOLOK,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1372,Solok,KOTA SOLOK,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1372,Solok,KOTA SOLOK,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1372,Solok,KOTA SOLOK,125.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1372,Solok,KOTA SOLOK,115.82,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1372,Solok,KOTA SOLOK,121.93,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1372,Solok,KOTA SOLOK,124.92,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1310,Solok Selatan,SOLOK SELATAN,137.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1310,Solok Selatan,SOLOK SELATAN,130.03,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1310,Solok Selatan,SOLOK SELATAN,123.31,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1308,Lima Puluh Kota,LIMA PULUH KOTA,119.20,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,101.08,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,107.47,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1373,Sawahlunto,KOTA SAWAHLUNTO,114.22,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1374,Padang Panjang,KOTA PADANG PANJANG,113.20,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1304,Sijunjung,SIJUNJUNG,107.20,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1304,Sijunjung,SIJUNJUNG,106.73,sedang,index_points,official_index,BNPB IRBI 2024,67
+2015,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2016,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2017,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2018,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2019,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2020,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2021,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2022,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2023,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,,index_points,official_index,BNPB IRBI 2024,67
+2024,idn.13.1376,Payakumbuh,KOTA PAYAKUMBUH,104.80,sedang,index_points,official_index,BNPB IRBI 2024,67
