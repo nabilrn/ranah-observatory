@@ -1,0 +1,125 @@
+year,irbi_hazard_id,source_hazard_label,source_rank,source_geography_name,score,risk_class,source_page,source_url
+2024,drought,Kekeringan,65,SOLOK,24.00,TINGGI,309,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page309.html
+2024,drought,Kekeringan,66,TANAH DATAR,24.00,TINGGI,310,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page310.html
+2024,drought,Kekeringan,67,LIMA PULUH KOTA,24.00,TINGGI,310,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page310.html
+2024,drought,Kekeringan,68,PASAMAN,24.00,TINGGI,310,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page310.html
+2024,drought,Kekeringan,69,KOTA PADANG PANJANG,24.00,TINGGI,310,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page310.html
+2024,drought,Kekeringan,70,KOTA BUKITTINGGI,24.00,TINGGI,310,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page310.html
+2024,drought,Kekeringan,108,SIJUNJUNG,23.65,TINGGI,311,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page311.html
+2024,drought,Kekeringan,111,AGAM,23.55,TINGGI,311,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page311.html
+2024,drought,Kekeringan,124,KOTA PAYAKUMBUH,23.20,TINGGI,311,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page311.html
+2024,drought,Kekeringan,145,KOTA SOLOK,21.47,TINGGI,312,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page312.html
+2024,drought,Kekeringan,175,DHARMASRAYA,19.98,TINGGI,313,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page313.html
+2024,drought,Kekeringan,177,PASAMAN BARAT,19.93,TINGGI,313,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page313.html
+2024,drought,Kekeringan,189,SOLOK SELATAN,18.83,TINGGI,313,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page313.html
+2024,drought,Kekeringan,201,KOTA SAWAHLUNTO,18.01,TINGGI,313,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page313.html
+2024,drought,Kekeringan,225,KOTA PARIAMAN,16.49,TINGGI,314,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page314.html
+2024,drought,Kekeringan,249,PADANG PARIAMAN,15.91,TINGGI,315,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page315.html
+2024,drought,Kekeringan,271,KOTA PADANG,14.94,TINGGI,316,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page316.html
+2024,drought,Kekeringan,297,PESISIR SELATAN,13.95,TINGGI,316,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page316.html
+2024,earthquake,Gempabumi,10,SOLOK,32.40,TINGGI,226,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page226.html
+2024,earthquake,Gempabumi,11,TANAH DATAR,32.40,TINGGI,226,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page226.html
+2024,earthquake,Gempabumi,12,PASAMAN,32.40,TINGGI,226,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page226.html
+2024,earthquake,Gempabumi,13,KOTA PADANG PANJANG,32.40,TINGGI,226,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page226.html
+2024,earthquake,Gempabumi,14,KOTA BUKITTINGGI,32.40,TINGGI,226,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page226.html
+2024,earthquake,Gempabumi,30,AGAM,31.79,TINGGI,226,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page226.html
+2024,earthquake,Gempabumi,42,KOTA SOLOK,28.98,TINGGI,227,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page227.html
+2024,earthquake,Gempabumi,46,KEPULAUAN MENTAWAI,26.64,TINGGI,227,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page227.html
+2024,earthquake,Gempabumi,49,SOLOK SELATAN,25.42,TINGGI,227,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page227.html
+2024,earthquake,Gempabumi,75,LIMA PULUH KOTA,21.60,TINGGI,228,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page228.html
+2024,earthquake,Gempabumi,76,KOTA PAYAKUMBUH,21.60,TINGGI,228,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page228.html
+2024,earthquake,Gempabumi,127,SIJUNJUNG,21.29,TINGGI,229,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page229.html
+2024,earthquake,Gempabumi,160,DHARMASRAYA,17.98,TINGGI,230,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page230.html
+2024,earthquake,Gempabumi,161,PASAMAN BARAT,17.93,TINGGI,230,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page230.html
+2024,earthquake,Gempabumi,186,KOTA SAWAHLUNTO,16.21,TINGGI,231,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page231.html
+2024,earthquake,Gempabumi,196,KOTA PARIAMAN,15.90,TINGGI,231,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page231.html
+2024,earthquake,Gempabumi,234,PADANG PARIAMAN,14.32,TINGGI,232,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page232.html
+2024,earthquake,Gempabumi,255,PESISIR SELATAN,13.45,TINGGI,233,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page233.html
+2024,earthquake,Gempabumi,256,KOTA PADANG,13.44,TINGGI,233,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page233.html
+2024,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,47,KEPULAUAN MENTAWAI,29.60,TINGGI,297,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page297.html
+2024,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,101,AGAM,23.55,TINGGI,299,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page299.html
+2024,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,139,PASAMAN BARAT,19.93,TINGGI,300,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page300.html
+2024,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,192,KOTA PARIAMAN,16.49,TINGGI,301,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page301.html
+2024,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,224,PESISIR SELATAN,14.94,TINGGI,302,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page302.html
+2024,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,229,PADANG PARIAMAN,14.85,TINGGI,302,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page302.html
+2024,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,236,KOTA PADANG,14.44,TINGGI,303,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page303.html
+2024,extreme_weather,Cuaca Ekstrim,54,SOLOK,13.60,TINGGI,327,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page327.html
+2024,extreme_weather,Cuaca Ekstrim,55,TANAH DATAR,13.60,TINGGI,327,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page327.html
+2024,extreme_weather,Cuaca Ekstrim,56,LIMA PULUH KOTA,13.60,TINGGI,327,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page327.html
+2024,extreme_weather,Cuaca Ekstrim,57,PASAMAN,13.60,TINGGI,327,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page327.html
+2024,extreme_weather,Cuaca Ekstrim,58,KOTA PADANG PANJANG,13.60,TINGGI,327,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page327.html
+2024,extreme_weather,Cuaca Ekstrim,59,KOTA BUKITTINGGI,13.60,TINGGI,327,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page327.html
+2024,extreme_weather,Cuaca Ekstrim,60,KOTA PAYAKUMBUH,13.60,TINGGI,327,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page327.html
+2024,extreme_weather,Cuaca Ekstrim,121,SIJUNJUNG,13.40,TINGGI,329,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page329.html
+2024,extreme_weather,Cuaca Ekstrim,123,AGAM,13.35,TINGGI,329,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page329.html
+2024,extreme_weather,Cuaca Ekstrim,140,KOTA PADANG,12.70,TINGGI,330,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page330.html
+2024,extreme_weather,Cuaca Ekstrim,160,KOTA SOLOK,12.16,TINGGI,330,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page330.html
+2024,extreme_weather,Cuaca Ekstrim,187,DHARMASRAYA,11.32,SEDANG,331,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page331.html
+2024,extreme_weather,Cuaca Ekstrim,189,PASAMAN BARAT,11.29,SEDANG,331,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page331.html
+2024,extreme_weather,Cuaca Ekstrim,197,KEPULAUAN MENTAWAI,11.18,SEDANG,331,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page331.html
+2024,extreme_weather,Cuaca Ekstrim,215,SOLOK SELATAN,10.67,SEDANG,332,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page332.html
+2024,extreme_weather,Cuaca Ekstrim,235,KOTA SAWAHLUNTO,10.21,SEDANG,332,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page332.html
+2024,extreme_weather,Cuaca Ekstrim,247,KOTA PARIAMAN,10.01,SEDANG,333,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page333.html
+2024,extreme_weather,Cuaca Ekstrim,296,PADANG PARIAMAN,9.02,SEDANG,334,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page334.html
+2024,extreme_weather,Cuaca Ekstrim,325,PESISIR SELATAN,8.47,SEDANG,335,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page335.html
+2024,flood,Banjir,15,PASAMAN,36.00,TINGGI,212,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page212.html
+2024,flood,Banjir,55,AGAM,35.33,TINGGI,213,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page213.html
+2024,flood,Banjir,86,DHARMASRAYA,29.97,TINGGI,214,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page214.html
+2024,flood,Banjir,88,PASAMAN BARAT,29.89,TINGGI,214,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page214.html
+2024,flood,Banjir,92,KEPULAUAN MENTAWAI,29.60,TINGGI,214,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page214.html
+2024,flood,Banjir,126,KOTA PARIAMAN,24.73,TINGGI,215,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page215.html
+2024,flood,Banjir,150,PADANG PARIAMAN,23.87,TINGGI,216,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page216.html
+2024,flood,Banjir,170,PESISIR SELATAN,22.41,TINGGI,217,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page217.html
+2024,flood,Banjir,171,KOTA PADANG,22.41,TINGGI,217,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page217.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,2,SOLOK,36.00,TINGGI,260,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page260.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,3,TANAH DATAR,36.00,TINGGI,260,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page260.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,4,LIMA PULUH KOTA,36.00,TINGGI,260,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page260.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,5,PASAMAN,36.00,TINGGI,260,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page260.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,6,KOTA BUKITTINGGI,36.00,TINGGI,260,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page260.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,50,SIJUNJUNG,35.48,TINGGI,261,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page261.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,52,AGAM,35.33,TINGGI,261,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page261.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,59,KOTA PAYAKUMBUH,34.80,TINGGI,261,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page261.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,82,KOTA SOLOK,32.20,TINGGI,262,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page262.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,95,DHARMASRAYA,29.97,TINGGI,262,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page262.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,96,PASAMAN BARAT,29.89,TINGGI,262,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page262.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,108,SOLOK SELATAN,28.24,TINGGI,263,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page263.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,171,KOTA PADANG PANJANG,24.00,TINGGI,265,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page265.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,205,PADANG PARIAMAN,23.87,TINGGI,266,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page266.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,236,KOTA SAWAHLUNTO,22.51,TINGGI,267,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page267.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,238,KOTA PADANG,22.41,TINGGI,267,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page267.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,301,KEPULAUAN MENTAWAI,19.73,TINGGI,268,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page268.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,400,KOTA PARIAMAN,16.49,TINGGI,271,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page271.html
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,445,PESISIR SELATAN,14.94,TINGGI,273,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page273.html
+2024,landslide,Tanah Longsor,5,PASAMAN,36.00,TINGGI,278,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page278.html
+2024,landslide,Tanah Longsor,51,SOLOK,24.00,TINGGI,279,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page279.html
+2024,landslide,Tanah Longsor,52,LIMA PULUH KOTA,24.00,TINGGI,279,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page279.html
+2024,landslide,Tanah Longsor,53,KOTA BUKITTINGGI,24.00,TINGGI,279,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page279.html
+2024,landslide,Tanah Longsor,134,PASAMAN BARAT,19.93,TINGGI,282,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page282.html
+2024,landslide,Tanah Longsor,139,KEPULAUAN MENTAWAI,19.73,TINGGI,282,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page282.html
+2024,landslide,Tanah Longsor,148,SOLOK SELATAN,18.83,TINGGI,282,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page282.html
+2024,landslide,Tanah Longsor,159,KOTA SAWAHLUNTO,18.01,TINGGI,282,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page282.html
+2024,landslide,Tanah Longsor,226,PESISIR SELATAN,14.94,SEDANG,284,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page284.html
+2024,landslide,Tanah Longsor,227,KOTA PADANG,14.94,SEDANG,284,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page284.html
+2024,landslide,Tanah Longsor,276,TANAH DATAR,12.00,SEDANG,286,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page286.html
+2024,landslide,Tanah Longsor,277,KOTA PADANG PANJANG,12.00,SEDANG,286,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page286.html
+2024,landslide,Tanah Longsor,311,SIJUNJUNG,11.83,SEDANG,287,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page287.html
+2024,landslide,Tanah Longsor,313,AGAM,11.78,SEDANG,287,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page287.html
+2024,landslide,Tanah Longsor,318,KOTA PAYAKUMBUH,11.60,SEDANG,287,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page287.html
+2024,landslide,Tanah Longsor,346,KOTA SOLOK,10.73,SEDANG,288,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page288.html
+2024,landslide,Tanah Longsor,365,DHARMASRAYA,9.99,SEDANG,288,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page288.html
+2024,landslide,Tanah Longsor,404,KOTA PARIAMAN,8.24,SEDANG,289,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page289.html
+2024,landslide,Tanah Longsor,413,PADANG PARIAMAN,7.96,SEDANG,290,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page290.html
+2024,tsunami,Tsunami,25,AGAM,23.55,TINGGI,244,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page244.html
+2024,tsunami,Tsunami,44,PASAMAN BARAT,19.93,TINGGI,245,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page245.html
+2024,tsunami,Tsunami,62,KOTA PARIAMAN,17.66,TINGGI,245,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page245.html
+2024,tsunami,Tsunami,82,PADANG PARIAMAN,15.91,TINGGI,246,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page246.html
+2024,tsunami,Tsunami,83,KEPULAUAN MENTAWAI,15.78,TINGGI,246,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page246.html
+2024,tsunami,Tsunami,93,PESISIR SELATAN,14.94,TINGGI,246,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page246.html
+2024,tsunami,Tsunami,94,KOTA PADANG,14.94,TINGGI,246,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page246.html
+2024,volcanic_eruption,Letusan Gunung Api,48,SOLOK,7.20,SEDANG,255,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page255.html
+2024,volcanic_eruption,Letusan Gunung Api,49,TANAH DATAR,7.20,SEDANG,255,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page255.html
+2024,volcanic_eruption,Letusan Gunung Api,50,KOTA PADANG PANJANG,7.20,SEDANG,255,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page255.html
+2024,volcanic_eruption,Letusan Gunung Api,54,AGAM,7.07,SEDANG,255,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page255.html
+2024,volcanic_eruption,Letusan Gunung Api,63,KOTA SOLOK,6.44,SEDANG,255,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page255.html
+2024,volcanic_eruption,Letusan Gunung Api,70,SOLOK SELATAN,5.65,SEDANG,256,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page256.html
+2024,volcanic_eruption,Letusan Gunung Api,76,PADANG PARIAMAN,4.77,RENDAH,256,https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page256.html
