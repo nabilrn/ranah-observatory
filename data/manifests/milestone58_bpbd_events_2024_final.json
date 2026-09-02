@@ -1,12 +1,12 @@
 {
-  "schema": "ranah-observatory/milestone58-bpbd-events-2024-final/v2",
+  "schema": "ranah-observatory/milestone58-bpbd-events-2024-final/v3",
   "milestone": 58,
   "depends_on": [
     57
   ],
   "source_manifest": {
     "path": "data/manifests/milestone58_bpbd_events_2024_acquisition.json",
-    "sha256": "2ff28d18605cc7f846675fa9ba58e949e69d7d796c1250db470da52bce29ae9d"
+    "sha256": "ac0ec7af5dbf417e7d6398836fecd31f7c1a222ff4424fd8f10f99c051e4044d"
   },
   "geography_registry": {
     "path": "data/registries/geographies.csv",
@@ -22,11 +22,18 @@
     "source_total_row_events": 1175,
     "sum_of_19_district_rows": 1166,
     "unallocated_difference_events": 9,
-    "same_producer_monthly_event_total": 1175,
+    "bpbd_monthly_event_total": 1175,
     "district_rows_reconcile_to_source_total": false,
-    "monthly_total_reconciles_to_source_total": true,
+    "bpbd_monthly_total_reconciles_to_source_total": true,
     "allocation_or_omission_explanation_available": false,
     "difference_imputed_to_any_geography": false
+  },
+  "lineage_boundary": {
+    "district_resource_organization": "Badan Penanggulangan Bencana Daerah",
+    "district_resource_source_data_declared": false,
+    "monthly_table_is_bpbd_context": true,
+    "same_producer_asserted": false,
+    "cross_table_match_interpretation": "independent BPBD-organization consistency check only; producer-level identity is not asserted"
   },
   "result": {
     "district_count": 19,
@@ -34,7 +41,7 @@
     "source_total_events": 1175,
     "canonical_district_sum_events": 1166,
     "unallocated_difference_events": 9,
-    "same_producer_monthly_event_total": 1175,
+    "bpbd_monthly_event_total": 1175,
     "exact_code_name_pair_mapping_count": 19,
     "geography_mapping_complete": true,
     "dashboard_district_filter_ready": true,
@@ -46,6 +53,6 @@
   },
   "output": {
     "path": "data/processed/bpbd/disaster_events_2024/bpbd-disaster-events-2024-canonical-district.csv",
-    "sha256": "a40a97dc2df1dabb218fcf7d92af49012dd2221cea821eded7d3026ec08d08ed"
+    "sha256": "773a512f2c8cfbce2d52e84a989ec5c18ff93a72942529a9032ca71bf9e5624f"
   }
 }
