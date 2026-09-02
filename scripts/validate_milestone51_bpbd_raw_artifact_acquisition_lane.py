@@ -46,15 +46,17 @@ def validate() -> dict[str, Any]:
     assert official_bps_url("https://sumbar.bps.go.id/id/publication/example")
     assert not official_bps_url("https://bps.go.id.evil.example/publication")
 
-    assert len(rows) == 5
-    by_id = {row["request_id"].strip(): row for row in rows}
-    assert set(by_id) == {
+    m51_core_ids = {
         "bpbd_pusdalops_2015",
         "bpbd_pusdalops_2017",
         "bpbd_data_kebencanaan_2015_2016",
         "bpbd_lakip_2017",
         "bpbd_pusdalops_2018",
     }
+    assert len(rows) >= len(m51_core_ids)
+    by_id = {row["request_id"].strip(): row for row in rows}
+    assert len(by_id) == len(rows)
+    assert m51_core_ids.issubset(by_id)
 
     for request_id, row in by_id.items():
         assert row["source_record_id"].strip()
@@ -93,7 +95,10 @@ def validate() -> dict[str, Any]:
     assert not official_source_url("http://ppid.sumbarprov.go.id/home/dip", "sumbarprov.go.id")
 
     queue_manifest = manifest["queue"]
-    assert queue_manifest["request_count"] == 5
+    # M51 freezes the five rows that established this lane. Later milestones may
+    # append additional official BPBD companion requests without rewriting the
+    # historical M51 manifest or invalidating its 2017 exit-gate contract.
+    assert queue_manifest["request_count"] == len(m51_core_ids) == 5
     assert queue_manifest["p0_request_id"] == "bpbd_pusdalops_2017"
     assert queue_manifest["p0_exit_gate_candidate"] is True
     assert queue_manifest["p0_active_inventory_url"] == p0["official_page_url"].strip()
@@ -153,7 +158,9 @@ def validate() -> dict[str, Any]:
     return {
         "schema": "ranah-observatory/milestone51-bpbd-raw-artifact-acquisition-lane-audit/v3",
         "milestone": 51,
-        "queue_rows": len(rows),
+        "queue_rows": queue_manifest["request_count"],
+        "current_queue_rows": len(rows),
+        "extension_rows": len(rows) - len(m51_core_ids),
         "companion_rows": len(companion_ids),
         "p0_exit_gate_request": "bpbd_pusdalops_2017",
         "allowed_host": "sumbarprov.go.id",
