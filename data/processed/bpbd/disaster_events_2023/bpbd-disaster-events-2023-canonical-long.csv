@@ -1,0 +1,191 @@
+year,geography_id,geography_name,source_geography_name,hazard_source_label,event_count,unit,claim_type,source_family,source_resource_id
+2023,idn.13.1307,Agam,Kabupaten Agam,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Angin kencang,41,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Banjir,10,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Banjir Bandang,3,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Erupsi Gunung Api,44,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Kebakaran Hutan & Lahan,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1307,Agam,Kabupaten Agam,Longsor,35,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Angin kencang,110,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Banjir,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Kebakaran Hutan & Lahan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1371,Padang,Kota Padang,Longsor,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Abrasi pantai,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Angin kencang,76,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Banjir,11,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Kebakaran Hutan & Lahan,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1306,Padang Pariaman,Kabupaten Padang Pariaman,Longsor,13,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Abrasi pantai,2,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Angin kencang,26,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Banjir,17,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Kebakaran Hutan & Lahan,25,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1302,Pesisir Selatan,Kabupaten Pesisir Selatan,Longsor,10,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Angin kencang,43,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Banjir,4,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Banjir Bandang,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Kebakaran Hutan & Lahan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1305,Tanah Datar,Kabupaten Tanah Datar,Longsor,23,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Angin kencang,50,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Banjir,16,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Kebakaran Hutan & Lahan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1375,Bukittinggi,Kota Bukittinggi,Longsor,4,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Angin kencang,7,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Banjir,10,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Kebakaran Hutan & Lahan,19,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Kekeringan,17,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1311,Dharmasraya,Kabupaten Dharmasraya,Longsor,2,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Angin kencang,24,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Banjir,4,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Banjir Bandang,3,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Kebakaran Hutan & Lahan,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1303,Solok,Kabupaten Solok,Longsor,17,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Angin kencang,11,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Banjir,19,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Gempa Bumi,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Kebakaran Hutan & Lahan,3,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1312,Pasaman Barat,Kabupaten Pasaman Barat,Longsor,9,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Angin kencang,25,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Banjir,6,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Kebakaran Hutan & Lahan,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1304,Sijunjung,Kabupaten Sijunjung,Longsor,7,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Angin kencang,35,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Banjir,3,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Kebakaran Hutan & Lahan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1377,Pariaman,Kota Pariaman,Longsor,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Angin kencang,28,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Banjir,2,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Kebakaran Hutan & Lahan,2,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1374,Padang Panjang,Kota Padang Panjang,Longsor,3,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Angin kencang,31,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Banjir,2,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Kebakaran Hutan & Lahan,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1376,Payakumbuh,Kota Payakumbuh,Longsor,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Angin kencang,18,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Banjir,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Kebakaran Hutan & Lahan,3,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1373,Sawahlunto,Kota Sawahlunto,Longsor,11,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Angin kencang,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Banjir,16,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Banjir Bandang,3,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Kebakaran Hutan & Lahan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1309,Pasaman,Kabupaten Pasaman,Longsor,7,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Abrasi pantai,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Angin kencang,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Banjir,12,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Gelombang Pasang,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Kebakaran Hutan & Lahan,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Kekeringan,2,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1301,Kepulauan Mentawai,Kabupaten Kepulauan Mentawai,Longsor,4,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Angin kencang,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Banjir,2,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Kebakaran Hutan & Lahan,10,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1308,Lima Puluh Kota,Kabupaten Lima Puluh Kota,Longsor,9,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Angin kencang,21,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Banjir,4,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Kebakaran Hutan & Lahan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1372,Solok,Kota Solok,Longsor,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Abrasi pantai,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Angin kencang,1,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Banjir,5,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Banjir Bandang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Erupsi Gunung Api,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Gelombang Pasang,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Gempa Bumi,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Kebakaran Hutan & Lahan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Kekeringan,0,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
+2023,idn.13.1310,Solok Selatan,Kabupaten Solok Selatan,Longsor,7,count,observed_data,BPBD/Pusdalop Sumatera Barat Satu Data,e5d974eb-95a0-4570-93d1-9ca45c9fb77b
