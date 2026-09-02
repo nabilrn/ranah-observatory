@@ -17,7 +17,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Inspect official LKj BPBD 2022 transport
+      - name: Inspect legacy official LKj BPBD 2022 transport
         run: |
           set -euo pipefail
           url='https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf'
@@ -29,17 +29,52 @@ jobs:
           wc -c /tmp/response.bin
           sha256sum /tmp/response.bin
           file /tmp/response.bin
-          echo '--- first bytes ---'
-          python - <<'PY'
-          from pathlib import Path
-          data = Path('/tmp/response.bin').read_bytes()
-          print(repr(data[:500]))
-          PY
           if [ "$(head -c 4 /tmp/response.bin)" = '%PDF' ]; then
             echo 'artifact_state=pdf'
-            if command -v pdfinfo >/dev/null 2>&1; then
-              pdfinfo /tmp/response.bin | grep -E '^(Pages|Page size|PDF version):'
-            fi
           else
-            echo 'artifact_state=non_pdf_transport_response'
+            echo 'artifact_state=spa_fallback_non_pdf'
           fi
+
+      - name: Discover current library API and download routes
+        run: |
+          set -euo pipefail
+          base='https://bpbd.sumbarprov.go.id'
+          curl --fail --silent --show-error --location "$base/perpustakaan/laporan-kinerja" -o /tmp/library.html
+          python - <<'PY'
+          from pathlib import Path
+          import re, subprocess, urllib.parse
+
+          base='https://bpbd.sumbarprov.go.id'
+          html=Path('/tmp/library.html').read_text(encoding='utf-8', errors='replace')
+          scripts=[]
+          for src in re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', html):
+              if src.endswith('.js'):
+                  scripts.append(urllib.parse.urljoin(base+'/', src))
+          print('script_urls=', scripts)
+          blobs=[]
+          for i,url in enumerate(scripts):
+              path=f'/tmp/bundle-{i}.js'
+              subprocess.run(['curl','--fail','--silent','--show-error','--location',url,'-o',path],check=True)
+              text=Path(path).read_text(encoding='utf-8',errors='replace')
+              blobs.append(text)
+              print('bundle',i,'url',url,'bytes',len(text))
+          text='\n'.join(blobs)
+          needles=[
+              'Laporan Kinerja Badan Penanggulangan Bencana Daerah Tahun 2022',
+              'laporan-kinerja', 'perpustakaan', '/api/', 'download', 'dokumen'
+          ]
+          for needle in needles:
+              print('\n--- snippets for',needle,'---')
+              start=0
+              shown=0
+              while shown < 12:
+                  idx=text.find(needle,start)
+                  if idx < 0: break
+                  print(text[max(0,idx-240):idx+420].replace('\n',' '))
+                  start=idx+len(needle)
+                  shown+=1
+          paths=sorted(set(re.findall(r'["\'](https?://[^"\']+|/[^"\']*(?:api|download|perpustakaan|file|dokumen)[^"\']*)["\']', text, re.I)))
+          print('\n--- candidate routes ---')
+          for item in paths[:120]:
+              print(item)
+          PY
