@@ -1,0 +1,45 @@
+{
+  "schema": "ranah-observatory/milestone61-irbi-sumbar-2015-2024-acquisition/v1",
+  "milestone": 61,
+  "depends_on": [
+    60
+  ],
+  "retrieved_at": "2026-09-02T11:16:41.390462+00:00",
+  "source": {
+    "publisher": "Badan Nasional Penanggulangan Bencana",
+    "publication": "Indeks Risiko Bencana Indonesia Tahun 2024",
+    "official_book_page": 67,
+    "basic_html_url": "https://inarisk.bnpb.go.id/IRBI-2024/files/basic-html/page67.html",
+    "official_pdf_url": "https://www.bnpb.go.id/storage/app/media/Buku%20BNPB/BUKU%20IRBI%202024_BNPB_lowres.pdf",
+    "period": "2015-2024"
+  },
+  "source_native": {
+    "row_count": 19,
+    "year_count": 10,
+    "value_count": 190,
+    "years": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "risk_class_available_for_year": 2024,
+    "geography_semantics_interpreted": false,
+    "scores_recalculated": false,
+    "missing_values_inferred": false
+  },
+  "output": {
+    "path": "data/processed/bnpb/irbi_sumbar_2015_2024/irbi-sumbar-2015-2024-source-native.csv",
+    "sha256": "7390f4ec5a99683b08e85ca2bda45a1f00460683b56e5f92c3d92df79d9bb463"
+  },
+  "result": {
+    "source_native_acquisition_complete": true,
+    "canonical_mapping_authorized": false
+  }
+}
