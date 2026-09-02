@@ -1,0 +1,61 @@
+name: M60 Acquire BPBD Book 2024 TEMP
+
+on:
+  push:
+    branches: [research/evidence]
+    paths:
+      - 'scripts/acquire_milestone60_bpbd_book_2024.py'
+      - '.github/workflows/m60-acquire-bpbd-book-2024-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze official BPBD 2024 book
+        run: python scripts/acquire_milestone60_bpbd_book_2024.py
+      - name: Extract searchable PDF text without OCR
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+          PDF=data/raw/bpbd/m60_book_2024/data-dan-informasi-bencana-sumatera-barat-2024.pdf
+          pdfinfo "$PDF" > data/processed/bpbd/disaster_profile_2014_2024/diagnostic-book-pdfinfo.txt
+          pdftotext -layout "$PDF" /tmp/m60-book.txt
+          python - <<'PY'
+          from pathlib import Path
+          src = Path('/tmp/m60-book.txt').read_text(encoding='utf-8', errors='replace').splitlines()
+          needles = ('2014', '8.503', '8503', 'Profil Bencana', 'PROFIL BENCANA', 'Cuaca Ekstrem', 'Tanah Longsor')
+          keep = set()
+          for i, line in enumerate(src):
+              if any(n in line for n in needles):
+                  for j in range(max(0, i-8), min(len(src), i+15)):
+                      keep.add(j)
+          out = []
+          last = None
+          for i in sorted(keep):
+              if last is not None and i > last + 1:
+                  out.append('\n--- context break ---\n')
+              out.append(f'{i+1:06d}: {src[i]}')
+              last = i
+          Path('data/processed/bpbd/disaster_profile_2014_2024/diagnostic-book-historical-search.txt').write_text('\n'.join(out)+'\n', encoding='utf-8')
+          PY
+      - name: Commit frozen PDF and diagnostic text
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f data/raw/bpbd/m60_book_2024
+          git add data/manifests/milestone60_bpbd_book_2024_acquisition.json \
+                  data/processed/bpbd/disaster_profile_2014_2024/diagnostic-book-pdfinfo.txt \
+                  data/processed/bpbd/disaster_profile_2014_2024/diagnostic-book-historical-search.txt
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Freeze M60 BPBD 2024 book and diagnostic text'
+          git push origin HEAD:research/evidence
