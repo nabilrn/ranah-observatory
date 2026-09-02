@@ -1,0 +1,39 @@
+name: M64 Acquire KRB Recommendations TEMP
+
+on:
+  push:
+    branches: [research/evidence]
+    paths:
+      - 'scripts/acquire_milestone64_krb_recommendations.py'
+      - '.github/workflows/m64-acquire-krb-recommendations-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF text dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+      - name: Acquire KRB recommendation evidence
+        run: python scripts/acquire_milestone64_krb_recommendations.py
+      - name: Commit frozen M64 recommendation evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-search-excerpt.txt \
+                  data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-page-index.json \
+                  data/manifests/milestone64_krb_recommendations_acquisition.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Freeze M64 KRB recommendation evidence'
+          git push origin HEAD:research/evidence
