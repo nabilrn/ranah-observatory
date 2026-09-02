@@ -35,46 +35,42 @@ jobs:
             echo 'artifact_state=spa_fallback_non_pdf'
           fi
 
-      - name: Discover current library API and download routes
+      - name: Query current library category API and resolve 2022 downloads
         run: |
           set -euo pipefail
           base='https://bpbd.sumbarprov.go.id'
-          curl --fail --silent --show-error --location "$base/perpustakaan/laporan-kinerja" -o /tmp/library.html
+          endpoint="$base/web-api/api/category/laporan-kinerja-instansi-pemerintah/2696"
+          curl --fail --silent --show-error --location "$endpoint" -o /tmp/category.json
           python - <<'PY'
           from pathlib import Path
-          import re, subprocess, urllib.parse
+          import json, subprocess, urllib.parse
 
           base='https://bpbd.sumbarprov.go.id'
-          html=Path('/tmp/library.html').read_text(encoding='utf-8', errors='replace')
-          scripts=[]
-          for src in re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', html):
-              if src.endswith('.js'):
-                  scripts.append(urllib.parse.urljoin(base+'/', src))
-          print('script_urls=', scripts)
-          blobs=[]
-          for i,url in enumerate(scripts):
-              path=f'/tmp/bundle-{i}.js'
-              subprocess.run(['curl','--fail','--silent','--show-error','--location',url,'-o',path],check=True)
-              text=Path(path).read_text(encoding='utf-8',errors='replace')
-              blobs.append(text)
-              print('bundle',i,'url',url,'bytes',len(text))
-          text='\n'.join(blobs)
-          needles=[
-              'Laporan Kinerja Badan Penanggulangan Bencana Daerah Tahun 2022',
-              'laporan-kinerja', 'perpustakaan', '/api/', 'download', 'dokumen'
-          ]
-          for needle in needles:
-              print('\n--- snippets for',needle,'---')
-              start=0
-              shown=0
-              while shown < 12:
-                  idx=text.find(needle,start)
-                  if idx < 0: break
-                  print(text[max(0,idx-240):idx+420].replace('\n',' '))
-                  start=idx+len(needle)
-                  shown+=1
-          paths=sorted(set(re.findall(r'["\'](https?://[^"\']+|/[^"\']*(?:api|download|perpustakaan|file|dokumen)[^"\']*)["\']', text, re.I)))
-          print('\n--- candidate routes ---')
-          for item in paths[:120]:
-              print(item)
+          payload=json.loads(Path('/tmp/category.json').read_text(encoding='utf-8'))
+          data=payload.get('data') or []
+          print('category_row_count=',len(data))
+          matches=[]
+          for row in data:
+              title=str(row.get('title') or row.get('judul') or '')
+              if '2022' in title:
+                  matches.append(row)
+          print('matches_2022=',json.dumps(matches,ensure_ascii=False,sort_keys=True,indent=2))
+          for idx,row in enumerate(matches):
+              for field in ('downloads','downloads1'):
+                  raw=row.get(field)
+                  if not raw:
+                      continue
+                  url=urllib.parse.urljoin(base+'/',str(raw))
+                  out=f'/tmp/m55-{idx}-{field}.bin'
+                  hdr=f'/tmp/m55-{idx}-{field}.headers'
+                  subprocess.run(['curl','--silent','--show-error','--location','--dump-header',hdr,url,'-o',out],check=True)
+                  data=Path(out).read_bytes()
+                  print('\nfield=',field,'url=',url,'bytes=',len(data),'magic=',repr(data[:12]))
+                  print(Path(hdr).read_text(encoding='utf-8',errors='replace'))
+                  subprocess.run(['sha256sum',out],check=True)
+                  subprocess.run(['file',out],check=True)
+                  if data.startswith(b'%PDF'):
+                      print('resolved_pdf_url=',url)
+                      if subprocess.run(['bash','-lc','command -v pdfinfo >/dev/null 2>&1']).returncode==0:
+                          subprocess.run(['bash','-lc',f"pdfinfo {out} | grep -E '^(Pages|Page size|PDF version):'"],check=True)
           PY
