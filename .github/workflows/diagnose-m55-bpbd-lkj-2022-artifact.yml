@@ -1,0 +1,35 @@
+name: Diagnose M55 BPBD LKj 2022 artifact
+
+on:
+  push:
+    branches:
+      - research/evidence
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Download official LKj BPBD 2022 PDF
+        run: |
+          set -euo pipefail
+          url='https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf'
+          curl --fail --location --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 120 "$url" -o /tmp/bpbd-lkj-2022.pdf
+          test "$(head -c 4 /tmp/bpbd-lkj-2022.pdf)" = '%PDF'
+
+      - name: Print immutable artifact diagnostics
+        run: |
+          set -euo pipefail
+          sha256sum /tmp/bpbd-lkj-2022.pdf
+          wc -c /tmp/bpbd-lkj-2022.pdf
+          file /tmp/bpbd-lkj-2022.pdf
+          if command -v pdfinfo >/dev/null 2>&1; then
+            pdfinfo /tmp/bpbd-lkj-2022.pdf | grep -E '^(Pages|Page size|PDF version):'
+          fi
