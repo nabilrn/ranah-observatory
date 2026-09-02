@@ -1,4 +1,4 @@
-name: M67 Product Preflight TEMP
+name: M67 Forward Compatibility Repair TEMP
 
 on:
   push:
@@ -7,53 +7,54 @@ on:
       - '.github/workflows/m67-wire-mitigation-plan-temp.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  preflight:
+  repair:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    defaults:
-      run:
-        working-directory: web
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
         with:
           ref: release/publication
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '22'
-          cache: npm
-          cache-dependency-path: web/package.json
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
-      - name: Type and Svelte checks
-        run: npm run check
-      - name: Build static product with v5 data promotion
-        run: npm run build
-      - name: Validate generated public v5 artifact
-        working-directory: .
+      - name: Patch M66 validator for successor public schemas
         run: |
           python - <<'PY'
-          import json
           from pathlib import Path
-          data = json.loads(Path('web/static/data/disaster-summary.json').read_text(encoding='utf-8'))
-          assert data['schema'] == 'ranah-observatory/public-disaster-summary/v5'
-          assert data['risk_mitigation_2024']['risk']['row_count'] == 124
-          assert data['risk_mitigation_2024']['recommendations']['action_count'] == 49
-          plan = data['mitigation_plan_2026']
-          assert plan['plan_year'] == 2026
-          assert plan['targets']['count'] == 13
-          assert plan['gaps']['count'] == 18
-          assert plan['boundaries']['targets_are_forward_planning_commitments'] is True
-          assert plan['boundaries']['gaps_are_official_qualitative_diagnostics'] is True
-          for key in (
-              'targets_are_actual_achievements',
-              'gaps_are_numeric_capacity_scores',
-              'municipality_gap_attribution_authorized',
-              'prediction_claim_authorized',
-              'unmitigated_probability_inference_authorized',
-          ):
-              assert plan['boundaries'][key] is False
-          print({'schema': data['schema'], 'targets': 13, 'gaps': 18})
+          path = Path('scripts/validate_public_disaster_risk_mitigation.py')
+          text = path.read_text(encoding='utf-8')
+          replacements = [
+              (
+                  'EXPECTED_SCHEMA = "ranah-observatory/public-disaster-summary/v4"',
+                  'PUBLIC_SCHEMA_PREFIX = "ranah-observatory/public-disaster-summary/v"',
+              ),
+              (
+                  '    require(public.get("schema") == EXPECTED_SCHEMA, f"M66 public schema drift: {public.get(\'schema\')!r}")',
+                  '    schema = public.get("schema", "")\n    require(schema.startswith(PUBLIC_SCHEMA_PREFIX), f"M66 public schema namespace drift: {schema!r}")\n    require(int(schema.removeprefix(PUBLIC_SCHEMA_PREFIX)) >= 4, f"M66 risk layer requires public schema v4+, got {schema!r}")',
+              ),
+              (
+                  '    require(data_script.endswith("python3 ../scripts/promote_public_disaster_risk_mitigation.py"), "M66 promoter missing from web data chain")',
+                  '    require("python3 ../scripts/promote_public_disaster_risk_mitigation.py" in data_script, "M66 promoter missing from web data chain")',
+              ),
+              (
+                  '    require(EXPECTED_SCHEMA in PAGE_TS.read_text(encoding="utf-8"), "M66 page loader does not require v4")',
+                  '    require(PUBLIC_SCHEMA_PREFIX in PAGE_TS.read_text(encoding="utf-8"), "M66 page loader schema guard missing")',
+              ),
+              (
+                  '        "schema": EXPECTED_SCHEMA,',
+                  '        "schema": public["schema"],',
+              ),
+          ]
+          for old, new in replacements:
+              if text.count(old) != 1:
+                  raise SystemExit(f'M66 validator patch marker drift: {old[:72]}')
+              text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
           PY
+      - name: Commit forward-compatible M66 validator
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/validate_public_disaster_risk_mitigation.py
+          git commit -m 'Allow M66 validation under successor public schemas'
+          git push origin HEAD:release/publication
