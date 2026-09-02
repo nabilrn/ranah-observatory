@@ -6,6 +6,8 @@ import hashlib
 import html
 import json
 import re
+import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -43,10 +45,20 @@ class TextExtractor(HTMLParser):
             self.parts.append(html.unescape(data))
 
 
-def fetch(url: str) -> str:
-    request = urllib.request.Request(url, headers={"User-Agent": "RanahObservatory/1.0"})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return response.read().decode("utf-8", errors="replace")
+def fetch(url: str, attempts: int = 6) -> str:
+    last_error: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        request = urllib.request.Request(url, headers={"User-Agent": "RanahObservatory/1.0"})
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                return response.read().decode("utf-8", errors="replace")
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+            last_error = exc
+            retryable = not isinstance(exc, urllib.error.HTTPError) or exc.code in {429, 500, 502, 503, 504}
+            if not retryable or attempt == attempts:
+                break
+            time.sleep(min(2 ** (attempt - 1), 12))
+    raise RuntimeError(f"M62 official page fetch failed after {attempts} attempts: {url}: {last_error}")
 
 
 def sha256(path: Path) -> str:
