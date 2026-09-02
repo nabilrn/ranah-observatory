@@ -1,0 +1,33 @@
+{
+  "schema": "ranah-observatory/milestone64-krb-recommendations-final/v1",
+  "milestone": 64,
+  "depends_on": [
+    63
+  ],
+  "source_manifest": {
+    "path": "data/manifests/milestone64_krb_recommendations_acquisition.json",
+    "sha256": "6aa09769219bf33e2cdc6b6eedf4589584e23fe0e2664bd1dc242416f99f2a60"
+  },
+  "result": {
+    "specific_recommendation_section_count": 14,
+    "hazard_count": 14,
+    "source_page_span": [
+      100,
+      106
+    ],
+    "source_native_sections_materialized": true,
+    "dashboard_action_summary_ready": false,
+    "recommendations_treated_as_observed_outcomes": false,
+    "causal_prediction_authorized": false,
+    "unmitigated_loss_forecast_authorized": false
+  },
+  "taxonomy_boundary": {
+    "identifier_namespace": "krb_hazard_id",
+    "source_labels_preserved": true,
+    "cross_source_taxonomy_equivalence_authorized": false
+  },
+  "output": {
+    "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv",
+    "sha256": "4c062f07a10070cc8cada911ca87c93f6a266be614d3aeb33940572ef522ac94"
+  }
+}
