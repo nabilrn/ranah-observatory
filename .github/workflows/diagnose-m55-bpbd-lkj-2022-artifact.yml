@@ -17,19 +17,29 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Download official LKj BPBD 2022 PDF
+      - name: Inspect official LKj BPBD 2022 transport
         run: |
           set -euo pipefail
           url='https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf'
-          curl --fail --location --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 120 "$url" -o /tmp/bpbd-lkj-2022.pdf
-          test "$(head -c 4 /tmp/bpbd-lkj-2022.pdf)" = '%PDF'
-
-      - name: Print immutable artifact diagnostics
-        run: |
-          set -euo pipefail
-          sha256sum /tmp/bpbd-lkj-2022.pdf
-          wc -c /tmp/bpbd-lkj-2022.pdf
-          file /tmp/bpbd-lkj-2022.pdf
-          if command -v pdfinfo >/dev/null 2>&1; then
-            pdfinfo /tmp/bpbd-lkj-2022.pdf | grep -E '^(Pages|Page size|PDF version):'
+          curl --silent --show-error --location --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 120 \
+            --dump-header /tmp/headers.txt "$url" -o /tmp/response.bin
+          echo '--- response headers ---'
+          cat /tmp/headers.txt
+          echo '--- byte diagnostics ---'
+          wc -c /tmp/response.bin
+          sha256sum /tmp/response.bin
+          file /tmp/response.bin
+          echo '--- first bytes ---'
+          python - <<'PY'
+          from pathlib import Path
+          data = Path('/tmp/response.bin').read_bytes()
+          print(repr(data[:500]))
+          PY
+          if [ "$(head -c 4 /tmp/response.bin)" = '%PDF' ]; then
+            echo 'artifact_state=pdf'
+            if command -v pdfinfo >/dev/null 2>&1; then
+              pdfinfo /tmp/response.bin | grep -E '^(Pages|Page size|PDF version):'
+            fi
+          else
+            echo 'artifact_state=non_pdf_transport_response'
           fi
