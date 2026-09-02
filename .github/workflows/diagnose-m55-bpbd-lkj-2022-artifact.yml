@@ -25,10 +25,11 @@ jobs:
           curl --fail --silent --show-error --location "$endpoint" -o /tmp/category.json
           python - <<'PY'
           from pathlib import Path
-          import json, subprocess, urllib.parse
+          import json, subprocess, urllib.parse, hashlib
 
           base='https://bpbd.sumbarprov.go.id'
           rows=(json.loads(Path('/tmp/category.json').read_text()).get('data') or [])
+          summary=[]
           for i,row in enumerate(rows):
               title=str(row.get('title') or '')
               path=str(row.get('gambar') or '')
@@ -42,17 +43,19 @@ jobs:
               ctype=''
               for line in headers.splitlines():
                   if line.lower().startswith('content-type:'):
-                      ctype=line.strip()
-              print('\n===',title,'===')
-              print('metadata_path=',path)
-              print('resolved_url=',url)
-              print('http=',p.stdout.strip(),'curl_rc=',p.returncode,'bytes=',len(body),'magic=',repr(body[:16]),ctype)
-              if body and not body.startswith(b'%PDF'):
-                  print('body_prefix=',repr(body[:300]))
-              if body.startswith(b'%PDF'):
-                  subprocess.run(['sha256sum',out],check=True)
+                      ctype=line.split(':',1)[1].strip()
+              rec={
+                  'title':title,'metadata_path':path,'resolved_url':url,
+                  'http':p.stdout.strip(),'curl_rc':p.returncode,'bytes':len(body),
+                  'content_type':ctype,'is_pdf':body.startswith(b'%PDF'),
+                  'sha256':hashlib.sha256(body).hexdigest() if body else None,
+                  'body_prefix':None if body.startswith(b'%PDF') else body[:160].decode('utf-8',errors='replace')
+              }
+              summary.append(rec)
+              print(json.dumps(rec,ensure_ascii=False,sort_keys=True))
+              if rec['is_pdf']:
                   subprocess.run(['file',out],check=True)
-                  subprocess.run(['bash','-lc',f"pdfinfo {out} | grep -E '^(Pages|Page size|PDF version):'"],check=True)
+          print('SUMMARY_JSON='+json.dumps(summary,ensure_ascii=False,sort_keys=True,separators=(',',':')))
           PY
 
       - name: Confirm legacy 2022 path is SPA fallback
