@@ -27,7 +27,8 @@
     "nested_source_only_hazard_count": 3,
     "priority_context_row_count": 14,
     "observed_implementation_claimed": false,
-    "nested_numbering_flattened": false
+    "nested_numbering_flattened": false,
+    "page_furniture_removed_from_action_text": true
   },
   "taxonomy_boundary": {
     "identifier_namespace": "krb_hazard_id",
@@ -99,11 +100,11 @@
     },
     "hazard_actions": {
       "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv",
-      "sha256": "ef99f740f73e38f7e349543486be8f9cd1eb955342a546e66d9a71dc4b5a3272"
+      "sha256": "68e3c1bb242eb882fc8ffdab30c251a3a238233460698e2267e6ec936911bf2f"
     },
     "priority_context": {
       "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-recommendation-context-2022-2026.csv",
-      "sha256": "af7b71db8441cb78afee7289f96fd99d3671073d57e7b4be6db29b1698a9bd01"
+      "sha256": "e2d6fae91d404a2d6c0db8510008d36fa1d6a7ded01fdfa04af5aeb1522d7cd2"
     }
   }
 }
