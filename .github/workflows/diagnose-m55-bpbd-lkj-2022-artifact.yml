@@ -17,54 +17,38 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Compare encoded current library file transport
+      - name: Search current BPBD library categories for DIBI 2022
         run: |
           set -euo pipefail
           base='https://bpbd.sumbarprov.go.id'
-          endpoint="$base/web-api/api/category/laporan-kinerja-instansi-pemerintah/2696"
-          curl --fail --silent --show-error --location "$endpoint" -o /tmp/category.json
           python - <<'PY'
           from pathlib import Path
-          import json, subprocess, urllib.parse, hashlib
+          import json, subprocess
 
           base='https://bpbd.sumbarprov.go.id'
-          rows=(json.loads(Path('/tmp/category.json').read_text()).get('data') or [])
-          summary=[]
-          for i,row in enumerate(rows):
-              title=str(row.get('title') or '')
-              path=str(row.get('gambar') or '')
-              encoded=urllib.parse.quote(path, safe='/:')
-              url=base+'/web-api'+encoded
-              out=f'/tmp/encoded-{i}.bin'
-              hdr=f'/tmp/encoded-{i}.hdr'
-              p=subprocess.run(['curl','--silent','--show-error','--location','--max-time','120','--dump-header',hdr,'--output',out,'--write-out','%{http_code}',url],text=True,capture_output=True)
-              body=Path(out).read_bytes() if Path(out).exists() else b''
-              headers=Path(hdr).read_text(encoding='utf-8',errors='replace') if Path(hdr).exists() else ''
-              ctype=''
-              for line in headers.splitlines():
-                  if line.lower().startswith('content-type:'):
-                      ctype=line.split(':',1)[1].strip()
-              rec={
-                  'title':title,'metadata_path':path,'resolved_url':url,
-                  'http':p.stdout.strip(),'curl_rc':p.returncode,'bytes':len(body),
-                  'content_type':ctype,'is_pdf':body.startswith(b'%PDF'),
-                  'sha256':hashlib.sha256(body).hexdigest() if body else None,
-                  'body_prefix':None if body.startswith(b'%PDF') else body[:160].decode('utf-8',errors='replace')
-              }
-              summary.append(rec)
-              print(json.dumps(rec,ensure_ascii=False,sort_keys=True))
-              if rec['is_pdf']:
-                  subprocess.run(['file',out],check=True)
-          print('SUMMARY_JSON='+json.dumps(summary,ensure_ascii=False,sort_keys=True,separators=(',',':')))
+          slugs=[
+              'download','laporan-kinerja-instansi-pemerintah','infografis',
+              'edukasi-bencana','rencana-strategis','rencana-kerja',
+              'perjanjian-kinerja','rencana-kinerja-tahunan','sop',
+              'indikator-kinerja-individu','renaksi','skp','iku'
+          ]
+          hits=[]
+          for slug in slugs:
+              url=f'{base}/web-api/api/category/{slug}/2696'
+              p=subprocess.run(['curl','--fail','--silent','--show-error','--location',url],text=True,capture_output=True)
+              if p.returncode:
+                  print('category_error',slug,p.stderr.strip())
+                  continue
+              try:
+                  payload=json.loads(p.stdout)
+              except Exception as exc:
+                  print('category_non_json',slug,type(exc).__name__)
+                  continue
+              rows=payload.get('data') or []
+              print('category',slug,'rows',len(rows))
+              for row in rows:
+                  blob=json.dumps(row,ensure_ascii=False).lower()
+                  if 'dibi' in blob or ('2022' in blob and ('bencana' in blob or 'kebencanaan' in blob)):
+                      hits.append({'category_slug':slug,'row':row})
+          print('DIBI_HITS='+json.dumps(hits,ensure_ascii=False,sort_keys=True,indent=2))
           PY
-
-      - name: Confirm legacy 2022 path is SPA fallback
-        run: |
-          set -euo pipefail
-          legacy='https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf'
-          curl --silent --show-error --location --dump-header /tmp/legacy.headers "$legacy" -o /tmp/legacy.bin
-          test "$(head -c 4 /tmp/legacy.bin)" != '%PDF'
-          wc -c /tmp/legacy.bin
-          sha256sum /tmp/legacy.bin
-          file /tmp/legacy.bin
-          grep -i '^content-type:' /tmp/legacy.headers
