@@ -1,0 +1,150 @@
+{
+  "schema": "ranah-observatory/milestone56-bpbd-dibi-2022-ppid-raw-artifact-recovery/v1",
+  "milestone": 56,
+  "title": "BPBD/Pusdalops DIBI 2022 PPID UUID raw-artifact recovery",
+  "depends_on": [53, 55],
+  "decision_date": "2026-09-02",
+  "research_question": "Can the legacy PPID record for Buku DIBI Tahun 2022 be mapped to a current stable UUID download route and can the recovered raw PDF verify the high-value M53 table targets without erasing source-internal disagreements?",
+  "legacy_identity": {
+    "record_id": 20769,
+    "title": "Buku DIBI Tahun 2022",
+    "legacy_detail_url": "https://ppid.sumbarprov.go.id/home/details/20769-buku-dibi-tahun-2022.html",
+    "legacy_direct_pdf_url": "https://ppid.sumbarprov.go.id/images/2023/09/file/Buku_DIBI_2022.pdf",
+    "legacy_detail_exact_title_match": true
+  },
+  "current_ppid_mapping": {
+    "uuid": "faf18bd0-76d9-44b2-8092-b89f70f29e6e",
+    "information_url": "https://ppid.sumbarprov.go.id/home/information/faf18bd0-76d9-44b2-8092-b89f70f29e6e",
+    "download_url": "https://ppid.sumbarprov.go.id/home/download/faf18bd0-76d9-44b2-8092-b89f70f29e6e",
+    "legacy_routes_tested": [
+      "https://ppid.sumbarprov.go.id/home/details/20769-buku-dibi-tahun-2022.html",
+      "https://ppid.sumbarprov.go.id/home/details/20769-buku-dibi-tahun-2022",
+      "https://ppid.sumbarprov.go.id/home/details/20769"
+    ],
+    "all_legacy_routes_resolved_to_same_uuid": true,
+    "resolved_information_page_exact_title_match": true,
+    "numeric_current_download_route_valid": false,
+    "numeric_api_download_route_valid": false,
+    "exact_title_inventory_post_returned_current_uuid": false,
+    "interpretation": "The active PPID inventory search omitted the title during the audit, but all three legacy detail routes independently converged on the same current UUID information page with the exact title."
+  },
+  "raw_artifact": {
+    "retrieval_status": 200,
+    "content_type": "application/pdf",
+    "byte_count": 13044950,
+    "sha256": "f0ce706388d54c361ecd36f7c5da2a3bd749f59b32f807c9e8c5bb25fef67ba3",
+    "pdf_version": "1.7",
+    "page_count": 154,
+    "complete_pdf_magic_verified": true,
+    "complete_pdf_eof_verified": true,
+    "body_truncated": false,
+    "repeat_download_same_sha256_verified": true,
+    "raw_official_artifact_acquired": true,
+    "artifact_committed_to_repository": false,
+    "artifact_commit_policy": "The 13 MB source PDF remains externally reproducible from the stable official UUID route; the repository freezes identity, checksum, byte size, page count, and page-level verification evidence rather than committing the binary."
+  },
+  "raw_table_verification": {
+    "table_page_locators": {
+      "table_3_1": 36,
+      "table_3_2": 38,
+      "table_3_3": 39,
+      "table_3_4": 39,
+      "table_3_5": 40,
+      "table_3_6": 40,
+      "table_3_7": 41,
+      "table_3_8": 41,
+      "table_3_9": 42,
+      "table_3_10": 44,
+      "recapitulation_appendix_start": 90,
+      "history_appendix_start": 92,
+      "history_appendix_final_grand_total_page": 146
+    },
+    "events_total_1021_verified": true,
+    "table_3_2_hazard_totals_verified": {
+      "abrasi_pantai": 5,
+      "angin_kencang": 674,
+      "banjir": 123,
+      "banjir_bandang": 5,
+      "gempa_bumi": 2,
+      "kebakaran_hutan_dan_lahan": 92,
+      "longsor": 120,
+      "total": 1021
+    },
+    "table_3_3_human_impact_verified": {
+      "deaths": 28,
+      "missing": null,
+      "injured_or_sick": 456,
+      "evacuated": 26265
+    },
+    "table_3_4_human_impact_verified": {
+      "deaths": 28,
+      "missing": 4,
+      "injured_or_sick": 456,
+      "evacuated": 26265,
+      "event_total": 1021
+    },
+    "table_3_9_monthly_totals_verified": {
+      "januari": 89,
+      "februari": 84,
+      "maret": 81,
+      "april": 92,
+      "mei": 85,
+      "juni": 97,
+      "juli": 65,
+      "agustus": 110,
+      "september": 97,
+      "oktober": 100,
+      "november": 102,
+      "desember": 19,
+      "total": 1021
+    },
+    "table_3_10_human_impact_monthly_verified": {
+      "deaths": 28,
+      "missing": 4,
+      "injured_or_sick": 456,
+      "evacuated": 26265
+    },
+    "district_event_count_disagreement_count_verified": 7,
+    "district_event_tables_and_human_impact_table_both_total_1021": true,
+    "indexed_verification_targets_materially_confirmed": true
+  },
+  "new_internal_disagreement": {
+    "metric": "recorded_loss_rupiah",
+    "table_3_1_and_narrative_page_36": 1136849587336,
+    "recapitulation_and_history_appendices_pages_90_146": 1136849586796,
+    "absolute_difference_rupiah": 540,
+    "same_value": false,
+    "resolution_authorized": false,
+    "rule": "Preserve both source-native values with page/table provenance; do not select or average a preferred total until the source lineage or arithmetic is reconciled."
+  },
+  "confirmed_m53_quality_flags": {
+    "missing_person_disagreement_table_3_3_vs_3_4": true,
+    "seven_district_event_count_disagreements": true,
+    "search_index_monetary_corruption_bypassed_by_raw_artifact": true,
+    "raw_pdf_page_count_matches_indexed_mirror_page_count_154": true
+  },
+  "promotion_state": {
+    "raw_artifact_gate_satisfied": true,
+    "source_native_table_verification_authorized": true,
+    "source_native_materialization_authorized": false,
+    "public_dataset_catalog_promotion_authorized": false,
+    "canonical_cross_year_disaster_timeseries_authorized": false,
+    "reason_materialization_still_blocked": "M56 verifies raw identity and major table targets but does not yet materialize complete source-native tables with deterministic row schemas and provenance; M57 must perform that extraction while preserving all internal disagreements."
+  },
+  "next_actions": [
+    "Materialize Tables 3.1-3.10 into separate source-native machine-readable datasets with PDF-page provenance and explicit missing-value semantics.",
+    "Preserve the Table 3.3 versus Table 3.4 missing-person disagreement and the seven district event-count disagreements as source-native fields rather than normalizing them.",
+    "Preserve both recorded-loss totals (Table 3.1/narrative and appendices) until arithmetic or source lineage establishes why they differ by Rp540.",
+    "After deterministic extraction validation, promote the qualified 2022 datasets to the public catalog and dashboard proof-data layer without merging them with the separate LKj 2022 1,047-event product."
+  ],
+  "result": {
+    "legacy_record_to_current_uuid_recovered": true,
+    "raw_official_pdf_recovered": true,
+    "raw_pdf_sha256_frozen": true,
+    "raw_pdf_page_count_frozen": true,
+    "major_m53_verification_targets_confirmed": true,
+    "new_recorded_loss_disagreement_detected": true,
+    "materialization_deferred_to_m57": true,
+    "promotion_gate_fail_closed": true
+  }
+}
