@@ -17,7 +17,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Probe current library file transport
+      - name: Compare encoded current library file transport
         run: |
           set -euo pipefail
           base='https://bpbd.sumbarprov.go.id'
@@ -32,37 +32,27 @@ jobs:
           for i,row in enumerate(rows):
               title=str(row.get('title') or '')
               path=str(row.get('gambar') or '')
-              print('\n===',i,title,'===')
+              encoded=urllib.parse.quote(path, safe='/:')
+              url=base+'/web-api'+encoded
+              out=f'/tmp/encoded-{i}.bin'
+              hdr=f'/tmp/encoded-{i}.hdr'
+              p=subprocess.run(['curl','--silent','--show-error','--location','--max-time','120','--dump-header',hdr,'--output',out,'--write-out','%{http_code}',url],text=True,capture_output=True)
+              body=Path(out).read_bytes() if Path(out).exists() else b''
+              headers=Path(hdr).read_text(encoding='utf-8',errors='replace') if Path(hdr).exists() else ''
+              ctype=''
+              for line in headers.splitlines():
+                  if line.lower().startswith('content-type:'):
+                      ctype=line.strip()
+              print('\n===',title,'===')
               print('metadata_path=',path)
-              candidates=[]
-              if path:
-                  candidates=[
-                      base+'/web-api'+path,
-                      urllib.parse.urljoin(base+'/',path),
-                      base+'/web-api'+path.removeprefix('/api'),
-                  ]
-              seen=set()
-              for j,url in enumerate(candidates):
-                  if url in seen: continue
-                  seen.add(url)
-                  out=f'/tmp/probe-{i}-{j}.bin'
-                  hdr=f'/tmp/probe-{i}-{j}.hdr'
-                  p=subprocess.run(['curl','--silent','--show-error','--location','--max-time','60','--dump-header',hdr,'--output',out,'--write-out','%{http_code}',url],text=True,capture_output=True)
-                  body=Path(out).read_bytes() if Path(out).exists() else b''
-                  headers=Path(hdr).read_text(encoding='utf-8',errors='replace') if Path(hdr).exists() else ''
-                  ctype=''
-                  for line in headers.splitlines():
-                      if line.lower().startswith('content-type:'):
-                          ctype=line.strip()
-                  print('candidate=',url)
-                  print('http=',p.stdout.strip(),'curl_rc=',p.returncode,'bytes=',len(body),'magic=',repr(body[:16]),ctype)
-                  if body and not body.startswith(b'%PDF'):
-                      print('body_prefix=',repr(body[:300]))
-                  if body.startswith(b'%PDF'):
-                      subprocess.run(['sha256sum',out],check=True)
-                      subprocess.run(['file',out],check=True)
-                      if subprocess.run(['bash','-lc','command -v pdfinfo >/dev/null 2>&1']).returncode==0:
-                          subprocess.run(['bash','-lc',f"pdfinfo {out} | grep -E '^(Pages|Page size|PDF version):'"],check=True)
+              print('resolved_url=',url)
+              print('http=',p.stdout.strip(),'curl_rc=',p.returncode,'bytes=',len(body),'magic=',repr(body[:16]),ctype)
+              if body and not body.startswith(b'%PDF'):
+                  print('body_prefix=',repr(body[:300]))
+              if body.startswith(b'%PDF'):
+                  subprocess.run(['sha256sum',out],check=True)
+                  subprocess.run(['file',out],check=True)
+                  subprocess.run(['bash','-lc',f"pdfinfo {out} | grep -E '^(Pages|Page size|PDF version):'"],check=True)
           PY
 
       - name: Confirm legacy 2022 path is SPA fallback
