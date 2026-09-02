@@ -1,0 +1,61 @@
+name: Milestone 59 BPBD Hazard Totals 2024
+
+on:
+  pull_request:
+    paths:
+      - 'data/manifests/milestone59_bpbd_hazard_totals_2024*.json'
+      - 'data/processed/bpbd/disaster_events_2024_hazard_totals/**'
+      - 'scripts/acquire_milestone59_bpbd_hazard_totals_2024.py'
+      - 'scripts/finalize_milestone59_bpbd_hazard_totals_2024.py'
+      - 'scripts/validate_milestone59_bpbd_hazard_totals_2024.py'
+      - 'tests/test_milestone59_bpbd_hazard_totals_2024.py'
+      - 'research/MILESTONE59_BPBD_HAZARD_TOTALS_2024.md'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone59-bpbd-hazard-totals-2024.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/manifests/milestone59_bpbd_hazard_totals_2024*.json'
+      - 'data/processed/bpbd/disaster_events_2024_hazard_totals/**'
+      - 'scripts/finalize_milestone59_bpbd_hazard_totals_2024.py'
+      - 'scripts/validate_milestone59_bpbd_hazard_totals_2024.py'
+      - 'tests/test_milestone59_bpbd_hazard_totals_2024.py'
+      - 'research/MILESTONE59_BPBD_HAZARD_TOTALS_2024.md'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone59-bpbd-hazard-totals-2024.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate frozen M59 materialization
+        run: python scripts/validate_milestone59_bpbd_hazard_totals_2024.py
+
+      - name: Run focused M59 test
+        run: python -m unittest tests.test_milestone59_bpbd_hazard_totals_2024 -v
+
+      - name: Require deterministic hazard-total rebuild
+        run: |
+          python scripts/finalize_milestone59_bpbd_hazard_totals_2024.py
+          git diff --exit-code -- \
+            data/processed/bpbd/disaster_events_2024_hazard_totals/bpbd-disaster-events-2024-hazard-totals-canonical.csv \
+            data/manifests/milestone59_bpbd_hazard_totals_2024_final.json
+
+      - name: Revalidate existing BPBD 2024 context
+        run: |
+          python scripts/materialize_bpbd_priority_context.py
+          git diff --exit-code -- \
+            data/processed/bpbd/disaster_impact_2023 \
+            data/processed/bpbd/disaster_context_2024
