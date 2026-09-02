@@ -1,0 +1,52 @@
+name: Milestone 56 BPBD DIBI 2022 PPID Raw Artifact Recovery
+
+on:
+  push:
+    branches:
+      - main
+      - research/evidence
+    paths:
+      - "data/manifests/milestone53_bpbd_dibi_2022_source_qualification.json"
+      - "data/manifests/milestone55_bpbd_library_historical_media_migration.json"
+      - "data/manifests/milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery.json"
+      - "research/MILESTONE56_BPBD_DIBI_2022_PPID_RAW_ARTIFACT_RECOVERY.md"
+      - "scripts/validate_milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery.py"
+      - "tests/test_milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery.py"
+      - ".github/workflows/milestone56-bpbd-dibi-2022-ppid-raw-artifact-recovery.yml"
+  pull_request:
+    paths:
+      - "data/manifests/milestone53_bpbd_dibi_2022_source_qualification.json"
+      - "data/manifests/milestone55_bpbd_library_historical_media_migration.json"
+      - "data/manifests/milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery.json"
+      - "research/MILESTONE56_BPBD_DIBI_2022_PPID_RAW_ARTIFACT_RECOVERY.md"
+      - "scripts/validate_milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery.py"
+      - "tests/test_milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery.py"
+      - ".github/workflows/milestone56-bpbd-dibi-2022-ppid-raw-artifact-recovery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M56 raw-artifact recovery contract
+        run: python scripts/validate_milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery.py
+
+      - name: Run M56 focused test
+        run: python -m unittest tests.test_milestone56_bpbd_dibi_2022_ppid_raw_artifact_recovery -v
+
+      - name: Revalidate M53 historical qualification state
+        run: python scripts/validate_milestone53_bpbd_dibi_2022_source_qualification.py
+
+      - name: Revalidate M55 library migration state
+        run: python scripts/validate_milestone55_bpbd_library_historical_media_migration.py
