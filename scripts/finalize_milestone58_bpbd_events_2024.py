@@ -81,7 +81,7 @@ def main() -> int:
             "event_count": int(float(row["Jumlah Kejadian"])),
             "unit": "count",
             "claim_type": "observed_data",
-            "source_family": "BPBD/Pusdalops Sumatera Barat Satu Data",
+            "source_family": "BPBD Sumatera Barat Satu Data",
             "source_resource_id": acq["source"]["resource_id"],
         })
 
@@ -92,7 +92,7 @@ def main() -> int:
     prior = json.loads(PRIOR.read_text(encoding="utf-8"))
     monthly_total = prior["result_2024"]["monthly_event_total"]
     if monthly_total != source_total:
-        raise RuntimeError(f"M58 same-producer monthly total drift: {monthly_total} != {source_total}")
+        raise RuntimeError(f"M58 BPBD cross-table monthly total drift: {monthly_total} != {source_total}")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with OUT.open("w", newline="", encoding="utf-8") as handle:
@@ -101,7 +101,7 @@ def main() -> int:
         writer.writerows(output_rows)
 
     final = {
-        "schema": "ranah-observatory/milestone58-bpbd-events-2024-final/v2",
+        "schema": "ranah-observatory/milestone58-bpbd-events-2024-final/v3",
         "milestone": 58,
         "depends_on": [57],
         "source_manifest": {"path": ACQ.relative_to(ROOT).as_posix(), "sha256": sha256(ACQ)},
@@ -116,11 +116,18 @@ def main() -> int:
             "source_total_row_events": source_total,
             "sum_of_19_district_rows": district_sum,
             "unallocated_difference_events": allocation_gap,
-            "same_producer_monthly_event_total": monthly_total,
+            "bpbd_monthly_event_total": monthly_total,
             "district_rows_reconcile_to_source_total": False,
-            "monthly_total_reconciles_to_source_total": True,
+            "bpbd_monthly_total_reconciles_to_source_total": True,
             "allocation_or_omission_explanation_available": False,
             "difference_imputed_to_any_geography": False,
+        },
+        "lineage_boundary": {
+            "district_resource_organization": acq["source"]["organization"],
+            "district_resource_source_data_declared": acq["source"]["source_data"] is not None,
+            "monthly_table_is_bpbd_context": True,
+            "same_producer_asserted": False,
+            "cross_table_match_interpretation": "independent BPBD-organization consistency check only; producer-level identity is not asserted",
         },
         "result": {
             "district_count": 19,
@@ -128,7 +135,7 @@ def main() -> int:
             "source_total_events": source_total,
             "canonical_district_sum_events": canonical_sum,
             "unallocated_difference_events": allocation_gap,
-            "same_producer_monthly_event_total": monthly_total,
+            "bpbd_monthly_event_total": monthly_total,
             "exact_code_name_pair_mapping_count": 19,
             "geography_mapping_complete": True,
             "dashboard_district_filter_ready": True,
