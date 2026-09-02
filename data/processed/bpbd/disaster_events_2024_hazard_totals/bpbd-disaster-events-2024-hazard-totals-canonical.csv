@@ -1,0 +1,8 @@
+year,hazard_id,source_hazard_label,event_count,unit,claim_type,source_family,source_resource_id
+2024,flood,Banjir,253,count,observed_data,BPBD/Pusdalops Sumatera Barat Satu Data,43fc1b1b-bd4e-4a8e-887d-754029f0b074
+2024,extreme_weather,Cuaca ekstrem,587,count,observed_data,BPBD/Pusdalops Sumatera Barat Satu Data,43fc1b1b-bd4e-4a8e-887d-754029f0b074
+2024,volcanic_eruption,Erupsi Gunung Api,9,count,observed_data,BPBD/Pusdalops Sumatera Barat Satu Data,43fc1b1b-bd4e-4a8e-887d-754029f0b074
+2024,tidal_wave_and_coastal_erosion,Gelombang Pasang dan abrasi,14,count,observed_data,BPBD/Pusdalops Sumatera Barat Satu Data,43fc1b1b-bd4e-4a8e-887d-754029f0b074
+2024,forest_and_land_fire,Kebakaran Hutan dan Lahan,25,count,observed_data,BPBD/Pusdalops Sumatera Barat Satu Data,43fc1b1b-bd4e-4a8e-887d-754029f0b074
+2024,drought,Kekeringan,2,count,observed_data,BPBD/Pusdalops Sumatera Barat Satu Data,43fc1b1b-bd4e-4a8e-887d-754029f0b074
+2024,landslide,Tanah Longsor,285,count,observed_data,BPBD/Pusdalops Sumatera Barat Satu Data,43fc1b1b-bd4e-4a8e-887d-754029f0b074
