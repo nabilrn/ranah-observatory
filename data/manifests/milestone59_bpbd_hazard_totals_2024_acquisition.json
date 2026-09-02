@@ -1,0 +1,54 @@
+{
+  "schema": "ranah-observatory/milestone59-bpbd-hazard-totals-2024-acquisition/v1",
+  "milestone": 59,
+  "depends_on": [
+    58
+  ],
+  "retrieved_at": "2026-09-02T10:22:09.227822+00:00",
+  "source": {
+    "portal": "https://data.sumbarprov.go.id/",
+    "package_slug": "jumlah-kejadian-bencana-2024",
+    "package_id": "fd77b7eb-a2e4-4ee7-8a6a-78df1b15e4c6",
+    "package_title": "Jumlah Kejadian Bencana 2024",
+    "organization": "Badan Penanggulangan Bencana Daerah",
+    "producer": "BPBD Provinsi Sumatera Barat",
+    "source_data": "Pusdalop BPBD Sumatera Barat",
+    "year": "2024",
+    "resource_id": "43fc1b1b-bd4e-4a8e-887d-754029f0b074",
+    "resource_name": "Jumlah Kejadian Bencana 2024.xlsx",
+    "resource_format": "XLSX",
+    "resource_url": "https://data.sumbarprov.go.id/dataset/fd77b7eb-a2e4-4ee7-8a6a-78df1b15e4c6/resource/43fc1b1b-bd4e-4a8e-887d-754029f0b074/download/jumlah-kejadian-bencana-2024.xlsx",
+    "datastore_active": true
+  },
+  "source_native": {
+    "record_count": 8,
+    "field_names": [
+      "Jenis Bencana",
+      "Jumlah Kejadian"
+    ],
+    "labels_in_source_order": [
+      "Banjir",
+      "Cuaca ekstrem",
+      "Erupsi Gunung Api",
+      "Gelombang Pasang dan abrasi",
+      "Kebakaran Hutan dan Lahan",
+      "Kekeringan",
+      "Tanah Longsor",
+      "Total"
+    ],
+    "unique_label_count": 8,
+    "raw_count_sum_including_any_total_row": 2350,
+    "total_row_interpreted": false,
+    "hazard_taxonomy_harmonized": false,
+    "missing_values_inferred": false
+  },
+  "output": {
+    "path": "data/processed/bpbd/disaster_events_2024_hazard_totals/bpbd-disaster-events-2024-hazard-totals-source-native.csv",
+    "sha256": "b8f349182a8c4dfdc96df40bd31f58e7120dcac494985dff22c3b3d556908abf"
+  },
+  "result": {
+    "source_native_acquisition_complete": true,
+    "monthly_crosscheck_performed": false,
+    "dashboard_promotion_authorized": false
+  }
+}
