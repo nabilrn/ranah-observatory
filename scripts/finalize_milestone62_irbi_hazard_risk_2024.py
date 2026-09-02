@@ -65,7 +65,10 @@ def main() -> int:
     output: list[dict[str, object]] = []
     seen: set[tuple[str, str]] = set()
     class_counts: dict[str, dict[str, int]] = {}
-    geography_coverage: dict[str, int] = {name: 0 for name in mapping}
+    geography_coverage: dict[str, dict[str, object]] = {
+        geography_id: {"geography_name": canonical_name, "hazard_count": 0}
+        for geography_id, canonical_name in mapping.values()
+    }
 
     for row in rows:
         source_name = row["source_geography_name"].strip()
@@ -82,7 +85,7 @@ def main() -> int:
             raise RuntimeError(f"M62 unknown risk class: {risk_class}")
         class_counts.setdefault(hazard_id, {}).setdefault(risk_class, 0)
         class_counts[hazard_id][risk_class] += 1
-        geography_coverage[source_name] += 1
+        geography_coverage[geography_id]["hazard_count"] = int(geography_coverage[geography_id]["hazard_count"]) + 1
         output.append({
             "year": 2024,
             "geography_id": geography_id,
@@ -104,6 +107,10 @@ def main() -> int:
     }
     if coverage != EXPECTED_COVERAGE or len(output) != 124:
         raise RuntimeError(f"M62 canonical coverage drift: {coverage}")
+    if len(geography_coverage) != 19:
+        raise RuntimeError(f"M62 geography summary collision: {len(geography_coverage)}")
+    if sum(int(item["hazard_count"]) for item in geography_coverage.values()) != 124:
+        raise RuntimeError("M62 geography summary does not reconcile to canonical rows")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     output.sort(key=lambda r: (str(r["irbi_hazard_id"]), str(r["geography_id"])))
@@ -132,7 +139,7 @@ def main() -> int:
             "absent_source_pairs": absent_pairs,
             "coverage_by_hazard": coverage,
             "risk_class_counts_by_hazard": class_counts,
-            "geography_hazard_count": {mapping[name][1]: count for name, count in geography_coverage.items()},
+            "geography_hazard_count_by_id": geography_coverage,
         },
         "result": {
             "year": 2024,
