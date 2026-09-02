@@ -1,18 +1,18 @@
-name: M65 Build IRBI KRB Bridge TEMP
+name: M65 Register Lookup Catalog TEMP
 
 on:
   push:
     branches: [research/evidence]
     paths:
-      - 'scripts/materialize_milestone65_irbi_krb_lookup_bridge.py'
       - '.github/workflows/m65-build-irbi-krb-bridge-temp.yml'
 
 permissions:
   contents: write
 
 jobs:
-  build:
+  register:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,15 +20,41 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Materialize M65 lookup bridge
-        run: python scripts/materialize_milestone65_irbi_krb_lookup_bridge.py
-      - name: Commit M65 bridge outputs
+      - name: Append M65 public catalog entry
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          path = Path('catalog/public-datasets.csv')
+          dataset_id = 'bnpb-irbi-krb-risk-mitigation-lookup-2024'
+          with path.open(newline='', encoding='utf-8') as handle:
+              rows = list(csv.DictReader(handle))
+          if any(row['id'] == dataset_id for row in rows):
+              raise SystemExit(0)
+
+          row = [
+              dataset_id,
+              'Disaster',
+              'Risiko IRBI dan lookup rekomendasi mitigasi Sumatera Barat 2024',
+              'West Sumatra IRBI risk and mitigation recommendation lookup 2024',
+              'Indeks 124 kombinasi wilayah × ancaman IRBI 2024 yang mempertahankan skor dan kelas risiko resmi serta menambahkan lookup ke rekomendasi mitigasi KRB untuk 9 ancaman yang cocok eksplisit. Bridge ini bukan penyamaan taxonomy global, bukan join kejadian BPBD, dan bukan prediksi bencana.',
+              'Index of 124 IRBI 2024 district × hazard observations preserving official risk scores/classes while adding KRB mitigation-recommendation lookup for nine explicitly matched hazards. This bridge is not global taxonomy equivalence, a BPBD event join, or a disaster forecast.',
+              'BNPB / IRBI 2024 + InaRISK KRB Sumatera Barat 2022–2026',
+              'IRBI 2024 / KRB 2022–2026',
+              'Kabupaten/kota Sumatera Barat × jenis ancaman',
+              'CSV',
+              'materialized',
+              'data/processed/bnpb/irbi_krb_bridge_2024/irbi-risk-mitigation-lookup-index-2024.csv',
+          ]
+          with path.open('a', newline='', encoding='utf-8') as handle:
+              csv.writer(handle).writerow(row)
+          PY
+      - name: Commit M65 catalog entry
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/mappings/milestone65_irbi_krb_hazard_lookup_crosswalk.csv \
-                  data/processed/bnpb/irbi_krb_bridge_2024/irbi-risk-mitigation-lookup-index-2024.csv \
-                  data/manifests/milestone65_irbi_krb_lookup_bridge.json
+          git add catalog/public-datasets.csv
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Materialize M65 IRBI KRB lookup bridge'
+          git commit -m 'Register M65 risk mitigation lookup dataset'
           git push origin HEAD:research/evidence
