@@ -1,0 +1,32 @@
+name: Diagnose M18 document checksum drift
+
+on:
+  push:
+    branches:
+      - hotfix/m18-doc-checksum-drift
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Print current M18 document SHA256 values
+        run: |
+          sha256sum research/PHASE2_ANALYTICAL_ENGINE_ROADMAP.md
+          sha256sum research/RESEARCH_CHARTER.md
+
+      - name: Rebuild M18 and print deterministic diff
+        run: |
+          python scripts/build_milestone18_final_analytical_synthesis.py
+          git diff -- data/manifests/milestone18_final_analytical_synthesis.json data/analysis/engine/final_synthesis_v1/
