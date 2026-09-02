@@ -1,0 +1,32 @@
+name: M58 Acquire BPBD Events 2024 TEMP
+
+on:
+  push:
+    branches: [research/evidence]
+    paths:
+      - 'scripts/acquire_milestone58_bpbd_events_2024.py'
+      - '.github/workflows/m58-acquire-bpbd-events-2024-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire official M58 DataStore table
+        run: python scripts/acquire_milestone58_bpbd_events_2024.py
+      - name: Commit frozen source-native M58 output
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/processed/bpbd/disaster_events_2024 data/manifests/milestone58_bpbd_events_2024_acquisition.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Freeze M58 BPBD 2024 event source table'
+          git push origin HEAD:research/evidence
