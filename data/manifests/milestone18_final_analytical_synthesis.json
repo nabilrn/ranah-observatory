@@ -57,11 +57,11 @@
     },
     "phase2_roadmap": {
       "path": "research/PHASE2_ANALYTICAL_ENGINE_ROADMAP.md",
-      "sha256": "790fff5cb4c9c8d620c3b2ca8456a79764a9f5c798a491652f1447ffc3312dda"
+      "sha256": "b979664539c5248326680366be88e30e24249b6ece2f449c6185e3aab73d937b"
     },
     "research_charter": {
       "path": "research/RESEARCH_CHARTER.md",
-      "sha256": "01a4e8072e1d99b6763f3ce228b1d2f11a5002cd94e026c8a7547a4be4617ca5"
+      "sha256": "a2a0f23726a50774008838b31f7b0920c3fa88b8a26dd9175d75ad3f8d48b276"
     },
     "research_foundation": {
       "path": "data/manifests/research_foundation_complete.json",
