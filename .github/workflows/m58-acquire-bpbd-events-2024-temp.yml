@@ -5,6 +5,7 @@ on:
     branches: [research/evidence]
     paths:
       - 'scripts/acquire_milestone58_bpbd_events_2024.py'
+      - 'scripts/finalize_milestone58_bpbd_events_2024.py'
       - '.github/workflows/m58-acquire-bpbd-events-2024-temp.yml'
 
 permissions:
@@ -20,13 +21,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Acquire official M58 DataStore table
-        run: python scripts/acquire_milestone58_bpbd_events_2024.py
-      - name: Commit frozen source-native M58 output
+      - name: Acquire and finalize official M58 tables
+        run: |
+          python scripts/acquire_milestone58_bpbd_events_2024.py
+          python scripts/finalize_milestone58_bpbd_events_2024.py
+      - name: Commit frozen M58 outputs
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/processed/bpbd/disaster_events_2024 data/manifests/milestone58_bpbd_events_2024_acquisition.json
+          git add data/processed/bpbd/disaster_events_2024 data/manifests/milestone58_bpbd_events_2024_acquisition.json data/manifests/milestone58_bpbd_events_2024_final.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Freeze M58 BPBD 2024 event source table'
+          git commit -m 'Finalize M58 BPBD 2024 district event totals'
           git push origin HEAD:research/evidence
