@@ -1,0 +1,51 @@
+name: Milestone 53 BPBD DIBI 2022 Source Qualification
+
+on:
+  pull_request:
+    paths:
+      - "data/acquisition_requests/bpbd_dibi_books.csv"
+      - "data/manifests/milestone51_bpbd_raw_artifact_acquisition_lane.json"
+      - "data/manifests/milestone53_bpbd_dibi_2022_source_qualification.json"
+      - "scripts/validate_milestone53_bpbd_dibi_2022_source_qualification.py"
+      - "tests/test_milestone53_bpbd_dibi_2022_source_qualification.py"
+      - "research/MILESTONE53_BPBD_DIBI_2022_SOURCE_QUALIFICATION.md"
+      - ".github/workflows/milestone53-bpbd-dibi-2022-source-qualification.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/acquisition_requests/bpbd_dibi_books.csv"
+      - "data/manifests/milestone51_bpbd_raw_artifact_acquisition_lane.json"
+      - "data/manifests/milestone53_bpbd_dibi_2022_source_qualification.json"
+      - "scripts/validate_milestone53_bpbd_dibi_2022_source_qualification.py"
+      - "tests/test_milestone53_bpbd_dibi_2022_source_qualification.py"
+      - "research/MILESTONE53_BPBD_DIBI_2022_SOURCE_QUALIFICATION.md"
+      - ".github/workflows/milestone53-bpbd-dibi-2022-source-qualification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M53 source qualification
+        run: python scripts/validate_milestone53_bpbd_dibi_2022_source_qualification.py
+
+      - name: Run M53 focused test
+        run: python -m unittest tests.test_milestone53_bpbd_dibi_2022_source_qualification -v
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py
+
+      - name: Revalidate data foundation
+        run: python scripts/validate_data_foundation.py
