@@ -1,0 +1,125 @@
+year,geography_id,geography_name,irbi_hazard_id,source_hazard_label,risk_score,risk_class,source_rank_national,unit,claim_type,source_family,source_page
+2024,idn.13.1302,Pesisir Selatan,drought,Kekeringan,13.95,tinggi,297,index_points,official_hazard_risk_index,BNPB IRBI 2024,316
+2024,idn.13.1303,Solok,drought,Kekeringan,24.00,tinggi,65,index_points,official_hazard_risk_index,BNPB IRBI 2024,309
+2024,idn.13.1304,Sijunjung,drought,Kekeringan,23.65,tinggi,108,index_points,official_hazard_risk_index,BNPB IRBI 2024,311
+2024,idn.13.1305,Tanah Datar,drought,Kekeringan,24.00,tinggi,66,index_points,official_hazard_risk_index,BNPB IRBI 2024,310
+2024,idn.13.1306,Padang Pariaman,drought,Kekeringan,15.91,tinggi,249,index_points,official_hazard_risk_index,BNPB IRBI 2024,315
+2024,idn.13.1307,Agam,drought,Kekeringan,23.55,tinggi,111,index_points,official_hazard_risk_index,BNPB IRBI 2024,311
+2024,idn.13.1308,Lima Puluh Kota,drought,Kekeringan,24.00,tinggi,67,index_points,official_hazard_risk_index,BNPB IRBI 2024,310
+2024,idn.13.1309,Pasaman,drought,Kekeringan,24.00,tinggi,68,index_points,official_hazard_risk_index,BNPB IRBI 2024,310
+2024,idn.13.1310,Solok Selatan,drought,Kekeringan,18.83,tinggi,189,index_points,official_hazard_risk_index,BNPB IRBI 2024,313
+2024,idn.13.1311,Dharmasraya,drought,Kekeringan,19.98,tinggi,175,index_points,official_hazard_risk_index,BNPB IRBI 2024,313
+2024,idn.13.1312,Pasaman Barat,drought,Kekeringan,19.93,tinggi,177,index_points,official_hazard_risk_index,BNPB IRBI 2024,313
+2024,idn.13.1371,Padang,drought,Kekeringan,14.94,tinggi,271,index_points,official_hazard_risk_index,BNPB IRBI 2024,316
+2024,idn.13.1372,Solok,drought,Kekeringan,21.47,tinggi,145,index_points,official_hazard_risk_index,BNPB IRBI 2024,312
+2024,idn.13.1373,Sawahlunto,drought,Kekeringan,18.01,tinggi,201,index_points,official_hazard_risk_index,BNPB IRBI 2024,313
+2024,idn.13.1374,Padang Panjang,drought,Kekeringan,24.00,tinggi,69,index_points,official_hazard_risk_index,BNPB IRBI 2024,310
+2024,idn.13.1375,Bukittinggi,drought,Kekeringan,24.00,tinggi,70,index_points,official_hazard_risk_index,BNPB IRBI 2024,310
+2024,idn.13.1376,Payakumbuh,drought,Kekeringan,23.20,tinggi,124,index_points,official_hazard_risk_index,BNPB IRBI 2024,311
+2024,idn.13.1377,Pariaman,drought,Kekeringan,16.49,tinggi,225,index_points,official_hazard_risk_index,BNPB IRBI 2024,314
+2024,idn.13.1301,Kepulauan Mentawai,earthquake,Gempabumi,26.64,tinggi,46,index_points,official_hazard_risk_index,BNPB IRBI 2024,227
+2024,idn.13.1302,Pesisir Selatan,earthquake,Gempabumi,13.45,tinggi,255,index_points,official_hazard_risk_index,BNPB IRBI 2024,233
+2024,idn.13.1303,Solok,earthquake,Gempabumi,32.40,tinggi,10,index_points,official_hazard_risk_index,BNPB IRBI 2024,226
+2024,idn.13.1304,Sijunjung,earthquake,Gempabumi,21.29,tinggi,127,index_points,official_hazard_risk_index,BNPB IRBI 2024,229
+2024,idn.13.1305,Tanah Datar,earthquake,Gempabumi,32.40,tinggi,11,index_points,official_hazard_risk_index,BNPB IRBI 2024,226
+2024,idn.13.1306,Padang Pariaman,earthquake,Gempabumi,14.32,tinggi,234,index_points,official_hazard_risk_index,BNPB IRBI 2024,232
+2024,idn.13.1307,Agam,earthquake,Gempabumi,31.79,tinggi,30,index_points,official_hazard_risk_index,BNPB IRBI 2024,226
+2024,idn.13.1308,Lima Puluh Kota,earthquake,Gempabumi,21.60,tinggi,75,index_points,official_hazard_risk_index,BNPB IRBI 2024,228
+2024,idn.13.1309,Pasaman,earthquake,Gempabumi,32.40,tinggi,12,index_points,official_hazard_risk_index,BNPB IRBI 2024,226
+2024,idn.13.1310,Solok Selatan,earthquake,Gempabumi,25.42,tinggi,49,index_points,official_hazard_risk_index,BNPB IRBI 2024,227
+2024,idn.13.1311,Dharmasraya,earthquake,Gempabumi,17.98,tinggi,160,index_points,official_hazard_risk_index,BNPB IRBI 2024,230
+2024,idn.13.1312,Pasaman Barat,earthquake,Gempabumi,17.93,tinggi,161,index_points,official_hazard_risk_index,BNPB IRBI 2024,230
+2024,idn.13.1371,Padang,earthquake,Gempabumi,13.44,tinggi,256,index_points,official_hazard_risk_index,BNPB IRBI 2024,233
+2024,idn.13.1372,Solok,earthquake,Gempabumi,28.98,tinggi,42,index_points,official_hazard_risk_index,BNPB IRBI 2024,227
+2024,idn.13.1373,Sawahlunto,earthquake,Gempabumi,16.21,tinggi,186,index_points,official_hazard_risk_index,BNPB IRBI 2024,231
+2024,idn.13.1374,Padang Panjang,earthquake,Gempabumi,32.40,tinggi,13,index_points,official_hazard_risk_index,BNPB IRBI 2024,226
+2024,idn.13.1375,Bukittinggi,earthquake,Gempabumi,32.40,tinggi,14,index_points,official_hazard_risk_index,BNPB IRBI 2024,226
+2024,idn.13.1376,Payakumbuh,earthquake,Gempabumi,21.60,tinggi,76,index_points,official_hazard_risk_index,BNPB IRBI 2024,228
+2024,idn.13.1377,Pariaman,earthquake,Gempabumi,15.90,tinggi,196,index_points,official_hazard_risk_index,BNPB IRBI 2024,231
+2024,idn.13.1301,Kepulauan Mentawai,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,29.60,tinggi,47,index_points,official_hazard_risk_index,BNPB IRBI 2024,297
+2024,idn.13.1302,Pesisir Selatan,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,14.94,tinggi,224,index_points,official_hazard_risk_index,BNPB IRBI 2024,302
+2024,idn.13.1306,Padang Pariaman,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,14.85,tinggi,229,index_points,official_hazard_risk_index,BNPB IRBI 2024,302
+2024,idn.13.1307,Agam,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,23.55,tinggi,101,index_points,official_hazard_risk_index,BNPB IRBI 2024,299
+2024,idn.13.1312,Pasaman Barat,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,19.93,tinggi,139,index_points,official_hazard_risk_index,BNPB IRBI 2024,300
+2024,idn.13.1371,Padang,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,14.44,tinggi,236,index_points,official_hazard_risk_index,BNPB IRBI 2024,303
+2024,idn.13.1377,Pariaman,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,16.49,tinggi,192,index_points,official_hazard_risk_index,BNPB IRBI 2024,301
+2024,idn.13.1301,Kepulauan Mentawai,extreme_weather,Cuaca Ekstrim,11.18,sedang,197,index_points,official_hazard_risk_index,BNPB IRBI 2024,331
+2024,idn.13.1302,Pesisir Selatan,extreme_weather,Cuaca Ekstrim,8.47,sedang,325,index_points,official_hazard_risk_index,BNPB IRBI 2024,335
+2024,idn.13.1303,Solok,extreme_weather,Cuaca Ekstrim,13.60,tinggi,54,index_points,official_hazard_risk_index,BNPB IRBI 2024,327
+2024,idn.13.1304,Sijunjung,extreme_weather,Cuaca Ekstrim,13.40,tinggi,121,index_points,official_hazard_risk_index,BNPB IRBI 2024,329
+2024,idn.13.1305,Tanah Datar,extreme_weather,Cuaca Ekstrim,13.60,tinggi,55,index_points,official_hazard_risk_index,BNPB IRBI 2024,327
+2024,idn.13.1306,Padang Pariaman,extreme_weather,Cuaca Ekstrim,9.02,sedang,296,index_points,official_hazard_risk_index,BNPB IRBI 2024,334
+2024,idn.13.1307,Agam,extreme_weather,Cuaca Ekstrim,13.35,tinggi,123,index_points,official_hazard_risk_index,BNPB IRBI 2024,329
+2024,idn.13.1308,Lima Puluh Kota,extreme_weather,Cuaca Ekstrim,13.60,tinggi,56,index_points,official_hazard_risk_index,BNPB IRBI 2024,327
+2024,idn.13.1309,Pasaman,extreme_weather,Cuaca Ekstrim,13.60,tinggi,57,index_points,official_hazard_risk_index,BNPB IRBI 2024,327
+2024,idn.13.1310,Solok Selatan,extreme_weather,Cuaca Ekstrim,10.67,sedang,215,index_points,official_hazard_risk_index,BNPB IRBI 2024,332
+2024,idn.13.1311,Dharmasraya,extreme_weather,Cuaca Ekstrim,11.32,sedang,187,index_points,official_hazard_risk_index,BNPB IRBI 2024,331
+2024,idn.13.1312,Pasaman Barat,extreme_weather,Cuaca Ekstrim,11.29,sedang,189,index_points,official_hazard_risk_index,BNPB IRBI 2024,331
+2024,idn.13.1371,Padang,extreme_weather,Cuaca Ekstrim,12.70,tinggi,140,index_points,official_hazard_risk_index,BNPB IRBI 2024,330
+2024,idn.13.1372,Solok,extreme_weather,Cuaca Ekstrim,12.16,tinggi,160,index_points,official_hazard_risk_index,BNPB IRBI 2024,330
+2024,idn.13.1373,Sawahlunto,extreme_weather,Cuaca Ekstrim,10.21,sedang,235,index_points,official_hazard_risk_index,BNPB IRBI 2024,332
+2024,idn.13.1374,Padang Panjang,extreme_weather,Cuaca Ekstrim,13.60,tinggi,58,index_points,official_hazard_risk_index,BNPB IRBI 2024,327
+2024,idn.13.1375,Bukittinggi,extreme_weather,Cuaca Ekstrim,13.60,tinggi,59,index_points,official_hazard_risk_index,BNPB IRBI 2024,327
+2024,idn.13.1376,Payakumbuh,extreme_weather,Cuaca Ekstrim,13.60,tinggi,60,index_points,official_hazard_risk_index,BNPB IRBI 2024,327
+2024,idn.13.1377,Pariaman,extreme_weather,Cuaca Ekstrim,10.01,sedang,247,index_points,official_hazard_risk_index,BNPB IRBI 2024,333
+2024,idn.13.1301,Kepulauan Mentawai,flood,Banjir,29.60,tinggi,92,index_points,official_hazard_risk_index,BNPB IRBI 2024,214
+2024,idn.13.1302,Pesisir Selatan,flood,Banjir,22.41,tinggi,170,index_points,official_hazard_risk_index,BNPB IRBI 2024,217
+2024,idn.13.1306,Padang Pariaman,flood,Banjir,23.87,tinggi,150,index_points,official_hazard_risk_index,BNPB IRBI 2024,216
+2024,idn.13.1307,Agam,flood,Banjir,35.33,tinggi,55,index_points,official_hazard_risk_index,BNPB IRBI 2024,213
+2024,idn.13.1309,Pasaman,flood,Banjir,36.00,tinggi,15,index_points,official_hazard_risk_index,BNPB IRBI 2024,212
+2024,idn.13.1311,Dharmasraya,flood,Banjir,29.97,tinggi,86,index_points,official_hazard_risk_index,BNPB IRBI 2024,214
+2024,idn.13.1312,Pasaman Barat,flood,Banjir,29.89,tinggi,88,index_points,official_hazard_risk_index,BNPB IRBI 2024,214
+2024,idn.13.1371,Padang,flood,Banjir,22.41,tinggi,171,index_points,official_hazard_risk_index,BNPB IRBI 2024,217
+2024,idn.13.1377,Pariaman,flood,Banjir,24.73,tinggi,126,index_points,official_hazard_risk_index,BNPB IRBI 2024,215
+2024,idn.13.1301,Kepulauan Mentawai,forest_and_land_fire,Kebakaran Hutan dan Lahan,19.73,tinggi,301,index_points,official_hazard_risk_index,BNPB IRBI 2024,268
+2024,idn.13.1302,Pesisir Selatan,forest_and_land_fire,Kebakaran Hutan dan Lahan,14.94,tinggi,445,index_points,official_hazard_risk_index,BNPB IRBI 2024,273
+2024,idn.13.1303,Solok,forest_and_land_fire,Kebakaran Hutan dan Lahan,36.00,tinggi,2,index_points,official_hazard_risk_index,BNPB IRBI 2024,260
+2024,idn.13.1304,Sijunjung,forest_and_land_fire,Kebakaran Hutan dan Lahan,35.48,tinggi,50,index_points,official_hazard_risk_index,BNPB IRBI 2024,261
+2024,idn.13.1305,Tanah Datar,forest_and_land_fire,Kebakaran Hutan dan Lahan,36.00,tinggi,3,index_points,official_hazard_risk_index,BNPB IRBI 2024,260
+2024,idn.13.1306,Padang Pariaman,forest_and_land_fire,Kebakaran Hutan dan Lahan,23.87,tinggi,205,index_points,official_hazard_risk_index,BNPB IRBI 2024,266
+2024,idn.13.1307,Agam,forest_and_land_fire,Kebakaran Hutan dan Lahan,35.33,tinggi,52,index_points,official_hazard_risk_index,BNPB IRBI 2024,261
+2024,idn.13.1308,Lima Puluh Kota,forest_and_land_fire,Kebakaran Hutan dan Lahan,36.00,tinggi,4,index_points,official_hazard_risk_index,BNPB IRBI 2024,260
+2024,idn.13.1309,Pasaman,forest_and_land_fire,Kebakaran Hutan dan Lahan,36.00,tinggi,5,index_points,official_hazard_risk_index,BNPB IRBI 2024,260
+2024,idn.13.1310,Solok Selatan,forest_and_land_fire,Kebakaran Hutan dan Lahan,28.24,tinggi,108,index_points,official_hazard_risk_index,BNPB IRBI 2024,263
+2024,idn.13.1311,Dharmasraya,forest_and_land_fire,Kebakaran Hutan dan Lahan,29.97,tinggi,95,index_points,official_hazard_risk_index,BNPB IRBI 2024,262
+2024,idn.13.1312,Pasaman Barat,forest_and_land_fire,Kebakaran Hutan dan Lahan,29.89,tinggi,96,index_points,official_hazard_risk_index,BNPB IRBI 2024,262
+2024,idn.13.1371,Padang,forest_and_land_fire,Kebakaran Hutan dan Lahan,22.41,tinggi,238,index_points,official_hazard_risk_index,BNPB IRBI 2024,267
+2024,idn.13.1372,Solok,forest_and_land_fire,Kebakaran Hutan dan Lahan,32.20,tinggi,82,index_points,official_hazard_risk_index,BNPB IRBI 2024,262
+2024,idn.13.1373,Sawahlunto,forest_and_land_fire,Kebakaran Hutan dan Lahan,22.51,tinggi,236,index_points,official_hazard_risk_index,BNPB IRBI 2024,267
+2024,idn.13.1374,Padang Panjang,forest_and_land_fire,Kebakaran Hutan dan Lahan,24.00,tinggi,171,index_points,official_hazard_risk_index,BNPB IRBI 2024,265
+2024,idn.13.1375,Bukittinggi,forest_and_land_fire,Kebakaran Hutan dan Lahan,36.00,tinggi,6,index_points,official_hazard_risk_index,BNPB IRBI 2024,260
+2024,idn.13.1376,Payakumbuh,forest_and_land_fire,Kebakaran Hutan dan Lahan,34.80,tinggi,59,index_points,official_hazard_risk_index,BNPB IRBI 2024,261
+2024,idn.13.1377,Pariaman,forest_and_land_fire,Kebakaran Hutan dan Lahan,16.49,tinggi,400,index_points,official_hazard_risk_index,BNPB IRBI 2024,271
+2024,idn.13.1301,Kepulauan Mentawai,landslide,Tanah Longsor,19.73,tinggi,139,index_points,official_hazard_risk_index,BNPB IRBI 2024,282
+2024,idn.13.1302,Pesisir Selatan,landslide,Tanah Longsor,14.94,sedang,226,index_points,official_hazard_risk_index,BNPB IRBI 2024,284
+2024,idn.13.1303,Solok,landslide,Tanah Longsor,24.00,tinggi,51,index_points,official_hazard_risk_index,BNPB IRBI 2024,279
+2024,idn.13.1304,Sijunjung,landslide,Tanah Longsor,11.83,sedang,311,index_points,official_hazard_risk_index,BNPB IRBI 2024,287
+2024,idn.13.1305,Tanah Datar,landslide,Tanah Longsor,12.00,sedang,276,index_points,official_hazard_risk_index,BNPB IRBI 2024,286
+2024,idn.13.1306,Padang Pariaman,landslide,Tanah Longsor,7.96,sedang,413,index_points,official_hazard_risk_index,BNPB IRBI 2024,290
+2024,idn.13.1307,Agam,landslide,Tanah Longsor,11.78,sedang,313,index_points,official_hazard_risk_index,BNPB IRBI 2024,287
+2024,idn.13.1308,Lima Puluh Kota,landslide,Tanah Longsor,24.00,tinggi,52,index_points,official_hazard_risk_index,BNPB IRBI 2024,279
+2024,idn.13.1309,Pasaman,landslide,Tanah Longsor,36.00,tinggi,5,index_points,official_hazard_risk_index,BNPB IRBI 2024,278
+2024,idn.13.1310,Solok Selatan,landslide,Tanah Longsor,18.83,tinggi,148,index_points,official_hazard_risk_index,BNPB IRBI 2024,282
+2024,idn.13.1311,Dharmasraya,landslide,Tanah Longsor,9.99,sedang,365,index_points,official_hazard_risk_index,BNPB IRBI 2024,288
+2024,idn.13.1312,Pasaman Barat,landslide,Tanah Longsor,19.93,tinggi,134,index_points,official_hazard_risk_index,BNPB IRBI 2024,282
+2024,idn.13.1371,Padang,landslide,Tanah Longsor,14.94,sedang,227,index_points,official_hazard_risk_index,BNPB IRBI 2024,284
+2024,idn.13.1372,Solok,landslide,Tanah Longsor,10.73,sedang,346,index_points,official_hazard_risk_index,BNPB IRBI 2024,288
+2024,idn.13.1373,Sawahlunto,landslide,Tanah Longsor,18.01,tinggi,159,index_points,official_hazard_risk_index,BNPB IRBI 2024,282
+2024,idn.13.1374,Padang Panjang,landslide,Tanah Longsor,12.00,sedang,277,index_points,official_hazard_risk_index,BNPB IRBI 2024,286
+2024,idn.13.1375,Bukittinggi,landslide,Tanah Longsor,24.00,tinggi,53,index_points,official_hazard_risk_index,BNPB IRBI 2024,279
+2024,idn.13.1376,Payakumbuh,landslide,Tanah Longsor,11.60,sedang,318,index_points,official_hazard_risk_index,BNPB IRBI 2024,287
+2024,idn.13.1377,Pariaman,landslide,Tanah Longsor,8.24,sedang,404,index_points,official_hazard_risk_index,BNPB IRBI 2024,289
+2024,idn.13.1301,Kepulauan Mentawai,tsunami,Tsunami,15.78,tinggi,83,index_points,official_hazard_risk_index,BNPB IRBI 2024,246
+2024,idn.13.1302,Pesisir Selatan,tsunami,Tsunami,14.94,tinggi,93,index_points,official_hazard_risk_index,BNPB IRBI 2024,246
+2024,idn.13.1306,Padang Pariaman,tsunami,Tsunami,15.91,tinggi,82,index_points,official_hazard_risk_index,BNPB IRBI 2024,246
+2024,idn.13.1307,Agam,tsunami,Tsunami,23.55,tinggi,25,index_points,official_hazard_risk_index,BNPB IRBI 2024,244
+2024,idn.13.1312,Pasaman Barat,tsunami,Tsunami,19.93,tinggi,44,index_points,official_hazard_risk_index,BNPB IRBI 2024,245
+2024,idn.13.1371,Padang,tsunami,Tsunami,14.94,tinggi,94,index_points,official_hazard_risk_index,BNPB IRBI 2024,246
+2024,idn.13.1377,Pariaman,tsunami,Tsunami,17.66,tinggi,62,index_points,official_hazard_risk_index,BNPB IRBI 2024,245
+2024,idn.13.1303,Solok,volcanic_eruption,Letusan Gunung Api,7.20,sedang,48,index_points,official_hazard_risk_index,BNPB IRBI 2024,255
+2024,idn.13.1305,Tanah Datar,volcanic_eruption,Letusan Gunung Api,7.20,sedang,49,index_points,official_hazard_risk_index,BNPB IRBI 2024,255
+2024,idn.13.1306,Padang Pariaman,volcanic_eruption,Letusan Gunung Api,4.77,rendah,76,index_points,official_hazard_risk_index,BNPB IRBI 2024,256
+2024,idn.13.1307,Agam,volcanic_eruption,Letusan Gunung Api,7.07,sedang,54,index_points,official_hazard_risk_index,BNPB IRBI 2024,255
+2024,idn.13.1310,Solok Selatan,volcanic_eruption,Letusan Gunung Api,5.65,sedang,70,index_points,official_hazard_risk_index,BNPB IRBI 2024,256
+2024,idn.13.1372,Solok,volcanic_eruption,Letusan Gunung Api,6.44,sedang,63,index_points,official_hazard_risk_index,BNPB IRBI 2024,255
+2024,idn.13.1374,Padang Panjang,volcanic_eruption,Letusan Gunung Api,7.20,sedang,50,index_points,official_hazard_risk_index,BNPB IRBI 2024,255
