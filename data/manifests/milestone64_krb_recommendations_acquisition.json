@@ -26,12 +26,25 @@
     "excerpt_path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-search-excerpt.txt",
     "excerpt_sha256": "9f01b51a3413e1981c1213f7cc19957a1f8ab13eefb2cb44bd025b9256d5f912",
     "index_path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-page-index.json",
-    "index_sha256": "2b9dcc47e75b3da8002abd54f57a815bacd7a6b3f0e76cf5ab70225738a7e1be"
+    "index_sha256": "2b9dcc47e75b3da8002abd54f57a815bacd7a6b3f0e76cf5ab70225738a7e1be",
+    "reading_order_excerpt": {
+      "method": "pdftotext -raw",
+      "ocr_used": false,
+      "pdf_pages_one_based": [
+        98,
+        106
+      ],
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-106.txt",
+      "sha256": "c35cf7997185dd37e7d30e9609063d83c8c40dba76aceb0d37a90696e0a492e4",
+      "purpose": "Preserve reading order for Chapter 4 recommendation section parsing; replaces two-column -layout text as the canonical section-parsing input."
+    }
   },
   "qualification_boundary": {
     "recommendation_extraction_authorized": true,
     "causal_prediction_authorized": false,
     "unmitigated_loss_forecast_authorized": false,
-    "recommendations_are_observed_outcomes": false
+    "recommendations_are_observed_outcomes": false,
+    "layout_excerpt_authorized_for_section_materialization": false,
+    "reading_order_excerpt_authorized_for_section_materialization": true
   }
 }
