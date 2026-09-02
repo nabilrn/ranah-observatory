@@ -1,0 +1,68 @@
+name: M64 Repair Catalog Diff TEMP
+
+on:
+  push:
+    branches: [research/evidence]
+    paths:
+      - '.github/workflows/m64-repair-catalog-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/evidence
+          fetch-depth: 0
+      - name: Restore main catalog bytes and append only M64 rows
+        run: |
+          git fetch origin main
+          git show origin/main:catalog/public-datasets.csv > catalog/public-datasets.csv
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          path = Path('catalog/public-datasets.csv')
+          entries = [
+              [
+                  'bnpb-krb-sumbar-hazard-mitigation-actions-2022-2026',
+                  'Disaster',
+                  'Rekomendasi mitigasi per jenis ancaman Sumatera Barat 2022–2026',
+                  'West Sumatra hazard-specific mitigation recommendations 2022–2026',
+                  'Enam puluh aksi rekomendasi resmi dari Kajian Risiko Bencana BNPB untuk 11 jenis ancaman yang memiliki daftar tindakan linear. Tiga section dengan struktur rekomendasi bertingkat tidak dipaksa menjadi daftar datar. Data ini adalah rekomendasi pengurangan risiko, bukan bukti implementasi dan bukan prediksi kejadian atau kerugian.',
+                  "Sixty official recommendation actions from BNPB's disaster risk assessment for 11 hazards with linear action lists. Three recommendation sections with nested structure are not forced into a flat list. These are risk-reduction recommendations, not evidence of implementation and not event or loss forecasts.",
+                  'BNPB / InaRISK KRB Sumatera Barat 2022–2026',
+                  '2022–2026 risk assessment',
+                  'Provinsi Sumatera Barat / jenis ancaman',
+                  'CSV',
+                  'materialized',
+                  'data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv',
+              ],
+              [
+                  'bnpb-krb-sumbar-recommendation-sections-2022-2026',
+                  'Disaster',
+                  'Bagian rekomendasi KRB Sumatera Barat 2022–2026',
+                  'West Sumatra KRB recommendation sections 2022–2026',
+                  'Empat belas bagian rekomendasi spesifik source-native dari Kajian Risiko Bencana BNPB, dipertahankan sebagai proof layer. Teks dibangun dari ekstraksi reading-order non-OCR; section epidemi, kegagalan teknologi, dan COVID-19 tetap bertingkat dan tidak di-flatten.',
+                  "Fourteen source-native specific-recommendation sections from BNPB's disaster risk assessment retained as a proof layer. Text is built from non-OCR reading-order extraction; epidemic, technological-failure, and COVID-19 sections remain nested and are not flattened.",
+                  'BNPB / InaRISK KRB Sumatera Barat 2022–2026',
+                  '2022–2026 risk assessment',
+                  'Provinsi Sumatera Barat / jenis ancaman',
+                  'CSV',
+                  'materialized',
+                  'data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv',
+              ],
+          ]
+          with path.open('a', newline='', encoding='utf-8') as handle:
+              writer = csv.writer(handle)
+              writer.writerows(entries)
+          PY
+      - name: Commit catalog-only repair
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add catalog/public-datasets.csv
+          git commit -m 'Minimize M64 catalog diff'
+          git push origin HEAD:research/evidence
