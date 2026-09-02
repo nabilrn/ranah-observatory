@@ -1,0 +1,61 @@
+name: Milestone 64 KRB Hazard Mitigation Recommendations
+
+on:
+  pull_request:
+    paths:
+      - 'data/manifests/milestone64_krb_recommendations_acquisition.json'
+      - 'data/manifests/milestone64_krb_recommendations_final.json'
+      - 'data/processed/bnpb/krb_sumbar_2022_2026/**'
+      - 'catalog/public-datasets.csv'
+      - 'scripts/materialize_milestone64_krb_recommendation_sections.py'
+      - 'scripts/materialize_milestone64_krb_hazard_actions.py'
+      - 'scripts/validate_milestone64_krb_recommendations.py'
+      - 'tests/test_milestone64_krb_recommendations.py'
+      - '.github/workflows/milestone64-krb-hazard-mitigation-recommendations.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/manifests/milestone64_krb_recommendations_acquisition.json'
+      - 'data/manifests/milestone64_krb_recommendations_final.json'
+      - 'data/processed/bnpb/krb_sumbar_2022_2026/**'
+      - 'catalog/public-datasets.csv'
+      - 'scripts/materialize_milestone64_krb_recommendation_sections.py'
+      - 'scripts/materialize_milestone64_krb_hazard_actions.py'
+      - 'scripts/validate_milestone64_krb_recommendations.py'
+      - 'tests/test_milestone64_krb_recommendations.py'
+      - '.github/workflows/milestone64-krb-hazard-mitigation-recommendations.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Validate frozen M64 recommendation materialization
+        run: python scripts/validate_milestone64_krb_recommendations.py
+      - name: Run focused M64 test
+        run: python -m pytest -q tests/test_milestone64_krb_recommendations.py
+      - name: Require deterministic M64 rebuild
+        run: |
+          cp data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv /tmp/m64-sections.csv
+          cp data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv /tmp/m64-actions.csv
+          cp data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-recommendation-context-2022-2026.csv /tmp/m64-context.csv
+          cp data/manifests/milestone64_krb_recommendations_final.json /tmp/m64-final.json
+          python scripts/materialize_milestone64_krb_recommendation_sections.py
+          python scripts/materialize_milestone64_krb_hazard_actions.py
+          cmp /tmp/m64-sections.csv data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv
+          cmp /tmp/m64-actions.csv data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv
+          cmp /tmp/m64-context.csv data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-recommendation-context-2022-2026.csv
+          cmp /tmp/m64-final.json data/manifests/milestone64_krb_recommendations_final.json
+          git diff --exit-code -- \
+            data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv \
+            data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv \
+            data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-recommendation-context-2022-2026.csv \
+            data/manifests/milestone64_krb_recommendations_final.json
