@@ -1,0 +1,54 @@
+name: Milestone 63 BPBD Mitigation Plan 2026
+
+on:
+  pull_request:
+    paths:
+      - 'data/manifests/milestone63_bpbd_mitigation_plan_2026_acquisition.json'
+      - 'data/manifests/milestone63_bpbd_mitigation_plan_2026_final.json'
+      - 'data/processed/bpbd/mitigation_plan_2026/**'
+      - 'data/raw/bpbd/m63_renja_2026/**'
+      - 'catalog/public-datasets.csv'
+      - 'scripts/materialize_milestone63_bpbd_mitigation_plan_2026.py'
+      - 'scripts/validate_milestone63_bpbd_mitigation_plan_2026.py'
+      - 'tests/test_milestone63_bpbd_mitigation_plan_2026.py'
+      - '.github/workflows/milestone63-bpbd-mitigation-plan-2026.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/manifests/milestone63_bpbd_mitigation_plan_2026_acquisition.json'
+      - 'data/manifests/milestone63_bpbd_mitigation_plan_2026_final.json'
+      - 'data/processed/bpbd/mitigation_plan_2026/**'
+      - 'data/raw/bpbd/m63_renja_2026/**'
+      - 'catalog/public-datasets.csv'
+      - 'scripts/materialize_milestone63_bpbd_mitigation_plan_2026.py'
+      - 'scripts/validate_milestone63_bpbd_mitigation_plan_2026.py'
+      - 'tests/test_milestone63_bpbd_mitigation_plan_2026.py'
+      - '.github/workflows/milestone63-bpbd-mitigation-plan-2026.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused test dependency
+        run: python -m pip install 'pytest==8.4.2'
+      - name: Validate frozen M63 planning context
+        run: python scripts/validate_milestone63_bpbd_mitigation_plan_2026.py
+      - name: Run focused M63 test
+        run: python -m pytest -q tests/test_milestone63_bpbd_mitigation_plan_2026.py
+      - name: Require deterministic planning-context rebuild
+        run: |
+          cp data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-targets-2026.csv /tmp/m63-targets.csv
+          cp data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-gaps-2026.csv /tmp/m63-gaps.csv
+          cp data/manifests/milestone63_bpbd_mitigation_plan_2026_final.json /tmp/m63-final.json
+          python scripts/materialize_milestone63_bpbd_mitigation_plan_2026.py
+          cmp /tmp/m63-targets.csv data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-targets-2026.csv
+          cmp /tmp/m63-gaps.csv data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-gaps-2026.csv
+          cmp /tmp/m63-final.json data/manifests/milestone63_bpbd_mitigation_plan_2026_final.json
+          git diff --exit-code -- data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-targets-2026.csv data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-gaps-2026.csv data/manifests/milestone63_bpbd_mitigation_plan_2026_final.json
