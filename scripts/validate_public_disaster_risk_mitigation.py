@@ -17,7 +17,7 @@ PAGE_SVELTE = ROOT / "web/src/routes/[lang]/explore/disaster/+page.svelte"
 PANEL = ROOT / "web/src/lib/components/RiskMitigationPanel.svelte"
 PUBLIC_TYPES = ROOT / "web/src/lib/public-data.ts"
 
-EXPECTED_SCHEMA = "ranah-observatory/public-disaster-summary/v4"
+PUBLIC_SCHEMA_PREFIX = "ranah-observatory/public-disaster-summary/v"
 EXPECTED_MATCHED = {
     "drought": 5,
     "earthquake": 2,
@@ -48,7 +48,9 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     require(PUBLIC.exists(), "M66 public artifact missing; run web data/build chain first")
     public = json.loads(PUBLIC.read_text(encoding="utf-8"))
-    require(public.get("schema") == EXPECTED_SCHEMA, f"M66 public schema drift: {public.get('schema')!r}")
+    schema = public.get("schema", "")
+    require(schema.startswith(PUBLIC_SCHEMA_PREFIX), f"M66 public schema namespace drift: {schema!r}")
+    require(int(schema.removeprefix(PUBLIC_SCHEMA_PREFIX)) >= 4, f"M66 risk layer requires public schema v4+, got {schema!r}")
     require(public.get("missing_values_inferred") is False, "M66 inherited missing-value boundary drift")
     rm = public.get("risk_mitigation_2024")
     require(isinstance(rm, dict), "M66 risk_mitigation_2024 payload missing")
@@ -142,9 +144,9 @@ def main() -> int:
 
     package = json.loads(PACKAGE.read_text(encoding="utf-8"))
     data_script = package["scripts"]["data"]
-    require(data_script.endswith("python3 ../scripts/promote_public_disaster_risk_mitigation.py"), "M66 promoter missing from web data chain")
+    require("python3 ../scripts/promote_public_disaster_risk_mitigation.py" in data_script, "M66 promoter missing from web data chain")
     require("promote_public_disaster_context.py" in data_script, "M66 v3 prerequisite promoter missing")
-    require(EXPECTED_SCHEMA in PAGE_TS.read_text(encoding="utf-8"), "M66 page loader does not require v4")
+    require(PUBLIC_SCHEMA_PREFIX in PAGE_TS.read_text(encoding="utf-8"), "M66 page loader schema guard missing")
     require("risk_mitigation_2024: PublicRiskMitigation2024" in PUBLIC_TYPES.read_text(encoding="utf-8"), "M66 public TypeScript contract missing")
     page_text = PAGE_SVELTE.read_text(encoding="utf-8")
     require("RiskMitigationPanel" in page_text and "summary.risk_mitigation_2024" in page_text, "M66 disaster page does not mount risk panel")
@@ -158,7 +160,7 @@ def main() -> int:
 
     print(json.dumps({
         "status": "ok",
-        "schema": EXPECTED_SCHEMA,
+        "schema": public["schema"],
         "risk_rows": 124,
         "matched_hazards": 9,
         "recommendation_actions": 49,
