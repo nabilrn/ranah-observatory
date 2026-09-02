@@ -1,0 +1,147 @@
+{
+  "schema": "ranah-observatory/milestone55-bpbd-library-historical-media-migration/v1",
+  "milestone": 55,
+  "title": "BPBD current-library historical media migration audit",
+  "depends_on": [54],
+  "decision_date": "2026-09-02",
+  "research_question": "Does the current BPBD Sumatera Barat library provide a recoverable official raw artifact for LKj 2022 or Buku DIBI 2022, and what does its current file transport reveal about historical media migration?",
+  "current_library": {
+    "public_page_url": "https://bpbd.sumbarprov.go.id/perpustakaan/laporan-kinerja",
+    "api_base": "https://bpbd.sumbarprov.go.id/web-api",
+    "agency_id": 2696,
+    "lkj_category_slug": "laporan-kinerja-instansi-pemerintah",
+    "lkj_category_api_url": "https://bpbd.sumbarprov.go.id/web-api/api/category/laporan-kinerja-instansi-pemerintah/2696",
+    "lkj_category_row_count_observed": 5,
+    "lkj_2022_row": {
+      "category": "Laporan Kinerja Instansi Pemerintah",
+      "created_at": "16 Februari 2023 16:15:8",
+      "created_by": "Admin BPBD",
+      "gambar": "/api/files/badan-penanggulangan-bencana-daerah/2023/02/LKJ_BPBD_TAHUN_2022.pdf",
+      "slug": "laporan-kinerja-badan-penanggulangan-bencana-daerah-tahun-2022-332",
+      "status": "Publish",
+      "title": "Laporan Kinerja Badan Penanggulangan Bencana Daerah Tahun 2022"
+    }
+  },
+  "transport_audit": {
+    "legacy_lkj_2022_url": "https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf",
+    "legacy_lkj_2022_response": {
+      "http_status": 200,
+      "content_type": "text/html",
+      "byte_count": 1194,
+      "sha256": "7e0ebbde81104e10d61008e405636958da368f05d5fd9b859da88007e74d9b7f",
+      "classification": "spa_fallback_not_pdf"
+    },
+    "current_lkj_2022_file_url": "https://bpbd.sumbarprov.go.id/web-api/api/files/badan-penanggulangan-bencana-daerah/2023/02/LKJ_BPBD_TAHUN_2022.pdf",
+    "current_lkj_2022_response": {
+      "http_status": 500,
+      "content_type": "application/json; charset=utf-8",
+      "byte_count": 60,
+      "sha256": "1fb247e83188a06958c4d3a532ed0cd44be4a3bd3a7d6b93487f25183eadc12a",
+      "error": "Minio S3Error: The specified key does not exist.",
+      "classification": "published_metadata_missing_storage_object"
+    },
+    "vintage_probe": [
+      {
+        "title": "Laporan Kinerja Instansi Pemerintah Tahun 2025",
+        "metadata_vintage": "2026/05",
+        "http_status": 200,
+        "content_type": "application/pdf",
+        "byte_count": 2043904,
+        "sha256": "c3a45bb8c9e7dfe2ee8daf39b2702b969e1c13911a31c81681bf20e8059f3bd7",
+        "pdf_recovered": true
+      },
+      {
+        "title": "Laporan Kinerja Instansi Pemerintah Tahun 2024",
+        "metadata_vintage": "2026/03",
+        "http_status": 200,
+        "content_type": "application/pdf",
+        "byte_count": 2043904,
+        "sha256": "7c5ddeee330c38649caae42d8a0f28d89d2af959b0ccdd78778dfcfee314d64b",
+        "pdf_recovered": true
+      },
+      {
+        "title": "LKJ 2023",
+        "metadata_vintage": "2024/05",
+        "http_status": 500,
+        "content_type": "application/json; charset=utf-8",
+        "byte_count": 60,
+        "sha256": "1fb247e83188a06958c4d3a532ed0cd44be4a3bd3a7d6b93487f25183eadc12a",
+        "pdf_recovered": false
+      },
+      {
+        "title": "Laporan Kinerja Badan Penanggulangan Bencana Daerah Tahun 2022",
+        "metadata_vintage": "2023/02",
+        "http_status": 500,
+        "content_type": "application/json; charset=utf-8",
+        "byte_count": 60,
+        "sha256": "1fb247e83188a06958c4d3a532ed0cd44be4a3bd3a7d6b93487f25183eadc12a",
+        "pdf_recovered": false
+      },
+      {
+        "title": "Laporan Kinerja  BPBD",
+        "metadata_vintage": "2016/03",
+        "http_status": 500,
+        "content_type": "application/json; charset=utf-8",
+        "byte_count": 60,
+        "sha256": "1fb247e83188a06958c4d3a532ed0cd44be4a3bd3a7d6b93487f25183eadc12a",
+        "pdf_recovered": false
+      }
+    ]
+  },
+  "category_sweep": {
+    "reviewed_slugs": [
+      "download",
+      "laporan-kinerja-instansi-pemerintah",
+      "infografis",
+      "edukasi-bencana",
+      "rencana-strategis",
+      "rencana-kerja",
+      "perjanjian-kinerja",
+      "rencana-kinerja-tahunan",
+      "sop",
+      "indikator-kinerja-individu",
+      "renaksi",
+      "skp",
+      "iku"
+    ],
+    "successful_category_payload_count": 12,
+    "renaksi_http_status": 404,
+    "dibi_literal_match_count_in_returned_payloads": 0,
+    "buku_dibi_2022_current_library_row_recovered": false,
+    "note": "The reviewed category payloads returned no row containing the literal DIBI. This is a bounded API-surface audit, not proof that no other government archive retains the artifact."
+  },
+  "interpretation": {
+    "current_bpbd_library_metadata_for_lkj_2022_is_live": true,
+    "current_bpbd_storage_transport_is_functional_for_newer_objects": true,
+    "lkj_2022_metadata_pointer_resolves_to_missing_minio_key": true,
+    "lkj_2023_metadata_pointer_resolves_to_missing_minio_key": true,
+    "historical_media_migration_gap_supported": true,
+    "raw_lkj_2022_pdf_recovered_from_current_library": false,
+    "raw_dibi_2022_pdf_recovered_from_current_library": false,
+    "web_indexed_or_cached_pdf_may_satisfy_raw_artifact_gate": false
+  },
+  "research_boundary": {
+    "lkj_2022_table_3_4_7_verification_targets_remain_valid_as_cross_publication_context": true,
+    "lkj_2022_source_native_materialization_authorized": false,
+    "dibi_2022_source_native_materialization_authorized": false,
+    "canonical_2022_disaster_timeseries_authorized": false,
+    "do_not_treat_metadata_presence_as_artifact_availability": true,
+    "do_not_treat_spa_fallback_http_200_as_successful_pdf_retrieval": true,
+    "do_not_treat_minio_500_as_transient_without_new_evidence": true
+  },
+  "next_actions": [
+    "Continue recovery through the current PPID inventory/UUID archive and other official sumbarprov.go.id archival surfaces rather than the BPBD library category API.",
+    "Search for a migrated or alternate official copy of Buku DIBI Tahun 2022 using its exact title, legacy PPID record, and historical storage filename.",
+    "If raw official bytes are recovered, freeze SHA256 and page count before extracting Tables 3.1-3.10 and appendices.",
+    "Keep the 1,021-event DIBI and 1,047-event LKj products source-native and separate until explicit reconciliation is demonstrated."
+  ],
+  "result": {
+    "current_library_transport_audited": true,
+    "newer_storage_objects_retrievable": 2,
+    "historical_metadata_objects_missing": 3,
+    "lkj_2022_raw_artifact_acquired": false,
+    "dibi_2022_current_library_route_found": false,
+    "historical_media_migration_gap_confirmed": true,
+    "promotion_gate_fail_closed": true
+  }
+}
