@@ -1,0 +1,46 @@
+name: Milestone 60 BPBD Profile Qualification
+
+on:
+  pull_request:
+    paths:
+      - 'data/manifests/milestone60_bpbd_profile_2014_2024_acquisition.json'
+      - 'data/manifests/milestone60_bpbd_book_2024_acquisition.json'
+      - 'data/manifests/milestone60_bpbd_profile_2014_2024_final.json'
+      - 'data/raw/bpbd/m60_profile_2014_2024/**'
+      - 'data/raw/bpbd/m60_book_2024/**'
+      - 'data/processed/bpbd/disaster_profile_2014_2024/**'
+      - 'scripts/validate_milestone60_bpbd_profile_2014_2024.py'
+      - 'tests/test_milestone60_bpbd_profile_2014_2024.py'
+      - 'research/MILESTONE60_BPBD_PROFILE_2014_2024.md'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone60-bpbd-profile-qualification.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/manifests/milestone60_bpbd_profile_2014_2024_acquisition.json'
+      - 'data/manifests/milestone60_bpbd_book_2024_acquisition.json'
+      - 'data/manifests/milestone60_bpbd_profile_2014_2024_final.json'
+      - 'data/raw/bpbd/m60_profile_2014_2024/**'
+      - 'data/raw/bpbd/m60_book_2024/**'
+      - 'data/processed/bpbd/disaster_profile_2014_2024/**'
+      - 'scripts/validate_milestone60_bpbd_profile_2014_2024.py'
+      - 'tests/test_milestone60_bpbd_profile_2014_2024.py'
+      - 'research/MILESTONE60_BPBD_PROFILE_2014_2024.md'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone60-bpbd-profile-qualification.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate M60 qualification hold
+        run: python scripts/validate_milestone60_bpbd_profile_2014_2024.py
+      - name: Run focused M60 test
+        run: python -m unittest tests.test_milestone60_bpbd_profile_2014_2024
