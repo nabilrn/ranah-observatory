@@ -1,0 +1,90 @@
+{
+  "schema": "ranah-observatory/milestone58-bpbd-events-2024-acquisition/v1",
+  "milestone": 58,
+  "depends_on": [
+    57
+  ],
+  "retrieved_at": "2026-09-02T09:38:17.298206+00:00",
+  "source": {
+    "portal": "https://data.sumbarprov.go.id/",
+    "package_slug": "data-kejadian-bencana-dan-dampak-bencana-tahun-2024",
+    "package_id": "24704fb3-6b59-4a67-94a3-ab585a33f303",
+    "package_title": "Data dan Dampak Bencana Tahun 2024",
+    "organization": "Badan Penanggulangan Bencana Daerah",
+    "producer": "Dilla ulfa desma",
+    "source_data": null,
+    "year": "2024",
+    "resource_id": "9d99b5ed-a005-4b35-880c-7e9954c9ade5",
+    "resource_name": "Jumlah Kejadian Bencana Per Kab/Kota Tahun 2024",
+    "resource_format": "XLS",
+    "resource_url": "https://data.sumbarprov.go.id/dataset/24704fb3-6b59-4a67-94a3-ab585a33f303/resource/9d99b5ed-a005-4b35-880c-7e9954c9ade5/download/jumlah-kejadian-bencana-per-kabkota-tahun-2024-81a7c235-724d-436c-b2d8-de51fec16a47.xlsx",
+    "datastore_active": true
+  },
+  "source_native": {
+    "record_count": 20,
+    "field_names": [
+      "Kode Wilayah",
+      "Jenis Bencana",
+      "Jumlah Kejadian"
+    ],
+    "unique_code_count": 20,
+    "source_codes": [
+      "1301",
+      "1302",
+      "1303",
+      "1304",
+      "1305",
+      "1306",
+      "1307",
+      "1308",
+      "1309",
+      "1310",
+      "1311",
+      "1312",
+      "1371",
+      "1372",
+      "1373",
+      "1374",
+      "1375",
+      "1376",
+      "1377",
+      "None"
+    ],
+    "unique_hazard_count": 20,
+    "hazard_labels": [
+      "KABUPATEN AGAM",
+      "KABUPATEN DHARMASRAYA",
+      "KABUPATEN KEPULAUAN MENTAWAI",
+      "KABUPATEN LIMA PULUH KOTA",
+      "KABUPATEN PADANG PARIAMAN",
+      "KABUPATEN PASAMAN",
+      "KABUPATEN PASAMAN BARAT",
+      "KABUPATEN PESISIR SELATAN",
+      "KABUPATEN SIJUNJUNG",
+      "KABUPATEN SOLOK",
+      "KABUPATEN SOLOK SELATAN",
+      "KABUPATEN TANAH DATAR",
+      "KOTA BUKITTINGGI",
+      "KOTA PADANG",
+      "KOTA PADANG PANJANG",
+      "KOTA PARIAMAN",
+      "KOTA PAYAKUMBUH",
+      "KOTA SAWAHLUNTO",
+      "KOTA SOLOK",
+      "Total"
+    ],
+    "raw_event_count_sum": 2341,
+    "geography_semantics_interpreted": false,
+    "hazard_taxonomy_harmonized": false,
+    "missing_values_inferred": false
+  },
+  "output": {
+    "path": "data/processed/bpbd/disaster_events_2024/bpbd-disaster-events-2024-source-native.csv",
+    "sha256": "00b1192497dc1b907e99e3b57df626964987eae43f270f05637efa979ea00e3f"
+  },
+  "result": {
+    "source_native_acquisition_complete": true,
+    "canonical_geography_mapping_authorized": false,
+    "dashboard_promotion_authorized": false
+  }
+}
