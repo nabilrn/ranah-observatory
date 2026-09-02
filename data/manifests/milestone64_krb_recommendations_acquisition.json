@@ -32,11 +32,11 @@
       "ocr_used": false,
       "pdf_pages_one_based": [
         98,
-        106
+        109
       ],
-      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-106.txt",
-      "sha256": "c35cf7997185dd37e7d30e9609063d83c8c40dba76aceb0d37a90696e0a492e4",
-      "purpose": "Preserve reading order for Chapter 4 recommendation section parsing; replaces two-column -layout text as the canonical section-parsing input."
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-109.txt",
+      "sha256": "bdfb7ff46398c95e7567caa3c0ca0bcd5086691e83716104408e6a459c6c413f",
+      "purpose": "Preserve reading order for Chapter 4 recommendation section parsing and include the Chapter 5 boundary; replaces two-column -layout text as the canonical section-parsing input."
     }
   },
   "qualification_boundary": {
