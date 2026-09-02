@@ -66,25 +66,83 @@
         "rendah": 1
       }
     },
-    "geography_hazard_count": {
-      "Kepulauan Mentawai": 7,
-      "Pesisir Selatan": 8,
-      "Solok": 6,
-      "Sijunjung": 5,
-      "Tanah Datar": 6,
-      "Padang Pariaman": 9,
-      "Agam": 9,
-      "Lima Puluh Kota": 5,
-      "Pasaman": 6,
-      "Solok Selatan": 6,
-      "Dharmasraya": 6,
-      "Pasaman Barat": 8,
-      "Padang": 8,
-      "Sawahlunto": 5,
-      "Padang Panjang": 6,
-      "Bukittinggi": 5,
-      "Payakumbuh": 5,
-      "Pariaman": 8
+    "geography_hazard_count_by_id": {
+      "idn.13.1301": {
+        "geography_name": "Kepulauan Mentawai",
+        "hazard_count": 7
+      },
+      "idn.13.1302": {
+        "geography_name": "Pesisir Selatan",
+        "hazard_count": 8
+      },
+      "idn.13.1303": {
+        "geography_name": "Solok",
+        "hazard_count": 6
+      },
+      "idn.13.1304": {
+        "geography_name": "Sijunjung",
+        "hazard_count": 5
+      },
+      "idn.13.1305": {
+        "geography_name": "Tanah Datar",
+        "hazard_count": 6
+      },
+      "idn.13.1306": {
+        "geography_name": "Padang Pariaman",
+        "hazard_count": 9
+      },
+      "idn.13.1307": {
+        "geography_name": "Agam",
+        "hazard_count": 9
+      },
+      "idn.13.1308": {
+        "geography_name": "Lima Puluh Kota",
+        "hazard_count": 5
+      },
+      "idn.13.1309": {
+        "geography_name": "Pasaman",
+        "hazard_count": 6
+      },
+      "idn.13.1310": {
+        "geography_name": "Solok Selatan",
+        "hazard_count": 6
+      },
+      "idn.13.1311": {
+        "geography_name": "Dharmasraya",
+        "hazard_count": 6
+      },
+      "idn.13.1312": {
+        "geography_name": "Pasaman Barat",
+        "hazard_count": 8
+      },
+      "idn.13.1371": {
+        "geography_name": "Padang",
+        "hazard_count": 8
+      },
+      "idn.13.1372": {
+        "geography_name": "Solok",
+        "hazard_count": 6
+      },
+      "idn.13.1373": {
+        "geography_name": "Sawahlunto",
+        "hazard_count": 5
+      },
+      "idn.13.1374": {
+        "geography_name": "Padang Panjang",
+        "hazard_count": 6
+      },
+      "idn.13.1375": {
+        "geography_name": "Bukittinggi",
+        "hazard_count": 5
+      },
+      "idn.13.1376": {
+        "geography_name": "Payakumbuh",
+        "hazard_count": 5
+      },
+      "idn.13.1377": {
+        "geography_name": "Pariaman",
+        "hazard_count": 8
+      }
     }
   },
   "result": {
