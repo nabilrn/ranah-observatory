@@ -1,0 +1,110 @@
+{
+  "schema": "ranah-observatory/milestone64-krb-recommendations-final/v1",
+  "milestone": 64,
+  "depends_on": [
+    63
+  ],
+  "source_manifest": {
+    "path": "data/manifests/milestone64_krb_recommendations_acquisition.json",
+    "sha256": "b97d104ae15ecf1c1fce661228e11b3e98650ba3391b7ad4009e62f99dd3b0d3"
+  },
+  "result": {
+    "specific_recommendation_section_count": 14,
+    "hazard_count": 14,
+    "source_page_span": [
+      101,
+      108
+    ],
+    "source_native_sections_materialized": true,
+    "reading_order_extraction_used": true,
+    "two_column_layout_materialization_rejected": true,
+    "dashboard_action_summary_ready": true,
+    "recommendations_treated_as_observed_outcomes": false,
+    "causal_prediction_authorized": false,
+    "unmitigated_loss_forecast_authorized": false,
+    "specific_recommendation_action_count": 60,
+    "flat_action_hazard_count": 11,
+    "nested_source_only_hazard_count": 3,
+    "priority_context_row_count": 14,
+    "observed_implementation_claimed": false,
+    "nested_numbering_flattened": false,
+    "page_furniture_removed_from_action_text": true
+  },
+  "taxonomy_boundary": {
+    "identifier_namespace": "krb_hazard_id",
+    "source_labels_preserved": true,
+    "cross_source_taxonomy_equivalence_authorized": false
+  },
+  "action_coverage_by_hazard": {
+    "flood": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 7
+    },
+    "flash_flood": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 6
+    },
+    "extreme_weather": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 6
+    },
+    "extreme_wave_and_coastal_erosion": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 6
+    },
+    "earthquake": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 2
+    },
+    "liquefaction": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 5
+    },
+    "forest_and_land_fire": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 4
+    },
+    "drought": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 5
+    },
+    "volcanic_eruption": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 7
+    },
+    "landslide": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 4
+    },
+    "tsunami": {
+      "action_detail_status": "flat_actions_materialized",
+      "flat_action_count": 8
+    },
+    "epidemic_and_disease_outbreak": {
+      "action_detail_status": "source_section_only_nested_structure",
+      "flat_action_count": 0
+    },
+    "technological_failure": {
+      "action_detail_status": "source_section_only_nested_structure",
+      "flat_action_count": 0
+    },
+    "covid_19": {
+      "action_detail_status": "source_section_only_nested_structure",
+      "flat_action_count": 0
+    }
+  },
+  "outputs": {
+    "source_native_sections": {
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv",
+      "sha256": "9ed0f50edccef9da8212664fa8db86cc51afe9bf7369dff8eda80a2d817ffef2"
+    },
+    "hazard_actions": {
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv",
+      "sha256": "68e3c1bb242eb882fc8ffdab30c251a3a238233460698e2267e6ec936911bf2f"
+    },
+    "priority_context": {
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-recommendation-context-2022-2026.csv",
+      "sha256": "e2d6fae91d404a2d6c0db8510008d36fa1d6a7ded01fdfa04af5aeb1522d7cd2"
+    }
+  }
+}

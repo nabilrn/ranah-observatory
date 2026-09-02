@@ -1,0 +1,50 @@
+{
+  "schema": "ranah-observatory/milestone64-krb-recommendations-acquisition/v1",
+  "milestone": 64,
+  "depends_on": [
+    63
+  ],
+  "retrieved_at": "2026-09-02T14:17:19.032411+00:00",
+  "source": {
+    "publisher": "Badan Nasional Penanggulangan Bencana / InaRISK",
+    "document": "Kajian Risiko Bencana Provinsi Sumatera Barat 2022-2026",
+    "source_url": "https://inarisk.bnpb.go.id/pdf/Sumatera%20Barat/Dokumen%20KRB%20Prov.%20Sumatera%20Barat_final%20draft.pdf",
+    "document_type": "risk_assessment"
+  },
+  "raw_artifact": {
+    "sha256": "58e18cbc8457dc8a6f47fd3e094b8b23358966b2dba8dfae67eff05d385fddd4",
+    "size_bytes": 17217289,
+    "committed_to_repository": false,
+    "reason_not_committed": "Large official source PDF; retain checksum and deterministic non-OCR recommendation excerpt instead of duplicating the full publication in git."
+  },
+  "text_extraction": {
+    "method": "pdftotext -layout",
+    "ocr_used": false,
+    "source_page_count_from_text": 111,
+    "keyword_hit_page_count": 19,
+    "expanded_excerpt_page_count": 38,
+    "excerpt_path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-search-excerpt.txt",
+    "excerpt_sha256": "9f01b51a3413e1981c1213f7cc19957a1f8ab13eefb2cb44bd025b9256d5f912",
+    "index_path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-page-index.json",
+    "index_sha256": "2b9dcc47e75b3da8002abd54f57a815bacd7a6b3f0e76cf5ab70225738a7e1be",
+    "reading_order_excerpt": {
+      "method": "pdftotext -raw",
+      "ocr_used": false,
+      "pdf_pages_one_based": [
+        98,
+        109
+      ],
+      "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-109.txt",
+      "sha256": "bdfb7ff46398c95e7567caa3c0ca0bcd5086691e83716104408e6a459c6c413f",
+      "purpose": "Preserve reading order for Chapter 4 recommendation section parsing and include the Chapter 5 boundary; replaces two-column -layout text as the canonical section-parsing input."
+    }
+  },
+  "qualification_boundary": {
+    "recommendation_extraction_authorized": true,
+    "causal_prediction_authorized": false,
+    "unmitigated_loss_forecast_authorized": false,
+    "recommendations_are_observed_outcomes": false,
+    "layout_excerpt_authorized_for_section_materialization": false,
+    "reading_order_excerpt_authorized_for_section_materialization": true
+  }
+}
