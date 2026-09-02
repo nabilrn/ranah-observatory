@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ACQ = ROOT / "data/manifests/milestone64_krb_recommendations_acquisition.json"
-EXCERPT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-106.txt"
+EXCERPT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-109.txt"
 OUT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv"
 FINAL = ROOT / "data/manifests/milestone64_krb_recommendations_final.json"
 
@@ -57,7 +57,7 @@ def main() -> int:
     reading = acq["text_extraction"]["reading_order_excerpt"]
     if reading["method"] != "pdftotext -raw" or reading["ocr_used"] is not False:
         raise RuntimeError("M64 reading-order extraction contract drift")
-    if reading["pdf_pages_one_based"] != [98, 106]:
+    if reading["pdf_pages_one_based"] != [98, 109]:
         raise RuntimeError("M64 reading-order source page span drift")
     if sha256(EXCERPT) != reading["sha256"]:
         raise RuntimeError("M64 reading-order excerpt checksum drift")
@@ -67,8 +67,8 @@ def main() -> int:
         raise RuntimeError("M64 reading-order text is not authorized for section materialization")
 
     pages = split_pages(EXCERPT.read_text(encoding="utf-8", errors="replace"))
-    if [page for page, _ in pages] != list(range(98, 107)):
-        raise RuntimeError(f"M64 expected reading-order pages 98-106, got {[p for p, _ in pages]}")
+    if [page for page, _ in pages] != list(range(98, 110)):
+        raise RuntimeError(f"M64 expected reading-order pages 98-109, got {[p for p, _ in pages]}")
 
     joined_parts: list[str] = []
     offset_page: list[tuple[int, int]] = []
