@@ -1,0 +1,79 @@
+name: M66 Wire Risk Mitigation TEMP
+
+on:
+  push:
+    branches: [release/publication]
+    paths:
+      - '.github/workflows/m66-wire-risk-mitigation-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release/publication
+      - name: Patch public v4 contract and disaster page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          public_data = Path('web/src/lib/public-data.ts')
+          text = public_data.read_text(encoding='utf-8')
+          marker = "export type PublicDisasterSummary = {\n"
+          if text.count(marker) != 1:
+              raise SystemExit('PublicDisasterSummary marker drift')
+          types = '''export type RiskMitigationRiskRow = {\n  year: 2024;\n  geography_id: string;\n  geography_name: string;\n  irbi_hazard_id: string;\n  irbi_source_hazard_label: string;\n  risk_score: number;\n  risk_class: 'rendah' | 'sedang' | 'tinggi';\n  krb_hazard_id: string;\n  krb_source_hazard_label: string;\n  mitigation_action_count: number;\n  recommendation_action_detail_status: 'flat_actions_materialized';\n  bridge_status: 'authorized_lookup_bridge';\n};\n\nexport type RiskMitigationActionRow = {\n  krb_hazard_id: string;\n  source_hazard_label: string;\n  action_order: number;\n  action_text_source_native: string;\n  start_pdf_page: number;\n  end_pdf_page: number;\n};\n\nexport type PublicRiskMitigation2024 = {\n  source: {\n    organization: string;\n    bridge_manifest_path: string;\n    bridge_manifest_sha256: string;\n    risk_lookup_path: string;\n    risk_lookup_sha256: string;\n    recommendation_actions_path: string;\n    recommendation_actions_sha256: string;\n  };\n  risk: {\n    year: 2024;\n    rows: RiskMitigationRiskRow[];\n    row_count: 124;\n    hazard_ids: string[];\n    hazard_coverage: Record<string, number>;\n    geography_union_count: 19;\n    possible_full_grid_pairs: 171;\n    absent_source_pairs: 47;\n  };\n  recommendations: {\n    source_period: '2022–2026';\n    rows: RiskMitigationActionRow[];\n    action_count: 49;\n    hazard_count: 9;\n    action_counts_by_hazard: Record<string, number>;\n  };\n  unmatched_krb_hazards: string[];\n  boundaries: {\n    lookup_join_authorized: true;\n    global_taxonomy_equivalence_authorized: false;\n    numeric_value_equivalence_authorized: false;\n    event_taxonomy_join_authorized: false;\n    prediction_claim_authorized: false;\n    recommendations_are_implementation_evidence: false;\n    absent_irbi_pair_means_zero_risk: false;\n  };\n  interpretation: { id: string; en: string };\n};\n\n'''
+          text = text.replace(marker, types + marker, 1)
+          old_schema = "  schema: 'ranah-observatory/public-disaster-summary/v3';"
+          if text.count(old_schema) != 1:
+              raise SystemExit('public schema marker drift')
+          text = text.replace(old_schema, "  schema: 'ranah-observatory/public-disaster-summary/v4';", 1)
+          geo_marker = "  geography: {\n"
+          if text.count(geo_marker) != 1:
+              raise SystemExit('geography insertion marker drift')
+          text = text.replace(geo_marker, "  risk_mitigation_2024: PublicRiskMitigation2024;\n" + geo_marker, 1)
+          public_data.write_text(text, encoding='utf-8')
+
+          page_ts = Path('web/src/routes/[lang]/explore/disaster/+page.ts')
+          text = page_ts.read_text(encoding='utf-8')
+          old = "ranah-observatory/public-disaster-summary/v3"
+          if text.count(old) != 1:
+              raise SystemExit('page schema marker drift')
+          page_ts.write_text(text.replace(old, 'ranah-observatory/public-disaster-summary/v4', 1), encoding='utf-8')
+
+          package = Path('web/package.json')
+          text = package.read_text(encoding='utf-8')
+          old = '"data": "python3 ../scripts/build_public_web_data.py && python3 ../scripts/promote_public_disaster_context.py"'
+          new = '"data": "python3 ../scripts/build_public_web_data.py && python3 ../scripts/promote_public_disaster_context.py && python3 ../scripts/promote_public_disaster_risk_mitigation.py"'
+          if text.count(old) != 1:
+              raise SystemExit('web data script marker drift')
+          package.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          page = Path('web/src/routes/[lang]/explore/disaster/+page.svelte')
+          text = page.read_text(encoding='utf-8')
+          import_marker = "  import DisasterMap from '$lib/components/DisasterMap.svelte';\n"
+          if text.count(import_marker) != 1:
+              raise SystemExit('DisasterMap import marker drift')
+          text = text.replace(import_marker, import_marker + "  import RiskMitigationPanel from '$lib/components/RiskMitigationPanel.svelte';\n", 1)
+          section_marker = "  <section class=\"section\">\n    <div class=\"section-head\">\n      <div><p class=\"eyebrow\">{lang === 'id' ? 'Kejadian BNPB 2024' : 'BNPB events 2024'}"
+          if text.count(section_marker) != 1:
+              raise SystemExit('BNPB events section marker drift')
+          panel = "  <RiskMitigationPanel riskMitigation={summary.risk_mitigation_2024} bind:region {lang} />\n\n"
+          text = text.replace(section_marker, panel + section_marker, 1)
+          page.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit wired M66 product
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add web/src/lib/public-data.ts \
+                  web/src/routes/'[lang]'/explore/disaster/+page.ts \
+                  web/src/routes/'[lang]'/explore/disaster/+page.svelte \
+                  web/package.json
+          git commit -m 'Wire M66 public risk mitigation contract'
+          git push origin HEAD:release/publication
