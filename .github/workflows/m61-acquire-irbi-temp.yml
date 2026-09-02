@@ -5,6 +5,7 @@ on:
     branches: [research/evidence]
     paths:
       - 'scripts/acquire_milestone61_irbi_sumbar_2015_2024.py'
+      - 'scripts/finalize_milestone61_irbi_sumbar_2015_2024.py'
       - '.github/workflows/m61-acquire-irbi-temp.yml'
 
 permissions:
@@ -20,13 +21,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Acquire official IRBI table
-        run: python scripts/acquire_milestone61_irbi_sumbar_2015_2024.py
-      - name: Commit frozen M61 source table
+      - name: Acquire and finalize official IRBI table
+        run: |
+          python scripts/acquire_milestone61_irbi_sumbar_2015_2024.py
+          python scripts/finalize_milestone61_irbi_sumbar_2015_2024.py
+      - name: Commit frozen M61 outputs
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/processed/bnpb/irbi_sumbar_2015_2024 data/manifests/milestone61_irbi_sumbar_2015_2024_acquisition.json
+          git add data/processed/bnpb/irbi_sumbar_2015_2024 \
+                  data/manifests/milestone61_irbi_sumbar_2015_2024_acquisition.json \
+                  data/manifests/milestone61_irbi_sumbar_2015_2024_final.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Freeze M61 IRBI Sumbar 2015-2024 source table'
+          git commit -m 'Finalize M61 IRBI Sumbar 2015-2024'
           git push origin HEAD:research/evidence
