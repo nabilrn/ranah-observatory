@@ -1,10 +1,10 @@
 {
-  "schema": "ranah-observatory/milestone55-bpbd-events-2023/v1",
+  "schema": "ranah-observatory/milestone55-bpbd-events-2023/v2",
   "milestone": 55,
   "depends_on": [
     54
   ],
-  "retrieved_at": "2026-09-02T09:22:58.457283+00:00",
+  "retrieved_at": "2026-09-02T09:24:21.758349+00:00",
   "source": {
     "portal": "https://data.sumbarprov.go.id/",
     "package_slug": "jumlah-kejadian-bencana-tahun-2023",
@@ -22,6 +22,8 @@
   },
   "source_native": {
     "row_count": 20,
+    "district_row_count": 19,
+    "total_row_count": 1,
     "district_or_total_labels": [
       "Kabupaten Agam",
       "Kota Padang",
@@ -44,7 +46,6 @@
       "Kabupaten Solok Selatan",
       "Jumlah"
     ],
-    "duplicate_labels": [],
     "columns": [
       "Kabupaten/Kota",
       "Abrasi pantai",
@@ -59,7 +60,21 @@
       "Longsor",
       "Jumlah"
     ],
-    "province_sum_of_row_jumlah": 2062,
+    "province_total_events": 1031,
+    "district_sum_events": 1031,
+    "hazard_total_sum_events": 1031,
+    "hazard_totals": {
+      "Abrasi pantai": 8,
+      "Angin kencang": 562,
+      "Banjir": 144,
+      "Banjir Bandang": 10,
+      "Erupsi Gunung Api": 44,
+      "Gelombang Pasang": 1,
+      "Gempa Bumi": 1,
+      "Kebakaran Hutan & Lahan": 76,
+      "Kekeringan": 19,
+      "Longsor": 166
+    },
     "missing_values_inferred": false,
     "zero_values_reinterpreted": false,
     "geography_mapping_performed": false,
