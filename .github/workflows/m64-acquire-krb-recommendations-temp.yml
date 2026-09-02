@@ -1,17 +1,17 @@
-name: M64 Materialize Hazard Actions TEMP
+name: M64 Register Catalog TEMP
 
 on:
   push:
     branches: [research/evidence]
     paths:
-      - 'scripts/materialize_milestone64_krb_hazard_actions.py'
+      - 'scripts/register_milestone64_catalog_temp.py'
       - '.github/workflows/m64-acquire-krb-recommendations-temp.yml'
 
 permissions:
   contents: write
 
 jobs:
-  materialize-actions:
+  register:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -21,15 +21,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Materialize top-level hazard mitigation actions
-        run: python scripts/materialize_milestone64_krb_hazard_actions.py
-      - name: Commit M64 hazard action outputs
+      - name: Register M64 public datasets
+        run: python scripts/register_milestone64_catalog_temp.py
+      - name: Commit M64 catalog entries
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv \
-                  data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-recommendation-context-2022-2026.csv \
-                  data/manifests/milestone64_krb_recommendations_final.json
+          git add catalog/public-datasets.csv
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Materialize M64 hazard mitigation actions'
+          git commit -m 'Register M64 KRB recommendation datasets'
           git push origin HEAD:research/evidence
