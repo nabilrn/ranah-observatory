@@ -1,0 +1,33 @@
+{
+  "schema": "ranah-observatory/milestone60-bpbd-profile-2014-2024-final/v1",
+  "milestone": 60,
+  "depends_on": [59],
+  "status": "qualification_hold",
+  "evidence": {
+    "official_profile_jpeg_manifest": "data/manifests/milestone60_bpbd_profile_2014_2024_acquisition.json",
+    "official_2024_book_manifest": "data/manifests/milestone60_bpbd_book_2024_acquisition.json",
+    "jpeg_profile_period": "2014-2024",
+    "jpeg_source_data": "Pusdalop BPBD Sumatera Barat",
+    "book_page_count": 128,
+    "book_searchable_historical_profile_match_count": 0
+  },
+  "qualification": {
+    "official_profile_artifact_frozen": true,
+    "official_companion_book_frozen": true,
+    "machine_readable_2014_2024_timeseries_found": false,
+    "pdf_text_search_produced_historical_profile_evidence": false,
+    "diagnostic_ocr_considered_source_truth": false,
+    "manual_image_transcription_authorized": false,
+    "historical_timeseries_extraction_authorized": false,
+    "dashboard_promotion_authorized": false,
+    "public_catalog_registration_authorized": false
+  },
+  "reason": "The official 2014-2024 profile is available as a low-resolution JPEG. A one-pass OCR diagnostic is noisy and is not accepted as source truth. The official 2024 companion book is a 128-page PDF but pdftotext produced no matching historical-profile text. Without a machine-readable table or independently verifiable transcription, annual historical values are held back rather than inferred.",
+  "next_gate": "Obtain an official machine-readable 2014-2024 table, a higher-resolution source artifact, or another official document whose annual values can be independently reconciled to the validated 2023 and 2024 BPBD anchors.",
+  "result": {
+    "source_qualification_complete": true,
+    "historical_series_materialized": false,
+    "unsafe_numeric_promotion_blocked": true,
+    "milestone_complete": true
+  }
+}
