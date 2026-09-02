@@ -12,9 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data/manifests/milestone64_krb_recommendations_acquisition.json"
-OUT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-106.txt"
+OUT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-109.txt"
 EXPECTED_FIRST_PAGE = 98
-EXPECTED_LAST_PAGE = 106
+EXPECTED_LAST_PAGE = 109
 
 
 def fetch_bytes(url: str, attempts: int = 5) -> bytes:
@@ -75,7 +75,7 @@ def main() -> int:
         "pdf_pages_one_based": [EXPECTED_FIRST_PAGE, EXPECTED_LAST_PAGE],
         "path": OUT.relative_to(ROOT).as_posix(),
         "sha256": hashlib.sha256(OUT.read_bytes()).hexdigest(),
-        "purpose": "Preserve reading order for Chapter 4 recommendation section parsing; replaces two-column -layout text as the canonical section-parsing input.",
+        "purpose": "Preserve reading order for Chapter 4 recommendation section parsing and include the Chapter 5 boundary; replaces two-column -layout text as the canonical section-parsing input.",
     }
     manifest["qualification_boundary"]["layout_excerpt_authorized_for_section_materialization"] = False
     manifest["qualification_boundary"]["reading_order_excerpt_authorized_for_section_materialization"] = True
