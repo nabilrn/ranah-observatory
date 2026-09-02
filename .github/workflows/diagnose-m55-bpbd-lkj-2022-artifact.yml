@@ -17,60 +17,42 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Inspect legacy official LKj BPBD 2022 transport
-        run: |
-          set -euo pipefail
-          url='https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf'
-          curl --silent --show-error --location --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 120 \
-            --dump-header /tmp/headers.txt "$url" -o /tmp/response.bin
-          echo '--- response headers ---'
-          cat /tmp/headers.txt
-          echo '--- byte diagnostics ---'
-          wc -c /tmp/response.bin
-          sha256sum /tmp/response.bin
-          file /tmp/response.bin
-          if [ "$(head -c 4 /tmp/response.bin)" = '%PDF' ]; then
-            echo 'artifact_state=pdf'
-          else
-            echo 'artifact_state=spa_fallback_non_pdf'
-          fi
-
-      - name: Query current library category API and resolve 2022 downloads
+      - name: Freeze current official LKj BPBD 2022 artifact diagnostics
         run: |
           set -euo pipefail
           base='https://bpbd.sumbarprov.go.id'
           endpoint="$base/web-api/api/category/laporan-kinerja-instansi-pemerintah/2696"
           curl --fail --silent --show-error --location "$endpoint" -o /tmp/category.json
-          python - <<'PY'
+          current_url=$(python - <<'PY'
           from pathlib import Path
-          import json, subprocess, urllib.parse
-
-          base='https://bpbd.sumbarprov.go.id'
-          payload=json.loads(Path('/tmp/category.json').read_text(encoding='utf-8'))
-          data=payload.get('data') or []
-          print('category_row_count=',len(data))
-          matches=[]
-          for row in data:
-              title=str(row.get('title') or row.get('judul') or '')
-              if '2022' in title:
-                  matches.append(row)
-          print('matches_2022=',json.dumps(matches,ensure_ascii=False,sort_keys=True,indent=2))
-          for idx,row in enumerate(matches):
-              for field in ('downloads','downloads1'):
-                  raw=row.get(field)
-                  if not raw:
-                      continue
-                  url=urllib.parse.urljoin(base+'/',str(raw))
-                  out=f'/tmp/m55-{idx}-{field}.bin'
-                  hdr=f'/tmp/m55-{idx}-{field}.headers'
-                  subprocess.run(['curl','--silent','--show-error','--location','--dump-header',hdr,url,'-o',out],check=True)
-                  data=Path(out).read_bytes()
-                  print('\nfield=',field,'url=',url,'bytes=',len(data),'magic=',repr(data[:12]))
-                  print(Path(hdr).read_text(encoding='utf-8',errors='replace'))
-                  subprocess.run(['sha256sum',out],check=True)
-                  subprocess.run(['file',out],check=True)
-                  if data.startswith(b'%PDF'):
-                      print('resolved_pdf_url=',url)
-                      if subprocess.run(['bash','-lc','command -v pdfinfo >/dev/null 2>&1']).returncode==0:
-                          subprocess.run(['bash','-lc',f"pdfinfo {out} | grep -E '^(Pages|Page size|PDF version):'"],check=True)
+          import json
+          p=json.loads(Path('/tmp/category.json').read_text())
+          rows=p.get('data') or []
+          row=next(r for r in rows if '2022' in str(r.get('title') or ''))
+          path=str(row['gambar'])
+          print('https://bpbd.sumbarprov.go.id/web-api'+path)
           PY
+          )
+          echo "current_url=$current_url"
+          curl --fail --silent --show-error --location --dump-header /tmp/current.headers "$current_url" -o /tmp/current.pdf
+          echo '--- headers ---'
+          cat /tmp/current.headers
+          echo '--- diagnostics ---'
+          test "$(head -c 4 /tmp/current.pdf)" = '%PDF'
+          wc -c /tmp/current.pdf
+          sha256sum /tmp/current.pdf
+          file /tmp/current.pdf
+          if command -v pdfinfo >/dev/null 2>&1; then
+            pdfinfo /tmp/current.pdf | grep -E '^(Pages|Page size|PDF version):'
+          fi
+
+      - name: Confirm legacy path is no longer the raw artifact
+        run: |
+          set -euo pipefail
+          legacy='https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf'
+          curl --silent --show-error --location --dump-header /tmp/legacy.headers "$legacy" -o /tmp/legacy.bin
+          test "$(head -c 4 /tmp/legacy.bin)" != '%PDF'
+          wc -c /tmp/legacy.bin
+          sha256sum /tmp/legacy.bin
+          file /tmp/legacy.bin
+          grep -i '^content-type:' /tmp/legacy.headers
