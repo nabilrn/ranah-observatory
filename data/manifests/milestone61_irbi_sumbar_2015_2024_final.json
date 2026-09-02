@@ -1,12 +1,12 @@
 {
-  "schema": "ranah-observatory/milestone61-irbi-sumbar-2015-2024-final/v1",
+  "schema": "ranah-observatory/milestone61-irbi-sumbar-2015-2024-final/v2",
   "milestone": 61,
   "depends_on": [
     60
   ],
   "source_manifest": {
     "path": "data/manifests/milestone61_irbi_sumbar_2015_2024_acquisition.json",
-    "sha256": "17714192b577485e87b142d386494c8b52de8de1f38536a2ef33d8783755d7c2"
+    "sha256": "e96106b4710925552931c352404a43f56739469799f65403b6b39c0034122d47"
   },
   "geography_registry": {
     "path": "data/registries/geographies.csv",
@@ -25,6 +25,36 @@
     "irbi_is_not_an_observed_event_count": true,
     "lower_score_interpreted_as_lower_composite_risk": true
   },
+  "province_reconciliation": {
+    "official_source_page": 66,
+    "official_series_2015_2024": {
+      "2015": 153.16,
+      "2016": 153.16,
+      "2017": 151.56,
+      "2018": 151.56,
+      "2019": 150.24,
+      "2020": 149.53,
+      "2021": 147.36,
+      "2022": 144.39,
+      "2023": 144.38,
+      "2024": 142.55
+    },
+    "district_mean_rounded_to_2dp": {
+      "2015": 153.16,
+      "2016": 153.16,
+      "2017": 151.56,
+      "2018": 151.56,
+      "2019": 150.24,
+      "2020": 149.53,
+      "2021": 147.36,
+      "2022": 144.39,
+      "2023": 144.38,
+      "2024": 142.55
+    },
+    "all_years_match": true,
+    "official_2024_score": 142.55,
+    "official_2024_class": "sedang"
+  },
   "result": {
     "district_count": 19,
     "year_count": 10,
@@ -37,6 +67,7 @@
       "sedang": 11
     },
     "geography_mapping_complete": true,
+    "province_series_reconciled": true,
     "dashboard_risk_timeseries_ready": true,
     "dashboard_risk_map_2024_ready": true,
     "hazard_specific_risk_dimension_present": false,
