@@ -1,0 +1,78 @@
+name: M67 Wire Mitigation Plan TEMP
+
+on:
+  push:
+    branches: [release/publication]
+    paths:
+      - '.github/workflows/m67-wire-mitigation-plan-temp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: release/publication
+      - name: Patch public v5 contract and disaster page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          public_data = Path('web/src/lib/public-data.ts')
+          text = public_data.read_text(encoding='utf-8')
+          marker = "export type PublicDisasterSummary = {\n"
+          if text.count(marker) != 1:
+              raise SystemExit('PublicDisasterSummary marker drift')
+          types = '''export type MitigationPlanTargetRow = {\n  record_id: string;\n  program_or_activity: string;\n  indicator: string;\n  target_value: number;\n  target_unit: string;\n  geographic_scope: string;\n  source_excerpt_pages: string;\n};\n\nexport type MitigationPlanGapRow = {\n  gap_id: string;\n  theme: string;\n  gap_label: string;\n  geographic_scope: string;\n  source_excerpt_pages: string;\n};\n\nexport type PublicMitigationPlan2026 = {\n  source: {\n    organization: string;\n    document: string;\n    manifest_path: string;\n    manifest_sha256: string;\n    targets_path: string;\n    targets_sha256: string;\n    gaps_path: string;\n    gaps_sha256: string;\n  };\n  plan_year: 2026;\n  targets: { rows: MitigationPlanTargetRow[]; count: 13 };\n  gaps: { rows: MitigationPlanGapRow[]; count: 18; theme_counts: Record<string, number> };\n  boundaries: {\n    targets_are_forward_planning_commitments: true;\n    targets_are_actual_achievements: false;\n    gaps_are_official_qualitative_diagnostics: true;\n    gaps_are_numeric_capacity_scores: false;\n    municipality_gap_attribution_authorized: false;\n    prediction_claim_authorized: false;\n    unmitigated_probability_inference_authorized: false;\n  };\n  interpretation: { id: string; en: string };\n};\n\n'''
+          text = text.replace(marker, types + marker, 1)
+          old_schema = "  schema: 'ranah-observatory/public-disaster-summary/v4';"
+          if text.count(old_schema) != 1:
+              raise SystemExit('public v4 schema marker drift')
+          text = text.replace(old_schema, "  schema: 'ranah-observatory/public-disaster-summary/v5';", 1)
+          geo_marker = "  geography: {\n"
+          if text.count(geo_marker) != 1:
+              raise SystemExit('geography insertion marker drift')
+          text = text.replace(geo_marker, "  mitigation_plan_2026: PublicMitigationPlan2026;\n" + geo_marker, 1)
+          public_data.write_text(text, encoding='utf-8')
+
+          page_ts = Path('web/src/routes/[lang]/explore/disaster/+page.ts')
+          text = page_ts.read_text(encoding='utf-8')
+          old = "ranah-observatory/public-disaster-summary/v4"
+          if text.count(old) != 1:
+              raise SystemExit('page v4 schema marker drift')
+          page_ts.write_text(text.replace(old, 'ranah-observatory/public-disaster-summary/v5', 1), encoding='utf-8')
+
+          package = Path('web/package.json')
+          text = package.read_text(encoding='utf-8')
+          old = 'python3 ../scripts/promote_public_disaster_risk_mitigation.py"'
+          new = 'python3 ../scripts/promote_public_disaster_risk_mitigation.py && python3 ../scripts/promote_public_disaster_mitigation_plan.py"'
+          if text.count(old) != 1:
+              raise SystemExit('M66 data chain marker drift')
+          package.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          page = Path('web/src/routes/[lang]/explore/disaster/+page.svelte')
+          text = page.read_text(encoding='utf-8')
+          import_marker = "  import RiskMitigationPanel from '$lib/components/RiskMitigationPanel.svelte';\n"
+          if text.count(import_marker) != 1:
+              raise SystemExit('RiskMitigationPanel import marker drift')
+          text = text.replace(import_marker, import_marker + "  import MitigationPlanPanel from '$lib/components/MitigationPlanPanel.svelte';\n", 1)
+          panel_marker = "  <RiskMitigationPanel riskMitigation={summary.risk_mitigation_2024} bind:region {lang} />\n\n"
+          if text.count(panel_marker) != 1:
+              raise SystemExit('risk panel mount marker drift')
+          text = text.replace(panel_marker, panel_marker + "  <MitigationPlanPanel plan={summary.mitigation_plan_2026} {lang} />\n\n", 1)
+          page.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit wired M67 product
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add web/src/lib/public-data.ts \
+                  web/src/routes/'[lang]'/explore/disaster/+page.ts \
+                  web/src/routes/'[lang]'/explore/disaster/+page.svelte \
+                  web/package.json
+          git commit -m 'Wire M67 mitigation planning context'
+          git push origin HEAD:release/publication
