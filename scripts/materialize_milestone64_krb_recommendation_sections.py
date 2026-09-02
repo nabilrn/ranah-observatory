@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ACQ = ROOT / "data/manifests/milestone64_krb_recommendations_acquisition.json"
-EXCERPT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-search-excerpt.txt"
+EXCERPT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-recommendation-reading-order-pages-98-106.txt"
 OUT = ROOT / "data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv"
 FINAL = ROOT / "data/manifests/milestone64_krb_recommendations_final.json"
 
@@ -54,12 +54,21 @@ def main() -> int:
     acq = json.loads(ACQ.read_text(encoding="utf-8"))
     if acq["schema"] != "ranah-observatory/milestone64-krb-recommendations-acquisition/v1":
         raise RuntimeError("unsupported M64 acquisition manifest")
-    if sha256(EXCERPT) != acq["text_extraction"]["excerpt_sha256"]:
-        raise RuntimeError("M64 excerpt checksum drift")
+    reading = acq["text_extraction"]["reading_order_excerpt"]
+    if reading["method"] != "pdftotext -raw" or reading["ocr_used"] is not False:
+        raise RuntimeError("M64 reading-order extraction contract drift")
+    if reading["pdf_pages_one_based"] != [98, 106]:
+        raise RuntimeError("M64 reading-order source page span drift")
+    if sha256(EXCERPT) != reading["sha256"]:
+        raise RuntimeError("M64 reading-order excerpt checksum drift")
+    if acq["qualification_boundary"].get("layout_excerpt_authorized_for_section_materialization") is not False:
+        raise RuntimeError("M64 two-column layout text must remain unauthorized for section materialization")
+    if acq["qualification_boundary"].get("reading_order_excerpt_authorized_for_section_materialization") is not True:
+        raise RuntimeError("M64 reading-order text is not authorized for section materialization")
 
-    pages = [(page, body) for page, body in split_pages(EXCERPT.read_text(encoding="utf-8", errors="replace")) if 100 <= page <= 106]
-    if [page for page, _ in pages] != list(range(100, 107)):
-        raise RuntimeError(f"M64 expected recommendation pages 100-106, got {[p for p, _ in pages]}")
+    pages = split_pages(EXCERPT.read_text(encoding="utf-8", errors="replace"))
+    if [page for page, _ in pages] != list(range(98, 107)):
+        raise RuntimeError(f"M64 expected reading-order pages 98-106, got {[p for p, _ in pages]}")
 
     joined_parts: list[str] = []
     offset_page: list[tuple[int, int]] = []
@@ -81,6 +90,10 @@ def main() -> int:
         heading_matches.append((candidates[0].start(), number, hazard_id, label))
     heading_matches.sort()
 
+    chapter5 = re.search(r"BAB\s+5\s+PENUTUP", joined, re.IGNORECASE)
+    if not chapter5 or chapter5.start() <= heading_matches[-1][0]:
+        raise RuntimeError("M64 Chapter 5 boundary missing after recommendation sections")
+
     def page_for_position(position: int) -> int:
         current = pages[0][0]
         for start, page in offset_page:
@@ -92,7 +105,7 @@ def main() -> int:
 
     rows: list[dict[str, object]] = []
     for idx, (start, number, hazard_id, label) in enumerate(heading_matches):
-        end = heading_matches[idx + 1][0] if idx + 1 < len(heading_matches) else len(joined)
+        end = heading_matches[idx + 1][0] if idx + 1 < len(heading_matches) else chapter5.start()
         section = joined[start:end]
         start_page = page_for_position(start)
         end_page = page_for_position(max(start, end - 1))
@@ -100,6 +113,8 @@ def main() -> int:
         cleaned = normalize(cleaned)
         if len(cleaned) < 120:
             raise RuntimeError(f"M64 suspiciously short section {hazard_id}: {len(cleaned)} chars")
+        if idx + 1 < len(heading_matches) and f"4.2.{heading_matches[idx + 1][1]}." in cleaned:
+            raise RuntimeError(f"M64 section boundary leaked next heading: {hazard_id}")
         rows.append({
             "section_id": f"krb_4_2_{number}",
             "krb_hazard_id": hazard_id,
@@ -121,6 +136,7 @@ def main() -> int:
         writer.writeheader()
         writer.writerows(rows)
 
+    section_span = [min(int(r["start_pdf_page"]) for r in rows), max(int(r["end_pdf_page"]) for r in rows)]
     final = {
         "schema": "ranah-observatory/milestone64-krb-recommendations-final/v1",
         "milestone": 64,
@@ -129,8 +145,10 @@ def main() -> int:
         "result": {
             "specific_recommendation_section_count": 14,
             "hazard_count": 14,
-            "source_page_span": [100, 106],
+            "source_page_span": section_span,
             "source_native_sections_materialized": True,
+            "reading_order_extraction_used": True,
+            "two_column_layout_materialization_rejected": True,
             "dashboard_action_summary_ready": False,
             "recommendations_treated_as_observed_outcomes": False,
             "causal_prediction_authorized": False,
