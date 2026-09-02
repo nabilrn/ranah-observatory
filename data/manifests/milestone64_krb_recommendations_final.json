@@ -6,16 +6,18 @@
   ],
   "source_manifest": {
     "path": "data/manifests/milestone64_krb_recommendations_acquisition.json",
-    "sha256": "6aa09769219bf33e2cdc6b6eedf4589584e23fe0e2664bd1dc242416f99f2a60"
+    "sha256": "b97d104ae15ecf1c1fce661228e11b3e98650ba3391b7ad4009e62f99dd3b0d3"
   },
   "result": {
     "specific_recommendation_section_count": 14,
     "hazard_count": 14,
     "source_page_span": [
-      100,
-      106
+      101,
+      108
     ],
     "source_native_sections_materialized": true,
+    "reading_order_extraction_used": true,
+    "two_column_layout_materialization_rejected": true,
     "dashboard_action_summary_ready": false,
     "recommendations_treated_as_observed_outcomes": false,
     "causal_prediction_authorized": false,
@@ -28,6 +30,6 @@
   },
   "output": {
     "path": "data/processed/bnpb/krb_sumbar_2022_2026/krb-specific-recommendation-sections.csv",
-    "sha256": "4c062f07a10070cc8cada911ca87c93f6a266be614d3aeb33940572ef522ac94"
+    "sha256": "9ed0f50edccef9da8212664fa8db86cc51afe9bf7369dff8eda80a2d817ffef2"
   }
 }
