@@ -1,0 +1,62 @@
+name: Diagnose M56 DIBI 2022 PPID recovery
+
+on:
+  push:
+    branches:
+      - research/evidence
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run bounded exact-title PPID probe for DIBI 2022
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import scripts.probe_milestone52_bpbd_2017_ppid_migration as p
+
+          p.RECORD_ID = 20769
+          p.TITLE = "Buku DIBI Tahun 2022"
+          p.SLUG = "buku-dibi-tahun-2022"
+          p.OUTDIR = Path("probe-output-m56")
+          p.main()
+          PY
+
+      - name: Print compact recovery verdict
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=json.loads(Path('probe-output-m56/m52-ppid-migration-live-probe.json').read_text())
+          keys=[
+              'legacy_record_uuid_redirect','legacy_redirect_consistent','legacy_redirect_semantic_match',
+              'active_inventory_information_urls','active_inventory_exact_title_matches',
+              'active_inventory_token_only_matches','raw_official_pdf_candidate_saved',
+              'active_inventory_exact_match_download'
+          ]
+          print(json.dumps({k:p.get(k) for k in keys},ensure_ascii=False,indent=2,sort_keys=True))
+          PY
+
+      - name: Inspect any recovered candidate
+        run: |
+          set -euo pipefail
+          find probe-output-m56 -maxdepth 1 -type f -printf '%f %s bytes\n' | sort
+          candidate='probe-output-m56/bpbd-pusdalops-sumbar-2017-candidate.pdf'
+          if [ -f "$candidate" ]; then
+            sha256sum "$candidate"
+            file "$candidate"
+            test "$(head -c 5 "$candidate")" = '%PDF-'
+          fi
