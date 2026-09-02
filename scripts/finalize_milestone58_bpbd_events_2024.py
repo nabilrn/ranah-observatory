@@ -27,7 +27,7 @@ def canonical_by_code() -> dict[str, tuple[str, str, str]]:
                 continue
             if row["geography_level"] not in {"regency", "city"}:
                 continue
-            code = row["statistical_code"].strip()
+            code = row["bps_code"].strip()
             prefix = "KABUPATEN" if row["geography_level"] == "regency" else "KOTA"
             expected_source_name = f"{prefix} {row['canonical_name'].strip().upper()}"
             result[code] = (row["geography_id"].strip(), row["canonical_name"].strip(), expected_source_name)
@@ -109,7 +109,7 @@ def main() -> int:
         "source_schema_issue": {
             "misleading_field": "Jenis Bencana",
             "observed_role": "source_geography_name",
-            "evidence": "all 19 non-total values are kabupaten/kota names and each code/name pair exactly matches the current Sumatera Barat statistical geography registry",
+            "evidence": "all 19 non-total values are kabupaten/kota names and each Kode Wilayah/name pair exactly matches the current Sumatera Barat BPS geography registry",
             "source_header_rewritten_in_source_native_file": False,
         },
         "source_internal_disagreement": {
