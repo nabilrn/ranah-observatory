@@ -1,0 +1,51 @@
+{
+  "schema": "ranah-observatory/milestone58-bpbd-events-2024-final/v2",
+  "milestone": 58,
+  "depends_on": [
+    57
+  ],
+  "source_manifest": {
+    "path": "data/manifests/milestone58_bpbd_events_2024_acquisition.json",
+    "sha256": "2ff28d18605cc7f846675fa9ba58e949e69d7d796c1250db470da52bce29ae9d"
+  },
+  "geography_registry": {
+    "path": "data/registries/geographies.csv",
+    "sha256": "96894e8d1486f73a490739e0f7e9130dac9c4d284ac9cf11dbb35ed5f34e04de"
+  },
+  "source_schema_issue": {
+    "misleading_field": "Jenis Bencana",
+    "observed_role": "source_geography_name",
+    "evidence": "all 19 non-total values are kabupaten/kota names and each Kode Wilayah/name pair exactly matches the current Sumatera Barat BPS geography registry",
+    "source_header_rewritten_in_source_native_file": false
+  },
+  "source_internal_disagreement": {
+    "source_total_row_events": 1175,
+    "sum_of_19_district_rows": 1166,
+    "unallocated_difference_events": 9,
+    "same_producer_monthly_event_total": 1175,
+    "district_rows_reconcile_to_source_total": false,
+    "monthly_total_reconciles_to_source_total": true,
+    "allocation_or_omission_explanation_available": false,
+    "difference_imputed_to_any_geography": false
+  },
+  "result": {
+    "district_count": 19,
+    "canonical_row_count": 19,
+    "source_total_events": 1175,
+    "canonical_district_sum_events": 1166,
+    "unallocated_difference_events": 9,
+    "same_producer_monthly_event_total": 1175,
+    "exact_code_name_pair_mapping_count": 19,
+    "geography_mapping_complete": true,
+    "dashboard_district_filter_ready": true,
+    "province_total_from_district_rows_authorized": false,
+    "hazard_dimension_present_in_this_resource": false,
+    "cross_source_equivalence_with_bnpb_authorized": false,
+    "cross_year_taxonomy_harmonization_authorized": false,
+    "missing_values_imputed": false
+  },
+  "output": {
+    "path": "data/processed/bpbd/disaster_events_2024/bpbd-disaster-events-2024-canonical-district.csv",
+    "sha256": "a40a97dc2df1dabb218fcf7d92af49012dd2221cea821eded7d3026ec08d08ed"
+  }
+}
