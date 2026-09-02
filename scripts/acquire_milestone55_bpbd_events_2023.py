@@ -19,20 +19,12 @@ CKAN_BASES = (
     "https://data.sumbarprov.go.id/id/api/3/action",
 )
 PACKAGE_SLUG = "jumlah-kejadian-bencana-tahun-2023"
+PACKAGE_ID = "e953d109-88d4-4be7-a0ad-ffc720b3c4a4"
 RESOURCE_ID = "e5d974eb-95a0-4570-93d1-9ca45c9fb77b"
 EXPECTED_COLUMNS = [
-    "Kabupaten/Kota",
-    "Abrasi pantai",
-    "Angin kencang",
-    "Banjir",
-    "Banjir Bandang",
-    "Erupsi Gunung Api",
-    "Gelombang Pasang",
-    "Gempa Bumi",
-    "Kebakaran Hutan & Lahan",
-    "Kekeringan",
-    "Longsor",
-    "Jumlah",
+    "Kabupaten/Kota", "Abrasi pantai", "Angin kencang", "Banjir",
+    "Banjir Bandang", "Erupsi Gunung Api", "Gelombang Pasang", "Gempa Bumi",
+    "Kebakaran Hutan & Lahan", "Kekeringan", "Longsor", "Jumlah",
 ]
 
 
@@ -64,9 +56,13 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def as_int(value) -> int:
+    return int(float(value))
+
+
 def main() -> int:
     package = ckan_action("package_show", id=PACKAGE_SLUG)
-    if package.get("id") != "e953d109-88d4-4be7-a0ad-ffc720b3c4a4":
+    if package.get("id") != PACKAGE_ID:
         raise RuntimeError("M55 package identity drift")
     if (package.get("organization") or {}).get("name") != "badan-penanggulangan-bencana-daerah":
         raise RuntimeError("M55 producer organization drift")
@@ -86,6 +82,25 @@ def main() -> int:
     if result.get("total") != 20 or len(records) != 20:
         raise RuntimeError(f"M55 row footprint drift: total={result.get('total')} records={len(records)}")
 
+    labels = [str(record["Kabupaten/Kota"]).strip() for record in records]
+    total_rows = [record for record in records if str(record["Kabupaten/Kota"]).strip() == "Jumlah"]
+    district_rows = [record for record in records if str(record["Kabupaten/Kota"]).strip() != "Jumlah"]
+    if len(total_rows) != 1 or len(district_rows) != 19:
+        raise RuntimeError(f"M55 geography footprint drift: districts={len(district_rows)} totals={len(total_rows)}")
+    if len(set(str(row["Kabupaten/Kota"]).strip() for row in district_rows)) != 19:
+        raise RuntimeError("M55 duplicate district labels")
+
+    total_row = total_rows[0]
+    province_total = as_int(total_row["Jumlah"])
+    district_sum = sum(as_int(row["Jumlah"]) for row in district_rows)
+    if district_sum != province_total:
+        raise RuntimeError(f"M55 district-total reconciliation failed: {district_sum} != {province_total}")
+
+    hazard_columns = EXPECTED_COLUMNS[1:-1]
+    hazard_total_sum = sum(as_int(total_row[column]) for column in hazard_columns)
+    if hazard_total_sum != province_total:
+        raise RuntimeError(f"M55 hazard-total reconciliation failed: {hazard_total_sum} != {province_total}")
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     with OBS_OUT.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=EXPECTED_COLUMNS)
@@ -93,14 +108,9 @@ def main() -> int:
         for record in records:
             writer.writerow({column: "" if record.get(column) is None else record.get(column) for column in EXPECTED_COLUMNS})
 
-    row_totals = [int(float(record["Jumlah"])) for record in records]
-    district_names = [str(record["Kabupaten/Kota"]).strip() for record in records]
-    province_total = sum(row_totals)
-    duplicate_names = sorted({name for name in district_names if district_names.count(name) > 1})
-
     extras = {str(item.get("key", "")): str(item.get("value", "")) for item in package.get("extras", []) or []}
     manifest = {
-        "schema": "ranah-observatory/milestone55-bpbd-events-2023/v1",
+        "schema": "ranah-observatory/milestone55-bpbd-events-2023/v2",
         "milestone": 55,
         "depends_on": [54],
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
@@ -121,10 +131,14 @@ def main() -> int:
         },
         "source_native": {
             "row_count": len(records),
-            "district_or_total_labels": district_names,
-            "duplicate_labels": duplicate_names,
+            "district_row_count": len(district_rows),
+            "total_row_count": len(total_rows),
+            "district_or_total_labels": labels,
             "columns": EXPECTED_COLUMNS,
-            "province_sum_of_row_jumlah": province_total,
+            "province_total_events": province_total,
+            "district_sum_events": district_sum,
+            "hazard_total_sum_events": hazard_total_sum,
+            "hazard_totals": {column: as_int(total_row[column]) for column in hazard_columns},
             "missing_values_inferred": False,
             "zero_values_reinterpreted": False,
             "geography_mapping_performed": False,
@@ -145,7 +159,7 @@ def main() -> int:
     }
     MANIFEST_OUT.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST_OUT.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"rows": len(records), "province_sum": province_total, "manifest": MANIFEST_OUT.relative_to(ROOT).as_posix()}))
+    print(json.dumps({"district_rows": 19, "province_total_events": province_total, "manifest": MANIFEST_OUT.relative_to(ROOT).as_posix()}))
     return 0
 
 
