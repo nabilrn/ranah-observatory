@@ -2,6 +2,7 @@
   import { copy, type Locale } from '$lib/i18n';
   import { repositoryUrl } from '$lib/catalog';
   import DisasterMap from '$lib/components/DisasterMap.svelte';
+  import RiskMitigationPanel from '$lib/components/RiskMitigationPanel.svelte';
   import {
     eventLabel,
     hazardLabel,
@@ -303,6 +304,8 @@
       {/each}
     </aside>
   </section>
+
+  <RiskMitigationPanel riskMitigation={summary.risk_mitigation_2024} bind:region {lang} />
 
   <section class="section">
     <div class="section-head">
