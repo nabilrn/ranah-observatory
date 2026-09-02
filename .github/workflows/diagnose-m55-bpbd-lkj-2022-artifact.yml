@@ -17,36 +17,55 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Freeze current official LKj BPBD 2022 artifact diagnostics
+      - name: Probe current library file transport
         run: |
           set -euo pipefail
           base='https://bpbd.sumbarprov.go.id'
           endpoint="$base/web-api/api/category/laporan-kinerja-instansi-pemerintah/2696"
           curl --fail --silent --show-error --location "$endpoint" -o /tmp/category.json
-          current_url=$(python - <<'PY'
+          python - <<'PY'
           from pathlib import Path
-          import json
-          p=json.loads(Path('/tmp/category.json').read_text())
-          rows=p.get('data') or []
-          row=next(r for r in rows if '2022' in str(r.get('title') or ''))
-          path=str(row['gambar'])
-          print('https://bpbd.sumbarprov.go.id/web-api'+path)
-          PY
-          )
-          echo "current_url=$current_url"
-          curl --fail --silent --show-error --location --dump-header /tmp/current.headers "$current_url" -o /tmp/current.pdf
-          echo '--- headers ---'
-          cat /tmp/current.headers
-          echo '--- diagnostics ---'
-          test "$(head -c 4 /tmp/current.pdf)" = '%PDF'
-          wc -c /tmp/current.pdf
-          sha256sum /tmp/current.pdf
-          file /tmp/current.pdf
-          if command -v pdfinfo >/dev/null 2>&1; then
-            pdfinfo /tmp/current.pdf | grep -E '^(Pages|Page size|PDF version):'
-          fi
+          import json, subprocess, urllib.parse
 
-      - name: Confirm legacy path is no longer the raw artifact
+          base='https://bpbd.sumbarprov.go.id'
+          rows=(json.loads(Path('/tmp/category.json').read_text()).get('data') or [])
+          for i,row in enumerate(rows):
+              title=str(row.get('title') or '')
+              path=str(row.get('gambar') or '')
+              print('\n===',i,title,'===')
+              print('metadata_path=',path)
+              candidates=[]
+              if path:
+                  candidates=[
+                      base+'/web-api'+path,
+                      urllib.parse.urljoin(base+'/',path),
+                      base+'/web-api'+path.removeprefix('/api'),
+                  ]
+              seen=set()
+              for j,url in enumerate(candidates):
+                  if url in seen: continue
+                  seen.add(url)
+                  out=f'/tmp/probe-{i}-{j}.bin'
+                  hdr=f'/tmp/probe-{i}-{j}.hdr'
+                  p=subprocess.run(['curl','--silent','--show-error','--location','--max-time','60','--dump-header',hdr,'--output',out,'--write-out','%{http_code}',url],text=True,capture_output=True)
+                  body=Path(out).read_bytes() if Path(out).exists() else b''
+                  headers=Path(hdr).read_text(encoding='utf-8',errors='replace') if Path(hdr).exists() else ''
+                  ctype=''
+                  for line in headers.splitlines():
+                      if line.lower().startswith('content-type:'):
+                          ctype=line.strip()
+                  print('candidate=',url)
+                  print('http=',p.stdout.strip(),'curl_rc=',p.returncode,'bytes=',len(body),'magic=',repr(body[:16]),ctype)
+                  if body and not body.startswith(b'%PDF'):
+                      print('body_prefix=',repr(body[:300]))
+                  if body.startswith(b'%PDF'):
+                      subprocess.run(['sha256sum',out],check=True)
+                      subprocess.run(['file',out],check=True)
+                      if subprocess.run(['bash','-lc','command -v pdfinfo >/dev/null 2>&1']).returncode==0:
+                          subprocess.run(['bash','-lc',f"pdfinfo {out} | grep -E '^(Pages|Page size|PDF version):'"],check=True)
+          PY
+
+      - name: Confirm legacy 2022 path is SPA fallback
         run: |
           set -euo pipefail
           legacy='https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf'
