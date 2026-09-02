@@ -1,0 +1,37 @@
+{
+  "schema": "ranah-observatory/milestone60-bpbd-book-2024-acquisition/v1",
+  "milestone": 60,
+  "depends_on": [
+    59
+  ],
+  "retrieved_at": "2026-09-02T10:38:44.687039+00:00",
+  "source": {
+    "portal": "https://data.sumbarprov.go.id/",
+    "package_slug": "buku-data-dan-informasi-bencana-tahun-2024",
+    "package_id": "f0e9b9f4-d382-4bbc-a84a-5a5a5ffeee2a",
+    "package_title": "Buku Data dan Informasi Bencana Tahun 2024",
+    "organization": "Badan Penanggulangan Bencana Daerah",
+    "author": "Dilla ulfa desma",
+    "maintainer": "BPBD Sumatera Barat",
+    "source_metadata": null,
+    "year_metadata": "2024",
+    "release_date_metadata": "14 April 2025",
+    "region_metadata": "Sumatera Barat",
+    "resource_id": "3d7b1f51-226e-43c3-9ff8-2cbcc85fe978",
+    "resource_name": "Data dan informasi bencana tahun 2024",
+    "resource_format": "PDF",
+    "resource_url": "https://data.sumbarprov.go.id/dataset/f0e9b9f4-d382-4bbc-a84a-5a5a5ffeee2a/resource/3d7b1f51-226e-43c3-9ff8-2cbcc85fe978/download/data-dan-informasi-bencana-tahun-2024-db8998db-51d2-42ad-a57c-c52a75c8e027.pdf"
+  },
+  "raw_artifact": {
+    "path": "data/raw/bpbd/m60_book_2024/data-dan-informasi-bencana-sumatera-barat-2024.pdf",
+    "sha256": "0124d9b432ac68149306485da33f42cca053cc06679d09b12a581180c4bd2f92",
+    "size_bytes": 1839104
+  },
+  "qualification_boundary": {
+    "raw_artifact_frozen": true,
+    "pdf_text_extraction_authorized_for_diagnostic_search": true,
+    "historical_profile_presence_confirmed": false,
+    "historical_timeseries_extraction_authorized": false,
+    "dashboard_promotion_authorized": false
+  }
+}
