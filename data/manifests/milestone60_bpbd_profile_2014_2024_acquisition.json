@@ -1,0 +1,50 @@
+{
+  "schema": "ranah-observatory/milestone60-bpbd-profile-2014-2024-acquisition/v1",
+  "milestone": 60,
+  "depends_on": [
+    59
+  ],
+  "retrieved_at": "2026-09-02T10:33:54.405650+00:00",
+  "source": {
+    "portal": "https://data.sumbarprov.go.id/",
+    "package_slug": "profil-bencana-sumatera-barat-2014-2024",
+    "package_id": "8acd9009-56df-43ba-b079-a477ab844edb",
+    "package_title": "Profil Bencana Sumatera Barat 2014 - 2024",
+    "organization": "Badan Penanggulangan Bencana Daerah",
+    "producer": "BPBD Provinsi Sumatera Barat",
+    "source_data": "Pusdalop BPBD Sumatera Barat",
+    "year_metadata": "2024",
+    "resource_id": "b15be1ad-80b9-4ffa-9e6b-a8e0118599cb",
+    "resource_name": "PROFIL BENCANA PROVINSI SUMATERA BARAT TAHUN 2014-2024_20250324_172707_0000.pdf",
+    "resource_format": "JPEG",
+    "resource_url": "https://data.sumbarprov.go.id/dataset/8acd9009-56df-43ba-b079-a477ab844edb/resource/b15be1ad-80b9-4ffa-9e6b-a8e0118599cb/download/profil-bencana-sumbar-2014-sd-2024.jpeg",
+    "media_type": "image/jpeg"
+  },
+  "raw_artifact": {
+    "path": "data/raw/bpbd/m60_profile_2014_2024/profil-bencana-sumbar-2014-sd-2024.jpeg",
+    "sha256": "ece8aeaa1e91c69b149dbbff8826fbde6f8677b34d1713a1e8c2219d529e848e",
+    "size_bytes": 129528,
+    "width_px": 1280,
+    "height_px": 720
+  },
+  "audit_derivatives": {
+    "annual_chart_table_crop": {
+      "path": "data/processed/bpbd/disaster_profile_2014_2024/annual-chart-table-audit-crop.png",
+      "sha256": "089cee552cb6c296b937fadbd814cd53c764890d36f30bb7ffe57fb74499d2a5",
+      "semantic_role": "lossless-content visual enlargement; no OCR and no numerical transformation"
+    },
+    "hazard_summary_crop": {
+      "path": "data/processed/bpbd/disaster_profile_2014_2024/hazard-summary-audit-crop.png",
+      "sha256": "774aa1e24e1e225b5f7b591a8d98562fc00dd7c281095f3b87e97b10fef05b48",
+      "semantic_role": "lossless-content visual enlargement; no OCR and no numerical transformation"
+    }
+  },
+  "qualification_boundary": {
+    "raw_artifact_frozen": true,
+    "ocr_used": false,
+    "annual_timeseries_extracted": false,
+    "hazard_totals_extracted": false,
+    "dashboard_promotion_authorized": false,
+    "required_next_gate": "manual visual transcription with arithmetic checks and 2023/2024 anchor reconciliation"
+  }
+}
