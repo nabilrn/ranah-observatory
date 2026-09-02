@@ -1,0 +1,51 @@
+name: Milestone 61 IRBI Sumbar 2015-2024
+
+on:
+  pull_request:
+    paths:
+      - 'data/manifests/milestone61_irbi_sumbar_2015_2024_acquisition.json'
+      - 'data/manifests/milestone61_irbi_sumbar_2015_2024_final.json'
+      - 'data/processed/bnpb/irbi_sumbar_2015_2024/**'
+      - 'scripts/acquire_milestone61_irbi_sumbar_2015_2024.py'
+      - 'scripts/finalize_milestone61_irbi_sumbar_2015_2024.py'
+      - 'scripts/validate_milestone61_irbi_sumbar_2015_2024.py'
+      - 'tests/test_milestone61_irbi_sumbar_2015_2024.py'
+      - 'research/MILESTONE61_IRBI_SUMBAR_2015_2024.md'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone61-irbi-sumbar-2015-2024.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/manifests/milestone61_irbi_sumbar_2015_2024_acquisition.json'
+      - 'data/manifests/milestone61_irbi_sumbar_2015_2024_final.json'
+      - 'data/processed/bnpb/irbi_sumbar_2015_2024/**'
+      - 'scripts/acquire_milestone61_irbi_sumbar_2015_2024.py'
+      - 'scripts/finalize_milestone61_irbi_sumbar_2015_2024.py'
+      - 'scripts/validate_milestone61_irbi_sumbar_2015_2024.py'
+      - 'tests/test_milestone61_irbi_sumbar_2015_2024.py'
+      - 'research/MILESTONE61_IRBI_SUMBAR_2015_2024.md'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone61-irbi-sumbar-2015-2024.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate M61 frozen IRBI materialization
+        run: python scripts/validate_milestone61_irbi_sumbar_2015_2024.py
+      - name: Run focused M61 test
+        run: python -m unittest tests.test_milestone61_irbi_sumbar_2015_2024
+      - name: Require deterministic canonical rebuild
+        run: |
+          before=$(sha256sum data/processed/bnpb/irbi_sumbar_2015_2024/irbi-sumbar-2015-2024-canonical-long.csv | cut -d' ' -f1)
+          python scripts/finalize_milestone61_irbi_sumbar_2015_2024.py
+          after=$(sha256sum data/processed/bnpb/irbi_sumbar_2015_2024/irbi-sumbar-2015-2024-canonical-long.csv | cut -d' ' -f1)
+          test "$before" = "$after"
+          git diff --exit-code -- data/processed/bnpb/irbi_sumbar_2015_2024 data/manifests/milestone61_irbi_sumbar_2015_2024_final.json
