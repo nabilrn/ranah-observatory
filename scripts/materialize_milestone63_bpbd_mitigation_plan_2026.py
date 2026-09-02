@@ -4,7 +4,6 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,26 +16,26 @@ SOURCE_DOCUMENT = "Rencana Kerja BPBD Provinsi Sumatera Barat Tahun 2026"
 SOURCE_PAGES = "PDF physical pages 51-64"
 
 TARGET_SPECS = [
-    ("preparedness_program_percent", "Program Penanggulangan Bencana", "Persentase kesiapsiagaan menghadapi bencana", "72", "percent", "72%"),
-    ("hazard_information_dissemination_percent", "Pelayanan Informasi Rawan Bencana Provinsi", "Persentase informasi rawan bencana provinsi yang disebarluaskan", "56", "percent", "56%"),
-    ("legalized_risk_assessment_documents", "Penyusunan Kajian Risiko Bencana Provinsi", "Jumlah Dokumen Kajian Risiko Bencana yang Dilegalisasi", "1", "document", "1 dokumen"),
-    ("hazard_kie_recipients", "Sosialisasi, Komunikasi, Informasi dan Edukasi (KIE) Rawan Bencana Provinsi (Per Jenis Bencana)", "Jumlah warga negara termasuk kelompok rentan dan aparatur di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang memperoleh KIE", "425", "people", "425 orang"),
-    ("trained_population_percent", "Pelayanan Pencegahan dan Kesiapsiagaan Terhadap Bencana", "Persentase masyarakat yang terlatih dalam mencegah dan menghadapi bencana", "56", "percent", "56%"),
-    ("preparedness_mechanism_areas", "Penguatan Kapasitas Kawasan untuk Pencegahan dan Kesiapsiagaan Bencana", "Jumlah kawasan rawan bencana yang ditargetkan dalam penguatan kapasitas", "3", "areas", "3 kawasan"),
-    ("preparedness_drill_participants", "Gladi Kesiapsiagaan Terhadap Bencana", "Jumlah warga negara dan aparatur di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang terlibat gladi kesiapsiagaan", "300", "people", "300 orang"),
-    ("priority_hazard_contingency_plan_documents", "Penyusunan Rencana Kontinjensi", "Jumlah dokumen rencana kontinjensi per jenis ancaman bencana prioritas", "1", "document", "1 dokumen"),
-    ("risk_root_cause_actions", "Pengelolaan Risiko Bencana", "Jumlah akar masalah risiko bencana lintas Kabupaten/Kota yang tertangani", "1", "activity", "1 kegiatan"),
-    ("certified_provincial_trc_personnel", "Pengembangan Kapasitas Tim Reaksi Cepat (TRC) Bencana", "Jumlah personil TRC tingkat Provinsi yang memiliki sertifikasi kompetensi untuk penanganan awal darurat bencana", "60", "people", "60 orang"),
-    ("high_risk_families_equipped", "Penyediaan Peralatan Perlindungan dan Kesiapsiagaan Bencana", "Jumlah keluarga di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang memperoleh peralatan perlindungan dan kesiapsiagaan", "750", "families", "750 keluarga"),
-    ("skpdb_documents", "Pengendalian Operasi dan Penyediaan Sarana Prasarana Kesiapsiagaan terhadap Bencana", "Dokumen Sistem Komando Penanganan Darurat Bencana (SKPDB) dengan proses bisnis dan prosedur tetap yang dilegalkan", "1", "document", "1 dokumen"),
-    ("prevention_mitigation_training_participants", "Pelatihan Pencegahan dan Mitigasi Bencana", "Jumlah warga negara termasuk kelompok rentan dan aparatur di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang mengikuti pelatihan", "120", "people", "120 orang"),
+    ("preparedness_program_percent", "Program Penanggulangan Bencana", "Persentase kesiapsiagaan menghadapi bencana", "72", "percent", "Program Penanggulangan Bencana", "72%"),
+    ("hazard_information_dissemination_percent", "Pelayanan Informasi Rawan Bencana Provinsi", "Persentase informasi rawan bencana provinsi yang disebarluaskan", "56", "percent", "Pelayanan Informasi Rawan Bencana", "56%"),
+    ("legalized_risk_assessment_documents", "Penyusunan Kajian Risiko Bencana Provinsi", "Jumlah Dokumen Kajian Risiko Bencana yang Dilegalisasi", "1", "document", "Penyusunan Kajian Risiko Bencana", "1 dokumen"),
+    ("hazard_kie_recipients", "Sosialisasi, Komunikasi, Informasi dan Edukasi (KIE) Rawan Bencana Provinsi (Per Jenis Bencana)", "Jumlah warga negara termasuk kelompok rentan dan aparatur di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang memperoleh KIE", "425", "people", "Sosialisasi, Komunikasi", "425 orang"),
+    ("trained_population_percent", "Pelayanan Pencegahan dan Kesiapsiagaan Terhadap Bencana", "Persentase masyarakat yang terlatih dalam mencegah dan menghadapi bencana", "56", "percent", "Pelayanan Pencegahan dan Kesiapsiagaan", "56%"),
+    ("preparedness_mechanism_areas", "Penguatan Kapasitas Kawasan untuk Pencegahan dan Kesiapsiagaan Bencana", "Jumlah kawasan rawan bencana yang ditargetkan dalam penguatan kapasitas", "3", "areas", "Penguatan Kapasitas Kawasan", "3 kawasan"),
+    ("preparedness_drill_participants", "Gladi Kesiapsiagaan Terhadap Bencana", "Jumlah warga negara dan aparatur di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang terlibat gladi kesiapsiagaan", "300", "people", "Gladi Kesiapsiagaan", "300 orang"),
+    ("priority_hazard_contingency_plan_documents", "Penyusunan Rencana Kontinjensi", "Jumlah dokumen rencana kontinjensi per jenis ancaman bencana prioritas", "1", "document", "Penyusunan Rencana Kontinjensi", "1 dokumen"),
+    ("risk_root_cause_actions", "Pengelolaan Risiko Bencana", "Jumlah akar masalah risiko bencana lintas Kabupaten/Kota yang tertangani", "1", "activity", "Pengelolaan Risiko Bencana", "1 kegiatan"),
+    ("certified_provincial_trc_personnel", "Pengembangan Kapasitas Tim Reaksi Cepat (TRC) Bencana", "Jumlah personil TRC tingkat Provinsi yang memiliki sertifikasi kompetensi untuk penanganan awal darurat bencana", "60", "people", "Pengembangan Kapasitas Tim Reaksi Cepat", "60 orang"),
+    ("high_risk_families_equipped", "Penyediaan Peralatan Perlindungan dan Kesiapsiagaan Bencana", "Jumlah keluarga di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang memperoleh peralatan perlindungan dan kesiapsiagaan", "750", "families", "Penyediaan Peralatan Perlindungan", "750 keluarga"),
+    ("skpdb_documents", "Pengendalian Operasi dan Penyediaan Sarana Prasarana Kesiapsiagaan terhadap Bencana", "Dokumen Sistem Komando Penanganan Darurat Bencana (SKPDB) dengan proses bisnis dan prosedur tetap yang dilegalkan", "1", "document", "Pengendalian Operasi dan Penyediaan Sarana", "1 dokumen"),
+    ("prevention_mitigation_training_participants", "Pelatihan Pencegahan dan Mitigasi Bencana", "Jumlah warga negara termasuk kelompok rentan dan aparatur di kawasan risiko tinggi bencana lintas Kabupaten/Kota yang mengikuti pelatihan", "120", "people", "Pelatihan Pencegahan dan Mitigasi Bencana", "120 orang"),
 ]
 
 GAP_SPECS = [
     ("planning_documents", "planning", "Dokumen perencanaan penanggulangan bencana di kabupaten/kota belum lengkap", "Belum lengkapnya dokumen perencanaan penanggulangan bencana"),
     ("dibi_access_accuracy", "data_information", "Akses dan keakuratan Data Informasi Bencana Indonesia (DIBI) masih kurang", "Masih kurangnya akses dan"),
     ("dissemination_socialization", "public_information", "Diseminasi dan sosialisasi kebencanaan belum maksimal", "Belum maksimalnya diseminasi dan sosialisasi kebencanaan"),
-    ("trc_formation_training", "response_capacity", "Masih ada pemerintah daerah yang belum membentuk dan membina TRC PB", "belum membentuk"),
+    ("trc_formation_training", "response_capacity", "Masih ada pemerintah daerah yang belum membentuk dan membina TRC PB", "tim reaksi cepat penanggulangan bencana"),
     ("forum_prb", "risk_reduction_governance", "Masih ada pemerintah daerah yang belum membentuk Forum PRB", "Forum PRB"),
     ("nagari_tangguh", "community_resilience", "Masih ada kabupaten/kota yang belum membentuk dan membina nagari tangguh", "membina nagari tangguh"),
     ("volunteer_development", "community_resilience", "Pembinaan relawan kebencanaan di kabupaten/kota belum maksimal", "pembinaan relawan kebencanaan"),
@@ -47,10 +46,10 @@ GAP_SPECS = [
     ("field_equipment_logistics", "logistics", "Peralatan lapangan dan logistik kebencanaan belum memadai", "peralatan lapangan dan"),
     ("rehab_reconstruction_support_equipment", "recovery_capacity", "Peralatan penunjang pelaksanaan rehabilitasi dan rekonstruksi belum memadai", "peralatan penunjang"),
     ("emergency_coordination", "emergency_response", "Koordinasi siaga darurat dan penanganan tanggap darurat di wilayah bencana belum maksimal", "koordinasi siaga darurat"),
-    ("contingency_based_operations", "emergency_response", "Operasi siaga darurat dan penanganan darurat sesuai rencana kontingensi per jenis bencana belum maksimal", "sesuai rencana"),
+    ("contingency_based_operations", "emergency_response", "Operasi siaga darurat dan penanganan darurat sesuai rencana kontingensi per jenis bencana belum maksimal", "sesuai rencana kontingensi"),
     ("emergency_monitoring_evaluation", "emergency_response", "Monitoring dan evaluasi penanganan siaga darurat dan tanggap darurat belum maksimal", "monitoring dan evaluasi penanganan"),
     ("jitu_pasna", "post_disaster_assessment", "Masih ada kabupaten/kota yang belum menyusun JITU PASNA pada wilayah dengan status bencana", "JITU PASNA"),
-    ("rehab_reconstruction_coordination", "recovery_capacity", "Koordinasi serta monitoring dan evaluasi rehabilitasi dan rekonstruksi belum maksimal", "rehabilitasi dan rekonstruksi"),
+    ("rehab_reconstruction_coordination", "recovery_capacity", "Koordinasi serta monitoring dan evaluasi rehabilitasi dan rekonstruksi belum maksimal", "koordinasi serta monitoring dan evaluasi"),
 ]
 
 
@@ -69,8 +68,8 @@ def main() -> int:
     text = norm(EXCERPT.read_text(encoding="utf-8", errors="replace"))
 
     target_rows = []
-    for record_id, activity, indicator, value, unit, value_needle in TARGET_SPECS:
-        if norm(activity) not in text or norm(value_needle) not in text:
+    for record_id, activity, indicator, value, unit, activity_needle, value_needle in TARGET_SPECS:
+        if norm(activity_needle) not in text or norm(value_needle) not in text:
             raise RuntimeError(f"M63 target evidence missing: {record_id}")
         target_rows.append({
             "plan_year": 2026,
