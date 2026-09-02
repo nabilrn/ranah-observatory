@@ -6,6 +6,7 @@ on:
       - research/evidence
     paths:
       - 'scripts/acquire_milestone55_bpbd_events_2023.py'
+      - 'scripts/finalize_milestone55_bpbd_events_2023.py'
       - '.github/workflows/m55-materialize-bpbd-events-2023-temp.yml'
 
 permissions:
@@ -26,14 +27,20 @@ jobs:
       - name: Acquire official CKAN DataStore table
         run: python scripts/acquire_milestone55_bpbd_events_2023.py
 
-      - name: Commit deterministic source-native outputs
+      - name: Finalize canonical district-by-hazard table
+        run: python scripts/finalize_milestone55_bpbd_events_2023.py
+
+      - name: Commit deterministic M55 outputs
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/processed/bpbd/disaster_events_2023 data/manifests/milestone55_bpbd_events_2023.json
+          git add \
+            data/processed/bpbd/disaster_events_2023 \
+            data/manifests/milestone55_bpbd_events_2023.json \
+            data/manifests/milestone55_bpbd_events_2023_final.json
           if git diff --cached --quiet; then
             echo 'No M55 materialization changes'
             exit 0
           fi
-          git commit -m 'Materialize BPBD 2023 event-by-hazard table'
+          git commit -m 'Finalize BPBD 2023 district-by-hazard events'
           git push origin HEAD:research/evidence
