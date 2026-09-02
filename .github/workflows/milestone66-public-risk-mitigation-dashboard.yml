@@ -1,0 +1,64 @@
+name: Milestone 66 Public Risk Mitigation Dashboard
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/promote_public_disaster_risk_mitigation.py'
+      - 'scripts/validate_public_disaster_risk_mitigation.py'
+      - 'tests/test_public_disaster_risk_mitigation.py'
+      - 'data/manifests/milestone65_irbi_krb_lookup_bridge.json'
+      - 'data/processed/bnpb/irbi_krb_bridge_2024/**'
+      - 'data/manifests/milestone64_krb_recommendations_final.json'
+      - 'data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv'
+      - 'web/**'
+      - '.github/workflows/milestone66-public-risk-mitigation-dashboard.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/promote_public_disaster_risk_mitigation.py'
+      - 'scripts/validate_public_disaster_risk_mitigation.py'
+      - 'tests/test_public_disaster_risk_mitigation.py'
+      - 'data/manifests/milestone65_irbi_krb_lookup_bridge.json'
+      - 'data/processed/bnpb/irbi_krb_bridge_2024/**'
+      - 'data/manifests/milestone64_krb_recommendations_final.json'
+      - 'data/processed/bnpb/krb_sumbar_2022_2026/krb-hazard-mitigation-actions-2022-2026.csv'
+      - 'web/**'
+      - '.github/workflows/milestone66-public-risk-mitigation-dashboard.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/package.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install web dependencies
+        working-directory: web
+        run: npm install --no-audit --no-fund
+      - name: Type and Svelte checks
+        working-directory: web
+        run: npm run check
+      - name: Build deterministic public v4 artifact
+        working-directory: web
+        run: npm run build
+      - name: Validate public risk-mitigation contract
+        run: python scripts/validate_public_disaster_risk_mitigation.py
+      - name: Run focused public contract test
+        run: python -m pip install --disable-pip-version-check pytest && python -m pytest -q tests/test_public_disaster_risk_mitigation.py
+      - name: Require deterministic v4 promoter
+        run: |
+          cp web/static/data/disaster-summary.json /tmp/m66-public.json
+          python scripts/build_public_web_data.py
+          python scripts/promote_public_disaster_context.py
+          python scripts/promote_public_disaster_risk_mitigation.py
+          cmp /tmp/m66-public.json web/static/data/disaster-summary.json
