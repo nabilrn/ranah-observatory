@@ -1,0 +1,47 @@
+name: Milestone 55 BPBD Library Historical Media Migration
+
+on:
+  push:
+    branches:
+      - main
+      - research/evidence
+    paths:
+      - "data/manifests/milestone54_bpbd_2022_official_source_disagreement.json"
+      - "data/manifests/milestone55_bpbd_library_historical_media_migration.json"
+      - "research/MILESTONE55_BPBD_LIBRARY_HISTORICAL_MEDIA_MIGRATION.md"
+      - "scripts/validate_milestone55_bpbd_library_historical_media_migration.py"
+      - "tests/test_milestone55_bpbd_library_historical_media_migration.py"
+      - ".github/workflows/milestone55-bpbd-library-historical-media-migration.yml"
+  pull_request:
+    paths:
+      - "data/manifests/milestone54_bpbd_2022_official_source_disagreement.json"
+      - "data/manifests/milestone55_bpbd_library_historical_media_migration.json"
+      - "research/MILESTONE55_BPBD_LIBRARY_HISTORICAL_MEDIA_MIGRATION.md"
+      - "scripts/validate_milestone55_bpbd_library_historical_media_migration.py"
+      - "tests/test_milestone55_bpbd_library_historical_media_migration.py"
+      - ".github/workflows/milestone55-bpbd-library-historical-media-migration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M55 frozen migration audit
+        run: python scripts/validate_milestone55_bpbd_library_historical_media_migration.py
+
+      - name: Run M55 focused test
+        run: python -m unittest tests.test_milestone55_bpbd_library_historical_media_migration -v
+
+      - name: Revalidate M54 disagreement contract
+        run: python scripts/validate_milestone54_bpbd_2022_official_source_disagreement.py
