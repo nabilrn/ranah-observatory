@@ -13,6 +13,18 @@ GEOGRAPHIES = ROOT / "data/registries/geographies.csv"
 OUT = ROOT / "data/processed/bnpb/irbi_sumbar_2015_2024/irbi-sumbar-2015-2024-canonical-long.csv"
 FINAL = ROOT / "data/manifests/milestone61_irbi_sumbar_2015_2024_final.json"
 YEARS = list(range(2015, 2025))
+OFFICIAL_PROVINCE_SERIES = {
+    "2015": 153.16,
+    "2016": 153.16,
+    "2017": 151.56,
+    "2018": 151.56,
+    "2019": 150.24,
+    "2020": 149.53,
+    "2021": 147.36,
+    "2022": 144.39,
+    "2023": 144.38,
+    "2024": 142.55,
+}
 
 
 def sha256(path: Path) -> str:
@@ -93,9 +105,12 @@ def main() -> int:
     for row in output:
         by_year[int(row["year"])].append(float(row["irbi_score"]))
     mean_by_year = {str(year): round(sum(values) / len(values), 4) for year, values in by_year.items()}
+    rounded_means = {year: round(value, 2) for year, value in mean_by_year.items()}
+    if rounded_means != OFFICIAL_PROVINCE_SERIES:
+        raise RuntimeError(f"M61 province-series reconciliation drift: {rounded_means}")
 
     final = {
-        "schema": "ranah-observatory/milestone61-irbi-sumbar-2015-2024-final/v1",
+        "schema": "ranah-observatory/milestone61-irbi-sumbar-2015-2024-final/v2",
         "milestone": 61,
         "depends_on": [60],
         "source_manifest": {"path": ACQ.relative_to(ROOT).as_posix(), "sha256": sha256(ACQ)},
@@ -109,6 +124,14 @@ def main() -> int:
             "irbi_is_not_an_observed_event_count": True,
             "lower_score_interpreted_as_lower_composite_risk": True,
         },
+        "province_reconciliation": {
+            "official_source_page": 66,
+            "official_series_2015_2024": OFFICIAL_PROVINCE_SERIES,
+            "district_mean_rounded_to_2dp": rounded_means,
+            "all_years_match": True,
+            "official_2024_score": 142.55,
+            "official_2024_class": "sedang",
+        },
         "result": {
             "district_count": 19,
             "year_count": 10,
@@ -118,6 +141,7 @@ def main() -> int:
             "risk_class_year": 2024,
             "risk_class_counts_2024": class_counts_2024,
             "geography_mapping_complete": True,
+            "province_series_reconciled": True,
             "dashboard_risk_timeseries_ready": True,
             "dashboard_risk_map_2024_ready": True,
             "hazard_specific_risk_dimension_present": False,
