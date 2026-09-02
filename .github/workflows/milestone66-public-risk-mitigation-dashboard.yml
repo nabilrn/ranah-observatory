@@ -48,17 +48,20 @@ jobs:
       - name: Type and Svelte checks
         working-directory: web
         run: npm run check
-      - name: Build deterministic public v4 artifact
+      - name: Build current public artifact
         working-directory: web
         run: npm run build
-      - name: Validate public risk-mitigation contract
+      - name: Validate public risk-mitigation layer
         run: python scripts/validate_public_disaster_risk_mitigation.py
       - name: Run focused public contract test
         run: python -m pip install --disable-pip-version-check pytest && python -m pytest -q tests/test_public_disaster_risk_mitigation.py
-      - name: Require deterministic v4 promoter
+      - name: Require deterministic intermediate v4 promoter
         run: |
-          cp web/static/data/disaster-summary.json /tmp/m66-public.json
           python scripts/build_public_web_data.py
           python scripts/promote_public_disaster_context.py
           python scripts/promote_public_disaster_risk_mitigation.py
-          cmp /tmp/m66-public.json web/static/data/disaster-summary.json
+          cp web/static/data/disaster-summary.json /tmp/m66-v4.json
+          python scripts/build_public_web_data.py
+          python scripts/promote_public_disaster_context.py
+          python scripts/promote_public_disaster_risk_mitigation.py
+          cmp /tmp/m66-v4.json web/static/data/disaster-summary.json
