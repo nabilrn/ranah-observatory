@@ -1,0 +1,132 @@
+{
+  "schema": "ranah-observatory/milestone53-bpbd-dibi-2022-source-qualification/v1",
+  "milestone": 53,
+  "title": "BPBD/Pusdalops DIBI 2022 source qualification",
+  "depends_on": [51],
+  "parallel_gate_note": "M52 remains reserved for the still-unrecovered 2017 raw annual-report artifact. M53 is an independent evidence-expansion lane and does not satisfy or bypass M52.",
+  "decision_date": "2026-09-02",
+  "research_question": "Can the official BPBD/Pusdalops Data dan Informasi Bencana Sumatera Barat Tahun 2022 publication support the dashboard dimensions we need—district, hazard, impact, loss and month—without promoting search-index or mirror text before the official raw bytes are recovered and hashed?",
+  "official_source": {
+    "title": "Buku DIBI Tahun 2022",
+    "producer": "Badan Penanggulangan Bencana Daerah Provinsi Sumatera Barat / Pusdalops PB",
+    "official_detail_url": "https://ppid.sumbarprov.go.id/home/details/20769-buku-dibi-tahun-2022.html",
+    "official_legacy_pdf_url": "https://ppid.sumbarprov.go.id/images/2023/09/file/Buku_DIBI_2022.pdf",
+    "detail_page_indexed": true,
+    "detail_page_publication_timestamp": "2023-09-18 09:49:22 WIB",
+    "detail_page_information_type": "Informasi Tersedia Setiap Saat",
+    "legacy_download_audit_url": "https://ppid.sumbarprov.go.id/images/2024/10/file/download_tahunan2024-09_47_14.pdf",
+    "legacy_download_audit_record_id": 980,
+    "legacy_download_count": 120,
+    "legacy_direct_pdf_fetch_status_checked_2026_09_02": 404,
+    "raw_pdf_bytes_recovered": false,
+    "raw_pdf_sha256_frozen": false
+  },
+  "indexed_mirror": {
+    "url": "https://id.scribd.com/document/747002702/Buku-Dibi-2022",
+    "role": "table_schema_discovery_and_future_raw_verification_targets_only",
+    "may_satisfy_raw_artifact_gate": false,
+    "reported_page_count": 154
+  },
+  "source_methodology": {
+    "period": "2022-01-01/2022-12-31",
+    "verification_period": "2023-01",
+    "analysis_period": "2023-01/2023-02",
+    "coverage": "19 kabupaten/kota Sumatera Barat",
+    "event_deduplication_rule": "kejadian yang sama pada tanggal yang sama dihitung satu kali",
+    "detail_accumulation_rule": "wilayah administrasi, dampak dan kerugian diakumulasi untuk satu peristiwa",
+    "reporting_dependency": "volume and completeness depend on Pusdalops input and reports supplied by each kabupaten/kota"
+  },
+  "indexed_verification_targets": {
+    "province_totals": {
+      "events": 1021,
+      "deaths": 28,
+      "missing_table_3_3": null,
+      "missing_table_3_4": 4,
+      "injured_or_sick": 456,
+      "evacuated": 26265,
+      "recorded_loss_rupiah_attachment_grand_total": 1136849586796
+    },
+    "events_by_hazard_table_3_2": {
+      "abrasi_pantai": 5,
+      "angin_kencang": 674,
+      "banjir": 123,
+      "banjir_bandang": 5,
+      "gempa_bumi": 2,
+      "kebakaran_hutan_dan_lahan": 92,
+      "longsor": 120,
+      "total": 1021
+    },
+    "events_by_month_table_3_9": {
+      "januari": 89,
+      "februari": 84,
+      "maret": 81,
+      "april": 92,
+      "mei": 85,
+      "juni": 97,
+      "juli": 65,
+      "agustus": 110,
+      "september": 97,
+      "oktober": 100,
+      "november": 102,
+      "desember": 19,
+      "total": 1021
+    },
+    "district_event_count_disagreements": [
+      {"district": "Kabupaten Lima Puluh Kota", "table_3_1_or_3_2": 51, "table_3_4": 52},
+      {"district": "Kabupaten Pasaman", "table_3_1_or_3_2": 66, "table_3_4": 67},
+      {"district": "Kabupaten Pasaman Barat", "table_3_1_or_3_2": 33, "table_3_4": 31},
+      {"district": "Kabupaten Pesisir Selatan", "table_3_1_or_3_2": 75, "table_3_4": 76},
+      {"district": "Kabupaten Tanah Datar", "table_3_1_or_3_2": 43, "table_3_4": 45},
+      {"district": "Kota Padang Panjang", "table_3_1_or_3_2": 35, "table_3_4": 33},
+      {"district": "Kota Payakumbuh", "table_3_1_or_3_2": 20, "table_3_4": 19}
+    ],
+    "both_district_tables_sum_to": 1021
+  },
+  "dashboard_value": {
+    "district_by_hazard_matrix_available": true,
+    "district_impact_table_available": true,
+    "hazard_impact_table_available": true,
+    "monthly_hazard_timeseries_available": true,
+    "housing_damage_tables_available": true,
+    "public_facility_damage_tables_available": true,
+    "recorded_loss_available": true,
+    "incident_history_appendix_available": true,
+    "hazard_specific_sections_available": [
+      "angin_kencang",
+      "banjir",
+      "longsor",
+      "gempa_bumi"
+    ]
+  },
+  "source_quality_flags": [
+    "The legacy official PDF URL is indexed but returned HTTP 404 during the 2026-09-02 review, so raw bytes and checksum remain unavailable.",
+    "Table 3.3 indexes no missing-person total while Table 3.4 indexes four missing persons; the disagreement must be preserved until raw-page verification.",
+    "Seven district event counts differ between the event tables and the district human-impact table even though both table families total 1,021 events.",
+    "Search-index rendering corrupts several monetary cells as link placeholders; only clearly rendered verification targets may be frozen before raw acquisition.",
+    "The indexed Scribd copy is not an official artifact and cannot authorize canonical materialization."
+  ],
+  "acquisition": {
+    "queue": "data/acquisition_requests/bpbd_dibi_books.csv",
+    "request_id": "bpbd_dibi_2022",
+    "priority": "P0",
+    "allowed_host": "sumbarprov.go.id",
+    "target_filename": "bpbd-dibi-sumbar-2022.pdf",
+    "exit_gate": "official raw PDF bytes acquired from an allowlisted government surface and SHA256 frozen"
+  },
+  "result": {
+    "source_family_qualified_as_high_value": true,
+    "dashboard_dimensions_confirmed_by_indexed_text": true,
+    "internal_table_disagreements_detected": true,
+    "raw_official_artifact_acquired": false,
+    "source_native_2022_materialization_authorized": false,
+    "public_dataset_catalog_promotion_authorized": false,
+    "canonical_cross_year_disaster_timeseries_authorized": false
+  },
+  "next_actions": [
+    "Recover the current PPID UUID/download route or another official sumbarprov.go.id copy for the 2022 DIBI PDF.",
+    "Freeze exact bytes, SHA256, acquisition timestamp and page count.",
+    "Verify Tables 3.1-3.10 and the appendices against the indexed targets while preserving every disagreement.",
+    "Materialize separate source-native tables for district-by-hazard events, human impacts, physical impacts, monthly events and recorded losses.",
+    "Only after raw verification, add the materialized 2022 BPBD datasets to catalog/public-datasets.csv and use them as dashboard proof data."
+  ]
+}
