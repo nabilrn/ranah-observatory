@@ -1,0 +1,15 @@
+krb_hazard_id,krb_source_hazard_label,irbi_hazard_id,irbi_source_hazard_label,bridge_status,bridge_basis,risk_to_recommendation_lookup_authorized,numeric_value_equivalence_authorized,event_taxonomy_join_authorized,causal_prediction_authorized,unmatched_reason
+covid_19,COVID-19,,,no_irbi_2024_hazard_table_match,none,false,false,false,false,KRB recommendation section has no corresponding hazard table in the M62 IRBI 2024 Sumatera Barat layer
+drought,KEKERINGAN,drought,Kekeringan,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+earthquake,GEMPABUMI,earthquake,Gempabumi,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+epidemic_and_disease_outbreak,EPIDEMI DAN WABAH PENYAKIT,,,no_irbi_2024_hazard_table_match,none,false,false,false,false,KRB recommendation section has no corresponding hazard table in the M62 IRBI 2024 Sumatera Barat layer
+extreme_wave_and_coastal_erosion,GELOMBANG EKSTRIM DAN ABRASI,extreme_wave_and_coastal_erosion,Gelombang Ekstrim dan Abrasi,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+extreme_weather,CUACA EKSTRIM,extreme_weather,Cuaca Ekstrim,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+flash_flood,BANJIR BANDANG,,,no_irbi_2024_hazard_table_match,none,false,false,false,false,KRB recommendation section has no corresponding hazard table in the M62 IRBI 2024 Sumatera Barat layer
+flood,BANJIR,flood,Banjir,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+forest_and_land_fire,KEBAKARAN HUTAN DAN LAHAN,forest_and_land_fire,Kebakaran Hutan dan Lahan,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+landslide,TANAH LONGSOR,landslide,Tanah Longsor,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+liquefaction,LIKUEFAKSI,,,no_irbi_2024_hazard_table_match,none,false,false,false,false,KRB recommendation section has no corresponding hazard table in the M62 IRBI 2024 Sumatera Barat layer
+technological_failure,KEGAGALAN TEKNOLOGI,,,no_irbi_2024_hazard_table_match,none,false,false,false,false,KRB recommendation section has no corresponding hazard table in the M62 IRBI 2024 Sumatera Barat layer
+tsunami,TSUNAMI,tsunami,Tsunami,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
+volcanic_eruption,LETUSAN GUNUNGAPI,volcanic_eruption,Letusan Gunung Api,authorized_lookup_bridge,explicit_same_hazard_concept_and_normalized_source_label_match,true,false,false,false,
