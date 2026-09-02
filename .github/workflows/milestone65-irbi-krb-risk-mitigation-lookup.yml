@@ -1,0 +1,64 @@
+name: Milestone 65 IRBI KRB Risk Mitigation Lookup
+
+on:
+  pull_request:
+    paths:
+      - 'data/manifests/milestone62_irbi_hazard_risk_2024_final.json'
+      - 'data/processed/bnpb/irbi_hazard_risk_2024/**'
+      - 'data/manifests/milestone64_krb_recommendations_final.json'
+      - 'data/processed/bnpb/krb_sumbar_2022_2026/**'
+      - 'data/mappings/milestone65_irbi_krb_hazard_lookup_crosswalk.csv'
+      - 'data/processed/bnpb/irbi_krb_bridge_2024/**'
+      - 'data/manifests/milestone65_irbi_krb_lookup_bridge.json'
+      - 'scripts/materialize_milestone65_irbi_krb_lookup_bridge.py'
+      - 'scripts/validate_milestone65_irbi_krb_lookup_bridge.py'
+      - 'tests/test_milestone65_irbi_krb_lookup_bridge.py'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone65-irbi-krb-risk-mitigation-lookup.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/manifests/milestone62_irbi_hazard_risk_2024_final.json'
+      - 'data/processed/bnpb/irbi_hazard_risk_2024/**'
+      - 'data/manifests/milestone64_krb_recommendations_final.json'
+      - 'data/processed/bnpb/krb_sumbar_2022_2026/**'
+      - 'data/mappings/milestone65_irbi_krb_hazard_lookup_crosswalk.csv'
+      - 'data/processed/bnpb/irbi_krb_bridge_2024/**'
+      - 'data/manifests/milestone65_irbi_krb_lookup_bridge.json'
+      - 'scripts/materialize_milestone65_irbi_krb_lookup_bridge.py'
+      - 'scripts/validate_milestone65_irbi_krb_lookup_bridge.py'
+      - 'tests/test_milestone65_irbi_krb_lookup_bridge.py'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone65-irbi-krb-risk-mitigation-lookup.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Validate frozen M65 lookup bridge
+        run: python scripts/validate_milestone65_irbi_krb_lookup_bridge.py
+      - name: Run focused M65 test
+        run: python -m pytest -q tests/test_milestone65_irbi_krb_lookup_bridge.py
+      - name: Require deterministic M65 rebuild
+        run: |
+          cp data/mappings/milestone65_irbi_krb_hazard_lookup_crosswalk.csv /tmp/m65-crosswalk.csv
+          cp data/processed/bnpb/irbi_krb_bridge_2024/irbi-risk-mitigation-lookup-index-2024.csv /tmp/m65-index.csv
+          cp data/manifests/milestone65_irbi_krb_lookup_bridge.json /tmp/m65-final.json
+          python scripts/materialize_milestone65_irbi_krb_lookup_bridge.py
+          cmp /tmp/m65-crosswalk.csv data/mappings/milestone65_irbi_krb_hazard_lookup_crosswalk.csv
+          cmp /tmp/m65-index.csv data/processed/bnpb/irbi_krb_bridge_2024/irbi-risk-mitigation-lookup-index-2024.csv
+          cmp /tmp/m65-final.json data/manifests/milestone65_irbi_krb_lookup_bridge.json
+          git diff --exit-code -- \
+            data/mappings/milestone65_irbi_krb_hazard_lookup_crosswalk.csv \
+            data/processed/bnpb/irbi_krb_bridge_2024/irbi-risk-mitigation-lookup-index-2024.csv \
+            data/manifests/milestone65_irbi_krb_lookup_bridge.json
