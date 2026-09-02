@@ -91,23 +91,27 @@ class HistoricalBatchTests(unittest.TestCase):
     def test_bpbd_acquisition_queue_is_allowlisted_and_has_2017_exit_gate(self) -> None:
         queue_path = ROOT / "data" / "acquisition_requests" / "bpbd_publications.csv"
         rows = read_queue(queue_path)
-        self.assertEqual(5, len(rows))
+        core_ids = {
+            "bpbd_pusdalops_2015",
+            "bpbd_pusdalops_2017",
+            "bpbd_data_kebencanaan_2015_2016",
+            "bpbd_lakip_2017",
+            "bpbd_pusdalops_2018",
+        }
+        self.assertGreaterEqual(len(rows), len(core_ids))
         by_id = {row["request_id"]: row for row in rows}
-        self.assertEqual(
-            {
-                "bpbd_pusdalops_2015",
-                "bpbd_pusdalops_2017",
-                "bpbd_data_kebencanaan_2015_2016",
-                "bpbd_lakip_2017",
-                "bpbd_pusdalops_2018",
-            },
-            set(by_id),
-        )
+        self.assertEqual(len(rows), len(by_id))
+        self.assertTrue(core_ids.issubset(by_id))
+
         target = by_id["bpbd_pusdalops_2017"]
         self.assertEqual("P0", target["priority"])
         self.assertEqual("2017", target["anchor_year"])
         self.assertEqual("yes", target["exit_gate_candidate"])
         self.assertEqual("sumbarprov.go.id", queue_allowed_host(target))
+        self.assertEqual(
+            ["bpbd_pusdalops_2017"],
+            [row["request_id"] for row in rows if row["exit_gate_candidate"] == "yes"],
+        )
         for request_id, row in by_id.items():
             self.assertTrue(
                 official_source_url(row["official_page_url"], queue_allowed_host(row)),

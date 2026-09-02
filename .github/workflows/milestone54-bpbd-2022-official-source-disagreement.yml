@@ -1,0 +1,54 @@
+name: Milestone 54 BPBD 2022 Official Source Disagreement
+
+on:
+  pull_request:
+    paths:
+      - "data/acquisition_requests/bpbd_publications.csv"
+      - "data/manifests/milestone53_bpbd_dibi_2022_source_qualification.json"
+      - "data/manifests/milestone54_bpbd_2022_official_source_disagreement.json"
+      - "research/MILESTONE54_BPBD_2022_OFFICIAL_SOURCE_DISAGREEMENT.md"
+      - "scripts/validate_milestone54_bpbd_2022_official_source_disagreement.py"
+      - "tests/test_milestone54_bpbd_2022_official_source_disagreement.py"
+      - ".github/workflows/milestone54-bpbd-2022-official-source-disagreement.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data/acquisition_requests/bpbd_publications.csv"
+      - "data/manifests/milestone53_bpbd_dibi_2022_source_qualification.json"
+      - "data/manifests/milestone54_bpbd_2022_official_source_disagreement.json"
+      - "research/MILESTONE54_BPBD_2022_OFFICIAL_SOURCE_DISAGREEMENT.md"
+      - "scripts/validate_milestone54_bpbd_2022_official_source_disagreement.py"
+      - "tests/test_milestone54_bpbd_2022_official_source_disagreement.py"
+      - ".github/workflows/milestone54-bpbd-2022-official-source-disagreement.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate M54 disagreement contract
+        run: python scripts/validate_milestone54_bpbd_2022_official_source_disagreement.py
+
+      - name: Run M54 focused test
+        run: python -m unittest tests.test_milestone54_bpbd_2022_official_source_disagreement -v
+
+      - name: Revalidate M53 source qualification
+        run: python scripts/validate_milestone53_bpbd_dibi_2022_source_qualification.py
+
+      - name: Revalidate climate/disaster foundation
+        run: python scripts/validate_climate_disaster_foundation.py
+
+      - name: Revalidate data foundation
+        run: python scripts/validate_data_foundation.py
