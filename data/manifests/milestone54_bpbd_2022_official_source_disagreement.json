@@ -1,0 +1,147 @@
+{
+  "schema": "ranah-observatory/milestone54-bpbd-2022-official-source-disagreement/v1",
+  "milestone": 54,
+  "title": "BPBD 2022 official publication disagreement ledger",
+  "depends_on": [53],
+  "decision_date": "2026-09-02",
+  "research_question": "Do two official BPBD Sumatera Barat 2022 publications describe the same event universe and hazard taxonomy closely enough to be merged into one canonical dashboard series without explicit reconciliation?",
+  "sources": {
+    "dibi_2022": {
+      "source_role": "operational_disaster_data_publication",
+      "title": "Buku DIBI Tahun 2022",
+      "producer": "BPBD Provinsi Sumatera Barat / Pusdalops PB",
+      "official_detail_url": "https://ppid.sumbarprov.go.id/home/details/20769-buku-dibi-tahun-2022.html",
+      "legacy_pdf_url": "https://ppid.sumbarprov.go.id/images/2023/09/file/Buku_DIBI_2022.pdf",
+      "raw_bytes_frozen": false,
+      "verification_source": "data/manifests/milestone53_bpbd_dibi_2022_source_qualification.json",
+      "event_total": 1021,
+      "hazard_counts": {
+        "abrasi_pantai": 5,
+        "angin_kencang": 674,
+        "banjir": 123,
+        "banjir_bandang": 5,
+        "gempa_bumi": 2,
+        "kebakaran_hutan_dan_lahan": 92,
+        "longsor": 120
+      }
+    },
+    "lkj_2022": {
+      "source_role": "agency_performance_report",
+      "title": "Laporan Kinerja Badan Penanggulangan Bencana Daerah Tahun 2022",
+      "producer": "BPBD Provinsi Sumatera Barat",
+      "official_pdf_url": "https://bpbd.sumbarprov.go.id/images/2023/05/file/LKJ_BPBD_TAHUN_2022.pdf",
+      "official_library_url": "https://bpbd.sumbarprov.go.id/perpustakaan/laporan-kinerja",
+      "pdf_page_count_observed": 77,
+      "raw_bytes_frozen": false,
+      "table_locator": "Tabel 3.4.7, PDF pages 59-60",
+      "table_title": "Jumlah Peristiwa Kab/Kota per Jenis Bencana di Provinsi Sumatera Barat Tahun 2022",
+      "event_total": 1047,
+      "hazard_counts": {
+        "angin_kencang": 108,
+        "abrasi": 1,
+        "abrasi_pantai": 4,
+        "banjir": 122,
+        "banjir_bandang": 6,
+        "erosi_sungai": 3,
+        "gempa_bumi": 6,
+        "karhutla": 87,
+        "kekeringan": 2,
+        "longsor": 131,
+        "pohon_tumbang": 549,
+        "puting_beliung": 27,
+        "tanah_bergerak": 1
+      }
+    }
+  },
+  "reconciliation_audit": {
+    "raw_event_total_difference_lkj_minus_dibi": 26,
+    "dibi_hazard_category_count": 7,
+    "lkj_hazard_category_count": 13,
+    "obvious_taxonomy_bridge": {
+      "dibi_abrasi_pantai": {
+        "lkj_components": ["abrasi", "abrasi_pantai"],
+        "lkj_mapped_total": 5,
+        "dibi_total": 5,
+        "difference": 0
+      },
+      "dibi_angin_kencang": {
+        "lkj_components": ["angin_kencang", "pohon_tumbang", "puting_beliung"],
+        "lkj_mapped_total": 684,
+        "dibi_total": 674,
+        "difference": 10
+      },
+      "dibi_banjir": {
+        "lkj_components": ["banjir"],
+        "lkj_mapped_total": 122,
+        "dibi_total": 123,
+        "difference": -1
+      },
+      "dibi_banjir_bandang": {
+        "lkj_components": ["banjir_bandang"],
+        "lkj_mapped_total": 6,
+        "dibi_total": 5,
+        "difference": 1
+      },
+      "dibi_gempa_bumi": {
+        "lkj_components": ["gempa_bumi"],
+        "lkj_mapped_total": 6,
+        "dibi_total": 2,
+        "difference": 4
+      },
+      "dibi_kebakaran_hutan_dan_lahan": {
+        "lkj_components": ["karhutla"],
+        "lkj_mapped_total": 87,
+        "dibi_total": 92,
+        "difference": -5
+      },
+      "dibi_longsor": {
+        "lkj_components": ["longsor"],
+        "lkj_mapped_total": 131,
+        "dibi_total": 120,
+        "difference": 11
+      }
+    },
+    "lkj_categories_without_obvious_dibi_counterpart": {
+      "erosi_sungai": 3,
+      "kekeringan": 2,
+      "tanah_bergerak": 1,
+      "total": 6
+    },
+    "mapped_difference_plus_unmatched_lkj_categories": 26,
+    "reconciles_to_raw_total_difference": true
+  },
+  "interpretation": {
+    "same_agency_does_not_imply_same_event_universe": true,
+    "taxonomy_difference_is_material": true,
+    "recording_or_cutoff_difference_possible": true,
+    "event_level_equivalence_demonstrated": false,
+    "safe_to_average_totals": false,
+    "safe_to_concatenate_rows": false,
+    "safe_to_use_interchangeably_in_timeseries": false
+  },
+  "dashboard_contract": {
+    "default_2022_event_total_source": "dibi_2022_after_raw_verification",
+    "lkj_2022_role": "cross_publication_validation_and_disagreement_evidence",
+    "show_source_family_on_proof_rows": true,
+    "preserve_native_hazard_labels": true,
+    "do_not_hide_1021_vs_1047_disagreement": true,
+    "cross_source_reconciliation_required_before_unified_series": true
+  },
+  "acquisition": {
+    "queue": "data/acquisition_requests/bpbd_publications.csv",
+    "request_id": "bpbd_lkj_2022",
+    "target_filename": "bpbd-lkj-sumbar-2022.pdf",
+    "priority": "P1",
+    "allowed_host": "sumbarprov.go.id",
+    "exit_gate_candidate": false,
+    "next_gate": "freeze the official LKj PDF bytes and SHA256; then verify Table 3.4.7 against the frozen artifact"
+  },
+  "result": {
+    "official_cross_publication_disagreement_confirmed": true,
+    "taxonomy_bridge_attempted": true,
+    "taxonomy_bridge_resolves_total_difference": false,
+    "canonical_unified_2022_series_authorized": false,
+    "dibi_2022_materialization_authorized": false,
+    "lkj_2022_materialization_authorized": false
+  }
+}
