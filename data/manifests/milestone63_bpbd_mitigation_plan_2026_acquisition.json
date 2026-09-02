@@ -1,0 +1,37 @@
+{
+  "schema": "ranah-observatory/milestone63-bpbd-mitigation-plan-2026-acquisition/v1",
+  "milestone": 63,
+  "depends_on": [
+    62
+  ],
+  "retrieved_at": "2026-09-02T14:01:24.252883+00:00",
+  "source": {
+    "publisher": "Badan Penanggulangan Bencana Daerah Provinsi Sumatera Barat",
+    "document": "Rencana Kerja BPBD Provinsi Sumatera Barat Tahun 2026",
+    "legal_container": "Peraturan Gubernur Sumatera Barat Nomor 23 Tahun 2025",
+    "source_url": "https://bpbd.sumbarprov.go.id/web-api/api/files/badan-perencanaan-pembangunan-daerah/2026/04/file-1776832372620-c55c479ab1ac4c7ea86c62bd6ce5270bRenja%20BPBD%202026.pdf",
+    "plan_year": 2026,
+    "document_type": "planning_document"
+  },
+  "raw_artifact": {
+    "path": "data/raw/bpbd/m63_renja_2026/renja-bpbd-sumbar-2026.pdf",
+    "sha256": "b95bd3798df3ace092592ba46ae6ff08690b8d7fcf38c58c726bc3f9643c44f8",
+    "size_bytes": 656744
+  },
+  "text_excerpt": {
+    "path": "data/processed/bpbd/mitigation_plan_2026/renja-bpbd-2026-pages-51-64.txt",
+    "sha256": "d34087c416a3bc310fa46518253341db38a0ea75964c22a59cc505c33b5eab00",
+    "pdf_pages_one_based": [
+      51,
+      64
+    ],
+    "extraction_method": "pdftotext -layout",
+    "ocr_used": false
+  },
+  "qualification_boundary": {
+    "planning_targets_are_actual_achievement": false,
+    "qualitative_problem_statements_are_quantified_capacity": false,
+    "dashboard_planning_context_authorized": true,
+    "prediction_claim_authorized": false
+  }
+}
