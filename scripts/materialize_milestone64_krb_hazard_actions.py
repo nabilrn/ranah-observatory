@@ -49,6 +49,10 @@ NESTED_SOURCE_ONLY_HAZARDS = {
     "technological_failure",
     "covid_19",
 }
+PAGE_HEADER_RE = re.compile(
+    r"DOKUMEN\s+KAJIAN\s+RISIKO\s+BENCANA\s+NASIONAL\s+[–-]\s+PROVINSI\s+SUMATERA\s+BARAT\s+2022-2026\s+HAL\s+\d+",
+    re.IGNORECASE,
+)
 
 
 def sha256(path: Path) -> str:
@@ -57,6 +61,12 @@ def sha256(path: Path) -> str:
 
 def normalize(value: str) -> str:
     return " ".join(value.split())
+
+
+def clean_fragment(value: str) -> str:
+    value = re.sub(r"\[\[PDF_PAGE_\d+\]\]", " ", value)
+    value = PAGE_HEADER_RE.sub(" ", value)
+    return normalize(value)
 
 
 def split_pages(text: str) -> list[tuple[int, str]]:
@@ -139,11 +149,12 @@ def main() -> int:
             for action_idx, match in enumerate(number_matches):
                 start = heading_end + match.start()
                 end = heading_end + (number_matches[action_idx + 1].start() if action_idx + 1 < len(number_matches) else len(body))
-                raw = joined[start:end]
-                cleaned = normalize(re.sub(r"\[\[PDF_PAGE_(\d+)\]\]", r" [PDF page \1] ", raw))
+                cleaned = clean_fragment(joined[start:end])
                 order = int(match.group(1))
                 if len(cleaned) < 12:
                     raise RuntimeError(f"M64 suspiciously short action {hazard_id} #{order}")
+                if "DOKUMEN KAJIAN RISIKO" in cleaned.upper() or "[PDF PAGE" in cleaned.upper():
+                    raise RuntimeError(f"M64 page furniture leaked into action {hazard_id} #{order}")
                 action_rows.append({
                     "krb_hazard_id": hazard_id,
                     "source_hazard_label": label,
@@ -159,16 +170,13 @@ def main() -> int:
                 })
             action_count = len(number_matches)
         else:
-            # These source sections contain multiple named subgroups whose numbered lists restart.
-            # Flattening them would invent hierarchy. Keep the full source-native section as the detail layer.
             if hazard_id not in NESTED_SOURCE_ONLY_HAZARDS:
                 raise RuntimeError(f"M64 unclassified recommendation structure for {hazard_id}")
             intro_end = number_matches[0].start() if number_matches else len(body)
             detail_status = "source_section_only_nested_structure"
             action_count = 0
 
-        intro = body[:intro_end]
-        intro_clean = normalize(re.sub(r"\[\[PDF_PAGE_(\d+)\]\]", r" [PDF page \1] ", intro))
+        intro_clean = clean_fragment(body[:intro_end])
         if len(intro_clean) < 40:
             raise RuntimeError(f"M64 recommendation context too short for {hazard_id}")
         context_rows.append({
@@ -211,6 +219,7 @@ def main() -> int:
     final["result"]["priority_context_row_count"] = len(context_rows)
     final["result"]["observed_implementation_claimed"] = False
     final["result"]["nested_numbering_flattened"] = False
+    final["result"]["page_furniture_removed_from_action_text"] = True
     final["action_coverage_by_hazard"] = coverage
     final["outputs"] = {
         "source_native_sections": source_native_output,
