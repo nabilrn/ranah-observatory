@@ -1,0 +1,39 @@
+{
+  "schema": "ranah-observatory/milestone63-bpbd-mitigation-plan-2026-final/v1",
+  "milestone": 63,
+  "depends_on": [
+    62
+  ],
+  "source_manifest": {
+    "path": "data/manifests/milestone63_bpbd_mitigation_plan_2026_acquisition.json",
+    "sha256": "541b08ce886ade03b40c2107b475b39e23b338a999077eb7a5e740a0d025f630"
+  },
+  "result": {
+    "planning_target_count": 13,
+    "qualitative_gap_count": 18,
+    "plan_year": 2026,
+    "dashboard_planning_context_ready": true,
+    "actual_capacity_score_materialized": false,
+    "planning_targets_treated_as_actuals": false,
+    "municipality_gap_attribution_authorized": false,
+    "prediction_claim_authorized": false,
+    "budget_comparison_materialized": false
+  },
+  "interpretation_boundary": {
+    "targets_are_forward_planning_commitments": true,
+    "gaps_are_official_qualitative_diagnostics": true,
+    "gaps_are_not_numeric_capacity_scores": true,
+    "targets_do_not_establish_achievement": true,
+    "no_unmitigated_probability_inference": true
+  },
+  "outputs": {
+    "targets": {
+      "path": "data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-targets-2026.csv",
+      "sha256": "bbf0fae31f17bed2c8a3d1c73075a86ddc9847102b5d8b72bd8efbe51c434603"
+    },
+    "gaps": {
+      "path": "data/processed/bpbd/mitigation_plan_2026/bpbd-mitigation-gaps-2026.csv",
+      "sha256": "e851f8d244855dd5e423aa9a25d25aedb257bb5dcd7ad878ba1fb9f041d6c835"
+    }
+  }
+}
