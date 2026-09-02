@@ -52,8 +52,11 @@ def main() -> int:
 
     source_total = int(float(total_rows[0]["Jumlah Kejadian"]))
     district_sum = sum(int(float(r["Jumlah Kejadian"])) for r in district_rows)
-    if source_total != 1175 or district_sum != source_total:
-        raise RuntimeError(f"M58 district total reconciliation failed: source={source_total} sum={district_sum}")
+    allocation_gap = source_total - district_sum
+    if source_total != 1175 or district_sum != 1166 or allocation_gap != 9:
+        raise RuntimeError(
+            f"M58 frozen district allocation footprint drift: source={source_total} sum={district_sum} gap={allocation_gap}"
+        )
 
     registry = canonical_by_code()
     seen: set[str] = set()
@@ -82,13 +85,14 @@ def main() -> int:
             "source_resource_id": acq["source"]["resource_id"],
         })
 
-    if len(seen) != 19 or sum(int(r["event_count"]) for r in output_rows) != 1175:
-        raise RuntimeError("M58 canonical footprint or total drift")
+    canonical_sum = sum(int(r["event_count"]) for r in output_rows)
+    if len(seen) != 19 or canonical_sum != district_sum:
+        raise RuntimeError("M58 canonical footprint or district-sum drift")
 
     prior = json.loads(PRIOR.read_text(encoding="utf-8"))
     monthly_total = prior["result_2024"]["monthly_event_total"]
     if monthly_total != source_total:
-        raise RuntimeError(f"M58 same-producer monthly reconciliation failed: {monthly_total} != {source_total}")
+        raise RuntimeError(f"M58 same-producer monthly total drift: {monthly_total} != {source_total}")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with OUT.open("w", newline="", encoding="utf-8") as handle:
@@ -97,7 +101,7 @@ def main() -> int:
         writer.writerows(output_rows)
 
     final = {
-        "schema": "ranah-observatory/milestone58-bpbd-events-2024-final/v1",
+        "schema": "ranah-observatory/milestone58-bpbd-events-2024-final/v2",
         "milestone": 58,
         "depends_on": [57],
         "source_manifest": {"path": ACQ.relative_to(ROOT).as_posix(), "sha256": sha256(ACQ)},
@@ -105,22 +109,34 @@ def main() -> int:
         "source_schema_issue": {
             "misleading_field": "Jenis Bencana",
             "observed_role": "source_geography_name",
-            "evidence": "all 19 values are kabupaten/kota names and each code/name pair exactly matches the current Sumatera Barat statistical geography registry",
+            "evidence": "all 19 non-total values are kabupaten/kota names and each code/name pair exactly matches the current Sumatera Barat statistical geography registry",
             "source_header_rewritten_in_source_native_file": False,
+        },
+        "source_internal_disagreement": {
+            "source_total_row_events": source_total,
+            "sum_of_19_district_rows": district_sum,
+            "unallocated_difference_events": allocation_gap,
+            "same_producer_monthly_event_total": monthly_total,
+            "district_rows_reconcile_to_source_total": False,
+            "monthly_total_reconciles_to_source_total": True,
+            "allocation_or_omission_explanation_available": False,
+            "difference_imputed_to_any_geography": False,
         },
         "result": {
             "district_count": 19,
             "canonical_row_count": 19,
-            "province_total_events": source_total,
-            "district_sum_events": district_sum,
+            "source_total_events": source_total,
+            "canonical_district_sum_events": canonical_sum,
+            "unallocated_difference_events": allocation_gap,
             "same_producer_monthly_event_total": monthly_total,
-            "same_producer_total_reconciles": True,
             "exact_code_name_pair_mapping_count": 19,
             "geography_mapping_complete": True,
             "dashboard_district_filter_ready": True,
+            "province_total_from_district_rows_authorized": False,
             "hazard_dimension_present_in_this_resource": False,
             "cross_source_equivalence_with_bnpb_authorized": False,
             "cross_year_taxonomy_harmonization_authorized": False,
+            "missing_values_imputed": False,
         },
         "output": {"path": OUT.relative_to(ROOT).as_posix(), "sha256": sha256(OUT)},
     }
