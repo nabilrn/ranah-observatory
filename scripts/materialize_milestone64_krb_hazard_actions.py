@@ -31,6 +31,24 @@ SECTIONS = [
     (13, "technological_failure", "KEGAGALAN TEKNOLOGI"),
     (14, "covid_19", "COVID-19"),
 ]
+FLAT_ACTION_HAZARDS = {
+    "flood",
+    "flash_flood",
+    "extreme_weather",
+    "extreme_wave_and_coastal_erosion",
+    "earthquake",
+    "liquefaction",
+    "forest_and_land_fire",
+    "drought",
+    "volcanic_eruption",
+    "landslide",
+    "tsunami",
+}
+NESTED_SOURCE_ONLY_HAZARDS = {
+    "epidemic_and_disease_outbreak",
+    "technological_failure",
+    "covid_19",
+}
 
 
 def sha256(path: Path) -> str:
@@ -62,6 +80,11 @@ def main() -> int:
         raise RuntimeError("M64 source-native sections are not qualified")
     if final["result"]["reading_order_extraction_used"] is not True:
         raise RuntimeError("M64 action materialization requires reading-order evidence")
+    all_hazards = {hazard_id for _, hazard_id, _ in SECTIONS}
+    if FLAT_ACTION_HAZARDS | NESTED_SOURCE_ONLY_HAZARDS != all_hazards:
+        raise RuntimeError("M64 action-detail classification does not cover all hazards")
+    if FLAT_ACTION_HAZARDS & NESTED_SOURCE_ONLY_HAZARDS:
+        raise RuntimeError("M64 action-detail classification overlaps")
 
     pages = split_pages(EXCERPT.read_text(encoding="utf-8", errors="replace"))
     joined_parts: list[str] = []
@@ -77,9 +100,10 @@ def main() -> int:
 
     headings: list[tuple[int, int, int, str, str]] = []
     for number, hazard_id, label in SECTIONS:
-        match = re.search(rf"4\.2\.{number}\.\s+{re.escape(label)}", joined, re.IGNORECASE)
-        if not match:
-            raise RuntimeError(f"M64 missing section heading for {hazard_id}")
+        candidates = list(re.finditer(rf"4\.2\.{number}\.\s+{re.escape(label)}", joined, re.IGNORECASE))
+        if len(candidates) != 1:
+            raise RuntimeError(f"M64 section heading count drift for {hazard_id}: {len(candidates)}")
+        match = candidates[0]
         headings.append((match.start(), match.end(), number, hazard_id, label))
     headings.sort()
     chapter5 = re.search(r"BAB\s+5\s+PENUTUP", joined, re.IGNORECASE)
@@ -97,19 +121,53 @@ def main() -> int:
 
     action_rows: list[dict[str, object]] = []
     context_rows: list[dict[str, object]] = []
-    counts: dict[str, int] = {}
+    coverage: dict[str, dict[str, object]] = {}
 
-    for idx, (section_start, heading_end, number, hazard_id, label) in enumerate(headings):
+    for idx, (_section_start, heading_end, number, hazard_id, label) in enumerate(headings):
         section_end = headings[idx + 1][0] if idx + 1 < len(headings) else chapter5.start()
         body = joined[heading_end:section_end]
-        action_matches = list(re.finditer(r"(?m)^\s*(\d+)\.\s+", body))
-        if not action_matches:
-            raise RuntimeError(f"M64 no top-level action list found for {hazard_id}")
-        orders = [int(m.group(1)) for m in action_matches]
-        if orders != list(range(1, len(orders) + 1)):
-            raise RuntimeError(f"M64 non-sequential action numbering for {hazard_id}: {orders}")
+        number_matches = list(re.finditer(r"(?m)^\s*(\d+)\.\s+", body))
 
-        intro = body[:action_matches[0].start()]
+        if hazard_id in FLAT_ACTION_HAZARDS:
+            if not number_matches:
+                raise RuntimeError(f"M64 no top-level action list found for {hazard_id}")
+            orders = [int(m.group(1)) for m in number_matches]
+            if orders != list(range(1, len(orders) + 1)):
+                raise RuntimeError(f"M64 non-sequential flat action numbering for {hazard_id}: {orders}")
+            intro_end = number_matches[0].start()
+            detail_status = "flat_actions_materialized"
+            for action_idx, match in enumerate(number_matches):
+                start = heading_end + match.start()
+                end = heading_end + (number_matches[action_idx + 1].start() if action_idx + 1 < len(number_matches) else len(body))
+                raw = joined[start:end]
+                cleaned = normalize(re.sub(r"\[\[PDF_PAGE_(\d+)\]\]", r" [PDF page \1] ", raw))
+                order = int(match.group(1))
+                if len(cleaned) < 12:
+                    raise RuntimeError(f"M64 suspiciously short action {hazard_id} #{order}")
+                action_rows.append({
+                    "krb_hazard_id": hazard_id,
+                    "source_hazard_label": label,
+                    "section_id": f"krb_4_2_{number}",
+                    "action_order": order,
+                    "action_text_source_native": cleaned,
+                    "start_pdf_page": page_for_position(start),
+                    "end_pdf_page": page_for_position(max(start, end - 1)),
+                    "claim_type": "official_risk_reduction_recommendation",
+                    "observed_implementation_claimed": "false",
+                    "prediction_claim_authorized": "false",
+                    "unmitigated_loss_forecast_authorized": "false",
+                })
+            action_count = len(number_matches)
+        else:
+            # These source sections contain multiple named subgroups whose numbered lists restart.
+            # Flattening them would invent hierarchy. Keep the full source-native section as the detail layer.
+            if hazard_id not in NESTED_SOURCE_ONLY_HAZARDS:
+                raise RuntimeError(f"M64 unclassified recommendation structure for {hazard_id}")
+            intro_end = number_matches[0].start() if number_matches else len(body)
+            detail_status = "source_section_only_nested_structure"
+            action_count = 0
+
+        intro = body[:intro_end]
         intro_clean = normalize(re.sub(r"\[\[PDF_PAGE_(\d+)\]\]", r" [PDF page \1] ", intro))
         if len(intro_clean) < 40:
             raise RuntimeError(f"M64 recommendation context too short for {hazard_id}")
@@ -118,36 +176,20 @@ def main() -> int:
             "source_hazard_label": label,
             "section_id": f"krb_4_2_{number}",
             "priority_and_scope_context_source_native": intro_clean,
+            "action_detail_status": detail_status,
             "claim_type": "official_recommendation_priority_context",
             "cross_source_taxonomy_equivalence_authorized": "false",
             "prediction_claim_authorized": "false",
         })
+        coverage[hazard_id] = {
+            "action_detail_status": detail_status,
+            "flat_action_count": action_count,
+        }
 
-        for action_idx, match in enumerate(action_matches):
-            start = heading_end + match.start()
-            end = heading_end + (action_matches[action_idx + 1].start() if action_idx + 1 < len(action_matches) else len(body))
-            raw = joined[start:end]
-            cleaned = normalize(re.sub(r"\[\[PDF_PAGE_(\d+)\]\]", r" [PDF page \1] ", raw))
-            order = int(match.group(1))
-            if len(cleaned) < 12:
-                raise RuntimeError(f"M64 suspiciously short action {hazard_id} #{order}")
-            action_rows.append({
-                "krb_hazard_id": hazard_id,
-                "source_hazard_label": label,
-                "section_id": f"krb_4_2_{number}",
-                "action_order": order,
-                "action_text_source_native": cleaned,
-                "start_pdf_page": page_for_position(start),
-                "end_pdf_page": page_for_position(max(start, end - 1)),
-                "claim_type": "official_risk_reduction_recommendation",
-                "observed_implementation_claimed": "false",
-                "prediction_claim_authorized": "false",
-                "unmitigated_loss_forecast_authorized": "false",
-            })
-        counts[hazard_id] = len(action_matches)
-
-    if len(context_rows) != 14 or set(counts) != {hazard_id for _, hazard_id, _ in SECTIONS}:
-        raise RuntimeError("M64 hazard action coverage drift")
+    if len(context_rows) != 14 or set(coverage) != all_hazards:
+        raise RuntimeError("M64 hazard recommendation coverage drift")
+    if {row["krb_hazard_id"] for row in action_rows} != FLAT_ACTION_HAZARDS:
+        raise RuntimeError("M64 flat action hazard footprint drift")
 
     ACTIONS.parent.mkdir(parents=True, exist_ok=True)
     with ACTIONS.open("w", newline="", encoding="utf-8") as handle:
@@ -159,18 +201,29 @@ def main() -> int:
         writer.writeheader()
         writer.writerows(context_rows)
 
+    source_native_output = final.get("output") or final.get("outputs", {}).get("source_native_sections")
+    if not source_native_output:
+        raise RuntimeError("M64 source-native section output metadata missing")
     final["result"]["dashboard_action_summary_ready"] = True
     final["result"]["specific_recommendation_action_count"] = len(action_rows)
+    final["result"]["flat_action_hazard_count"] = len(FLAT_ACTION_HAZARDS)
+    final["result"]["nested_source_only_hazard_count"] = len(NESTED_SOURCE_ONLY_HAZARDS)
     final["result"]["priority_context_row_count"] = len(context_rows)
     final["result"]["observed_implementation_claimed"] = False
-    final["action_coverage_by_hazard"] = counts
+    final["result"]["nested_numbering_flattened"] = False
+    final["action_coverage_by_hazard"] = coverage
     final["outputs"] = {
-        "source_native_sections": final.pop("output"),
+        "source_native_sections": source_native_output,
         "hazard_actions": {"path": ACTIONS.relative_to(ROOT).as_posix(), "sha256": sha256(ACTIONS)},
         "priority_context": {"path": CONTEXT.relative_to(ROOT).as_posix(), "sha256": sha256(CONTEXT)},
     }
+    final.pop("output", None)
     FINAL.write_text(json.dumps(final, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"actions": len(action_rows), "hazards": len(counts), "counts": counts}, sort_keys=True))
+    print(json.dumps({
+        "actions": len(action_rows),
+        "flat_hazards": len(FLAT_ACTION_HAZARDS),
+        "nested_source_only_hazards": sorted(NESTED_SOURCE_ONLY_HAZARDS),
+    }, sort_keys=True))
     return 0
 
 
