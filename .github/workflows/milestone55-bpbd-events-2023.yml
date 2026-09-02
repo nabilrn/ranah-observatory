@@ -1,0 +1,56 @@
+name: Milestone 55 BPBD Events 2023
+
+on:
+  pull_request:
+    paths:
+      - 'data/manifests/milestone55_bpbd_events_2023*.json'
+      - 'data/processed/bpbd/disaster_events_2023/**'
+      - 'scripts/acquire_milestone55_bpbd_events_2023.py'
+      - 'scripts/finalize_milestone55_bpbd_events_2023.py'
+      - 'scripts/validate_milestone55_bpbd_events_2023.py'
+      - 'tests/test_milestone55_bpbd_events_2023.py'
+      - 'research/MILESTONE55_BPBD_EVENTS_2023.md'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone55-bpbd-events-2023.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/manifests/milestone55_bpbd_events_2023*.json'
+      - 'data/processed/bpbd/disaster_events_2023/**'
+      - 'scripts/finalize_milestone55_bpbd_events_2023.py'
+      - 'scripts/validate_milestone55_bpbd_events_2023.py'
+      - 'tests/test_milestone55_bpbd_events_2023.py'
+      - 'catalog/public-datasets.csv'
+      - '.github/workflows/milestone55-bpbd-events-2023.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate frozen M55 materialization
+        run: python scripts/validate_milestone55_bpbd_events_2023.py
+
+      - name: Run focused M55 test
+        run: python -m unittest tests.test_milestone55_bpbd_events_2023 -v
+
+      - name: Require deterministic canonical rebuild
+        run: |
+          python scripts/finalize_milestone55_bpbd_events_2023.py
+          git diff --exit-code -- \
+            data/processed/bpbd/disaster_events_2023/bpbd-disaster-events-2023-canonical-long.csv \
+            data/manifests/milestone55_bpbd_events_2023_final.json
+
+      - name: Revalidate existing 2023 BPBD context
+        run: python scripts/materialize_bpbd_priority_context.py && git diff --exit-code -- data/processed/bpbd/disaster_impact_2023 data/processed/bpbd/disaster_context_2024
