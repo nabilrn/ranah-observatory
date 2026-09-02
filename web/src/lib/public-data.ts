@@ -111,8 +111,72 @@ type PublicImpactSummary = {
   interpretation: { id: string; en: string };
 };
 
+export type RiskMitigationRiskRow = {
+  year: 2024;
+  geography_id: string;
+  geography_name: string;
+  irbi_hazard_id: string;
+  irbi_source_hazard_label: string;
+  risk_score: number;
+  risk_class: 'rendah' | 'sedang' | 'tinggi';
+  krb_hazard_id: string;
+  krb_source_hazard_label: string;
+  mitigation_action_count: number;
+  recommendation_action_detail_status: 'flat_actions_materialized';
+  bridge_status: 'authorized_lookup_bridge';
+};
+
+export type RiskMitigationActionRow = {
+  krb_hazard_id: string;
+  source_hazard_label: string;
+  action_order: number;
+  action_text_source_native: string;
+  start_pdf_page: number;
+  end_pdf_page: number;
+};
+
+export type PublicRiskMitigation2024 = {
+  source: {
+    organization: string;
+    bridge_manifest_path: string;
+    bridge_manifest_sha256: string;
+    risk_lookup_path: string;
+    risk_lookup_sha256: string;
+    recommendation_actions_path: string;
+    recommendation_actions_sha256: string;
+  };
+  risk: {
+    year: 2024;
+    rows: RiskMitigationRiskRow[];
+    row_count: 124;
+    hazard_ids: string[];
+    hazard_coverage: Record<string, number>;
+    geography_union_count: 19;
+    possible_full_grid_pairs: 171;
+    absent_source_pairs: 47;
+  };
+  recommendations: {
+    source_period: '2022–2026';
+    rows: RiskMitigationActionRow[];
+    action_count: 49;
+    hazard_count: 9;
+    action_counts_by_hazard: Record<string, number>;
+  };
+  unmatched_krb_hazards: string[];
+  boundaries: {
+    lookup_join_authorized: true;
+    global_taxonomy_equivalence_authorized: false;
+    numeric_value_equivalence_authorized: false;
+    event_taxonomy_join_authorized: false;
+    prediction_claim_authorized: false;
+    recommendations_are_implementation_evidence: false;
+    absent_irbi_pair_means_zero_risk: false;
+  };
+  interpretation: { id: string; en: string };
+};
+
 export type PublicDisasterSummary = {
-  schema: 'ranah-observatory/public-disaster-summary/v3';
+  schema: 'ranah-observatory/public-disaster-summary/v4';
   events: {
     source: {
       organization: string;
@@ -169,6 +233,7 @@ export type PublicDisasterSummary = {
       interpretation: { id: string; en: string };
     };
   };
+  risk_mitigation_2024: PublicRiskMitigation2024;
   geography: {
     organization: string;
     path: string;
