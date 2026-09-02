@@ -175,8 +175,52 @@ export type PublicRiskMitigation2024 = {
   interpretation: { id: string; en: string };
 };
 
+export type MitigationPlanTargetRow = {
+  record_id: string;
+  program_or_activity: string;
+  indicator: string;
+  target_value: number;
+  target_unit: string;
+  geographic_scope: string;
+  source_excerpt_pages: string;
+};
+
+export type MitigationPlanGapRow = {
+  gap_id: string;
+  theme: string;
+  gap_label: string;
+  geographic_scope: string;
+  source_excerpt_pages: string;
+};
+
+export type PublicMitigationPlan2026 = {
+  source: {
+    organization: string;
+    document: string;
+    manifest_path: string;
+    manifest_sha256: string;
+    targets_path: string;
+    targets_sha256: string;
+    gaps_path: string;
+    gaps_sha256: string;
+  };
+  plan_year: 2026;
+  targets: { rows: MitigationPlanTargetRow[]; count: 13 };
+  gaps: { rows: MitigationPlanGapRow[]; count: 18; theme_counts: Record<string, number> };
+  boundaries: {
+    targets_are_forward_planning_commitments: true;
+    targets_are_actual_achievements: false;
+    gaps_are_official_qualitative_diagnostics: true;
+    gaps_are_numeric_capacity_scores: false;
+    municipality_gap_attribution_authorized: false;
+    prediction_claim_authorized: false;
+    unmitigated_probability_inference_authorized: false;
+  };
+  interpretation: { id: string; en: string };
+};
+
 export type PublicDisasterSummary = {
-  schema: 'ranah-observatory/public-disaster-summary/v4';
+  schema: 'ranah-observatory/public-disaster-summary/v5';
   events: {
     source: {
       organization: string;
@@ -234,6 +278,7 @@ export type PublicDisasterSummary = {
     };
   };
   risk_mitigation_2024: PublicRiskMitigation2024;
+  mitigation_plan_2026: PublicMitigationPlan2026;
   geography: {
     organization: string;
     path: string;

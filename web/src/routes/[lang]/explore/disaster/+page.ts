@@ -12,7 +12,7 @@ export const load: PageLoad = async ({ fetch }) => {
 
   const summary = (await summaryResponse.json()) as PublicDisasterSummary;
   const geography = (await geographyResponse.json()) as PublicDistrictBoundary;
-  if (summary.schema !== 'ranah-observatory/public-disaster-summary/v4') {
+  if (summary.schema !== 'ranah-observatory/public-disaster-summary/v5') {
     throw new Error(`unsupported public disaster summary schema: ${summary.schema}`);
   }
   if (geography.type !== 'FeatureCollection' || geography.features.length !== summary.geography.feature_count) {
