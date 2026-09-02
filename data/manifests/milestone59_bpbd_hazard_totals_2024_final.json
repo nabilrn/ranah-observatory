@@ -1,0 +1,53 @@
+{
+  "schema": "ranah-observatory/milestone59-bpbd-hazard-totals-2024-final/v1",
+  "milestone": 59,
+  "depends_on": [
+    58
+  ],
+  "source_manifest": {
+    "path": "data/manifests/milestone59_bpbd_hazard_totals_2024_acquisition.json",
+    "sha256": "ebf475a7bb040a72c36beb5fd091ccbc82b33e4c343e198f3e6bc868039812cf"
+  },
+  "monthly_context": {
+    "path": "data/processed/bpbd/disaster_context_2024/bpbd-monthly-events-by-hazard-2024.csv",
+    "sha256": "9872f1e664cf2209adc0c577a01652d87891c6746c5e7cfbcc6c12be4def2469",
+    "source_manifest": "data/manifests/sumbar_bpbd_priority_context.json",
+    "monthly_source_resource_id": "ae2b0b42-1985-4bd9-a4c1-9b96e517c5f0"
+  },
+  "lineage": {
+    "aggregate_producer": "BPBD Provinsi Sumatera Barat",
+    "aggregate_source_data": "Pusdalop BPBD Sumatera Barat",
+    "monthly_producer": "BPBD Provinsi Sumatera Barat",
+    "monthly_source_data": "Pusdalop BPBD Sumatera Barat",
+    "producer_and_source_data_match": true
+  },
+  "result": {
+    "hazard_count": 7,
+    "canonical_row_count": 7,
+    "source_total_events": 1175,
+    "source_hazard_sum_events": 1175,
+    "monthly_hazard_sum_events": 1175,
+    "exact_hazard_total_match_count": 7,
+    "all_hazard_totals_match_monthly_table": true,
+    "source_total_reconciles": true,
+    "same_producer_source_data_reconciliation": true,
+    "same_family_hazard_id_mapping_reused": true,
+    "dashboard_hazard_filter_ready": true,
+    "missing_values_imputed": false,
+    "cross_source_equivalence_with_bnpb_authorized": false,
+    "cross_source_taxonomy_harmonization_authorized": false
+  },
+  "hazard_totals": {
+    "flood": 253,
+    "extreme_weather": 587,
+    "volcanic_eruption": 9,
+    "tidal_wave_and_coastal_erosion": 14,
+    "forest_and_land_fire": 25,
+    "drought": 2,
+    "landslide": 285
+  },
+  "output": {
+    "path": "data/processed/bpbd/disaster_events_2024_hazard_totals/bpbd-disaster-events-2024-hazard-totals-canonical.csv",
+    "sha256": "0bd12d8023dc342485867f1c1cd01ff645345c55fb788602991e117aeeceda05"
+  }
+}
